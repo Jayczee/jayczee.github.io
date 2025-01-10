@@ -27,13 +27,25 @@ export default sidebar({
     "",
     {
       text: "基建服务",
+      collapsible: true,
+      expanded: true,
+      prefix: "basic/",
       children: [
-        "basic/1-docker.md",
-        "basic/2-portainer.md",
-        "basic/3-ddns-go.md",
-        "basic/4-certbot.md",
+        "1-docker.md","2-portainer.md","3-ddns-go.md","4-certbot.md",
+        "5-nginx.md","6-samba.md","7-qbittorrent.md","8-jellyfin.md",
+        "9-v2rayn.md","10-movie-pilot.md",
       ]
     },
+    {
+      text: "可选服务",
+      collapsible: true,
+      expanded: true,
+      prefix: "optional/",
+      children: [
+        "alist.md","beszel.md","gpt.md","teamspeak.md"
+      ]
+    },
+    "docker-proxy.md"
   ],
 
 });
