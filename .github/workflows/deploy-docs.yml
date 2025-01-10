@@ -1,5 +1,5 @@
 
-name: Deploy-docs
+name: Deploy Docs
 
 on:
   push:
@@ -22,16 +22,13 @@ jobs:
 
       - name: 设置 pnpm
         uses: pnpm/action-setup@v4
-        with:
-          version: 10
-          cache: pnpm
 
 
       - name: 设置 Node.js
         uses: actions/setup-node@v4
         with:
           node-version: 22
-          cache: npm
+          cache: pnpm
 
       - name: 安装依赖
         run: |
