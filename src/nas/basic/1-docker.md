@@ -5,7 +5,7 @@ category:
     - docker
     - 教程
 ---
-<img src="/assets/svg/docker.svg" /> 
+<img src="https://blog-1302595532.cos.ap-shanghai.myqcloud.com/blog/docker.svg" /> 
 
 
 ## 相关链接

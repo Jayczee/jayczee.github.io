@@ -6,7 +6,7 @@ category:
     - docker
     - 教程
 ---
-<img src="/assets/svg/portainer.svg" /> 
+<img src="https://blog-1302595532.cos.ap-shanghai.myqcloud.com/blog/portainer.svg" /> 
 
 在[上一篇文章 Docker](./1-docker.md)中完成安装步骤后，可以开始着手第一个容器Portainer的部署 🚀。
 
