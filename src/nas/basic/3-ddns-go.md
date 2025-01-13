@@ -2,9 +2,10 @@
 title: DDNS-GO 动态DNS
 order: 3
 category:
-    - docker
-    - ddns-go
-    - 教程
+  - NAS
+tag:
+  - docker
+  - ddns-go
 ---
 
 ## DDNS-GO的作用

@@ -10,6 +10,6 @@ export default navbar([
   {
     text: "编程相关",
     icon: "pen-to-square",
-    link: "/code/"
+    link: "/code/fedex-crawler.md"
   }
 ]);

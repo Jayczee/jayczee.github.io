@@ -2,9 +2,10 @@
 title: Portainer 容器管理
 order: 2
 category:
-    - portainer
-    - docker
-    - 教程
+  - NAS
+tag:
+  - portainer
+  - docker
 ---
 <img src="/assets/svg/portainer.svg" /> 
 

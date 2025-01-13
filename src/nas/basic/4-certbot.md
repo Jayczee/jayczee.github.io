@@ -2,9 +2,10 @@
 title: Certbot 自动获取HTTPS证书
 order: 4
 category:
+    - NAS
+tag:
     - certbot
     - docker
-    - 教程
 ---
 
 Certbot 是一个 **开源工具**，用于自动化获取和管理 **SSL/TLS 证书**，主要与 **Let's Encrypt** 配合使用。它简化了 HTTPS 加密的配置过程，使网站管理员能够轻松为他们的网站启用安全连接。Certbot 能够自动续订证书，减少手动操作的需要，从而提高安全性和便利性。它支持多种操作系统和 Web 服务器，用户只需通过命令行界面进行简单的配置即可。

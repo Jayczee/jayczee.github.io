@@ -2,7 +2,6 @@
 title: NAS的个人最佳实践
 category:
     - NAS
-    - 教程
 ---
 
 ## NAS简介
