@@ -64,4 +64,6 @@ docker run -d -p 8000:8000 \
 - **Network**: 管理已经创建的Docker Network。大部分时候使用的是bridge桥接或直接使用宿主机网络host，个别特殊情况会创建一个network供几个特别的容器进行通信 🔗。
 - **Volumes**: 管理已创建的存储空间volume，这个使用得很少，一般都是定期查看删除没在使用的volume，可能还是学艺不精吧hhh 😂。
 
-此时点进Containers，会发现列表中已经存在刚刚创建的portainer-ce容器，但无法对其进行停止等操作，毕竟通过Portainer让它关闭自己肯定也是不愿意的吧（笑）😄。
+此时点进Containers，会发现列表中已经存在刚刚创建的portainer-ce容器，但无法对其进行停止等操作，毕竟通过Portainer让它关闭自己肯定也是不愿意的吧（笑）😄。 
+
+后续的使用教程将通过部署服务来实践。
