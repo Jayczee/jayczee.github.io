@@ -4,7 +4,7 @@ import navbar from "./navbar.js";
 import sidebar from "./sidebar.js";
 
 export default hopeTheme({
-  hostname: "https://mister-hope.github.io",
+  hostname: "https://jayczee.github.io",
 
   author: {
     name: "Jayczee",
@@ -24,7 +24,7 @@ export default hopeTheme({
   sidebar,
 
   // 页脚
-  footer: "默认页脚",
+  footer: "随便记点啥吧",
   displayFooter: true,
 
   // 博客相关
@@ -52,9 +52,9 @@ export default hopeTheme({
       // Linkedin: "https://example.com",
       // Pinterest: "https://example.com",
       // Pocket: "https://example.com",
-      // QQ: "https://example.com",
+      QQ: "https://qm.qq.com/q/eahiwn8T1m",
       // Qzone: "https://example.com",
-      // Reddit: "https://example.com",
+      Reddit: "https://www.reddit.com/user/Horror_Sir_3798/?utm_source=share&utm_medium=web3x&utm_name=web3xcss&utm_term=1&utm_content=share_button",
       // Rss: "https://example.com",
       // Steam: "https://example.com",
       // Twitter: "https://example.com",

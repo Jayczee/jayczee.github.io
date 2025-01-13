@@ -66,6 +66,7 @@ NAS设备最好拥有一个公网IP以支持其下载与上传的功能（PT）�
 | [Portainer 容器管理](./basic/portainer.md) ![Portainer](https://img.shields.io/badge/Portainer-5c6b7d?style=flat-square&logo=portainer&logoColor=white) | 方便的Docker管理界面 |
 | [Nginx 反向代理](./basic/nginx.md) ![Nginx](https://img.shields.io/badge/Nginx-009639?style=flat-square&logo=nginx&logoColor=white) | 高性能的HTTP和反向代理服务器 |
 | [DDNS-Go 动态DNS](./basic/ddns-go.md) ![DDNS-Go](https://img.shields.io/badge/DDNS-Go-ff3c00?style=flat-square&logo=cloudflare&logoColor=white) | 动态DNS服务 |
+| [Certbot](./basic/certbot.md) ![Certbot](https://img.shields.io/badge/Certbot-003b57?style=flat-square&logo=letsencrypt&logoColor=white) | 自动化SSL证书管理 |
 | [Samba 网络存储映射](./basic/samba.md) ![Samba](https://img.shields.io/badge/Samba-4e9e3a?style=flat-square&logo=samba&logoColor=white) | 网络共享文件服务 |
 | [V2rayN 搭配 V2raya 代理服务](./basic/v2rayn.md) ![V2ray](https://img.shields.io/badge/V2ray-4b4b4b?style=flat-square&logo=vmware&logoColor=white) | 代理服务 |
 | [qBittorrent BT下载器](./basic/qbittorrent.md) ![qBittorrent](https://img.shields.io/badge/qBittorrent-4a90e2?style=flat-square&logo=qbit&logoColor=white) | BT下载工具 |
