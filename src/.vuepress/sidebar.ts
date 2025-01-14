@@ -26,7 +26,8 @@ export default sidebar({
         "alist.md","beszel.md","gpt.md","teamspeak.md"
       ]
     },
-    "docker-proxy.md"
+    "docker-proxy.md",
+    "qbit-category.md"
   ],
   "/code":[
     "fedex-crawler.md"

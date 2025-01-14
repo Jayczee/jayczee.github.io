@@ -1,21 +1,21 @@
 ---
-title: Fedex物流单号状态爬取
+title: 📦 Fedex物流单号状态爬取
 category:
     - 爬虫
     - fedex
     - python
 ---
 
-## 项目地址
+## 📂 项目地址
 [[Github]Fedex Tracking Bot](https://github.com/Jayczee/fedex_tracking_bot)
 
-## 背景
+## 📚 背景
 在最近的工作中，运营部门要求确认一些 FedEx 物流单号的状态。虽然自己在过去的工作中主要专注于 CRUD 操作，并没有深入了解物流相关的内容，但这次的任务激发了对这一领域的浓厚兴趣。为了满足需求，经过一番摸索和实践，成功实现了一个简单的爬虫，收获颇丰，感到非常兴奋，也希望能与大家分享经验并寻求指导。
 
-## 需求
+## 🎯 需求
 本次任务的目标是对 **8000** 个左右的 FedEx 物流单号进行状态爬取，明确判断其状态是 **Label Created** 还是 **Delivered**。这一过程涉及到对 FedEx 物流系统的深入了解，尤其是在状态查询的实现上。
 
-## 尝试方案记录
+## 🛠️ 尝试方案记录
 
 ### 1. 使用官方 API
 - **结果**：失败
@@ -31,9 +31,9 @@ category:
 
 ### 4. 使用 Selenium
 - **结果**：成功
-- **原因**：考虑到页面是动态加载的，决定使用 Selenium 库。Selenium 能够模拟真实用户在浏览器中的操作，访问页面并等待 JavaScript 渲染数据。虽然原本计划使用 Java 实现，但由于网上大部分文档和案例都是用 Python 编写，因此最终选择 Python ���完成代码编写，便于快速实施。
+- **原因**：考虑到页面是动态加载的，决定使用 Selenium 库。Selenium 能够模拟真实用户在浏览器中的操作，访问页面并等待 JavaScript 渲染数据。虽然原本计划使用 Java 实现，但由于网上大部分文档和案例都是用 Python 编写，因此最终选择 Python 完成代码编写，便于快速实施。
 
-## 物流状态信息分析
+## 📊 物流状态信息分析
 通过对页面的深入分析，发现物流状态相关的 HTML 结构是有规律可循的：
 
 - **加粗黑体字部分**（如“寄件人”、“我们收到了您的包裹”、“外出递送”、“已送达”）使用 `class="shipment-status-progress-step-label"` 的 `<span>` 标签进行展示。
@@ -41,13 +41,13 @@ category:
 
 ![Fedex物流信息截图](https://blog-1302595532.cos.ap-shanghai.myqcloud.com/blog/fedex-tracking-bot-1.png)
 
-### 基本逻辑
+### 🔍 基本逻辑
 基于以上分析，爬取物流状态的基本逻辑如下：
 1. 使用 Selenium 访问指定的 URL，并将单号部分替换为待查询的单号。
 2. 等待页面加载完成，确保上述 class 的元素出现在 HTML 中。
 3. 定位到 `shipment-status-progress-step active` 下的状态信息，并获取其值。
 
-## 遇到的问题及解决方案
+## ⚠️ 遇到的问题及解决方案
 
 ### 1. 页面提示 “Under Construction”
 ::: warning
@@ -68,18 +68,17 @@ category:
 :::
 
 
-## 结论
+## 📝 结论
 通过此次实践，成功实现了对 FedEx 物流单号状态的爬取，积累了宝贵的经验和教训。尽管在过程中遇到了一些挑战，但最终都一一克服。希望能与各位前辈分享经验，欢迎进行指导和讨论。
 
-
-## 参考资源
+## 📚 参考资源
 - [Glider Guide](https://github.com/Rain-kl/glider_guid) - 该工具可以将自己的代理节点转为代理池，帮助更好地管理请求。
 
-## 效果图
+## 📷 效果图
 
 ![爬取结果](https://blog-1302595532.cos.ap-shanghai.myqcloud.com/blog/fedex-tracking-bot-2.png)
 
-## 最终代码
+## 💻 最终代码
 
 ```python
 import pandas as pd
@@ -230,3 +229,12 @@ logger.info(f"程序运行时间: {int(hours)}时 {int(minutes)}分 {int(seconds
 
 logger.info("所有单号处理完成")
 ```
+
+### 代码说明
+- **日志记录**：使用 `logging` 模块记录程序的运行状态，便于调试和跟踪。
+- **数据读取与写入**：使用 `pandas` 读取输入的 Excel 文件，并在爬取过程中将结果写入新的 Excel 文件。
+- **Selenium 操作**：通过 Selenium 模拟用户在浏览器中的操作，获取动态加载的物流状态信息。
+- **多线程处理**：使用 `ThreadPoolExecutor` 实现多线程爬取，提高爬取效率。
+- **异常处理与重试机制**：在遇到错误时进行重试，确保程序的健壮性。
+
+通过以上步骤与代码实现，成功爬取了 FedEx 物流单号的状态信息，为运营部门提供了所需的数据支持。希望这份经验能帮助到更多有类似需求的朋友们！

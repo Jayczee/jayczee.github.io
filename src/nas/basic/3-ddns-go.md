@@ -61,17 +61,17 @@ docker run -d --name ddns-go --restart=always --net=host -v /opt/ddns-go:/root j
 
 访问Portainer管理面板，点击左侧的**Stacks**：
 
-![Portainer Stack List](https://blog-1302595532.cos.ap-shanghai.myqcloud.com/blog/ddns-1.png)
+![Portainer Stack List](/assets/images/nas/ddns-go/ddns-1.png)
 
 点击右上角的**Add Stack**，来到**Create Stack**界面：
 
-![Portainer Create Stack](https://blog-1302595532.cos.ap-shanghai.myqcloud.com/blog/ddns-2.png)
+![Portainer Create Stack](/assets/images/nas/ddns-go/ddns-2.png)
 
 为当前正在创建的Stack定义一个名称，例如`ddns-go`，注意首字母小写的规则。
 
 下方的**Build method**选择默认的**Web editor**，然后在编辑器内填写以下内容：
 
-```docker compose
+```bash
 services:
   ddns-go:
     image: jeessy/ddns-go
@@ -90,11 +90,11 @@ services:
 
 容器安装完成后，访问 `http://你的nasip:9876`，进入ddns-go的配置页面。
 
-![DDNS-GO配置页](https://blog-1302595532.cos.ap-shanghai.myqcloud.com/blog/ddns-3.png)
+![DDNS-GO配置页](/assets/images/nas/ddns-go/ddns-3.png)
 
 选择域名服务商，通常是域名购买的地方，此处以阿里云为例。访问阿里云控制面板，点击右上角的个人头像，选择**Access Key**。
 
-![点击Access Key](https://blog-1302595532.cos.ap-shanghai.myqcloud.com/blog/ddns-4.png)
+![点击Access Key](/assets/images/nas/ddns-go/ddns-4.png)
 
 在目标页面中，创建一对**Access Key**和**Access Secret**。阿里云一般会推荐创建RAM用户的AccessKey，二者皆可。获取到AccessKey和Secret后，将其填入上述表单中，TTL选择自动或10分钟（阿里云免费DNS解析一般是十分钟，若购买了付费版，则可以选择对应时间）。
 
@@ -102,6 +102,6 @@ services:
 
 解析记录根据实际情况添加，例如想要通过`portainer.domain.com`（`domain.com`为购买的实际域名）访问已部署的Portainer，则可以在输入框中输入`portainer.domain.com`，这样就可以通过`portainer.domain.com:9000`（Portainer端口）直接访问。上游DNS服务器将直接把`portainer.domain.com`解析为公网IP。
 
-不过，添加一条解析记录通常比较麻烦，因此一般直接添加一条`*.domain.com`，这样可以将任何域名下的二级域名解析到NAS上。同时配合NGINX反向代理，将不同的二级域名代理到不同服务上。[相关链接：Nginx反向代理](./5-nginx.md)。
+不过，一个服务添加一条解析记录通常比较麻烦，因此一般直接添加一条`*.domain.com`，这样可以将域名下的任何二级域名解析到NAS上。同时配合NGINX反向代理，将不同的二级域名代理到不同服务上。[相关链接：Nginx反向代理](./5-nginx.md)。
 
 最后设置完后，左下角先点击**保存**，然后点击右上角的**日志**进行查看，检查是否成功添加DNS解析记录。

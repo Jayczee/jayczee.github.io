@@ -61,16 +61,16 @@ NAS设备最好拥有一个公网IP以支持其下载与上传的功能（PT）�
 
 | 服务名称 | 描述 |
 | -------- | ---- |
-| [Docker](./basic/docker.md) ![Docker](https://img.shields.io/badge/Docker-0db7f2?style=flat-square&logo=docker&logoColor=white) | 容器化应用管理 |
-| [Portainer 容器管理](./basic/portainer.md) ![Portainer](https://img.shields.io/badge/Portainer-5c6b7d?style=flat-square&logo=portainer&logoColor=white) | 方便的Docker管理界面 |
-| [Nginx 反向代理](./basic/nginx.md) ![Nginx](https://img.shields.io/badge/Nginx-009639?style=flat-square&logo=nginx&logoColor=white) | 高性能的HTTP和反向代理服务器 |
-| [DDNS-Go 动态DNS](./basic/ddns-go.md) ![DDNS-Go](https://img.shields.io/badge/DDNS-Go-ff3c00?style=flat-square&logo=cloudflare&logoColor=white) | 动态DNS服务 |
-| [Certbot](./basic/certbot.md) ![Certbot](https://img.shields.io/badge/Certbot-003b57?style=flat-square&logo=letsencrypt&logoColor=white) | 自动化SSL证书管理 |
-| [Samba 网络存储映射](./basic/samba.md) ![Samba](https://img.shields.io/badge/Samba-4e9e3a?style=flat-square&logo=samba&logoColor=white) | 网络共享文件服务 |
-| [V2rayN 搭配 V2raya 代理服务](./basic/v2rayn.md) ![V2ray](https://img.shields.io/badge/V2ray-4b4b4b?style=flat-square&logo=vmware&logoColor=white) | 代理服务 |
-| [qBittorrent BT下载器](./basic/qbittorrent.md) ![qBittorrent](https://img.shields.io/badge/qBittorrent-4a90e2?style=flat-square&logo=qbit&logoColor=white) | BT下载工具 |
-| [Jellyfin 影音服务器](./basic/jellyfin.md) ![Jellyfin](https://img.shields.io/badge/Jellyfin-ff3d00?style=flat-square&logo=jellyfin&logoColor=white) | 自建影音流媒体服务器 |
-| [Movie-Pilot 媒体整体与刮削](./basic/movie-pilot.md) ![Movie-Pilot](https://img.shields.io/badge/Movie--Pilot-ffcc00?style=flat-square&logo=movie&logoColor=black) | 媒体管理工具 |
+| [Docker](./basic/1-docker.md) ![Docker](https://img.shields.io/badge/Docker-0db7f2?style=flat-square&logo=docker&logoColor=white) | 容器化应用管理 |
+| [Portainer 容器管理](./basic/2-portainer.md) ![Portainer](https://img.shields.io/badge/Portainer-5c6b7d?style=flat-square&logo=portainer&logoColor=white) | 方便的Docker管理界面 |
+| [Nginx 反向代理](./basic/5-nginx.md) ![Nginx](https://img.shields.io/badge/Nginx-009639?style=flat-square&logo=nginx&logoColor=white) | 高性能的HTTP和反向代理服务器 |
+| [DDNS-Go 动态DNS](./basic/3-ddns-go.md) ![DDNS-Go](https://img.shields.io/badge/DDNS-Go-ff3c00?style=flat-square&logo=cloudflare&logoColor=white) | 动态DNS服务 |
+| [Certbot](./basic/4-certbot.md) ![Certbot](https://img.shields.io/badge/Certbot-003b57?style=flat-square&logo=letsencrypt&logoColor=white) | 自动化SSL证书管理 |
+| [Samba 网络存储映射](./basic/6-samba.md) ![Samba](https://img.shields.io/badge/Samba-4e9e3a?style=flat-square&logo=samba&logoColor=white) | 网络共享文件服务 |
+| [V2rayN 搭配 V2raya 代理服务](./basic/9-v2rayn.md) ![V2ray](https://img.shields.io/badge/V2ray-4b4b4b?style=flat-square&logo=vmware&logoColor=white) | 代理服务 |
+| [qBittorrent BT下载器](./basic/7-qbittorrent.md) ![qBittorrent](https://img.shields.io/badge/qBittorrent-4a90e2?style=flat-square&logo=qbit&logoColor=white) | BT下载工具 |
+| [Jellyfin 影音服务器](./basic/8-jellyfin.md) ![Jellyfin](https://img.shields.io/badge/Jellyfin-ff3d00?style=flat-square&logo=jellyfin&logoColor=white) | 自建影音流媒体服务器 |
+| [Movie-Pilot 媒体整体与刮削](./basic/10-movie-pilot.md) ![Movie-Pilot](https://img.shields.io/badge/Movie--Pilot-ffcc00?style=flat-square&logo=movie&logoColor=black) | 媒体管理工具 |
 
 ---
 

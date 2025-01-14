@@ -15,7 +15,7 @@ tag:
 
 Portainer简单来说是一款Docker管理面板程序，相同的程序还有很多，例如[Docker UI](https://github.com/gohutool/docker.ui)和[Docker Desktop](https://docs.docker.com/desktop/setup/install/windows-install/)。之所以选择Portainer，只是因为这是第一款使用的管理面板程序，其次它的使用率确实比较高。它可以方便地管理Docker镜像和容器，即便个人对其功能的使用程度仍然很低。虽然`docker pull`、`docker start`以及`docker stop`命令已经非常方便了，但谁能拒绝鼠标点点就能操作的诱惑呢（笑）？当然，新手小白们还是推荐先使用命令熟悉Docker，至少要知道戳戳点点背后的命令究竟是哪一条，才能更深入地理解。
 
-![Portainer UI](https://blog-1302595532.cos.ap-shanghai.myqcloud.com/blog/portainer-ui.png)
+![Portainer UI](/assets/images/nas/portainer/portainer-ui.png)
 
 ### 📥 下载 Portainer
 
@@ -25,7 +25,7 @@ Portainer简单来说是一款Docker管理面板程序，相同的程序还有�
 如果没有登录Docker Hub，可能会转到登录页面，没有账号可以注册一个，毕竟后续会经常使用。
 :::
 
-![搜索Portainer CE镜像](https://blog-1302595532.cos.ap-shanghai.myqcloud.com/blog/portainer-i-step-1.png)
+![搜索Portainer CE镜像](/assets/images/nas/portainer/portainer-i-step-1.png)
 
 点击图片中的搜索结果后会跳转到portainer-ce的详情页，阅读详情，其中指向了Portainer的官网文档，这里直接把链接po出来: [官方文档](https://docs.portainer.io/start/install-ce/server/docker)。根据自己的Docker安装方式选择具体选项。以下以[Install Portainer CE with Docker on Linux](https://docs.portainer.io/start/install-ce/server/docker/linux)为例。
 
