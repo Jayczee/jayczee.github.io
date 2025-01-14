@@ -5,11 +5,11 @@ export default navbar([
   {
     text: "NAS",
     icon: "server",
-    link: "/nas/"
+    link: "/nas/",
   },
   {
     text: "编程相关",
     icon: "pen-to-square",
-    link: "/code/fedex-crawler.md"
+    link: "/code/"
   }
 ]);

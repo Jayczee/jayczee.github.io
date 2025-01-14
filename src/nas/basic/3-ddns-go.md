@@ -8,14 +8,15 @@ tag:
   - ddns-go
 ---
 
-## DDNS-GO的作用
-此处引用官方README。
+## 📌 DDNS-GO的作用
+
+此处引用官方README。  
 中文 | [English](https://github.com/jeessy2/ddns-go/blob/master/README_EN.md)
 
 自动获得你的公网 IPv4 或 IPv6 地址，并解析到对应的域名服务。
 
 - 支持Mac、Windows、Linux系统，支持ARM、x86架构
-- 支持的域名服务商 `阿里云` `腾讯云` `Dnspod` `Cloudflare` `华为云` `Callback` `百度云` `Porkbun` `GoDaddy` `Namecheap` `NameSilo` `Dynadot`
+- 支持的域名服务商：`阿里云`、`腾讯云`、`Dnspod`、`Cloudflare`、`华为云`、`Callback`、`百度云`、`Porkbun`、`GoDaddy`、`Namecheap`、`NameSilo`、`Dynadot`
 - 支持接口/网卡/[命令](https://github.com/jeessy2/ddns-go/wiki/通过命令获取IP参考)获取IP
 - 支持以服务的方式运行
 - 默认间隔5分钟同步一次
@@ -28,13 +29,13 @@ tag:
 - 支持TTL
 - 支持部分DNS服务商[传递自定义参数](https://github.com/jeessy2/ddns-go/wiki/传递自定义参数)，实现地域解析/多IP等功能
 
-## 前提
+## ⚙️ 前提
 
 拥有一个域名，无需备案即可。
 
 ---
 
-## 部署DDNS-GO容器
+## 🚀 部署DDNS-GO容器
 
 在[Portainer 容器管理](./2-portainer.md)中，已完成Portainer的安装，接下来将使用已部署的Portainer容器完成ddns-go服务的安装。
 
@@ -44,7 +45,7 @@ tag:
 
 官方文档只给出了`docker run`的安装命令，此处额外提供`docker compose`的安装方式，并使用之前安装的Portainer进行管理。（若坚持使用`docker run`，可以直接在NAS上运行。）
 
-### Docker run 安装
+### 🐳 Docker run 安装
 
 使用以下`docker run`命令：
 
@@ -56,7 +57,7 @@ docker run -d --name ddns-go --restart=always --net=host -v /opt/ddns-go:/root j
 
 ---
 
-### Docker compose 安装
+### 📦 Docker compose 安装
 
 访问Portainer管理面板，点击左侧的**Stacks**：
 
@@ -85,7 +86,7 @@ services:
 
 ---
 
-## 配置DDNS-GO
+## ⚙️ 配置DDNS-GO
 
 容器安装完成后，访问 `http://你的nasip:9876`，进入ddns-go的配置页面。
 

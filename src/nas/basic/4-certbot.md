@@ -10,14 +10,13 @@ tag:
 
 Certbot 是一个 **开源工具**，用于自动化获取和管理 **SSL/TLS 证书**，主要与 **Let's Encrypt** 配合使用。它简化了 HTTPS 加密的配置过程，使网站管理员能够轻松为他们的网站启用安全连接。Certbot 能够自动续订证书，减少手动操作的需要，从而提高安全性和便利性。它支持多种操作系统和 Web 服务器，用户只需通过命令行界面进行简单的配置即可。
 
-
-## 动态 DNS 解析
+## 🌐 动态 DNS 解析
 
 在上一篇 [DDNS-GO](./3-ddns-go.md) 中，已经配置了动态 DNS 解析，实现了将域名与 NAS 的动态公网 IP 进行绑定。访问 NAS 上的服务大多数情况下都是通过 Web 进行的，因此使用 HTTPS 进行安全加密是非常重要的。而且某些互联网服务限制必须使用 HTTPS URL 才能使用（例如对接国外电商平台时填写的 webhook URL）。
 
 国内各大云服务商都有付费证书的选项，但对于个人 NAS 使用，免费的 **Let's Encrypt** 签发的证书即可满足需求。
 
-### 域名服务商配置
+### 🛠️ 域名服务商配置
 
 - 若域名服务商是 **阿里云**，可以参考项目 [certbot-dns-aliyun](https://github.com/justjavac/certbot-dns-aliyun) 进行实现。
 - 若域名服务商不是阿里云，则需要寻找 `certbot-dns-` 对应服务商的插件，每个服务商的认证流程都不一样。
@@ -26,8 +25,7 @@ Certbot 是一个 **开源工具**，用于自动化获取和管理 **SSL/TLS �
 
 若不想使用插件，可以使用 **dns-01** 认证来完成该流程，从而申请到证书，步骤如下。
 
-
-## 安装 Certbot
+## 🚀 安装 Certbot
 
 ### 使用 apt 安装 Certbot
 
@@ -35,7 +33,7 @@ Certbot 是一个 **开源工具**，用于自动化获取和管理 **SSL/TLS �
 sudo apt install certbot
 ```
 
-### 运行申请命令
+### 📝 运行申请命令
 
 ```bash
 certbot certonly -d "*.example.com" --manual --preferred-challenges dns-01 # 改成自己的域名
@@ -46,7 +44,7 @@ certbot certonly -d "*.example.com" --manual --preferred-challenges dns-01 # 改
 - `--manual`：表示手动验证域名所有权。
 - `--preferred-challenges dns-01`：指定使用 DNS-01 挑战方式进行域名验证。
 
-### 结果示例
+### 📜 结果示例
 
 ```bash
 # certbot certonly -d "*.example.com" -d example.com --manual --preferred-challenges dns-01
@@ -83,7 +81,7 @@ This certificate will not be renewed automatically. Autorenewal of --manual cert
 
 证书创建完成并保存到了对应目录。
 
-## 提示
+## ⚠️ 提示
 
 ::: tip
 **DNS-01** 是一种用于域名所有权验证的挑战类型。在使用 SSL 证书申请时，证书颁发机构需要确认申请者对域名的控制权。DNS-01 挑战的具体步骤如下：
@@ -97,6 +95,6 @@ This certificate will not be renewed automatically. Autorenewal of --manual cert
 
 **DNS-01** 挑战的优点是可以用于申请通配符证书，而其他验证方式（如 **HTTP-01**）则无法实现这一点。
 
-## 证书续期
+## 🔄 证书续期
 
 证书即将到期时重新运行上述命令即可，会重新申请 3 个月期的新证书，不再需要中间步骤。因此也可以将申请命令加入 **crontab**，每 80 天自动运行一次，即可实现自动续期。

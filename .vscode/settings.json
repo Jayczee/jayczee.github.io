@@ -2,14 +2,19 @@
     "cSpell.words": [
         "alist",
         "aliyun",
+        "asctime",
         "Autorenewal",
         "beszel",
         "bushi",
         "certbot",
         "certonly",
+        "chromedriver",
         "ddns",
+        "divmod",
         "Dnspod",
+        "dtype",
         "Dynadot",
+        "endswith",
         "fullchain",
         "Jayczee",
         "Jayczee's",
@@ -18,6 +23,8 @@
         "jellyfin",
         "Jsoup",
         "letsencrypt",
+        "levelname",
+        "listdir",
         "merilisearch",
         "Namecheap",
         "Porkbun",
@@ -25,6 +32,8 @@
         "qbittorrent",
         "raya",
         "rayn",
-        "teamspeak"
+        "startswith",
+        "teamspeak",
+        "tolist"
     ]
 }
