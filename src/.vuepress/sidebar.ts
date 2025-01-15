@@ -27,7 +27,8 @@ export default sidebar({
       ]
     },
     "docker-proxy.md",
-    "qbit-category.md"
+    "qbit-category.md",
+    "jellyfin-encode-decode.md"
   ],
   "/code":[
     "fedex-crawler.md"

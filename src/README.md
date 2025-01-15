@@ -1,5 +1,6 @@
 ---
 home: true
+custom: true
 layout: BlogHome
 icon: home
 title: Jayczee's Blog
