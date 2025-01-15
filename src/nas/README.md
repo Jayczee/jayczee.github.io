@@ -1,5 +1,6 @@
 ---
 title: 🏠 个人的NAS最佳实践
+isOriginal: true
 category:
     - NAS
 ---

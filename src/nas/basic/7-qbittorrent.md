@@ -1,6 +1,7 @@
 ---
 title: Qbittorrent BT下载
 order: 7
+isOriginal: true
 category:
     - NAS
 tag:

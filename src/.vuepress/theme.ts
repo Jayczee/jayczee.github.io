@@ -5,7 +5,6 @@ import sidebar from "./sidebar.js";
 
 export default hopeTheme({
   hostname: "https://jayczee.github.io",
-
   author: {
     name: "Jayczee",
     url: "https://jayczee.github.io",
@@ -13,7 +12,7 @@ export default hopeTheme({
 
   logo: "https://theme-hope-assets.vuejs.press/logo.svg",
 
-  repo: "vuepress-theme-hope/vuepress-theme-hope",
+  repo: "Jayczee/jayczee.github.io",
 
   docsDir: "src",
 
@@ -167,11 +166,28 @@ export default hopeTheme({
     //   provider: "Waline",
     //   serverURL: "https://waline-comment.vuejs.press",
     // },
-
+    docsearch: {
+      appId: "BFEXNC7ACK",
+      apiKey: "f7e83ed3f5abdc80d95b0f4a7251fe00",
+      indexName: "jayczeeio",
+      placeholder: '搜索文档'
+    },
+    comment: {
+      provider: 'Giscus',
+      comment: true,
+      repo: 'Jayczee/jayczee.github.io',
+      repoId: 'R_kgDONoQl2A',
+      category: 'General',
+      categoryId: 'DIC_kwDONoQl2M4CmBAS'
+    },
     components: {
       components: ["Badge", "VPCard"],
     },
-
+    feed: {
+      rss: true
+    },
+    seo: true,
+    sitemap: true,
     icon: {
       assets: "fontawesome-with-brands",
     },

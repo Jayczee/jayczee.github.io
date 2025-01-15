@@ -1,6 +1,7 @@
 ---
 title: Nginx 反向代理
 order: 5
+isOriginal: true
 category:
     - NAS
 tag:

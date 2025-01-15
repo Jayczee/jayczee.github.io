@@ -1,6 +1,7 @@
 ---
 title: Certbot 自动获取HTTPS证书
 order: 4
+isOriginal: true
 category:
     - NAS
 tag:

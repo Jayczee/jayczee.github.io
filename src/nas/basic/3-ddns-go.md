@@ -1,6 +1,7 @@
 ---
 title: DDNS-GO 动态DNS
 order: 3
+isOriginal: true
 category:
   - NAS
 tag:

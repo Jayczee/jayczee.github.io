@@ -1,6 +1,7 @@
 ---
 title: Samba 文件共享服务配置
 order: 6
+isOriginal: true
 category:
     - NAS
 tag:
