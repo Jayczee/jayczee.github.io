@@ -4,10 +4,10 @@ import navbar from "./navbar.js";
 import sidebar from "./sidebar.js";
 
 export default hopeTheme({
-  hostname: "https://jayczee.github.io",
+  hostname: "https://jayczee.cn",
   author: {
     name: "Jayczee",
-    url: "https://jayczee.github.io",
+    url: "https://jayczee.cn",
   },
 
   logo: "https://theme-hope-assets.vuejs.press/logo.svg",
