@@ -1,6 +1,7 @@
 ---
 title: 📦 Fedex物流单号状态爬取
 isOriginal: true
+star: true
 category:
     - 爬虫
     - fedex
