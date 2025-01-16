@@ -20,6 +20,10 @@ export default defineUserConfig({
     ),
   },
 
+  head: [
+    ['meta', {name: 'baidu-site-verification', content: 'codeva-A6fpwUixCj'}]
+  ],
+
   plugins:[
 
   ],
