@@ -6,8 +6,8 @@
     <link>https://jayczee.cn/</link>
     <description>Whispering for nothing</description>
     <language>zh-CN</language>
-    <pubDate>Thu, 16 Jan 2025 02:42:28 GMT</pubDate>
-    <lastBuildDate>Thu, 16 Jan 2025 02:42:28 GMT</lastBuildDate>
+    <pubDate>Thu, 16 Jan 2025 08:15:15 GMT</pubDate>
+    <lastBuildDate>Thu, 16 Jan 2025 08:15:15 GMT</lastBuildDate>
     <generator>@vuepress/plugin-feed</generator>
     <docs>https://validator.w3.org/feed/docs/rss2.html</docs>
     <category>NAS</category>
@@ -908,12 +908,65 @@
       <enclosure url="https://jayczee.cn/assets/images/nas/jellyfin/j-1.png" type="image/png"/>
     </item>
     <item>
-      <title>V2rayA代理</title>
+      <title>V2ray &amp; v2rayA代理</title>
       <link>https://jayczee.cn/nas/basic/9-v2rayn.html</link>
       <guid>https://jayczee.cn/nas/basic/9-v2rayn.html</guid>
-      <source url="https://jayczee.cn/rss.xml">V2rayA代理</source>
+      <source url="https://jayczee.cn/rss.xml">V2ray &amp; v2rayA代理</source>
+      <description>V2Ray是一款强大的网络代理工具，旨在帮助用户实现科学上网，突破网络限制。它支持多种传输协议和加密方式，具有高度的灵活性和可扩展性，非常适合用于搭建个人代理服务器。而V2rayA则是一款可以通过Web访问的V2Ray管理面板。 🛠️ 安装 V2Ray 首先，需要在NAS宿主机上安装V2Ray，V2rayA仅仅是一款管理工具，并不包含核心的V2Ray...</description>
       <category>NAS</category>
       <pubDate>Fri, 10 Jan 2025 06:48:26 GMT</pubDate>
+      <content:encoded><![CDATA[<p>V2Ray是一款<strong>强大的网络代理工具</strong>，旨在帮助用户实现<strong>科学上网</strong>，突破网络限制。它支持多种传输协议和加密方式，具有高度的灵活性和可扩展性，非常适合用于搭建个人代理服务器。而<strong>V2rayA</strong>则是一款可以通过Web访问的V2Ray管理面板。</p>
+<h2>🛠️ 安装 V2Ray</h2>
+<p>首先，需要在NAS宿主机上安装V2Ray，V2rayA仅仅是一款管理工具，并不包含核心的V2Ray。</p>
+<h3>🔗 相关链接</h3>
+<ul>
+<li><a href="https://github.com/v2fly/v2ray-core/releases" target="_blank" rel="noopener noreferrer">Github V2ray Releases</a></li>
+<li><a href="https://v2raya.org/docs/prologue/installation/docker/" target="_blank" rel="noopener noreferrer">V2rayA Document</a></li>
+</ul>
+<p>根据NAS的CPU架构选择对应的版本进行下载，可以通过网页下载并传输到指定目录，或使用<code>wget</code>命令获取。以<code>5.24.0 linux amd64</code>版本为例：</p>
+<div class="language-bash line-numbers-mode" data-highlighter="shiki" data-ext="bash" data-title="bash" style="--shiki-light:#383A42;--shiki-dark:#abb2bf;--shiki-light-bg:#FAFAFA;--shiki-dark-bg:#282c34"><pre class="shiki shiki-themes one-light one-dark-pro vp-code"><code><span class="line"><span style="--shiki-light:#4078F2;--shiki-dark:#61AFEF">wget</span><span style="--shiki-light:#50A14F;--shiki-dark:#98C379"> https://github.com/v2fly/v2ray-core/releases/download/v5.24.0/v2ray-linux-64.zip</span><span style="--shiki-light:#A0A1A7;--shiki-light-font-style:italic;--shiki-dark:#7F848E;--shiki-dark-font-style:italic"> # 下载文件到当前目录</span></span>
+<span class="line"></span>
+<span class="line"><span style="--shiki-light:#4078F2;--shiki-dark:#61AFEF">sudo</span><span style="--shiki-light:#50A14F;--shiki-dark:#98C379"> mkdir</span><span style="--shiki-light:#986801;--shiki-dark:#D19A66"> -p</span><span style="--shiki-light:#50A14F;--shiki-dark:#98C379"> /usr/local/v2ray-core/</span><span style="--shiki-light:#A0A1A7;--shiki-light-font-style:italic;--shiki-dark:#7F848E;--shiki-dark-font-style:italic"> # 创建文件夹</span></span>
+<span class="line"></span>
+<span class="line"><span style="--shiki-light:#4078F2;--shiki-dark:#61AFEF">sudo</span><span style="--shiki-light:#50A14F;--shiki-dark:#98C379"> unzip</span><span style="--shiki-light:#50A14F;--shiki-dark:#98C379"> v2ray-linux-64.zip</span><span style="--shiki-light:#986801;--shiki-dark:#D19A66"> -d</span><span style="--shiki-light:#50A14F;--shiki-dark:#98C379"> /usr/local/v2ray-core/</span><span style="--shiki-light:#A0A1A7;--shiki-light-font-style:italic;--shiki-dark:#7F848E;--shiki-dark-font-style:italic"> # 解压文件到指定目录</span></span></code></pre>
+<div class="line-numbers" aria-hidden="true" style="counter-reset:line-number 0"><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div></div></div><p>运行以下命令检查是否安装成功：</p>
+<div class="language-bash line-numbers-mode" data-highlighter="shiki" data-ext="bash" data-title="bash" style="--shiki-light:#383A42;--shiki-dark:#abb2bf;--shiki-light-bg:#FAFAFA;--shiki-dark-bg:#282c34"><pre class="shiki shiki-themes one-light one-dark-pro vp-code"><code><span class="line"><span style="--shiki-light:#4078F2;--shiki-dark:#61AFEF">/usr/local/v2ray-core/v2ray</span></span></code></pre>
+<div class="line-numbers" aria-hidden="true" style="counter-reset:line-number 0"><div class="line-number"></div></div></div><p>如果安装成功，将会出现V2Ray操作命令提示。</p>
+<h2>🖥️ 安装 V2rayA</h2>
+<p>接下来，安装V2rayA，Docker Compose文件如下：</p>
+<div class="language-yaml line-numbers-mode" data-highlighter="shiki" data-ext="yaml" data-title="yaml" style="--shiki-light:#383A42;--shiki-dark:#abb2bf;--shiki-light-bg:#FAFAFA;--shiki-dark-bg:#282c34"><pre class="shiki shiki-themes one-light one-dark-pro vp-code"><code><span class="line"><span style="--shiki-light:#E45649;--shiki-dark:#E06C75">version</span><span style="--shiki-light:#383A42;--shiki-dark:#ABB2BF">: </span><span style="--shiki-light:#50A14F;--shiki-dark:#98C379">'3.8'</span></span>
+<span class="line"></span>
+<span class="line"><span style="--shiki-light:#E45649;--shiki-dark:#E06C75">services</span><span style="--shiki-light:#383A42;--shiki-dark:#ABB2BF">:</span></span>
+<span class="line"><span style="--shiki-light:#E45649;--shiki-dark:#E06C75">  v2raya</span><span style="--shiki-light:#383A42;--shiki-dark:#ABB2BF">:</span></span>
+<span class="line"><span style="--shiki-light:#E45649;--shiki-dark:#E06C75">    image</span><span style="--shiki-light:#383A42;--shiki-dark:#ABB2BF">: </span><span style="--shiki-light:#50A14F;--shiki-dark:#98C379">mzz2017/v2raya</span></span>
+<span class="line"><span style="--shiki-light:#E45649;--shiki-dark:#E06C75">    container_name</span><span style="--shiki-light:#383A42;--shiki-dark:#ABB2BF">: </span><span style="--shiki-light:#50A14F;--shiki-dark:#98C379">v2raya</span></span>
+<span class="line"><span style="--shiki-light:#E45649;--shiki-dark:#E06C75">    ports</span><span style="--shiki-light:#383A42;--shiki-dark:#ABB2BF">:</span></span>
+<span class="line"><span style="--shiki-light:#383A42;--shiki-dark:#ABB2BF">      - </span><span style="--shiki-light:#50A14F;--shiki-dark:#98C379">"2017:2017"</span></span>
+<span class="line"><span style="--shiki-light:#383A42;--shiki-dark:#ABB2BF">      - </span><span style="--shiki-light:#50A14F;--shiki-dark:#98C379">"50170-50172:50170-50172"</span></span>
+<span class="line"><span style="--shiki-light:#E45649;--shiki-dark:#E06C75">    environment</span><span style="--shiki-light:#383A42;--shiki-dark:#ABB2BF">:</span></span>
+<span class="line"><span style="--shiki-light:#383A42;--shiki-dark:#ABB2BF">      - </span><span style="--shiki-light:#50A14F;--shiki-dark:#98C379">/usr/local/v2ray-core/v2ray=/usr/local/bin/v2ray</span></span>
+<span class="line"><span style="--shiki-light:#383A42;--shiki-dark:#ABB2BF">      - </span><span style="--shiki-light:#50A14F;--shiki-dark:#98C379">V2RAYA_LOG_FILE=/tmp/v2raya.log</span></span>
+<span class="line"><span style="--shiki-light:#E45649;--shiki-dark:#E06C75">    volumes</span><span style="--shiki-light:#383A42;--shiki-dark:#ABB2BF">:</span></span>
+<span class="line"><span style="--shiki-light:#383A42;--shiki-dark:#ABB2BF">      - </span><span style="--shiki-light:#50A14F;--shiki-dark:#98C379">/etc/v2raya:/etc/v2raya</span></span>
+<span class="line"><span style="--shiki-light:#E45649;--shiki-dark:#E06C75">    restart</span><span style="--shiki-light:#383A42;--shiki-dark:#ABB2BF">: </span><span style="--shiki-light:#50A14F;--shiki-dark:#98C379">always</span></span></code></pre>
+<div class="line-numbers" aria-hidden="true" style="counter-reset:line-number 0"><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div></div></div><p>在此配置中，管理面板端口为<code>2017</code>，而<code>50170-50172</code>是自定义选择的代理端口范围，可以映射3个（或更多）端口用于开放不同协议的代理端口（如http、https以及socks5）。</p>
+<p>确保刚刚安装的V2Ray (<code>/usr/local/v2ray-core/v2ray</code>) 映射到V2rayA目录下 (<code>/usr/local/bin/v2ray</code>)。</p>
+<h3>🎉 部署完成后</h3>
+<p>访问<code>http://NASIP:2017</code>，选择<strong>subscription</strong>，点击<strong>导入</strong>，输入机场的订阅地址：</p>
+<figure><img src="/assets/images/nas/v2ray/v-1.png" alt="配置订阅地址" tabindex="0" loading="lazy"><figcaption>配置订阅地址</figcaption></figure>
+<p>在V2rayA从订阅地址下载完节点信息后，界面如下：</p>
+<figure><img src="/assets/images/nas/v2ray/v-2.png" alt="节点信息" tabindex="0" loading="lazy"><figcaption>节点信息</figcaption></figure>
+<p>在操作列中，点击选择想要使用的节点（可多选），选择完成后，左上角点击<strong>启动</strong>，即可启动代理。</p>
+<figure><img src="/assets/images/nas/v2ray/v-3.png" alt="选择节点并启动代理" tabindex="0" loading="lazy"><figcaption>选择节点并启动代理</figcaption></figure>
+<p>右侧的<strong>Proxy</strong>按钮可以设置负载均衡策略，其中<code>ProbeUrl</code>用于检测节点时延，保持不变即可，目前类型仅支持最小时延优先。</p>
+<figure><img src="/assets/images/nas/v2ray/v-4.png" alt="负载均衡策略设置" tabindex="0" loading="lazy"><figcaption>负载均衡策略设置</figcaption></figure>
+<p>右上角的设置按钮中可以进行代理规则相关的设置。刚刚在Docker Compose中映射的端口为<code>50170-50172</code>，但默认代理端口并非这三个端口，需要进行修改。点击<strong>设置</strong> -&gt; <strong>地址与端口</strong>，修改各种代理协议的端口为所需的端口。</p>
+<figure><img src="/assets/images/nas/v2ray/v-5.png" alt="设置界面" tabindex="0" loading="lazy"><figcaption>设置界面</figcaption></figure>
+<figure><img src="/assets/images/nas/v2ray/v-6.png" alt="地址与端口界面" tabindex="0" loading="lazy"><figcaption>地址与端口界面</figcaption></figure>
+<h3>⚙️ 代理规则设置</h3>
+<p>此处规则代理，<strong>系统代理</strong>选择<strong>关闭</strong>，因为仅选择性使用代理。在需要代理时，将代理地址设置为本机的对应代理端口，不需要服务代理所有的系统请求。</p>
+]]></content:encoded>
+      <enclosure url="https://jayczee.cn/assets/images/nas/v2ray/v-1.png" type="image/png"/>
     </item>
     <item>
       <title>Alist 私有云盘</title>
