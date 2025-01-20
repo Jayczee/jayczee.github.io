@@ -8,6 +8,7 @@ heroImage: https://theme-hope-assets.vuejs.press/logo.svg
 heroText: Jayczee's Blog
 heroFullScreen: true
 tagline: Whispering
+description: A blog for anything I wanna note down...
 # projects:
 #   - icon: project
 #     name: 项目名称

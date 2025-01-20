@@ -21,7 +21,13 @@ export default defineUserConfig({
   },
 
   head: [
-    ['meta', {name: 'baidu-site-verification', content: 'codeva-A6fpwUixCj'}]
+    ['meta', {name: 'baidu-site-verification', content: 'codeva-A6fpwUixCj'}],
+    [
+      "script",
+      {
+        src: "/assets/js/autopush-baidu.js"
+      }
+    ]
   ],
 
   plugins:[
