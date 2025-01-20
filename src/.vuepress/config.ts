@@ -1,6 +1,7 @@
 import { defineUserConfig } from "vuepress";
 import { getDirname, path } from "vuepress/utils";
 import theme from "./theme.js";
+import { searchConsolePlugin } from 'vuepress-plugin-china-search-console'
 
 const __dirname = getDirname(import.meta.url);
 
@@ -22,17 +23,11 @@ export default defineUserConfig({
 
   head: [
     ['meta', {name: 'baidu-site-verification', content: 'codeva-A6fpwUixCj'}],
-    [
-      "script",
-      {
-        src: "/assets/js/autopush-baidu.js"
-      }
-    ]
+    ['meta', {name: 'bytedance-verification-code', content: 'ZlYWRrDBxWLFrd/pzdTw'}],
   ],
 
   plugins:[
-    
-  ],
+  ]
   // 和 PWA 一起启用
   // shouldPrefetch: false,
 });

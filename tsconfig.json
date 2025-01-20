@@ -7,7 +7,7 @@
   "include": [
     "src/.vuepress/**/*.ts",
     "src/.vuepress/**/*.vue"
-  ],
+, "src/.vuepress/public/assets/js/autopush-baidu.js"  ],
   "exclude": [
     "node_modules"
   ]
