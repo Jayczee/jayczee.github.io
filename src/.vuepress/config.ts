@@ -1,7 +1,6 @@
 import { defineUserConfig } from "vuepress";
 import { getDirname, path } from "vuepress/utils";
 import theme from "./theme.js";
-import { baiduAutopush } from 'vuepress2-plugin-baidu-autopush'
 
 const __dirname = getDirname(import.meta.url);
 
@@ -26,7 +25,7 @@ export default defineUserConfig({
   ],
 
   plugins:[
-    baiduAutopush()
+    
   ],
   // 和 PWA 一起启用
   // shouldPrefetch: false,
