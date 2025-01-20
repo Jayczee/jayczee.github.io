@@ -6,14 +6,39 @@
     <link>https://jayczee.cn/</link>
     <description>Whispering for nothing</description>
     <language>zh-CN</language>
-    <pubDate>Thu, 16 Jan 2025 08:38:36 GMT</pubDate>
-    <lastBuildDate>Thu, 16 Jan 2025 08:38:36 GMT</lastBuildDate>
+    <pubDate>Mon, 20 Jan 2025 07:38:11 GMT</pubDate>
+    <lastBuildDate>Mon, 20 Jan 2025 07:38:11 GMT</lastBuildDate>
     <generator>@vuepress/plugin-feed</generator>
     <docs>https://validator.w3.org/feed/docs/rss2.html</docs>
     <category>NAS</category>
     <category>爬虫</category>
     <category>fedex</category>
     <category>python</category>
+    <item>
+      <title>硬链接与软链接、复制与移动的区别</title>
+      <link>https://jayczee.cn/linux/link.html</link>
+      <guid>https://jayczee.cn/linux/link.html</guid>
+      <source url="https://jayczee.cn/rss.xml">硬链接与软链接、复制与移动的区别</source>
+      <description>在计算机的文件系统中，硬链接、软链接、复制和移动是非常常见的操作。理解这些操作的区别，不仅能帮助提高文件管理的效率，还能避免不必要的数据丢失。下面将详细介绍这些概念及其在 Debian 系统下的具体操作方法。 🔗 硬链接 硬链接是一种直接指向文件数据的引用方式。可以理解为多个文件名指向同一份文件内容。 🌟 特点 相同的 inode：硬链接与原始文件...</description>
+      <category>NAS</category>
+      <pubDate>Mon, 20 Jan 2025 07:37:31 GMT</pubDate>
+      <content:encoded><![CDATA[<p>在计算机的文件系统中，硬链接、软链接、复制和移动是非常常见的操作。理解这些操作的区别，不仅能帮助提高文件管理的效率，还能避免不必要的数据丢失。下面将详细介绍这些概念及其在 Debian 系统下的具体操作方法。</p>
+<h2>🔗 硬链接</h2>
+<p>硬链接是一种直接指向文件数据的引用方式。可以理解为多个文件名指向同一份文件内容。</p>
+<h3>🌟 特点</h3>
+<ul>
+<li>
+<p><strong>相同的 inode</strong>：硬链接与原始文件共享相同的 inode（索引节点），这意味着它们实际上是同一份数据的不同名称。</p>
+</li>
+<li>
+<p><strong>不可跨文件系统</strong>：硬链接只能在同一文件系统中创建，无法跨越不同的存储设备或分区。</p>
+</li>
+<li>
+<p><strong>删除文件时</strong>：只有当所有指向同一数据的硬链接都被删除后，文件的数据才会被释放，这样可以避免误删数据的风险。</p>
+</li>
+</ul>
+]]></content:encoded>
+    </item>
     <item>
       <title>qBittorrent 分类管理</title>
       <link>https://jayczee.cn/nas/qbit-category.html</link>
@@ -261,8 +286,8 @@
     </item>
     <item>
       <title>Docker 镜像加速/代理</title>
-      <link>https://jayczee.cn/nas/docker-proxy.html</link>
-      <guid>https://jayczee.cn/nas/docker-proxy.html</guid>
+      <link>https://jayczee.cn/linux/docker-proxy.html</link>
+      <guid>https://jayczee.cn/linux/docker-proxy.html</guid>
       <source url="https://jayczee.cn/rss.xml">Docker 镜像加速/代理</source>
       <category>NAS</category>
       <pubDate>Fri, 10 Jan 2025 10:15:51 GMT</pubDate>
@@ -327,17 +352,146 @@
 <p><a href="https://hub.docker.com" target="_blank" rel="noopener noreferrer">Docker Hub</a>是一个Docker镜像站（需要开启代理访问），里面包含了大量镜像资源，也是docker pull命令默认拉取的镜像仓库。</p>
 <h2>📰 相关文章</h2>
 <ul>
-<li>📦 <a href="/nas/docker-proxy.html" target="_blank">Docker 镜像加速/代理</a></li>
+<li>📦 <a href="/linux/docker-proxy.html" target="_blank">Docker 镜像加速/代理</a></li>
 </ul>
 ]]></content:encoded>
     </item>
     <item>
-      <title>Movie-pilot 媒体整理</title>
+      <title>Movie-pilot 自动化媒体整理</title>
       <link>https://jayczee.cn/nas/basic/10-movie-pilot.html</link>
       <guid>https://jayczee.cn/nas/basic/10-movie-pilot.html</guid>
-      <source url="https://jayczee.cn/rss.xml">Movie-pilot 媒体整理</source>
+      <source url="https://jayczee.cn/rss.xml">Movie-pilot 自动化媒体整理</source>
+      <description>已安装的 qbittorrent 服务与 jellyfin 服务已经能提供最基本的影音需求，但在使用 jellyfin 查看媒体文件夹中的影片时，可能会出现以下问题： 📽️ 影音文件以源文件名而不是影片名显示 🖼️ 缺少海报，演员信息 📂 所有影音资源挤在一个下载文件夹中，包含了一些非影音资源文件，显得非常杂乱 🎬 影音文件缺少字幕 🔄 媒体...</description>
       <category>NAS</category>
       <pubDate>Fri, 10 Jan 2025 06:48:26 GMT</pubDate>
+      <content:encoded><![CDATA[<p>已安装的 qbittorrent 服务与 jellyfin 服务已经能提供最基本的影音需求，但在使用 jellyfin 查看媒体文件夹中的影片时，可能会出现以下问题：</p>
+<ol>
+<li>📽️ 影音文件以源文件名而不是影片名显示</li>
+<li>🖼️ 缺少海报，演员信息</li>
+<li>📂 所有影音资源挤在一个下载文件夹中，包含了一些非影音资源文件，显得非常杂乱</li>
+<li>🎬 影音文件缺少字幕</li>
+<li>🔄 媒体库刷新不及时，经常需要手动刷新</li>
+<li>📝 媒体文件需要手动命名，手动设置元数据等等</li>
+</ol>
+<p>此时，需要一款帮助解决此类问题的媒体整体工具，即 <strong>Movie pilot</strong>（原 Nas tool 作者开发，为 Nas tool 上位替代版本）。</p>
+<p>相关链接：</p>
+<ul>
+<li><a href="https://wiki.movie-pilot.org/" target="_blank" rel="noopener noreferrer">Movie pilot 官方 Wiki</a></li>
+<li><a href="https://github.com/jxxghp/MoviePilot" target="_blank" rel="noopener noreferrer">Movie pilot Github</a></li>
+</ul>
+<h2>🚀 安装步骤</h2>
+<p>详细的安装参数建议参考 <a href="https://wiki.movie-pilot.org/" target="_blank" rel="noopener noreferrer">Movie pilot 官方 Wiki</a>，此处仅简述安装步骤。</p>
+<h3>🔑 获取 IYUU Token</h3>
+<p>为了防止该项目遭到滥用，作者设置了认证环节，用户在使用之前需要使用 PT 站点或者 IYUU 进行认证 (<a href="https://wiki.movie-pilot.org/configuration" target="_blank" rel="noopener noreferrer">查看详情</a>)。此处提供 IYUU 认证步骤示例，较为简单。参考官方文档，如果准备使用其他站点的认证可以跳过该步骤。如果不进行认证，将无法使用 Moviepilot 的大部分功能。</p>
+<p>访问 <a href="https://iyuu.cn/" target="_blank" rel="noopener noreferrer">IYUU 爱语飞飞</a>，点击页面中间的开始使用：</p>
+<figure><img src="/assets/images/nas/moviepilot/moviepilot-1.png" alt="IYUU官方网站" tabindex="0" loading="lazy"><figcaption>IYUU官方网站</figcaption></figure>
+<p>点击之后页面中央会出现二维码，使用微信扫码，关注 IYUU 公众号，获得 IYUU Token 的推送：</p>
+<figure><img src="/assets/images/nas/moviepilot/moviepilot-2.png" alt="IYUU微信号推送" tabindex="0" loading="lazy"><figcaption>IYUU微信号推送</figcaption></figure>
+<h3>🛠️ 服务部署</h3>
+<p>docker compose 文件如下：</p>
+<div class="language-yaml line-numbers-mode" data-highlighter="shiki" data-ext="yaml" data-title="yaml" style="--shiki-light:#383A42;--shiki-dark:#abb2bf;--shiki-light-bg:#FAFAFA;--shiki-dark-bg:#282c34"><pre class="shiki shiki-themes one-light one-dark-pro vp-code"><code><span class="line"><span style="--shiki-light:#E45649;--shiki-dark:#E06C75">version</span><span style="--shiki-light:#383A42;--shiki-dark:#ABB2BF">: </span><span style="--shiki-light:#50A14F;--shiki-dark:#98C379">'3.3'</span></span>
+<span class="line"></span>
+<span class="line"><span style="--shiki-light:#E45649;--shiki-dark:#E06C75">services</span><span style="--shiki-light:#383A42;--shiki-dark:#ABB2BF">:</span></span>
+<span class="line"></span>
+<span class="line"><span style="--shiki-light:#E45649;--shiki-dark:#E06C75">    moviepilot</span><span style="--shiki-light:#383A42;--shiki-dark:#ABB2BF">:</span></span>
+<span class="line"><span style="--shiki-light:#E45649;--shiki-dark:#E06C75">        stdin_open</span><span style="--shiki-light:#383A42;--shiki-dark:#ABB2BF">: </span><span style="--shiki-light:#986801;--shiki-dark:#D19A66">true</span></span>
+<span class="line"><span style="--shiki-light:#E45649;--shiki-dark:#E06C75">        tty</span><span style="--shiki-light:#383A42;--shiki-dark:#ABB2BF">: </span><span style="--shiki-light:#986801;--shiki-dark:#D19A66">true</span></span>
+<span class="line"><span style="--shiki-light:#E45649;--shiki-dark:#E06C75">        container_name</span><span style="--shiki-light:#383A42;--shiki-dark:#ABB2BF">: </span><span style="--shiki-light:#50A14F;--shiki-dark:#98C379">moviepilot-v2</span></span>
+<span class="line"><span style="--shiki-light:#E45649;--shiki-dark:#E06C75">        hostname</span><span style="--shiki-light:#383A42;--shiki-dark:#ABB2BF">: </span><span style="--shiki-light:#50A14F;--shiki-dark:#98C379">moviepilot-v2</span></span>
+<span class="line"><span style="--shiki-light:#E45649;--shiki-dark:#E06C75">        networks</span><span style="--shiki-light:#383A42;--shiki-dark:#ABB2BF">:</span></span>
+<span class="line"><span style="--shiki-light:#383A42;--shiki-dark:#ABB2BF">            - </span><span style="--shiki-light:#50A14F;--shiki-dark:#98C379">moviepilot</span></span>
+<span class="line"><span style="--shiki-light:#E45649;--shiki-dark:#E06C75">        ports</span><span style="--shiki-light:#383A42;--shiki-dark:#ABB2BF">:</span></span>
+<span class="line"><span style="--shiki-light:#383A42;--shiki-dark:#ABB2BF">            - </span><span style="--shiki-light:#E45649;--shiki-dark:#E06C75">target</span><span style="--shiki-light:#383A42;--shiki-dark:#ABB2BF">: </span><span style="--shiki-light:#986801;--shiki-dark:#D19A66">53010</span></span>
+<span class="line"><span style="--shiki-light:#E45649;--shiki-dark:#E06C75">              published</span><span style="--shiki-light:#383A42;--shiki-dark:#ABB2BF">: </span><span style="--shiki-light:#986801;--shiki-dark:#D19A66">53010</span></span>
+<span class="line"><span style="--shiki-light:#E45649;--shiki-dark:#E06C75">              protocol</span><span style="--shiki-light:#383A42;--shiki-dark:#ABB2BF">: </span><span style="--shiki-light:#50A14F;--shiki-dark:#98C379">tcp</span></span>
+<span class="line"><span style="--shiki-light:#E45649;--shiki-dark:#E06C75">        volumes</span><span style="--shiki-light:#383A42;--shiki-dark:#ABB2BF">:</span></span>
+<span class="line"><span style="--shiki-light:#383A42;--shiki-dark:#ABB2BF">            - </span><span style="--shiki-light:#50A14F;--shiki-dark:#98C379">'/mnt:/mnt'</span></span>
+<span class="line"><span style="--shiki-light:#383A42;--shiki-dark:#ABB2BF">            - </span><span style="--shiki-light:#50A14F;--shiki-dark:#98C379">'/moviepilot-v2/config:/config'</span></span>
+<span class="line"><span style="--shiki-light:#383A42;--shiki-dark:#ABB2BF">            - </span><span style="--shiki-light:#50A14F;--shiki-dark:#98C379">'/moviepilot-v2/core:/moviepilot/.cache/ms-playwright'</span></span>
+<span class="line"><span style="--shiki-light:#383A42;--shiki-dark:#ABB2BF">            - </span><span style="--shiki-light:#50A14F;--shiki-dark:#98C379">'/var/run/docker.sock:/var/run/docker.sock:ro'</span></span>
+<span class="line"><span style="--shiki-light:#E45649;--shiki-dark:#E06C75">        environment</span><span style="--shiki-light:#383A42;--shiki-dark:#ABB2BF">:</span></span>
+<span class="line"><span style="--shiki-light:#383A42;--shiki-dark:#ABB2BF">            - </span><span style="--shiki-light:#50A14F;--shiki-dark:#98C379">'NGINX_PORT=53010'</span></span>
+<span class="line"><span style="--shiki-light:#383A42;--shiki-dark:#ABB2BF">            - </span><span style="--shiki-light:#50A14F;--shiki-dark:#98C379">'PORT=3001'</span></span>
+<span class="line"><span style="--shiki-light:#383A42;--shiki-dark:#ABB2BF">            - </span><span style="--shiki-light:#50A14F;--shiki-dark:#98C379">'PUID=0'</span></span>
+<span class="line"><span style="--shiki-light:#383A42;--shiki-dark:#ABB2BF">            - </span><span style="--shiki-light:#50A14F;--shiki-dark:#98C379">'PGID=0'</span></span>
+<span class="line"><span style="--shiki-light:#383A42;--shiki-dark:#ABB2BF">            - </span><span style="--shiki-light:#50A14F;--shiki-dark:#98C379">'UMASK=000'</span></span>
+<span class="line"><span style="--shiki-light:#383A42;--shiki-dark:#ABB2BF">            - </span><span style="--shiki-light:#50A14F;--shiki-dark:#98C379">'TZ=Asia/Shanghai'</span></span>
+<span class="line"><span style="--shiki-light:#383A42;--shiki-dark:#ABB2BF">            - </span><span style="--shiki-light:#50A14F;--shiki-dark:#98C379">'SUPERUSER=jayczee'</span></span>
+<span class="line"><span style="--shiki-light:#383A42;--shiki-dark:#ABB2BF">            - </span><span style="--shiki-light:#50A14F;--shiki-dark:#98C379">'AUTH_SITE=iyuu'</span></span>
+<span class="line"><span style="--shiki-light:#383A42;--shiki-dark:#ABB2BF">            - </span><span style="--shiki-light:#50A14F;--shiki-dark:#98C379">'IYUU_SIGN=你的IYUU TOKEN'</span></span>
+<span class="line"><span style="--shiki-light:#383A42;--shiki-dark:#ABB2BF">            - </span><span style="--shiki-light:#50A14F;--shiki-dark:#98C379">'PROXY_HOST=http://192.168.10.229:50171'</span></span>
+<span class="line"><span style="--shiki-light:#E45649;--shiki-dark:#E06C75">        restart</span><span style="--shiki-light:#383A42;--shiki-dark:#ABB2BF">: </span><span style="--shiki-light:#50A14F;--shiki-dark:#98C379">always</span></span>
+<span class="line"><span style="--shiki-light:#E45649;--shiki-dark:#E06C75">        image</span><span style="--shiki-light:#383A42;--shiki-dark:#ABB2BF">: </span><span style="--shiki-light:#50A14F;--shiki-dark:#98C379">jxxghp/moviepilot-v2:latest</span></span>
+<span class="line"></span>
+<span class="line"><span style="--shiki-light:#E45649;--shiki-dark:#E06C75">networks</span><span style="--shiki-light:#383A42;--shiki-dark:#ABB2BF">:</span></span>
+<span class="line"><span style="--shiki-light:#E45649;--shiki-dark:#E06C75">  moviepilot</span><span style="--shiki-light:#383A42;--shiki-dark:#ABB2BF">:</span></span>
+<span class="line"><span style="--shiki-light:#E45649;--shiki-dark:#E06C75">    name</span><span style="--shiki-light:#383A42;--shiki-dark:#ABB2BF">: </span><span style="--shiki-light:#50A14F;--shiki-dark:#98C379">moviepilot</span></span></code></pre>
+<div class="line-numbers" aria-hidden="true" style="counter-reset:line-number 0"><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div></div></div><p>此处使用的是 moviepilot-v2 版本，特别设置了 <code>SUPERUSER=jayczee</code>，管理员用户名设为 jayczee，同时设置了代理地址 (参考 <a href="/nas/basic/9-v2rayn.html" target="_blank">V2rayN &amp; V2rayA</a>)，方便镜像从 GitHub 上更快速抓取项目。</p>
+<div class="hint-container tip">
+<p class="hint-container-title">提示</p>
+<p>moviepilot 容器启动后，需要等待一段时间。容器会从 GitHub 上抓取前后端代码进行编译，速度比较慢，可以从 Portainer 中查看容器 log 了解进度。即便 log 中已经显示了 web 服务的地址且能够访问，但在实际登录管理员账号时会提示 502 或 404 等错误。这实际上是由于容器中的后端服务尚未完全部署完毕。当时踩了这个坑很久，一度对自己产生怀疑。</p>
+</div>
+<div class="hint-container warning">
+<p class="hint-container-title">注意</p>
+<p>moviepilot 内置了一个 nginx 来反向代理其中的 web 服务，修改上述的 NGINX_PORT 属性时，需要同步修改 ports 中的 target 与 published 端口。</p>
+</div>
+<p>安装完后界面大致如下（不包含影音资源）：</p>
+<figure><img src="/assets/images/nas/moviepilot/moviepilot-3.png" alt="MoviePilot" tabindex="0" loading="lazy"><figcaption>MoviePilot</figcaption></figure>
+<h2>⚙️ 配置 Moviepilot</h2>
+<h3>📥 下载器配置</h3>
+<p>以之前部署的 Qbittorrent 为例，Moviepilot 左侧导航栏设定 -&gt; 系统 -&gt; 下载器，点击 + 号，选择 Qbittorrent，点击新跳出的选项卡：</p>
+<figure><img src="/assets/images/nas/moviepilot/moviepilot-4.png" alt="点击新建的选项卡" tabindex="0" loading="lazy"><figcaption>点击新建的选项卡</figcaption></figure>
+<p>输入下载器对应的地址、用户名以及密码，可以选择勾选自动分类管理 (参考 <a href="/nas/qbit-category.html" target="_blank">Qbittorrent 自动分类</a>) 等选项。</p>
+<figure><img src="/assets/images/nas/moviepilot/moviepilot-5.png" alt="设置下载器相关参数" tabindex="0" loading="lazy"><figcaption>设置下载器相关参数</figcaption></figure>
+<div class="hint-container tip">
+<p class="hint-container-title">提示</p>
+<p>下载器的地址，如果 Moviepilot 没有使用 host 模式（默认配置是这样，使用 host 会占用比较多的端口），则需要进入 Portainer 查看网关（即宿主机）的内网 IP 地址，然后通过宿主机连接对应的下载器的地址。</p>
+<figure><img src="/assets/images/nas/moviepilot/moviepilot-6.png" alt="查看Moviepilot网关地址" tabindex="0" loading="lazy"><figcaption>查看Moviepilot网关地址</figcaption></figure>
+<p>此处可以看到 Moviepilot 的网关的地址为 172.20.0.1，即通过该 IP 可以连通宿主机，若假设 Qbittorrent WebUI 在宿主机上的端口为 53000，则 Moviepilot 可以通过 172.20.0.1:53000 访问到 Qbittorrent。</p>
+<p>所以此处填写 <a href="http://172.20.0.1:53000" target="_blank" rel="noopener noreferrer">http://172.20.0.1:53000</a></p>
+</div>
+<p>设置完后点击保存。</p>
+<h3>📂 媒体目录配置</h3>
+<p>需要设置媒体文件整体前（刚刚下载好，无元数据，杂乱的文件）的目录和整理后的目录（已重命名且刮削元数据的任务）。点击左侧导航栏设定 -&gt; 系统 -&gt; 存储 &amp; 目录 -&gt; 目录，点击现金目录，填写如下：</p>
+<figure><img src="/assets/images/nas/moviepilot/moviepilot-7.png" alt="目录填写" tabindex="0" loading="lazy"><figcaption>目录填写</figcaption></figure>
+<p>如同先前在 jellyfin 中设置的媒体类型一项，电影选择“电影”即可，而电视剧、综艺以及动漫等有多季多期特征的资源选择“电视剧”，媒体类别选择“全部”，当然，如果想细分，可以选择对应的媒体类别。</p>
+<p>下载/源存储选择<code>本地</code>，目录输入先前 Qbittorrent 配置的下载目录。</p>
+<p>自动整理选择<code>目录监控</code>，每当 qbittorrent 下载新的媒体文件时都能自动进行整理。</p>
+<p>监控模式选择<code>性能模式</code>。</p>
+<p>目录输入一个自定义的文件整理后的目录。</p>
+<p>整理方式选择硬链接 (相关文档: <a href="/linux/link.html" target="_blank">软硬链接的区别</a>)，覆盖模式选择保留最新文件。</p>
+<div class="hint-container tip">
+<p class="hint-container-title">提示</p>
+<p>我个人的目录结构如下：</p>
+<ul>
+<li>电影下载保存地址： <code>/mnt/data_hdd1/download_movie</code></li>
+<li>整理后地址：<code>/mnt/data_hdd1/movie</code></li>
+</ul>
+<p>-综艺下载保存地址： <code>/mnt/data_hdd1/download_tv</code></p>
+<ul>
+<li>
+<p>整理后地址：<code>/mnt/data_hdd1/tv</code></p>
+</li>
+<li>
+<p>动漫下载保存地址： <code>/mnt/data_hdd1/download_cartoon</code></p>
+</li>
+<li>
+<p>整理后地址：<code>/mnt/data_hdd1/cartoon</code></p>
+</li>
+</ul>
+</div>
+<figure><img src="/assets/images/nas/moviepilot/moviepilot-8.png" alt="整理前效果" tabindex="0" loading="lazy"><figcaption>整理前效果</figcaption></figure>
+<figure><img src="/assets/images/nas/moviepilot/moviepilot-9.png" alt="整理后效果" tabindex="0" loading="lazy"><figcaption>整理后效果</figcaption></figure>
+<p>由于采用的是硬链接的方式，所以占用空间不会变大。填写完配置信息后点击保存。</p>
+<h3>📺 媒体服务器配置</h3>
+<p>首先访问 Jellyfin，点击控制台 -&gt; API 秘钥，创建一个 API 秘钥。</p>
+<figure><img src="/assets/images/nas/moviepilot/moviepilot-10.png" alt="Jellyfin创建API秘钥" tabindex="0" loading="lazy"><figcaption>Jellyfin创建API秘钥</figcaption></figure>
+<p>Moviepilot 点击左边侧边栏设定 -&gt; 系统 -&gt; 媒体服务器，点击加号。</p>
+<figure><img src="/assets/images/nas/moviepilot/moviepilot-11.png" alt="媒体服务器配置" tabindex="0" loading="lazy"><figcaption>媒体服务器配置</figcaption></figure>
+<p>先前在 nginx 中配置了 jellyfin 外网访问地址，所以此处两个地址都填外网访问地址即可。API 秘钥填写 Jellyfin 中生成的秘钥。</p>
+<p>至此，Moviepilot 配置完成，可以自动帮忙整理下载好的媒体文件。🎉</p>
+]]></content:encoded>
+      <enclosure url="https://jayczee.cn/assets/images/nas/moviepilot/moviepilot-1.png" type="image/png"/>
     </item>
     <item>
       <title>Portainer 容器管理</title>
@@ -904,7 +1058,70 @@
 <p>根据显卡类型选择对应转码方式，N卡选择Nvidia NVENC，Intel核显选择QSV，AMD核显选择V4L2，其他的ARM CPU（如树莓派等）可选择V4L2。下方的转码勾选可以自行搜索支持的转码类型进行勾选。选择完后滚动到最下方选择保存。</p>
 <figure><img src="/assets/images/nas/jellyfin/j-4.png" alt="Jellyfin 转码配置" tabindex="0" loading="lazy"><figcaption>Jellyfin 转码配置</figcaption></figure>
 <p>通过以上步骤，Jellyfin的设置将更加完整，确保最佳的影音体验！🌟</p>
-]]></content:encoded>
+<h2>Nginx配置</h2>
+<div class="language-bash line-numbers-mode" data-highlighter="shiki" data-ext="bash" data-title="bash" style="--shiki-light:#383A42;--shiki-dark:#abb2bf;--shiki-light-bg:#FAFAFA;--shiki-dark-bg:#282c34"><pre class="shiki shiki-themes one-light one-dark-pro vp-code"><code><span class="line"><span style="--shiki-light:#4078F2;--shiki-dark:#61AFEF">server</span><span style="--shiki-light:#50A14F;--shiki-dark:#98C379"> {</span></span>
+<span class="line"><span style="--shiki-light:#4078F2;--shiki-dark:#61AFEF">    listen</span><span style="--shiki-light:#986801;--shiki-dark:#D19A66"> 1212</span><span style="--shiki-light:#50A14F;--shiki-dark:#98C379"> ssl</span><span style="--shiki-light:#50A14F;--shiki-dark:#98C379"> http2</span><span style="--shiki-light:#383A42;--shiki-dark:#ABB2BF">; </span><span style="--shiki-light:#A0A1A7;--shiki-light-font-style:italic;--shiki-dark:#7F848E;--shiki-dark-font-style:italic">## 外网访问端口</span></span>
+<span class="line"><span style="--shiki-light:#4078F2;--shiki-dark:#61AFEF">    server_name</span><span style="--shiki-light:#50A14F;--shiki-dark:#98C379"> jellyfin.domain.com</span><span style="--shiki-light:#383A42;--shiki-dark:#ABB2BF">; </span><span style="--shiki-light:#A0A1A7;--shiki-light-font-style:italic;--shiki-dark:#7F848E;--shiki-dark-font-style:italic">## 自定义jellyfin二级域名</span></span>
+<span class="line"></span>
+<span class="line"><span style="--shiki-light:#4078F2;--shiki-dark:#61AFEF">    client_max_body_size</span><span style="--shiki-light:#50A14F;--shiki-dark:#98C379"> 20M</span><span style="--shiki-light:#383A42;--shiki-dark:#ABB2BF">;</span></span>
+<span class="line"></span>
+<span class="line"><span style="--shiki-light:#0184BC;--shiki-dark:#56B6C2">    set</span><span style="--shiki-light:#E45649;--shiki-dark:#E06C75"> $jellyfin</span><span style="--shiki-light:#986801;--shiki-dark:#D19A66"> 127.0.0.1</span><span style="--shiki-light:#383A42;--shiki-dark:#ABB2BF">;</span></span>
+<span class="line"></span>
+<span class="line"><span style="--shiki-light:#4078F2;--shiki-dark:#61AFEF">    ssl_certificate</span><span style="--shiki-light:#50A14F;--shiki-dark:#98C379"> /etc/letsencrypt/live/domain.com/fullchain.pem</span><span style="--shiki-light:#383A42;--shiki-dark:#ABB2BF">;</span></span>
+<span class="line"><span style="--shiki-light:#4078F2;--shiki-dark:#61AFEF">    ssl_certificate_key</span><span style="--shiki-light:#50A14F;--shiki-dark:#98C379"> /etc/letsencrypt/live/domain.com/privkey.pem</span><span style="--shiki-light:#383A42;--shiki-dark:#ABB2BF">; </span><span style="--shiki-light:#A0A1A7;--shiki-light-font-style:italic;--shiki-dark:#7F848E;--shiki-dark-font-style:italic">## 配置证书地址</span></span>
+<span class="line"></span>
+<span class="line"><span style="--shiki-light:#4078F2;--shiki-dark:#61AFEF">    add_header</span><span style="--shiki-light:#50A14F;--shiki-dark:#98C379"> X-Frame-Options</span><span style="--shiki-light:#50A14F;--shiki-dark:#98C379"> "SAMEORIGIN"</span><span style="--shiki-light:#383A42;--shiki-dark:#ABB2BF">;</span></span>
+<span class="line"><span style="--shiki-light:#4078F2;--shiki-dark:#61AFEF">    add_header</span><span style="--shiki-light:#50A14F;--shiki-dark:#98C379"> X-XSS-Protection</span><span style="--shiki-light:#50A14F;--shiki-dark:#98C379"> "0"</span><span style="--shiki-light:#383A42;--shiki-dark:#ABB2BF">;</span></span>
+<span class="line"><span style="--shiki-light:#4078F2;--shiki-dark:#61AFEF">    add_header</span><span style="--shiki-light:#50A14F;--shiki-dark:#98C379"> X-Content-Type-Options</span><span style="--shiki-light:#50A14F;--shiki-dark:#98C379"> "nosniff"</span><span style="--shiki-light:#383A42;--shiki-dark:#ABB2BF">;</span></span>
+<span class="line"></span>
+<span class="line"><span style="--shiki-light:#4078F2;--shiki-dark:#61AFEF">    add_header</span><span style="--shiki-light:#50A14F;--shiki-dark:#98C379"> Cross-Origin-Opener-Policy</span><span style="--shiki-light:#50A14F;--shiki-dark:#98C379"> "same-origin"</span><span style="--shiki-light:#50A14F;--shiki-dark:#98C379"> always</span><span style="--shiki-light:#383A42;--shiki-dark:#ABB2BF">;</span></span>
+<span class="line"><span style="--shiki-light:#4078F2;--shiki-dark:#61AFEF">    add_header</span><span style="--shiki-light:#50A14F;--shiki-dark:#98C379"> Cross-Origin-Embedder-Policy</span><span style="--shiki-light:#50A14F;--shiki-dark:#98C379"> "require-corp"</span><span style="--shiki-light:#50A14F;--shiki-dark:#98C379"> always</span><span style="--shiki-light:#383A42;--shiki-dark:#ABB2BF">;</span></span>
+<span class="line"><span style="--shiki-light:#4078F2;--shiki-dark:#61AFEF">    add_header</span><span style="--shiki-light:#50A14F;--shiki-dark:#98C379"> Cross-Origin-Resource-Policy</span><span style="--shiki-light:#50A14F;--shiki-dark:#98C379"> "same-origin"</span><span style="--shiki-light:#50A14F;--shiki-dark:#98C379"> always</span><span style="--shiki-light:#383A42;--shiki-dark:#ABB2BF">;</span></span>
+<span class="line"></span>
+<span class="line"><span style="--shiki-light:#4078F2;--shiki-dark:#61AFEF">    add_header</span><span style="--shiki-light:#50A14F;--shiki-dark:#98C379"> Permissions-Policy</span><span style="--shiki-light:#50A14F;--shiki-dark:#98C379"> "accelerometer=(), ambient-light-sensor=(), battery=(), bluetooth=(), camera=(), clipboard-read=(), display-capture=(), document-domain=(), encrypted-media=(), gamepad=(), geolocation=(), gyroscope=(), hid=(), idle-detection=(), interest-cohort=(), keyboard-map=(), local-fonts=(), magnetometer=(), microphone=(), payment=(), publickey-credentials-get=(), serial=(), sync-xhr=(), usb=(), xr-spatial-tracking=()"</span><span style="--shiki-light:#50A14F;--shiki-dark:#98C379"> always</span><span style="--shiki-light:#383A42;--shiki-dark:#ABB2BF">;</span></span>
+<span class="line"></span>
+<span class="line"><span style="--shiki-light:#4078F2;--shiki-dark:#61AFEF">    add_header</span><span style="--shiki-light:#50A14F;--shiki-dark:#98C379"> Origin-Agent-Cluster</span><span style="--shiki-light:#50A14F;--shiki-dark:#98C379"> "?1"</span><span style="--shiki-light:#50A14F;--shiki-dark:#98C379"> always</span><span style="--shiki-light:#383A42;--shiki-dark:#ABB2BF">;</span></span>
+<span class="line"></span>
+<span class="line"><span style="--shiki-light:#4078F2;--shiki-dark:#61AFEF">    location</span><span style="--shiki-light:#50A14F;--shiki-dark:#98C379"> =</span><span style="--shiki-light:#50A14F;--shiki-dark:#98C379"> /</span><span style="--shiki-light:#50A14F;--shiki-dark:#98C379"> {</span></span>
+<span class="line"><span style="--shiki-light:#A626A4;--shiki-dark:#C678DD">        return</span><span style="--shiki-light:#986801;--shiki-dark:#D19A66"> 302</span><span style="--shiki-light:#50A14F;--shiki-dark:#98C379"> https://</span><span style="--shiki-light:#E45649;--shiki-dark:#E06C75">$host</span><span style="--shiki-light:#50A14F;--shiki-dark:#98C379">:1212/web/</span><span style="--shiki-light:#383A42;--shiki-dark:#ABB2BF">; </span><span style="--shiki-light:#A0A1A7;--shiki-light-font-style:italic;--shiki-dark:#7F848E;--shiki-dark-font-style:italic">## 别忘了修改外网访问端口</span></span>
+<span class="line"><span style="--shiki-light:#383A42;--shiki-dark:#ABB2BF">    }</span></span>
+<span class="line"></span>
+<span class="line"><span style="--shiki-light:#4078F2;--shiki-dark:#61AFEF">    location</span><span style="--shiki-light:#50A14F;--shiki-dark:#98C379"> /</span><span style="--shiki-light:#50A14F;--shiki-dark:#98C379"> {</span></span>
+<span class="line"><span style="--shiki-light:#A0A1A7;--shiki-light-font-style:italic;--shiki-dark:#7F848E;--shiki-dark-font-style:italic">        # Proxy main Jellyfin traffic</span></span>
+<span class="line"><span style="--shiki-light:#4078F2;--shiki-dark:#61AFEF">        proxy_pass</span><span style="--shiki-light:#50A14F;--shiki-dark:#98C379"> http://</span><span style="--shiki-light:#E45649;--shiki-dark:#E06C75">$jellyfin</span><span style="--shiki-light:#50A14F;--shiki-dark:#98C379">:8096</span><span style="--shiki-light:#383A42;--shiki-dark:#ABB2BF">;</span></span>
+<span class="line"><span style="--shiki-light:#4078F2;--shiki-dark:#61AFEF">        proxy_set_header</span><span style="--shiki-light:#50A14F;--shiki-dark:#98C379"> Host</span><span style="--shiki-light:#E45649;--shiki-dark:#E06C75"> $host</span><span style="--shiki-light:#383A42;--shiki-dark:#ABB2BF">;</span></span>
+<span class="line"><span style="--shiki-light:#4078F2;--shiki-dark:#61AFEF">        proxy_set_header</span><span style="--shiki-light:#50A14F;--shiki-dark:#98C379"> X-Real-IP</span><span style="--shiki-light:#E45649;--shiki-dark:#E06C75"> $remote_addr</span><span style="--shiki-light:#383A42;--shiki-dark:#ABB2BF">;</span></span>
+<span class="line"><span style="--shiki-light:#4078F2;--shiki-dark:#61AFEF">        proxy_set_header</span><span style="--shiki-light:#50A14F;--shiki-dark:#98C379"> X-Forwarded-For</span><span style="--shiki-light:#E45649;--shiki-dark:#E06C75"> $proxy_add_x_forwarded_for</span><span style="--shiki-light:#383A42;--shiki-dark:#ABB2BF">;</span></span>
+<span class="line"><span style="--shiki-light:#4078F2;--shiki-dark:#61AFEF">        proxy_set_header</span><span style="--shiki-light:#50A14F;--shiki-dark:#98C379"> X-Forwarded-Proto</span><span style="--shiki-light:#E45649;--shiki-dark:#E06C75"> $scheme</span><span style="--shiki-light:#383A42;--shiki-dark:#ABB2BF">;</span></span>
+<span class="line"><span style="--shiki-light:#4078F2;--shiki-dark:#61AFEF">        proxy_set_header</span><span style="--shiki-light:#50A14F;--shiki-dark:#98C379"> X-Forwarded-Protocol</span><span style="--shiki-light:#E45649;--shiki-dark:#E06C75"> $scheme</span><span style="--shiki-light:#383A42;--shiki-dark:#ABB2BF">;</span></span>
+<span class="line"><span style="--shiki-light:#4078F2;--shiki-dark:#61AFEF">        proxy_set_header</span><span style="--shiki-light:#50A14F;--shiki-dark:#98C379"> X-Forwarded-Host</span><span style="--shiki-light:#E45649;--shiki-dark:#E06C75"> $http_host</span><span style="--shiki-light:#383A42;--shiki-dark:#ABB2BF">;</span></span>
+<span class="line"><span style="--shiki-light:#4078F2;--shiki-dark:#61AFEF">        proxy_buffering</span><span style="--shiki-light:#50A14F;--shiki-dark:#98C379"> off</span><span style="--shiki-light:#383A42;--shiki-dark:#ABB2BF">;</span></span>
+<span class="line"><span style="--shiki-light:#383A42;--shiki-dark:#ABB2BF">    }</span></span>
+<span class="line"></span>
+<span class="line"><span style="--shiki-light:#4078F2;--shiki-dark:#61AFEF">    location</span><span style="--shiki-light:#50A14F;--shiki-dark:#98C379"> =</span><span style="--shiki-light:#50A14F;--shiki-dark:#98C379"> /web/</span><span style="--shiki-light:#50A14F;--shiki-dark:#98C379"> {</span></span>
+<span class="line"><span style="--shiki-light:#4078F2;--shiki-dark:#61AFEF">        proxy_pass</span><span style="--shiki-light:#50A14F;--shiki-dark:#98C379"> http://</span><span style="--shiki-light:#E45649;--shiki-dark:#E06C75">$jellyfin</span><span style="--shiki-light:#50A14F;--shiki-dark:#98C379">:8096/web/index.html</span><span style="--shiki-light:#383A42;--shiki-dark:#ABB2BF">;</span></span>
+<span class="line"><span style="--shiki-light:#4078F2;--shiki-dark:#61AFEF">        proxy_set_header</span><span style="--shiki-light:#50A14F;--shiki-dark:#98C379"> Host</span><span style="--shiki-light:#E45649;--shiki-dark:#E06C75"> $host</span><span style="--shiki-light:#383A42;--shiki-dark:#ABB2BF">;</span></span>
+<span class="line"><span style="--shiki-light:#4078F2;--shiki-dark:#61AFEF">        proxy_set_header</span><span style="--shiki-light:#50A14F;--shiki-dark:#98C379"> X-Real-IP</span><span style="--shiki-light:#E45649;--shiki-dark:#E06C75"> $remote_addr</span><span style="--shiki-light:#383A42;--shiki-dark:#ABB2BF">;</span></span>
+<span class="line"><span style="--shiki-light:#4078F2;--shiki-dark:#61AFEF">        proxy_set_header</span><span style="--shiki-light:#50A14F;--shiki-dark:#98C379"> X-Forwarded-For</span><span style="--shiki-light:#E45649;--shiki-dark:#E06C75"> $proxy_add_x_forwarded_for</span><span style="--shiki-light:#383A42;--shiki-dark:#ABB2BF">;</span></span>
+<span class="line"><span style="--shiki-light:#4078F2;--shiki-dark:#61AFEF">        proxy_set_header</span><span style="--shiki-light:#50A14F;--shiki-dark:#98C379"> X-Forwarded-Proto</span><span style="--shiki-light:#E45649;--shiki-dark:#E06C75"> $scheme</span><span style="--shiki-light:#383A42;--shiki-dark:#ABB2BF">;</span></span>
+<span class="line"><span style="--shiki-light:#4078F2;--shiki-dark:#61AFEF">        proxy_set_header</span><span style="--shiki-light:#50A14F;--shiki-dark:#98C379"> X-Forwarded-Protocol</span><span style="--shiki-light:#E45649;--shiki-dark:#E06C75"> $scheme</span><span style="--shiki-light:#383A42;--shiki-dark:#ABB2BF">;</span></span>
+<span class="line"><span style="--shiki-light:#4078F2;--shiki-dark:#61AFEF">        proxy_set_header</span><span style="--shiki-light:#50A14F;--shiki-dark:#98C379"> X-Forwarded-Host</span><span style="--shiki-light:#E45649;--shiki-dark:#E06C75"> $http_host</span><span style="--shiki-light:#383A42;--shiki-dark:#ABB2BF">;</span></span>
+<span class="line"><span style="--shiki-light:#383A42;--shiki-dark:#ABB2BF">    }</span></span>
+<span class="line"></span>
+<span class="line"><span style="--shiki-light:#4078F2;--shiki-dark:#61AFEF">    location</span><span style="--shiki-light:#50A14F;--shiki-dark:#98C379"> /socket</span><span style="--shiki-light:#50A14F;--shiki-dark:#98C379"> {</span></span>
+<span class="line"><span style="--shiki-light:#4078F2;--shiki-dark:#61AFEF">        proxy_pass</span><span style="--shiki-light:#50A14F;--shiki-dark:#98C379"> http://</span><span style="--shiki-light:#E45649;--shiki-dark:#E06C75">$jellyfin</span><span style="--shiki-light:#50A14F;--shiki-dark:#98C379">:8096</span><span style="--shiki-light:#383A42;--shiki-dark:#ABB2BF">;</span></span>
+<span class="line"><span style="--shiki-light:#4078F2;--shiki-dark:#61AFEF">        proxy_http_version</span><span style="--shiki-light:#986801;--shiki-dark:#D19A66"> 1.1</span><span style="--shiki-light:#383A42;--shiki-dark:#ABB2BF">;</span></span>
+<span class="line"><span style="--shiki-light:#4078F2;--shiki-dark:#61AFEF">        proxy_set_header</span><span style="--shiki-light:#50A14F;--shiki-dark:#98C379"> Upgrade</span><span style="--shiki-light:#E45649;--shiki-dark:#E06C75"> $http_upgrade</span><span style="--shiki-light:#383A42;--shiki-dark:#ABB2BF">;</span></span>
+<span class="line"><span style="--shiki-light:#4078F2;--shiki-dark:#61AFEF">        proxy_set_header</span><span style="--shiki-light:#50A14F;--shiki-dark:#98C379"> Connection</span><span style="--shiki-light:#50A14F;--shiki-dark:#98C379"> "upgrade"</span><span style="--shiki-light:#383A42;--shiki-dark:#ABB2BF">;</span></span>
+<span class="line"><span style="--shiki-light:#4078F2;--shiki-dark:#61AFEF">        proxy_set_header</span><span style="--shiki-light:#50A14F;--shiki-dark:#98C379"> Host</span><span style="--shiki-light:#E45649;--shiki-dark:#E06C75"> $host</span><span style="--shiki-light:#383A42;--shiki-dark:#ABB2BF">;</span></span>
+<span class="line"><span style="--shiki-light:#4078F2;--shiki-dark:#61AFEF">        proxy_set_header</span><span style="--shiki-light:#50A14F;--shiki-dark:#98C379"> X-Real-IP</span><span style="--shiki-light:#E45649;--shiki-dark:#E06C75"> $remote_addr</span><span style="--shiki-light:#383A42;--shiki-dark:#ABB2BF">;</span></span>
+<span class="line"><span style="--shiki-light:#4078F2;--shiki-dark:#61AFEF">        proxy_set_header</span><span style="--shiki-light:#50A14F;--shiki-dark:#98C379"> X-Forwarded-For</span><span style="--shiki-light:#E45649;--shiki-dark:#E06C75"> $proxy_add_x_forwarded_for</span><span style="--shiki-light:#383A42;--shiki-dark:#ABB2BF">;</span></span>
+<span class="line"><span style="--shiki-light:#4078F2;--shiki-dark:#61AFEF">        proxy_set_header</span><span style="--shiki-light:#50A14F;--shiki-dark:#98C379"> X-Forwarded-Proto</span><span style="--shiki-light:#E45649;--shiki-dark:#E06C75"> $scheme</span><span style="--shiki-light:#383A42;--shiki-dark:#ABB2BF">;</span></span>
+<span class="line"><span style="--shiki-light:#4078F2;--shiki-dark:#61AFEF">        proxy_set_header</span><span style="--shiki-light:#50A14F;--shiki-dark:#98C379"> X-Forwarded-Protocol</span><span style="--shiki-light:#E45649;--shiki-dark:#E06C75"> $scheme</span><span style="--shiki-light:#383A42;--shiki-dark:#ABB2BF">;</span></span>
+<span class="line"><span style="--shiki-light:#4078F2;--shiki-dark:#61AFEF">        proxy_set_header</span><span style="--shiki-light:#50A14F;--shiki-dark:#98C379"> X-Forwarded-Host</span><span style="--shiki-light:#E45649;--shiki-dark:#E06C75"> $http_host</span><span style="--shiki-light:#383A42;--shiki-dark:#ABB2BF">;</span></span>
+<span class="line"><span style="--shiki-light:#383A42;--shiki-dark:#ABB2BF">    }</span></span>
+<span class="line"><span style="--shiki-light:#383A42;--shiki-dark:#ABB2BF">}</span></span></code></pre>
+<div class="line-numbers" aria-hidden="true" style="counter-reset:line-number 0"><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div></div></div>]]></content:encoded>
       <enclosure url="https://jayczee.cn/assets/images/nas/jellyfin/j-1.png" type="image/png"/>
     </item>
     <item>
