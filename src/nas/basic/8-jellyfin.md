@@ -111,3 +111,70 @@ deploy:
 ![Jellyfin 转码配置](/assets/images/nas/jellyfin/j-4.png)
 
 通过以上步骤，Jellyfin的设置将更加完整，确保最佳的影音体验！🌟
+
+## Nginx配置
+
+```bash
+server {
+    listen 1212 ssl http2; ## 外网访问端口
+    server_name jellyfin.domain.com; ## 自定义jellyfin二级域名
+
+    client_max_body_size 20M;
+
+    set $jellyfin 127.0.0.1;
+
+    ssl_certificate /etc/letsencrypt/live/domain.com/fullchain.pem;
+    ssl_certificate_key /etc/letsencrypt/live/domain.com/privkey.pem; ## 配置证书地址
+
+    add_header X-Frame-Options "SAMEORIGIN";
+    add_header X-XSS-Protection "0";
+    add_header X-Content-Type-Options "nosniff";
+
+    add_header Cross-Origin-Opener-Policy "same-origin" always;
+    add_header Cross-Origin-Embedder-Policy "require-corp" always;
+    add_header Cross-Origin-Resource-Policy "same-origin" always;
+
+    add_header Permissions-Policy "accelerometer=(), ambient-light-sensor=(), battery=(), bluetooth=(), camera=(), clipboard-read=(), display-capture=(), document-domain=(), encrypted-media=(), gamepad=(), geolocation=(), gyroscope=(), hid=(), idle-detection=(), interest-cohort=(), keyboard-map=(), local-fonts=(), magnetometer=(), microphone=(), payment=(), publickey-credentials-get=(), serial=(), sync-xhr=(), usb=(), xr-spatial-tracking=()" always;
+
+    add_header Origin-Agent-Cluster "?1" always;
+
+    location = / {
+        return 302 https://$host:1212/web/; ## 别忘了修改外网访问端口
+    }
+
+    location / {
+        # Proxy main Jellyfin traffic
+        proxy_pass http://$jellyfin:8096;
+        proxy_set_header Host $host;
+        proxy_set_header X-Real-IP $remote_addr;
+        proxy_set_header X-Forwarded-For $proxy_add_x_forwarded_for;
+        proxy_set_header X-Forwarded-Proto $scheme;
+        proxy_set_header X-Forwarded-Protocol $scheme;
+        proxy_set_header X-Forwarded-Host $http_host;
+        proxy_buffering off;
+    }
+
+    location = /web/ {
+        proxy_pass http://$jellyfin:8096/web/index.html;
+        proxy_set_header Host $host;
+        proxy_set_header X-Real-IP $remote_addr;
+        proxy_set_header X-Forwarded-For $proxy_add_x_forwarded_for;
+        proxy_set_header X-Forwarded-Proto $scheme;
+        proxy_set_header X-Forwarded-Protocol $scheme;
+        proxy_set_header X-Forwarded-Host $http_host;
+    }
+
+    location /socket {
+        proxy_pass http://$jellyfin:8096;
+        proxy_http_version 1.1;
+        proxy_set_header Upgrade $http_upgrade;
+        proxy_set_header Connection "upgrade";
+        proxy_set_header Host $host;
+        proxy_set_header X-Real-IP $remote_addr;
+        proxy_set_header X-Forwarded-For $proxy_add_x_forwarded_for;
+        proxy_set_header X-Forwarded-Proto $scheme;
+        proxy_set_header X-Forwarded-Protocol $scheme;
+        proxy_set_header X-Forwarded-Host $http_host;
+    }
+}
+```

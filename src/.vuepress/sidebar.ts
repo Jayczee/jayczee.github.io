@@ -26,11 +26,14 @@ export default sidebar({
         "alist.md","beszel.md","gpt.md","teamspeak.md"
       ]
     },
-    "docker-proxy.md",
     "qbit-category.md",
     "jellyfin-encode-decode.md"
   ],
   "/code":[
     "fedex-crawler.md"
   ],
+  "/linux":[
+    "docker-proxy.md",
+    "link.md"
+  ]
 });
