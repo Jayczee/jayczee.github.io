@@ -38,6 +38,9 @@ importers:
       vuepress-theme-hope:
         specifier: 2.0.0-rc.67
         version: 2.0.0-rc.67(@vuepress/plugin-docsearch@2.0.0-rc.70(@algolia/client-search@5.19.0)(search-insights@2.17.3)(vuepress@2.0.0-rc.19(@vuepress/bundler-vite@2.0.0-rc.19(@types/node@22.10.5)(sass-embedded@1.83.1))(vue@3.5.13)))(@vuepress/plugin-feed@2.0.0-rc.70(vuepress@2.0.0-rc.19(@vuepress/bundler-vite@2.0.0-rc.19(@types/node@22.10.5)(sass-embedded@1.83.1))(vue@3.5.13)))(markdown-it@14.1.0)(sass-embedded@1.83.1)(vuepress@2.0.0-rc.19(@vuepress/bundler-vite@2.0.0-rc.19(@types/node@22.10.5)(sass-embedded@1.83.1))(vue@3.5.13))
+      vuepress2-plugin-baidu-autopush:
+        specifier: ^1.0.1
+        version: 1.0.1
 
 packages:
 
@@ -2376,6 +2379,9 @@ packages:
         optional: true
       sass-loader:
         optional: true
+
+  vuepress2-plugin-baidu-autopush@1.0.1:
+    resolution: {integrity: sha512-E22wccOwFuc1bU+fWURiR86e3Mx6P6P3SaPPrELNLKOOGE2SVuArmYs7MXe6x3ZeMUIIzqrB/2yksmlE9ME0Ag==}
 
   vuepress@2.0.0-rc.19:
     resolution: {integrity: sha512-JDeuPTu14Kprdqx2geAryjFJvUzVaMnOLewlAgwVuZTygDWb8cgXhu9/p6rqzzdHETtIrvjbASBhH7JPyqmxmA==}
@@ -4819,6 +4825,8 @@ snapshots:
       - twikoo
       - typescript
       - vidstack
+
+  vuepress2-plugin-baidu-autopush@1.0.1: {}
 
   vuepress@2.0.0-rc.19(@vuepress/bundler-vite@2.0.0-rc.19(@types/node@22.10.5)(sass-embedded@1.83.1))(vue@3.5.13):
     dependencies:
