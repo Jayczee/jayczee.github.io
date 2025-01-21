@@ -6,8 +6,8 @@
     <link>https://jayczee.cn/</link>
     <description>Whispering for nothing</description>
     <language>zh-CN</language>
-    <pubDate>Tue, 21 Jan 2025 07:56:44 GMT</pubDate>
-    <lastBuildDate>Tue, 21 Jan 2025 07:56:44 GMT</lastBuildDate>
+    <pubDate>Tue, 21 Jan 2025 09:11:11 GMT</pubDate>
+    <lastBuildDate>Tue, 21 Jan 2025 09:11:11 GMT</lastBuildDate>
     <generator>@vuepress/plugin-feed</generator>
     <docs>https://validator.w3.org/feed/docs/rss2.html</docs>
     <category>NAS</category>
@@ -44,8 +44,24 @@
       <link>https://jayczee.cn/nas/qbit-category.html</link>
       <guid>https://jayczee.cn/nas/qbit-category.html</guid>
       <source url="https://jayczee.cn/rss.xml">qBittorrent 分类管理</source>
+      <description>刚开始用qBittorrent时，发现了分类这么一个功能，并且我在创建分类时，还可以填写存储位置。 qBittorrent创建分类qBittorrent创建分类 此时我当然想到既然分类和存储位置相关，那么在新建下载的时候，只要选择好分类，就能自动填写存储位置，毕竟qBittorrent填写存储位置时竟然不会联想。 于是立刻实操。 首先右键新建分类，然后...</description>
       <category>NAS</category>
       <pubDate>Tue, 14 Jan 2025 08:18:39 GMT</pubDate>
+      <content:encoded><![CDATA[<p>刚开始用qBittorrent时，发现了分类这么一个功能，并且我在创建分类时，还可以填写存储位置。</p>
+<figure><img src="/assets/images/nas/qbittorrent/qbit-3.png" alt="qBittorrent创建分类" tabindex="0" loading="lazy"><figcaption>qBittorrent创建分类</figcaption></figure>
+<p>此时我当然想到既然分类和存储位置相关，那么在新建下载的时候，只要选择好分类，就能自动填写存储位置，<strong>毕竟qBittorrent填写存储位置时竟然不会联想</strong>。</p>
+<p>于是立刻实操。</p>
+<p>首先右键新建分类，然后左上角新建下载时选择分类，然并卵。。。。。。</p>
+<p>此时创建的下载任务，分类一栏确实显示了我增加的分类，但是下载地址仍然要我自己填写。</p>
+<p>折腾了半天，发现了需要如下设置：</p>
+<figure><img src="/assets/images/nas/qbittorrent/qbit-4.png" alt="qBittorrent自动分类管理" tabindex="0" loading="lazy"><figcaption>qBittorrent自动分类管理</figcaption></figure>
+<p>将分类管理设成<code>自动</code>后，修改分类时才会自动填写存储路径。并且还可以实现修改已下载文件的分类时自动转移文件位置的功能。</p>
+<div class="hint-container tip">
+<p class="hint-container-title">提示</p>
+<p>在将该选项设为自动后，使用其他媒体整理工具（nastool、moviepilot等）的相关功能时也可以根据qBittorrent的分类来管理资源。例如<code>自动刷流</code>插件。</p>
+</div>
+]]></content:encoded>
+      <enclosure url="https://jayczee.cn/assets/images/nas/qbittorrent/qbit-3.png" type="image/png"/>
     </item>
     <item>
       <title>📦 Fedex物流单号状态爬取</title>
@@ -333,12 +349,85 @@
       <enclosure url="https://img.shields.io/badge/Docker-0db7f2?style=flat-square&amp;logo=docker&amp;logoColor=white" type="image/"/>
     </item>
     <item>
-      <title>Jellyfin编码与解码</title>
+      <title>Jellyfin 编码与解码 | N 卡驱动安装</title>
       <link>https://jayczee.cn/nas/jellyfin-encode-decode.html</link>
       <guid>https://jayczee.cn/nas/jellyfin-encode-decode.html</guid>
-      <source url="https://jayczee.cn/rss.xml">Jellyfin编码与解码</source>
+      <source url="https://jayczee.cn/rss.xml">Jellyfin 编码与解码 | N 卡驱动安装</source>
+      <description>🎥 什么是编码与解码？ 📡 编码 编码是将原始音视频数据转换为特定格式的过程，以便于存储和传输。这个过程通常涉及压缩，以减少文件大小，从而节省存储空间和带宽。常见的编码格式包括： 视频编码格式：如 H.264、H.265（HEVC）、VP9 等。 音频编码格式：如 AAC、MP3、FLAC 等。 🔄 解码 解码是将编码后的音视频数据转换回可播放格...</description>
       <category>NAS</category>
       <pubDate>Fri, 10 Jan 2025 06:48:26 GMT</pubDate>
+      <content:encoded><![CDATA[<h2>🎥 什么是编码与解码？</h2>
+<h3>📡 编码</h3>
+<p>编码是将原始音视频数据转换为特定格式的过程，以便于存储和传输。这个过程通常涉及压缩，以减少文件大小，从而节省存储空间和带宽。常见的编码格式包括：</p>
+<ul>
+<li><strong>视频编码格式</strong>：如 H.264、H.265（HEVC）、VP9 等。</li>
+<li><strong>音频编码格式</strong>：如 AAC、MP3、FLAC 等。</li>
+</ul>
+<h3>🔄 解码</h3>
+<p>解码是将编码后的音视频数据转换回可播放格式的过程。解码器负责读取编码数据，并将其转换为可以在媒体播放器中播放的格式。</p>
+<h2>🔍 Jellyfin 中的编码与解码</h2>
+<p>Jellyfin 通过使用 FFmpeg 等工具来处理音视频的编码与解码。</p>
+<h3>1. <strong>转码</strong></h3>
+<p>当客户端设备不支持片源的音视频格式时，Jellyfin 会自动进行转码。转码是将文件从一种格式转换为另一种格式的过程。Jellyfin 会根据客户端的能力和网络状况选择最佳的转码方式。</p>
+<h3>2. <strong>直接播放</strong></h3>
+<p>如果客户端设备支持片源的音视频格式，Jellyfin 会选择直接播放。因此，在选择片源时，尽量选择主力播放设备支持的格式。如果使用功能较齐全的电视播放，通常大部分都是直接播放的。</p>
+<h3>3. <strong>硬解与软解</strong></h3>
+<ul>
+<li>
+<p><strong>硬解</strong>：利用硬件加速进行解码，通常使用 NAS 上的显卡进行解码，例如 NVIDIA GPU 和 Intel Quick Sync（核显）。</p>
+</li>
+<li>
+<p><strong>软解</strong>：通过软件进行解码，通常会消耗更多的 CPU 资源，可能导致性能下降，尤其是在高分辨率视频播放时。面对高质量片源时，软解的效率较低。</p>
+</li>
+</ul>
+<h2>🖥️ Docker 中的 Jellyfin 使用 NVIDIA 显卡进行硬解</h2>
+<h3>1. 安装 N 卡驱动</h3>
+<p>如果 Jellyfin 部署在 Docker 中，并且 NAS 拥有一块 NVIDIA 显卡并想用该显卡解码，那么在部署 Jellyfin 之前需要先在 NAS 上安装 NVIDIA 驱动。</p>
+<p>首先，运行命令检查是否已经安装 N 卡驱动：</p>
+<div class="language-bash line-numbers-mode" data-highlighter="shiki" data-ext="bash" data-title="bash" style="--shiki-light:#383A42;--shiki-dark:#abb2bf;--shiki-light-bg:#FAFAFA;--shiki-dark-bg:#282c34"><pre class="shiki shiki-themes one-light one-dark-pro vp-code"><code><span class="line"><span style="--shiki-light:#4078F2;--shiki-dark:#61AFEF">nvidia-smi</span></span></code></pre>
+<div class="line-numbers" aria-hidden="true" style="counter-reset:line-number 0"><div class="line-number"></div></div></div><p>如果输出信息类似下图，且 Driver Version 与 CUDA Version 不为空，则表示已安装驱动。</p>
+<figure><img src="/assets/images/nas/jellyfin/j-5.png" alt="nvidia-smi 输出信息" tabindex="0" loading="lazy"><figcaption>nvidia-smi 输出信息</figcaption></figure>
+<p>如果提示命令不存在等信息，则视为未安装驱动。</p>
+<p>访问 <a href="https://www.nvidia.cn/drivers/lookup/" target="_blank" rel="noopener noreferrer">NVIDIA 官网</a>，根据 NAS 的配置信息，搜索对应的驱动：</p>
+<figure><img src="/assets/images/nas/jellyfin/j-6.png" alt="搜索驱动" tabindex="0" loading="lazy"><figcaption>搜索驱动</figcaption></figure>
+<figure><img src="/assets/images/nas/jellyfin/j-7.png" alt="搜索结果" tabindex="0" loading="lazy"><figcaption>搜索结果</figcaption></figure>
+<p>右键单击下载按钮，复制地址，在 NAS 命令行中使用 <code>wget</code> 命令下载：</p>
+<div class="language-bash line-numbers-mode" data-highlighter="shiki" data-ext="bash" data-title="bash" style="--shiki-light:#383A42;--shiki-dark:#abb2bf;--shiki-light-bg:#FAFAFA;--shiki-dark-bg:#282c34"><pre class="shiki shiki-themes one-light one-dark-pro vp-code"><code><span class="line"><span style="--shiki-light:#4078F2;--shiki-dark:#61AFEF">wget</span><span style="--shiki-light:#50A14F;--shiki-dark:#98C379"> https://cn.download.nvidia.com/XFree86/Linux-x86_64/550.144.03/NVIDIA-Linux-x86_64-550.144.03.run</span></span></code></pre>
+<div class="line-numbers" aria-hidden="true" style="counter-reset:line-number 0"><div class="line-number"></div></div></div><p>当然，也可以下载到其他机器上，通过 SFTP 或 SCP 等方式传输到 NAS 上。</p>
+<p>下载完成后，运行命令，根据提示完成安装：</p>
+<div class="language-bash line-numbers-mode" data-highlighter="shiki" data-ext="bash" data-title="bash" style="--shiki-light:#383A42;--shiki-dark:#abb2bf;--shiki-light-bg:#FAFAFA;--shiki-dark-bg:#282c34"><pre class="shiki shiki-themes one-light one-dark-pro vp-code"><code><span class="line"><span style="--shiki-light:#4078F2;--shiki-dark:#61AFEF">sh</span><span style="--shiki-light:#50A14F;--shiki-dark:#98C379"> ./NVIDIA-Linux-x86_64-550.144.03.run</span></span></code></pre>
+<div class="line-numbers" aria-hidden="true" style="counter-reset:line-number 0"><div class="line-number"></div></div></div><h3>2. Jellyfin Docker Compose 配置</h3>
+<p>以下是配置 Jellyfin 使用 NVIDIA 显卡的 Docker Compose 示例：</p>
+<div class="language-yaml line-numbers-mode" data-highlighter="shiki" data-ext="yaml" data-title="yaml" style="--shiki-light:#383A42;--shiki-dark:#abb2bf;--shiki-light-bg:#FAFAFA;--shiki-dark-bg:#282c34"><pre class="shiki shiki-themes one-light one-dark-pro vp-code"><code><span class="line"><span style="--shiki-light:#E45649;--shiki-dark:#E06C75">version</span><span style="--shiki-light:#383A42;--shiki-dark:#ABB2BF">: </span><span style="--shiki-light:#50A14F;--shiki-dark:#98C379">'3.8'</span></span>
+<span class="line"><span style="--shiki-light:#E45649;--shiki-dark:#E06C75">volumes</span><span style="--shiki-light:#383A42;--shiki-dark:#ABB2BF">:</span></span>
+<span class="line"><span style="--shiki-light:#E45649;--shiki-dark:#E06C75">  jellyfin_config</span><span style="--shiki-light:#383A42;--shiki-dark:#ABB2BF">:</span></span>
+<span class="line"><span style="--shiki-light:#E45649;--shiki-dark:#E06C75">  jellyfin_cache</span><span style="--shiki-light:#383A42;--shiki-dark:#ABB2BF">:</span></span>
+<span class="line"><span style="--shiki-light:#E45649;--shiki-dark:#E06C75">services</span><span style="--shiki-light:#383A42;--shiki-dark:#ABB2BF">:</span></span>
+<span class="line"><span style="--shiki-light:#E45649;--shiki-dark:#E06C75">  jellyfin</span><span style="--shiki-light:#383A42;--shiki-dark:#ABB2BF">:</span></span>
+<span class="line"><span style="--shiki-light:#E45649;--shiki-dark:#E06C75">    image</span><span style="--shiki-light:#383A42;--shiki-dark:#ABB2BF">: </span><span style="--shiki-light:#50A14F;--shiki-dark:#98C379">nyanmisaka/jellyfin:latest</span></span>
+<span class="line"><span style="--shiki-light:#E45649;--shiki-dark:#E06C75">    container_name</span><span style="--shiki-light:#383A42;--shiki-dark:#ABB2BF">: </span><span style="--shiki-light:#50A14F;--shiki-dark:#98C379">jellyfin</span></span>
+<span class="line"><span style="--shiki-light:#E45649;--shiki-dark:#E06C75">    hostname</span><span style="--shiki-light:#383A42;--shiki-dark:#ABB2BF">: </span><span style="--shiki-light:#50A14F;--shiki-dark:#98C379">jellyfin</span></span>
+<span class="line"><span style="--shiki-light:#E45649;--shiki-dark:#E06C75">    restart</span><span style="--shiki-light:#383A42;--shiki-dark:#ABB2BF">: </span><span style="--shiki-light:#50A14F;--shiki-dark:#98C379">always</span></span>
+<span class="line"><span style="--shiki-light:#E45649;--shiki-dark:#E06C75">    environment</span><span style="--shiki-light:#383A42;--shiki-dark:#ABB2BF">:</span></span>
+<span class="line"><span style="--shiki-light:#383A42;--shiki-dark:#ABB2BF">      - </span><span style="--shiki-light:#50A14F;--shiki-dark:#98C379">TZ=Asia/Shanghai</span></span>
+<span class="line"><span style="--shiki-light:#383A42;--shiki-dark:#ABB2BF">      - </span><span style="--shiki-light:#50A14F;--shiki-dark:#98C379">NVIDIA_DRIVER_CAPABILITIES=all</span></span>
+<span class="line"><span style="--shiki-light:#383A42;--shiki-dark:#ABB2BF">      - </span><span style="--shiki-light:#50A14F;--shiki-dark:#98C379">NVIDIA_VISIBLE_DEVICES=all</span></span>
+<span class="line"><span style="--shiki-light:#E45649;--shiki-dark:#E06C75">    network_mode</span><span style="--shiki-light:#383A42;--shiki-dark:#ABB2BF">: </span><span style="--shiki-light:#50A14F;--shiki-dark:#98C379">host</span></span>
+<span class="line"><span style="--shiki-light:#E45649;--shiki-dark:#E06C75">    volumes</span><span style="--shiki-light:#383A42;--shiki-dark:#ABB2BF">:</span></span>
+<span class="line"><span style="--shiki-light:#383A42;--shiki-dark:#ABB2BF">      - </span><span style="--shiki-light:#50A14F;--shiki-dark:#98C379">jellyfin_config:/config</span></span>
+<span class="line"><span style="--shiki-light:#383A42;--shiki-dark:#ABB2BF">      - </span><span style="--shiki-light:#50A14F;--shiki-dark:#98C379">jellyfin_cache:/cache</span></span>
+<span class="line"><span style="--shiki-light:#383A42;--shiki-dark:#ABB2BF">      - </span><span style="--shiki-light:#50A14F;--shiki-dark:#98C379">/mnt/data_hdd:/data_hdd</span><span style="--shiki-light:#A0A1A7;--shiki-light-font-style:italic;--shiki-dark:#7F848E;--shiki-dark-font-style:italic"> # 该映射是影音文件存储位置，可根据实际情况调整</span></span>
+<span class="line"><span style="--shiki-light:#383A42;--shiki-dark:#ABB2BF">      - </span><span style="--shiki-light:#50A14F;--shiki-dark:#98C379">/mnt/nas1_smb:/nas1_smb</span><span style="--shiki-light:#A0A1A7;--shiki-light-font-style:italic;--shiki-dark:#7F848E;--shiki-dark-font-style:italic"> # 该映射是影音文件存储位置，可根据实际情况调整</span></span>
+<span class="line"><span style="--shiki-light:#383A42;--shiki-dark:#ABB2BF">      - </span><span style="--shiki-light:#50A14F;--shiki-dark:#98C379">/dev:/dev</span></span>
+<span class="line"><span style="--shiki-light:#E45649;--shiki-dark:#E06C75">    runtime</span><span style="--shiki-light:#383A42;--shiki-dark:#ABB2BF">: </span><span style="--shiki-light:#50A14F;--shiki-dark:#98C379">nvidia</span></span>
+<span class="line"><span style="--shiki-light:#E45649;--shiki-dark:#E06C75">    deploy</span><span style="--shiki-light:#383A42;--shiki-dark:#ABB2BF">:</span></span>
+<span class="line"><span style="--shiki-light:#E45649;--shiki-dark:#E06C75">      resources</span><span style="--shiki-light:#383A42;--shiki-dark:#ABB2BF">:</span></span>
+<span class="line"><span style="--shiki-light:#E45649;--shiki-dark:#E06C75">        reservations</span><span style="--shiki-light:#383A42;--shiki-dark:#ABB2BF">:</span></span>
+<span class="line"><span style="--shiki-light:#E45649;--shiki-dark:#E06C75">          devices</span><span style="--shiki-light:#383A42;--shiki-dark:#ABB2BF">:</span></span>
+<span class="line"><span style="--shiki-light:#383A42;--shiki-dark:#ABB2BF">            - </span><span style="--shiki-light:#E45649;--shiki-dark:#E06C75">capabilities</span><span style="--shiki-light:#383A42;--shiki-dark:#ABB2BF">: </span></span>
+<span class="line"><span style="--shiki-light:#383A42;--shiki-dark:#ABB2BF">              - </span><span style="--shiki-light:#50A14F;--shiki-dark:#98C379">gpu</span></span></code></pre>
+<div class="line-numbers" aria-hidden="true" style="counter-reset:line-number 0"><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div></div></div>]]></content:encoded>
+      <enclosure url="https://jayczee.cn/assets/images/nas/jellyfin/j-5.png" type="image/png"/>
     </item>
     <item>
       <title>Docker</title>
