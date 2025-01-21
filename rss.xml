@@ -6,8 +6,8 @@
     <link>https://jayczee.cn/</link>
     <description>Whispering for nothing</description>
     <language>zh-CN</language>
-    <pubDate>Mon, 20 Jan 2025 09:07:26 GMT</pubDate>
-    <lastBuildDate>Mon, 20 Jan 2025 09:07:26 GMT</lastBuildDate>
+    <pubDate>Tue, 21 Jan 2025 07:56:44 GMT</pubDate>
+    <lastBuildDate>Tue, 21 Jan 2025 07:56:44 GMT</lastBuildDate>
     <generator>@vuepress/plugin-feed</generator>
     <docs>https://validator.w3.org/feed/docs/rss2.html</docs>
     <category>NAS</category>
@@ -289,8 +289,32 @@
       <link>https://jayczee.cn/linux/docker-proxy.html</link>
       <guid>https://jayczee.cn/linux/docker-proxy.html</guid>
       <source url="https://jayczee.cn/rss.xml">Docker 镜像加速/代理</source>
+      <description>在国内，Docker Hub 镜像源的情况不容乐观，无论是清华大学镜像源，还是阿里镜像加速，统统都已经失效。国内现在已经不允许开设 Docker 镜像加速服务，唯一的办法仍然是走代理。🌐 Docker 拉取镜像是由 Docker daemon 进行的，因此简单的环境变量设置如： 已经无法满足需求，需要直接对 Docker 进行配置。 🛠️ Dock...</description>
       <category>NAS</category>
       <pubDate>Fri, 10 Jan 2025 10:15:51 GMT</pubDate>
+      <content:encoded><![CDATA[<p>在国内，Docker Hub 镜像源的情况不容乐观，无论是清华大学镜像源，还是阿里镜像加速，统统都已经失效。国内现在已经不允许开设 Docker 镜像加速服务，唯一的办法仍然是走代理。🌐</p>
+<p>Docker 拉取镜像是由 Docker daemon 进行的，因此简单的环境变量设置如：</p>
+<div class="language-bash line-numbers-mode" data-highlighter="shiki" data-ext="bash" data-title="bash" style="--shiki-light:#383A42;--shiki-dark:#abb2bf;--shiki-light-bg:#FAFAFA;--shiki-dark-bg:#282c34"><pre class="shiki shiki-themes one-light one-dark-pro vp-code"><code><span class="line"><span style="--shiki-light:#A626A4;--shiki-dark:#C678DD">export</span><span style="--shiki-light:#E45649;--shiki-dark:#E06C75"> http_proxy</span><span style="--shiki-light:#383A42;--shiki-dark:#56B6C2">=</span><span style="--shiki-light:#50A14F;--shiki-dark:#98C379">"http://proxy_address:port"</span></span></code></pre>
+<div class="line-numbers" aria-hidden="true" style="counter-reset:line-number 0"><div class="line-number"></div></div></div><p>已经无法满足需求，需要直接对 Docker 进行配置。</p>
+<h2>🛠️ Docker 代理配置</h2>
+<h3>1. 配置环境变量</h3>
+<p>首先，创建或编辑 <code>/etc/systemd/system/docker.service.d/http-proxy.conf</code> 文件：</p>
+<div class="language-bash line-numbers-mode" data-highlighter="shiki" data-ext="bash" data-title="bash" style="--shiki-light:#383A42;--shiki-dark:#abb2bf;--shiki-light-bg:#FAFAFA;--shiki-dark-bg:#282c34"><pre class="shiki shiki-themes one-light one-dark-pro vp-code"><code><span class="line"><span style="--shiki-light:#4078F2;--shiki-dark:#61AFEF">sudo</span><span style="--shiki-light:#50A14F;--shiki-dark:#98C379"> mkdir</span><span style="--shiki-light:#986801;--shiki-dark:#D19A66"> -p</span><span style="--shiki-light:#50A14F;--shiki-dark:#98C379"> /etc/systemd/system/docker.service.d</span></span>
+<span class="line"><span style="--shiki-light:#4078F2;--shiki-dark:#61AFEF">sudo</span><span style="--shiki-light:#50A14F;--shiki-dark:#98C379"> vim</span><span style="--shiki-light:#50A14F;--shiki-dark:#98C379"> /etc/systemd/system/docker.service.d/http-proxy.conf</span></span></code></pre>
+<div class="line-numbers" aria-hidden="true" style="counter-reset:line-number 0"><div class="line-number"></div><div class="line-number"></div></div></div><p>在文件中输入如下内容：</p>
+<div class="language-bash line-numbers-mode" data-highlighter="shiki" data-ext="bash" data-title="bash" style="--shiki-light:#383A42;--shiki-dark:#abb2bf;--shiki-light-bg:#FAFAFA;--shiki-dark-bg:#282c34"><pre class="shiki shiki-themes one-light one-dark-pro vp-code"><code><span class="line"><span style="--shiki-light:#383A42;--shiki-dark:#ABB2BF">[Service]</span></span>
+<span class="line"><span style="--shiki-light:#E45649;--shiki-dark:#E06C75">Environment</span><span style="--shiki-light:#383A42;--shiki-dark:#56B6C2">=</span><span style="--shiki-light:#50A14F;--shiki-dark:#98C379">"HTTP_PROXY=http://proxy_address:port"</span></span>
+<span class="line"><span style="--shiki-light:#E45649;--shiki-dark:#E06C75">Environment</span><span style="--shiki-light:#383A42;--shiki-dark:#56B6C2">=</span><span style="--shiki-light:#50A14F;--shiki-dark:#98C379">"HTTPS_PROXY=http://proxy_address:port"</span></span>
+<span class="line"><span style="--shiki-light:#E45649;--shiki-dark:#E06C75">Environment</span><span style="--shiki-light:#383A42;--shiki-dark:#56B6C2">=</span><span style="--shiki-light:#50A14F;--shiki-dark:#98C379">"NO_PROXY=localhost,127.0.0.1,.example.com"</span></span></code></pre>
+<div class="line-numbers" aria-hidden="true" style="counter-reset:line-number 0"><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div></div></div><p>这里分别设置了 <code>HTTP_PROXY</code>、<code>HTTPS_PROXY</code> 和 <code>NO_PROXY</code> 等参数。</p>
+<h3>2. 重新加载 systemctl 环境变量</h3>
+<p>执行以下命令以重新加载配置：</p>
+<div class="language-bash line-numbers-mode" data-highlighter="shiki" data-ext="bash" data-title="bash" style="--shiki-light:#383A42;--shiki-dark:#abb2bf;--shiki-light-bg:#FAFAFA;--shiki-dark-bg:#282c34"><pre class="shiki shiki-themes one-light one-dark-pro vp-code"><code><span class="line"><span style="--shiki-light:#4078F2;--shiki-dark:#61AFEF">sudo</span><span style="--shiki-light:#50A14F;--shiki-dark:#98C379"> systemctl</span><span style="--shiki-light:#50A14F;--shiki-dark:#98C379"> daemon-reload</span></span></code></pre>
+<div class="line-numbers" aria-hidden="true" style="counter-reset:line-number 0"><div class="line-number"></div></div></div><h3>3. 重启 Docker 服务</h3>
+<p>最后，重启 Docker 服务以应用新的代理设置：</p>
+<div class="language-bash line-numbers-mode" data-highlighter="shiki" data-ext="bash" data-title="bash" style="--shiki-light:#383A42;--shiki-dark:#abb2bf;--shiki-light-bg:#FAFAFA;--shiki-dark-bg:#282c34"><pre class="shiki shiki-themes one-light one-dark-pro vp-code"><code><span class="line"><span style="--shiki-light:#4078F2;--shiki-dark:#61AFEF">sudo</span><span style="--shiki-light:#50A14F;--shiki-dark:#98C379"> systemctl</span><span style="--shiki-light:#50A14F;--shiki-dark:#98C379"> restart</span><span style="--shiki-light:#50A14F;--shiki-dark:#98C379"> docker</span></span></code></pre>
+<div class="line-numbers" aria-hidden="true" style="counter-reset:line-number 0"><div class="line-number"></div></div></div><p>完成上述步骤后，重新拉取 Docker 镜像即可。🚀</p>
+]]></content:encoded>
     </item>
     <item>
       <title>🏠 个人的NAS最佳实践</title>
