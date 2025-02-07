@@ -35,5 +35,8 @@ export default sidebar({
   "/linux":[
     "docker-proxy.md",
     "link.md"
+  ],
+  "/windows":[
+    "ollama.md"
   ]
 });

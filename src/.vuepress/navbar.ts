@@ -13,6 +13,11 @@ export default navbar([
     link: "/linux/"
   },
   {
+    text: "Win",
+    icon: "fab fa-windows",
+    link: "/windows/"
+  },
+  {
     text: "编程相关",
     icon: "pen-to-square",
     link: "/code/"

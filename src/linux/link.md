@@ -2,7 +2,7 @@
 title: 硬链接与软链接、复制与移动的区别
 isOriginal: true
 category:
-    - NAS
+    - Linux
 tag: 
     - 硬链接
     - 软链接
