@@ -21,5 +21,10 @@ export default navbar([
     text: "编程相关",
     icon: "pen-to-square",
     link: "/code/"
+  },
+  {
+    text: "学习笔记",
+    icon: "book",
+    link: "/note/"
   }
 ]);

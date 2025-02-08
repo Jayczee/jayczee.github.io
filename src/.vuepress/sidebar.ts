@@ -38,5 +38,8 @@ export default sidebar({
   ],
   "/windows":[
     "ollama.md"
+  ],
+  "/note":[
+    "mysql.md"
   ]
 });

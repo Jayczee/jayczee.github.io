@@ -14,6 +14,8 @@ export default hopeTheme({
 
   repo: "Jayczee/jayczee.github.io",
 
+  lastUpdated: true,
+
   docsDir: "src",
 
   // 导航栏
