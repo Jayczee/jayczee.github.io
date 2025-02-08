@@ -6,21 +6,77 @@
     <link>https://jayczee.cn/</link>
     <description>Whispering for nothing</description>
     <language>zh-CN</language>
-    <pubDate>Tue, 21 Jan 2025 09:11:11 GMT</pubDate>
-    <lastBuildDate>Tue, 21 Jan 2025 09:11:11 GMT</lastBuildDate>
+    <pubDate>Sat, 08 Feb 2025 10:09:00 GMT</pubDate>
+    <lastBuildDate>Sat, 08 Feb 2025 10:09:00 GMT</lastBuildDate>
     <generator>@vuepress/plugin-feed</generator>
     <docs>https://validator.w3.org/feed/docs/rss2.html</docs>
+    <category>学习笔记</category>
+    <category>Windows</category>
+    <category>Linux</category>
     <category>NAS</category>
     <category>爬虫</category>
     <category>fedex</category>
     <category>python</category>
+    <item>
+      <title>《MySQL是怎样运行的：从根上理解MySQL》</title>
+      <link>https://jayczee.cn/note/mysql.html</link>
+      <guid>https://jayczee.cn/note/mysql.html</guid>
+      <source url="https://jayczee.cn/rss.xml">《MySQL是怎样运行的：从根上理解MySQL》</source>
+      <description>感谢原书作者 感谢原书作者的总结，原书地址：原书地址 免费分享出来的Github Page：Github Page 有机会还是付费支持一下原作者，此处仅总结个人学习到的知识点，不展开说明。 第一章 MySQL是C/S架构的，默认使用TCP协议通信。 mysqld是服务端程序，可用于直接启动一个mysqld进程。 mysqld_safe是一个脚本，用于启...</description>
+      <category>学习笔记</category>
+      <pubDate>Sat, 08 Feb 2025 10:08:16 GMT</pubDate>
+      <content:encoded><![CDATA[<h2>感谢原书作者</h2>
+<p>感谢原书作者的总结，原书地址：<a href="https://juejin.cn/book/6844733769996304392" target="_blank" rel="noopener noreferrer">原书地址</a></p>
+<p>免费分享出来的Github Page：<a href="https://relph1119.github.io/mysql-learning-notes/#/" target="_blank" rel="noopener noreferrer">Github Page</a></p>
+<p>有机会还是付费支持一下原作者，此处仅总结个人学习到的知识点，不展开说明。</p>
+<h2>第一章</h2>
+<ol>
+<li><strong>MySQL是C/S架构的</strong>，默认使用TCP协议通信。</li>
+<li><strong>mysqld</strong>是服务端程序，可用于直接启动一个mysqld进程。</li>
+<li><strong>mysqld_safe</strong>是一个脚本，用于启动mysqld的同时启动一个守护进程，当mysqld挂掉时重启，还会将错误信息日志等重定向到别的文件中方便调查。</li>
+<li><strong>mysql.server</strong>间接调用mysql_safe，用于启动和停止MySQL服务器的脚本。</li>
+<li><strong>mysql</strong>用于启动客户端程序与服务端进行通信，启动参数可使用<code>-h</code>指定服务器地址，<code>-u</code>指定用户，<code>-p</code>指定密码。</li>
+<li><strong>mysqld</strong>启动时使用<code>-P</code>指定监听端口，同样客户端mysql启动时也可以使用<code>-P</code>指定服务端端口。</li>
+<li>服务端处理客户端查询请求大致分为<strong>连接管理</strong>、<strong>解析与优化</strong>、<strong>存储引擎</strong>三个部分，如下图:</li>
+</ol>
+<figure><img src="/assets/images/note/mysql/m-1.png" alt="MySQL客户端处理客户端请求" tabindex="0" loading="lazy"><figcaption>MySQL客户端处理客户端请求</figcaption></figure>
+<ol start="8">
+<li>服务端与客户端建立连接后，服务端会创建一个线程处理该客户端的请求。当连接断开后，该线程会放入缓存，避免频繁创建与销毁线程带来的开销。</li>
+<li>连接创建后，需要经过解析与优化，分别是<strong>查询缓存</strong>、<strong>语法解析</strong>、<strong>查询优化</strong>。</li>
+<li>查询缓存只有查询语句SQL与先前的SQL一模一样时才有机会命中缓存，任何的不同都不会命中。</li>
+<li>包含某些系统函数（比如NOW）、用户自定义变量与函数以及系统表的SQL的查询结果不会被缓存。</li>
+<li>如果某表被更新，那么相关的缓存全都会失效。</li>
+<li>如果缓存未命中，则进入语法解析阶段。</li>
+<li>语法解析完成后进入查询优化，最终会生成一个执行计划。可以使用<code>EXPLAIN</code>命令查看。截止到目前为止尚未访问真实表。</li>
+<li><strong>查询缓存</strong>、<strong>语法解析</strong>、<strong>查询优化</strong>划分为<strong>Mysql Server</strong>的功能，而真实存取数据的功能划分为<strong>存储引擎</strong>的功能。各种存储引擎向<strong>Mysql Server</strong>层提供统一的调用接口（存储引擎API）。</li>
+<li><strong>Mysql Server</strong>完成查询优化后，根据生成的执行计划调用存储引擎API，直接返回数据。</li>
+<li>Mysql存储引擎包含：</li>
+</ol>
+<p>| 存储引擎   | 描述                                   |<br>
+|</p>
+]]></content:encoded>
+      <enclosure url="https://jayczee.cn/assets/images/note/mysql/m-1.png" type="image/png"/>
+    </item>
+    <item>
+      <title>Ollama本地部署Deepseek R1</title>
+      <link>https://jayczee.cn/windows/ollama.html</link>
+      <guid>https://jayczee.cn/windows/ollama.html</guid>
+      <source url="https://jayczee.cn/rss.xml">Ollama本地部署Deepseek R1</source>
+      <description>Ollama LogoOllama Logo Ollama是一个创新的平台，旨在简化人工智能模型的使用与部署。用户可以轻松地下载、运行和管理各种AI模型，而无需深入的技术背景。Ollama提供了友好的用户界面，使得开发者和研究人员能够快速实现他们的想法，并将AI应用于实际项目中。无论是文本生成、图像处理还是其他机器学习任务，Ollama都能提供高效的解...</description>
+      <category>Windows</category>
+      <pubDate>Fri, 07 Feb 2025 06:17:35 GMT</pubDate>
+      <content:encoded><![CDATA[<figure><img src="/assets/images/windows/ollama/ollama.png" alt="Ollama Logo" tabindex="0" loading="lazy"><figcaption>Ollama Logo</figcaption></figure>
+<p>Ollama是一个创新的平台，旨在简化人工智能模型的使用与部署。用户可以轻松地下载、运行和管理各种AI模型，而无需深入的技术背景。Ollama提供了友好的用户界面，使得开发者和研究人员能够快速实现他们的想法，并将AI应用于实际项目中。无论是文本生成、图像处理还是其他机器学习任务，Ollama都能提供高效的解决方案，助力用户在AI领域的探索与实践。</p>
+]]></content:encoded>
+      <enclosure url="https://jayczee.cn/assets/images/windows/ollama/ollama.png" type="image/png"/>
+    </item>
     <item>
       <title>硬链接与软链接、复制与移动的区别</title>
       <link>https://jayczee.cn/linux/link.html</link>
       <guid>https://jayczee.cn/linux/link.html</guid>
       <source url="https://jayczee.cn/rss.xml">硬链接与软链接、复制与移动的区别</source>
       <description>在计算机的文件系统中，硬链接、软链接、复制和移动是非常常见的操作。理解这些操作的区别，不仅能帮助提高文件管理的效率，还能避免不必要的数据丢失。下面将详细介绍这些概念及其在 Debian 系统下的具体操作方法。 🔗 硬链接 硬链接是一种直接指向文件数据的引用方式。可以理解为多个文件名指向同一份文件内容。 🌟 特点 相同的 inode：硬链接与原始文件...</description>
-      <category>NAS</category>
+      <category>Linux</category>
       <pubDate>Mon, 20 Jan 2025 07:37:31 GMT</pubDate>
       <content:encoded><![CDATA[<p>在计算机的文件系统中，硬链接、软链接、复制和移动是非常常见的操作。理解这些操作的区别，不仅能帮助提高文件管理的效率，还能避免不必要的数据丢失。下面将详细介绍这些概念及其在 Debian 系统下的具体操作方法。</p>
 <h2>🔗 硬链接</h2>
@@ -306,7 +362,7 @@
       <guid>https://jayczee.cn/linux/docker-proxy.html</guid>
       <source url="https://jayczee.cn/rss.xml">Docker 镜像加速/代理</source>
       <description>在国内，Docker Hub 镜像源的情况不容乐观，无论是清华大学镜像源，还是阿里镜像加速，统统都已经失效。国内现在已经不允许开设 Docker 镜像加速服务，唯一的办法仍然是走代理。🌐 Docker 拉取镜像是由 Docker daemon 进行的，因此简单的环境变量设置如： 已经无法满足需求，需要直接对 Docker 进行配置。 🛠️ Dock...</description>
-      <category>NAS</category>
+      <category>Linux</category>
       <pubDate>Fri, 10 Jan 2025 10:15:51 GMT</pubDate>
       <content:encoded><![CDATA[<p>在国内，Docker Hub 镜像源的情况不容乐观，无论是清华大学镜像源，还是阿里镜像加速，统统都已经失效。国内现在已经不允许开设 Docker 镜像加速服务，唯一的办法仍然是走代理。🌐</p>
 <p>Docker 拉取镜像是由 Docker daemon 进行的，因此简单的环境变量设置如：</p>
