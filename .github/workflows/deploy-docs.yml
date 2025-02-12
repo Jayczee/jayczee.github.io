@@ -53,10 +53,13 @@ jobs:
           branch: gh-pages
           folder: src/.vuepress/dist
       
-      - name: 部署文档到服务器
-        env:
-          REMOTE_HOST: ${{ secrets.REMOTE_HOST }}
-          REMOTE_USER: ${{ secrets.REMOTE_USER }}
-          REMOTE_PASSWORD: ${{ secrets.REMOTE_PASSWORD }}
+      - name: 设置 SSH 密钥
         run: |
-          echo "$REMOTE_PASSWORD" | scp -o StrictHostKeyChecking=no -o UserKnownHostsFile=/dev/null -r src/.vuepress/dist/* $REMOTE_USER@$REMOTE_HOST:/www/jayczee-docs
+          mkdir -p ~/.ssh
+          echo "${{ secrets.SSH_PRIVATE_KEY }}" > ~/.ssh/id_rsa
+          chmod 600 ~/.ssh/id_rsa
+        
+      - name: 部署文档到服务器
+        run: |
+          scp -o StrictHostKeyChecking=no -o UserKnownHostsFile=/dev/null -r src/.vuepress/dist/* $REMOTE_USER@$REMOTE_HOST:/www/jayczee-docs
+        
