@@ -168,12 +168,12 @@ export default hopeTheme({
     //   provider: "Waline",
     //   serverURL: "https://waline-comment.vuejs.press",
     // },
-    docsearch: {
-      appId: "BFEXNC7ACK",
-      apiKey: "f7e83ed3f5abdc80d95b0f4a7251fe00",
-      indexName: "jayczeeio",
-      placeholder: '搜索本站'
-    },
+    // docsearch: {
+    //   appId: "BFEXNC7ACK",
+    //   apiKey: "f7e83ed3f5abdc80d95b0f4a7251fe00",
+    //   indexName: "jayczeeio",
+    //   placeholder: '搜索本站'
+    // },
     comment: {
       provider: 'Giscus',
       comment: true,

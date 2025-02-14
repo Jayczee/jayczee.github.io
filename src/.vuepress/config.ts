@@ -1,7 +1,7 @@
 import { defineUserConfig } from "vuepress";
 import { getDirname, path } from "vuepress/utils";
 import theme from "./theme.js";
-import { searchConsolePlugin } from 'vuepress-plugin-china-search-console'
+import { slimsearchPlugin } from '@vuepress/plugin-slimsearch'
 
 const __dirname = getDirname(import.meta.url);
 
@@ -27,6 +27,11 @@ export default defineUserConfig({
   ],
 
   plugins:[
+    slimsearchPlugin({
+      // 配置项
+      indexContent: true,
+      suggestion: false
+    }),
   ]
   // 和 PWA 一起启用
   // shouldPrefetch: false,
