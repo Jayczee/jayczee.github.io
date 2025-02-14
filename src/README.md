@@ -40,6 +40,6 @@ description: A blog for anything I wanna note down...
 #     desc: 自定义详细介绍
 #     link: https://你的自定义链接
 
-footer: 随便记点啥
+footer: 浙ICP备2025150833
 ---
 

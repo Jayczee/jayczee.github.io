@@ -25,7 +25,7 @@ export default hopeTheme({
   sidebar,
 
   // 页脚
-  footer: "随便记点啥吧",
+  footer: "浙ICP备2025150833",
   displayFooter: true,
 
   // 博客相关
