@@ -9,6 +9,10 @@ on:
 permissions:
   contents: write
 
+concurrency:
+  group: ${{ github.ref }}  # 使用分支名作为分组
+  cancel-in-progress: true   # 取消进行中的工作流
+
 jobs:
   deploy-gh-pages:
     runs-on: ubuntu-latest

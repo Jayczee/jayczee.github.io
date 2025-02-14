@@ -25,6 +25,7 @@ export default defineUserConfig({
     ['meta', {name: 'baidu-site-verification', content: 'codeva-A6fpwUixCj'}],
     ['meta', {name: 'bytedance-verification-code', content: 'ZlYWRrDBxWLFrd/pzdTw'}],
     ['meta', {name: 'shenma-site-verification', content: 'b27a1373bace84bc712ba22193609294_1739525350'}],
+    ['meta', {name: 'sogou_site_verification', content: 'OsiJ6xphrh'}],
   ],
 
   plugins:[
