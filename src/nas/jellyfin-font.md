@@ -1,5 +1,5 @@
 ---
-title: 🎬 Jellyfin 字幕显示方框
+title: Jellyfin 字幕显示方框
 isOriginal: true
 category:
     - NAS
