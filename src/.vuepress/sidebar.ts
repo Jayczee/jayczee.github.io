@@ -27,7 +27,8 @@ export default sidebar({
       ]
     },
     "qbit-category.md",
-    "jellyfin-encode-decode.md"
+    "jellyfin-encode-decode.md",
+    "jellyfin-font.md"
   ],
   "/code":[
     "fedex-crawler.md"
