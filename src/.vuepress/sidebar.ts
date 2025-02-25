@@ -48,7 +48,7 @@ export default sidebar({
       expanded: false,
       prefix: "leet150/",
       children: [
-        "leet088.md"
+        "1-leet088.md","2-leet027.md"
       ]
     },
   ]
