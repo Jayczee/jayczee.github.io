@@ -6,8 +6,8 @@
     <link>https://jayczee.cn/</link>
     <description>Whispering for nothing</description>
     <language>zh-CN</language>
-    <pubDate>Mon, 24 Feb 2025 10:09:24 GMT</pubDate>
-    <lastBuildDate>Mon, 24 Feb 2025 10:09:24 GMT</lastBuildDate>
+    <pubDate>Tue, 25 Feb 2025 07:03:55 GMT</pubDate>
+    <lastBuildDate>Tue, 25 Feb 2025 07:03:55 GMT</lastBuildDate>
     <generator>@vuepress/plugin-feed</generator>
     <docs>https://validator.w3.org/feed/docs/rss2.html</docs>
     <category>学习笔记</category>
@@ -22,14 +22,14 @@
       <link>https://jayczee.cn/note/mysql.html</link>
       <guid>https://jayczee.cn/note/mysql.html</guid>
       <source url="https://jayczee.cn/rss.xml">《MySQL是怎样运行的：从根上理解MySQL》</source>
-      <description>感谢原书作者 感谢原书作者的总结，原书地址：原书地址 免费分享出来的Github Page：Github Page 有机会还是付费支持一下原作者，此处仅总结个人学习到的知识点，不展开说明。 第一章 MySQL是C/S架构的，默认使用TCP协议通信。 mysqld是服务端程序，可用于直接启动一个mysqld进程。 mysqld_safe是一个脚本，用于启...</description>
+      <description>感谢原书作者 感谢原书作者的总结，原书地址：原书地址 免费分享出来的Github Page：Github Page 有机会还是付费支持一下原作者，此处仅总结个人学习到的知识点，不展开说明。 第一章 重新认识MYSQL MySQL是C/S架构的，默认使用TCP协议通信。 mysqld是服务端程序，可用于直接启动一个mysqld进程。 mysqld_saf...</description>
       <category>学习笔记</category>
       <pubDate>Sat, 08 Feb 2025 10:08:16 GMT</pubDate>
       <content:encoded><![CDATA[<h2>感谢原书作者</h2>
 <p>感谢原书作者的总结，原书地址：<a href="https://juejin.cn/book/6844733769996304392" target="_blank" rel="noopener noreferrer">原书地址</a></p>
 <p>免费分享出来的Github Page：<a href="https://relph1119.github.io/mysql-learning-notes/#/" target="_blank" rel="noopener noreferrer">Github Page</a></p>
 <p>有机会还是付费支持一下原作者，此处仅总结个人学习到的知识点，不展开说明。</p>
-<h2>第一章</h2>
+<h2>第一章 重新认识MYSQL</h2>
 <ol>
 <li><strong>MySQL是C/S架构的</strong>，默认使用TCP协议通信。</li>
 <li><strong>mysqld</strong>是服务端程序，可用于直接启动一个mysqld进程。</li>
