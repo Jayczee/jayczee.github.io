@@ -41,6 +41,15 @@ export default sidebar({
     "ollama.md"
   ],
   "/note":[
-    "mysql.md"
+    "mysql.md",
+    {
+      text: "LeetCode面试经典150题",
+      collapsible: true,
+      expanded: false,
+      prefix: "leet150/",
+      children: [
+        "leet088.md"
+      ]
+    },
   ]
 });

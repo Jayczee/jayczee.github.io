@@ -1,5 +1,5 @@
 ---
-title: 《MySQL是怎样运行的：从根上理解MySQL》
+title: 《MySQL是怎样运行的：从根上理解MySQL》 part 1
 category:
     - 学习笔记
 tag:
