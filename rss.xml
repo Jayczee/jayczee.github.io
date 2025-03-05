@@ -6,8 +6,8 @@
     <link>https://jayczee.cn/</link>
     <description>Whispering for nothing</description>
     <language>zh-CN</language>
-    <pubDate>Wed, 05 Mar 2025 08:55:12 GMT</pubDate>
-    <lastBuildDate>Wed, 05 Mar 2025 08:55:12 GMT</lastBuildDate>
+    <pubDate>Wed, 05 Mar 2025 10:14:25 GMT</pubDate>
+    <lastBuildDate>Wed, 05 Mar 2025 10:14:25 GMT</lastBuildDate>
     <generator>@vuepress/plugin-feed</generator>
     <docs>https://validator.w3.org/feed/docs/rss2.html</docs>
     <category>LeetCode</category>
@@ -19,15 +19,45 @@
     <category>fedex</category>
     <category>python</category>
     <item>
+      <title>045 跳跃游戏 II</title>
+      <link>https://jayczee.cn/note/leet150/10-leet045.html</link>
+      <guid>https://jayczee.cn/note/leet150/10-leet045.html</guid>
+      <source url="https://jayczee.cn/rss.xml">045 跳跃游戏 II</source>
+      <description>🔗 相关链接 跳跃游戏 II 📜 题目描述 给定一个长度为 n 的 0 索引整数数组 nums。初始位置为 nums[0]。 每个元素 nums[i] 表示从索引 i 向后跳转的最大长度。换句话说，如果在 nums[i] 处，可以跳转到任意 nums[i + j] 处，条件如下： (0 \leq j \leq nums[i]) (i + j &amp;lt; n...</description>
+      <category>LeetCode</category>
+      <pubDate>Wed, 05 Mar 2025 09:43:46 GMT</pubDate>
+      <content:encoded><![CDATA[<h2>🔗 相关链接</h2>
+<p><a href="https://leetcode.cn/problems/jump-game/?envType=study-plan-v2&amp;envId=top-interview-150" target="_blank" rel="noopener noreferrer">跳跃游戏 II</a></p>
+<h2>📜 题目描述</h2>
+<p>给定一个长度为 <code>n</code> 的 0 索引整数数组 <code>nums</code>。初始位置为 <code>nums[0]</code>。</p>
+<p>每个元素 <code>nums[i]</code> 表示从索引 <code>i</code> 向后跳转的最大长度。换句话说，如果在 <code>nums[i]</code> 处，可以跳转到任意 <code>nums[i + j]</code> 处，条件如下：</p>
+<ul>
+<li>(0 \leq j \leq nums[i])</li>
+<li>(i + j &lt; n)</li>
+</ul>
+<h2>🎯 目标</h2>
+<p>返回到达 <code>nums[n - 1]</code> 的最小跳跃次数。生成的测试用例可以到达 <code>nums[n - 1]</code>。</p>
+<h2>📊 示例</h2>
+<h3>示例 1</h3>
+<p><strong>输入：</strong></p>
+<div class="language-plaintext line-numbers-mode" data-highlighter="shiki" data-ext="plaintext" data-title="plaintext" style="--shiki-light:#383A42;--shiki-dark:#abb2bf;--shiki-light-bg:#FAFAFA;--shiki-dark-bg:#282c34"><pre class="shiki shiki-themes one-light one-dark-pro vp-code"><code><span class="line"><span>nums = [2, 3, 1, 1, 4]</span></span></code></pre>
+<div class="line-numbers" aria-hidden="true" style="counter-reset:line-number 0"><div class="line-number"></div></div></div><p><strong>输出：</strong></p>
+<div class="language-plaintext line-numbers-mode" data-highlighter="shiki" data-ext="plaintext" data-title="plaintext" style="--shiki-light:#383A42;--shiki-dark:#abb2bf;--shiki-light-bg:#FAFAFA;--shiki-dark-bg:#282c34"><pre class="shiki shiki-themes one-light one-dark-pro vp-code"><code><span class="line"><span>2</span></span></code></pre>
+<div class="line-numbers" aria-hidden="true" style="counter-reset:line-number 0"><div class="line-number"></div></div></div><p><strong>解释：</strong><br>
+跳到最后一个位置的最小跳跃数是 2。<br>
+从下标为 0 跳到下标为 1 的位置，跳 1 步，然后跳 3 步到达数组的最后一个位置。</p>
+]]></content:encoded>
+    </item>
+    <item>
       <title>055 跳跃游戏</title>
       <link>https://jayczee.cn/note/leet150/9-leet055.html</link>
       <guid>https://jayczee.cn/note/leet150/9-leet055.html</guid>
       <source url="https://jayczee.cn/rss.xml">055 跳跃游戏</source>
-      <description>🔗 相关链接 无 📜 题目描述 给定一个非负整数数组 nums，最初位于数组的第一个下标。数组中的每个元素代表在该位置可以跳跃的最大长度。 🎯 目标 判断是否能够到达最后一个下标。如果可以，返回 true；否则，返回 false。 📊 示例 示例 1 输入： 输出： 解释： 可以先跳 1 步，从下标 0 到达下标 1，然后再从下标 1 跳 3 ...</description>
+      <description>🔗 相关链接 跳跃游戏 📜 题目描述 给定一个非负整数数组 nums，最初位于数组的第一个下标。数组中的每个元素代表在该位置可以跳跃的最大长度。 🎯 目标 判断是否能够到达最后一个下标。如果可以，返回 true；否则，返回 false。 📊 示例 示例 1 输入： 输出： 解释： 可以先跳 1 步，从下标 0 到达下标 1，然后再从下标 1 跳...</description>
       <category>LeetCode</category>
       <pubDate>Wed, 05 Mar 2025 08:52:19 GMT</pubDate>
       <content:encoded><![CDATA[<h2>🔗 相关链接</h2>
-<p>无</p>
+<p><a href="https://leetcode.cn/problems/jump-game/?envType=study-plan-v2&amp;envId=top-interview-150" target="_blank" rel="noopener noreferrer">跳跃游戏</a></p>
 <h2>📜 题目描述</h2>
 <p>给定一个非负整数数组 <code>nums</code>，最初位于数组的第一个下标。数组中的每个元素代表在该位置可以跳跃的最大长度。</p>
 <h2>🎯 目标</h2>
@@ -724,8 +754,8 @@
     </item>
     <item>
       <title>Ollama本地部署Deepseek R1</title>
-      <link>https://jayczee.cn/windows/ollama.html</link>
-      <guid>https://jayczee.cn/windows/ollama.html</guid>
+      <link>https://jayczee.cn/win_linux/ollama.html</link>
+      <guid>https://jayczee.cn/win_linux/ollama.html</guid>
       <source url="https://jayczee.cn/rss.xml">Ollama本地部署Deepseek R1</source>
       <description>Ollama LogoOllama Logo Ollama是一个创新的平台，旨在简化人工智能模型的使用与部署。用户可以轻松地下载、运行和管理各种AI模型，而无需深入的技术背景。Ollama提供了友好的用户界面，使得开发者和研究人员能够快速实现他们的想法，并将AI应用于实际项目中。无论是文本生成、图像处理还是其他机器学习任务，Ollama都能提供高效的解...</description>
       <category>Windows</category>
@@ -737,8 +767,8 @@
     </item>
     <item>
       <title>硬链接与软链接、复制与移动的区别</title>
-      <link>https://jayczee.cn/linux/link.html</link>
-      <guid>https://jayczee.cn/linux/link.html</guid>
+      <link>https://jayczee.cn/win_linux/link.html</link>
+      <guid>https://jayczee.cn/win_linux/link.html</guid>
       <source url="https://jayczee.cn/rss.xml">硬链接与软链接、复制与移动的区别</source>
       <description>在计算机的文件系统中，硬链接、软链接、复制和移动是非常常见的操作。理解这些操作的区别，不仅能帮助提高文件管理的效率，还能避免不必要的数据丢失。下面将详细介绍这些概念及其在 Debian 系统下的具体操作方法。 🔗 硬链接 硬链接是一种直接指向文件数据的引用方式。可以理解为多个文件名指向同一份文件内容。 🌟 特点 相同的 inode：硬链接与原始文件...</description>
       <category>Linux</category>
@@ -1023,8 +1053,8 @@
     </item>
     <item>
       <title>Docker 镜像加速/代理</title>
-      <link>https://jayczee.cn/linux/docker-proxy.html</link>
-      <guid>https://jayczee.cn/linux/docker-proxy.html</guid>
+      <link>https://jayczee.cn/win_linux/docker-proxy.html</link>
+      <guid>https://jayczee.cn/win_linux/docker-proxy.html</guid>
       <source url="https://jayczee.cn/rss.xml">Docker 镜像加速/代理</source>
       <description>在国内，Docker Hub 镜像源的情况不容乐观，无论是清华大学镜像源，还是阿里镜像加速，统统都已经失效。国内现在已经不允许开设 Docker 镜像加速服务，唯一的办法仍然是走代理。🌐 Docker 拉取镜像是由 Docker daemon 进行的，因此简单的环境变量设置如： 已经无法满足需求，需要直接对 Docker 进行配置。 🛠️ Dock...</description>
       <category>Linux</category>
@@ -1186,7 +1216,7 @@
 <p><a href="https://hub.docker.com" target="_blank" rel="noopener noreferrer">Docker Hub</a>是一个Docker镜像站（需要开启代理访问），里面包含了大量镜像资源，也是docker pull命令默认拉取的镜像仓库。</p>
 <h2>📰 相关文章</h2>
 <ul>
-<li>📦 <a href="/linux/docker-proxy.html" target="_blank">Docker 镜像加速/代理</a></li>
+<li>📦 <a href="/win_linux/docker-proxy.html" target="_blank">Docker 镜像加速/代理</a></li>
 </ul>
 ]]></content:encoded>
     </item>
@@ -1293,7 +1323,7 @@
 <p>自动整理选择<code>目录监控</code>，每当 qbittorrent 下载新的媒体文件时都能自动进行整理。</p>
 <p>监控模式选择<code>性能模式</code>。</p>
 <p>目录输入一个自定义的文件整理后的目录。</p>
-<p>整理方式选择硬链接 (相关文档: <a href="/linux/link.html" target="_blank">软硬链接的区别</a>)，覆盖模式选择保留最新文件。</p>
+<p>整理方式选择硬链接 (相关文档: <a href="/win_linux/link.html" target="_blank">软硬链接的区别</a>)，覆盖模式选择保留最新文件。</p>
 <div class="hint-container tip">
 <p class="hint-container-title">提示</p>
 <p>我个人的目录结构如下：</p>
