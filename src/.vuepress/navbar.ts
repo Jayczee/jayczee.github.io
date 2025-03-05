@@ -8,14 +8,9 @@ export default navbar([
     link: "/nas/",
   },
   {
-    text: "Linux",
+    text: "Win & Linux",
     icon: "fab fa-linux",
-    link: "/linux/"
-  },
-  {
-    text: "Win",
-    icon: "fab fa-windows",
-    link: "/windows/"
+    link: "/win_linux/"
   },
   {
     text: "编程相关",

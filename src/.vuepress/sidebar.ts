@@ -33,12 +33,8 @@ export default sidebar({
   "/code":[
     "fedex-crawler.md"
   ],
-  "/linux":[
-    "docker-proxy.md",
-    "link.md"
-  ],
-  "/windows":[
-    "ollama.md"
+  "/win_linux":[
+    "docker-proxy.md","link.md","ollama.md"
   ],
   "/note":[
     "mysql.md",
