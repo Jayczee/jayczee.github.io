@@ -6,8 +6,8 @@
     <link>https://jayczee.cn/</link>
     <description>Whispering for nothing</description>
     <language>zh-CN</language>
-    <pubDate>Fri, 28 Feb 2025 10:14:46 GMT</pubDate>
-    <lastBuildDate>Fri, 28 Feb 2025 10:14:46 GMT</lastBuildDate>
+    <pubDate>Wed, 05 Mar 2025 08:55:12 GMT</pubDate>
+    <lastBuildDate>Wed, 05 Mar 2025 08:55:12 GMT</lastBuildDate>
     <generator>@vuepress/plugin-feed</generator>
     <docs>https://validator.w3.org/feed/docs/rss2.html</docs>
     <category>LeetCode</category>
@@ -18,6 +18,130 @@
     <category>爬虫</category>
     <category>fedex</category>
     <category>python</category>
+    <item>
+      <title>055 跳跃游戏</title>
+      <link>https://jayczee.cn/note/leet150/9-leet055.html</link>
+      <guid>https://jayczee.cn/note/leet150/9-leet055.html</guid>
+      <source url="https://jayczee.cn/rss.xml">055 跳跃游戏</source>
+      <description>🔗 相关链接 无 📜 题目描述 给定一个非负整数数组 nums，最初位于数组的第一个下标。数组中的每个元素代表在该位置可以跳跃的最大长度。 🎯 目标 判断是否能够到达最后一个下标。如果可以，返回 true；否则，返回 false。 📊 示例 示例 1 输入： 输出： 解释： 可以先跳 1 步，从下标 0 到达下标 1，然后再从下标 1 跳 3 ...</description>
+      <category>LeetCode</category>
+      <pubDate>Wed, 05 Mar 2025 08:52:19 GMT</pubDate>
+      <content:encoded><![CDATA[<h2>🔗 相关链接</h2>
+<p>无</p>
+<h2>📜 题目描述</h2>
+<p>给定一个非负整数数组 <code>nums</code>，最初位于数组的第一个下标。数组中的每个元素代表在该位置可以跳跃的最大长度。</p>
+<h2>🎯 目标</h2>
+<p>判断是否能够到达最后一个下标。如果可以，返回 <code>true</code>；否则，返回 <code>false</code>。</p>
+<h2>📊 示例</h2>
+<h3>示例 1</h3>
+<p><strong>输入：</strong></p>
+<div class="language-plaintext line-numbers-mode" data-highlighter="shiki" data-ext="plaintext" data-title="plaintext" style="--shiki-light:#383A42;--shiki-dark:#abb2bf;--shiki-light-bg:#FAFAFA;--shiki-dark-bg:#282c34"><pre class="shiki shiki-themes one-light one-dark-pro vp-code"><code><span class="line"><span>nums = [2, 3, 1, 1, 4]</span></span></code></pre>
+<div class="line-numbers" aria-hidden="true" style="counter-reset:line-number 0"><div class="line-number"></div></div></div><p><strong>输出：</strong></p>
+<div class="language-plaintext line-numbers-mode" data-highlighter="shiki" data-ext="plaintext" data-title="plaintext" style="--shiki-light:#383A42;--shiki-dark:#abb2bf;--shiki-light-bg:#FAFAFA;--shiki-dark-bg:#282c34"><pre class="shiki shiki-themes one-light one-dark-pro vp-code"><code><span class="line"><span>true</span></span></code></pre>
+<div class="line-numbers" aria-hidden="true" style="counter-reset:line-number 0"><div class="line-number"></div></div></div><p><strong>解释：</strong><br>
+可以先跳 1 步，从下标 0 到达下标 1，然后再从下标 1 跳 3 步到达最后一个下标。</p>
+]]></content:encoded>
+    </item>
+    <item>
+      <title>122 买卖股票的最佳时机 II</title>
+      <link>https://jayczee.cn/note/leet150/8-leet122.html</link>
+      <guid>https://jayczee.cn/note/leet150/8-leet122.html</guid>
+      <source url="https://jayczee.cn/rss.xml">122 买卖股票的最佳时机 II</source>
+      <description>🔗 相关链接 买卖股票的最佳时机 II 📜 股票交易最大利润 给定一个整数数组 prices，其中 prices[i] 表示某支股票第 i 天的价格。在每一天，可以决定是否购买和/或出售股票。注意，在任何时候最多只能持有一股股票，也可以选择在同一天买入并出售。 🎯 目标 返回能够获得的最大利润。 📊 示例 示例 1 输入： 输出： 解释： 在第...</description>
+      <category>LeetCode</category>
+      <pubDate>Tue, 04 Mar 2025 03:18:39 GMT</pubDate>
+      <content:encoded><![CDATA[<h2>🔗 相关链接</h2>
+<p><a href="https://leetcode.cn/problems/best-time-to-buy-and-sell-stock-ii/description/?envType=study-plan-v2&amp;envId=top-interview-150" target="_blank" rel="noopener noreferrer">买卖股票的最佳时机 II</a></p>
+<h2>📜 股票交易最大利润</h2>
+<p>给定一个整数数组 <code>prices</code>，其中 <code>prices[i]</code> 表示某支股票第 <code>i</code> 天的价格。在每一天，可以决定是否购买和/或出售股票。注意，在任何时候最多只能持有一股股票，也可以选择在同一天买入并出售。</p>
+<h2>🎯 目标</h2>
+<p>返回能够获得的最大利润。</p>
+<h2>📊 示例</h2>
+<h3>示例 1</h3>
+<p><strong>输入：</strong></p>
+<div class="language-plaintext line-numbers-mode" data-highlighter="shiki" data-ext="plaintext" data-title="plaintext" style="--shiki-light:#383A42;--shiki-dark:#abb2bf;--shiki-light-bg:#FAFAFA;--shiki-dark-bg:#282c34"><pre class="shiki shiki-themes one-light one-dark-pro vp-code"><code><span class="line"><span>prices = [7,1,5,3,6,4]</span></span></code></pre>
+<div class="line-numbers" aria-hidden="true" style="counter-reset:line-number 0"><div class="line-number"></div></div></div><p><strong>输出：</strong></p>
+<div class="language-plaintext line-numbers-mode" data-highlighter="shiki" data-ext="plaintext" data-title="plaintext" style="--shiki-light:#383A42;--shiki-dark:#abb2bf;--shiki-light-bg:#FAFAFA;--shiki-dark-bg:#282c34"><pre class="shiki shiki-themes one-light one-dark-pro vp-code"><code><span class="line"><span>7</span></span></code></pre>
+<div class="line-numbers" aria-hidden="true" style="counter-reset:line-number 0"><div class="line-number"></div></div></div><p><strong>解释：</strong></p>
+<ul>
+<li>在第 2 天（股票价格 = 1）时买入，在第 3 天（股票价格 = 5）时卖出，获得利润 = 5 - 1 = 4。</li>
+<li>随后，在第 4 天（股票价格 = 3）时买入，在第 5 天（股票价格 = 6）时卖出，获得利润 = 6 - 3 = 3。</li>
+<li>最大总利润为 4 + 3 = 7。</li>
+</ul>
+<h3>示例 2</h3>
+<p><strong>输入：</strong></p>
+<div class="language-plaintext line-numbers-mode" data-highlighter="shiki" data-ext="plaintext" data-title="plaintext" style="--shiki-light:#383A42;--shiki-dark:#abb2bf;--shiki-light-bg:#FAFAFA;--shiki-dark-bg:#282c34"><pre class="shiki shiki-themes one-light one-dark-pro vp-code"><code><span class="line"><span>prices = [1,2,3,4,5]</span></span></code></pre>
+<div class="line-numbers" aria-hidden="true" style="counter-reset:line-number 0"><div class="line-number"></div></div></div><p><strong>输出：</strong></p>
+<div class="language-plaintext line-numbers-mode" data-highlighter="shiki" data-ext="plaintext" data-title="plaintext" style="--shiki-light:#383A42;--shiki-dark:#abb2bf;--shiki-light-bg:#FAFAFA;--shiki-dark-bg:#282c34"><pre class="shiki shiki-themes one-light one-dark-pro vp-code"><code><span class="line"><span>4</span></span></code></pre>
+<div class="line-numbers" aria-hidden="true" style="counter-reset:line-number 0"><div class="line-number"></div></div></div><p><strong>解释：</strong></p>
+<ul>
+<li>在第 1 天（股票价格 = 1）时买入，在第 5 天（股票价格 = 5）时卖出，获得利润 = 5 - 1 = 4。</li>
+<li>最大总利润为 4。</li>
+</ul>
+<h3>示例 3</h3>
+<p><strong>输入：</strong></p>
+<div class="language-plaintext line-numbers-mode" data-highlighter="shiki" data-ext="plaintext" data-title="plaintext" style="--shiki-light:#383A42;--shiki-dark:#abb2bf;--shiki-light-bg:#FAFAFA;--shiki-dark-bg:#282c34"><pre class="shiki shiki-themes one-light one-dark-pro vp-code"><code><span class="line"><span>prices = [7,6,4,3,1]</span></span></code></pre>
+<div class="line-numbers" aria-hidden="true" style="counter-reset:line-number 0"><div class="line-number"></div></div></div><p><strong>输出：</strong></p>
+<div class="language-plaintext line-numbers-mode" data-highlighter="shiki" data-ext="plaintext" data-title="plaintext" style="--shiki-light:#383A42;--shiki-dark:#abb2bf;--shiki-light-bg:#FAFAFA;--shiki-dark-bg:#282c34"><pre class="shiki shiki-themes one-light one-dark-pro vp-code"><code><span class="line"><span>0</span></span></code></pre>
+<div class="line-numbers" aria-hidden="true" style="counter-reset:line-number 0"><div class="line-number"></div></div></div><p><strong>解释：</strong></p>
+<ul>
+<li>在这种情况下，无法获得正利润，因此不参与交易可以获得最大利润，最大利润为 0。</li>
+</ul>
+<h2>📝 提示</h2>
+<ul>
+<li><code>1 &lt;= prices.length &lt;= 3 * 10^4</code></li>
+<li><code>0 &lt;= prices[i] &lt;= 10^4</code></li>
+</ul>
+<h2>💡 思路</h2>
+<h3>动态规划</h3>
+<p>由于在任何时候最多只能持有一种股票，那么在第n天交易结束时具有不持有股票和持有股票两种状态，即 <code>dp[n][0]</code> 和 <code>dp[n][1]</code>。 n从0开始计算。</p>
+<p>不持有股票时，截止第n天所能获得的最大利润需要参考前一天的状态：</p>
+<ul>
+<li>若前一天 <code>n-1</code> 持有股票，第n天无股票，则为卖出股票，则 <code>dp[n][0] = dp[n-1][1] + price[n]</code>；</li>
+<li>若前一天 <code>n-1</code> 不持有股票，第n天无股票，则为无操作，此时截止第n天所获的利润与第n-1天相同，即 <code>dp[n][0] = dp[n-1][0]</code>。</li>
+</ul>
+<p>持有股票时：</p>
+<ul>
+<li>若前一天 <code>n-1</code> 持有股票，第n天持有股票，则为无操作，则 <code>dp[n][1] = dp[n-1][1]</code>；</li>
+<li>若前一天 <code>n-1</code> 不持有股票，第n天不持有股票，则为买入股票，则 <code>dp[n][1] = dp[n-1][0] - price[n]</code>。</li>
+</ul>
+<p>综上：</p>
+<ul>
+<li><code>dp[n][0] = max(dp[n-1][1] + price[n], dp[n-1][0])</code></li>
+<li><code>dp[n][1] = max(dp[n-1][0] - price[n], dp[n-1][1])</code></li>
+</ul>
+<p>算出最后一天的 <code>dp[n][0]</code> 即可。</p>
+<p>根据定义：<code>dp[0][0] = 0, dp[0][1] = -price[0]</code>。</p>
+<h3>贪心</h3>
+<p>由于交易次数不受限，所以计算每一个 <code>price[i] - price[i-1] &gt; 0</code> 的总和即可。</p>
+<h2>💻 代码实现</h2>
+<h3>动态规划</h3>
+<div class="language-java line-numbers-mode" data-highlighter="shiki" data-ext="java" data-title="java" style="--shiki-light:#383A42;--shiki-dark:#abb2bf;--shiki-light-bg:#FAFAFA;--shiki-dark-bg:#282c34"><pre class="shiki shiki-themes one-light one-dark-pro vp-code"><code><span class="line"><span style="--shiki-light:#A626A4;--shiki-dark:#C678DD">public</span><span style="--shiki-light:#A626A4;--shiki-dark:#C678DD"> int</span><span style="--shiki-light:#4078F2;--shiki-dark:#61AFEF"> maxProfit</span><span style="--shiki-light:#383A42;--shiki-dark:#E06C75">(</span><span style="--shiki-light:#C18401;--shiki-dark:#C678DD">int</span><span style="--shiki-light:#383A42;--shiki-dark:#E06C75">[] prices) {</span></span>
+<span class="line"><span style="--shiki-light:#C18401;--shiki-dark:#C678DD">    int</span><span style="--shiki-light:#E45649;--shiki-dark:#E06C75">[][] dp </span><span style="--shiki-light:#383A42;--shiki-dark:#56B6C2">=</span><span style="--shiki-light:#A626A4;--shiki-dark:#C678DD"> new</span><span style="--shiki-light:#C18401;--shiki-dark:#C678DD"> int</span><span style="--shiki-light:#383A42;--shiki-dark:#E06C75">[</span><span style="--shiki-light:#E45649;--shiki-dark:#E5C07B">prices</span><span style="--shiki-light:#383A42;--shiki-dark:#ABB2BF">.</span><span style="--shiki-light:#E45649;--shiki-dark:#E5C07B">length</span><span style="--shiki-light:#383A42;--shiki-dark:#E06C75">][</span><span style="--shiki-light:#986801;--shiki-dark:#D19A66">2</span><span style="--shiki-light:#383A42;--shiki-dark:#E06C75">]</span><span style="--shiki-light:#383A42;--shiki-dark:#ABB2BF">;</span></span>
+<span class="line"><span style="--shiki-light:#A626A4;--shiki-dark:#C678DD">    for</span><span style="--shiki-light:#383A42;--shiki-dark:#E06C75"> (</span><span style="--shiki-light:#A626A4;--shiki-dark:#C678DD">int</span><span style="--shiki-light:#E45649;--shiki-dark:#E06C75"> i </span><span style="--shiki-light:#383A42;--shiki-dark:#56B6C2">=</span><span style="--shiki-light:#986801;--shiki-dark:#D19A66"> 0</span><span style="--shiki-light:#383A42;--shiki-dark:#ABB2BF">;</span><span style="--shiki-light:#383A42;--shiki-dark:#E06C75"> i </span><span style="--shiki-light:#383A42;--shiki-dark:#56B6C2">&lt;</span><span style="--shiki-light:#E45649;--shiki-dark:#E5C07B"> prices</span><span style="--shiki-light:#383A42;--shiki-dark:#ABB2BF">.</span><span style="--shiki-light:#E45649;--shiki-dark:#E5C07B">length</span><span style="--shiki-light:#383A42;--shiki-dark:#ABB2BF">;</span><span style="--shiki-light:#383A42;--shiki-dark:#E06C75"> i</span><span style="--shiki-light:#383A42;--shiki-dark:#ABB2BF">++</span><span style="--shiki-light:#383A42;--shiki-dark:#E06C75">) {</span></span>
+<span class="line"><span style="--shiki-light:#A626A4;--shiki-dark:#C678DD">        if</span><span style="--shiki-light:#383A42;--shiki-dark:#E06C75"> (i </span><span style="--shiki-light:#383A42;--shiki-dark:#56B6C2">==</span><span style="--shiki-light:#986801;--shiki-dark:#D19A66"> 0</span><span style="--shiki-light:#383A42;--shiki-dark:#E06C75">) {</span></span>
+<span class="line"><span style="--shiki-light:#383A42;--shiki-dark:#E06C75">            dp[i][</span><span style="--shiki-light:#986801;--shiki-dark:#D19A66">0</span><span style="--shiki-light:#383A42;--shiki-dark:#E06C75">] </span><span style="--shiki-light:#383A42;--shiki-dark:#56B6C2">=</span><span style="--shiki-light:#986801;--shiki-dark:#D19A66"> 0</span><span style="--shiki-light:#383A42;--shiki-dark:#ABB2BF">;</span></span>
+<span class="line"><span style="--shiki-light:#383A42;--shiki-dark:#E06C75">            dp[i][</span><span style="--shiki-light:#986801;--shiki-dark:#D19A66">1</span><span style="--shiki-light:#383A42;--shiki-dark:#E06C75">] </span><span style="--shiki-light:#383A42;--shiki-dark:#56B6C2">=</span><span style="--shiki-light:#383A42;--shiki-dark:#56B6C2"> -</span><span style="--shiki-light:#383A42;--shiki-dark:#E06C75">prices[i]</span><span style="--shiki-light:#383A42;--shiki-dark:#ABB2BF">;</span></span>
+<span class="line"><span style="--shiki-light:#383A42;--shiki-dark:#E06C75">        } </span><span style="--shiki-light:#A626A4;--shiki-dark:#C678DD">else</span><span style="--shiki-light:#383A42;--shiki-dark:#E06C75"> {</span></span>
+<span class="line"><span style="--shiki-light:#383A42;--shiki-dark:#E06C75">            dp[i][</span><span style="--shiki-light:#986801;--shiki-dark:#D19A66">0</span><span style="--shiki-light:#383A42;--shiki-dark:#E06C75">] </span><span style="--shiki-light:#383A42;--shiki-dark:#56B6C2">=</span><span style="--shiki-light:#E45649;--shiki-dark:#E5C07B"> Math</span><span style="--shiki-light:#383A42;--shiki-dark:#ABB2BF">.</span><span style="--shiki-light:#4078F2;--shiki-dark:#61AFEF">max</span><span style="--shiki-light:#383A42;--shiki-dark:#ABB2BF">(dp[i</span><span style="--shiki-light:#383A42;--shiki-dark:#56B6C2">-</span><span style="--shiki-light:#986801;--shiki-dark:#D19A66">1</span><span style="--shiki-light:#383A42;--shiki-dark:#ABB2BF">][</span><span style="--shiki-light:#986801;--shiki-dark:#D19A66">0</span><span style="--shiki-light:#383A42;--shiki-dark:#ABB2BF">], dp[i</span><span style="--shiki-light:#383A42;--shiki-dark:#56B6C2">-</span><span style="--shiki-light:#986801;--shiki-dark:#D19A66">1</span><span style="--shiki-light:#383A42;--shiki-dark:#ABB2BF">][</span><span style="--shiki-light:#986801;--shiki-dark:#D19A66">1</span><span style="--shiki-light:#383A42;--shiki-dark:#ABB2BF">] </span><span style="--shiki-light:#383A42;--shiki-dark:#56B6C2">+</span><span style="--shiki-light:#383A42;--shiki-dark:#ABB2BF"> prices[i]);</span></span>
+<span class="line"><span style="--shiki-light:#383A42;--shiki-dark:#E06C75">            dp[i][</span><span style="--shiki-light:#986801;--shiki-dark:#D19A66">1</span><span style="--shiki-light:#383A42;--shiki-dark:#E06C75">] </span><span style="--shiki-light:#383A42;--shiki-dark:#56B6C2">=</span><span style="--shiki-light:#E45649;--shiki-dark:#E5C07B"> Math</span><span style="--shiki-light:#383A42;--shiki-dark:#ABB2BF">.</span><span style="--shiki-light:#4078F2;--shiki-dark:#61AFEF">max</span><span style="--shiki-light:#383A42;--shiki-dark:#ABB2BF">(dp[i</span><span style="--shiki-light:#383A42;--shiki-dark:#56B6C2">-</span><span style="--shiki-light:#986801;--shiki-dark:#D19A66">1</span><span style="--shiki-light:#383A42;--shiki-dark:#ABB2BF">][</span><span style="--shiki-light:#986801;--shiki-dark:#D19A66">0</span><span style="--shiki-light:#383A42;--shiki-dark:#ABB2BF">] </span><span style="--shiki-light:#383A42;--shiki-dark:#56B6C2">-</span><span style="--shiki-light:#383A42;--shiki-dark:#ABB2BF"> prices[i], dp[i</span><span style="--shiki-light:#383A42;--shiki-dark:#56B6C2">-</span><span style="--shiki-light:#986801;--shiki-dark:#D19A66">1</span><span style="--shiki-light:#383A42;--shiki-dark:#ABB2BF">][</span><span style="--shiki-light:#986801;--shiki-dark:#D19A66">1</span><span style="--shiki-light:#383A42;--shiki-dark:#ABB2BF">]);</span></span>
+<span class="line"><span style="--shiki-light:#383A42;--shiki-dark:#E06C75">        }</span></span>
+<span class="line"><span style="--shiki-light:#383A42;--shiki-dark:#E06C75">    }</span></span>
+<span class="line"><span style="--shiki-light:#A626A4;--shiki-dark:#C678DD">    return</span><span style="--shiki-light:#383A42;--shiki-dark:#E06C75"> dp[</span><span style="--shiki-light:#E45649;--shiki-dark:#E5C07B">prices</span><span style="--shiki-light:#383A42;--shiki-dark:#ABB2BF">.</span><span style="--shiki-light:#E45649;--shiki-dark:#E5C07B">length</span><span style="--shiki-light:#383A42;--shiki-dark:#56B6C2"> -</span><span style="--shiki-light:#986801;--shiki-dark:#D19A66"> 1</span><span style="--shiki-light:#383A42;--shiki-dark:#E06C75">][</span><span style="--shiki-light:#986801;--shiki-dark:#D19A66">0</span><span style="--shiki-light:#383A42;--shiki-dark:#E06C75">]</span><span style="--shiki-light:#383A42;--shiki-dark:#ABB2BF">;</span></span>
+<span class="line"><span style="--shiki-light:#383A42;--shiki-dark:#E06C75">}</span></span></code></pre>
+<div class="line-numbers" aria-hidden="true" style="counter-reset:line-number 0"><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div></div></div><h3>贪心</h3>
+<div class="language-java line-numbers-mode" data-highlighter="shiki" data-ext="java" data-title="java" style="--shiki-light:#383A42;--shiki-dark:#abb2bf;--shiki-light-bg:#FAFAFA;--shiki-dark-bg:#282c34"><pre class="shiki shiki-themes one-light one-dark-pro vp-code"><code><span class="line"><span style="--shiki-light:#A626A4;--shiki-dark:#C678DD">public</span><span style="--shiki-light:#A626A4;--shiki-dark:#C678DD"> int</span><span style="--shiki-light:#4078F2;--shiki-dark:#61AFEF"> maxProfit</span><span style="--shiki-light:#383A42;--shiki-dark:#E06C75">(</span><span style="--shiki-light:#C18401;--shiki-dark:#C678DD">int</span><span style="--shiki-light:#383A42;--shiki-dark:#E06C75">[] prices) {</span></span>
+<span class="line"><span style="--shiki-light:#A626A4;--shiki-dark:#C678DD">    int</span><span style="--shiki-light:#E45649;--shiki-dark:#E06C75"> sum </span><span style="--shiki-light:#383A42;--shiki-dark:#56B6C2">=</span><span style="--shiki-light:#986801;--shiki-dark:#D19A66"> 0</span><span style="--shiki-light:#383A42;--shiki-dark:#ABB2BF">;</span></span>
+<span class="line"><span style="--shiki-light:#A626A4;--shiki-dark:#C678DD">    for</span><span style="--shiki-light:#383A42;--shiki-dark:#E06C75"> (</span><span style="--shiki-light:#A626A4;--shiki-dark:#C678DD">int</span><span style="--shiki-light:#E45649;--shiki-dark:#E06C75"> i </span><span style="--shiki-light:#383A42;--shiki-dark:#56B6C2">=</span><span style="--shiki-light:#986801;--shiki-dark:#D19A66"> 1</span><span style="--shiki-light:#383A42;--shiki-dark:#ABB2BF">;</span><span style="--shiki-light:#383A42;--shiki-dark:#E06C75"> i </span><span style="--shiki-light:#383A42;--shiki-dark:#56B6C2">&lt;</span><span style="--shiki-light:#E45649;--shiki-dark:#E5C07B"> prices</span><span style="--shiki-light:#383A42;--shiki-dark:#ABB2BF">.</span><span style="--shiki-light:#E45649;--shiki-dark:#E5C07B">length</span><span style="--shiki-light:#383A42;--shiki-dark:#ABB2BF">;</span><span style="--shiki-light:#383A42;--shiki-dark:#E06C75"> i</span><span style="--shiki-light:#383A42;--shiki-dark:#ABB2BF">++</span><span style="--shiki-light:#383A42;--shiki-dark:#E06C75">) {</span></span>
+<span class="line"><span style="--shiki-light:#A626A4;--shiki-dark:#C678DD">        int</span><span style="--shiki-light:#E45649;--shiki-dark:#E06C75"> res </span><span style="--shiki-light:#383A42;--shiki-dark:#56B6C2">=</span><span style="--shiki-light:#383A42;--shiki-dark:#E06C75"> prices[i] </span><span style="--shiki-light:#383A42;--shiki-dark:#56B6C2">-</span><span style="--shiki-light:#383A42;--shiki-dark:#E06C75"> prices[i </span><span style="--shiki-light:#383A42;--shiki-dark:#56B6C2">-</span><span style="--shiki-light:#986801;--shiki-dark:#D19A66"> 1</span><span style="--shiki-light:#383A42;--shiki-dark:#E06C75">]</span><span style="--shiki-light:#383A42;--shiki-dark:#ABB2BF">;</span></span>
+<span class="line"><span style="--shiki-light:#A626A4;--shiki-dark:#C678DD">        if</span><span style="--shiki-light:#383A42;--shiki-dark:#E06C75"> (res </span><span style="--shiki-light:#383A42;--shiki-dark:#56B6C2">&gt;</span><span style="--shiki-light:#986801;--shiki-dark:#D19A66"> 0</span><span style="--shiki-light:#383A42;--shiki-dark:#E06C75">) {</span></span>
+<span class="line"><span style="--shiki-light:#383A42;--shiki-dark:#E06C75">            sum </span><span style="--shiki-light:#383A42;--shiki-dark:#56B6C2">+=</span><span style="--shiki-light:#383A42;--shiki-dark:#E06C75"> res</span><span style="--shiki-light:#383A42;--shiki-dark:#ABB2BF">;</span></span>
+<span class="line"><span style="--shiki-light:#383A42;--shiki-dark:#E06C75">        }</span></span>
+<span class="line"><span style="--shiki-light:#383A42;--shiki-dark:#E06C75">    }</span></span>
+<span class="line"><span style="--shiki-light:#A626A4;--shiki-dark:#C678DD">    return</span><span style="--shiki-light:#383A42;--shiki-dark:#E06C75"> sum</span><span style="--shiki-light:#383A42;--shiki-dark:#ABB2BF">;</span></span>
+<span class="line"><span style="--shiki-light:#383A42;--shiki-dark:#E06C75">}</span></span></code></pre>
+<div class="line-numbers" aria-hidden="true" style="counter-reset:line-number 0"><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div></div></div>]]></content:encoded>
+    </item>
     <item>
       <title>189 轮转数组</title>
       <link>https://jayczee.cn/note/leet150/6-leet189.html</link>
