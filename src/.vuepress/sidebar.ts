@@ -44,7 +44,8 @@ export default sidebar({
       expanded: false,
       prefix: "leet150/",
       children: [
-        "1-leet088.md","2-leet027.md","3-leet026.md","4-leet080.md","5-leet169.md","6-leet189.md","7-leet121.md","8-leet122.md","9-leet055.md","10-leet045.md"
+        "1-leet088.md","2-leet027.md","3-leet026.md","4-leet080.md","5-leet169.md","6-leet189.md","7-leet121.md","8-leet122.md","9-leet055.md","10-leet045.md",
+        "11-leet274.md"
       ]
     },
   ]
