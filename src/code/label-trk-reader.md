@@ -1,5 +1,5 @@
 ---
-title: 📦 Fedex面单PDF中读取物流单号
+title: 📦 Fedex / UPS 面单PDF中读取物流单号
 isOriginal: true
 star: true
 category:
