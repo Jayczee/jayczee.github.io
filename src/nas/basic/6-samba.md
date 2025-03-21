@@ -31,18 +31,14 @@ services:
     image: dperson/samba
     container_name: samba
     ports:
-      - "137:137"
-      - "138:138"
       - "139:139"
       - "445:445"
     volumes:
-      - /mnt:/mnt
-    environment:
-      - USERID=0
-      - GROUPID=0
-      - SAMBA_USER=root
-      - SAMBA_PASS=
-    command: -u "root" -s "mnt:/mnt:rw"
+      - /mnt/data_hdd:/share_dir
+    command: >
+      -u "root;"
+      -s "SmbShare;/share_dir/;yes;no;yes;all;root;;"
+    restart: unless-stopped
 ```
 
 ### 配置说明
@@ -50,16 +46,13 @@ services:
 - **image**: 使用 `dperson/samba` 镜像，这个镜像是一个轻量级的 Samba 服务器。
 - **container_name**: 设置容器的名称为 `samba`，便于管理。
 - **ports**: 映射 Samba 服务的端口，以便外部访问：
-  - `137`: NetBIOS 名称服务
-  - `138`: NetBIOS 数据报服务
   - `139`: NetBIOS 会话服务
   - `445`: SMB/CIFS 服务
-- **volumes**: 将宿主机的 `/mnt` 目录挂载到容器内的 `/mnt` 目录，允许共享文件。我通常会将NAS的机械硬盘挂在到宿主机的/mnt,此处直接同步挂载到容器的/mnt内，保证容器也能访问后面添加的硬盘。
-- **environment**: 设置环境变量以配置 Samba 用户：
-  - `USERID` 和 `GROUPID` 设置为 `0`，表示使用 root 用户。
-  - `SAMBA_USER` 设置为 `root`，表示 Samba 用户名。
-  - `SAMBA_PASS` 设置为空，表示不设置密码（可根据需要修改）。
-- **command**: 指定 Samba 的启动命令，`-u "root"` 表示使用 root 用户，`-s "mnt:/mnt:rw"` 表示共享 `/mnt` 目录，并设置为可读写。
+- **volumes**: 将宿主机的 `/mnt/data_hdd` 目录挂载到容器内的 `/share_dir` 目录，允许共享文件。此处直接同步挂载到容器的 `/share_dir` 内，保证容器也能访问后面添加的硬盘。
+- **command**: 指定 Samba 的启动命令：
+  - `-u "root;"` 表示使用 root 用户，且不设置密码。
+  - `-s "SmbShare;/share_dir/;yes;no;yes;all;root;;"` 表示共享 `/share_dir` 目录，并设置为可读写，允许所有用户访问。
+- **restart**: 设置容器为 `unless-stopped`，确保容器在意外退出时自动重启。
 
 ## ⚠️ 注意事项
 
