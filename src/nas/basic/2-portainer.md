@@ -40,6 +40,7 @@ docker volume create portainer_data
 ```bash
 docker run -d -p 8000:8000 \
   -p 9443:9443 \
+  -p 9000:9000 \
   --name portainer \
   --restart=always \
   -v /var/run/docker.sock:/var/run/docker.sock \
@@ -50,7 +51,8 @@ docker run -d -p 8000:8000 \
 - `docker run`: 启动一个新的容器。
 - `-d`: 以后台模式运行容器（分离模式）。
 - `-p 8000:8000`: 将主机的8000端口映射到容器的8000端口。
-- `-p 9443:9443`: 将主机的9443端口映射到容器的9443端口。
+- `-p 9443:9443`: 将主机的9443端口映射到容器的9443端口。此为访问portainer的https端口。
+- `-p 9000:9000`: 将主机的9443端口映射到容器的9443端口。此为访问portainer的http端口。
 - `--name portainer`: 给容器指定一个名称为“portainer”。
 - `--restart=always`: 设置容器在退出时总是重启。
 - `-v /var/run/docker.sock:/var/run/docker.sock`: 将主机的Docker套接字挂载到容器内，以便容器能够与Docker引擎进行通信。
