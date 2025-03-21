@@ -66,7 +66,7 @@ nvidia-smi
 右键单击下载按钮，复制地址，在 NAS 命令行中使用 `wget` 命令下载：
 
 ```bash
-wget https://cn.download.nvidia.com/XFree86/Linux-x86_64/550.144.03/NVIDIA-Linux-x86_64-550.144.03.run
+wget --user-agent="Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/91.0.4472.124 Safari/537.36" --header="Referer: https://www.nvidia.cn/" https://cn.download.nvidia.com/XFree86/Linux-x86_64/570.133.07/NVIDIA-Linux-x86_64-570.133.07.run
 ```
 
 当然，也可以下载到其他机器上，通过 SFTP 或 SCP 等方式传输到 NAS 上。
