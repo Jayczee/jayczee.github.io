@@ -63,7 +63,7 @@ nvidia-smi
 
 ![搜索结果](/assets/images/nas/jellyfin/j-7.png)
 
-右键单击下载按钮，复制地址，在 NAS 命令行中使用 `wget` 命令下载：
+右键单击下载按钮，复制地址，在 NAS 命令行中使用 `wget` 命令下载(wget需要添加refer和user-agent，否则下载会碰到403)：
 
 ```bash
 wget --user-agent="Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/91.0.4472.124 Safari/537.36" --header="Referer: https://www.nvidia.cn/" https://cn.download.nvidia.com/XFree86/Linux-x86_64/570.133.07/NVIDIA-Linux-x86_64-570.133.07.run
@@ -111,3 +111,17 @@ services:
             - capabilities: 
               - gpu
 ```
+
+:::tip
+如果安装过程中提示：
+```
+ERROR: Unable to find the kernel source tree for the currently running kernel. Please make sure you have installed the kernel source files for your kernel and that they are properly configured; on Red Hat Linux systems, for example, be sure you have the 'kernel-source' or 'kernel-devel' RPM installed. If you know the correct kernel source files are installed, you may specify the kernel source path with the '--kernel-source-path' command line option.
+```
+
+这是由于`当前系统未安装内核头文件或源代码：在Linux系统中，内核头文件（linux-headers）或源代码（kernel-source）并不是默认安装的。如果系统缺少这些文件，安装程序就无法编译内核模块。`。先退出安装程序，运行
+
+```bash
+sudo apt-get install linux-headers-$(uname -r)
+```
+后继续安装即可。
+：：：
