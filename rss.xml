@@ -6,8 +6,8 @@
     <link>https://jayczee.cn/</link>
     <description>Whispering for nothing</description>
     <language>zh-CN</language>
-    <pubDate>Thu, 10 Apr 2025 09:21:20 GMT</pubDate>
-    <lastBuildDate>Thu, 10 Apr 2025 09:21:20 GMT</lastBuildDate>
+    <pubDate>Thu, 10 Apr 2025 09:29:48 GMT</pubDate>
+    <lastBuildDate>Thu, 10 Apr 2025 09:29:48 GMT</lastBuildDate>
     <generator>@vuepress/plugin-feed</generator>
     <docs>https://validator.w3.org/feed/docs/rss2.html</docs>
     <category>Linux</category>
@@ -1614,6 +1614,35 @@
 <div class="language-bash line-numbers-mode" data-highlighter="shiki" data-ext="bash" data-title="bash" style="--shiki-light:#383A42;--shiki-dark:#abb2bf;--shiki-light-bg:#FAFAFA;--shiki-dark-bg:#282c34"><pre class="shiki shiki-themes one-light one-dark-pro vp-code"><code><span class="line"><span style="--shiki-light:#4078F2;--shiki-dark:#61AFEF">sudo</span><span style="--shiki-light:#50A14F;--shiki-dark:#98C379"> apt-get</span><span style="--shiki-light:#50A14F;--shiki-dark:#98C379"> install</span><span style="--shiki-light:#50A14F;--shiki-dark:#98C379"> linux-headers-</span><span style="--shiki-light:#383A42;--shiki-dark:#ABB2BF">$(</span><span style="--shiki-light:#4078F2;--shiki-dark:#61AFEF">uname</span><span style="--shiki-light:#986801;--shiki-dark:#D19A66"> -r</span><span style="--shiki-light:#383A42;--shiki-dark:#ABB2BF">)</span></span></code></pre>
 <div class="line-numbers" aria-hidden="true" style="counter-reset:line-number 0"><div class="line-number"></div></div></div><p>后继续安装即可。<br>
 ：：：</p>
+<p>另外，关于nvidia-container-runtime, 引用ai的回答:</p>
+<div class="hint-container tip">
+<p class="hint-container-title">提示</p>
+<p>在 Docker 中，当你需要使用 NVIDIA GPU 加速时，通常会使用 nvidia-container-runtime 作为容器的运行时。这个运行时是由 NVIDIA 提供的，它允许容器访问宿主机的 GPU 资源。</p>
+<p>如果你在创建容器时遇到 unknown or invalid runtime name: nvidia 的错误，这是因为 Docker 默认并不知道 nvidia 这个运行时。你需要显式地配置 Docker，告诉它 nvidia 运行时对应的路径和参数。</p>
+<ol>
+<li>
+<p>为什么需要添加配置？<br>
+Docker 默认的运行时是 runc，它不支持 NVIDIA GPU 加速。为了使用 NVIDIA GPU，你需要将 Docker 配置为使用 nvidia-container-runtime 作为运行时。</p>
+</li>
+<li>
+<p>如何配置 Docker 使用 nvidia-container-runtime？<br>
+你需要在 Docker 的配置文件（通常是 /etc/docker/daemon.json）中添加以下内容：</p>
+</li>
+</ol>
+<p>{<br>
+"runtimes": {<br>
+"nvidia": {<br>
+"path": "nvidia-container-runtime",<br>
+"runtimeArgs": []<br>
+}<br>
+},<br>
+"default-runtime": "nvidia"<br>
+}<br>
+解释：<br>
+"runtimes": 定义了可用的运行时。你在这里添加了一个名为 nvidia 的运行时，并指定了它的路径 nvidia-container-runtime。<br>
+"default-runtime": 指定了 Docker 默认使用的运行时。在这里，你将其设置为 nvidia，这样所有容器默认都会使用 nvidia-container-runtime</p>
+<div class="language- line-numbers-mode" data-highlighter="shiki" data-ext="" data-title="" style="--shiki-light:#383A42;--shiki-dark:#abb2bf;--shiki-light-bg:#FAFAFA;--shiki-dark-bg:#282c34"><pre class="shiki shiki-themes one-light one-dark-pro vp-code"><code><span class="line"><span></span></span></code></pre>
+<div class="line-numbers" aria-hidden="true" style="counter-reset:line-number 0"><div class="line-number"></div></div></div></div>
 </div>
 ]]></content:encoded>
       <enclosure url="https://jayczee.cn/assets/images/nas/jellyfin/j-5.png" type="image/png"/>
