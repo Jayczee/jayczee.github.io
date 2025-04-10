@@ -6,8 +6,8 @@
     <link>https://jayczee.cn/</link>
     <description>Whispering for nothing</description>
     <language>zh-CN</language>
-    <pubDate>Thu, 13 Mar 2025 07:33:00 GMT</pubDate>
-    <lastBuildDate>Thu, 13 Mar 2025 07:33:00 GMT</lastBuildDate>
+    <pubDate>Thu, 10 Apr 2025 09:21:20 GMT</pubDate>
+    <lastBuildDate>Thu, 10 Apr 2025 09:21:20 GMT</lastBuildDate>
     <generator>@vuepress/plugin-feed</generator>
     <docs>https://validator.w3.org/feed/docs/rss2.html</docs>
     <category>Linux</category>
@@ -1571,8 +1571,8 @@
 <p>访问 <a href="https://www.nvidia.cn/drivers/lookup/" target="_blank" rel="noopener noreferrer">NVIDIA 官网</a>，根据 NAS 的配置信息，搜索对应的驱动：</p>
 <figure><img src="/assets/images/nas/jellyfin/j-6.png" alt="搜索驱动" tabindex="0" loading="lazy"><figcaption>搜索驱动</figcaption></figure>
 <figure><img src="/assets/images/nas/jellyfin/j-7.png" alt="搜索结果" tabindex="0" loading="lazy"><figcaption>搜索结果</figcaption></figure>
-<p>右键单击下载按钮，复制地址，在 NAS 命令行中使用 <code>wget</code> 命令下载：</p>
-<div class="language-bash line-numbers-mode" data-highlighter="shiki" data-ext="bash" data-title="bash" style="--shiki-light:#383A42;--shiki-dark:#abb2bf;--shiki-light-bg:#FAFAFA;--shiki-dark-bg:#282c34"><pre class="shiki shiki-themes one-light one-dark-pro vp-code"><code><span class="line"><span style="--shiki-light:#4078F2;--shiki-dark:#61AFEF">wget</span><span style="--shiki-light:#50A14F;--shiki-dark:#98C379"> https://cn.download.nvidia.com/XFree86/Linux-x86_64/550.144.03/NVIDIA-Linux-x86_64-550.144.03.run</span></span></code></pre>
+<p>右键单击下载按钮，复制地址，在 NAS 命令行中使用 <code>wget</code> 命令下载(wget需要添加refer和user-agent，否则下载会碰到403)：</p>
+<div class="language-bash line-numbers-mode" data-highlighter="shiki" data-ext="bash" data-title="bash" style="--shiki-light:#383A42;--shiki-dark:#abb2bf;--shiki-light-bg:#FAFAFA;--shiki-dark-bg:#282c34"><pre class="shiki shiki-themes one-light one-dark-pro vp-code"><code><span class="line"><span style="--shiki-light:#4078F2;--shiki-dark:#61AFEF">wget</span><span style="--shiki-light:#986801;--shiki-dark:#D19A66"> --user-agent=</span><span style="--shiki-light:#50A14F;--shiki-dark:#98C379">"Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/91.0.4472.124 Safari/537.36"</span><span style="--shiki-light:#986801;--shiki-dark:#D19A66"> --header=</span><span style="--shiki-light:#50A14F;--shiki-dark:#98C379">"Referer: https://www.nvidia.cn/"</span><span style="--shiki-light:#50A14F;--shiki-dark:#98C379"> https://cn.download.nvidia.com/XFree86/Linux-x86_64/570.133.07/NVIDIA-Linux-x86_64-570.133.07.run</span></span></code></pre>
 <div class="line-numbers" aria-hidden="true" style="counter-reset:line-number 0"><div class="line-number"></div></div></div><p>当然，也可以下载到其他机器上，通过 SFTP 或 SCP 等方式传输到 NAS 上。</p>
 <p>下载完成后，运行命令，根据提示完成安装：</p>
 <div class="language-bash line-numbers-mode" data-highlighter="shiki" data-ext="bash" data-title="bash" style="--shiki-light:#383A42;--shiki-dark:#abb2bf;--shiki-light-bg:#FAFAFA;--shiki-dark-bg:#282c34"><pre class="shiki shiki-themes one-light one-dark-pro vp-code"><code><span class="line"><span style="--shiki-light:#4078F2;--shiki-dark:#61AFEF">sh</span><span style="--shiki-light:#50A14F;--shiki-dark:#98C379"> ./NVIDIA-Linux-x86_64-550.144.03.run</span></span></code></pre>
@@ -1606,7 +1606,16 @@
 <span class="line"><span style="--shiki-light:#E45649;--shiki-dark:#E06C75">          devices</span><span style="--shiki-light:#383A42;--shiki-dark:#ABB2BF">:</span></span>
 <span class="line"><span style="--shiki-light:#383A42;--shiki-dark:#ABB2BF">            - </span><span style="--shiki-light:#E45649;--shiki-dark:#E06C75">capabilities</span><span style="--shiki-light:#383A42;--shiki-dark:#ABB2BF">: </span></span>
 <span class="line"><span style="--shiki-light:#383A42;--shiki-dark:#ABB2BF">              - </span><span style="--shiki-light:#50A14F;--shiki-dark:#98C379">gpu</span></span></code></pre>
-<div class="line-numbers" aria-hidden="true" style="counter-reset:line-number 0"><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div></div></div>]]></content:encoded>
+<div class="line-numbers" aria-hidden="true" style="counter-reset:line-number 0"><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div></div></div><div class="hint-container tip">
+<p class="hint-container-title">提示</p>
+<p>如果安装过程中提示：</p>
+<div class="language- line-numbers-mode" data-highlighter="shiki" data-ext="" data-title="" style="--shiki-light:#383A42;--shiki-dark:#abb2bf;--shiki-light-bg:#FAFAFA;--shiki-dark-bg:#282c34"><pre class="shiki shiki-themes one-light one-dark-pro vp-code"><code><span class="line"><span>ERROR: Unable to find the kernel source tree for the currently running kernel. Please make sure you have installed the kernel source files for your kernel and that they are properly configured; on Red Hat Linux systems, for example, be sure you have the 'kernel-source' or 'kernel-devel' RPM installed. If you know the correct kernel source files are installed, you may specify the kernel source path with the '--kernel-source-path' command line option.</span></span></code></pre>
+<div class="line-numbers" aria-hidden="true" style="counter-reset:line-number 0"><div class="line-number"></div></div></div><p>这是由于<code>当前系统未安装内核头文件或源代码：在Linux系统中，内核头文件（linux-headers）或源代码（kernel-source）并不是默认安装的。如果系统缺少这些文件，安装程序就无法编译内核模块。</code>。先退出安装程序，运行</p>
+<div class="language-bash line-numbers-mode" data-highlighter="shiki" data-ext="bash" data-title="bash" style="--shiki-light:#383A42;--shiki-dark:#abb2bf;--shiki-light-bg:#FAFAFA;--shiki-dark-bg:#282c34"><pre class="shiki shiki-themes one-light one-dark-pro vp-code"><code><span class="line"><span style="--shiki-light:#4078F2;--shiki-dark:#61AFEF">sudo</span><span style="--shiki-light:#50A14F;--shiki-dark:#98C379"> apt-get</span><span style="--shiki-light:#50A14F;--shiki-dark:#98C379"> install</span><span style="--shiki-light:#50A14F;--shiki-dark:#98C379"> linux-headers-</span><span style="--shiki-light:#383A42;--shiki-dark:#ABB2BF">$(</span><span style="--shiki-light:#4078F2;--shiki-dark:#61AFEF">uname</span><span style="--shiki-light:#986801;--shiki-dark:#D19A66"> -r</span><span style="--shiki-light:#383A42;--shiki-dark:#ABB2BF">)</span></span></code></pre>
+<div class="line-numbers" aria-hidden="true" style="counter-reset:line-number 0"><div class="line-number"></div></div></div><p>后继续安装即可。<br>
+：：：</p>
+</div>
+]]></content:encoded>
       <enclosure url="https://jayczee.cn/assets/images/nas/jellyfin/j-5.png" type="image/png"/>
     </item>
     <item>
@@ -1813,17 +1822,19 @@
 <div class="line-numbers" aria-hidden="true" style="counter-reset:line-number 0"><div class="line-number"></div></div></div><p>然后在命令行中运行命令安装Portainer:</p>
 <div class="language-bash line-numbers-mode" data-highlighter="shiki" data-ext="bash" data-title="bash" style="--shiki-light:#383A42;--shiki-dark:#abb2bf;--shiki-light-bg:#FAFAFA;--shiki-dark-bg:#282c34"><pre class="shiki shiki-themes one-light one-dark-pro vp-code"><code><span class="line"><span style="--shiki-light:#4078F2;--shiki-dark:#61AFEF">docker</span><span style="--shiki-light:#50A14F;--shiki-dark:#98C379"> run</span><span style="--shiki-light:#986801;--shiki-dark:#D19A66"> -d</span><span style="--shiki-light:#986801;--shiki-dark:#D19A66"> -p</span><span style="--shiki-light:#50A14F;--shiki-dark:#98C379"> 8000:8000</span><span style="--shiki-light:#0184BC;--shiki-dark:#56B6C2"> \</span></span>
 <span class="line"><span style="--shiki-light:#986801;--shiki-dark:#D19A66">  -p</span><span style="--shiki-light:#50A14F;--shiki-dark:#98C379"> 9443:9443</span><span style="--shiki-light:#0184BC;--shiki-dark:#56B6C2"> \</span></span>
+<span class="line"><span style="--shiki-light:#986801;--shiki-dark:#D19A66">  -p</span><span style="--shiki-light:#50A14F;--shiki-dark:#98C379"> 9000:9000</span><span style="--shiki-light:#0184BC;--shiki-dark:#56B6C2"> \</span></span>
 <span class="line"><span style="--shiki-light:#986801;--shiki-dark:#D19A66">  --name</span><span style="--shiki-light:#50A14F;--shiki-dark:#98C379"> portainer</span><span style="--shiki-light:#0184BC;--shiki-dark:#56B6C2"> \</span></span>
 <span class="line"><span style="--shiki-light:#986801;--shiki-dark:#D19A66">  --restart=always</span><span style="--shiki-light:#0184BC;--shiki-dark:#56B6C2"> \</span></span>
 <span class="line"><span style="--shiki-light:#986801;--shiki-dark:#D19A66">  -v</span><span style="--shiki-light:#50A14F;--shiki-dark:#98C379"> /var/run/docker.sock:/var/run/docker.sock</span><span style="--shiki-light:#0184BC;--shiki-dark:#56B6C2"> \</span></span>
 <span class="line"><span style="--shiki-light:#986801;--shiki-dark:#D19A66">  -v</span><span style="--shiki-light:#50A14F;--shiki-dark:#98C379"> portainer_data:/data</span><span style="--shiki-light:#0184BC;--shiki-dark:#56B6C2"> \</span></span>
 <span class="line"><span style="--shiki-light:#50A14F;--shiki-dark:#98C379">  portainer/portainer-ce:2.21.5</span></span></code></pre>
-<div class="line-numbers" aria-hidden="true" style="counter-reset:line-number 0"><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div></div></div><p>该命令解析如下：</p>
+<div class="line-numbers" aria-hidden="true" style="counter-reset:line-number 0"><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div></div></div><p>该命令解析如下：</p>
 <ul>
 <li><code>docker run</code>: 启动一个新的容器。</li>
 <li><code>-d</code>: 以后台模式运行容器（分离模式）。</li>
 <li><code>-p 8000:8000</code>: 将主机的8000端口映射到容器的8000端口。</li>
-<li><code>-p 9443:9443</code>: 将主机的9443端口映射到容器的9443端口。</li>
+<li><code>-p 9443:9443</code>: 将主机的9443端口映射到容器的9443端口。此为访问portainer的https端口。</li>
+<li><code>-p 9000:9000</code>: 将主机的9443端口映射到容器的9443端口。此为访问portainer的http端口。</li>
 <li><code>--name portainer</code>: 给容器指定一个名称为“portainer”。</li>
 <li><code>--restart=always</code>: 设置容器在退出时总是重启。</li>
 <li><code>-v /var/run/docker.sock:/var/run/docker.sock</code>: 将主机的Docker套接字挂载到容器内，以便容器能够与Docker引擎进行通信。</li>
@@ -2113,39 +2124,32 @@
 <span class="line"><span style="--shiki-light:#E45649;--shiki-dark:#E06C75">    image</span><span style="--shiki-light:#383A42;--shiki-dark:#ABB2BF">: </span><span style="--shiki-light:#50A14F;--shiki-dark:#98C379">dperson/samba</span></span>
 <span class="line"><span style="--shiki-light:#E45649;--shiki-dark:#E06C75">    container_name</span><span style="--shiki-light:#383A42;--shiki-dark:#ABB2BF">: </span><span style="--shiki-light:#50A14F;--shiki-dark:#98C379">samba</span></span>
 <span class="line"><span style="--shiki-light:#E45649;--shiki-dark:#E06C75">    ports</span><span style="--shiki-light:#383A42;--shiki-dark:#ABB2BF">:</span></span>
-<span class="line"><span style="--shiki-light:#383A42;--shiki-dark:#ABB2BF">      - </span><span style="--shiki-light:#50A14F;--shiki-dark:#98C379">"137:137"</span></span>
-<span class="line"><span style="--shiki-light:#383A42;--shiki-dark:#ABB2BF">      - </span><span style="--shiki-light:#50A14F;--shiki-dark:#98C379">"138:138"</span></span>
 <span class="line"><span style="--shiki-light:#383A42;--shiki-dark:#ABB2BF">      - </span><span style="--shiki-light:#50A14F;--shiki-dark:#98C379">"139:139"</span></span>
 <span class="line"><span style="--shiki-light:#383A42;--shiki-dark:#ABB2BF">      - </span><span style="--shiki-light:#50A14F;--shiki-dark:#98C379">"445:445"</span></span>
 <span class="line"><span style="--shiki-light:#E45649;--shiki-dark:#E06C75">    volumes</span><span style="--shiki-light:#383A42;--shiki-dark:#ABB2BF">:</span></span>
-<span class="line"><span style="--shiki-light:#383A42;--shiki-dark:#ABB2BF">      - </span><span style="--shiki-light:#50A14F;--shiki-dark:#98C379">/mnt:/mnt</span></span>
-<span class="line"><span style="--shiki-light:#E45649;--shiki-dark:#E06C75">    environment</span><span style="--shiki-light:#383A42;--shiki-dark:#ABB2BF">:</span></span>
-<span class="line"><span style="--shiki-light:#383A42;--shiki-dark:#ABB2BF">      - </span><span style="--shiki-light:#50A14F;--shiki-dark:#98C379">USERID=0</span></span>
-<span class="line"><span style="--shiki-light:#383A42;--shiki-dark:#ABB2BF">      - </span><span style="--shiki-light:#50A14F;--shiki-dark:#98C379">GROUPID=0</span></span>
-<span class="line"><span style="--shiki-light:#383A42;--shiki-dark:#ABB2BF">      - </span><span style="--shiki-light:#50A14F;--shiki-dark:#98C379">SAMBA_USER=root</span></span>
-<span class="line"><span style="--shiki-light:#383A42;--shiki-dark:#ABB2BF">      - </span><span style="--shiki-light:#50A14F;--shiki-dark:#98C379">SAMBA_PASS=</span></span>
-<span class="line"><span style="--shiki-light:#E45649;--shiki-dark:#E06C75">    command</span><span style="--shiki-light:#383A42;--shiki-dark:#ABB2BF">: </span><span style="--shiki-light:#50A14F;--shiki-dark:#98C379">-u "root" -s "mnt:/mnt:rw"</span></span></code></pre>
-<div class="line-numbers" aria-hidden="true" style="counter-reset:line-number 0"><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div></div></div><h3>配置说明</h3>
+<span class="line"><span style="--shiki-light:#383A42;--shiki-dark:#ABB2BF">      - </span><span style="--shiki-light:#50A14F;--shiki-dark:#98C379">/mnt/data_hdd:/share_dir</span></span>
+<span class="line"><span style="--shiki-light:#E45649;--shiki-dark:#E06C75">    command</span><span style="--shiki-light:#383A42;--shiki-dark:#ABB2BF">: </span><span style="--shiki-light:#A626A4;--shiki-dark:#C678DD">&gt;</span></span>
+<span class="line"><span style="--shiki-light:#50A14F;--shiki-dark:#98C379">      -u "root;"</span></span>
+<span class="line"><span style="--shiki-light:#50A14F;--shiki-dark:#98C379">      -s "SmbShare;/share_dir/;yes;no;yes;all;root;;"</span></span>
+<span class="line"><span style="--shiki-light:#E45649;--shiki-dark:#E06C75">    restart</span><span style="--shiki-light:#383A42;--shiki-dark:#ABB2BF">: </span><span style="--shiki-light:#50A14F;--shiki-dark:#98C379">unless-stopped</span></span></code></pre>
+<div class="line-numbers" aria-hidden="true" style="counter-reset:line-number 0"><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div></div></div><h3>配置说明</h3>
 <ul>
 <li><strong>image</strong>: 使用 <code>dperson/samba</code> 镜像，这个镜像是一个轻量级的 Samba 服务器。</li>
 <li><strong>container_name</strong>: 设置容器的名称为 <code>samba</code>，便于管理。</li>
 <li><strong>ports</strong>: 映射 Samba 服务的端口，以便外部访问：
 <ul>
-<li><code>137</code>: NetBIOS 名称服务</li>
-<li><code>138</code>: NetBIOS 数据报服务</li>
 <li><code>139</code>: NetBIOS 会话服务</li>
 <li><code>445</code>: SMB/CIFS 服务</li>
 </ul>
 </li>
-<li><strong>volumes</strong>: 将宿主机的 <code>/mnt</code> 目录挂载到容器内的 <code>/mnt</code> 目录，允许共享文件。我通常会将NAS的机械硬盘挂在到宿主机的/mnt,此处直接同步挂载到容器的/mnt内，保证容器也能访问后面添加的硬盘。</li>
-<li><strong>environment</strong>: 设置环境变量以配置 Samba 用户：
+<li><strong>volumes</strong>: 将宿主机的 <code>/mnt/data_hdd</code> 目录挂载到容器内的 <code>/share_dir</code> 目录，允许共享文件。此处直接同步挂载到容器的 <code>/share_dir</code> 内，保证容器也能访问后面添加的硬盘。</li>
+<li><strong>command</strong>: 指定 Samba 的启动命令：
 <ul>
-<li><code>USERID</code> 和 <code>GROUPID</code> 设置为 <code>0</code>，表示使用 root 用户。</li>
-<li><code>SAMBA_USER</code> 设置为 <code>root</code>，表示 Samba 用户名。</li>
-<li><code>SAMBA_PASS</code> 设置为空，表示不设置密码（可根据需要修改）。</li>
+<li><code>-u "root;"</code> 表示使用 root 用户，且不设置密码。</li>
+<li><code>-s "SmbShare;/share_dir/;yes;no;yes;all;root;;"</code> 表示共享 <code>/share_dir</code> 目录，并设置为可读写，允许所有用户访问。</li>
 </ul>
 </li>
-<li><strong>command</strong>: 指定 Samba 的启动命令，<code>-u "root"</code> 表示使用 root 用户，<code>-s "mnt:/mnt:rw"</code> 表示共享 <code>/mnt</code> 目录，并设置为可读写。</li>
+<li><strong>restart</strong>: 设置容器为 <code>unless-stopped</code>，确保容器在意外退出时自动重启。</li>
 </ul>
 <h2>⚠️ 注意事项</h2>
 <ul>
