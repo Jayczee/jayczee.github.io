@@ -125,3 +125,30 @@ sudo apt-get install linux-headers-$(uname -r)
 ```
 后继续安装即可。
 ：：：
+
+另外，关于nvidia-container-runtime, 引用ai的回答:
+
+:::tip
+在 Docker 中，当你需要使用 NVIDIA GPU 加速时，通常会使用 nvidia-container-runtime 作为容器的运行时。这个运行时是由 NVIDIA 提供的，它允许容器访问宿主机的 GPU 资源。
+
+如果你在创建容器时遇到 unknown or invalid runtime name: nvidia 的错误，这是因为 Docker 默认并不知道 nvidia 这个运行时。你需要显式地配置 Docker，告诉它 nvidia 运行时对应的路径和参数。
+
+1. 为什么需要添加配置？
+Docker 默认的运行时是 runc，它不支持 NVIDIA GPU 加速。为了使用 NVIDIA GPU，你需要将 Docker 配置为使用 nvidia-container-runtime 作为运行时。
+
+2. 如何配置 Docker 使用 nvidia-container-runtime？
+你需要在 Docker 的配置文件（通常是 /etc/docker/daemon.json）中添加以下内容：
+
+{
+    "runtimes": {
+        "nvidia": {
+            "path": "nvidia-container-runtime",
+            "runtimeArgs": []
+        }
+    },
+    "default-runtime": "nvidia"
+}
+解释：
+"runtimes": 定义了可用的运行时。你在这里添加了一个名为 nvidia 的运行时，并指定了它的路径 nvidia-container-runtime。
+"default-runtime": 指定了 Docker 默认使用的运行时。在这里，你将其设置为 nvidia，这样所有容器默认都会使用 nvidia-container-runtime
+```
