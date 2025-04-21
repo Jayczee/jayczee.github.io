@@ -2,7 +2,7 @@ import { sidebar } from "vuepress-theme-hope";
 import { fs, path } from "vuepress/utils";
 
 const getFiles = (dir) => {
-  return fs.readdirSync(dir).filter(file => file.endsWith('.md'));
+  return fs.readdirSync(dir).filter(file => file.endsWith('.md') && file!== 'README.md');
 };
 
 const nasChildren = getFiles(path.join(__dirname, '../nas'));
