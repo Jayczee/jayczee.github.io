@@ -6,16 +6,43 @@
     <link>https://jayczee.cn/</link>
     <description>Whispering for nothing</description>
     <language>zh-CN</language>
-    <pubDate>Thu, 10 Apr 2025 09:29:48 GMT</pubDate>
-    <lastBuildDate>Thu, 10 Apr 2025 09:29:48 GMT</lastBuildDate>
+    <pubDate>Mon, 21 Apr 2025 08:20:22 GMT</pubDate>
+    <lastBuildDate>Mon, 21 Apr 2025 08:20:22 GMT</lastBuildDate>
     <generator>@vuepress/plugin-feed</generator>
     <docs>https://validator.w3.org/feed/docs/rss2.html</docs>
     <category>Linux</category>
+    <category>OpenClash</category>
     <category>Windows</category>
     <category>LeetCode</category>
     <category>Code</category>
     <category>NAS</category>
     <category>学习笔记</category>
+    <item>
+      <title>Openwrt OpenClash 配置</title>
+      <link>https://jayczee.cn/win_linux/openclash.html</link>
+      <guid>https://jayczee.cn/win_linux/openclash.html</guid>
+      <source url="https://jayczee.cn/rss.xml">Openwrt OpenClash 配置</source>
+      <description>事出有因 🏠 最近搬家，顺便买了一台x86软路由，预装了iStoreOS（一个OpenWrt国内的改版）。在GitHub上找到了OpenClash仓库，下载并安装后，设置好了订阅地址和节点，本以为家里的所有设备都可以全自动翻墙🌐。然而，事情并没有这么简单。 实际使用中遇到了不少问题。例如，抖音评论区某些图片加载不出来📵，估计是图片CDN地址被Cl...</description>
+      <category>Linux</category>
+      <category>OpenClash</category>
+      <pubDate>Mon, 21 Apr 2025 08:09:07 GMT</pubDate>
+      <content:encoded><![CDATA[<h2>事出有因 🏠</h2>
+<p>最近搬家，顺便买了一台x86软路由，预装了iStoreOS（一个OpenWrt国内的改版）。在GitHub上找到了<a href="https://github.com/vernesong/OpenClash" target="_blank" rel="noopener noreferrer">OpenClash仓库</a>，下载并安装后，设置好了订阅地址和节点，本以为家里的所有设备都可以全自动翻墙🌐。<strong>然而</strong>，事情并没有这么简单。</p>
+<p>实际使用中遇到了不少问题。例如，抖音评论区某些图片加载不出来📵，估计是图片CDN地址被Clash错误识别为国外地址，导致使用了代理访问。还有绝区零云游戏一直加载中🎮，无法登录。</p>
+<p>大半夜的用手机找了半天解决方案📱，最终找到了这个仓库：</p>
+<p>✨ <a href="https://github.com/Aethersailor/Custom_OpenClash_Rules" target="_blank" rel="noopener noreferrer">OpenClash 保姆级设置方案 &amp; 全分组防泄漏订阅转换规则</a></p>
+<h2>相关项目介绍 📖</h2>
+<p>本项目可能是目前全网最强的OpenClash保姆级图文设置方案和订阅转换模板🚀！</p>
+<p><strong>终结所有错误设置！让稀奇古怪的套娃设置方法见鬼去吧👻！</strong></p>
+<p>OpenClash无疑是OpenWrt中最强大的科学上网软件🔑，它可以实现最完美的透明代理效果。</p>
+<p>本项目以中华人民共和国境内的网络环境为参考🇨🇳，示例如何将OpenClash插件设置为无感、快速、安全和省心兼顾的完美状态，从而达到<strong>极致优雅</strong>的透明代理科学上网体验。</p>
+<p>彻底告别手搓配置和多个插件套娃的繁琐设置方法🔧，保证零基础小白也能轻松看懂👶。</p>
+<p>按照本项目的Wiki中的设置方案，搭配本项目的订阅转换模板，花费数分钟对OpenClash进行设置，无需套娃其他工具，仅依靠OpenClash自身即可实现快速、无污染、无泄漏的DNS解析以及完善多样的分流功能，同时配合Dnsmasq可实现无需第三方插件的广告拦截，并且完美兼容IPv6🌐。</p>
+<h2>最终结果 🎉</h2>
+<p>跟着项目内的步骤完成了对OpenClash的配置，目前效果确实不错，解决了自己遇到的问题👍。</p>
+<p>设置方案本身都是大白话，对小白非常友好，<strong>复制粘贴</strong>也能达到预期效果。</p>
+]]></content:encoded>
+    </item>
     <item>
       <title>Linux &amp; Windows 命令行设置 alias 别名</title>
       <link>https://jayczee.cn/win_linux/linux-win-alias.html</link>
