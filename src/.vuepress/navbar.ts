@@ -21,5 +21,10 @@ export default navbar([
     text: "学习笔记",
     icon: "book",
     link: "/note/"
+  },
+  {
+    text: "其他",
+    icon: "ellipsis",
+    link: "/etc/"
   }
 ]);
