@@ -107,7 +107,3 @@ Vue 会自动帮我们处理 `props` 和 `update:XXX` 事件的定义，并可�
 ## 🔗 参考链接
 
 - [Vue 官方文档：v-model](https://vuejs.org/guide/components/v-model.html)
-
----
-
-通过 `defineModel`，让双向绑定变得更简单、优雅，极大提升开发体验！🚀🚀🚀
