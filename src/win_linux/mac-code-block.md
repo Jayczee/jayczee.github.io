@@ -1,5 +1,5 @@
 ---
-title: 💻 Markdown修改Mac风格代码块  
+title: Markdown修改Mac风格代码块  
 isOriginal: true  
 star: true  
 category:  
@@ -17,8 +17,8 @@ tag:
   position: relative;
   padding-top: 2.2em !important;
   border-radius: 12px !important;
-  background-color: #1e1e1e !important;
-  box-shadow: 0 8px 24px rgb(0 0 0 / 0.2);
+  background-color: #2e2e38 !important; /* 由#1e1e1e变为#2e2e38 */
+  box-shadow: 0 8px 24px rgb(0 0 0 / 0.25);
   overflow: hidden;
 }
 
@@ -29,7 +29,7 @@ tag:
   left: 0;
   height: 2em;
   width: 100%;
-  background: #2c2c2c;
+  background: #3a3a45; /* 由#2c2c2c变为#3a3a45，稍亮 */
   border-top-left-radius: 12px;
   border-top-right-radius: 12px;
   z-index: 10;

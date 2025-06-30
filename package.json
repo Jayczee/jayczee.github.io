@@ -25,6 +25,7 @@
     "vuepress-theme-hope": "2.0.0-rc.67"
   },
   "dependencies": {
+    "@moefy-canvas/theme-popper": "^0.6.0",
     "axios": "^1.7.9",
     "xml2js": "^0.6.2"
   }

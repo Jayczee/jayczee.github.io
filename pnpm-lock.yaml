@@ -8,6 +8,9 @@ importers:
 
   .:
     dependencies:
+      '@moefy-canvas/theme-popper':
+        specifier: ^0.6.0
+        version: 0.6.0
       axios:
         specifier: ^1.7.9
         version: 1.9.0
@@ -641,6 +644,15 @@ packages:
     peerDependenciesMeta:
       markdown-it:
         optional: true
+
+  '@moefy-canvas/core@0.6.0':
+    resolution: {integrity: sha512-i3GUeqfiEVs6Uuk32x/LYw8W0g8E9jc7y28hjZj/H1/PASYhN++lFmvJc0MhbWqjNmaUBfaWkUFIYw3RqnGcjQ==}
+
+  '@moefy-canvas/theme-popper@0.6.0':
+    resolution: {integrity: sha512-S3tZBchmkV4tqkbvwZzNoFtVMHVT+X8yXPY7hsPf4iN2cOIQZMdbUEI8ZJz6GDakLdkiHMM4USIKeWkFQvUEUQ==}
+
+  '@moefy-canvas/utils@0.6.0':
+    resolution: {integrity: sha512-QYW5FP8PhXTG0Y7fBkGDBNFLFNp70amwMqJiDvVYcDjSJVZYiZuvxrgvfKZYp+piL9oKBbfxgzYir9gbwZpZjA==}
 
   '@nodelib/fs.scandir@2.1.5':
     resolution: {integrity: sha512-vq24Bq3ym5HEQm2NKCr3yXDwjc7vTsEThRDnkp2DK9p1uqLR+DHurm/NOTo0KG7HYHU7eppKZj3MyqYuMBf62g==}
@@ -2375,6 +2387,9 @@ packages:
   trim-lines@3.0.1:
     resolution: {integrity: sha512-kRj8B+YHZCc9kQYdWfJB2/oUl9rA99qbowYYBtr4ui4mZyAQ2JpvVBd/6U2YloATfqBhBTSMhTpgBHtU0Mf3Rg==}
 
+  ts-debounce@4.0.0:
+    resolution: {integrity: sha512-+1iDGY6NmOGidq7i7xZGA4cm8DAa6fqdYcvO5Z6yBevH++Bdo9Qt/mN0TzHUgcCcKv1gmh9+W5dHqz8pMWbCbg==}
+
   tslib@2.8.1:
     resolution: {integrity: sha512-oJFu94HQb+KVduSUQL7wnpmqnfmLsOA/nAh6b6EH0wCEoK0/mPeXU6c3wKDV83MkOuHPRHtSXKKU99IBazS/2w==}
 
@@ -3125,6 +3140,18 @@ snapshots:
       '@types/markdown-it': 14.1.2
     optionalDependencies:
       markdown-it: 13.0.2
+
+  '@moefy-canvas/core@0.6.0': {}
+
+  '@moefy-canvas/theme-popper@0.6.0':
+    dependencies:
+      '@moefy-canvas/core': 0.6.0
+      '@moefy-canvas/utils': 0.6.0
+      ts-debounce: 4.0.0
+
+  '@moefy-canvas/utils@0.6.0':
+    dependencies:
+      '@moefy-canvas/core': 0.6.0
 
   '@nodelib/fs.scandir@2.1.5':
     dependencies:
@@ -5196,6 +5223,8 @@ snapshots:
       is-number: 7.0.0
 
   trim-lines@3.0.1: {}
+
+  ts-debounce@4.0.0: {}
 
   tslib@2.8.1: {}
 

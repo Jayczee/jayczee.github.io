@@ -4,10 +4,10 @@ custom: true
 layout: BlogHome
 icon: home
 title: Jayczee's Blog
-heroImage: https://theme-hope-assets.vuejs.press/logo.svg
+heroImage: /assets/hdr-frog.png
 heroText: Jayczee's Blog
 heroFullScreen: true
-tagline: Whispering
+tagline: Whispering for nothing
 description: A blog for anything I wanna note down...
 # projects:
 #   - icon: project
@@ -42,4 +42,3 @@ description: A blog for anything I wanna note down...
 
 footer: 浙ICP备2025150833
 ---
-

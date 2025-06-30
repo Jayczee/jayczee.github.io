@@ -10,7 +10,7 @@ export default hopeTheme({
     url: "https://jayczee.cn",
   },
 
-  logo: "https://theme-hope-assets.vuejs.press/logo.svg",
+  logo: "/logo.svg",
 
   repo: "Jayczee/jayczee.github.io",
 
@@ -27,9 +27,11 @@ export default hopeTheme({
   // 页脚
   footer: "浙ICP备2025150833",
   displayFooter: true,
+  
 
   // 博客相关
   blog: {
+    avatar: '/assets/hdr-frog.png',
     description: "默默无闻的编程爱好者一名",
     // intro: "/intro.html",
     medias: {
