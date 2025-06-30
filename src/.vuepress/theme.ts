@@ -101,6 +101,11 @@ export default hopeTheme({
     mark: true,
     plantuml: true,
     spoiler: true,
+    highlighter: {
+      type: 'shiki',
+      lineNumbers: false,
+      theme: 'dark-plus'
+    },
     stylize: [
       {
         matcher: "Recommended",

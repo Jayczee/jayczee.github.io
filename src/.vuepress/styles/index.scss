@@ -1,1 +1,39 @@
 // place your custom styles here
+/* styles/index.scss */
+
+// global mac code block
+.theme-hope-content pre {
+  position: relative;
+  padding-top: 2.2em !important;
+  border-radius: 12px !important;
+  background-color: #1e1e1e !important;
+  box-shadow: 0 8px 24px rgb(0 0 0 / 0.2);
+  overflow: hidden;
+}
+
+.theme-hope-content pre::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  height: 2em;
+  width: 100%;
+  background: #2c2c2c;
+  border-top-left-radius: 12px;
+  border-top-right-radius: 12px;
+  z-index: 10;
+}
+
+.theme-hope-content pre::after {
+  content: "";
+  position: absolute;
+  top: 0.6em;
+  left: 1em;
+  width: 12px;
+  height: 12px;
+  border-radius: 50%;
+  box-shadow: 24px 0 0 #ffc107, 48px 0 0 #4caf50;
+  background-color: #f44336;
+  z-index: 15;
+  display: block;
+}

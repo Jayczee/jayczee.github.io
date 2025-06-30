@@ -1,5 +1,5 @@
 ---
-title: 定义 Vue 子组件双向绑定的属性的语法糖 - defineModel
+title: ✨ 定义 Vue 子组件双向绑定的属性的语法糖 - defineModel
 isOriginal: true
 star: true
 category:
