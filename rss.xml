@@ -6,8 +6,8 @@
     <link>https://jayczee.cn/</link>
     <description>Whispering for nothing</description>
     <language>zh-CN</language>
-    <pubDate>Wed, 02 Jul 2025 01:54:49 GMT</pubDate>
-    <lastBuildDate>Wed, 02 Jul 2025 01:54:49 GMT</lastBuildDate>
+    <pubDate>Mon, 28 Jul 2025 08:33:55 GMT</pubDate>
+    <lastBuildDate>Mon, 28 Jul 2025 08:33:55 GMT</lastBuildDate>
     <generator>@vuepress/plugin-feed</generator>
     <docs>https://validator.w3.org/feed/docs/rss2.html</docs>
     <category>Linux</category>
@@ -146,6 +146,327 @@
 <p>之前去日本旅游，用大疆拍摄了一百多G的视频，准备回来制作Vlog。因为存储卡空间不够，就先把视频拷贝到电脑上存储，随后格式化了大疆的SD卡，继续拍摄。</p>
 <p>回到家后，把大疆新拍的素材也拷贝到了电脑上。电脑是Mac。</p>
 ]]></content:encoded>
+    </item>
+    <item>
+      <title>209 长度最小的子数组</title>
+      <link>https://jayczee.cn/note/leet150/30-leet209.html</link>
+      <guid>https://jayczee.cn/note/leet150/30-leet209.html</guid>
+      <source url="https://jayczee.cn/rss.xml">209 长度最小的子数组</source>
+      <description>🚀 相关链接 LeetCode 209 - 长度最小的子数组 📜 描述 给定一个含有 n 个正整数的数组和一个正整数 target。 找出该数组中满足其总和大于等于 target 的长度最小的 子数组 [numsl, numsl+1, ..., numsr-1, numsr]，并返回其长度。如果不存在符合条件的子数组，返回 0。 💡 示例 输入:...</description>
+      <category>LeetCode</category>
+      <pubDate>Tue, 27 May 2025 07:51:43 GMT</pubDate>
+      <content:encoded><![CDATA[<h2>🚀 相关链接</h2>
+<p><a href="https://leetcode.cn/problems/minimum-size-subarray-sum/?envType=study-plan-v2&amp;envId=top-interview-150" target="_blank" rel="noopener noreferrer">LeetCode 209 - 长度最小的子数组</a></p>
+<h2>📜 描述</h2>
+<p>给定一个含有 <code>n</code> 个正整数的数组和一个正整数 <code>target</code>。</p>
+<p>找出该数组中满足其总和大于等于 <code>target</code> 的长度最小的 <strong>子数组</strong> <code>[numsl, numsl+1, ..., numsr-1, numsr]</code>，并返回其长度。如果不存在符合条件的子数组，返回 <code>0</code>。</p>
+<h2>💡 示例</h2>
+<ul>
+<li><strong>输入</strong>: <code>target = 7, nums = [2,3,1,2,4,3]</code></li>
+<li><strong>输出</strong>: <code>2</code></li>
+<li><strong>解释</strong>: 子数组 <code>[4,3]</code> 是该条件下的长度最小的子数组。</li>
+</ul>
+<h3>示例 2</h3>
+<ul>
+<li><strong>输入</strong>: <code>target = 4, nums = [1,4,4]</code></li>
+<li><strong>输出</strong>: <code>1</code></li>
+</ul>
+<h3>示例 3</h3>
+<ul>
+<li><strong>输入</strong>: <code>target = 11, nums = [1,1,1,1,1,1,1,1]</code></li>
+<li><strong>输出</strong>: <code>0</code></li>
+</ul>
+<h2>📝 提示</h2>
+<ul>
+<li><code>1 &lt;= target &lt;= 10^9</code></li>
+<li><code>1 &lt;= nums.length &lt;= 10^5</code></li>
+<li><code>1 &lt;= nums[i] &lt;= 10^4</code></li>
+</ul>
+<h3>进阶</h3>
+<p>如果你已经实现 <code>O(n)</code> 时间复杂度的解法，请尝试设计一个 <code>O(n log(n))</code> 时间复杂度的解法。</p>
+<h2>💭 思路</h2>
+<ol>
+<li>
+<p><strong>暴力解法</strong>：</p>
+<ul>
+<li>使用双重循环枚举所有可能的子数组，计算子数组的和，并记录最小的长度。</li>
+<li>时间复杂度：<code>O(n^2)</code>，在LeetCode中会超时。</li>
+</ul>
+</li>
+<li>
+<p><strong>前缀和 + 二分查找</strong>：</p>
+<ul>
+<li>先计算数组的前缀和数组 <code>sums</code>。</li>
+<li>对于每个位置 <code>i</code>，使用二分查找找到第一个满足 <code>sums[j] - sums[i-1] &gt;= target</code> 的 <code>j</code>，并更新最小长度。</li>
+<li>时间复杂度：<code>O(n log(n))</code>。</li>
+</ul>
+</li>
+<li>
+<p><strong>滑动窗口</strong>：</p>
+<ul>
+<li>维护一个窗口 <code>[start, end]</code>，计算窗口内的和 <code>sum</code>。</li>
+<li>如果 <code>sum &gt;= target</code>，更新最小长度，并尝试缩小窗口（<code>start++</code>）。</li>
+<li>如果 <code>sum &lt; target</code>，扩大窗口（<code>end++</code>）。</li>
+<li>时间复杂度：<code>O(n)</code>。</li>
+</ul>
+</li>
+</ol>
+<h2>💻 代码实现</h2>
+<ol>
+<li><strong>暴力解法</strong>（超时）</li>
+</ol>
+<div class="language-java" data-highlighter="shiki" data-ext="java" data-title="java" style="background-color:#1E1E1E;color:#D4D4D4"><pre class="shiki dark-plus vp-code"><code><span class="line"><span style="color:#569CD6">public</span><span style="color:#4EC9B0"> int</span><span style="color:#DCDCAA"> minSubArrayLen</span><span style="color:#D4D4D4">(</span><span style="color:#4EC9B0">int</span><span style="color:#D4D4D4"> target, </span><span style="color:#4EC9B0">int</span><span style="color:#D4D4D4">[] nums) {</span></span>
+<span class="line"><span style="color:#4EC9B0">    int</span><span style="color:#9CDCFE"> ans</span><span style="color:#D4D4D4"> = </span><span style="color:#9CDCFE">Integer</span><span style="color:#D4D4D4">.</span><span style="color:#9CDCFE">MAX_VALUE</span><span style="color:#D4D4D4">;</span></span>
+<span class="line"><span style="color:#C586C0">    for</span><span style="color:#D4D4D4"> (</span><span style="color:#4EC9B0">int</span><span style="color:#9CDCFE"> i</span><span style="color:#D4D4D4"> = </span><span style="color:#B5CEA8">0</span><span style="color:#D4D4D4">; i &lt; </span><span style="color:#9CDCFE">nums</span><span style="color:#D4D4D4">.</span><span style="color:#9CDCFE">length</span><span style="color:#D4D4D4">; i++) {</span></span>
+<span class="line"><span style="color:#4EC9B0">        int</span><span style="color:#9CDCFE"> sum</span><span style="color:#D4D4D4"> = </span><span style="color:#B5CEA8">0</span><span style="color:#D4D4D4">;</span></span>
+<span class="line"><span style="color:#C586C0">        for</span><span style="color:#D4D4D4"> (</span><span style="color:#4EC9B0">int</span><span style="color:#9CDCFE"> j</span><span style="color:#D4D4D4"> = </span><span style="color:#B5CEA8">1</span><span style="color:#D4D4D4">; j &lt;= ans &amp;&amp; j + i - </span><span style="color:#B5CEA8">1</span><span style="color:#D4D4D4"> &lt; </span><span style="color:#9CDCFE">nums</span><span style="color:#D4D4D4">.</span><span style="color:#9CDCFE">length</span><span style="color:#D4D4D4">; j++) {</span></span>
+<span class="line"><span style="color:#D4D4D4">            sum += nums[i + j - </span><span style="color:#B5CEA8">1</span><span style="color:#D4D4D4">];</span></span>
+<span class="line"><span style="color:#C586C0">            if</span><span style="color:#D4D4D4"> (sum &gt;= target) {</span></span>
+<span class="line"><span style="color:#D4D4D4">                ans = j;</span></span>
+<span class="line"><span style="color:#D4D4D4">            }</span></span>
+<span class="line"><span style="color:#D4D4D4">        }</span></span>
+<span class="line"><span style="color:#D4D4D4">    }</span></span>
+<span class="line"><span style="color:#C586C0">    return</span><span style="color:#D4D4D4"> ans == </span><span style="color:#9CDCFE">Integer</span><span style="color:#D4D4D4">.</span><span style="color:#9CDCFE">MAX_VALUE</span><span style="color:#C586C0"> ?</span><span style="color:#B5CEA8"> 0</span><span style="color:#C586C0"> :</span><span style="color:#D4D4D4"> ans;</span></span>
+<span class="line"><span style="color:#D4D4D4">}</span></span></code></pre>
+</div><ol start="2">
+<li><strong>前缀和 + 二分查找</strong></li>
+</ol>
+<div class="language-java" data-highlighter="shiki" data-ext="java" data-title="java" style="background-color:#1E1E1E;color:#D4D4D4"><pre class="shiki dark-plus vp-code"><code><span class="line"><span style="color:#569CD6">public</span><span style="color:#4EC9B0"> int</span><span style="color:#DCDCAA"> minSubArrayLen</span><span style="color:#D4D4D4">(</span><span style="color:#4EC9B0">int</span><span style="color:#D4D4D4"> target, </span><span style="color:#4EC9B0">int</span><span style="color:#D4D4D4">[] nums) {</span></span>
+<span class="line"><span style="color:#4EC9B0">    int</span><span style="color:#9CDCFE"> ans</span><span style="color:#D4D4D4"> = </span><span style="color:#9CDCFE">Integer</span><span style="color:#D4D4D4">.</span><span style="color:#9CDCFE">MAX_VALUE</span><span style="color:#D4D4D4">;</span></span>
+<span class="line"><span style="color:#4EC9B0">    int</span><span style="color:#D4D4D4">[] </span><span style="color:#9CDCFE">sums</span><span style="color:#D4D4D4"> = </span><span style="color:#C586C0">new</span><span style="color:#4EC9B0"> int</span><span style="color:#D4D4D4">[</span><span style="color:#9CDCFE">nums</span><span style="color:#D4D4D4">.</span><span style="color:#9CDCFE">length</span><span style="color:#D4D4D4"> + </span><span style="color:#B5CEA8">1</span><span style="color:#D4D4D4">];</span></span>
+<span class="line"><span style="color:#D4D4D4">    sums[</span><span style="color:#B5CEA8">0</span><span style="color:#D4D4D4">] = </span><span style="color:#B5CEA8">0</span><span style="color:#D4D4D4">;</span></span>
+<span class="line"><span style="color:#C586C0">    for</span><span style="color:#D4D4D4"> (</span><span style="color:#4EC9B0">int</span><span style="color:#9CDCFE"> i</span><span style="color:#D4D4D4"> = </span><span style="color:#B5CEA8">1</span><span style="color:#D4D4D4">; i &lt;= </span><span style="color:#9CDCFE">nums</span><span style="color:#D4D4D4">.</span><span style="color:#9CDCFE">length</span><span style="color:#D4D4D4">; i++) {</span></span>
+<span class="line"><span style="color:#D4D4D4">        sums[i] = sums[i - </span><span style="color:#B5CEA8">1</span><span style="color:#D4D4D4">] + nums[i - </span><span style="color:#B5CEA8">1</span><span style="color:#D4D4D4">];</span></span>
+<span class="line"><span style="color:#D4D4D4">    }</span></span>
+<span class="line"><span style="color:#C586C0">    for</span><span style="color:#D4D4D4"> (</span><span style="color:#4EC9B0">int</span><span style="color:#9CDCFE"> i</span><span style="color:#D4D4D4"> = </span><span style="color:#B5CEA8">1</span><span style="color:#D4D4D4">; i &lt;= </span><span style="color:#9CDCFE">nums</span><span style="color:#D4D4D4">.</span><span style="color:#9CDCFE">length</span><span style="color:#D4D4D4">; i++) {</span></span>
+<span class="line"><span style="color:#4EC9B0">        int</span><span style="color:#9CDCFE"> bound</span><span style="color:#D4D4D4"> = </span><span style="color:#9CDCFE">Arrays</span><span style="color:#D4D4D4">.</span><span style="color:#DCDCAA">binarySearch</span><span style="color:#D4D4D4">(sums, sums[i - </span><span style="color:#B5CEA8">1</span><span style="color:#D4D4D4">] + target);</span></span>
+<span class="line"><span style="color:#C586C0">        if</span><span style="color:#D4D4D4"> (bound &lt; </span><span style="color:#B5CEA8">0</span><span style="color:#D4D4D4">) {</span></span>
+<span class="line"><span style="color:#D4D4D4">            bound = -bound - </span><span style="color:#B5CEA8">1</span><span style="color:#D4D4D4">; </span><span style="color:#6A9955">// Arrays.binarySearch特性</span></span>
+<span class="line"><span style="color:#D4D4D4">        }</span></span>
+<span class="line"><span style="color:#C586C0">        if</span><span style="color:#D4D4D4"> (bound &lt;= </span><span style="color:#9CDCFE">nums</span><span style="color:#D4D4D4">.</span><span style="color:#9CDCFE">length</span><span style="color:#D4D4D4">) {</span></span>
+<span class="line"><span style="color:#D4D4D4">            ans = </span><span style="color:#9CDCFE">Math</span><span style="color:#D4D4D4">.</span><span style="color:#DCDCAA">min</span><span style="color:#D4D4D4">(ans, bound - (i - </span><span style="color:#B5CEA8">1</span><span style="color:#D4D4D4">));</span></span>
+<span class="line"><span style="color:#D4D4D4">        }</span></span>
+<span class="line"><span style="color:#D4D4D4">    }</span></span>
+<span class="line"><span style="color:#C586C0">    return</span><span style="color:#D4D4D4"> ans == </span><span style="color:#9CDCFE">Integer</span><span style="color:#D4D4D4">.</span><span style="color:#9CDCFE">MAX_VALUE</span><span style="color:#C586C0"> ?</span><span style="color:#B5CEA8"> 0</span><span style="color:#C586C0"> :</span><span style="color:#D4D4D4"> ans;</span></span>
+<span class="line"><span style="color:#D4D4D4">}</span></span></code></pre>
+</div><ol start="3">
+<li><strong>滑动窗口</strong></li>
+</ol>
+<div class="language-java" data-highlighter="shiki" data-ext="java" data-title="java" style="background-color:#1E1E1E;color:#D4D4D4"><pre class="shiki dark-plus vp-code"><code><span class="line"><span style="color:#569CD6">public</span><span style="color:#4EC9B0"> int</span><span style="color:#DCDCAA"> lengthOfLongestSubstring</span><span style="color:#D4D4D4">(</span><span style="color:#4EC9B0">String</span><span style="color:#D4D4D4"> s) {</span></span>
+<span class="line"><span style="color:#4EC9B0">        List</span><span style="color:#D4D4D4">&lt;</span><span style="color:#4EC9B0">Character</span><span style="color:#D4D4D4">&gt; </span><span style="color:#9CDCFE">list</span><span style="color:#D4D4D4"> = </span><span style="color:#C586C0">new</span><span style="color:#4EC9B0"> ArrayList</span><span style="color:#D4D4D4">&lt;&gt;();</span></span>
+<span class="line"><span style="color:#4EC9B0">        int</span><span style="color:#9CDCFE"> l</span><span style="color:#D4D4D4"> = </span><span style="color:#B5CEA8">0</span><span style="color:#D4D4D4">, r= </span><span style="color:#B5CEA8">0</span><span style="color:#D4D4D4">, ans = </span><span style="color:#B5CEA8">0</span><span style="color:#D4D4D4">;</span></span>
+<span class="line"><span style="color:#C586C0">        while</span><span style="color:#D4D4D4">(l &lt;= r &amp;&amp; r&lt; </span><span style="color:#9CDCFE">s</span><span style="color:#D4D4D4">.</span><span style="color:#DCDCAA">length</span><span style="color:#D4D4D4">()){</span></span>
+<span class="line"><span style="color:#C586C0">            if</span><span style="color:#D4D4D4"> (l == r){</span></span>
+<span class="line"><span style="color:#9CDCFE">                list</span><span style="color:#D4D4D4">.</span><span style="color:#DCDCAA">add</span><span style="color:#D4D4D4">(</span><span style="color:#9CDCFE">s</span><span style="color:#D4D4D4">.</span><span style="color:#DCDCAA">charAt</span><span style="color:#D4D4D4">(l));</span></span>
+<span class="line"><span style="color:#D4D4D4">                ans = </span><span style="color:#9CDCFE">Math</span><span style="color:#D4D4D4">.</span><span style="color:#DCDCAA">max</span><span style="color:#D4D4D4">(ans, </span><span style="color:#9CDCFE">list</span><span style="color:#D4D4D4">.</span><span style="color:#DCDCAA">size</span><span style="color:#D4D4D4">());</span></span>
+<span class="line"><span style="color:#D4D4D4">                r++;</span></span>
+<span class="line"><span style="color:#D4D4D4">            }</span><span style="color:#C586C0">else</span><span style="color:#D4D4D4">{</span></span>
+<span class="line"><span style="color:#4EC9B0">                Character</span><span style="color:#9CDCFE"> c</span><span style="color:#D4D4D4"> = </span><span style="color:#9CDCFE">s</span><span style="color:#D4D4D4">.</span><span style="color:#DCDCAA">charAt</span><span style="color:#D4D4D4">(r);</span></span>
+<span class="line"><span style="color:#C586C0">                if</span><span style="color:#D4D4D4"> (</span><span style="color:#9CDCFE">list</span><span style="color:#D4D4D4">.</span><span style="color:#DCDCAA">contains</span><span style="color:#D4D4D4">(c)){</span></span>
+<span class="line"><span style="color:#9CDCFE">                    list</span><span style="color:#D4D4D4">.</span><span style="color:#DCDCAA">removeFirst</span><span style="color:#D4D4D4">();</span></span>
+<span class="line"><span style="color:#D4D4D4">                    l++;</span></span>
+<span class="line"><span style="color:#D4D4D4">                }</span><span style="color:#C586C0">else</span><span style="color:#D4D4D4">{</span></span>
+<span class="line"><span style="color:#9CDCFE">                    list</span><span style="color:#D4D4D4">.</span><span style="color:#DCDCAA">add</span><span style="color:#D4D4D4">(</span><span style="color:#9CDCFE">s</span><span style="color:#D4D4D4">.</span><span style="color:#DCDCAA">charAt</span><span style="color:#D4D4D4">(r));</span></span>
+<span class="line"><span style="color:#D4D4D4">                    ans = </span><span style="color:#9CDCFE">Math</span><span style="color:#D4D4D4">.</span><span style="color:#DCDCAA">max</span><span style="color:#D4D4D4">(ans, </span><span style="color:#9CDCFE">list</span><span style="color:#D4D4D4">.</span><span style="color:#DCDCAA">size</span><span style="color:#D4D4D4">());</span></span>
+<span class="line"><span style="color:#D4D4D4">                    r++;</span></span>
+<span class="line"><span style="color:#D4D4D4">                }</span></span>
+<span class="line"><span style="color:#D4D4D4">            }</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#D4D4D4">        }</span></span>
+<span class="line"><span style="color:#C586C0">        return</span><span style="color:#D4D4D4"> ans;</span></span>
+<span class="line"><span style="color:#D4D4D4">    }</span></span></code></pre>
+</div>]]></content:encoded>
+    </item>
+    <item>
+      <title>3 无重复字符的最长子串</title>
+      <link>https://jayczee.cn/note/leet150/31-leet003.html</link>
+      <guid>https://jayczee.cn/note/leet150/31-leet003.html</guid>
+      <source url="https://jayczee.cn/rss.xml">3 无重复字符的最长子串</source>
+      <description>🚀 相关链接 LeetCode 3 - 无重复字符的最长子串 📜 描述 给定一个字符串 s ，请你找出其中不含有重复字符的 最长 子串的长度。 💡 示例 示例 1 输入: s = &amp;quot;abcabcbb&amp;quot; 输出: 3 解释: 因为无重复字符的最长子串是 &amp;quot;abc&amp;quot;，所以其长度为 3。 示例 2 输入: s = &amp;quot;bbbbb&amp;quot; 输出: 1 解释: 因为...</description>
+      <category>LeetCode</category>
+      <pubDate>Tue, 27 May 2025 07:51:43 GMT</pubDate>
+      <content:encoded><![CDATA[<h2>🚀 相关链接</h2>
+<p><a href="https://leetcode.cn/problems/longest-substring-without-repeating-characters/?envType=study-plan-v2&amp;envId=top-interview-150" target="_blank" rel="noopener noreferrer">LeetCode 3 - 无重复字符的最长子串</a></p>
+<h2>📜 描述</h2>
+<p>给定一个字符串 <code>s</code> ，请你找出其中不含有重复字符的 <strong>最长</strong> 子串的长度。</p>
+<h2>💡 示例</h2>
+<h3>示例 1</h3>
+<ul>
+<li><strong>输入</strong>: <code>s = "abcabcbb"</code></li>
+<li><strong>输出</strong>: <code>3</code></li>
+<li><strong>解释</strong>: 因为无重复字符的最长子串是 <code>"abc"</code>，所以其长度为 <code>3</code>。</li>
+</ul>
+<h3>示例 2</h3>
+<ul>
+<li><strong>输入</strong>: <code>s = "bbbbb"</code></li>
+<li><strong>输出</strong>: <code>1</code></li>
+<li><strong>解释</strong>: 因为无重复字符的最长子串是 <code>"b"</code>，所以其长度为 <code>1</code>。</li>
+</ul>
+<h3>示例 3</h3>
+<ul>
+<li>
+<p><strong>输入</strong>: <code>s = "pwwkew"</code></p>
+</li>
+<li>
+<p><strong>输出</strong>: <code>3</code></p>
+</li>
+<li>
+<p><strong>解释</strong>: 因为无重复字符的最长子串是 <code>"wke"</code>，所以其长度为 <code>3</code>。</p>
+<p>请注意，你的答案必须是 <strong>子串</strong> 的长度，<code>"pwke"</code> 是一个子序列，不是子串。</p>
+</li>
+</ul>
+<h2>📝 提示</h2>
+<ul>
+<li><code>0 &lt;= s.length &lt;= 5 * 10^4</code></li>
+<li><code>s</code> 由英文字母、数字、符号和空格组成</li>
+</ul>
+<h2>💭 思路</h2>
+<p>使用 <strong>滑动窗口</strong> 的思想来解决这个问题：</p>
+<ol>
+<li>维护一个窗口，窗口的左边界和右边界分别用 <code>l</code> 和 <code>r</code> 表示。</li>
+<li>使用一个列表 <code>list</code> 来存储当前窗口中的字符。</li>
+<li>遍历字符串 <code>s</code>，如果当前字符 <code>s[r]</code> 不在 <code>list</code> 中，则将其加入 <code>list</code> 并扩展右边界 <code>r</code>。</li>
+<li>如果当前字符 <code>s[r]</code> 已经在 <code>list</code> 中，则移除 <code>list</code> 中的第一个字符并收缩左边界 <code>l</code>。</li>
+<li>在每次扩展或收缩窗口时，记录窗口的最大长度。</li>
+</ol>
+<h2>💻 代码实现</h2>
+<div class="language-java" data-highlighter="shiki" data-ext="java" data-title="java" style="background-color:#1E1E1E;color:#D4D4D4"><pre class="shiki dark-plus vp-code"><code><span class="line"><span style="color:#569CD6">public</span><span style="color:#4EC9B0"> int</span><span style="color:#DCDCAA"> lengthOfLongestSubstring</span><span style="color:#D4D4D4">(</span><span style="color:#4EC9B0">String</span><span style="color:#D4D4D4"> s) {</span></span>
+<span class="line"><span style="color:#4EC9B0">    List</span><span style="color:#D4D4D4">&lt;</span><span style="color:#4EC9B0">Character</span><span style="color:#D4D4D4">&gt; </span><span style="color:#9CDCFE">list</span><span style="color:#D4D4D4"> = </span><span style="color:#C586C0">new</span><span style="color:#4EC9B0"> ArrayList</span><span style="color:#D4D4D4">&lt;&gt;();</span></span>
+<span class="line"><span style="color:#4EC9B0">    int</span><span style="color:#9CDCFE"> l</span><span style="color:#D4D4D4"> = </span><span style="color:#B5CEA8">0</span><span style="color:#D4D4D4">, r = </span><span style="color:#B5CEA8">0</span><span style="color:#D4D4D4">, ans = </span><span style="color:#B5CEA8">0</span><span style="color:#D4D4D4">;</span></span>
+<span class="line"><span style="color:#C586C0">    while</span><span style="color:#D4D4D4"> (l &lt;= r &amp;&amp; r &lt; </span><span style="color:#9CDCFE">s</span><span style="color:#D4D4D4">.</span><span style="color:#DCDCAA">length</span><span style="color:#D4D4D4">()) {</span></span>
+<span class="line"><span style="color:#C586C0">        if</span><span style="color:#D4D4D4"> (l == r) {</span></span>
+<span class="line"><span style="color:#9CDCFE">            list</span><span style="color:#D4D4D4">.</span><span style="color:#DCDCAA">add</span><span style="color:#D4D4D4">(</span><span style="color:#9CDCFE">s</span><span style="color:#D4D4D4">.</span><span style="color:#DCDCAA">charAt</span><span style="color:#D4D4D4">(l));</span></span>
+<span class="line"><span style="color:#D4D4D4">            ans = </span><span style="color:#9CDCFE">Math</span><span style="color:#D4D4D4">.</span><span style="color:#DCDCAA">max</span><span style="color:#D4D4D4">(ans, </span><span style="color:#9CDCFE">list</span><span style="color:#D4D4D4">.</span><span style="color:#DCDCAA">size</span><span style="color:#D4D4D4">());</span></span>
+<span class="line"><span style="color:#D4D4D4">            r++;</span></span>
+<span class="line"><span style="color:#D4D4D4">        } </span><span style="color:#C586C0">else</span><span style="color:#D4D4D4"> {</span></span>
+<span class="line"><span style="color:#4EC9B0">            Character</span><span style="color:#9CDCFE"> c</span><span style="color:#D4D4D4"> = </span><span style="color:#9CDCFE">s</span><span style="color:#D4D4D4">.</span><span style="color:#DCDCAA">charAt</span><span style="color:#D4D4D4">(r);</span></span>
+<span class="line"><span style="color:#C586C0">            if</span><span style="color:#D4D4D4"> (</span><span style="color:#9CDCFE">list</span><span style="color:#D4D4D4">.</span><span style="color:#DCDCAA">contains</span><span style="color:#D4D4D4">(c)) {</span></span>
+<span class="line"><span style="color:#9CDCFE">                list</span><span style="color:#D4D4D4">.</span><span style="color:#DCDCAA">removeFirst</span><span style="color:#D4D4D4">();</span></span>
+<span class="line"><span style="color:#D4D4D4">                l++;</span></span>
+<span class="line"><span style="color:#D4D4D4">            } </span><span style="color:#C586C0">else</span><span style="color:#D4D4D4"> {</span></span>
+<span class="line"><span style="color:#9CDCFE">                list</span><span style="color:#D4D4D4">.</span><span style="color:#DCDCAA">add</span><span style="color:#D4D4D4">(</span><span style="color:#9CDCFE">s</span><span style="color:#D4D4D4">.</span><span style="color:#DCDCAA">charAt</span><span style="color:#D4D4D4">(r));</span></span>
+<span class="line"><span style="color:#D4D4D4">                ans = </span><span style="color:#9CDCFE">Math</span><span style="color:#D4D4D4">.</span><span style="color:#DCDCAA">max</span><span style="color:#D4D4D4">(ans, </span><span style="color:#9CDCFE">list</span><span style="color:#D4D4D4">.</span><span style="color:#DCDCAA">size</span><span style="color:#D4D4D4">());</span></span>
+<span class="line"><span style="color:#D4D4D4">                r++;</span></span>
+<span class="line"><span style="color:#D4D4D4">            }</span></span>
+<span class="line"><span style="color:#D4D4D4">        }</span></span>
+<span class="line"><span style="color:#D4D4D4">    }</span></span>
+<span class="line"><span style="color:#C586C0">    return</span><span style="color:#D4D4D4"> ans;</span></span>
+<span class="line"><span style="color:#D4D4D4">}</span></span></code></pre>
+</div>]]></content:encoded>
+    </item>
+    <item>
+      <title>30 串联所有单词的子串</title>
+      <link>https://jayczee.cn/note/leet150/32-leet030.html</link>
+      <guid>https://jayczee.cn/note/leet150/32-leet030.html</guid>
+      <source url="https://jayczee.cn/rss.xml">30 串联所有单词的子串</source>
+      <description>🚀 相关链接 LeetCode 30 - 串联所有单词的子串 📜 描述 给定一个字符串 s 和一个字符串数组 words。words 中所有字符串 长度相同。 s 中的 串联子串 是指一个包含 words 中所有字符串以任意顺序排列连接起来的子串。 💡 示例 示例 1 输入: s = &amp;quot;barfoothefoobarman&amp;quot;, words = [...</description>
+      <category>LeetCode</category>
+      <pubDate>Tue, 27 May 2025 07:51:43 GMT</pubDate>
+      <content:encoded><![CDATA[<h2>🚀 相关链接</h2>
+<p><a href="https://leetcode.cn/problems/substring-with-concatenation-of-all-words/description/?envType=study-plan-v2&amp;envId=top-interview-150" target="_blank" rel="noopener noreferrer">LeetCode 30 - 串联所有单词的子串</a></p>
+<h2>📜 描述</h2>
+<p>给定一个字符串 <code>s</code> 和一个字符串数组 <code>words</code>。<code>words</code> 中所有字符串 <strong>长度相同</strong>。</p>
+<p><code>s</code> 中的 <strong>串联子串</strong> 是指一个包含 <code>words</code> 中所有字符串以任意顺序排列连接起来的子串。</p>
+<h2>💡 示例</h2>
+<h3>示例 1</h3>
+<ul>
+<li><strong>输入</strong>: <code>s = "barfoothefoobarman"</code>, <code>words = ["foo","bar"]</code></li>
+<li><strong>输出</strong>: <code>[0,9]</code></li>
+<li><strong>解释</strong>:
+<ul>
+<li>子串 <code>"barfoo"</code> 开始位置是 <code>0</code>。它是 <code>words</code> 中以 <code>["bar","foo"]</code> 顺序排列的连接。</li>
+<li>子串 <code>"foobar"</code> 开始位置是 <code>9</code>。它是 <code>words</code> 中以 <code>["foo","bar"]</code> 顺序排列的连接。</li>
+</ul>
+</li>
+</ul>
+<h3>示例 2</h3>
+<ul>
+<li><strong>输入</strong>: <code>s = "wordgoodgoodgoodbestword"</code>, <code>words = ["word","good","best","word"]</code></li>
+<li><strong>输出</strong>: <code>[]</code></li>
+<li><strong>解释</strong>: 没有符合条件的子串。</li>
+</ul>
+<h3>示例 3</h3>
+<ul>
+<li><strong>输入</strong>: <code>s = "barfoofoobarthefoobarman"</code>, <code>words = ["bar","foo","the"]</code></li>
+<li><strong>输出</strong>: <code>[6,9,12]</code></li>
+<li><strong>解释</strong>:
+<ul>
+<li>子串 <code>"foobarthe"</code> 开始位置是 <code>6</code>。</li>
+<li>子串 <code>"barthefoo"</code> 开始位置是 <code>9</code>。</li>
+<li>子串 <code>"thefoobar"</code> 开始位置是 <code>12</code>。</li>
+</ul>
+</li>
+</ul>
+<h2>📝 提示</h2>
+<ul>
+<li><code>1 &lt;= s.length &lt;= 10^4</code></li>
+<li><code>1 &lt;= words.length &lt;= 5000</code></li>
+<li><code>1 &lt;= words[i].length &lt;= 30</code></li>
+<li><code>words[i]</code> 和 <code>s</code> 由小写英文字母组成</li>
+</ul>
+<h2>💭 思路</h2>
+<h3>方法一：滑动窗口 + 哈希表</h3>
+<ol>
+<li>
+<p><strong>预处理</strong>：</p>
+<ul>
+<li>计算每个单词的长度 <code>wordLen</code> 和所有单词连接后的总长度 <code>groupLen</code>。</li>
+<li>如果 <code>s</code> 的长度小于 <code>groupLen</code>，直接返回空列表。</li>
+</ul>
+</li>
+<li>
+<p><strong>滑动窗口</strong>：</p>
+<ul>
+<li>使用滑动窗口在 <code>s</code> 上滑动，窗口大小为 <code>groupLen</code>。</li>
+<li>对于每个窗口，统计窗口内单词出现的频率，并与 <code>words</code> 的频率进行比较。</li>
+<li>具体实现为使用一个哈希表，key为单词，用words数组进行初始化，words数组每出现一次就减1，窗口内出现一次就加1，若该窗口使hashmap中的值全为0，则该窗口起始位置为1个答案。</li>
+</ul>
+</li>
+</ol>
+<h2>💻 代码实现</h2>
+<div class="language-java" data-highlighter="shiki" data-ext="java" data-title="java" style="background-color:#1E1E1E;color:#D4D4D4"><pre class="shiki dark-plus vp-code"><code><span class="line"><span style="color:#569CD6">public</span><span style="color:#4EC9B0"> List</span><span style="color:#D4D4D4">&lt;Integer&gt; </span><span style="color:#DCDCAA">findSubstring</span><span style="color:#D4D4D4">(</span><span style="color:#4EC9B0">String</span><span style="color:#D4D4D4"> s, </span><span style="color:#4EC9B0">String</span><span style="color:#D4D4D4">[] words) {</span></span>
+<span class="line"><span style="color:#4EC9B0">    int</span><span style="color:#9CDCFE"> wordLen</span><span style="color:#D4D4D4"> = words[</span><span style="color:#B5CEA8">0</span><span style="color:#D4D4D4">].</span><span style="color:#DCDCAA">length</span><span style="color:#D4D4D4">();</span></span>
+<span class="line"><span style="color:#4EC9B0">    int</span><span style="color:#9CDCFE"> groupLen</span><span style="color:#D4D4D4"> = wordLen * </span><span style="color:#9CDCFE">words</span><span style="color:#D4D4D4">.</span><span style="color:#9CDCFE">length</span><span style="color:#D4D4D4">;</span></span>
+<span class="line"><span style="color:#C586C0">    if</span><span style="color:#D4D4D4"> (</span><span style="color:#9CDCFE">s</span><span style="color:#D4D4D4">.</span><span style="color:#DCDCAA">length</span><span style="color:#D4D4D4">() &lt; groupLen) {</span></span>
+<span class="line"><span style="color:#C586C0">        return</span><span style="color:#9CDCFE"> Collections</span><span style="color:#D4D4D4">.</span><span style="color:#DCDCAA">emptyList</span><span style="color:#D4D4D4">();</span></span>
+<span class="line"><span style="color:#D4D4D4">    }</span></span>
+<span class="line"><span style="color:#4EC9B0">    List</span><span style="color:#D4D4D4">&lt;</span><span style="color:#4EC9B0">Integer</span><span style="color:#D4D4D4">&gt; </span><span style="color:#9CDCFE">ans</span><span style="color:#D4D4D4"> = </span><span style="color:#C586C0">new</span><span style="color:#4EC9B0"> ArrayList</span><span style="color:#D4D4D4">&lt;&gt;();</span></span>
+<span class="line"><span style="color:#C586C0">    for</span><span style="color:#D4D4D4"> (</span><span style="color:#4EC9B0">int</span><span style="color:#9CDCFE"> i</span><span style="color:#D4D4D4"> = </span><span style="color:#B5CEA8">0</span><span style="color:#D4D4D4">; i &lt; wordLen; i++) {</span></span>
+<span class="line"><span style="color:#4EC9B0">        Map</span><span style="color:#D4D4D4">&lt;</span><span style="color:#4EC9B0">String</span><span style="color:#D4D4D4">, </span><span style="color:#4EC9B0">Integer</span><span style="color:#D4D4D4">&gt; </span><span style="color:#9CDCFE">map</span><span style="color:#D4D4D4"> = </span><span style="color:#C586C0">new</span><span style="color:#4EC9B0"> HashMap</span><span style="color:#D4D4D4">&lt;&gt;();</span></span>
+<span class="line"><span style="color:#C586C0">        for</span><span style="color:#D4D4D4"> (</span><span style="color:#4EC9B0">String</span><span style="color:#9CDCFE"> word</span><span style="color:#C586C0"> :</span><span style="color:#D4D4D4"> words) {</span></span>
+<span class="line"><span style="color:#4EC9B0">            int</span><span style="color:#9CDCFE"> val</span><span style="color:#D4D4D4"> = </span><span style="color:#9CDCFE">map</span><span style="color:#D4D4D4">.</span><span style="color:#DCDCAA">getOrDefault</span><span style="color:#D4D4D4">(word, </span><span style="color:#B5CEA8">0</span><span style="color:#D4D4D4">);</span></span>
+<span class="line"><span style="color:#9CDCFE">            map</span><span style="color:#D4D4D4">.</span><span style="color:#DCDCAA">put</span><span style="color:#D4D4D4">(word, val - </span><span style="color:#B5CEA8">1</span><span style="color:#D4D4D4">);</span></span>
+<span class="line"><span style="color:#D4D4D4">        }</span></span>
+<span class="line"><span style="color:#4EC9B0">        int</span><span style="color:#9CDCFE"> left</span><span style="color:#D4D4D4"> = i, r = left + groupLen - </span><span style="color:#B5CEA8">1</span><span style="color:#D4D4D4">;</span></span>
+<span class="line"><span style="color:#C586C0">        while</span><span style="color:#D4D4D4"> (r &lt; </span><span style="color:#9CDCFE">s</span><span style="color:#D4D4D4">.</span><span style="color:#DCDCAA">length</span><span style="color:#D4D4D4">()) {</span></span>
+<span class="line"><span style="color:#4EC9B0">            String</span><span style="color:#9CDCFE"> subStr</span><span style="color:#D4D4D4"> = </span><span style="color:#9CDCFE">s</span><span style="color:#D4D4D4">.</span><span style="color:#DCDCAA">substring</span><span style="color:#D4D4D4">(left, r + </span><span style="color:#B5CEA8">1</span><span style="color:#D4D4D4">);</span></span>
+<span class="line"><span style="color:#C586C0">            if</span><span style="color:#D4D4D4"> (left == i) {</span></span>
+<span class="line"><span style="color:#C586C0">                for</span><span style="color:#D4D4D4"> (</span><span style="color:#4EC9B0">int</span><span style="color:#9CDCFE"> j</span><span style="color:#D4D4D4"> = </span><span style="color:#B5CEA8">0</span><span style="color:#D4D4D4">; j &lt; </span><span style="color:#9CDCFE">subStr</span><span style="color:#D4D4D4">.</span><span style="color:#DCDCAA">length</span><span style="color:#D4D4D4">(); j += wordLen) {</span></span>
+<span class="line"><span style="color:#4EC9B0">                    String</span><span style="color:#9CDCFE"> word</span><span style="color:#D4D4D4"> = </span><span style="color:#9CDCFE">subStr</span><span style="color:#D4D4D4">.</span><span style="color:#DCDCAA">substring</span><span style="color:#D4D4D4">(j, j + wordLen);</span></span>
+<span class="line"><span style="color:#C586C0">                    if</span><span style="color:#D4D4D4"> (</span><span style="color:#9CDCFE">map</span><span style="color:#D4D4D4">.</span><span style="color:#DCDCAA">containsKey</span><span style="color:#D4D4D4">(word)) {</span></span>
+<span class="line"><span style="color:#9CDCFE">                        map</span><span style="color:#D4D4D4">.</span><span style="color:#DCDCAA">put</span><span style="color:#D4D4D4">(word, </span><span style="color:#9CDCFE">map</span><span style="color:#D4D4D4">.</span><span style="color:#DCDCAA">get</span><span style="color:#D4D4D4">(word) + </span><span style="color:#B5CEA8">1</span><span style="color:#D4D4D4">);</span></span>
+<span class="line"><span style="color:#D4D4D4">                    }</span></span>
+<span class="line"><span style="color:#D4D4D4">                }</span></span>
+<span class="line"><span style="color:#D4D4D4">            } </span><span style="color:#C586C0">else</span><span style="color:#D4D4D4"> {</span></span>
+<span class="line"><span style="color:#4EC9B0">                String</span><span style="color:#9CDCFE"> formerWord</span><span style="color:#D4D4D4"> = </span><span style="color:#9CDCFE">s</span><span style="color:#D4D4D4">.</span><span style="color:#DCDCAA">substring</span><span style="color:#D4D4D4">(left - wordLen, left);</span></span>
+<span class="line"><span style="color:#4EC9B0">                String</span><span style="color:#9CDCFE"> newWord</span><span style="color:#D4D4D4"> = </span><span style="color:#9CDCFE">s</span><span style="color:#D4D4D4">.</span><span style="color:#DCDCAA">substring</span><span style="color:#D4D4D4">(left + groupLen - wordLen, left + groupLen);</span></span>
+<span class="line"><span style="color:#C586C0">                if</span><span style="color:#D4D4D4"> (</span><span style="color:#9CDCFE">map</span><span style="color:#D4D4D4">.</span><span style="color:#DCDCAA">containsKey</span><span style="color:#D4D4D4">(formerWord)) {</span></span>
+<span class="line"><span style="color:#9CDCFE">                    map</span><span style="color:#D4D4D4">.</span><span style="color:#DCDCAA">put</span><span style="color:#D4D4D4">(formerWord, </span><span style="color:#9CDCFE">map</span><span style="color:#D4D4D4">.</span><span style="color:#DCDCAA">get</span><span style="color:#D4D4D4">(formerWord) - </span><span style="color:#B5CEA8">1</span><span style="color:#D4D4D4">);</span></span>
+<span class="line"><span style="color:#D4D4D4">                }</span></span>
+<span class="line"><span style="color:#C586C0">                if</span><span style="color:#D4D4D4"> (</span><span style="color:#9CDCFE">map</span><span style="color:#D4D4D4">.</span><span style="color:#DCDCAA">containsKey</span><span style="color:#D4D4D4">(newWord)) {</span></span>
+<span class="line"><span style="color:#9CDCFE">                    map</span><span style="color:#D4D4D4">.</span><span style="color:#DCDCAA">put</span><span style="color:#D4D4D4">(newWord, </span><span style="color:#9CDCFE">map</span><span style="color:#D4D4D4">.</span><span style="color:#DCDCAA">get</span><span style="color:#D4D4D4">(newWord) + </span><span style="color:#B5CEA8">1</span><span style="color:#D4D4D4">);</span></span>
+<span class="line"><span style="color:#D4D4D4">                }</span></span>
+<span class="line"><span style="color:#D4D4D4">            }</span></span>
+<span class="line"><span style="color:#C586C0">            if</span><span style="color:#D4D4D4"> (</span><span style="color:#9CDCFE">map</span><span style="color:#D4D4D4">.</span><span style="color:#DCDCAA">values</span><span style="color:#D4D4D4">().</span><span style="color:#DCDCAA">stream</span><span style="color:#D4D4D4">().</span><span style="color:#DCDCAA">allMatch</span><span style="color:#D4D4D4">(v </span><span style="color:#569CD6">-&gt;</span><span style="color:#D4D4D4"> v == </span><span style="color:#B5CEA8">0</span><span style="color:#D4D4D4">)) {</span></span>
+<span class="line"><span style="color:#9CDCFE">                ans</span><span style="color:#D4D4D4">.</span><span style="color:#DCDCAA">add</span><span style="color:#D4D4D4">(left);</span></span>
+<span class="line"><span style="color:#D4D4D4">            }</span></span>
+<span class="line"><span style="color:#D4D4D4">            left += wordLen;</span></span>
+<span class="line"><span style="color:#D4D4D4">            r = left + groupLen - </span><span style="color:#B5CEA8">1</span><span style="color:#D4D4D4">;</span></span>
+<span class="line"><span style="color:#D4D4D4">        }</span></span>
+<span class="line"><span style="color:#D4D4D4">    }</span></span>
+<span class="line"><span style="color:#C586C0">    return</span><span style="color:#D4D4D4"> ans;</span></span>
+<span class="line"><span style="color:#D4D4D4">}</span></span></code></pre>
+</div>]]></content:encoded>
     </item>
     <item>
       <title>167 两数之和 II - 输入有序数组</title>
@@ -3013,38 +3334,6 @@ Docker 默认的运行时是 runc，它不支持 NVIDIA GPU 加速。为了使�
       <enclosure url="https://jayczee.cn/assets/images/nas/jellyfin/j-5.png" type="image/png"/>
     </item>
     <item>
-      <title>Alist 私有云盘</title>
-      <link>https://jayczee.cn/nas/optional/alist.html</link>
-      <guid>https://jayczee.cn/nas/optional/alist.html</guid>
-      <source url="https://jayczee.cn/rss.xml">Alist 私有云盘</source>
-      <category>NAS</category>
-      <pubDate>Fri, 10 Jan 2025 06:48:26 GMT</pubDate>
-    </item>
-    <item>
-      <title>Beszel 服务器仪表盘</title>
-      <link>https://jayczee.cn/nas/optional/beszel.html</link>
-      <guid>https://jayczee.cn/nas/optional/beszel.html</guid>
-      <source url="https://jayczee.cn/rss.xml">Beszel 服务器仪表盘</source>
-      <category>NAS</category>
-      <pubDate>Fri, 10 Jan 2025 06:48:26 GMT</pubDate>
-    </item>
-    <item>
-      <title>Chatgpt 对话面板</title>
-      <link>https://jayczee.cn/nas/optional/gpt.html</link>
-      <guid>https://jayczee.cn/nas/optional/gpt.html</guid>
-      <source url="https://jayczee.cn/rss.xml">Chatgpt 对话面板</source>
-      <category>NAS</category>
-      <pubDate>Fri, 10 Jan 2025 06:48:26 GMT</pubDate>
-    </item>
-    <item>
-      <title>Teamspeak 私有语音服务器</title>
-      <link>https://jayczee.cn/nas/optional/teamspeak.html</link>
-      <guid>https://jayczee.cn/nas/optional/teamspeak.html</guid>
-      <source url="https://jayczee.cn/rss.xml">Teamspeak 私有语音服务器</source>
-      <category>NAS</category>
-      <pubDate>Fri, 10 Jan 2025 06:48:26 GMT</pubDate>
-    </item>
-    <item>
       <title>Docker</title>
       <link>https://jayczee.cn/nas/basic/1-docker.html</link>
       <guid>https://jayczee.cn/nas/basic/1-docker.html</guid>
@@ -3907,6 +4196,38 @@ Docker 默认的运行时是 runc，它不支持 NVIDIA GPU 加速。为了使�
 <p>此处规则代理，<strong>系统代理</strong>选择<strong>关闭</strong>，因为仅选择性使用代理。在需要代理时，将代理地址设置为本机的对应代理端口，不需要服务代理所有的系统请求。</p>
 ]]></content:encoded>
       <enclosure url="https://jayczee.cn/assets/images/nas/v2ray/v-1.png" type="image/png"/>
+    </item>
+    <item>
+      <title>Alist 私有云盘</title>
+      <link>https://jayczee.cn/nas/optional/alist.html</link>
+      <guid>https://jayczee.cn/nas/optional/alist.html</guid>
+      <source url="https://jayczee.cn/rss.xml">Alist 私有云盘</source>
+      <category>NAS</category>
+      <pubDate>Fri, 10 Jan 2025 06:48:26 GMT</pubDate>
+    </item>
+    <item>
+      <title>Beszel 服务器仪表盘</title>
+      <link>https://jayczee.cn/nas/optional/beszel.html</link>
+      <guid>https://jayczee.cn/nas/optional/beszel.html</guid>
+      <source url="https://jayczee.cn/rss.xml">Beszel 服务器仪表盘</source>
+      <category>NAS</category>
+      <pubDate>Fri, 10 Jan 2025 06:48:26 GMT</pubDate>
+    </item>
+    <item>
+      <title>Chatgpt 对话面板</title>
+      <link>https://jayczee.cn/nas/optional/gpt.html</link>
+      <guid>https://jayczee.cn/nas/optional/gpt.html</guid>
+      <source url="https://jayczee.cn/rss.xml">Chatgpt 对话面板</source>
+      <category>NAS</category>
+      <pubDate>Fri, 10 Jan 2025 06:48:26 GMT</pubDate>
+    </item>
+    <item>
+      <title>Teamspeak 私有语音服务器</title>
+      <link>https://jayczee.cn/nas/optional/teamspeak.html</link>
+      <guid>https://jayczee.cn/nas/optional/teamspeak.html</guid>
+      <source url="https://jayczee.cn/rss.xml">Teamspeak 私有语音服务器</source>
+      <category>NAS</category>
+      <pubDate>Fri, 10 Jan 2025 06:48:26 GMT</pubDate>
     </item>
   </channel>
 </rss>
