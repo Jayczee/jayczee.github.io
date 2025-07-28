@@ -10,21 +10,21 @@ export default navbar([
   {
     text: "Win & Linux",
     icon: "fab fa-linux",
-    link: "/win_linux/"
+    link: "/win_linux/ollama.md"
   },
   {
     text: "编程相关",
     icon: "pen-to-square",
-    link: "/code/"
+    link: "/code/way-to-define-model-value.md"
   },
   {
     text: "学习笔记",
     icon: "book",
-    link: "/note/"
+    link: "/note/mysql.md"
   },
   {
     text: "其他",
     icon: "ellipsis",
-    link: "/etc/"
+    link: "/etc/journal-to-japan.md"
   }
 ]);
