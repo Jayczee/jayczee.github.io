@@ -6,10 +6,11 @@
     <link>https://jayczee.cn/</link>
     <description>Whispering for nothing</description>
     <language>zh-CN</language>
-    <pubDate>Mon, 28 Jul 2025 08:43:28 GMT</pubDate>
-    <lastBuildDate>Mon, 28 Jul 2025 08:43:28 GMT</lastBuildDate>
+    <pubDate>Tue, 12 Aug 2025 10:15:30 GMT</pubDate>
+    <lastBuildDate>Tue, 12 Aug 2025 10:15:30 GMT</lastBuildDate>
     <generator>@vuepress/plugin-feed</generator>
     <docs>https://validator.w3.org/feed/docs/rss2.html</docs>
+    <category>学习笔记</category>
     <category>Linux</category>
     <category>Code</category>
     <category>Other</category>
@@ -17,7 +18,145 @@
     <category>OpenClash</category>
     <category>Windows</category>
     <category>NAS</category>
-    <category>学习笔记</category>
+    <item>
+      <title>P001 名词谓语句</title>
+      <link>https://jayczee.cn/note/ni-hon-go-grammar/p001.html</link>
+      <guid>https://jayczee.cn/note/ni-hon-go-grammar/p001.html</guid>
+      <source url="https://jayczee.cn/rss.xml">P001 名词谓语句</source>
+      <description>名词谓语句整理笔记 1. ~だ 助动词 表判断 表达“是学生”时，不能直接用名词作谓语，需要加助动词だ表示判断。 名词不能直接作谓语，需要加だ表示判断。 だ作助动词后，后面只能跟句号或终助词（如：よ、ね，表示语气）。 否定形式需要将だ变成で，再加表示强调否定的副助词は，以及否定的辅助形容词ない。 其中，で是だ的终止形，后面可以接其他成分。 疑问形式： ...</description>
+      <category>学习笔记</category>
+      <pubDate>Tue, 12 Aug 2025 10:14:43 GMT</pubDate>
+      <content:encoded><![CDATA[
+]]></content:encoded>
+    </item>
+    <item>
+      <title>《大家的日语 - 皆の日本語》</title>
+      <link>https://jayczee.cn/note/min-na-no-ni-hon-go.html</link>
+      <guid>https://jayczee.cn/note/min-na-no-ni-hon-go.html</guid>
+      <source url="https://jayczee.cn/rss.xml">《大家的日语 - 皆の日本語》</source>
+      <description>前言 emmmmm前段时间去日本玩了趟，开始对日语感兴趣了，目前学习的时候感觉东西都能理解，但是怕自己总结的东西过了脑子就忘，所以做一个电子笔记。 初级上 第一课 あなた 用来称呼 你 但是日语中似乎在语境明确的情况下很少使用第二人称代词 而且初次见面使用会有些冒犯，而且还有亲爱的的意思。 ~ちゃん 平常看番经常看的 ~酱 句式：名词1 は 名词2 で...</description>
+      <category>学习笔记</category>
+      <pubDate>Tue, 12 Aug 2025 02:04:36 GMT</pubDate>
+      <content:encoded><![CDATA[<h2>前言</h2>
+<p>emmmmm前段时间去日本玩了趟，开始对日语感兴趣了，目前学习的时候感觉东西都能理解，但是怕自己总结的东西过了脑子就忘，所以做一个电子笔记。</p>
+<h2>初级上</h2>
+<h3>第一课</h3>
+<ul>
+<li>あなた　用来称呼 你 但是日语中似乎在语境明确的情况下很少使用第二人称代词 而且初次见面使用会有些冒犯，而且还有<code>亲爱的</code>的意思。</li>
+<li>~ちゃん　平常看番经常看的 ~酱</li>
+<li>句式：名词1 は　名词2 です　此处的<code>は</code>作助词读作<code>わ　wa</code>而不是<code>ha</code></li>
+</ul>
+<h3>第二课</h3>
+<ul>
+<li>お土産　礼物，地方特产，当地纪念品。听力时总是频繁忘记。</li>
+<li>お可以接续名词，表示郑重的语气</li>
+</ul>
+<h3>第三课</h3>
+<ul>
+<li>お手洗い 其古典或正式场合使用<code>御手洗</code>。后者通常不作厕所的意思，会用于姓氏中。前者意味洗手间。</li>
+<li>〜をください 请给我~ 其中<code>を</code>作助词念<code>o</code>。</li>
+<li>エレベーター　对应<code>elevator</code>，指升降电梯。商场的自动扶梯为<code>エスカレーター　escalator</code>。</li>
+<li>お放在听话人或第三者有关的事物前表敬重语气。<code>お国はどちらですか？</code>。</li>
+</ul>
+<h3>第四课</h3>
+<ul>
+<li>~時　个别时间发音不同：<code>四時　よじ</code>、<code>七時　しちじ</code>、<code>九時　くじ</code>。</li>
+<li>~分　个别数字结尾时，<code>分</code>发音不同：2、5、7、9念<code>ふん</code>,其余念<code>ぷん</code>。<code>一分　ippun</code>、<code>六分 roppun</code>、<code>八分　happun</code>、<code>十分　jippun</code>。</li>
+<li>日语中动词分三类，动I，动II，动III。
+<ul>
+<li>动I: 将结尾う列的假名换为同行い列的假名变为礼貌形，加上ます变为礼貌体
+<ul>
+<li>休む　- 休み　- 休みます</li>
+</ul>
+</li>
+<li>动II: 以る结尾，且前面的假名为え行或者い行的假名，去掉る变为礼貌形，加上ます变为礼貌体。
+<ul>
+<li>起きる　- 起き　-　起きます</li>
+</ul>
+</li>
+<li>动III: 无规则，需要硬记。</li>
+</ul>
+</li>
+<li>表示时间的名词后面加上<code>に</code>表示动作发生的时间
+<ul>
+<li>6時に起きます</li>
+</ul>
+</li>
+<li><sub>から</sub>まで　表示从<sub>开始到</sub>结束，可以加时间，地点。两个词语可以单独使用。</li>
+<li><code>ます、ません、ました、ませんでした</code>分别为动词礼貌体的肯定、否定、过去肯定、过去否定形式</li>
+<li><code>ます</code>结尾说明前面的词语是动词。</li>
+</ul>
+<h3>第五课</h3>
+<ul>
+<li>周和月份的上中下都是用<code>せん〜</code>、<code>こん〜</code>、<code>らい〜</code>
+<ul>
+<li>先週　今週　来週　先月　今月　来月</li>
+</ul>
+</li>
+<li>年的上中下为<code>去年　きょねん</code>、<code>今年　ことし</code>、<code>来年　らいねん</code></li>
+<li>说具体的月数时，使用<code>月　がつ</code>而不是<code>月　げつ</code>。使用正常的月份读音加上<code>がつ</code>即可。有以下三个特别读音：
+<ul>
+<li>四月　しがつ</li>
+<li>七月　しちがつ</li>
+<li>九月　くがつ</li>
+</ul>
+</li>
+<li>日期读音比较特殊。1号-10号都有不同的读音。11号到31号大多是数字后面加上<code>にち</code>。20号为特殊读音<code>二十日　はつか</code>。14号和二十四号中的四号为<code>四日　よっか</code>。
+<ul>
+<li>四日　よっか</li>
+<li>八日　ようか</li>
+<li>十四日　じゅうよっか</li>
+<li>二十日　はつか</li>
+<li>二十四日　にじゅうよっか</li>
+</ul>
+</li>
+<li>何月　なんがつ　何日　なんにち　分别用于询问什么月份、什么日期。如果模糊地询问什么时候就用<code>何時　いつ</code>。需要与<code>何時 なんじ</code>区分开来。
+<ul>
+<li><code>いつ</code>広島へ行きますか？　三月二十五日に行きます。 / 来週行きます。（此处简单来说，具体的几月几号，或者几点需要加助词ni，时间段则不用加。因为时间段是副词，可以直接修饰动词）</li>
+</ul>
+</li>
+<li>列车运行的种类有：<code>普通　ふつう</code>、<code>急行　きゅうこう</code>、<code>特急　とっきゅう</code>、<code>快速　かいそく</code>、<code>準急　じゅんきゅう</code>。
+<ul>
+<li>按照停靠站点由多到少，运行速度由快到慢：<code>特急　とっきゅう</code>,<code>急行　きゅうこう</code>,<code>快速　かいそく</code>,<code>準急　じゅんきゅう</code>,<code>普通　ふつう</code>。</li>
+</ul>
+</li>
+<li><code>快速</code>和<code>家族</code> 容易混淆</li>
+<li>名词へ动词 使用表示移动的动词时，助词へ前面跟移动的方向
+<ul>
+<li>大阪へ行きます</li>
+<li>Tokyoへ来ました</li>
+<li>うちへ帰ります</li>
+</ul>
+</li>
+<li>对疑问词表示的所有范围进行否定时，使用<code>疑问词+も+动词</code>否定形进行回答
+<ul>
+<li>Q： どこへ行きますか？　A：何(へ)も行きません。</li>
+</ul>
+</li>
+<li>助词<code>で</code>表示手段、方法，工具。接在交通工具之后可以表示交通方式。
+<ul>
+<li>Q：何で大阪へ来ましたか？　A：バスで来ました。</li>
+</ul>
+</li>
+<li>助词<code>と</code>表示一起行动的人或动物。
+<ul>
+<li>私は家族と日本へ来ました。</li>
+<li>私は一人で日本へ来ました。(单人不加to)</li>
+</ul>
+</li>
+<li>助词<code>よ</code>放在结尾表示自己的判断、意见告诉别人。似乎直接按照一个拟音词或者按中文的<code>~哟</code>理解就好了。</li>
+</ul>
+<h3>第六课</h3>
+<ul>
+<li>他动词的宾语用助词<code>を</code>表示。他动词即为<code>“对某物或某人施加动作，使其发生变化或处于某种状态”的动词</code>。</li>
+<li><code>名词をします</code>表示做该名词所表示的事情。<code>電話をします　- 打电话</code>，<code>宿題をします　- 写作业</code>。所以<code>何をしますか</code>就是询问做什么的语句。</li>
+<li><code>何　なん</code>与<code>何　なに</code>意思相同。后面的词是<code>た　だ　な</code>行开头时，使用<code>なん</code>。</li>
+<li><code>なんで</code>用于询问手段方法或是理由。如果需要专门询问手段方法，可以用<code>なにで</code>。</li>
+<li><code>〜ませんか？</code>表示邀请某人做某事。<code>〜ましょう</code>表示更礼貌的邀请。</li>
+<li><code>何時　いつ　什么时候</code> - <code>いつか　5号</code> - <code>いつも　总是</code></li>
+</ul>
+]]></content:encoded>
+    </item>
     <item>
       <title>Markdown修改Mac风格代码块</title>
       <link>https://jayczee.cn/win_linux/mac-code-block.html</link>
