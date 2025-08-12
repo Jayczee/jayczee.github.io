@@ -5,6 +5,7 @@ category:
     - 学习笔记
 tag:
     - MySQL
+order: 1
 ---
 
 ## 感谢原书作者

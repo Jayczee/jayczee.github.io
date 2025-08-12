@@ -39,6 +39,7 @@ const nasOptionalChildren = getFiles(path.join(__dirname, '../nas/optional'));
 const winLinuxChildren = getFiles(path.join(__dirname, '../win_linux'));
 const noteChildren = getFiles(path.join(__dirname, '../note'));
 const noteLeet150Children = getFiles(path.join(__dirname, '../note/leet150'));
+const noteJapaneseChildren = getFiles(path.join(__dirname, '../note/ni-hon-go-grammar'));
 const etcChildren = getFiles(path.join(__dirname, '../etc'));
 
 export default sidebar({
@@ -71,6 +72,13 @@ export default sidebar({
   ],
   "/note":[
     ...noteChildren,
+    {
+      text: "日语0-N1语法 by 日语翻译小昊子",
+      collapsible: true,
+      expanded: false,
+      prefix: "ni-hon-go-grammar/",
+      children: noteJapaneseChildren
+    },
     {
       text: "LeetCode面试经典150题",
       collapsible: true,
