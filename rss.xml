@@ -6,8 +6,8 @@
     <link>https://jayczee.cn/</link>
     <description>Whispering for nothing</description>
     <language>zh-CN</language>
-    <pubDate>Wed, 20 Aug 2025 10:15:58 GMT</pubDate>
-    <lastBuildDate>Wed, 20 Aug 2025 10:15:58 GMT</lastBuildDate>
+    <pubDate>Fri, 22 Aug 2025 10:05:09 GMT</pubDate>
+    <lastBuildDate>Fri, 22 Aug 2025 10:05:09 GMT</lastBuildDate>
     <generator>@vuepress/plugin-feed</generator>
     <docs>https://validator.w3.org/feed/docs/rss2.html</docs>
     <category>学习笔记</category>
@@ -19,15 +19,209 @@
     <category>Windows</category>
     <category>NAS</category>
     <item>
+      <title>P001 指示代词</title>
+      <link>https://jayczee.cn/note/ni-hon-go-grammar/p002.html</link>
+      <guid>https://jayczee.cn/note/ni-hon-go-grammar/p002.html</guid>
+      <source url="https://jayczee.cn/rss.xml">P001 指示代词</source>
+      <description>指示代词： こ 与说话人较近 そ 与听话人较近 あ 与说话人、听话人都远 ど 不定代词 指示代词 〜れ 〜の 〜の〜 れ后面不能直接加名词，需要加助词。比如表示话题主题的助词は。 加名词则需要使用の: 此处第二个の表示归属。因为书已经在前面提及，所有后面的书可以省略，此处省略的语法跟中文差不多。 れ和の的意思是一样的，只不过用法不同，是后面跟与不跟名词...</description>
+      <category>学习笔记</category>
+      <pubDate>Fri, 22 Aug 2025 10:04:25 GMT</pubDate>
+      <content:encoded><![CDATA[<p>指示代词：</p>
+<ul>
+<li>こ    与说话人较近</li>
+<li>そ    与听话人较近</li>
+<li>あ    与说话人、听话人都远</li>
+<li>ど    不定代词</li>
+</ul>
+<h2>指示代词 　〜れ　〜の　〜の〜</h2>
+<div class="language-ini" data-highlighter="shiki" data-ext="ini" data-title="ini" style="background-color:#1E1E1E;color:#D4D4D4"><pre class="shiki dark-plus vp-code"><code><span class="line"><span style="color:#D4D4D4">これは本だ。    这是书。</span></span></code></pre>
+</div><p><code>れ</code>后面不能直接加名词，需要加助词。比如表示话题主题的助词<code>は</code>。</p>
+<p>加名词则需要使用<code>の</code>:</p>
+<div class="language-ini" data-highlighter="shiki" data-ext="ini" data-title="ini" style="background-color:#1E1E1E;color:#D4D4D4"><pre class="shiki dark-plus vp-code"><code><span class="line"><span style="color:#D4D4D4">この本は私の（本）だ。    这本书是我的（书）。</span></span></code></pre>
+</div><p>此处第二个<code>の</code>表示归属。因为书已经在前面提及，所有后面的<code>书</code>可以省略，此处省略的语法跟中文差不多。</p>
+<p><code>れ</code>和<code>の</code>的意思是一样的，只不过用法不同，是后面跟与不跟名词的区别。</p>
+<h2>~ような（様な）〜样的</h2>
+<div class="language-ini" data-highlighter="shiki" data-ext="ini" data-title="ini" style="background-color:#1E1E1E;color:#D4D4D4"><pre class="shiki dark-plus vp-code"><code><span class="line"><span style="color:#D4D4D4">この様な本。    这样的书。</span></span>
+<span class="line"><span style="color:#D4D4D4">その様な本。    那样的书。</span></span>
+<span class="line"><span style="color:#D4D4D4">あの様な本。    那样的书。</span></span>
+<span class="line"><span style="color:#D4D4D4">どの様な本？    怎样的书？</span></span></code></pre>
+</div><p>~ような 表示 <code>XXX样的</code>。因为<code>様　よう</code>是名词，所以前面需要用<code>の</code>。这样的表达比较生硬，所以可以使用缩略形式：</p>
+<div class="language-ini" data-highlighter="shiki" data-ext="ini" data-title="ini" style="background-color:#1E1E1E;color:#D4D4D4"><pre class="shiki dark-plus vp-code"><code><span class="line"><span style="color:#D4D4D4">こんな本。  这样的书。</span></span></code></pre>
+</div><h2>~こ</h2>
+<p>指示代词加<code>こ</code>用于表示方位。</p>
+<div class="language-ini" data-highlighter="shiki" data-ext="ini" data-title="ini" style="background-color:#1E1E1E;color:#D4D4D4"><pre class="shiki dark-plus vp-code"><code><span class="line"><span style="color:#D4D4D4">どこ</span></span>
+<span class="line"><span style="color:#D4D4D4">そこ</span></span>
+<span class="line"><span style="color:#D4D4D4">あそこ  //　没有a ko 的说法，需要加上so组成a so ko</span></span></code></pre>
+</div><div class="language-ini" data-highlighter="shiki" data-ext="ini" data-title="ini" style="background-color:#1E1E1E;color:#D4D4D4"><pre class="shiki dark-plus vp-code"><code><span class="line"><span style="color:#D4D4D4">教室はどこですか？  教室在哪里？</span></span>
+<span class="line"><span style="color:#D4D4D4">どこが教室ですか？  哪里是教室？</span></span></code></pre>
+</div><h2>~ちら</h2>
+<p>与上面的~こ意思是一样的，只不过更加郑重礼貌。</p>
+<div class="language-ini" data-highlighter="shiki" data-ext="ini" data-title="ini" style="background-color:#1E1E1E;color:#D4D4D4"><pre class="shiki dark-plus vp-code"><code><span class="line"><span style="color:#D4D4D4">こちらは毛利探偵事務所でございます。    这里是毛利侦探事务所。</span></span>
+<span class="line"><span style="color:#D4D4D4">こちらは私の先生です。</span></span></code></pre>
+</div>]]></content:encoded>
+    </item>
+    <item>
+      <title>P003 人称代词</title>
+      <link>https://jayczee.cn/note/ni-hon-go-grammar/p003.html</link>
+      <guid>https://jayczee.cn/note/ni-hon-go-grammar/p003.html</guid>
+      <source url="https://jayczee.cn/rss.xml">P003 人称代词</source>
+      <description>## 第一人称 私 わたし 女性常用，正式场合男女通用 私 わたくし わたし的完整表达，比较正式礼貌 僕 ぼく 日常，男用 俺 おれ 比较粗俗，随意。一般上级对下级，长辈对晚辈使用 俺様 おれさま 同上，较粗俗，男用。 私 あたし 较随意，女用 うち 初级日语中表示家、房子，但是也有我的意思。关系方言，女用。 第二人称 あなた 对上级或长辈使用。夫妻之...</description>
+      <category>学习笔记</category>
+      <pubDate>Fri, 22 Aug 2025 10:04:25 GMT</pubDate>
+      <content:encoded><![CDATA[<p>##　第一人称</p>
+<ul>
+<li>私　わたし    女性常用，正式场合男女通用</li>
+<li>私　わたくし  わたし的完整表达，比较正式礼貌</li>
+<li>僕　ぼく  日常，男用</li>
+<li>俺　おれ  比较粗俗，随意。一般上级对下级，长辈对晚辈使用</li>
+<li>俺様　おれさま    同上，较粗俗，男用。</li>
+<li>私　あたし    较随意，女用</li>
+<li>うち  初级日语中表示家、房子，但是也有<code>我</code>的意思。关系方言，女用。</li>
+</ul>
+<h2>第二人称</h2>
+<ul>
+<li>あなた    对上级或长辈使用。夫妻之间使用表示<code>亲爱的</code>意思。</li>
+<li>君　きみ  主要是男性对同辈或晚辈使用。但不绝对。本质上是比<code>お前</code>更亲密的说法。</li>
+<li>お前  おまえ  男性对同辈晚辈使用。比<code>君</code>更加随意，不礼貌。</li>
+<li>あんた   同<code>あなた</code>，但是礼貌程度更低。</li>
+<li>僕    主要表第一人称，也可以表第二人称。表第二人称时一般都是称呼<code>不认识的小孩</code>。看起来似乎用的很少。</li>
+</ul>
+<h2>第三人称</h2>
+<p>人物：</p>
+<ul>
+<li>彼　かれ  他/男朋友</li>
+<li>彼女  かのじょ    她/女朋友</li>
+<li>こ/そ/あ+いつ    这/那/那家伙</li>
+</ul>
+<p>物体：</p>
+<ul>
+<li>こ/そ/あ/ど+れ    这/那/那/什么东西</li>
+</ul>
+<h2>复数表达</h2>
+<ul>
+<li>~たち 礼貌程度中。</li>
+<li>~がた 高。</li>
+<li>~ら。 低。</li>
+<li>私ども。　自谦语，最高。所以都是用于自己。</li>
+</ul>
+<h2>敬称 ~様/さん/君/ちゃん/殿/氏</h2>
+<ul>
+<li>〜様  用在任何表示尊敬的对象上。常用于店家对客人。辉夜大小姐中早坂称呼辉夜<code>輝夜様</code>。</li>
+<li>〜さん    日常生活中最常见，<sub>先生、</sub>小姐。礼貌程度低于<code>様</code>。</li>
+<li>〜君  对同辈或晚辈使用。日常生活常指代男性。但是工作场合中也可称呼女性。</li>
+<li>〜ちゃん  常用于称呼小孩。当然也可以不用于称呼小孩。表亲近。</li>
+<li>（职务名称）〜殿　との    一般用于公文中，上级对下级的称呼。</li>
+<li>〜氏  前面加形式，表敬意。</li>
+</ul>
+<h2>呼び捨て</h2>
+<p>即直接称呼名字不加敬词。语意看场合。</p>
+]]></content:encoded>
+    </item>
+    <item>
+      <title>P003 形容词、形容动词</title>
+      <link>https://jayczee.cn/note/ni-hon-go-grammar/p004.html</link>
+      <guid>https://jayczee.cn/note/ni-hon-go-grammar/p004.html</guid>
+      <source url="https://jayczee.cn/rss.xml">P003 形容词、形容动词</source>
+      <description>形容词（i形形容词） 形容词作谓语 日语中形容词都是可以直接作谓语的。而名词作谓语就需要接だ来帮助。 形容词作定语 提示 此处形容词后不需要跟の,直接跟名词就行。名词跟名词才需要加の来表示关系。 虽然长得一样，但从语法上分析，形容词作谓语中的青い实际上是终止形，而下面的是连体形。体在日语中就是名词、代词等。 形容动词 也就是na形形容词 形容动词作谓语...</description>
+      <category>学习笔记</category>
+      <pubDate>Fri, 22 Aug 2025 10:04:25 GMT</pubDate>
+      <content:encoded><![CDATA[<h2>形容词（i形形容词）</h2>
+<h3>形容词作谓语</h3>
+<div class="language-ini" data-highlighter="shiki" data-ext="ini" data-title="ini" style="background-color:#1E1E1E;color:#D4D4D4"><pre class="shiki dark-plus vp-code"><code><span class="line"><span style="color:#D4D4D4">空は青い。  </span></span>
+<span class="line"><span style="color:#D4D4D4">空は青いです。      天空是蓝色的。</span></span></code></pre>
+</div><p>日语中形容词都是可以直接作谓语的。而名词作谓语就需要接<code>だ</code>来帮助。</p>
+<h3>形容词作定语</h3>
+<div class="language-ini" data-highlighter="shiki" data-ext="ini" data-title="ini" style="background-color:#1E1E1E;color:#D4D4D4"><pre class="shiki dark-plus vp-code"><code><span class="line"><span style="color:#D4D4D4">青い空。    蓝色的天空。</span></span></code></pre>
+</div><div class="hint-container tip">
+<p class="hint-container-title">提示</p>
+<p>此处形容词后不需要跟<code>の</code>,直接跟名词就行。名词跟名词才需要加<code>の</code>来表示关系。</p>
+<p>虽然长得一样，但从语法上分析，形容词作谓语中的<code>青い</code>实际上是终止形，而下面的是连体形。<code>体</code>在日语中就是名词、代词等。</p>
+</div>
+<h2>形容动词 也就是na形形容词</h2>
+<h3>形容动词作谓语</h3>
+<div class="language-ini" data-highlighter="shiki" data-ext="ini" data-title="ini" style="background-color:#1E1E1E;color:#D4D4D4"><pre class="shiki dark-plus vp-code"><code><span class="line"><span style="color:#D4D4D4">教室は静かだ。</span></span>
+<span class="line"><span style="color:#D4D4D4">教室は静かです。    教室很安静的。</span></span></code></pre>
+</div><h3>形容动词作定语</h3>
+<div class="language-ini" data-highlighter="shiki" data-ext="ini" data-title="ini" style="background-color:#1E1E1E;color:#D4D4D4"><pre class="shiki dark-plus vp-code"><code><span class="line"><span style="color:#D4D4D4">静かな教室。    安静的教室。</span></span></code></pre>
+</div><p>同形容词中的部分，谓语转定语，此时形容动词要从<code>终止形变为连体形</code>。</p>
+<p>形容词i结尾一般就可以直接表示终止形，变为连体形也不用变什么。</p>
+<p>但是形容动词后面接da就可以判断为是终止形（形容动词作为谓语时，结尾一般是「だ」（简体）或「です」（礼貌体）。），转为连体形把da改为na。</p>
+<h2>形容词、形容动词连用形 ~く/で</h2>
+<p>日语中有<code>体言</code>，包含名称、数词以及代词。还有用言，包含形容词，形容动词和动词。<br>
+连体形是用言的活用形之一，用于连接用言、小句等。</p>
+<h3>形容词连用形</h3>
+<div class="language-ini" data-highlighter="shiki" data-ext="ini" data-title="ini" style="background-color:#1E1E1E;color:#D4D4D4"><pre class="shiki dark-plus vp-code"><code><span class="line"><span style="color:#D4D4D4">教室は大きく,静かだ。     教室很静也很大。</span></span></code></pre>
+</div><p>此处句子中<code>大きい</code>后面接的是<code>静か</code>，前面的形容词<code>大きい</code>就要转为连用形，具体方式是<code>去掉い改为く</code>。</p>
+<h3>形容动词连用形</h3>
+<div class="language-ini" data-highlighter="shiki" data-ext="ini" data-title="ini" style="background-color:#1E1E1E;color:#D4D4D4"><pre class="shiki dark-plus vp-code"><code><span class="line"><span style="color:#D4D4D4">教室は静かで,大きい。</span></span></code></pre>
+</div><p>此处<code>静か</code>转为连用形，即加上<code>で</code>。形容动词词干+de变为连用形。</p>
+<h2>~ない</h2>
+<h3>形容词</h3>
+<div class="language-ini" data-highlighter="shiki" data-ext="ini" data-title="ini" style="background-color:#1E1E1E;color:#D4D4D4"><pre class="shiki dark-plus vp-code"><code><span class="line"><span style="color:#D4D4D4">この本は面白くない。</span></span>
+<span class="line"><span style="color:#D4D4D4">この本は面白くないです。</span></span>
+<span class="line"><span style="color:#D4D4D4">この本は面白くありません。</span></span></code></pre>
+</div><p>形容词去掉i变为ku，就转为了其<code>未然形</code>。但是未然形不会单独直接使用，后面会加其他词比如nai表示否定。</p>
+<p>此处表礼貌可以再加<code>です</code>、<code>ありません</code>。</p>
+<h3>形容动词</h3>
+<div class="language-ini" data-highlighter="shiki" data-ext="ini" data-title="ini" style="background-color:#1E1E1E;color:#D4D4D4"><pre class="shiki dark-plus vp-code"><code><span class="line"><span style="color:#D4D4D4">あの俳優は有名じゃない。</span></span>
+<span class="line"><span style="color:#D4D4D4">あの俳優は有名ではない。</span></span>
+<span class="line"><span style="color:#D4D4D4">あの俳優は有名ではありません。</span></span></code></pre>
+</div><p>形容动词转为未然形是语干+ じゃ/では　前者相比后者更加口语化。</p>
+<h2>形容词与形容动词过去肯定及否定</h2>
+<h3>形容词 + かっだ</h3>
+<p>这实际上也是形容词连用形，不过是表示过去时态的。</p>
+<p>表过去肯定：</p>
+<div class="language-ini" data-highlighter="shiki" data-ext="ini" data-title="ini" style="background-color:#1E1E1E;color:#D4D4D4"><pre class="shiki dark-plus vp-code"><code><span class="line"><span style="color:#D4D4D4">昨日は寒かった。    昨天冷。</span></span>
+<span class="line"><span style="color:#D4D4D4">昨日は寒かったです。</span></span></code></pre>
+</div><p>形容词原型<code>寒い</code>,以i结尾，变为过去时就把i变为ka促音加ta，即<code>寒かった</code>。</p>
+<p>表过去否定：</p>
+<div class="language-ini" data-highlighter="shiki" data-ext="ini" data-title="ini" style="background-color:#1E1E1E;color:#D4D4D4"><pre class="shiki dark-plus vp-code"><code><span class="line"><span style="color:#D4D4D4">昨日は寒くなかった。    昨天不冷。</span></span>
+<span class="line"><span style="color:#D4D4D4">昨日は寒くなかったです。</span></span>
+<span class="line"><span style="color:#D4D4D4">昨日は寒くありませんでした。</span></span></code></pre>
+</div><p>表否定时，先把形容词转为未然形，词干+ku变为<code>寒く</code>,然后+<code>ない</code>。但是过去时态因为<code>ない</code>同样以i结尾，所以变i为ka促音加ta。</p>
+<p><code>かった</code>本身表示过去式，<code>ない</code>表否定。因为第三句中<code>なかった</code>换成了<code>ありません</code>仅仅表否定，所以de su要变为过去时变为<code>でした</code>。</p>
+<h3>名词、形容动词 + たっだ</h3>
+<div class="language-ini" data-highlighter="shiki" data-ext="ini" data-title="ini" style="background-color:#1E1E1E;color:#D4D4D4"><pre class="shiki dark-plus vp-code"><code><span class="line"><span style="color:#D4D4D4">私はもともと学生だった。    我原本是个学生</span></span>
+<span class="line"><span style="color:#D4D4D4">私はもともと学生でした。</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#D4D4D4">私はもともと学生ではなだった。</span></span>
+<span class="line"><span style="color:#D4D4D4">私はもともと学生ではありませんでした。  我原本不是个学生。</span></span></code></pre>
+</div><p>名词表过去直接加<code>たっだ</code>。礼貌体则用de su的过去时。</p>
+<div class="language-ini" data-highlighter="shiki" data-ext="ini" data-title="ini" style="background-color:#1E1E1E;color:#D4D4D4"><pre class="shiki dark-plus vp-code"><code><span class="line"><span style="color:#D4D4D4">昨日の教室は静かだった。   昨日的教室很安静。</span></span>
+<span class="line"><span style="color:#D4D4D4">昨日の教室は静かでした。</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#D4D4D4">昨日の教室は静かではなだった。</span></span>
+<span class="line"><span style="color:#D4D4D4">昨日の教室は静かではありませんでした。  昨日的教室不安静。</span></span></code></pre>
+</div><p>形容动词同样是先变成未然形(+ じゃ/では)，然后变为否定（+　ない/ありません），最后变为过去时（+だった）。</p>
+<h2>连体词</h2>
+<p>用于连接体言。</p>
+<p>连体词例如：<code>大きな</code>,<code>小さな</code>,<code>色んな</code>,<code>同じ</code>后面直接接名词。</p>
+<p><code>同じ</code>是连体词也可以是形容动词，可以作谓语。</p>
+]]></content:encoded>
+    </item>
+    <item>
       <title>P001 名词谓语句</title>
       <link>https://jayczee.cn/note/ni-hon-go-grammar/p001.html</link>
       <guid>https://jayczee.cn/note/ni-hon-go-grammar/p001.html</guid>
       <source url="https://jayczee.cn/rss.xml">P001 名词谓语句</source>
-      <description>名词谓语句整理笔记 1. ~だ 助动词 表判断 表达“是学生”时，不能直接用名词作谓语，需要加助动词だ表示判断。 名词不能直接作谓语，需要加だ表示判断。 だ作助动词后，后面只能跟句号或终助词（如：よ、ね，表示语气）。 否定形式需要将だ变成で，再加表示强调否定的副助词は，以及否定的辅助形容词ない。 其中，で是だ的终止形，后面可以接其他成分。 疑问形式： ...</description>
+      <description>1. ~だ 助动词 表判断 表达“是学生”时，不能直接用名词作谓语，需要加助动词だ表示判断。 名词不能直接作谓语，需要加だ表示判断。 だ作助动词后，后面只能跟句号或终助词（如：よ、ね，表示语气）。 否定形式需要将だ变成で，再加表示强调否定的副助词は，以及否定的辅助形容词ない。 其中，で是だ的终止形，后面可以接其他成分。 疑问形式： 2. ~です 助动词...</description>
       <category>学习笔记</category>
       <pubDate>Tue, 12 Aug 2025 10:14:43 GMT</pubDate>
-      <content:encoded><![CDATA[
-]]></content:encoded>
+      <content:encoded><![CDATA[<h2>1. ~だ 助动词 表判断</h2>
+<p>表达“是学生”时，<strong>不能直接用名词作谓语</strong>，需要加助动词<code>だ</code>表示判断。</p>
+<div class="language-ini" data-highlighter="shiki" data-ext="ini" data-title="ini" style="background-color:#1E1E1E;color:#D4D4D4"><pre class="shiki dark-plus vp-code"><code><span class="line"><span style="color:#D4D4D4">学生だ。　// 是学生。</span></span></code></pre>
+</div><blockquote>
+<p>名词不能直接作谓语，需要加<code>だ</code>表示判断。<br>
+<code>だ</code>作助动词后，后面只能跟句号或终助词（如：よ、ね，表示语气）。</p>
+</blockquote>
+<p>否定形式需要将<code>だ</code>变成<code>で</code>，再加表示强调否定的副助词<code>は</code>，以及否定的辅助形容词<code>ない</code>。</p>
+<div class="language-ini" data-highlighter="shiki" data-ext="ini" data-title="ini" style="background-color:#1E1E1E;color:#D4D4D4"><pre class="shiki dark-plus vp-code"><code><span class="line"><span style="color:#D4D4D4">学生ではない。　// 不是学生</span></span></code></pre>
+</div><blockquote>
+<p>其中，<code>で</code>是<code>だ</code>的终止形，后面可以接其他成分。</p>
+</blockquote>
+<p>疑问形式：</p>
+<div class="language-ini" data-highlighter="shiki" data-ext="ini" data-title="ini" style="background-color:#1E1E1E;color:#D4D4D4"><pre class="shiki dark-plus vp-code"><code><span class="line"><span style="color:#D4D4D4">学生か？　// 是学生吗？</span></span></code></pre>
+</div>]]></content:encoded>
     </item>
     <item>
       <title>《大家的日语 - 皆の日本語》</title>
