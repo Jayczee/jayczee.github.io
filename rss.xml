@@ -6,8 +6,8 @@
     <link>https://jayczee.cn/</link>
     <description>Whispering for nothing</description>
     <language>zh-CN</language>
-    <pubDate>Fri, 22 Aug 2025 10:05:09 GMT</pubDate>
-    <lastBuildDate>Fri, 22 Aug 2025 10:05:09 GMT</lastBuildDate>
+    <pubDate>Tue, 16 Sep 2025 08:48:49 GMT</pubDate>
+    <lastBuildDate>Tue, 16 Sep 2025 08:48:49 GMT</lastBuildDate>
     <generator>@vuepress/plugin-feed</generator>
     <docs>https://validator.w3.org/feed/docs/rss2.html</docs>
     <category>学习笔记</category>
@@ -19,10 +19,10 @@
     <category>Windows</category>
     <category>NAS</category>
     <item>
-      <title>P001 指示代词</title>
+      <title>P002 指示代词</title>
       <link>https://jayczee.cn/note/ni-hon-go-grammar/p002.html</link>
       <guid>https://jayczee.cn/note/ni-hon-go-grammar/p002.html</guid>
-      <source url="https://jayczee.cn/rss.xml">P001 指示代词</source>
+      <source url="https://jayczee.cn/rss.xml">P002 指示代词</source>
       <description>指示代词： こ 与说话人较近 そ 与听话人较近 あ 与说话人、听话人都远 ど 不定代词 指示代词 〜れ 〜の 〜の〜 れ后面不能直接加名词，需要加助词。比如表示话题主题的助词は。 加名词则需要使用の: 此处第二个の表示归属。因为书已经在前面提及，所有后面的书可以省略，此处省略的语法跟中文差不多。 れ和の的意思是一样的，只不过用法不同，是后面跟与不跟名词...</description>
       <category>学习笔记</category>
       <pubDate>Fri, 22 Aug 2025 10:04:25 GMT</pubDate>
@@ -65,10 +65,10 @@
       <link>https://jayczee.cn/note/ni-hon-go-grammar/p003.html</link>
       <guid>https://jayczee.cn/note/ni-hon-go-grammar/p003.html</guid>
       <source url="https://jayczee.cn/rss.xml">P003 人称代词</source>
-      <description>## 第一人称 私 わたし 女性常用，正式场合男女通用 私 わたくし わたし的完整表达，比较正式礼貌 僕 ぼく 日常，男用 俺 おれ 比较粗俗，随意。一般上级对下级，长辈对晚辈使用 俺様 おれさま 同上，较粗俗，男用。 私 あたし 较随意，女用 うち 初级日语中表示家、房子，但是也有我的意思。关系方言，女用。 第二人称 あなた 对上级或长辈使用。夫妻之...</description>
+      <description>第一人称 私 わたし 女性常用，正式场合男女通用 私 わたくし わたし的完整表达，比较正式礼貌 僕 ぼく 日常，男用 俺 おれ 比较粗俗，随意。一般上级对下级，长辈对晚辈使用 俺様 おれさま 同上，较粗俗，男用。 私 あたし 较随意，女用 うち 初级日语中表示家、房子，但是也有我的意思。关系方言，女用。 第二人称 あなた 对上级或长辈使用。夫妻之间使用...</description>
       <category>学习笔记</category>
       <pubDate>Fri, 22 Aug 2025 10:04:25 GMT</pubDate>
-      <content:encoded><![CDATA[<p>##　第一人称</p>
+      <content:encoded><![CDATA[<h2>第一人称</h2>
 <ul>
 <li>私　わたし    女性常用，正式场合男女通用</li>
 <li>私　わたくし  わたし的完整表达，比较正式礼貌</li>
@@ -118,10 +118,10 @@
 ]]></content:encoded>
     </item>
     <item>
-      <title>P003 形容词、形容动词</title>
+      <title>P004 形容词、形容动词</title>
       <link>https://jayczee.cn/note/ni-hon-go-grammar/p004.html</link>
       <guid>https://jayczee.cn/note/ni-hon-go-grammar/p004.html</guid>
-      <source url="https://jayczee.cn/rss.xml">P003 形容词、形容动词</source>
+      <source url="https://jayczee.cn/rss.xml">P004 形容词、形容动词</source>
       <description>形容词（i形形容词） 形容词作谓语 日语中形容词都是可以直接作谓语的。而名词作谓语就需要接だ来帮助。 形容词作定语 提示 此处形容词后不需要跟の,直接跟名词就行。名词跟名词才需要加の来表示关系。 虽然长得一样，但从语法上分析，形容词作谓语中的青い实际上是终止形，而下面的是连体形。体在日语中就是名词、代词等。 形容动词 也就是na形形容词 形容动词作谓语...</description>
       <category>学习笔记</category>
       <pubDate>Fri, 22 Aug 2025 10:04:25 GMT</pubDate>
