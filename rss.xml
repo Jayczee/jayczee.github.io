@@ -6,17 +6,17 @@
     <link>https://jayczee.cn/</link>
     <description>Whispering for nothing</description>
     <language>zh-CN</language>
-    <pubDate>Mon, 13 Oct 2025 09:23:13 GMT</pubDate>
-    <lastBuildDate>Mon, 13 Oct 2025 09:23:13 GMT</lastBuildDate>
+    <pubDate>Fri, 31 Oct 2025 03:00:55 GMT</pubDate>
+    <lastBuildDate>Fri, 31 Oct 2025 03:00:55 GMT</lastBuildDate>
     <generator>@vuepress/plugin-feed</generator>
     <docs>https://validator.w3.org/feed/docs/rss2.html</docs>
     <category>学习笔记</category>
     <category>Linux</category>
-    <category>Code</category>
     <category>Other</category>
     <category>LeetCode</category>
     <category>OpenClash</category>
     <category>Windows</category>
+    <category>Code</category>
     <category>NAS</category>
     <item>
       <title>P002 指示代词</title>
@@ -303,60 +303,6 @@
 <span class="line"><span style="color:#D4D4D4">  }</span></span>
 <span class="line"><span style="color:#D4D4D4">})</span></span></code></pre>
 </div><p>这样修改后，代码块既有Mac风格的边框效果，也保证了注释的可读性。</p>
-]]></content:encoded>
-    </item>
-    <item>
-      <title>✨ 定义 Vue 子组件双向绑定的属性的语法糖 - defineModel</title>
-      <link>https://jayczee.cn/code/way-to-define-model-value.html</link>
-      <guid>https://jayczee.cn/code/way-to-define-model-value.html</guid>
-      <source url="https://jayczee.cn/rss.xml">✨ 定义 Vue 子组件双向绑定的属性的语法糖 - defineModel</source>
-      <description>🚀 传统做法示例 假设有一个子组件 ChildComponent.vue，需要向父组件暴露两个属性 props1 和 props2，并实现双向绑定： 👨‍👩‍👧 父组件写法 父组件通过 v-model 修饰符绑定多个属性： 代码略显冗长，不够简洁。 ✨ Vue 3.4+ 的 defineModel 语法糖 Vue 3.4 版本新增了 defin...</description>
-      <category>Code</category>
-      <pubDate>Tue, 24 Jun 2025 09:00:57 GMT</pubDate>
-      <content:encoded><![CDATA[<h2>🚀 传统做法示例</h2>
-<p>假设有一个子组件 <code>ChildComponent.vue</code>，需要向父组件暴露两个属性 <code>props1</code> 和 <code>props2</code>，并实现双向绑定：</p>
-<div class="language-vue" data-highlighter="shiki" data-ext="vue" data-title="vue" style="background-color:#1E1E1E;color:#D4D4D4"><pre class="shiki dark-plus vp-code"><code><span class="line"><span style="color:#6A9955">&lt;!-- ChildComponent.vue --&gt;</span></span>
-<span class="line"><span style="color:#808080">&lt;</span><span style="color:#569CD6">template</span><span style="color:#808080">&gt;</span></span>
-<span class="line"><span style="color:#808080">  &lt;</span><span style="color:#569CD6">div</span><span style="color:#808080">&gt;</span><span style="color:#D4D4D4">...</span><span style="color:#808080">&lt;/</span><span style="color:#569CD6">div</span><span style="color:#808080">&gt;</span></span>
-<span class="line"><span style="color:#808080">&lt;/</span><span style="color:#569CD6">template</span><span style="color:#808080">&gt;</span></span>
-<span class="line"></span>
-<span class="line"><span style="color:#808080">&lt;</span><span style="color:#569CD6">script</span><span style="color:#9CDCFE"> setup</span><span style="color:#9CDCFE"> lang</span><span style="color:#D4D4D4">=</span><span style="color:#CE9178">"ts"</span><span style="color:#808080">&gt;</span></span>
-<span class="line"><span style="color:#C586C0">import</span><span style="color:#D4D4D4"> { </span><span style="color:#9CDCFE">computed</span><span style="color:#D4D4D4"> } </span><span style="color:#C586C0">from</span><span style="color:#CE9178"> 'vue'</span><span style="color:#D4D4D4">;</span></span>
-<span class="line"></span>
-<span class="line"><span style="color:#569CD6">const</span><span style="color:#4FC1FF"> props</span><span style="color:#D4D4D4"> = </span><span style="color:#DCDCAA">defineProps</span><span style="color:#D4D4D4">&lt;{</span></span>
-<span class="line"><span style="color:#9CDCFE">  props1</span><span style="color:#D4D4D4">: </span><span style="color:#4EC9B0">string</span><span style="color:#D4D4D4"> | </span><span style="color:#4EC9B0">number</span><span style="color:#D4D4D4">;</span></span>
-<span class="line"><span style="color:#9CDCFE">  props2</span><span style="color:#D4D4D4">: </span><span style="color:#4EC9B0">boolean</span><span style="color:#D4D4D4">;</span></span>
-<span class="line"><span style="color:#D4D4D4">}&gt;();</span></span>
-<span class="line"></span>
-<span class="line"><span style="color:#569CD6">const</span><span style="color:#4FC1FF"> emit</span><span style="color:#D4D4D4"> = </span><span style="color:#DCDCAA">defineEmits</span><span style="color:#D4D4D4">([</span><span style="color:#CE9178">'update:props1'</span><span style="color:#D4D4D4">, </span><span style="color:#CE9178">'update:props2'</span><span style="color:#D4D4D4">]);</span></span>
-<span class="line"></span>
-<span class="line"><span style="color:#569CD6">const</span><span style="color:#4FC1FF"> localProp1</span><span style="color:#D4D4D4"> = </span><span style="color:#DCDCAA">computed</span><span style="color:#D4D4D4">({</span></span>
-<span class="line"><span style="color:#DCDCAA">  get</span><span style="color:#9CDCFE">:</span><span style="color:#D4D4D4"> () </span><span style="color:#569CD6">=&gt;</span><span style="color:#9CDCFE"> props</span><span style="color:#D4D4D4">.</span><span style="color:#9CDCFE">props1</span><span style="color:#D4D4D4">,</span></span>
-<span class="line"><span style="color:#DCDCAA">  set</span><span style="color:#9CDCFE">:</span><span style="color:#D4D4D4"> (</span><span style="color:#9CDCFE">val</span><span style="color:#D4D4D4">) </span><span style="color:#569CD6">=&gt;</span><span style="color:#D4D4D4"> {</span></span>
-<span class="line"><span style="color:#DCDCAA">    emit</span><span style="color:#D4D4D4">(</span><span style="color:#CE9178">'update:props1'</span><span style="color:#D4D4D4">, </span><span style="color:#9CDCFE">val</span><span style="color:#D4D4D4">);</span></span>
-<span class="line"><span style="color:#D4D4D4">  },</span></span>
-<span class="line"><span style="color:#D4D4D4">});</span></span>
-<span class="line"></span>
-<span class="line"><span style="color:#569CD6">const</span><span style="color:#4FC1FF"> localProp2</span><span style="color:#D4D4D4"> = </span><span style="color:#DCDCAA">computed</span><span style="color:#D4D4D4">({</span></span>
-<span class="line"><span style="color:#DCDCAA">  get</span><span style="color:#9CDCFE">:</span><span style="color:#D4D4D4"> () </span><span style="color:#569CD6">=&gt;</span><span style="color:#9CDCFE"> props</span><span style="color:#D4D4D4">.</span><span style="color:#9CDCFE">props2</span><span style="color:#D4D4D4">,</span></span>
-<span class="line"><span style="color:#DCDCAA">  set</span><span style="color:#9CDCFE">:</span><span style="color:#D4D4D4"> (</span><span style="color:#9CDCFE">val</span><span style="color:#D4D4D4">) </span><span style="color:#569CD6">=&gt;</span><span style="color:#D4D4D4"> {</span></span>
-<span class="line"><span style="color:#DCDCAA">    emit</span><span style="color:#D4D4D4">(</span><span style="color:#CE9178">'update:props2'</span><span style="color:#D4D4D4">, </span><span style="color:#9CDCFE">val</span><span style="color:#D4D4D4">);</span></span>
-<span class="line"><span style="color:#D4D4D4">  },</span></span>
-<span class="line"><span style="color:#D4D4D4">});</span></span>
-<span class="line"><span style="color:#808080">&lt;/</span><span style="color:#569CD6">script</span><span style="color:#808080">&gt;</span></span></code></pre>
-</div><h3>👨‍👩‍👧 父组件写法</h3>
-<p>父组件通过 <code>v-model</code> 修饰符绑定多个属性：</p>
-<div class="language-vue" data-highlighter="shiki" data-ext="vue" data-title="vue" style="background-color:#1E1E1E;color:#D4D4D4"><pre class="shiki dark-plus vp-code"><code><span class="line"><span style="color:#808080">&lt;</span><span style="color:#569CD6">template</span><span style="color:#808080">&gt;</span></span>
-<span class="line"><span style="color:#808080">  &lt;</span><span style="color:#569CD6">ChildComponent</span><span style="color:#9CDCFE"> v-model:props1</span><span style="color:#D4D4D4">=</span><span style="color:#CE9178">"xxx1"</span><span style="color:#9CDCFE"> v-model:props2</span><span style="color:#D4D4D4">=</span><span style="color:#CE9178">"xxx2"</span><span style="color:#808080"> /&gt;</span></span>
-<span class="line"><span style="color:#808080">&lt;/</span><span style="color:#569CD6">template</span><span style="color:#808080">&gt;</span></span>
-<span class="line"></span>
-<span class="line"><span style="color:#808080">&lt;</span><span style="color:#569CD6">script</span><span style="color:#9CDCFE"> setup</span><span style="color:#9CDCFE"> lang</span><span style="color:#D4D4D4">=</span><span style="color:#CE9178">"ts"</span><span style="color:#808080">&gt;</span></span>
-<span class="line"><span style="color:#C586C0">import</span><span style="color:#D4D4D4"> { </span><span style="color:#9CDCFE">shallowRef</span><span style="color:#D4D4D4"> } </span><span style="color:#C586C0">from</span><span style="color:#CE9178"> 'vue'</span><span style="color:#D4D4D4">;</span></span>
-<span class="line"></span>
-<span class="line"><span style="color:#569CD6">const</span><span style="color:#4FC1FF"> xxx1</span><span style="color:#D4D4D4"> = </span><span style="color:#DCDCAA">shallowRef</span><span style="color:#D4D4D4">&lt;</span><span style="color:#4EC9B0">string</span><span style="color:#D4D4D4">&gt;(</span><span style="color:#CE9178">''</span><span style="color:#D4D4D4">);</span></span>
-<span class="line"><span style="color:#569CD6">const</span><span style="color:#4FC1FF"> xxx2</span><span style="color:#D4D4D4"> = </span><span style="color:#DCDCAA">shallowRef</span><span style="color:#D4D4D4">&lt;</span><span style="color:#4EC9B0">boolean</span><span style="color:#D4D4D4">&gt;(</span><span style="color:#569CD6">false</span><span style="color:#D4D4D4">);</span></span>
-<span class="line"><span style="color:#808080">&lt;/</span><span style="color:#569CD6">script</span><span style="color:#808080">&gt;</span></span></code></pre>
-</div><p>代码略显冗长，不够简洁。</p>
 ]]></content:encoded>
     </item>
     <item>
