@@ -71,3 +71,7 @@ public static List<String> readTrackingNumbers(File pdfFile) {
     return res;
 }
 ```
+
+## 附言
+
+如果有Fedex账号并且进行对接，可以直接使用API查询物流状态，会方便得多。

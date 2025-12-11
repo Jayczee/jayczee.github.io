@@ -15,7 +15,7 @@ export default navbar([
   {
     text: "编程相关",
     icon: "pen-to-square",
-    link: "/code/way-to-define-model-value.md"
+    link: "/code/fedex-crawler.md"
   },
   {
     text: "学习笔记",
