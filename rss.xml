@@ -6,18 +6,167 @@
     <link>https://jayczee.cn/</link>
     <description>Whispering for nothing</description>
     <language>zh-CN</language>
-    <pubDate>Fri, 31 Oct 2025 03:00:55 GMT</pubDate>
-    <lastBuildDate>Fri, 31 Oct 2025 03:00:55 GMT</lastBuildDate>
+    <pubDate>Thu, 11 Dec 2025 02:29:10 GMT</pubDate>
+    <lastBuildDate>Thu, 11 Dec 2025 02:29:10 GMT</lastBuildDate>
     <generator>@vuepress/plugin-feed</generator>
     <docs>https://validator.w3.org/feed/docs/rss2.html</docs>
-    <category>学习笔记</category>
+    <category>Code</category>
     <category>Linux</category>
+    <category>Windows</category>
+    <category>学习笔记</category>
     <category>Other</category>
     <category>LeetCode</category>
     <category>OpenClash</category>
-    <category>Windows</category>
-    <category>Code</category>
     <category>NAS</category>
+    <item>
+      <title>Claude Code &amp; Codex使用有感</title>
+      <link>https://jayczee.cn/code/cc-codex.html</link>
+      <guid>https://jayczee.cn/code/cc-codex.html</guid>
+      <source url="https://jayczee.cn/rss.xml">Claude Code &amp; Codex使用有感</source>
+      <description>最近在L站找到某赞助商的AI中转，按量付费，对我目前工作需求时有时无的情况比较友好。 此类AI Agent都需要Node环境，Node 18+即可。 使用感受 普遍情况下，CC要比Codex快很多。原因是Codex我选择的gpt-5-high模型，思考得比较深。因此一些复杂任务我会下意识先交给Codex。但事无绝对，有时候CC做的会比Codex好很多。...</description>
+      <category>Code</category>
+      <pubDate>Thu, 11 Dec 2025 02:27:29 GMT</pubDate>
+      <content:encoded><![CDATA[<p>最近在L站找到某赞助商的AI中转，按量付费，对我目前工作需求时有时无的情况比较友好。</p>
+<p>此类AI Agent都需要Node环境，Node 18+即可。</p>
+<h2>使用感受</h2>
+<ol>
+<li>
+<p>普遍情况下，CC要比Codex快很多。原因是Codex我选择的gpt-5-high模型，思考得比较深。因此一些复杂任务我会下意识先交给Codex。但事无绝对，有时候CC做的会比Codex好很多。双方都是一会儿神一会儿鬼。</p>
+</li>
+<li>
+<p>因为自己现在同时负责前后端，很多需求在整理好思路并总结出一个prompt之后我会全权交给ai。Be like：</p>
+</li>
+</ol>
+<figure><img src="/assets/images/code/cc-codex/image.png" alt="需求提示词" tabindex="0" loading="lazy"><figcaption>需求提示词</figcaption></figure>
+<ol start="3">
+<li>
+<p>某个需求只要自己的思路是清晰的，AI一定也能给你做出来。但如果自己都毫无头绪，AI虽然大概率能给出答案，但是如果自己无法理解，review的过程非常痛苦。</p>
+</li>
+<li>
+<p>如果需求涉及到后端sql变更，可以试着把数据库表DDL喂给AI，AI就能更好地理解业务。</p>
+</li>
+<li>
+<p>可以使用<code>codex --ask-for-approval never --sandbox danger-full-access</code>来跳过codex每次的命令询问，Claude code可以使用<code>claude --dangerously-skip-permissions</code>。</p>
+</li>
+<li>
+<p>可以让ai agent每次编辑都自动本地commit一次，自己修改后也可以本地commit，得到最终成果后Squash commits合并成一个。这样ai写出错误代码也可以自己手动回滚，不需要让ai自己回滚，否则对上下文和钱包也是一种浪费。</p>
+</li>
+<li>
+<p>原本的代码越规范，AI改的越利落。这条纯个人体感。因为有个老前端项目，虽然用的ts，但很多地方类型不对，定义缺失，ai改这个项目时确实感觉捉襟见肘，速度慢了很多。</p>
+</li>
+<li>
+<p>cc和codex都可以先让ai做一个项目总结文档放在项目目录（比如cc可以直接/init创建一个CLAUDE.md），这样后续向ai提需求时就可以省略一些上下文，让ai自己在总结文档中找。这也算是基操了。</p>
+</li>
+<li>
+<p>网上的mcp配置在windows下使用时，cc不会出现什么问题，codex会出现<code>program not started</code>之类的报错。折腾了很久一直没有成功，直到有天cc成功启动了但是提示我在windows在运行npx最好使用<code>cmd /c npx xxx</code>，我如此配置之后，mcp在codex侧也能使用了。</p>
+</li>
+</ol>
+<h2>安装/配置</h2>
+<p>Claude Code：</p>
+<div class="language-bash" data-highlighter="shiki" data-ext="bash" data-title="bash" style="background-color:#1E1E1E;color:#D4D4D4"><pre class="shiki dark-plus vp-code"><code><span class="line"><span style="color:#DCDCAA">npm</span><span style="color:#CE9178"> install</span><span style="color:#569CD6"> -g</span><span style="color:#CE9178"> @anthropic-ai/claude-code</span></span></code></pre>
+</div><p>Codex：</p>
+<div class="language-bash" data-highlighter="shiki" data-ext="bash" data-title="bash" style="background-color:#1E1E1E;color:#D4D4D4"><pre class="shiki dark-plus vp-code"><code><span class="line"><span style="color:#DCDCAA">npm</span><span style="color:#CE9178"> install</span><span style="color:#569CD6"> -g</span><span style="color:#CE9178"> @openai/codex@latest</span></span></code></pre>
+</div><p>安装完后在用户目录文件夹下创建<code>.claude</code>（Claude Code）或<code>.codex</code>(Codex)文件夹，配置环境变量。</p>
+<h3>Claude Code 环境变量配置</h3>
+<h4>settings.json</h4>
+<div class="language-json" data-highlighter="shiki" data-ext="json" data-title="json" style="background-color:#1E1E1E;color:#D4D4D4"><pre class="shiki dark-plus vp-code"><code><span class="line"><span style="color:#D4D4D4">{</span></span>
+<span class="line"><span style="color:#9CDCFE">  "env"</span><span style="color:#D4D4D4">: {</span></span>
+<span class="line"><span style="color:#9CDCFE">    "ANTHROPIC_AUTH_TOKEN"</span><span style="color:#D4D4D4">: </span><span style="color:#CE9178">"XXX"</span><span style="color:#D4D4D4">,  </span><span style="color:#6A9955">// API Key</span></span>
+<span class="line"><span style="color:#9CDCFE">    "ANTHROPIC_BASE_URL"</span><span style="color:#D4D4D4">: </span><span style="color:#CE9178">"xxx"</span><span style="color:#D4D4D4">,    </span><span style="color:#6A9955">//中转商API URL</span></span>
+<span class="line"><span style="color:#9CDCFE">    "CLAUDE_CODE_DISABLE_NONESSENTIAL_TRAFFIC"</span><span style="color:#D4D4D4">: </span><span style="color:#CE9178">"1"</span></span>
+<span class="line"><span style="color:#D4D4D4">  },</span></span>
+<span class="line"><span style="color:#9CDCFE">  "permissions"</span><span style="color:#D4D4D4">: {</span></span>
+<span class="line"><span style="color:#9CDCFE">    "allow"</span><span style="color:#D4D4D4">: [],</span></span>
+<span class="line"><span style="color:#9CDCFE">    "deny"</span><span style="color:#D4D4D4">: []</span></span>
+<span class="line"><span style="color:#D4D4D4">  }</span></span>
+<span class="line"><span style="color:#D4D4D4">}</span></span></code></pre>
+</div><h3>Codex 环境变量配置</h3>
+<h4>config.toml</h4>
+<div class="language-toml" data-highlighter="shiki" data-ext="toml" data-title="toml" style="background-color:#1E1E1E;color:#D4D4D4"><pre class="shiki dark-plus vp-code"><code><span class="line"><span style="color:#9CDCFE">model_provider</span><span style="color:#D4D4D4"> = </span><span style="color:#CE9178">"customName"</span></span>
+<span class="line"><span style="color:#9CDCFE">model</span><span style="color:#D4D4D4"> = </span><span style="color:#CE9178">"gpt-5-codex"</span></span>
+<span class="line"><span style="color:#9CDCFE">model_reasoning_effort</span><span style="color:#D4D4D4"> = </span><span style="color:#CE9178">"high"</span></span>
+<span class="line"><span style="color:#9CDCFE">network_access</span><span style="color:#D4D4D4"> = </span><span style="color:#CE9178">"enabled"</span></span>
+<span class="line"><span style="color:#9CDCFE">disable_response_storage</span><span style="color:#D4D4D4"> = </span><span style="color:#569CD6">true</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#D4D4D4">[model_providers.customName]</span></span>
+<span class="line"><span style="color:#9CDCFE">name</span><span style="color:#D4D4D4"> = </span><span style="color:#CE9178">"customName"</span></span>
+<span class="line"><span style="color:#9CDCFE">base_url</span><span style="color:#D4D4D4"> = </span><span style="color:#CE9178">"XXX"</span><span style="color:#F44747">    // 中转商API URL</span></span>
+<span class="line"><span style="color:#9CDCFE">wire_api</span><span style="color:#D4D4D4"> = </span><span style="color:#CE9178">"responses"</span></span>
+<span class="line"><span style="color:#9CDCFE">requires_openai_auth</span><span style="color:#D4D4D4"> = </span><span style="color:#569CD6">true</span></span></code></pre>
+</div><h4>auth.json</h4>
+<div class="language-json" data-highlighter="shiki" data-ext="json" data-title="json" style="background-color:#1E1E1E;color:#D4D4D4"><pre class="shiki dark-plus vp-code"><code><span class="line"><span style="color:#D4D4D4">{</span></span>
+<span class="line"><span style="color:#9CDCFE">  "OPENAI_API_KEY"</span><span style="color:#D4D4D4">: </span><span style="color:#CE9178">"xxxx"</span><span style="color:#6A9955">  // API Key</span></span>
+<span class="line"><span style="color:#D4D4D4">}</span></span></code></pre>
+</div>]]></content:encoded>
+      <enclosure url="https://jayczee.cn/assets/images/code/cc-codex/image.png" type="image/png"/>
+    </item>
+    <item>
+      <title>记开发环境迁移到wsl2的一次过程</title>
+      <link>https://jayczee.cn/code/move-2-wsl.html</link>
+      <guid>https://jayczee.cn/code/move-2-wsl.html</guid>
+      <source url="https://jayczee.cn/rss.xml">记开发环境迁移到wsl2的一次过程</source>
+      <description>动机 最近使用Codex开发的时候，发现Codex在检索文件这一步经常报错找不到命令，而后尝试使用python读取文件内容。但是在我朋友的机器上它尝试调用python也会出现失败的情况，猜测可能是因为环境差异：我本机确实有python环境而朋友的电脑没有。 其次，安装CC和Codex时，两者都有提示推荐使用WSL2，体验效果更好。但是没有明说好在哪里。...</description>
+      <category>Code</category>
+      <pubDate>Thu, 11 Dec 2025 02:27:29 GMT</pubDate>
+      <content:encoded><![CDATA[<h2>动机</h2>
+<p>最近使用Codex开发的时候，发现Codex在检索文件这一步经常报错<code>找不到命令</code>，而后尝试使用python读取文件内容。但是在我朋友的机器上它尝试调用python也会出现失败的情况，猜测可能是因为环境差异：我本机确实有python环境而朋友的电脑没有。</p>
+<p>其次，安装CC和Codex时，两者都有提示推荐使用WSL2，体验效果更好。但是没有明说<strong>好在哪里</strong>。</p>
+<p>在我的Mac上使用两个ai agent确实表现要更好，没有这样的提示，但无奈我的Mac是小规格，只有8G内存，无法同时开过多的项目。</p>
+<p>WSL2与Windows目前的适配非常棒。</p>
+<p>综上，下定决心，在Windows上安装wsl2并将代码迁移进去。</p>
+<h2>安装WSL2</h2>
+<p>我比较喜欢Debian系统，所以wsl2中安装的也是debian。</p>
+<p>安装命令：</p>
+<div class="language-bash" data-highlighter="shiki" data-ext="bash" data-title="bash" style="background-color:#1E1E1E;color:#D4D4D4"><pre class="shiki dark-plus vp-code"><code><span class="line"><span style="color:#DCDCAA">wsl</span><span style="color:#569CD6"> --install</span><span style="color:#569CD6"> -d</span><span style="color:#CE9178"> Debian</span></span></code></pre>
+</div><p>此处建议挂个🪜，该命令会从github拉取文件信息。</p>
+<p>wsl中安装的linux发行版似乎并非完全体，我下载的非常快，30s就下载安装完毕，直接可以启动了。</p>
+<p>检查wsl版本，确定版本是wsl2（在windows命令行中运行）：</p>
+<div class="language-bash" data-highlighter="shiki" data-ext="bash" data-title="bash" style="background-color:#1E1E1E;color:#D4D4D4"><pre class="shiki dark-plus vp-code"><code><span class="line"><span style="color:#DCDCAA">wsl</span><span style="color:#569CD6"> -l</span><span style="color:#569CD6"> -v</span></span></code></pre>
+</div><h2>安装过程中检索AI的一些问题</h2>
+<ul>
+<li>Q：wsl2可以使用宿主机的目录吗？
+<ul>
+<li>
+<p>A：Windows 的盘会自动挂载在 /mnt 下，例如：</p>
+<p>| Windows 路径 | 在 WSL2 中路径 |<br>
+| :</p>
+</li>
+</ul>
+</li>
+</ul>
+]]></content:encoded>
+    </item>
+    <item>
+      <title>远程开机WakeOnLan踩坑</title>
+      <link>https://jayczee.cn/win_linux/try-wake-on-lan.html</link>
+      <guid>https://jayczee.cn/win_linux/try-wake-on-lan.html</guid>
+      <source url="https://jayczee.cn/rss.xml">远程开机WakeOnLan踩坑</source>
+      <description>平常我到公司，都是通过WOL唤醒家里的Windows，然后远程连接进行开发，主要是家里电脑性能好，多开前后端项目不卡顿。 昨晚半夜醒来，发现房间黑不溜秋的，判断是小区停电了，果不其然，大概过了半个小时左右来了电，第二天早上迷糊着急匆匆的去上班，没多管。 到了公司按例进行远程唤醒操作： ssh家里常开的nas nas作为跳板机ssh到路由器 路由器arp...</description>
+      <category>Linux</category>
+      <category>Windows</category>
+      <pubDate>Thu, 11 Dec 2025 02:27:29 GMT</pubDate>
+      <content:encoded><![CDATA[<p>平常我到公司，都是通过WOL唤醒家里的Windows，然后远程连接进行开发，主要是家里电脑性能好，多开前后端项目不卡顿。</p>
+<p>昨晚半夜醒来，发现房间黑不溜秋的，判断是小区停电了，果不其然，大概过了半个小时左右来了电，第二天早上迷糊着急匆匆的去上班，没多管。</p>
+<p>到了公司按例进行远程唤醒操作：</p>
+<ol>
+<li>ssh家里常开的nas</li>
+<li>nas作为跳板机ssh到路由器</li>
+<li>路由器arp -a找到主力机的mac地址</li>
+<li>使用mac地址进行远程唤醒</li>
+</ol>
+<p>这次到了第一步，我就直接卡住了。怎么也连不上，猛的想起来昨晚停电，nas断电后我没开机。</p>
+<p>好在家里有一台24小时常开的笔记本，这台笔记本上恰巧有UU远程，于是通过UU远程连接到笔记本。随后在笔记本上ssh到路由器上。至此，第2步直接就完成了。</p>
+<p>第三部，通过arp -a找到主力机mac，结果发现，由于断电，dhcp租约记录什么缓存之类的全部消失了，我丢失了主力机的mac，无法远程唤醒。</p>
+<p>询问chatgpt，折腾几分钟后，确认无法用包括但不限于查看日志、查看终端历史等手段找到主力机的mac，无法恢复。</p>
+<p>以为就此要凉凉的时候，我突然想到，为了防止家里的公网ip哪天由于不明原因宕机，我在主力机上安装过ToDesk、UU远程以及向日葵。他们之一是会记录目标机器的mac地址的。</p>
+<p>没错，就是你，伟大的向日葵。</p>
+<p>平常我终极嫌弃，卡顿的要死，限制也多，几百年没连接过的向日葵。我在设备列表中找到离线的目标机器，查看信息，mac地址赫然在列。</p>
+<p>现在mac地址也有了，在路由器ssh上etherwake了一下，等待1分钟，无果。</p>
+<p>多次尝试无效，最后再次询问gpt，得知设备断电后至少要给电一次，保证网卡有电，才能使用wol。</p>
+<p>GG！</p>
+<p>现在在用自己放在公司的macbook pro无奈写下这篇文章，但是只有8g，勉强凑合着开发吧。。。。。。</p>
+]]></content:encoded>
+    </item>
     <item>
       <title>P002 指示代词</title>
       <link>https://jayczee.cn/note/ni-hon-go-grammar/p002.html</link>
@@ -2151,7 +2300,9 @@
 <span class="line"><span style="color:#D4D4D4">    }</span></span>
 <span class="line"><span style="color:#C586C0">    return</span><span style="color:#D4D4D4"> res;</span></span>
 <span class="line"><span style="color:#D4D4D4">}</span></span></code></pre>
-</div>]]></content:encoded>
+</div><h2>附言</h2>
+<p>如果有Fedex账号并且进行对接，可以直接使用API查询物流状态，会方便得多。</p>
+]]></content:encoded>
     </item>
     <item>
       <title>380 O(1)时间插入、删除和获取随机元素</title>
