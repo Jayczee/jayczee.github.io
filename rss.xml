@@ -6,18 +6,275 @@
     <link>https://jayczee.cn/</link>
     <description>Whispering for nothing</description>
     <language>zh-CN</language>
-    <pubDate>Thu, 11 Dec 2025 02:29:10 GMT</pubDate>
-    <lastBuildDate>Thu, 11 Dec 2025 02:29:10 GMT</lastBuildDate>
+    <pubDate>Tue, 27 Jan 2026 03:39:51 GMT</pubDate>
+    <lastBuildDate>Tue, 27 Jan 2026 03:39:51 GMT</lastBuildDate>
     <generator>@vuepress/plugin-feed</generator>
     <docs>https://validator.w3.org/feed/docs/rss2.html</docs>
+    <category>Windows</category>
     <category>Code</category>
     <category>Linux</category>
-    <category>Windows</category>
     <category>学习笔记</category>
     <category>Other</category>
     <category>LeetCode</category>
     <category>OpenClash</category>
     <category>NAS</category>
+    <item>
+      <title>Win下彻底清理Sangfor深信服相关文件</title>
+      <link>https://jayczee.cn/win_linux/sangfor-uninstall.html</link>
+      <guid>https://jayczee.cn/win_linux/sangfor-uninstall.html</guid>
+      <source url="https://jayczee.cn/rss.xml">Win下彻底清理Sangfor深信服相关文件</source>
+      <description>大概一年多前对象需要用我的电脑完成工作相关的一些事情，需要安装深信服的一些软件来远程操控公司电脑。事后我卸载了相关软件，运行的是软件自带的uninstall程序。 但是最近查看任务管理器的进程列表，竟然还是看到了Sangfor开头的进程，甚是无语。 删除服务 想到每次开机都会自启动，第一想法就是系统服务项中会不会有，打开Windows的服务管理(ser...</description>
+      <category>Windows</category>
+      <pubDate>Tue, 27 Jan 2026 03:39:05 GMT</pubDate>
+      <content:encoded><![CDATA[<p>大概一年多前对象需要用我的电脑完成工作相关的一些事情，需要安装深信服的一些软件来远程操控公司电脑。事后我卸载了相关软件，运行的是软件自带的uninstall程序。</p>
+<p>但是最近查看任务管理器的进程列表，竟然还是看到了Sangfor开头的进程，甚是无语。</p>
+<h2>删除服务</h2>
+<p>想到每次开机都会自启动，第一想法就是系统服务项中会不会有，打开Windows的服务管理(services.msc)，按名称排列寻找S开头的服务，好家伙，第一个就是<code>Sangfor VPN Security Protect Service</code>，关闭此服务后我尝试设置禁用，竟然还拒绝访问！随即尝试以下步骤：</p>
+<h3>管理员运行services.msc</h3>
+<p>Win + R输入services.msc，Ctrl + Shift + Enter管理员运行，无效，仍然拒绝访问。</p>
+<h3>改注册表</h3>
+<p>从服务列表中可以看到这个服务真实名称是<code>SangforPWEx</code></p>
+<p>找到注册表路径<code>HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Services\SangforPWEx</code>，修改其start值为4（即DISABLED），修改失败，管理员模式下也无效。</p>
+<h3>sc delete命令</h3>
+<p>直接管理员cmd运行<code>sc delete SangforPWEx</code>，删除成功</p>
+<h2>删除驱动</h2>
+<p>cmd运行<code>driverquery | findstr /i sangfor</code>，找到以下输出，说明还有残留驱动：</p>
+<div class="language-bash" data-highlighter="shiki" data-ext="bash" data-title="bash" style="background-color:#1E1E1E;color:#D4D4D4"><pre class="shiki dark-plus vp-code"><code><span class="line"><span style="color:#DCDCAA">SangforVnic</span><span style="color:#CE9178">  Sangfor</span><span style="color:#CE9178"> SSL</span><span style="color:#CE9178"> VPN</span><span style="color:#CE9178"> CS</span><span style="color:#CE9178"> Sup</span><span style="color:#CE9178"> Kernel</span><span style="color:#CE9178">        2012/11/20</span><span style="color:#CE9178"> 20:31:43</span></span></code></pre>
+</div><h3>sc delete命令</h3>
+<p>如法炮制，sc delete一条命令直接删除了</p>
+<h2>其他残留</h2>
+<h3>注册表</h3>
+<p>注册表全局搜索sangfor，找到<code>计算机\HKEY_CLASSES_ROOT\AppID\某个APPID</code>下的LocalService的值为前面删除的<code>SangforPWEx</code></p>
+<p>通过询问gpt得知，这仅是一个绑定关系，表示某个COM组件启动时需要用到<code>SangforPWEx</code>服务，通过<code>sc query SangforPWEx</code>寻找相关的依赖，得到以下输出：</p>
+<div class="language-bash" data-highlighter="shiki" data-ext="bash" data-title="bash" style="background-color:#1E1E1E;color:#D4D4D4"><pre class="shiki dark-plus vp-code"><code><span class="line"><span style="color:#D4D4D4">[SC] EnumQueryServicesStatus:OpenService 失败 1060:</span></span></code></pre>
+</div><p>眼睛里容不得沙子，直接删除注册表该APPID整个目录。</p>
+<p>上面因为已经删掉了相关服务，这些注册项已经属于无用注册项了，可以找一些注册表清理软件删除这些无用注册项，或者使用以下脚本专门删除Sangfor相关注册项（保存为xxx.ps1然后用pwsh运行）。</p>
+<div class="language-bash" data-highlighter="shiki" data-ext="bash" data-title="bash" style="background-color:#1E1E1E;color:#D4D4D4"><pre class="shiki dark-plus vp-code"><code><span class="line"><span style="color:#D4D4D4">&lt;#</span></span>
+<span class="line"><span style="color:#DCDCAA">.SYNOPSIS</span></span>
+<span class="line"><span style="color:#DCDCAA">  Find</span><span style="color:#D4D4D4"> &amp; </span><span style="color:#DCDCAA">remove</span><span style="color:#CE9178"> Sangfor</span><span style="color:#CE9178"> leftovers</span><span style="color:#D4D4D4"> (COM/AppID/TypeLib/etc.) with backup.</span></span>
+<span class="line"><span style="color:#DCDCAA">  Default:</span><span style="color:#CE9178"> dry-run.</span><span style="color:#CE9178"> Use</span><span style="color:#569CD6"> -Force</span><span style="color:#CE9178"> to</span><span style="color:#CE9178"> actually</span><span style="color:#CE9178"> delete.</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#DCDCAA">.USAGE</span></span>
+<span class="line"><span style="color:#6A9955">  # Dry-run (recommended first):</span></span>
+<span class="line"><span style="color:#DCDCAA">  powershell</span><span style="color:#569CD6"> -ExecutionPolicy</span><span style="color:#CE9178"> Bypass</span><span style="color:#569CD6"> -File</span><span style="color:#CE9178"> .</span><span style="color:#D7BA7D">\R</span><span style="color:#CE9178">emove-Sangfor-Leftovers.ps1</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#6A9955">  # Do it for real:</span></span>
+<span class="line"><span style="color:#DCDCAA">  powershell</span><span style="color:#569CD6"> -ExecutionPolicy</span><span style="color:#CE9178"> Bypass</span><span style="color:#569CD6"> -File</span><span style="color:#CE9178"> .</span><span style="color:#D7BA7D">\R</span><span style="color:#CE9178">emove-Sangfor-Leftovers.ps1</span><span style="color:#569CD6"> -Force</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#6A9955">  # Change backup folder:</span></span>
+<span class="line"><span style="color:#DCDCAA">  powershell</span><span style="color:#569CD6"> -ExecutionPolicy</span><span style="color:#CE9178"> Bypass</span><span style="color:#569CD6"> -File</span><span style="color:#CE9178"> .</span><span style="color:#D7BA7D">\R</span><span style="color:#CE9178">emove-Sangfor-Leftovers.ps1</span><span style="color:#569CD6"> -Force</span><span style="color:#569CD6"> -BackupDir</span><span style="color:#CE9178"> "D:\reg_backup"</span></span>
+<span class="line"><span style="color:#6A9955">#&gt;</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#DCDCAA">param(</span></span>
+<span class="line"><span style="color:#D4D4D4">  [switch]</span><span style="color:#9CDCFE">$Force</span><span style="color:#CE9178">,</span></span>
+<span class="line"><span style="color:#D4D4D4">  [string]</span><span style="color:#9CDCFE">$BackupDir</span><span style="color:#CE9178"> =</span><span style="color:#CE9178"> "</span><span style="color:#9CDCFE">$env</span><span style="color:#CE9178">:SystemDrive\Sangfor_Removal_Backup"</span></span>
+<span class="line"><span style="color:#D4D4D4">)</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#DCDCAA">Set-StrictMode</span><span style="color:#569CD6"> -Version</span><span style="color:#CE9178"> Latest</span></span>
+<span class="line"><span style="color:#9CDCFE">$ErrorActionPreference</span><span style="color:#D4D4D4"> = </span><span style="color:#CE9178">"Stop"</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#569CD6">function</span><span style="color:#DCDCAA"> Test-Admin</span><span style="color:#D4D4D4"> {</span></span>
+<span class="line"><span style="color:#9CDCFE">  $id</span><span style="color:#CE9178"> =</span><span style="color:#D4D4D4"> [Security.Principal.WindowsIdentity</span><span style="color:#DCDCAA">]::GetCurrent</span><span style="color:#D4D4D4">()</span></span>
+<span class="line"><span style="color:#9CDCFE">  $p</span><span style="color:#CE9178">  =</span><span style="color:#CE9178"> New-Object</span><span style="color:#CE9178"> Security.Principal.WindowsPrincipal</span><span style="color:#D4D4D4">(</span><span style="color:#9CDCFE">$id</span><span style="color:#D4D4D4">)</span></span>
+<span class="line"><span style="color:#C586C0">  return</span><span style="color:#9CDCFE"> $p</span><span style="color:#CE9178">.IsInRole</span><span style="color:#D4D4D4">([Security.Principal.WindowsBuiltInRole]::Administrator)</span></span>
+<span class="line"><span style="color:#D4D4D4">}</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#569CD6">function</span><span style="color:#DCDCAA"> Ensure-Dir</span><span style="color:#D4D4D4">([string]</span><span style="color:#9CDCFE">$Path</span><span style="color:#D4D4D4">) {</span></span>
+<span class="line"><span style="color:#C586C0">  if</span><span style="color:#D4D4D4"> (</span><span style="color:#DCDCAA">-not</span><span style="color:#D4D4D4"> (Test-Path </span><span style="color:#569CD6">-LiteralPath</span><span style="color:#9CDCFE"> $Path</span><span style="color:#D4D4D4">)) {</span></span>
+<span class="line"><span style="color:#DCDCAA">    New-Item</span><span style="color:#569CD6"> -ItemType</span><span style="color:#CE9178"> Directory</span><span style="color:#569CD6"> -Path</span><span style="color:#9CDCFE"> $Path</span><span style="color:#D4D4D4"> | </span><span style="color:#DCDCAA">Out-Null</span></span>
+<span class="line"><span style="color:#D4D4D4">  }</span></span>
+<span class="line"><span style="color:#D4D4D4">}</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#569CD6">function</span><span style="color:#DCDCAA"> Write-Plan</span><span style="color:#D4D4D4">([string]</span><span style="color:#9CDCFE">$msg</span><span style="color:#D4D4D4">) {</span></span>
+<span class="line"><span style="color:#C586C0">  if</span><span style="color:#D4D4D4"> (</span><span style="color:#9CDCFE">$Force</span><span style="color:#D4D4D4">) { </span><span style="color:#DCDCAA">Write-Host</span><span style="color:#CE9178"> "[DO]  </span><span style="color:#9CDCFE">$msg</span><span style="color:#CE9178">"</span><span style="color:#569CD6"> -ForegroundColor</span><span style="color:#CE9178"> Yellow</span><span style="color:#CE9178"> }</span></span>
+<span class="line"><span style="color:#C586C0">  else</span><span style="color:#D4D4D4">        { </span><span style="color:#DCDCAA">Write-Host</span><span style="color:#CE9178"> "[PLAN] </span><span style="color:#9CDCFE">$msg</span><span style="color:#CE9178">"</span><span style="color:#569CD6"> -ForegroundColor</span><span style="color:#CE9178"> Cyan</span><span style="color:#CE9178"> }</span></span>
+<span class="line"><span style="color:#D4D4D4">}</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#569CD6">function</span><span style="color:#DCDCAA"> Write-Ok</span><span style="color:#D4D4D4">([string]</span><span style="color:#9CDCFE">$msg</span><span style="color:#D4D4D4">) {</span></span>
+<span class="line"><span style="color:#DCDCAA">  Write-Host</span><span style="color:#CE9178"> "[OK]  </span><span style="color:#9CDCFE">$msg</span><span style="color:#CE9178">"</span><span style="color:#569CD6"> -ForegroundColor</span><span style="color:#CE9178"> Green</span></span>
+<span class="line"><span style="color:#D4D4D4">}</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#569CD6">function</span><span style="color:#DCDCAA"> Write-Warn</span><span style="color:#D4D4D4">([string]</span><span style="color:#9CDCFE">$msg</span><span style="color:#D4D4D4">) {</span></span>
+<span class="line"><span style="color:#DCDCAA">  Write-Host</span><span style="color:#CE9178"> "[WARN] </span><span style="color:#9CDCFE">$msg</span><span style="color:#CE9178">"</span><span style="color:#569CD6"> -ForegroundColor</span><span style="color:#CE9178"> DarkYellow</span></span>
+<span class="line"><span style="color:#D4D4D4">}</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#569CD6">function</span><span style="color:#DCDCAA"> Backup-RegKey</span><span style="color:#D4D4D4">([string]</span><span style="color:#9CDCFE">$RegPath</span><span style="color:#D4D4D4">, [string]</span><span style="color:#9CDCFE">$NameHint</span><span style="color:#D4D4D4">) {</span></span>
+<span class="line"><span style="color:#DCDCAA">  Ensure-Dir</span><span style="color:#9CDCFE"> $BackupDir</span></span>
+<span class="line"><span style="color:#9CDCFE">  $ts</span><span style="color:#CE9178"> =</span><span style="color:#D4D4D4"> (Get-Date).ToString(</span><span style="color:#DCDCAA">"yyyyMMdd_HHmmss"</span><span style="color:#D4D4D4">)</span></span>
+<span class="line"><span style="color:#9CDCFE">  $safe</span><span style="color:#CE9178"> =</span><span style="color:#D4D4D4"> ($NameHint </span><span style="color:#569CD6">-replace</span><span style="color:#CE9178"> '[^a-zA-Z0-9_\-\.]',</span><span style="color:#CE9178"> '_'</span><span style="color:#D4D4D4">)</span></span>
+<span class="line"><span style="color:#9CDCFE">  $out</span><span style="color:#CE9178"> =</span><span style="color:#CE9178"> Join-Path</span><span style="color:#9CDCFE"> $BackupDir</span><span style="color:#CE9178"> "</span><span style="color:#9CDCFE">$ts</span><span style="color:#CE9178">`</span><span style="color:#DCDCAA">_$safe.reg"</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#DCDCAA">  # reg.exe expects root like HKLM\...</span></span>
+<span class="line"><span style="color:#9CDCFE">  $cmd</span><span style="color:#DCDCAA"> = "reg.exe</span><span style="color:#CE9178"> export `"</span><span style="color:#9CDCFE">$RegPath</span><span style="color:#CE9178">`</span><span style="color:#DCDCAA">" </span><span style="color:#CE9178">`</span><span style="color:#DCDCAA">"</span><span style="color:#9CDCFE">$out</span><span style="color:#CE9178">`</span><span style="color:#DCDCAA">" /y"</span></span>
+<span class="line"><span style="color:#DCDCAA">  Write-Plan</span><span style="color:#CE9178"> "Backup registry key: </span><span style="color:#9CDCFE">$RegPath</span><span style="color:#CE9178"> -&gt; </span><span style="color:#9CDCFE">$out</span><span style="color:#CE9178">"</span></span>
+<span class="line"><span style="color:#C586C0">  if</span><span style="color:#CE9178"> (</span><span style="color:#9CDCFE">$Force</span><span style="color:#CE9178">) {</span></span>
+<span class="line"><span style="color:#DCDCAA">    cmd.exe</span><span style="color:#CE9178"> /c </span><span style="color:#9CDCFE">$cmd</span><span style="color:#D4D4D4"> |</span><span style="color:#DCDCAA"> Out-Null</span></span>
+<span class="line"><span style="color:#DCDCAA">    Write-Ok</span><span style="color:#CE9178"> "Backed up: </span><span style="color:#9CDCFE">$out</span><span style="color:#CE9178">"</span></span>
+<span class="line"><span style="color:#CE9178">  }</span></span>
+<span class="line"><span style="color:#CE9178">}</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#569CD6">function</span><span style="color:#DCDCAA"> Remove-RegKey</span><span style="color:#CE9178">([string]</span><span style="color:#9CDCFE">$PsPath</span><span style="color:#CE9178">, [string]</span><span style="color:#9CDCFE">$RegExportPath</span><span style="color:#CE9178">, [string]</span><span style="color:#9CDCFE">$NameHint</span><span style="color:#CE9178">) {</span></span>
+<span class="line"><span style="color:#C586C0">  if</span><span style="color:#CE9178"> (</span><span style="color:#DCDCAA">-not</span><span style="color:#CE9178"> (Test-Path </span><span style="color:#569CD6">-LiteralPath</span><span style="color:#9CDCFE"> $PsPath</span><span style="color:#CE9178">)) {</span></span>
+<span class="line"><span style="color:#DCDCAA">    Write-Warn</span><span style="color:#CE9178"> "Not found: </span><span style="color:#9CDCFE">$PsPath</span><span style="color:#CE9178">"</span></span>
+<span class="line"><span style="color:#C586C0">    return</span></span>
+<span class="line"><span style="color:#CE9178">  }</span></span>
+<span class="line"><span style="color:#DCDCAA">  Backup-RegKey</span><span style="color:#569CD6"> -RegPath</span><span style="color:#9CDCFE"> $RegExportPath</span><span style="color:#569CD6"> -NameHint</span><span style="color:#9CDCFE"> $NameHint</span></span>
+<span class="line"><span style="color:#DCDCAA">  Write-Plan</span><span style="color:#CE9178"> "Remove registry key: </span><span style="color:#9CDCFE">$PsPath</span><span style="color:#CE9178">"</span></span>
+<span class="line"><span style="color:#C586C0">  if</span><span style="color:#CE9178"> (</span><span style="color:#9CDCFE">$Force</span><span style="color:#CE9178">) {</span></span>
+<span class="line"><span style="color:#DCDCAA">    Remove-Item</span><span style="color:#569CD6"> -LiteralPath</span><span style="color:#9CDCFE"> $PsPath</span><span style="color:#569CD6"> -Recurse</span><span style="color:#569CD6"> -Force</span></span>
+<span class="line"><span style="color:#DCDCAA">    Write-Ok</span><span style="color:#CE9178"> "Removed: </span><span style="color:#9CDCFE">$PsPath</span><span style="color:#CE9178">"</span></span>
+<span class="line"><span style="color:#CE9178">  }</span></span>
+<span class="line"><span style="color:#CE9178">}</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#569CD6">function</span><span style="color:#DCDCAA"> Remove-ServiceIfExists</span><span style="color:#CE9178">([string]</span><span style="color:#9CDCFE">$ServiceName</span><span style="color:#CE9178">) {</span></span>
+<span class="line"><span style="color:#6A9955">  # sc query returns 1060 if not installed</span></span>
+<span class="line"><span style="color:#9CDCFE">  $out</span><span style="color:#CE9178"> = &amp; </span><span style="color:#DCDCAA">sc.exe</span><span style="color:#CE9178"> query </span><span style="color:#9CDCFE">$ServiceName</span><span style="color:#D4D4D4"> 2&gt;&amp;1</span><span style="color:#D4D4D4"> |</span><span style="color:#DCDCAA"> Out-String</span></span>
+<span class="line"><span style="color:#C586C0">  if</span><span style="color:#CE9178"> (</span><span style="color:#9CDCFE">$out</span><span style="color:#CE9178"> -match "1060" -or </span><span style="color:#9CDCFE">$out</span><span style="color:#CE9178"> -match "does not exist" -or </span><span style="color:#9CDCFE">$out</span><span style="color:#CE9178"> -match "未安装") {</span></span>
+<span class="line"><span style="color:#DCDCAA">    Write-Ok</span><span style="color:#CE9178"> "Service not installed (already gone): </span><span style="color:#9CDCFE">$ServiceName</span><span style="color:#CE9178">"</span></span>
+<span class="line"><span style="color:#C586C0">    return</span></span>
+<span class="line"><span style="color:#CE9178">  }</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#DCDCAA">  Write-Warn</span><span style="color:#CE9178"> "Service still exists: </span><span style="color:#9CDCFE">$ServiceName</span><span style="color:#CE9178">"</span></span>
+<span class="line"><span style="color:#DCDCAA">  Write-Plan</span><span style="color:#CE9178"> "Try stop service: </span><span style="color:#9CDCFE">$ServiceName</span><span style="color:#CE9178">"</span></span>
+<span class="line"><span style="color:#C586C0">  if</span><span style="color:#CE9178"> (</span><span style="color:#9CDCFE">$Force</span><span style="color:#CE9178">) { &amp; </span><span style="color:#DCDCAA">sc.exe</span><span style="color:#CE9178"> stop </span><span style="color:#9CDCFE">$ServiceName</span><span style="color:#D4D4D4"> |</span><span style="color:#DCDCAA"> Out-Null</span><span style="color:#CE9178"> }</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#DCDCAA">  Write-Plan</span><span style="color:#CE9178"> "Delete service: </span><span style="color:#9CDCFE">$ServiceName</span><span style="color:#CE9178">"</span></span>
+<span class="line"><span style="color:#C586C0">  if</span><span style="color:#CE9178"> (</span><span style="color:#9CDCFE">$Force</span><span style="color:#CE9178">) { &amp; </span><span style="color:#DCDCAA">sc.exe</span><span style="color:#CE9178"> delete </span><span style="color:#9CDCFE">$ServiceName</span><span style="color:#D4D4D4"> |</span><span style="color:#DCDCAA"> Out-Null</span><span style="color:#CE9178"> }</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#DCDCAA">  Write-Ok</span><span style="color:#CE9178"> "Requested deletion: </span><span style="color:#9CDCFE">$ServiceName</span><span style="color:#CE9178">"</span></span>
+<span class="line"><span style="color:#CE9178">}</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#569CD6">function</span><span style="color:#DCDCAA"> Find-And-Remove-OrphanAppIdLocalService</span><span style="color:#CE9178">([string]</span><span style="color:#9CDCFE">$LocalServiceName</span><span style="color:#CE9178">) {</span></span>
+<span class="line"><span style="color:#6A9955">  # Search HKLM &amp; HKCU (real stores). HKCR is merged view.</span></span>
+<span class="line"><span style="color:#9CDCFE">  $roots</span><span style="color:#CE9178"> = @(</span></span>
+<span class="line"><span style="color:#DCDCAA">    @</span><span style="color:#CE9178">{ Ps="Registry::HKEY_LOCAL_MACHINE\SOFTWARE\Classes\AppID"; </span><span style="color:#9CDCFE">Export</span><span style="color:#D4D4D4">=</span><span style="color:#CE9178">"HKLM\SOFTWARE\Classes\AppID"; </span><span style="color:#9CDCFE">Name</span><span style="color:#D4D4D4">=</span><span style="color:#CE9178">"HKLM_AppID" },</span></span>
+<span class="line"><span style="color:#DCDCAA">    @</span><span style="color:#CE9178">{ Ps="Registry::HKEY_CURRENT_USER\SOFTWARE\Classes\AppID";  </span><span style="color:#9CDCFE">Export</span><span style="color:#D4D4D4">=</span><span style="color:#CE9178">"HKCU\SOFTWARE\Classes\AppID"; </span><span style="color:#9CDCFE">Name</span><span style="color:#D4D4D4">=</span><span style="color:#CE9178">"HKCU_AppID" }</span></span>
+<span class="line"><span style="color:#CE9178">  )</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#CE9178">  foreach (</span><span style="color:#9CDCFE">$r</span><span style="color:#CE9178"> in </span><span style="color:#9CDCFE">$roots</span><span style="color:#CE9178">) {</span></span>
+<span class="line"><span style="color:#9CDCFE">    $rootPs</span><span style="color:#CE9178"> = </span><span style="color:#9CDCFE">$r</span><span style="color:#CE9178">.Ps</span></span>
+<span class="line"><span style="color:#C586C0">    if</span><span style="color:#CE9178"> (</span><span style="color:#DCDCAA">-not</span><span style="color:#CE9178"> (Test-Path </span><span style="color:#569CD6">-LiteralPath</span><span style="color:#9CDCFE"> $rootPs</span><span style="color:#CE9178">)) { </span><span style="color:#C586C0">continue</span><span style="color:#CE9178"> }</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#DCDCAA">    Write-Plan</span><span style="color:#CE9178"> "Scan AppID for LocalService='</span><span style="color:#9CDCFE">$LocalServiceName</span><span style="color:#CE9178">' under </span><span style="color:#9CDCFE">$rootPs</span><span style="color:#CE9178">"</span></span>
+<span class="line"><span style="color:#9CDCFE">    $hits</span><span style="color:#CE9178"> = Get-ChildItem </span><span style="color:#569CD6">-LiteralPath</span><span style="color:#9CDCFE"> $rootPs</span><span style="color:#569CD6"> -ErrorAction</span><span style="color:#CE9178"> SilentlyContinue </span><span style="color:#D4D4D4">|</span><span style="color:#DCDCAA"> ForEach-Object</span><span style="color:#CE9178"> {</span></span>
+<span class="line"><span style="color:#9CDCFE">      $k</span><span style="color:#CE9178"> = </span><span style="color:#569CD6">$_</span><span style="color:#CE9178">.PSPath</span></span>
+<span class="line"><span style="color:#DCDCAA">      try</span><span style="color:#CE9178"> {</span></span>
+<span class="line"><span style="color:#9CDCFE">        $p</span><span style="color:#CE9178"> = Get-ItemProperty </span><span style="color:#569CD6">-LiteralPath</span><span style="color:#9CDCFE"> $k</span><span style="color:#569CD6"> -ErrorAction</span><span style="color:#CE9178"> Stop</span></span>
+<span class="line"><span style="color:#C586C0">        if</span><span style="color:#CE9178"> (</span><span style="color:#9CDCFE">$p</span><span style="color:#CE9178">.PSObject.Properties.Name -contains "LocalService" -and </span><span style="color:#9CDCFE">$p</span><span style="color:#CE9178">.LocalService -eq </span><span style="color:#9CDCFE">$LocalServiceName</span><span style="color:#CE9178">) {</span></span>
+<span class="line"><span style="color:#CE9178">          [PSCustomObject]</span><span style="color:#DCDCAA">@</span><span style="color:#CE9178">{ PsPath=</span><span style="color:#9CDCFE">$k</span><span style="color:#CE9178">; </span><span style="color:#9CDCFE">Guid</span><span style="color:#D4D4D4">=</span><span style="color:#569CD6">$_</span><span style="color:#CE9178">.PSChildName; </span><span style="color:#9CDCFE">Root</span><span style="color:#D4D4D4">=</span><span style="color:#9CDCFE">$r</span><span style="color:#CE9178"> }</span></span>
+<span class="line"><span style="color:#CE9178">        }</span></span>
+<span class="line"><span style="color:#CE9178">      } catch { }</span></span>
+<span class="line"><span style="color:#CE9178">    } </span><span style="color:#D4D4D4">|</span><span style="color:#DCDCAA"> Where-Object</span><span style="color:#CE9178"> { </span><span style="color:#569CD6">$_</span><span style="color:#CE9178"> }</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#CE9178">    foreach (</span><span style="color:#9CDCFE">$h</span><span style="color:#CE9178"> in </span><span style="color:#9CDCFE">$hits</span><span style="color:#CE9178">) {</span></span>
+<span class="line"><span style="color:#9CDCFE">      $guid</span><span style="color:#CE9178"> = </span><span style="color:#9CDCFE">$h</span><span style="color:#CE9178">.Guid</span></span>
+<span class="line"><span style="color:#9CDCFE">      $ps</span><span style="color:#CE9178">   = </span><span style="color:#9CDCFE">$h</span><span style="color:#CE9178">.PsPath</span></span>
+<span class="line"><span style="color:#9CDCFE">      $exportKey</span><span style="color:#CE9178"> = "$(</span><span style="color:#9CDCFE">$h</span><span style="color:#CE9178">.Root.Export)</span><span style="color:#D7BA7D">\$</span><span style="color:#CE9178">guid"</span></span>
+<span class="line"><span style="color:#9CDCFE">      $hint</span><span style="color:#CE9178"> = "AppID_</span><span style="color:#9CDCFE">$guid</span><span style="color:#CE9178">`</span><span style="color:#DCDCAA">_$LocalServiceName"</span></span>
+<span class="line"><span style="color:#DCDCAA">      Write-Warn "Found</span><span style="color:#CE9178"> AppID LocalService mapping: </span><span style="color:#9CDCFE">$ps</span><span style="color:#CE9178"> (LocalService=$LocalServiceName)"</span></span>
+<span class="line"><span style="color:#CE9178">      Remove-RegKey -PsPath </span><span style="color:#9CDCFE">$ps</span><span style="color:#CE9178"> -RegExportPath </span><span style="color:#9CDCFE">$exportKey</span><span style="color:#CE9178"> -NameHint </span><span style="color:#9CDCFE">$hint</span></span>
+<span class="line"><span style="color:#CE9178">    }</span></span>
+<span class="line"><span style="color:#CE9178">  }</span></span>
+<span class="line"><span style="color:#CE9178">}</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#CE9178">function Find-And-Remove-TypeLibByName([string]</span><span style="color:#9CDCFE">$TypeLibDisplayName</span><span style="color:#CE9178">) {</span></span>
+<span class="line"><span style="color:#9CDCFE">  $roots</span><span style="color:#CE9178"> = @(</span></span>
+<span class="line"><span style="color:#CE9178">    @{ Ps="Registry::HKEY_LOCAL_MACHINE</span><span style="color:#D7BA7D">\S</span><span style="color:#CE9178">OFTWARE</span><span style="color:#D7BA7D">\C</span><span style="color:#CE9178">lasses</span><span style="color:#D7BA7D">\T</span><span style="color:#CE9178">ypeLib"; Export="HKLM</span><span style="color:#D7BA7D">\S</span><span style="color:#CE9178">OFTWARE</span><span style="color:#D7BA7D">\C</span><span style="color:#CE9178">lasses</span><span style="color:#D7BA7D">\T</span><span style="color:#CE9178">ypeLib"; Name="HKLM_TypeLib" },</span></span>
+<span class="line"><span style="color:#CE9178">    @{ Ps="Registry::HKEY_CURRENT_USER</span><span style="color:#D7BA7D">\S</span><span style="color:#CE9178">OFTWARE</span><span style="color:#D7BA7D">\C</span><span style="color:#CE9178">lasses</span><span style="color:#D7BA7D">\T</span><span style="color:#CE9178">ypeLib";  Export="HKCU</span><span style="color:#D7BA7D">\S</span><span style="color:#CE9178">OFTWARE</span><span style="color:#D7BA7D">\C</span><span style="color:#CE9178">lasses</span><span style="color:#D7BA7D">\T</span><span style="color:#CE9178">ypeLib"; Name="HKCU_TypeLib" }</span></span>
+<span class="line"><span style="color:#CE9178">  )</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#CE9178">  foreach (</span><span style="color:#9CDCFE">$r</span><span style="color:#CE9178"> in </span><span style="color:#9CDCFE">$roots</span><span style="color:#CE9178">) {</span></span>
+<span class="line"><span style="color:#9CDCFE">    $rootPs</span><span style="color:#CE9178"> = </span><span style="color:#9CDCFE">$r</span><span style="color:#CE9178">.Ps</span></span>
+<span class="line"><span style="color:#CE9178">    if (-not (Test-Path -LiteralPath </span><span style="color:#9CDCFE">$rootPs</span><span style="color:#CE9178">)) { continue }</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#CE9178">    Write-Plan "Scan TypeLib </span><span style="color:#C586C0">for</span><span style="color:#CE9178"> name contains '$TypeLibDisplayName' under </span><span style="color:#9CDCFE">$rootPs</span><span style="color:#CE9178">"</span></span>
+<span class="line"><span style="color:#9CDCFE">    $guidKeys</span><span style="color:#CE9178"> = Get-ChildItem -LiteralPath </span><span style="color:#9CDCFE">$rootPs</span><span style="color:#CE9178"> -ErrorAction SilentlyContinue</span></span>
+<span class="line"><span style="color:#CE9178">    foreach (</span><span style="color:#9CDCFE">$g</span><span style="color:#CE9178"> in </span><span style="color:#9CDCFE">$guidKeys</span><span style="color:#CE9178">) {</span></span>
+<span class="line"><span style="color:#CE9178">      # We look under each GUID for versions and check default value(s)</span></span>
+<span class="line"><span style="color:#9CDCFE">      $gpath</span><span style="color:#CE9178"> = </span><span style="color:#9CDCFE">$g</span><span style="color:#CE9178">.PSPath</span></span>
+<span class="line"><span style="color:#9CDCFE">      $matched</span><span style="color:#CE9178"> = </span><span style="color:#9CDCFE">$false</span></span>
+<span class="line"><span style="color:#CE9178">      try {</span></span>
+<span class="line"><span style="color:#9CDCFE">        $verKeys</span><span style="color:#CE9178"> = Get-ChildItem -LiteralPath </span><span style="color:#9CDCFE">$gpath</span><span style="color:#CE9178"> -ErrorAction SilentlyContinue</span></span>
+<span class="line"><span style="color:#CE9178">        foreach (</span><span style="color:#9CDCFE">$v</span><span style="color:#CE9178"> in </span><span style="color:#9CDCFE">$verKeys</span><span style="color:#CE9178">) {</span></span>
+<span class="line"><span style="color:#CE9178">          try {</span></span>
+<span class="line"><span style="color:#9CDCFE">            $p</span><span style="color:#CE9178"> = Get-ItemProperty -LiteralPath </span><span style="color:#9CDCFE">$v</span><span style="color:#CE9178">.PSPath -ErrorAction Stop</span></span>
+<span class="line"><span style="color:#CE9178">            # default value in PowerShell registry provider is "(</span><span style="color:#DCDCAA">default</span><span style="color:#CE9178">)" as "(</span><span style="color:#DCDCAA">default</span><span style="color:#CE9178">)"? Actually it's stored as property "(</span><span style="color:#DCDCAA">default</span><span style="color:#CE9178">)" not directly.</span></span>
+<span class="line"><span style="color:#CE9178">            # We'll use Get-Item and read .GetValue("") for default.</span></span>
+<span class="line"><span style="color:#9CDCFE">            $rk</span><span style="color:#CE9178"> = Get-Item -LiteralPath </span><span style="color:#9CDCFE">$v</span><span style="color:#CE9178">.PSPath -ErrorAction Stop</span></span>
+<span class="line"><span style="color:#9CDCFE">            $def</span><span style="color:#CE9178"> = </span><span style="color:#9CDCFE">$rk</span><span style="color:#CE9178">.GetValue("")</span></span>
+<span class="line"><span style="color:#CE9178">            if (</span><span style="color:#9CDCFE">$def</span><span style="color:#CE9178"> -and (</span><span style="color:#9CDCFE">$def</span><span style="color:#CE9178"> -like "</span><span style="color:#D4D4D4">*</span><span style="color:#9CDCFE">$TypeLibDisplayName</span><span style="color:#D4D4D4">*</span><span style="color:#CE9178">")) { </span><span style="color:#9CDCFE">$matched</span><span style="color:#CE9178"> = </span><span style="color:#9CDCFE">$true</span><span style="color:#CE9178">; break }</span></span>
+<span class="line"><span style="color:#CE9178">          } catch { }</span></span>
+<span class="line"><span style="color:#CE9178">        }</span></span>
+<span class="line"><span style="color:#CE9178">      } catch { }</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#CE9178">      if (</span><span style="color:#9CDCFE">$matched</span><span style="color:#CE9178">) {</span></span>
+<span class="line"><span style="color:#9CDCFE">        $guid</span><span style="color:#CE9178"> = </span><span style="color:#9CDCFE">$g</span><span style="color:#CE9178">.PSChildName</span></span>
+<span class="line"><span style="color:#CE9178">        Write-Warn "Found TypeLib GUID likely Sangfor-related: </span><span style="color:#9CDCFE">$guid</span><span style="color:#CE9178"> (</span><span style="color:#DCDCAA">matched</span><span style="color:#CE9178"> '$TypeLibDisplayName')"</span></span>
+<span class="line"><span style="color:#9CDCFE">        $exportKey</span><span style="color:#CE9178"> = "$(</span><span style="color:#9CDCFE">$r</span><span style="color:#CE9178">.Export)</span><span style="color:#D7BA7D">\$</span><span style="color:#CE9178">guid"</span></span>
+<span class="line"><span style="color:#9CDCFE">        $hint</span><span style="color:#CE9178"> = "TypeLib_</span><span style="color:#9CDCFE">$guid</span><span style="color:#CE9178">"</span></span>
+<span class="line"><span style="color:#CE9178">        Remove-RegKey -PsPath </span><span style="color:#9CDCFE">$gpath</span><span style="color:#CE9178"> -RegExportPath </span><span style="color:#9CDCFE">$exportKey</span><span style="color:#CE9178"> -NameHint </span><span style="color:#9CDCFE">$hint</span></span>
+<span class="line"><span style="color:#CE9178">      }</span></span>
+<span class="line"><span style="color:#CE9178">    }</span></span>
+<span class="line"><span style="color:#CE9178">  }</span></span>
+<span class="line"><span style="color:#CE9178">}</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#CE9178">function Find-StringsInCOMRoots([string[]]</span><span style="color:#9CDCFE">$Needles</span><span style="color:#CE9178">) {</span></span>
+<span class="line"><span style="color:#CE9178">  # Optional report-only: search some common COM roots for Sangfor strings</span></span>
+<span class="line"><span style="color:#9CDCFE">  $targets</span><span style="color:#CE9178"> = @(</span></span>
+<span class="line"><span style="color:#CE9178">    "Registry::HKEY_LOCAL_MACHINE</span><span style="color:#D7BA7D">\S</span><span style="color:#CE9178">OFTWARE</span><span style="color:#D7BA7D">\C</span><span style="color:#CE9178">lasses</span><span style="color:#D7BA7D">\C</span><span style="color:#CE9178">LSID",</span></span>
+<span class="line"><span style="color:#CE9178">    "Registry::HKEY_LOCAL_MACHINE</span><span style="color:#D7BA7D">\S</span><span style="color:#CE9178">OFTWARE</span><span style="color:#D7BA7D">\C</span><span style="color:#CE9178">lasses</span><span style="color:#D7BA7D">\A</span><span style="color:#CE9178">ppID",</span></span>
+<span class="line"><span style="color:#CE9178">    "Registry::HKEY_LOCAL_MACHINE</span><span style="color:#D7BA7D">\S</span><span style="color:#CE9178">OFTWARE</span><span style="color:#D7BA7D">\C</span><span style="color:#CE9178">lasses</span><span style="color:#D7BA7D">\T</span><span style="color:#CE9178">ypeLib",</span></span>
+<span class="line"><span style="color:#CE9178">    "Registry::HKEY_CURRENT_USER</span><span style="color:#D7BA7D">\S</span><span style="color:#CE9178">OFTWARE</span><span style="color:#D7BA7D">\C</span><span style="color:#CE9178">lasses</span><span style="color:#D7BA7D">\C</span><span style="color:#CE9178">LSID",</span></span>
+<span class="line"><span style="color:#CE9178">    "Registry::HKEY_CURRENT_USER</span><span style="color:#D7BA7D">\S</span><span style="color:#CE9178">OFTWARE</span><span style="color:#D7BA7D">\C</span><span style="color:#CE9178">lasses</span><span style="color:#D7BA7D">\A</span><span style="color:#CE9178">ppID",</span></span>
+<span class="line"><span style="color:#CE9178">    "Registry::HKEY_CURRENT_USER</span><span style="color:#D7BA7D">\S</span><span style="color:#CE9178">OFTWARE</span><span style="color:#D7BA7D">\C</span><span style="color:#CE9178">lasses</span><span style="color:#D7BA7D">\T</span><span style="color:#CE9178">ypeLib"</span></span>
+<span class="line"><span style="color:#CE9178">  )</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#CE9178">  Write-Host ""</span></span>
+<span class="line"><span style="color:#CE9178">  Write-Host "===== REPORT: COM-related keys containing needles =====" -ForegroundColor Magenta</span></span>
+<span class="line"><span style="color:#CE9178">  foreach (</span><span style="color:#9CDCFE">$t</span><span style="color:#CE9178"> in </span><span style="color:#9CDCFE">$targets</span><span style="color:#CE9178">) {</span></span>
+<span class="line"><span style="color:#CE9178">    if (-not (Test-Path -LiteralPath </span><span style="color:#9CDCFE">$t</span><span style="color:#CE9178">)) { continue }</span></span>
+<span class="line"><span style="color:#CE9178">    foreach (</span><span style="color:#9CDCFE">$n</span><span style="color:#CE9178"> in </span><span style="color:#9CDCFE">$Needles</span><span style="color:#CE9178">) {</span></span>
+<span class="line"><span style="color:#CE9178">      Write-Plan "Search under </span><span style="color:#9CDCFE">$t</span><span style="color:#CE9178"> for '$n' (</span><span style="color:#DCDCAA">report</span><span style="color:#CE9178"> only)"</span></span>
+<span class="line"><span style="color:#CE9178">      # avoid huge recursion blowing up: limit to 2-level scan quickly</span></span>
+<span class="line"><span style="color:#CE9178">      try {</span></span>
+<span class="line"><span style="color:#CE9178">        Get-ChildItem -LiteralPath </span><span style="color:#9CDCFE">$t</span><span style="color:#CE9178"> -ErrorAction SilentlyContinue | ForEach-Object {</span></span>
+<span class="line"><span style="color:#9CDCFE">          $k1</span><span style="color:#CE9178"> = </span><span style="color:#569CD6">$_</span><span style="color:#CE9178">.PSPath</span></span>
+<span class="line"><span style="color:#CE9178">          # check values on this key</span></span>
+<span class="line"><span style="color:#CE9178">          try {</span></span>
+<span class="line"><span style="color:#9CDCFE">            $item</span><span style="color:#CE9178"> = Get-Item -LiteralPath </span><span style="color:#9CDCFE">$k1</span><span style="color:#CE9178"> -ErrorAction Stop</span></span>
+<span class="line"><span style="color:#CE9178">            foreach (</span><span style="color:#9CDCFE">$vn</span><span style="color:#CE9178"> in </span><span style="color:#9CDCFE">$item</span><span style="color:#CE9178">.GetValueNames()) {</span></span>
+<span class="line"><span style="color:#9CDCFE">              $vv</span><span style="color:#CE9178"> = </span><span style="color:#9CDCFE">$item</span><span style="color:#CE9178">.GetValue(</span><span style="color:#9CDCFE">$vn</span><span style="color:#CE9178">)</span></span>
+<span class="line"><span style="color:#CE9178">              if (</span><span style="color:#9CDCFE">$vv</span><span style="color:#CE9178"> -is [string] -and </span><span style="color:#9CDCFE">$vv</span><span style="color:#CE9178"> -match [regex]::Escape(</span><span style="color:#9CDCFE">$n</span><span style="color:#CE9178">)) {</span></span>
+<span class="line"><span style="color:#CE9178">                Write-Host "[HIT] </span><span style="color:#9CDCFE">$k1</span><span style="color:#CE9178">  value '$vn' contains '$n'" -ForegroundColor DarkCyan</span></span>
+<span class="line"><span style="color:#CE9178">              }</span></span>
+<span class="line"><span style="color:#CE9178">            }</span></span>
+<span class="line"><span style="color:#CE9178">          } catch {}</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#CE9178">          # one more level down</span></span>
+<span class="line"><span style="color:#CE9178">          try {</span></span>
+<span class="line"><span style="color:#CE9178">            Get-ChildItem -LiteralPath </span><span style="color:#9CDCFE">$k1</span><span style="color:#CE9178"> -ErrorAction SilentlyContinue | ForEach-Object {</span></span>
+<span class="line"><span style="color:#9CDCFE">              $k2</span><span style="color:#CE9178"> = </span><span style="color:#569CD6">$_</span><span style="color:#CE9178">.PSPath</span></span>
+<span class="line"><span style="color:#CE9178">              try {</span></span>
+<span class="line"><span style="color:#9CDCFE">                $item2</span><span style="color:#CE9178"> = Get-Item -LiteralPath </span><span style="color:#9CDCFE">$k2</span><span style="color:#CE9178"> -ErrorAction Stop</span></span>
+<span class="line"><span style="color:#CE9178">                foreach (</span><span style="color:#9CDCFE">$vn2</span><span style="color:#CE9178"> in </span><span style="color:#9CDCFE">$item2</span><span style="color:#CE9178">.GetValueNames()) {</span></span>
+<span class="line"><span style="color:#9CDCFE">                  $vv2</span><span style="color:#CE9178"> = </span><span style="color:#9CDCFE">$item2</span><span style="color:#CE9178">.GetValue(</span><span style="color:#9CDCFE">$vn2</span><span style="color:#CE9178">)</span></span>
+<span class="line"><span style="color:#CE9178">                  if (</span><span style="color:#9CDCFE">$vv2</span><span style="color:#CE9178"> -is [string] -and </span><span style="color:#9CDCFE">$vv2</span><span style="color:#CE9178"> -match [regex]::Escape(</span><span style="color:#9CDCFE">$n</span><span style="color:#CE9178">)) {</span></span>
+<span class="line"><span style="color:#CE9178">                    Write-Host "[HIT] </span><span style="color:#9CDCFE">$k2</span><span style="color:#CE9178">  value '$vn2' contains '$n'" -ForegroundColor DarkCyan</span></span>
+<span class="line"><span style="color:#CE9178">                  }</span></span>
+<span class="line"><span style="color:#CE9178">                }</span></span>
+<span class="line"><span style="color:#CE9178">              } catch {}</span></span>
+<span class="line"><span style="color:#CE9178">            }</span></span>
+<span class="line"><span style="color:#CE9178">          } catch {}</span></span>
+<span class="line"><span style="color:#CE9178">        }</span></span>
+<span class="line"><span style="color:#CE9178">      } catch {}</span></span>
+<span class="line"><span style="color:#CE9178">    }</span></span>
+<span class="line"><span style="color:#CE9178">  }</span></span>
+<span class="line"><span style="color:#CE9178">  Write-Host "===== END REPORT =====" -ForegroundColor Magenta</span></span>
+<span class="line"><span style="color:#CE9178">}</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#CE9178">#</span></span></code></pre>
+</div>]]></content:encoded>
+    </item>
     <item>
       <title>Claude Code &amp; Codex使用有感</title>
       <link>https://jayczee.cn/code/cc-codex.html</link>
