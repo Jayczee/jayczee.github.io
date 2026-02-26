@@ -47,14 +47,6 @@ Or set directly: openclaw config set gateway.mode local
 Missing config: run openclaw setup first.
 ```
 
-:::tips
-此处提到了`Gateway mode`概念，区别如下：
-1. `local`: 网关运行在你的本机（127.0.0.1）。只有你这台电脑上的程序能访问它。简单来说仅允许本机访问openclaw。
-2. `remote`: 网关监听所有网络接口（0.0.0.0）。允许其他电脑通过网络访问你的 OpenClaw。允许其他设备通过网络访问openClaw。
-
-由于我是安装在我的nas上的，平常我需要通过其他设备访问，所以我的安装选择必然是`remote`。
-:::
-
 - I understand this is powerful and inherently risky. Continue?
     - 安全条款协议，需要安装仅能选Yes。
 
@@ -90,7 +82,7 @@ Missing config: run openclaw setup first.
 
 openclaw官方很贴心的检测到并提示我们可以用打隧道的方式，直接端口转发。
 
-```
+```bash
 Dashboard URL: http://127.0.0.1:18789/#token=xxx
 Copy to clipboard unavailable.
 No GUI detected. Open from your computer:
@@ -105,9 +97,9 @@ https://docs.openclaw.ai/web/control-ui
 
 在同一局域网的有GUI的机器，比如windows，macos，或者带GUI 的linux运行上述命令，然后访问地址即可。
 
-:::warning
+::::warning
 请确保openclaw的gateway已经启动，否则没有服务在监听对应端口时是无法打通隧道的。
-:::
+::::
 
 打通隧道后没有什么提示，弄得我一度以为没有打通隧道。
 
