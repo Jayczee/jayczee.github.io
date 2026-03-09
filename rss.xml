@@ -6,8 +6,8 @@
     <link>https://jayczee.cn/</link>
     <description>Whispering for nothing</description>
     <language>zh-CN</language>
-    <pubDate>Mon, 09 Mar 2026 08:51:01 GMT</pubDate>
-    <lastBuildDate>Mon, 09 Mar 2026 08:51:01 GMT</lastBuildDate>
+    <pubDate>Mon, 09 Mar 2026 10:04:34 GMT</pubDate>
+    <lastBuildDate>Mon, 09 Mar 2026 10:04:34 GMT</lastBuildDate>
     <generator>@vuepress/plugin-feed</generator>
     <docs>https://validator.w3.org/feed/docs/rss2.html</docs>
     <category>Linux</category>
@@ -22,8 +22,8 @@
     <category>NAS</category>
     <item>
       <title>Openclaw Skills</title>
-      <link>https://jayczee.cn/win_linux/openclaw-skills.html</link>
-      <guid>https://jayczee.cn/win_linux/openclaw-skills.html</guid>
+      <link>https://jayczee.cn/system/openclaw-skills.html</link>
+      <guid>https://jayczee.cn/system/openclaw-skills.html</guid>
       <source url="https://jayczee.cn/rss.xml">Openclaw Skills</source>
       <description>前言 起初是因为刚装好的Openclaw不自带websearch的能力，需要MCP或Skills来拓展，所以就在ClawHub上检索websearch以及其他用得上的Skills。 之所以没有第一个想到使用MCP（我使用Gemini CLI， Codex CLI等是优先使用MCP的），在我看来我MCP的大部分作用由于龙虾已经获得了宿主机的大部分权限所以...</description>
       <category>Linux</category>
@@ -63,8 +63,8 @@
     </item>
     <item>
       <title>Openclaw 接入EvoMap</title>
-      <link>https://jayczee.cn/win_linux/openclaw-evomap.html</link>
-      <guid>https://jayczee.cn/win_linux/openclaw-evomap.html</guid>
+      <link>https://jayczee.cn/system/openclaw-evomap.html</link>
+      <guid>https://jayczee.cn/system/openclaw-evomap.html</guid>
       <source url="https://jayczee.cn/rss.xml">Openclaw 接入EvoMap</source>
       <description>最近在给openclaw寻找好用的skills，无奈今早clawhub一点进去页面就跳error，各种尝试修复和寻找解决方案无果，就去其他论坛上找找别人的推荐。 果不其然还真找到一个有意思的项目：EvoMap 简单来说可以让自己的openclaw（或自己其他的ai agent）加入一个社区，ai agent可以在解决问题时自己在社区发布问题，设置问题悬...</description>
       <category>Linux</category>
@@ -86,8 +86,8 @@
     </item>
     <item>
       <title>Openclaw 安装与配置</title>
-      <link>https://jayczee.cn/win_linux/openclaw.html</link>
-      <guid>https://jayczee.cn/win_linux/openclaw.html</guid>
+      <link>https://jayczee.cn/system/openclaw.html</link>
+      <guid>https://jayczee.cn/system/openclaw.html</guid>
       <source url="https://jayczee.cn/rss.xml">Openclaw 安装与配置</source>
       <description>最近经常刷到Openclaw相关的东西，在年（2026）前浅浅尝试了一下，为了方便使用了别人封装的openclaw的快速配置脚本，最终连接到telegram bot后就停止了。 使用第三方脚本是因为当时openclaw官方被攻击了还是咋，点进去vercel报错页面404，没招啊，当时还是叫clawdbot和moltbot。 此次在我的nas上进行安装，...</description>
       <category>Linux</category>
@@ -198,8 +198,8 @@
     </item>
     <item>
       <title>Win11 X Lite修改系统级锁屏壁纸</title>
-      <link>https://jayczee.cn/win_linux/win11xlite-winlogo-pic.html</link>
-      <guid>https://jayczee.cn/win_linux/win11xlite-winlogo-pic.html</guid>
+      <link>https://jayczee.cn/system/win11xlite-winlogo-pic.html</link>
+      <guid>https://jayczee.cn/system/win11xlite-winlogo-pic.html</guid>
       <source url="https://jayczee.cn/rss.xml">Win11 X Lite修改系统级锁屏壁纸</source>
       <description>最近重装系统，选择了刚发布的Win11XLite 26H1，性能提升确实不错，打游戏的1% low提升很高。 但是该系统在刚开机尚未登录的锁屏界面使用了自制的logo，对我来说有点丑，想要修改。 中途踩坑 上网搜索钻研了很多方法，一开始准备通过组策略改，但是组策略没有找到对应修改项，似乎该系统对组策略中相关功能进行阉割，特意防止用户修改未登录锁屏界面壁...</description>
       <category>Windows</category>
@@ -219,8 +219,8 @@
     </item>
     <item>
       <title>Win下彻底清理Sangfor深信服相关文件</title>
-      <link>https://jayczee.cn/win_linux/sangfor-uninstall.html</link>
-      <guid>https://jayczee.cn/win_linux/sangfor-uninstall.html</guid>
+      <link>https://jayczee.cn/system/sangfor-uninstall.html</link>
+      <guid>https://jayczee.cn/system/sangfor-uninstall.html</guid>
       <source url="https://jayczee.cn/rss.xml">Win下彻底清理Sangfor深信服相关文件</source>
       <description>大概一年多前对象需要用我的电脑完成工作相关的一些事情，需要安装深信服的一些软件来远程操控公司电脑。事后我卸载了相关软件，运行的是软件自带的uninstall程序。 但是最近查看任务管理器的进程列表，竟然还是看到了Sangfor开头的进程，甚是无语。 删除服务 想到每次开机都会自启动，第一想法就是系统服务项中会不会有，打开Windows的服务管理(ser...</description>
       <category>Windows</category>
@@ -476,8 +476,8 @@
     </item>
     <item>
       <title>Claude Code &amp; Codex使用有感</title>
-      <link>https://jayczee.cn/code/cc-codex.html</link>
-      <guid>https://jayczee.cn/code/cc-codex.html</guid>
+      <link>https://jayczee.cn/projects/cc-codex.html</link>
+      <guid>https://jayczee.cn/projects/cc-codex.html</guid>
       <source url="https://jayczee.cn/rss.xml">Claude Code &amp; Codex使用有感</source>
       <description>最近在L站找到某赞助商的AI中转，按量付费，对我目前工作需求时有时无的情况比较友好。 此类AI Agent都需要Node环境，Node 18+即可。 使用感受 普遍情况下，CC要比Codex快很多。原因是Codex我选择的gpt-5-high模型，思考得比较深。因此一些复杂任务我会下意识先交给Codex。但事无绝对，有时候CC做的会比Codex好很多。...</description>
       <category>Code</category>
@@ -558,8 +558,8 @@
     </item>
     <item>
       <title>记开发环境迁移到wsl2的一次过程</title>
-      <link>https://jayczee.cn/code/move-2-wsl.html</link>
-      <guid>https://jayczee.cn/code/move-2-wsl.html</guid>
+      <link>https://jayczee.cn/projects/move-2-wsl.html</link>
+      <guid>https://jayczee.cn/projects/move-2-wsl.html</guid>
       <source url="https://jayczee.cn/rss.xml">记开发环境迁移到wsl2的一次过程</source>
       <description>动机 最近使用Codex开发的时候，发现Codex在检索文件这一步经常报错找不到命令，而后尝试使用python读取文件内容。但是在我朋友的机器上它尝试调用python也会出现失败的情况，猜测可能是因为环境差异：我本机确实有python环境而朋友的电脑没有。 其次，安装CC和Codex时，两者都有提示推荐使用WSL2，体验效果更好。但是没有明说好在哪里。...</description>
       <category>Code</category>
@@ -594,8 +594,8 @@
     </item>
     <item>
       <title>远程开机WakeOnLan踩坑</title>
-      <link>https://jayczee.cn/win_linux/try-wake-on-lan.html</link>
-      <guid>https://jayczee.cn/win_linux/try-wake-on-lan.html</guid>
+      <link>https://jayczee.cn/system/try-wake-on-lan.html</link>
+      <guid>https://jayczee.cn/system/try-wake-on-lan.html</guid>
       <source url="https://jayczee.cn/rss.xml">远程开机WakeOnLan踩坑</source>
       <description>平常我到公司，都是通过WOL唤醒家里的Windows，然后远程连接进行开发，主要是家里电脑性能好，多开前后端项目不卡顿。 昨晚半夜醒来，发现房间黑不溜秋的，判断是小区停电了，果不其然，大概过了半个小时左右来了电，第二天早上迷糊着急匆匆的去上班，没多管。 到了公司按例进行远程唤醒操作： ssh家里常开的nas nas作为跳板机ssh到路由器 路由器arp...</description>
       <category>Linux</category>
@@ -625,8 +625,8 @@
     </item>
     <item>
       <title>P002 指示代词</title>
-      <link>https://jayczee.cn/note/ni-hon-go-grammar/p002.html</link>
-      <guid>https://jayczee.cn/note/ni-hon-go-grammar/p002.html</guid>
+      <link>https://jayczee.cn/notes/ni-hon-go-grammar/p002.html</link>
+      <guid>https://jayczee.cn/notes/ni-hon-go-grammar/p002.html</guid>
       <source url="https://jayczee.cn/rss.xml">P002 指示代词</source>
       <description>指示代词： こ 与说话人较近 そ 与听话人较近 あ 与说话人、听话人都远 ど 不定代词 指示代词 〜れ 〜の 〜の〜 れ后面不能直接加名词，需要加助词。比如表示话题主题的助词は。 加名词则需要使用の: 此处第二个の表示归属。因为书已经在前面提及，所有后面的书可以省略，此处省略的语法跟中文差不多。 れ和の的意思是一样的，只不过用法不同，是后面跟与不跟名词...</description>
       <category>学习笔记</category>
@@ -667,8 +667,8 @@
     </item>
     <item>
       <title>P003 人称代词</title>
-      <link>https://jayczee.cn/note/ni-hon-go-grammar/p003.html</link>
-      <guid>https://jayczee.cn/note/ni-hon-go-grammar/p003.html</guid>
+      <link>https://jayczee.cn/notes/ni-hon-go-grammar/p003.html</link>
+      <guid>https://jayczee.cn/notes/ni-hon-go-grammar/p003.html</guid>
       <source url="https://jayczee.cn/rss.xml">P003 人称代词</source>
       <description>第一人称 私 わたし 女性常用，正式场合男女通用 私 わたくし わたし的完整表达，比较正式礼貌 僕 ぼく 日常，男用 俺 おれ 比较粗俗，随意。一般上级对下级，长辈对晚辈使用 俺様 おれさま 同上，较粗俗，男用。 私 あたし 较随意，女用 うち 初级日语中表示家、房子，但是也有我的意思。关系方言，女用。 第二人称 あなた 对上级或长辈使用。夫妻之间使用...</description>
       <category>学习笔记</category>
@@ -724,8 +724,8 @@
     </item>
     <item>
       <title>P004 形容词、形容动词</title>
-      <link>https://jayczee.cn/note/ni-hon-go-grammar/p004.html</link>
-      <guid>https://jayczee.cn/note/ni-hon-go-grammar/p004.html</guid>
+      <link>https://jayczee.cn/notes/ni-hon-go-grammar/p004.html</link>
+      <guid>https://jayczee.cn/notes/ni-hon-go-grammar/p004.html</guid>
       <source url="https://jayczee.cn/rss.xml">P004 形容词、形容动词</source>
       <description>形容词（i形形容词） 形容词作谓语 日语中形容词都是可以直接作谓语的。而名词作谓语就需要接だ来帮助。 形容词作定语 提示 此处形容词后不需要跟の,直接跟名词就行。名词跟名词才需要加の来表示关系。 虽然长得一样，但从语法上分析，形容词作谓语中的青い实际上是终止形，而下面的是连体形。体在日语中就是名词、代词等。 形容动词 也就是na形形容词 形容动词作谓语...</description>
       <category>学习笔记</category>
@@ -806,8 +806,8 @@
     </item>
     <item>
       <title>P001 名词谓语句</title>
-      <link>https://jayczee.cn/note/ni-hon-go-grammar/p001.html</link>
-      <guid>https://jayczee.cn/note/ni-hon-go-grammar/p001.html</guid>
+      <link>https://jayczee.cn/notes/ni-hon-go-grammar/p001.html</link>
+      <guid>https://jayczee.cn/notes/ni-hon-go-grammar/p001.html</guid>
       <source url="https://jayczee.cn/rss.xml">P001 名词谓语句</source>
       <description>1. ~だ 助动词 表判断 表达“是学生”时，不能直接用名词作谓语，需要加助动词だ表示判断。 名词不能直接作谓语，需要加だ表示判断。 だ作助动词后，后面只能跟句号或终助词（如：よ、ね，表示语气）。 否定形式需要将だ变成で，再加表示强调否定的副助词は，以及否定的辅助形容词ない。 其中，で是だ的终止形，后面可以接其他成分。 疑问形式： 2. ~です 助动词...</description>
       <category>学习笔记</category>
@@ -830,8 +830,8 @@
     </item>
     <item>
       <title>《大家的日语 - 皆の日本語》</title>
-      <link>https://jayczee.cn/note/min-na-no-ni-hon-go.html</link>
-      <guid>https://jayczee.cn/note/min-na-no-ni-hon-go.html</guid>
+      <link>https://jayczee.cn/notes/min-na-no-ni-hon-go.html</link>
+      <guid>https://jayczee.cn/notes/min-na-no-ni-hon-go.html</guid>
       <source url="https://jayczee.cn/rss.xml">《大家的日语 - 皆の日本語》</source>
       <description>前言 emmmmm前段时间去日本玩了趟，开始对日语感兴趣了，目前学习的时候感觉东西都能理解，但是怕自己总结的东西过了脑子就忘，所以做一个电子笔记。 初级上 第一课 あなた：称呼“你”。日语中很少使用第二人称代词，语境明确时更是如此。初次见面用可能冒犯。也有“亲爱的”的意思。 ～ちゃん：昵称结尾，常见于动画、口语中，相当于“~酱”。 句式： 名词1 は ...</description>
       <category>学习笔记</category>
@@ -851,8 +851,8 @@
     </item>
     <item>
       <title>Markdown修改Mac风格代码块</title>
-      <link>https://jayczee.cn/win_linux/mac-code-block.html</link>
-      <guid>https://jayczee.cn/win_linux/mac-code-block.html</guid>
+      <link>https://jayczee.cn/system/mac-code-block.html</link>
+      <guid>https://jayczee.cn/system/mac-code-block.html</guid>
       <source url="https://jayczee.cn/rss.xml">Markdown修改Mac风格代码块</source>
       <description>使用Vuepress编写markdown文档时，默认的代码块样式比较干。很多博客文章的代码块采用mac风格边框，视觉性比较好，该边框可以通过修改全局CSS实现。 可以在 .vuepress/styles/index.scss 中插入以下全局样式： 我是用的Vuepress theme hope主题，代码高亮默认使用shiki插件。由于修改成mac风格后...</description>
       <category>Linux</category>
@@ -912,8 +912,8 @@
     </item>
     <item>
       <title>踩坑记录 — 关于Mac云同步导致视频素材丢失的坑</title>
-      <link>https://jayczee.cn/etc/file-deleted-by-mac.html</link>
-      <guid>https://jayczee.cn/etc/file-deleted-by-mac.html</guid>
+      <link>https://jayczee.cn/blog/file-deleted-by-mac.html</link>
+      <guid>https://jayczee.cn/blog/file-deleted-by-mac.html</guid>
       <source url="https://jayczee.cn/rss.xml">踩坑记录 — 关于Mac云同步导致视频素材丢失的坑</source>
       <description>踩坑记录 💦 前言 之前去日本旅游，用大疆拍摄了一百多G的视频，准备回来制作Vlog。因为存储卡空间不够，就先把视频拷贝到电脑上存储，随后格式化了大疆的SD卡，继续拍摄。 回到家后，把大疆新拍的素材也拷贝到了电脑上。电脑是Mac。 🚨 坑点 OneDrive 和 iCloud 之类的云服务，会对备份路径中的文件做标记，然后上传到云端。这个过程中，可...</description>
       <category>Other</category>
@@ -926,8 +926,8 @@
     </item>
     <item>
       <title>209 长度最小的子数组</title>
-      <link>https://jayczee.cn/note/leet150/30-leet209.html</link>
-      <guid>https://jayczee.cn/note/leet150/30-leet209.html</guid>
+      <link>https://jayczee.cn/notes/leet150/30-leet209.html</link>
+      <guid>https://jayczee.cn/notes/leet150/30-leet209.html</guid>
       <source url="https://jayczee.cn/rss.xml">209 长度最小的子数组</source>
       <description>🚀 相关链接 LeetCode 209 - 长度最小的子数组 📜 描述 给定一个含有 n 个正整数的数组和一个正整数 target。 找出该数组中满足其总和大于等于 target 的长度最小的 子数组 [numsl, numsl+1, ..., numsr-1, numsr]，并返回其长度。如果不存在符合条件的子数组，返回 0。 💡 示例 输入:...</description>
       <category>LeetCode</category>
@@ -1056,8 +1056,8 @@
     </item>
     <item>
       <title>3 无重复字符的最长子串</title>
-      <link>https://jayczee.cn/note/leet150/31-leet003.html</link>
-      <guid>https://jayczee.cn/note/leet150/31-leet003.html</guid>
+      <link>https://jayczee.cn/notes/leet150/31-leet003.html</link>
+      <guid>https://jayczee.cn/notes/leet150/31-leet003.html</guid>
       <source url="https://jayczee.cn/rss.xml">3 无重复字符的最长子串</source>
       <description>🚀 相关链接 LeetCode 3 - 无重复字符的最长子串 📜 描述 给定一个字符串 s ，请你找出其中不含有重复字符的 最长 子串的长度。 💡 示例 示例 1 输入: s = &amp;quot;abcabcbb&amp;quot; 输出: 3 解释: 因为无重复字符的最长子串是 &amp;quot;abc&amp;quot;，所以其长度为 3。 示例 2 输入: s = &amp;quot;bbbbb&amp;quot; 输出: 1 解释: 因为...</description>
       <category>LeetCode</category>
@@ -1133,8 +1133,8 @@
     </item>
     <item>
       <title>30 串联所有单词的子串</title>
-      <link>https://jayczee.cn/note/leet150/32-leet030.html</link>
-      <guid>https://jayczee.cn/note/leet150/32-leet030.html</guid>
+      <link>https://jayczee.cn/notes/leet150/32-leet030.html</link>
+      <guid>https://jayczee.cn/notes/leet150/32-leet030.html</guid>
       <source url="https://jayczee.cn/rss.xml">30 串联所有单词的子串</source>
       <description>🚀 相关链接 LeetCode 30 - 串联所有单词的子串 📜 描述 给定一个字符串 s 和一个字符串数组 words。words 中所有字符串 长度相同。 s 中的 串联子串 是指一个包含 words 中所有字符串以任意顺序排列连接起来的子串。 💡 示例 示例 1 输入: s = &amp;quot;barfoothefoobarman&amp;quot;, words = [...</description>
       <category>LeetCode</category>
@@ -1247,8 +1247,8 @@
     </item>
     <item>
       <title>167 两数之和 II - 输入有序数组</title>
-      <link>https://jayczee.cn/note/leet150/27-leet169.html</link>
-      <guid>https://jayczee.cn/note/leet150/27-leet169.html</guid>
+      <link>https://jayczee.cn/notes/leet150/27-leet169.html</link>
+      <guid>https://jayczee.cn/notes/leet150/27-leet169.html</guid>
       <source url="https://jayczee.cn/rss.xml">167 两数之和 II - 输入有序数组</source>
       <description>🚀 相关链接 LeetCode 167 - 两数之和 II - 输入有序数组 📜 描述 给你一个下标从 1 开始的整数数组 numbers，该数组已按 非递减顺序排列，请你从数组中找出满足相加之和等于目标数 target 的两个数。如果设这两个数分别是 numbers[index1] 和 numbers[index2]，则 1 &amp;lt;= index1 ...</description>
       <category>LeetCode</category>
@@ -1315,8 +1315,8 @@
     </item>
     <item>
       <title>11 盛最多水的容器</title>
-      <link>https://jayczee.cn/note/leet150/28-leet011.html</link>
-      <guid>https://jayczee.cn/note/leet150/28-leet011.html</guid>
+      <link>https://jayczee.cn/notes/leet150/28-leet011.html</link>
+      <guid>https://jayczee.cn/notes/leet150/28-leet011.html</guid>
       <source url="https://jayczee.cn/rss.xml">11 盛最多水的容器</source>
       <description>🚀 相关链接 LeetCode 11 - 盛最多水的容器 📜 描述 给定一个长度为 n 的整数数组 height。有 n 条垂线，第 i 条线的两个端点是 (i, 0) 和 (i, height[i])。 找出其中的两条线，使得它们与 x 轴共同构成的容器可以容纳最多的水。 返回容器可以储存的最大水量。 说明：你不能倾斜容器。 💡 示例 示例 1...</description>
       <category>LeetCode</category>
@@ -1369,8 +1369,8 @@
     </item>
     <item>
       <title>15 三数之和</title>
-      <link>https://jayczee.cn/note/leet150/29-leet015.html</link>
-      <guid>https://jayczee.cn/note/leet150/29-leet015.html</guid>
+      <link>https://jayczee.cn/notes/leet150/29-leet015.html</link>
+      <guid>https://jayczee.cn/notes/leet150/29-leet015.html</guid>
       <source url="https://jayczee.cn/rss.xml">15 三数之和</source>
       <description>🚀 相关链接 LeetCode 15 - 三数之和 📜 描述 给你一个整数数组 nums，判断是否存在三元组 [nums[i], nums[j], nums[k]] 满足 i != j、i != k 且 j != k，同时还满足 nums[i] + nums[j] + nums[k] == 0。请你返回所有和为 0 且不重复的三元组。 注意：答案中...</description>
       <category>LeetCode</category>
@@ -1447,8 +1447,8 @@
     </item>
     <item>
       <title>329 判断子序列</title>
-      <link>https://jayczee.cn/note/leet150/26-leet329.html</link>
-      <guid>https://jayczee.cn/note/leet150/26-leet329.html</guid>
+      <link>https://jayczee.cn/notes/leet150/26-leet329.html</link>
+      <guid>https://jayczee.cn/notes/leet150/26-leet329.html</guid>
       <source url="https://jayczee.cn/rss.xml">329 判断子序列</source>
       <description>🚀 相关链接 LeetCode 329 - 判断子序列 📜 描述 给定字符串 s 和 t ，判断 s 是否为 t 的子序列。 字符串的一个子序列是原始字符串删除一些（也可以不删除）字符而不改变剩余字符相对位置形成的新字符串。（例如，&amp;quot;ace&amp;quot;是&amp;quot;abcde&amp;quot;的一个子序列，而&amp;quot;aec&amp;quot;不是）。 进阶： 如果有大量输入的 S，称作 S1, S2, .....</description>
       <category>LeetCode</category>
@@ -1533,8 +1533,8 @@
     </item>
     <item>
       <title>125 验证回文串</title>
-      <link>https://jayczee.cn/note/leet150/25-leet125.html</link>
-      <guid>https://jayczee.cn/note/leet150/25-leet125.html</guid>
+      <link>https://jayczee.cn/notes/leet150/25-leet125.html</link>
+      <guid>https://jayczee.cn/notes/leet150/25-leet125.html</guid>
       <source url="https://jayczee.cn/rss.xml">125 验证回文串</source>
       <description>🚀 相关链接 LeetCode 125 - 验证回文串 📜 描述 如果在将所有大写字符转换为小写字符、并移除所有非字母数字字符之后，短语正着读和反着读都一样。则可以认为该短语是一个 回文串 。 字母和数字都属于字母数字字符。 给你一个字符串 s，如果它是 回文串，返回 true ；否则，返回 false。 💡 示例 示例 1 输入: s = &amp;quot;A...</description>
       <category>LeetCode</category>
@@ -1592,8 +1592,8 @@
     </item>
     <item>
       <title>68 文本左右对齐</title>
-      <link>https://jayczee.cn/note/leet150/24-leet068.html</link>
-      <guid>https://jayczee.cn/note/leet150/24-leet068.html</guid>
+      <link>https://jayczee.cn/notes/leet150/24-leet068.html</link>
+      <guid>https://jayczee.cn/notes/leet150/24-leet068.html</guid>
       <source url="https://jayczee.cn/rss.xml">68 文本左右对齐</source>
       <description>🚀 相关链接 LeetCode 68 - 文本左右对齐 📜 描述 给定一个单词数组 words 和一个长度 maxWidth，重新排版单词，使其成为每行恰好有 maxWidth 个字符，且左右两端对齐的文本。 你应该使用 “贪心算法” 来放置给定的单词；也就是说，尽可能多地往每行中放置单词。必要时可用空格 &amp;apos; &amp;apos; 填充，使得每行恰好有 maxWid...</description>
       <category>LeetCode</category>
@@ -1733,8 +1733,8 @@
     </item>
     <item>
       <title>28 找出字符串中第一个匹配项的下标</title>
-      <link>https://jayczee.cn/note/leet150/23-leet028.html</link>
-      <guid>https://jayczee.cn/note/leet150/23-leet028.html</guid>
+      <link>https://jayczee.cn/notes/leet150/23-leet028.html</link>
+      <guid>https://jayczee.cn/notes/leet150/23-leet028.html</guid>
       <source url="https://jayczee.cn/rss.xml">28 找出字符串中第一个匹配项的下标</source>
       <description>🚀 相关链接 LeetCode 28 - 找出字符串中第一个匹配项的下标 📜 描述 给你两个字符串 haystack 和 needle ，请你在 haystack 字符串中找出 needle 字符串的第一个匹配项的下标（下标从 0 开始）。如果 needle 不是 haystack 的一部分，则返回 -1。 💡 示例 示例 1 输入: hayst...</description>
       <category>LeetCode</category>
@@ -1857,8 +1857,8 @@
     </item>
     <item>
       <title>6 Z 字形变换</title>
-      <link>https://jayczee.cn/note/leet150/22-leet006.html</link>
-      <guid>https://jayczee.cn/note/leet150/22-leet006.html</guid>
+      <link>https://jayczee.cn/notes/leet150/22-leet006.html</link>
+      <guid>https://jayczee.cn/notes/leet150/22-leet006.html</guid>
       <source url="https://jayczee.cn/rss.xml">6 Z 字形变换</source>
       <description>🚀 相关链接 LeetCode 6 - Z 字形变换 📜 描述 将一个给定字符串 s 根据给定的行数 numRows，以从上往下、从左到右进行 Z 字形排列。 比如输入字符串为 &amp;quot;PAYPALISHIRING&amp;quot; 行数为 3 时，排列如下： 之后，你的输出需要从左往右逐行读取，产生出一个新的字符串，比如：&amp;quot;PAHNAPLSIIGYIR&amp;quot;。 请你实现这...</description>
       <category>LeetCode</category>
@@ -1935,8 +1935,8 @@
     </item>
     <item>
       <title>151 反转字符串中的单词</title>
-      <link>https://jayczee.cn/note/leet150/21-leet151.html</link>
-      <guid>https://jayczee.cn/note/leet150/21-leet151.html</guid>
+      <link>https://jayczee.cn/notes/leet150/21-leet151.html</link>
+      <guid>https://jayczee.cn/notes/leet150/21-leet151.html</guid>
       <source url="https://jayczee.cn/rss.xml">151 反转字符串中的单词</source>
       <description>🚀 相关链接 LeetCode 151 - 反转字符串中的单词 📜 描述 给你一个字符串 s ，请你反转字符串中 单词 的顺序。 单词 是由非空格字符组成的字符串。s 中使用至少一个空格将字符串中的 单词 分隔开。 返回 单词 顺序颠倒且 单词 之间用单个空格连接的结果字符串。 注意：输入字符串 s 中可能会存在前导空格、尾随空格或者单词间的多个空...</description>
       <category>LeetCode</category>
@@ -2014,8 +2014,8 @@
     </item>
     <item>
       <title>14 最长公共前缀</title>
-      <link>https://jayczee.cn/note/leet150/20-leet014.html</link>
-      <guid>https://jayczee.cn/note/leet150/20-leet014.html</guid>
+      <link>https://jayczee.cn/notes/leet150/20-leet014.html</link>
+      <guid>https://jayczee.cn/notes/leet150/20-leet014.html</guid>
       <source url="https://jayczee.cn/rss.xml">14 最长公共前缀</source>
       <description>🚀 相关链接 LeetCode 14 - 最长公共前缀 📜 描述 编写一个函数来查找字符串数组中的最长公共前缀。 如果不存在公共前缀，返回空字符串 &amp;quot;&amp;quot;。 💡 示例 示例 1 输入: strs = [&amp;quot;flower&amp;quot;,&amp;quot;flow&amp;quot;,&amp;quot;flight&amp;quot;] 输出: &amp;quot;fl&amp;quot; 示例 2 输入: strs = [&amp;quot;dog&amp;quot;,&amp;quot;racecar&amp;quot;,&amp;quot;car&amp;quot;]...</description>
       <category>LeetCode</category>
@@ -2066,8 +2066,8 @@
     </item>
     <item>
       <title>058 最后一个单词的长度</title>
-      <link>https://jayczee.cn/note/leet150/19-leet058.html</link>
-      <guid>https://jayczee.cn/note/leet150/19-leet058.html</guid>
+      <link>https://jayczee.cn/notes/leet150/19-leet058.html</link>
+      <guid>https://jayczee.cn/notes/leet150/19-leet058.html</guid>
       <source url="https://jayczee.cn/rss.xml">058 最后一个单词的长度</source>
       <description>🚀 相关链接 LeetCode 058 - 最后一个单词的长度 📜 描述 给你一个字符串 s，由若干单词组成，单词前后用一些空格字符隔开。返回字符串中 最后一个 单词的长度。 单词 是指仅由字母组成、不包含任何空格字符的最大子字符串。 💡 示例 示例 1 输入: s = &amp;quot;Hello World&amp;quot; 输出: 5 解释: 最后一个单词是“World”...</description>
       <category>LeetCode</category>
@@ -2137,8 +2137,8 @@
     </item>
     <item>
       <title>012 整数转罗马数字</title>
-      <link>https://jayczee.cn/note/leet150/18-leet012.html</link>
-      <guid>https://jayczee.cn/note/leet150/18-leet012.html</guid>
+      <link>https://jayczee.cn/notes/leet150/18-leet012.html</link>
+      <guid>https://jayczee.cn/notes/leet150/18-leet012.html</guid>
       <source url="https://jayczee.cn/rss.xml">012 整数转罗马数字</source>
       <description>🚀 相关链接 LeetCode 012 - 整数转罗马数字 📜 描述 罗马数字通过七个不同的符号来代表不同的数值： 罗马数字的转换规则如下： 如果该值不是以 4 或 9 开头，选择可以从输入中减去的最大值的符号，将该符号附加到结果，减去其值，然后将其余部分转换为罗马数字。 如果该值以 4 或 9 开头，使用 减法形式，表示从以下符号中减去一个符号。...</description>
       <category>LeetCode</category>
@@ -2153,8 +2153,8 @@
     </item>
     <item>
       <title>013 罗马数字转整数</title>
-      <link>https://jayczee.cn/note/leet150/17-leet013.html</link>
-      <guid>https://jayczee.cn/note/leet150/17-leet013.html</guid>
+      <link>https://jayczee.cn/notes/leet150/17-leet013.html</link>
+      <guid>https://jayczee.cn/notes/leet150/17-leet013.html</guid>
       <source url="https://jayczee.cn/rss.xml">013 罗马数字转整数</source>
       <description>🚀 相关链接 LeetCode 013 - 罗马数字转整数 📜 描述 罗马数字包含以下七种字符: I, V, X, L, C, D 和 M。 例如，罗马数字 2 写做 II，即为两个并列的 1。12 写做 XII，即为 X + II。27 写做 XXVII, 即为 XX + V + II。 通常情况下，罗马数字中小的数字在大的数字的右边。但也存在特...</description>
       <category>LeetCode</category>
@@ -2169,8 +2169,8 @@
     </item>
     <item>
       <title>042 接雨水</title>
-      <link>https://jayczee.cn/note/leet150/16-leet042.html</link>
-      <guid>https://jayczee.cn/note/leet150/16-leet042.html</guid>
+      <link>https://jayczee.cn/notes/leet150/16-leet042.html</link>
+      <guid>https://jayczee.cn/notes/leet150/16-leet042.html</guid>
       <source url="https://jayczee.cn/rss.xml">042 接雨水</source>
       <description>🚀 相关链接 LeetCode 042 - 接雨水 📜 描述 给定 n 个非负整数表示每个宽度为 1 的柱子的高度图，计算按此排列的柱子，下雨之后能接多少雨水。 💡 示例 输入: height = [0,1,0,2,1,0,1,3,2,1,2,1] 输出: 6 解释: 上面是由数组 [0,1,0,2,1,0,1,3,2,1,2,1] 表示的高度图...</description>
       <category>LeetCode</category>
@@ -2229,8 +2229,8 @@
     </item>
     <item>
       <title>🌸 日本5天4晚自由行记</title>
-      <link>https://jayczee.cn/etc/journal-to-japan.html</link>
-      <guid>https://jayczee.cn/etc/journal-to-japan.html</guid>
+      <link>https://jayczee.cn/blog/journal-to-japan.html</link>
+      <guid>https://jayczee.cn/blog/journal-to-japan.html</guid>
       <source url="https://jayczee.cn/rss.xml">🌸 日本5天4晚自由行记</source>
       <description>初高中时看了很多日本动漫，即便现在工作了，我也会时隔一段时间看一些日本影视作品，最近看的有《无职转生》、《弥留之国的爱丽丝》等，因此对日本的文化产生了一定兴趣。去年（2024年）就和对象决定要在2025年来日本旅游一趟。终于在今年5月15日-5月19日成功付诸实践！🎉 📝 前期准备 🛂 护照 虽然实地游玩只花了短短5天，但也要花一点时间进行前期准...</description>
       <category>Other</category>
@@ -2349,8 +2349,8 @@
     </item>
     <item>
       <title>135 分发糖果</title>
-      <link>https://jayczee.cn/note/leet150/15-leet135.html</link>
-      <guid>https://jayczee.cn/note/leet150/15-leet135.html</guid>
+      <link>https://jayczee.cn/notes/leet150/15-leet135.html</link>
+      <guid>https://jayczee.cn/notes/leet150/15-leet135.html</guid>
       <source url="https://jayczee.cn/rss.xml">135 分发糖果</source>
       <description>🚀 相关链接 LeetCode 135 - 分发糖果 📜 描述 有 n 个孩子站成一排。给你一个整数数组 ratings 表示每个孩子的评分。你需要按照以下要求，给这些孩子分发糖果： 每个孩子至少分配到 1 个糖果。 相邻两个孩子中，评分更高的孩子会获得更多的糖果。 请你给每个孩子分发糖果，计算并返回需要准备的 最少糖果数目。 💡 示例 输入: ...</description>
       <category>LeetCode</category>
@@ -2455,8 +2455,8 @@
     </item>
     <item>
       <title>Openwrt OpenClash 配置</title>
-      <link>https://jayczee.cn/win_linux/openclash.html</link>
-      <guid>https://jayczee.cn/win_linux/openclash.html</guid>
+      <link>https://jayczee.cn/system/openclash.html</link>
+      <guid>https://jayczee.cn/system/openclash.html</guid>
       <source url="https://jayczee.cn/rss.xml">Openwrt OpenClash 配置</source>
       <description>事出有因 🏠 最近搬家，顺便买了一台x86软路由，预装了iStoreOS（一个OpenWrt国内的改版）。在GitHub上找到了OpenClash仓库，下载并安装后，设置好了订阅地址和节点，本以为家里的所有设备都可以全自动翻墙🌐。然而，事情并没有这么简单。 实际使用中遇到了不少问题。例如，抖音评论区某些图片加载不出来📵，估计是图片CDN地址被Cl...</description>
       <category>Linux</category>
@@ -2481,8 +2481,8 @@
     </item>
     <item>
       <title>Linux &amp; Windows 命令行设置 alias 别名</title>
-      <link>https://jayczee.cn/win_linux/linux-win-alias.html</link>
-      <guid>https://jayczee.cn/win_linux/linux-win-alias.html</guid>
+      <link>https://jayczee.cn/system/linux-win-alias.html</link>
+      <guid>https://jayczee.cn/system/linux-win-alias.html</guid>
       <source url="https://jayczee.cn/rss.xml">Linux &amp; Windows 命令行设置 alias 别名</source>
       <description>在访问不熟悉的服务器时，查看当前目录下的文件时，常常会习惯性地输入 ll 命令。然而，在陌生的服务器上，系统常常反馈找不到该命令。每次都需要手动设置 alias ll=&amp;quot;ls -l&amp;quot;，实在麻烦。 可以将该命令写入环境变量，Linux 中通常对应的是 ~/.bashrc（具体文件根据用户所用的 shell 而异），而 Windows PowerShell...</description>
       <category>Linux</category>
@@ -2498,7 +2498,7 @@
 </div><p>随后，更新环境变量，使修改立即生效：</p>
 <div class="language-bash" data-highlighter="shiki" data-ext="bash" data-title="bash" style="background-color:#1E1E1E;color:#D4D4D4"><pre class="shiki dark-plus vp-code"><code><span class="line"><span style="color:#DCDCAA">source</span><span style="color:#CE9178"> ~/.bashrc</span></span></code></pre>
 </div><h2>🌍 Linux 给所有用户添加别名</h2>
-<p>上述操作仅对当前 SSH 用户生效。如果想要对服务器上的所有用户生效，对于 <code>bash</code> 用户而言，打开 <code>/etc/bash.bashrc</code>，重复上述操作即可。</p>
+<p>上述操作仅对当前 SSH 用户生效。如果想要对服务器上的所有用户生效，对于 <code>bash</code> 用户而言，打开 <code>/blog/bash.bashrc</code>，重复上述操作即可。</p>
 <h2>🪟 Windows PowerShell 添加别名</h2>
 <p>在 Windows 下，<code>ll</code> 命令可以用 <code>dir</code> 或 <code>Get-ChildItem</code> 替代，但在 Linux 上习惯使用 <code>ll</code> 的用户仍然希望设置别名。</p>
 <p>在 Windows 中，设置别名的命令为 <code>Set-Alias</code>，例如给 <code>dir</code> 设置别名 <code>ll</code> 的方法如下：</p>
@@ -2509,8 +2509,8 @@
     </item>
     <item>
       <title>134 加油站</title>
-      <link>https://jayczee.cn/note/leet150/14-leet134.html</link>
-      <guid>https://jayczee.cn/note/leet150/14-leet134.html</guid>
+      <link>https://jayczee.cn/notes/leet150/14-leet134.html</link>
+      <guid>https://jayczee.cn/notes/leet150/14-leet134.html</guid>
       <source url="https://jayczee.cn/rss.xml">134 加油站</source>
       <description>🚀 相关链接 LeetCode 134 - 加油站 📜 描述 在一条环路上有 n 个加油站，其中第 i 个加油站有汽油 gas[i] 升。 你有一辆油箱容量无限的汽车，从第 i 个加油站开往第 i+1 个加油站需要消耗汽油 cost[i] 升。你从其中的一个加油站出发，开始时油箱为空。 给定两个整数数组 gas 和 cost，如果可以按顺序绕环路行...</description>
       <category>LeetCode</category>
@@ -2585,8 +2585,8 @@
     </item>
     <item>
       <title>238 除自身以外数组的乘积</title>
-      <link>https://jayczee.cn/note/leet150/13-leet238.html</link>
-      <guid>https://jayczee.cn/note/leet150/13-leet238.html</guid>
+      <link>https://jayczee.cn/notes/leet150/13-leet238.html</link>
+      <guid>https://jayczee.cn/notes/leet150/13-leet238.html</guid>
       <source url="https://jayczee.cn/rss.xml">238 除自身以外数组的乘积</source>
       <description>📚 相关链接 LeetCode 238: 除自身以外数组的乘积 📝 题目描述 给定一个整数数组 nums，返回数组 answer，其中 answer[i] 等于 nums 中除 nums[i] 之外其余各元素的乘积。 要求： 不要使用除法，且在 O(n) 时间复杂度内完成此题。 💡 示例 示例 1 输入: 输出: 示例 2 输入: 输出: ⚠️ ...</description>
       <category>LeetCode</category>
@@ -2694,8 +2694,8 @@
     </item>
     <item>
       <title>📦 Fedex / UPS 面单PDF中读取物流单号</title>
-      <link>https://jayczee.cn/code/label-trk-reader.html</link>
-      <guid>https://jayczee.cn/code/label-trk-reader.html</guid>
+      <link>https://jayczee.cn/projects/label-trk-reader.html</link>
+      <guid>https://jayczee.cn/projects/label-trk-reader.html</guid>
       <source url="https://jayczee.cn/rss.xml">📦 Fedex / UPS 面单PDF中读取物流单号</source>
       <description>背景 在项目中，客户在操作出库时需要上传或购买面单。当通过自家系统购买时，API会向Fedex、UPS等物流服务商请求面单，返回的单号将与订单绑定，便于后续管理。然而，当客户从其他地方购买面单并下载为图片格式的PDF时，无法直接获取单号。 思路 面单上包含条码信息，通过扫描条码可获取单号、地址等相关信息。 问题点 条码干扰信息 面单上可能包含多个条码，...</description>
       <category>Code</category>
@@ -2762,8 +2762,8 @@
     </item>
     <item>
       <title>380 O(1)时间插入、删除和获取随机元素</title>
-      <link>https://jayczee.cn/note/leet150/12-leet380.html</link>
-      <guid>https://jayczee.cn/note/leet150/12-leet380.html</guid>
+      <link>https://jayczee.cn/notes/leet150/12-leet380.html</link>
+      <guid>https://jayczee.cn/notes/leet150/12-leet380.html</guid>
       <source url="https://jayczee.cn/rss.xml">380 O(1)时间插入、删除和获取随机元素</source>
       <description>相关链接 LeetCode 380 O(1)时间插入、删除和获取随机元素 描述 设计一个 RandomizedSet 类，支持以下操作： RandomizedSet() 初始化 RandomizedSet 对象。 bool insert(int val) 当元素 val 不存在时，向集合中插入该项，并返回 true；否则，返回 false。 bool ...</description>
       <category>LeetCode</category>
@@ -2846,8 +2846,8 @@
     </item>
     <item>
       <title>274 H指数</title>
-      <link>https://jayczee.cn/note/leet150/11-leet274.html</link>
-      <guid>https://jayczee.cn/note/leet150/11-leet274.html</guid>
+      <link>https://jayczee.cn/notes/leet150/11-leet274.html</link>
+      <guid>https://jayczee.cn/notes/leet150/11-leet274.html</guid>
       <source url="https://jayczee.cn/rss.xml">274 H指数</source>
       <description>相关链接 LeetCode 274 H指数 题目描述 给定一个整数数组 citations，其中 citations[i] 表示研究者的第 i 篇论文被引用的次数。需要计算并返回该研究者的 h 指数。 H 指数定义 根据维基百科上的定义，h 代表“高引用次数”。一名科研人员的 h 指数是指他（她）至少发表了 h 篇论文，并且至少有 h 篇论文被引用次数...</description>
       <category>LeetCode</category>
@@ -2916,8 +2916,8 @@
     </item>
     <item>
       <title>045 跳跃游戏 II</title>
-      <link>https://jayczee.cn/note/leet150/10-leet045.html</link>
-      <guid>https://jayczee.cn/note/leet150/10-leet045.html</guid>
+      <link>https://jayczee.cn/notes/leet150/10-leet045.html</link>
+      <guid>https://jayczee.cn/notes/leet150/10-leet045.html</guid>
       <source url="https://jayczee.cn/rss.xml">045 跳跃游戏 II</source>
       <description>🔗 相关链接 跳跃游戏 II 📜 题目描述 给定一个长度为 n 的 0 索引整数数组 nums。初始位置为 nums[0]。 每个元素 nums[i] 表示从索引 i 向后跳转的最大长度。换句话说，如果在 nums[i] 处，可以跳转到任意 nums[i + j] 处，条件如下： (0 \leq j \leq nums[i]) (i + j &amp;lt; n...</description>
       <category>LeetCode</category>
@@ -2946,8 +2946,8 @@
     </item>
     <item>
       <title>055 跳跃游戏</title>
-      <link>https://jayczee.cn/note/leet150/9-leet055.html</link>
-      <guid>https://jayczee.cn/note/leet150/9-leet055.html</guid>
+      <link>https://jayczee.cn/notes/leet150/9-leet055.html</link>
+      <guid>https://jayczee.cn/notes/leet150/9-leet055.html</guid>
       <source url="https://jayczee.cn/rss.xml">055 跳跃游戏</source>
       <description>🔗 相关链接 跳跃游戏 📜 题目描述 给定一个非负整数数组 nums，最初位于数组的第一个下标。数组中的每个元素代表在该位置可以跳跃的最大长度。 🎯 目标 判断是否能够到达最后一个下标。如果可以，返回 true；否则，返回 false。 📊 示例 示例 1 输入： 输出： 解释： 可以先跳 1 步，从下标 0 到达下标 1，然后再从下标 1 跳...</description>
       <category>LeetCode</category>
@@ -2970,8 +2970,8 @@
     </item>
     <item>
       <title>122 买卖股票的最佳时机 II</title>
-      <link>https://jayczee.cn/note/leet150/8-leet122.html</link>
-      <guid>https://jayczee.cn/note/leet150/8-leet122.html</guid>
+      <link>https://jayczee.cn/notes/leet150/8-leet122.html</link>
+      <guid>https://jayczee.cn/notes/leet150/8-leet122.html</guid>
       <source url="https://jayczee.cn/rss.xml">122 买卖股票的最佳时机 II</source>
       <description>🔗 相关链接 买卖股票的最佳时机 II 📜 股票交易最大利润 给定一个整数数组 prices，其中 prices[i] 表示某支股票第 i 天的价格。在每一天，可以决定是否购买和/或出售股票。注意，在任何时候最多只能持有一股股票，也可以选择在同一天买入并出售。 🎯 目标 返回能够获得的最大利润。 📊 示例 示例 1 输入： 输出： 解释： 在第...</description>
       <category>LeetCode</category>
@@ -3070,8 +3070,8 @@
     </item>
     <item>
       <title>189 轮转数组</title>
-      <link>https://jayczee.cn/note/leet150/6-leet189.html</link>
-      <guid>https://jayczee.cn/note/leet150/6-leet189.html</guid>
+      <link>https://jayczee.cn/notes/leet150/6-leet189.html</link>
+      <guid>https://jayczee.cn/notes/leet150/6-leet189.html</guid>
       <source url="https://jayczee.cn/rss.xml">189 轮转数组</source>
       <description>原题链接 轮转数组轮转数组 问题描述 给定一个整数数组 nums，将数组中的元素向右轮转 k 个位置，其中 k 是非负数。 示例 示例 1 输入: 输出: 解释: 向右轮转 1 步: [7,1,2,3,4,5,6] 向右轮转 2 步: [6,7,1,2,3,4,5] 向右轮转 3 步: [5,6,7,1,2,3,4] 示例 2 输入: 输出: 解释: ...</description>
       <category>LeetCode</category>
@@ -3174,8 +3174,8 @@
     </item>
     <item>
       <title>121 买卖股票的最佳时机</title>
-      <link>https://jayczee.cn/note/leet150/7-leet121.html</link>
-      <guid>https://jayczee.cn/note/leet150/7-leet121.html</guid>
+      <link>https://jayczee.cn/notes/leet150/7-leet121.html</link>
+      <guid>https://jayczee.cn/notes/leet150/7-leet121.html</guid>
       <source url="https://jayczee.cn/rss.xml">121 买卖股票的最佳时机</source>
       <description>🔗 相关链接 买卖股票的最佳时机 📜 题目描述 给定一个数组 prices，它的第 i 个元素 prices[i] 表示一支给定股票第 i 天的价格。 你只能选择某一天买入这只股票，并选择在未来的某一个不同的日子卖出该股票。设计一个算法来计算你所能获取的最大利润。 返回你可以从这笔交易中获取的最大利润。如果你不能获取任何利润，返回 0 。 📊 示...</description>
       <category>LeetCode</category>
@@ -3228,8 +3228,8 @@
     </item>
     <item>
       <title>169 多数元素</title>
-      <link>https://jayczee.cn/note/leet150/5-leet169.html</link>
-      <guid>https://jayczee.cn/note/leet150/5-leet169.html</guid>
+      <link>https://jayczee.cn/notes/leet150/5-leet169.html</link>
+      <guid>https://jayczee.cn/notes/leet150/5-leet169.html</guid>
       <source url="https://jayczee.cn/rss.xml">169 多数元素</source>
       <description>🔗 相关链接 多数元素 📜 题目描述 给定一个大小为 n 的数组 nums，返回其中的多数元素。多数元素是指在数组中出现次数 大于 ⌊ n/2 ⌋ 的元素。 可以假设数组是非空的，并且给定的数组总是存在多数元素。 📊 示例 示例 1 输入： 输出： 示例 2 输入： 输出： 📝 提示 n == nums.length 1 &amp;lt;= n &amp;lt;= 5 *...</description>
       <category>LeetCode</category>
@@ -3287,8 +3287,8 @@
     </item>
     <item>
       <title>080 移除有序数组中的重复项 II</title>
-      <link>https://jayczee.cn/note/leet150/4-leet080.html</link>
-      <guid>https://jayczee.cn/note/leet150/4-leet080.html</guid>
+      <link>https://jayczee.cn/notes/leet150/4-leet080.html</link>
+      <guid>https://jayczee.cn/notes/leet150/4-leet080.html</guid>
       <source url="https://jayczee.cn/rss.xml">080 移除有序数组中的重复项 II</source>
       <description>🔗 相关链接 移除有序数组中的重复项 II 📜 题目描述 给定一个有序数组 nums，需要 原地 删除重复出现的元素，使得出现次数超过两次的元素只出现两次，返回删除后数组的新长度。不要使用额外的数组空间，必须在 原地 修改输入数组，并在使用 O(1) 额外空间的条件下完成。 说明 为什么返回数值是整数，但输出的答案是数组呢？ 请注意，输入数组是以「...</description>
       <category>LeetCode</category>
@@ -3331,7 +3331,7 @@
 <li><code>nums</code> 已按升序排列</li>
 </ul>
 <h2>💡 思路</h2>
-<p>对比<a href="/note/leet150/2-leet027.html" target="_blank">026 移除有序数组中的重复项</a>，该题难度上升在不能开辟额外的数组保存某个值是否达到删除的条件。根据题目，每个数字最多可以出现两次，即需要满足条件 <code>nums[i] == nums[i-1] == nums[i-2]</code> (i &gt;= 2)。</p>
+<p>对比<a href="/notes/leet150/2-leet027.html" target="_blank">026 移除有序数组中的重复项</a>，该题难度上升在不能开辟额外的数组保存某个值是否达到删除的条件。根据题目，每个数字最多可以出现两次，即需要满足条件 <code>nums[i] == nums[i-1] == nums[i-2]</code> (i &gt;= 2)。</p>
 <p>使用 <code>while</code> 循环和快慢指针遍历数组，初始化 <code>slow</code> 和 <code>fast</code> 为 2（数组长度小于 2 的条件不需要比较，可以直接返回）并比较 <code>nums[slow-2]</code> 与 <code>nums[fast]</code>，若不同则直接赋值。</p>
 <p><code>nums[slow-2]</code> 表示已经被确定需要保留的值，即刚开始 <code>slow</code> 和 <code>fast</code> 都为 2 时，<code>0</code>（<code>slow-2</code>）为第一个确定需要保留的元素。若 <code>nums[slow-2]</code> 与 <code>nums[slow-1]</code> 相同，则 <code>nums[slow]</code> 不需要被保留。</p>
 <div class="hint-container tip">
@@ -3359,8 +3359,8 @@
     </item>
     <item>
       <title>026 移除有序数组中的重复项</title>
-      <link>https://jayczee.cn/note/leet150/3-leet026.html</link>
-      <guid>https://jayczee.cn/note/leet150/3-leet026.html</guid>
+      <link>https://jayczee.cn/notes/leet150/3-leet026.html</link>
+      <guid>https://jayczee.cn/notes/leet150/3-leet026.html</guid>
       <source url="https://jayczee.cn/rss.xml">026 移除有序数组中的重复项</source>
       <description>🔗 相关链接 移除有序数组中的重复项 📜 题目描述 给定一个 非严格递增排列 的数组 nums，需要 原地 删除重复出现的元素，使每个元素只出现一次，返回删除后数组的新长度。元素的相对顺序应该保持一致。然后返回 nums 中唯一元素的个数。 考虑 nums 的唯一元素的数量为 k，需要执行以下操作： 更改数组 nums，使 nums 的前 k 个元...</description>
       <category>LeetCode</category>
@@ -3409,7 +3409,7 @@
 <li><code>nums</code> 已按 <strong>非严格递增</strong> 排列</li>
 </ul>
 <h2>💡 思路</h2>
-<p>相较于<a href="/note/leet150/2-leet027.html" target="_blank">027 移除元素</a>，该题需要删除有序数组中的重复项，即要删除的元素是动态的，我们可以开辟一个数组，记录某值在之前的记录中是否出现过。其他的思路仍然像<a href="/note/leet150/2-leet027.html" target="_blank">027 移除元素</a>一样。</p>
+<p>相较于<a href="/notes/leet150/2-leet027.html" target="_blank">027 移除元素</a>，该题需要删除有序数组中的重复项，即要删除的元素是动态的，我们可以开辟一个数组，记录某值在之前的记录中是否出现过。其他的思路仍然像<a href="/notes/leet150/2-leet027.html" target="_blank">027 移除元素</a>一样。</p>
 <h2>💻 代码实现</h2>
 <div class="language-java" data-highlighter="shiki" data-ext="java" data-title="java" style="background-color:#1E1E1E;color:#D4D4D4"><pre class="shiki dark-plus vp-code"><code><span class="line"><span style="color:#569CD6">public</span><span style="color:#4EC9B0"> int</span><span style="color:#DCDCAA"> removeDuplicates</span><span style="color:#D4D4D4">(</span><span style="color:#4EC9B0">int</span><span style="color:#D4D4D4">[] nums) {</span></span>
 <span class="line"><span style="color:#C586C0">        if</span><span style="color:#D4D4D4"> (</span><span style="color:#9CDCFE">nums</span><span style="color:#D4D4D4">.</span><span style="color:#9CDCFE">length</span><span style="color:#D4D4D4"> == </span><span style="color:#B5CEA8">1</span><span style="color:#D4D4D4">) {</span></span>
@@ -3434,8 +3434,8 @@
     </item>
     <item>
       <title>027 移除元素</title>
-      <link>https://jayczee.cn/note/leet150/2-leet027.html</link>
-      <guid>https://jayczee.cn/note/leet150/2-leet027.html</guid>
+      <link>https://jayczee.cn/notes/leet150/2-leet027.html</link>
+      <guid>https://jayczee.cn/notes/leet150/2-leet027.html</guid>
       <source url="https://jayczee.cn/rss.xml">027 移除元素</source>
       <description>🔗 相关链接 移除元素 📜 题目描述 给定一个数组 nums 和一个值 val，需要 原地 移除所有数值等于 val 的元素。元素的顺序可能发生改变。然后返回 nums 中与 val 不同的元素的数量。 假设 nums 中不等于 val 的元素数量为 k，需要执行以下操作： 更改 nums 数组，使 nums 的前 k 个元素包含不等于 val 的...</description>
       <category>LeetCode</category>
@@ -3505,8 +3505,8 @@
     </item>
     <item>
       <title>088 合并两个有序数组</title>
-      <link>https://jayczee.cn/note/leet150/1-leet088.html</link>
-      <guid>https://jayczee.cn/note/leet150/1-leet088.html</guid>
+      <link>https://jayczee.cn/notes/leet150/1-leet088.html</link>
+      <guid>https://jayczee.cn/notes/leet150/1-leet088.html</guid>
       <source url="https://jayczee.cn/rss.xml">088 合并两个有序数组</source>
       <description>🔗 原题链接 合并两个有序数组 📝 合并两个有序数组 给定两个按 非递减顺序 排列的整数数组 nums1 和 nums2，另有两个整数 m 和 n，分别表示 nums1 和 nums2 中的元素数目。 请你 合并 nums2 到 nums1 中，使合并后的数组同样按 非递减顺序 排列。 注意： 最终，合并后数组不应由函数返回，而是存储在数组 num...</description>
       <category>LeetCode</category>
@@ -3610,8 +3610,8 @@
     </item>
     <item>
       <title>《MySQL是怎样运行的：从根上理解MySQL》</title>
-      <link>https://jayczee.cn/note/mysql.html</link>
-      <guid>https://jayczee.cn/note/mysql.html</guid>
+      <link>https://jayczee.cn/notes/mysql.html</link>
+      <guid>https://jayczee.cn/notes/mysql.html</guid>
       <source url="https://jayczee.cn/rss.xml">《MySQL是怎样运行的：从根上理解MySQL》</source>
       <description>感谢原书作者 感谢原书作者的总结，原书地址：原书地址 免费分享出来的Github Page：Github Page 有机会还是付费支持一下原作者，此处仅总结个人学习到的知识点，不展开说明。 第一章 重新认识MYSQL MySQL是C/S架构的，默认使用TCP协议通信。 mysqld是服务端程序，可用于直接启动一个mysqld进程。 mysqld_saf...</description>
       <category>学习笔记</category>
@@ -3630,7 +3630,7 @@
 <li><strong>mysqld</strong>启动时使用<code>-P</code>指定监听端口，同样客户端mysql启动时也可以使用<code>-P</code>指定服务端端口。</li>
 <li>服务端处理客户端查询请求大致分为<strong>连接管理</strong>、<strong>解析与优化</strong>、<strong>存储引擎</strong>三个部分，如下图:</li>
 </ol>
-<figure><img src="/assets/images/note/mysql/m-1.png" alt="MySQL客户端处理客户端请求" tabindex="0" loading="lazy"><figcaption>MySQL客户端处理客户端请求</figcaption></figure>
+<figure><img src="/assets/images/notes/mysql/m-1.png" alt="MySQL客户端处理客户端请求" tabindex="0" loading="lazy"><figcaption>MySQL客户端处理客户端请求</figcaption></figure>
 <ol start="8">
 <li>服务端与客户端建立连接后，服务端会创建一个线程处理该客户端的请求。当连接断开后，该线程会放入缓存，避免频繁创建与销毁线程带来的开销。</li>
 <li>连接创建后，需要经过解析与优化，分别是<strong>查询缓存</strong>、<strong>语法解析</strong>、<strong>查询优化</strong>。</li>
@@ -3646,12 +3646,12 @@
 <p>| 存储引擎   | 描述                                   |<br>
 |</p>
 ]]></content:encoded>
-      <enclosure url="https://jayczee.cn/assets/images/note/mysql/m-1.png" type="image/png"/>
+      <enclosure url="https://jayczee.cn/assets/images/notes/mysql/m-1.png" type="image/png"/>
     </item>
     <item>
       <title>Ollama本地部署Deepseek R1</title>
-      <link>https://jayczee.cn/win_linux/ollama.html</link>
-      <guid>https://jayczee.cn/win_linux/ollama.html</guid>
+      <link>https://jayczee.cn/system/ollama.html</link>
+      <guid>https://jayczee.cn/system/ollama.html</guid>
       <source url="https://jayczee.cn/rss.xml">Ollama本地部署Deepseek R1</source>
       <description>Ollama LogoOllama Logo Ollama是一个创新的平台，旨在简化人工智能模型的使用与部署。用户可以轻松地下载、运行和管理各种AI模型，而无需深入的技术背景。Ollama提供了友好的用户界面，使得开发者和研究人员能够快速实现他们的想法，并将AI应用于实际项目中。无论是文本生成、图像处理还是其他机器学习任务，Ollama都能提供高效的解...</description>
       <category>Windows</category>
@@ -3663,8 +3663,8 @@
     </item>
     <item>
       <title>硬链接与软链接、复制与移动的区别</title>
-      <link>https://jayczee.cn/win_linux/link.html</link>
-      <guid>https://jayczee.cn/win_linux/link.html</guid>
+      <link>https://jayczee.cn/system/link.html</link>
+      <guid>https://jayczee.cn/system/link.html</guid>
       <source url="https://jayczee.cn/rss.xml">硬链接与软链接、复制与移动的区别</source>
       <description>在计算机的文件系统中，硬链接、软链接、复制和移动是非常常见的操作。理解这些操作的区别，不仅能帮助提高文件管理的效率，还能避免不必要的数据丢失。下面将详细介绍这些概念及其在 Debian 系统下的具体操作方法。 🔗 硬链接 硬链接是一种直接指向文件数据的引用方式。可以理解为多个文件名指向同一份文件内容。 🌟 特点 相同的 inode：硬链接与原始文件...</description>
       <category>Linux</category>
@@ -3712,8 +3712,8 @@
     </item>
     <item>
       <title>📦 Fedex物流单号状态爬取</title>
-      <link>https://jayczee.cn/code/fedex-crawler.html</link>
-      <guid>https://jayczee.cn/code/fedex-crawler.html</guid>
+      <link>https://jayczee.cn/projects/fedex-crawler.html</link>
+      <guid>https://jayczee.cn/projects/fedex-crawler.html</guid>
       <source url="https://jayczee.cn/rss.xml">📦 Fedex物流单号状态爬取</source>
       <description>📂 项目地址 [Github]Fedex Tracking Bot 📚 背景 在最近的工作中，运营部门要求确认一些 FedEx 物流单号的状态。虽然自己在过去的工作中主要专注于 CRUD 操作，并没有深入了解物流相关的内容，但这次的任务激发了对这一领域的浓厚兴趣。为了满足需求，经过一番摸索和实践，成功实现了一个简单的爬虫，收获颇丰，感到非常兴奋，也...</description>
       <category>Code</category>
@@ -3947,8 +3947,8 @@
     </item>
     <item>
       <title>Docker 镜像加速/代理</title>
-      <link>https://jayczee.cn/win_linux/docker-proxy.html</link>
-      <guid>https://jayczee.cn/win_linux/docker-proxy.html</guid>
+      <link>https://jayczee.cn/system/docker-proxy.html</link>
+      <guid>https://jayczee.cn/system/docker-proxy.html</guid>
       <source url="https://jayczee.cn/rss.xml">Docker 镜像加速/代理</source>
       <description>在国内，Docker Hub 镜像源的情况不容乐观，无论是清华大学镜像源，还是阿里镜像加速，统统都已经失效。国内现在已经不允许开设 Docker 镜像加速服务，唯一的办法仍然是走代理。🌐 Docker 拉取镜像是由 Docker daemon 进行的，因此简单的环境变量设置如： 已经无法满足需求，需要直接对 Docker 进行配置。 🛠️ Dock...</description>
       <category>Linux</category>
@@ -3959,9 +3959,9 @@
 </div><p>已经无法满足需求，需要直接对 Docker 进行配置。</p>
 <h2>🛠️ Docker 代理配置</h2>
 <h3>1. 配置环境变量</h3>
-<p>首先，创建或编辑 <code>/etc/systemd/system/docker.service.d/http-proxy.conf</code> 文件：</p>
-<div class="language-bash" data-highlighter="shiki" data-ext="bash" data-title="bash" style="background-color:#1E1E1E;color:#D4D4D4"><pre class="shiki dark-plus vp-code"><code><span class="line"><span style="color:#DCDCAA">sudo</span><span style="color:#CE9178"> mkdir</span><span style="color:#569CD6"> -p</span><span style="color:#CE9178"> /etc/systemd/system/docker.service.d</span></span>
-<span class="line"><span style="color:#DCDCAA">sudo</span><span style="color:#CE9178"> vim</span><span style="color:#CE9178"> /etc/systemd/system/docker.service.d/http-proxy.conf</span></span></code></pre>
+<p>首先，创建或编辑 <code>/blog/systemd/system/docker.service.d/http-proxy.conf</code> 文件：</p>
+<div class="language-bash" data-highlighter="shiki" data-ext="bash" data-title="bash" style="background-color:#1E1E1E;color:#D4D4D4"><pre class="shiki dark-plus vp-code"><code><span class="line"><span style="color:#DCDCAA">sudo</span><span style="color:#CE9178"> mkdir</span><span style="color:#569CD6"> -p</span><span style="color:#CE9178"> /blog/systemd/system/docker.service.d</span></span>
+<span class="line"><span style="color:#DCDCAA">sudo</span><span style="color:#CE9178"> vim</span><span style="color:#CE9178"> /blog/systemd/system/docker.service.d/http-proxy.conf</span></span></code></pre>
 </div><p>在文件中输入如下内容：</p>
 <div class="language-bash" data-highlighter="shiki" data-ext="bash" data-title="bash" style="background-color:#1E1E1E;color:#D4D4D4"><pre class="shiki dark-plus vp-code"><code><span class="line"><span style="color:#D4D4D4">[Service]</span></span>
 <span class="line"><span style="color:#9CDCFE">Environment</span><span style="color:#D4D4D4">=</span><span style="color:#CE9178">"HTTP_PROXY=http://proxy_address:port"</span></span>
@@ -4091,7 +4091,7 @@ Docker 默认的运行时是 runc，它不支持 NVIDIA GPU 加速。为了使�
 </li>
 <li>
 <p>如何配置 Docker 使用 nvidia-container-runtime？<br>
-你需要在 Docker 的配置文件（通常是 /etc/docker/daemon.json）中添加以下内容：</p>
+你需要在 Docker 的配置文件（通常是 /blog/docker/daemon.json）中添加以下内容：</p>
 </li>
 </ol>
 <p>{<br>
@@ -4148,7 +4148,7 @@ Docker 默认的运行时是 runc，它不支持 NVIDIA GPU 加速。为了使�
 <p><a href="https://hub.docker.com" target="_blank" rel="noopener noreferrer">Docker Hub</a>是一个Docker镜像站（需要开启代理访问），里面包含了大量镜像资源，也是docker pull命令默认拉取的镜像仓库。</p>
 <h2>📰 相关文章</h2>
 <ul>
-<li>📦 <a href="/win_linux/docker-proxy.html" target="_blank">Docker 镜像加速/代理</a></li>
+<li>📦 <a href="/system/docker-proxy.html" target="_blank">Docker 镜像加速/代理</a></li>
 </ul>
 ]]></content:encoded>
     </item>
@@ -4255,7 +4255,7 @@ Docker 默认的运行时是 runc，它不支持 NVIDIA GPU 加速。为了使�
 <p>自动整理选择<code>目录监控</code>，每当 qbittorrent 下载新的媒体文件时都能自动进行整理。</p>
 <p>监控模式选择<code>性能模式</code>。</p>
 <p>目录输入一个自定义的文件整理后的目录。</p>
-<p>整理方式选择硬链接 (相关文档: <a href="/win_linux/link.html" target="_blank">软硬链接的区别</a>)，覆盖模式选择保留最新文件。</p>
+<p>整理方式选择硬链接 (相关文档: <a href="/system/link.html" target="_blank">软硬链接的区别</a>)，覆盖模式选择保留最新文件。</p>
 <div class="hint-container tip">
 <p class="hint-container-title">提示</p>
 <p>我个人的目录结构如下：</p>
@@ -4417,7 +4417,7 @@ Docker 默认的运行时是 runc，它不支持 NVIDIA GPU 加速。为了使�
 </ul>
 <h3>📜 结果示例</h3>
 <div class="language-bash" data-highlighter="shiki" data-ext="bash" data-title="bash" style="background-color:#1E1E1E;color:#D4D4D4"><pre class="shiki dark-plus vp-code"><code><span class="line"><span style="color:#6A9955"># certbot certonly -d "*.example.com" -d example.com --manual --preferred-challenges dns-01</span></span>
-<span class="line"><span style="color:#DCDCAA">Saving</span><span style="color:#CE9178"> debug</span><span style="color:#CE9178"> log</span><span style="color:#CE9178"> to</span><span style="color:#CE9178"> /etc/letsencrypt/log/letsencrypt.log</span></span>
+<span class="line"><span style="color:#DCDCAA">Saving</span><span style="color:#CE9178"> debug</span><span style="color:#CE9178"> log</span><span style="color:#CE9178"> to</span><span style="color:#CE9178"> /blog/letsencrypt/log/letsencrypt.log</span></span>
 <span class="line"><span style="color:#DCDCAA">-</span><span style="color:#CE9178"> -</span><span style="color:#CE9178"> -</span><span style="color:#CE9178"> -</span><span style="color:#CE9178"> -</span><span style="color:#CE9178"> -</span><span style="color:#CE9178"> -</span><span style="color:#CE9178"> -</span><span style="color:#CE9178"> -</span><span style="color:#CE9178"> -</span><span style="color:#CE9178"> -</span><span style="color:#CE9178"> -</span><span style="color:#CE9178"> -</span><span style="color:#CE9178"> -</span><span style="color:#CE9178"> -</span><span style="color:#CE9178"> -</span><span style="color:#CE9178"> -</span><span style="color:#CE9178"> -</span><span style="color:#CE9178"> -</span><span style="color:#CE9178"> -</span><span style="color:#CE9178"> -</span><span style="color:#CE9178"> -</span><span style="color:#CE9178"> -</span><span style="color:#CE9178"> -</span><span style="color:#CE9178"> -</span><span style="color:#CE9178"> -</span><span style="color:#CE9178"> -</span><span style="color:#CE9178"> -</span><span style="color:#CE9178"> -</span><span style="color:#CE9178"> -</span><span style="color:#CE9178"> -</span><span style="color:#CE9178"> -</span><span style="color:#CE9178"> -</span><span style="color:#CE9178"> -</span><span style="color:#CE9178"> -</span><span style="color:#CE9178"> -</span><span style="color:#CE9178"> -</span><span style="color:#CE9178"> -</span><span style="color:#CE9178"> -</span><span style="color:#CE9178"> -</span></span>
 <span class="line"><span style="color:#DCDCAA">It</span><span style="color:#CE9178"> contains</span><span style="color:#CE9178"> these</span><span style="color:#CE9178"> names:</span><span style="color:#CE9178"> example.com</span></span>
 <span class="line"><span style="color:#DCDCAA">-</span><span style="color:#CE9178"> -</span><span style="color:#CE9178"> -</span><span style="color:#CE9178"> -</span><span style="color:#CE9178"> -</span><span style="color:#CE9178"> -</span><span style="color:#CE9178"> -</span><span style="color:#CE9178"> -</span><span style="color:#CE9178"> -</span><span style="color:#CE9178"> -</span><span style="color:#CE9178"> -</span><span style="color:#CE9178"> -</span><span style="color:#CE9178"> -</span><span style="color:#CE9178"> -</span><span style="color:#CE9178"> -</span><span style="color:#CE9178"> -</span><span style="color:#CE9178"> -</span><span style="color:#CE9178"> -</span><span style="color:#CE9178"> -</span><span style="color:#CE9178"> -</span><span style="color:#CE9178"> -</span><span style="color:#CE9178"> -</span><span style="color:#CE9178"> -</span><span style="color:#CE9178"> -</span><span style="color:#CE9178"> -</span><span style="color:#CE9178"> -</span><span style="color:#CE9178"> -</span><span style="color:#CE9178"> -</span><span style="color:#CE9178"> -</span><span style="color:#CE9178"> -</span><span style="color:#CE9178"> -</span><span style="color:#CE9178"> -</span><span style="color:#CE9178"> -</span><span style="color:#CE9178"> -</span><span style="color:#CE9178"> -</span><span style="color:#CE9178"> -</span><span style="color:#CE9178"> -</span><span style="color:#CE9178"> -</span><span style="color:#CE9178"> -</span><span style="color:#CE9178"> -</span></span>
@@ -4436,8 +4436,8 @@ Docker 默认的运行时是 runc，它不支持 NVIDIA GPU 加速。为了使�
 <span class="line"><span style="color:#D4D4D4">***Press Enter to Continue***</span></span></code></pre>
 </div><p>根据上述结果，需要在域名服务商处添加一条 <strong>TXT</strong> 类型的解析记录，并且值为 Certbot 给出的值。<strong>添加完后再按 Enter 继续</strong>，之后 Certbot 会验证是否存在该解析记录，若验证成功，Certbot 会继续创建证书。</p>
 <div class="language-bash" data-highlighter="shiki" data-ext="bash" data-title="bash" style="background-color:#1E1E1E;color:#D4D4D4"><pre class="shiki dark-plus vp-code"><code><span class="line"><span style="color:#DCDCAA">Successfully</span><span style="color:#CE9178"> received</span><span style="color:#CE9178"> certificate.</span></span>
-<span class="line"><span style="color:#DCDCAA">Certificate</span><span style="color:#CE9178"> is</span><span style="color:#CE9178"> saved</span><span style="color:#CE9178"> at:</span><span style="color:#CE9178"> /etc/letsencrypt/live/</span><span style="color:#569CD6">******</span><span style="color:#CE9178">/fullchain.pem</span></span>
-<span class="line"><span style="color:#DCDCAA">Key</span><span style="color:#CE9178"> is</span><span style="color:#CE9178"> saved</span><span style="color:#CE9178"> at:</span><span style="color:#CE9178">         /etc/letsencrypt/live/</span><span style="color:#569CD6">******</span><span style="color:#CE9178">/privkey.pem</span></span>
+<span class="line"><span style="color:#DCDCAA">Certificate</span><span style="color:#CE9178"> is</span><span style="color:#CE9178"> saved</span><span style="color:#CE9178"> at:</span><span style="color:#CE9178"> /blog/letsencrypt/live/</span><span style="color:#569CD6">******</span><span style="color:#CE9178">/fullchain.pem</span></span>
+<span class="line"><span style="color:#DCDCAA">Key</span><span style="color:#CE9178"> is</span><span style="color:#CE9178"> saved</span><span style="color:#CE9178"> at:</span><span style="color:#CE9178">         /blog/letsencrypt/live/</span><span style="color:#569CD6">******</span><span style="color:#CE9178">/privkey.pem</span></span>
 <span class="line"><span style="color:#DCDCAA">This</span><span style="color:#CE9178"> certificate</span><span style="color:#CE9178"> expires</span><span style="color:#CE9178"> on</span><span style="color:#CE9178"> 2025-4-13.</span></span>
 <span class="line"><span style="color:#DCDCAA">These</span><span style="color:#CE9178"> files</span><span style="color:#CE9178"> will</span><span style="color:#CE9178"> be</span><span style="color:#CE9178"> updated</span><span style="color:#CE9178"> when</span><span style="color:#CE9178"> the</span><span style="color:#CE9178"> certificate</span><span style="color:#CE9178"> renews.</span></span>
 <span class="line"><span style="color:#DCDCAA">NEXT</span><span style="color:#CE9178"> STEPS:</span></span>
@@ -4477,9 +4477,9 @@ Docker 默认的运行时是 runc，它不支持 NVIDIA GPU 加速。为了使�
 <span class="line"><span style="color:#DCDCAA">    container_name:</span><span style="color:#CE9178"> nginx</span></span>
 <span class="line"><span style="color:#DCDCAA">    image:</span><span style="color:#CE9178"> nginx</span></span>
 <span class="line"><span style="color:#DCDCAA">    volumes:</span></span>
-<span class="line"><span style="color:#DCDCAA">      -</span><span style="color:#CE9178"> /etc/nginx/conf.d:/etc/nginx/conf.d</span></span>
-<span class="line"><span style="color:#DCDCAA">      -</span><span style="color:#CE9178"> /etc/nginx/nginx.conf:/etc/nginx/nginx.conf</span></span>
-<span class="line"><span style="color:#DCDCAA">      -</span><span style="color:#CE9178"> /etc/letsencrypt:/etc/letsencrypt</span></span>
+<span class="line"><span style="color:#DCDCAA">      -</span><span style="color:#CE9178"> /blog/nginx/conf.d:/blog/nginx/conf.d</span></span>
+<span class="line"><span style="color:#DCDCAA">      -</span><span style="color:#CE9178"> /blog/nginx/nginx.conf:/blog/nginx/nginx.conf</span></span>
+<span class="line"><span style="color:#DCDCAA">      -</span><span style="color:#CE9178"> /blog/letsencrypt:/blog/letsencrypt</span></span>
 <span class="line"><span style="color:#DCDCAA">      -</span><span style="color:#CE9178"> /var/log/nginx:/var/log/nginx</span></span>
 <span class="line"><span style="color:#DCDCAA">    environment:</span></span>
 <span class="line"><span style="color:#DCDCAA">      -</span><span style="color:#CE9178"> NGINX_PORT=</span><span style="color:#B5CEA8">80</span></span>
@@ -4493,9 +4493,9 @@ Docker 默认的运行时是 runc，它不支持 NVIDIA GPU 加速。为了使�
 <li><strong>镜像</strong>：使用官方的 <code>nginx</code> 镜像。</li>
 <li><strong>挂载卷</strong>：
 <ul>
-<li>将主机的 <code>/etc/nginx/conf.d</code> 目录挂载到容器的 <code>/etc/nginx/conf.d</code>，用于配置文件。</li>
-<li>将主机的 <code>/etc/nginx/nginx.conf</code> 文件挂载到容器的 <code>/etc/nginx/nginx.conf</code>，用于主配置文件。</li>
-<li>将主机的 <code>/etc/letsencrypt</code> 目录挂载到容器的 <code>/etc/letsencrypt</code>，用于 SSL 证书。</li>
+<li>将主机的 <code>/blog/nginx/conf.d</code> 目录挂载到容器的 <code>/blog/nginx/conf.d</code>，用于配置文件。</li>
+<li>将主机的 <code>/blog/nginx/nginx.conf</code> 文件挂载到容器的 <code>/blog/nginx/nginx.conf</code>，用于主配置文件。</li>
+<li>将主机的 <code>/blog/letsencrypt</code> 目录挂载到容器的 <code>/blog/letsencrypt</code>，用于 SSL 证书。</li>
 <li>将主机的 <code>/var/log/nginx</code> 目录挂载到容器的 <code>/var/log/nginx</code>，用于日志文件。</li>
 </ul>
 </li>
@@ -4508,7 +4508,7 @@ Docker 默认的运行时是 runc，它不支持 NVIDIA GPU 加速。为了使�
 <li><strong>特权模式</strong>：设置为 <code>true</code>，允许容器获得额外的权限。</li>
 <li><strong>网络模式</strong>：设置为 <code>host</code>，表示容器将使用主机的网络栈，容器和主机共享网络。</li>
 </ol>
-<p>与其他镜像不同的是，部署 Nginx 容器时，容器中并没有一个 <code>/etc/nginx/nginx.conf</code> 主配置文件（大部分镜像都会存在一个默认配置文件，直接将其映射到宿主机，在其基础上进行修改）。在此情况下，若直接部署 Nginx 镜像，容器会报错配置文件不存在。因此，需要在宿主机上创建一个主配置文件，并将其映射到容器内部。</p>
+<p>与其他镜像不同的是，部署 Nginx 容器时，容器中并没有一个 <code>/blog/nginx/nginx.conf</code> 主配置文件（大部分镜像都会存在一个默认配置文件，直接将其映射到宿主机，在其基础上进行修改）。在此情况下，若直接部署 Nginx 镜像，容器会报错配置文件不存在。因此，需要在宿主机上创建一个主配置文件，并将其映射到容器内部。</p>
 <h3>💡 Tips</h3>
 <p>当宿主机的 A 文件（文件夹）与容器的 B 文件（文件夹）创建映射关系时，可能产生的结果如下：</p>
 <ol>
@@ -4519,7 +4519,7 @@ Docker 默认的运行时是 runc，它不支持 NVIDIA GPU 加速。为了使�
 </ol>
 <h3>🔑 总结</h3>
 <p>挂载时，宿主机的目录优先级高于容器内的目录，宿主机的内容会覆盖容器内的内容。</p>
-<h3>📝 创建配置文件 <code>/etc/nginx/nginx.conf</code></h3>
+<h3>📝 创建配置文件 <code>/blog/nginx/nginx.conf</code></h3>
 <div class="language-bash" data-highlighter="shiki" data-ext="bash" data-title="bash" style="background-color:#1E1E1E;color:#D4D4D4"><pre class="shiki dark-plus vp-code"><code><span class="line"><span style="color:#DCDCAA">worker_processes</span><span style="color:#CE9178"> auto</span><span style="color:#D4D4D4">;</span></span>
 <span class="line"><span style="color:#DCDCAA">events</span><span style="color:#CE9178"> {</span></span>
 <span class="line"><span style="color:#DCDCAA">        worker_connections</span><span style="color:#B5CEA8"> 768</span><span style="color:#D4D4D4">;</span></span>
@@ -4531,17 +4531,17 @@ Docker 默认的运行时是 runc，它不支持 NVIDIA GPU 加速。为了使�
 <span class="line"><span style="color:#DCDCAA">        tcp_nopush</span><span style="color:#CE9178"> on</span><span style="color:#D4D4D4">;</span></span>
 <span class="line"><span style="color:#DCDCAA">        types_hash_max_size</span><span style="color:#B5CEA8"> 2048</span><span style="color:#D4D4D4">;</span></span>
 <span class="line"></span>
-<span class="line"><span style="color:#DCDCAA">        include</span><span style="color:#CE9178"> /etc/nginx/mime.types</span><span style="color:#D4D4D4">;</span></span>
+<span class="line"><span style="color:#DCDCAA">        include</span><span style="color:#CE9178"> /blog/nginx/mime.types</span><span style="color:#D4D4D4">;</span></span>
 <span class="line"><span style="color:#DCDCAA">        default_type</span><span style="color:#CE9178"> application/octet-stream</span><span style="color:#D4D4D4">;</span></span>
 <span class="line"></span>
 <span class="line"><span style="color:#DCDCAA">        ssl_protocols</span><span style="color:#CE9178"> TLSv1</span><span style="color:#CE9178"> TLSv1.1</span><span style="color:#CE9178"> TLSv1.2</span><span style="color:#CE9178"> TLSv1.3</span><span style="color:#D4D4D4">; </span><span style="color:#6A9955"># Dropping SSLv3, ref: POODLE</span></span>
 <span class="line"><span style="color:#DCDCAA">        ssl_prefer_server_ciphers</span><span style="color:#CE9178"> on</span><span style="color:#D4D4D4">;</span></span>
 <span class="line"><span style="color:#DCDCAA">        client_max_body_size</span><span style="color:#CE9178"> 8192M</span><span style="color:#D4D4D4">;</span></span>
 <span class="line"></span>
-<span class="line"><span style="color:#DCDCAA">        include</span><span style="color:#CE9178"> /etc/nginx/conf.d/</span><span style="color:#569CD6">*</span><span style="color:#CE9178">.conf</span><span style="color:#D4D4D4">;</span></span>
-<span class="line"><span style="color:#DCDCAA">        include</span><span style="color:#CE9178"> /etc/nginx/sites-enabled/</span><span style="color:#569CD6">*</span><span style="color:#D4D4D4">;</span></span>
+<span class="line"><span style="color:#DCDCAA">        include</span><span style="color:#CE9178"> /blog/nginx/conf.d/</span><span style="color:#569CD6">*</span><span style="color:#CE9178">.conf</span><span style="color:#D4D4D4">;</span></span>
+<span class="line"><span style="color:#DCDCAA">        include</span><span style="color:#CE9178"> /blog/nginx/sites-enabled/</span><span style="color:#569CD6">*</span><span style="color:#D4D4D4">;</span></span>
 <span class="line"><span style="color:#D4D4D4">}</span></span></code></pre>
-</div><h3>📂 创建文件夹 <code>/etc/nginx/conf.d</code></h3>
+</div><h3>📂 创建文件夹 <code>/blog/nginx/conf.d</code></h3>
 <p>在其中创建 <code>portainer.conf</code> 文件，写入如下内容：</p>
 <div class="language-bash" data-highlighter="shiki" data-ext="bash" data-title="bash" style="background-color:#1E1E1E;color:#D4D4D4"><pre class="shiki dark-plus vp-code"><code><span class="line"><span style="color:#DCDCAA">upstream</span><span style="color:#CE9178"> portainer</span><span style="color:#CE9178"> {</span></span>
 <span class="line"><span style="color:#DCDCAA">    server</span><span style="color:#CE9178"> localhost:9000</span><span style="color:#D4D4D4">;</span></span>
@@ -4552,8 +4552,8 @@ Docker 默认的运行时是 runc，它不支持 NVIDIA GPU 加速。为了使�
 <span class="line"><span style="color:#DCDCAA">    server_name</span><span style="color:#CE9178">  portainer.domain.com</span><span style="color:#D4D4D4">; </span><span style="color:#6A9955"># 二级域名改为 portainer</span></span>
 <span class="line"></span>
 <span class="line"><span style="color:#6A9955">    # 证书</span></span>
-<span class="line"><span style="color:#DCDCAA">    ssl_certificate</span><span style="color:#CE9178"> /etc/letsencrypt/live/domain.com/fullchain.pem</span><span style="color:#D4D4D4">;</span></span>
-<span class="line"><span style="color:#DCDCAA">    ssl_certificate_key</span><span style="color:#CE9178"> /etc/letsencrypt/live/domain.com/privkey.pem</span><span style="color:#D4D4D4">;</span></span>
+<span class="line"><span style="color:#DCDCAA">    ssl_certificate</span><span style="color:#CE9178"> /blog/letsencrypt/live/domain.com/fullchain.pem</span><span style="color:#D4D4D4">;</span></span>
+<span class="line"><span style="color:#DCDCAA">    ssl_certificate_key</span><span style="color:#CE9178"> /blog/letsencrypt/live/domain.com/privkey.pem</span><span style="color:#D4D4D4">;</span></span>
 <span class="line"></span>
 <span class="line"><span style="color:#DCDCAA">    ssl_session_timeout</span><span style="color:#CE9178"> 5m</span><span style="color:#D4D4D4">;</span></span>
 <span class="line"><span style="color:#DCDCAA">    ssl_protocols</span><span style="color:#CE9178"> TLSv1</span><span style="color:#CE9178"> TLSv1.1</span><span style="color:#CE9178"> TLSv1.2</span><span style="color:#D4D4D4">;</span></span>
@@ -4735,8 +4735,8 @@ Docker 默认的运行时是 runc，它不支持 NVIDIA GPU 加速。为了使�
 <span class="line"><span style="color:#569CD6">    listen </span><span style="color:#B5CEA8">12120</span><span style="color:#D4D4D4"> ssl;</span></span>
 <span class="line"><span style="color:#569CD6">    server_name </span><span style="color:#D4D4D4">qbit.domain.com;</span></span>
 <span class="line"></span>
-<span class="line"><span style="color:#569CD6">    ssl_certificate </span><span style="color:#D4D4D4">/etc/letsencrypt/live/jayczee.top/fullchain.pem;</span></span>
-<span class="line"><span style="color:#569CD6">    ssl_certificate_key </span><span style="color:#D4D4D4">/etc/letsencrypt/live/jayczee.top/privkey.pem;</span></span>
+<span class="line"><span style="color:#569CD6">    ssl_certificate </span><span style="color:#D4D4D4">/blog/letsencrypt/live/jayczee.top/fullchain.pem;</span></span>
+<span class="line"><span style="color:#569CD6">    ssl_certificate_key </span><span style="color:#D4D4D4">/blog/letsencrypt/live/jayczee.top/privkey.pem;</span></span>
 <span class="line"></span>
 <span class="line"><span style="color:#569CD6">    location</span><span style="color:#D4D4D4"> / {</span></span>
 <span class="line"><span style="color:#569CD6">      proxy_pass </span><span style="color:#D4D4D4">             http://localhost:53000/;</span></span>
@@ -4858,8 +4858,8 @@ Docker 默认的运行时是 runc，它不支持 NVIDIA GPU 加速。为了使�
 <span class="line"></span>
 <span class="line"><span style="color:#DCDCAA">    set</span><span style="color:#9CDCFE"> $jellyfin</span><span style="color:#B5CEA8"> 127.0.0.1</span><span style="color:#D4D4D4">;</span></span>
 <span class="line"></span>
-<span class="line"><span style="color:#DCDCAA">    ssl_certificate</span><span style="color:#CE9178"> /etc/letsencrypt/live/domain.com/fullchain.pem</span><span style="color:#D4D4D4">;</span></span>
-<span class="line"><span style="color:#DCDCAA">    ssl_certificate_key</span><span style="color:#CE9178"> /etc/letsencrypt/live/domain.com/privkey.pem</span><span style="color:#D4D4D4">; </span><span style="color:#6A9955">## 配置证书地址</span></span>
+<span class="line"><span style="color:#DCDCAA">    ssl_certificate</span><span style="color:#CE9178"> /blog/letsencrypt/live/domain.com/fullchain.pem</span><span style="color:#D4D4D4">;</span></span>
+<span class="line"><span style="color:#DCDCAA">    ssl_certificate_key</span><span style="color:#CE9178"> /blog/letsencrypt/live/domain.com/privkey.pem</span><span style="color:#D4D4D4">; </span><span style="color:#6A9955">## 配置证书地址</span></span>
 <span class="line"></span>
 <span class="line"><span style="color:#DCDCAA">    add_header</span><span style="color:#CE9178"> X-Frame-Options</span><span style="color:#CE9178"> "SAMEORIGIN"</span><span style="color:#D4D4D4">;</span></span>
 <span class="line"><span style="color:#DCDCAA">    add_header</span><span style="color:#CE9178"> X-XSS-Protection</span><span style="color:#CE9178"> "0"</span><span style="color:#D4D4D4">;</span></span>
@@ -4955,7 +4955,7 @@ Docker 默认的运行时是 runc，它不支持 NVIDIA GPU 加速。为了使�
 <span class="line"><span style="color:#D4D4D4">      - </span><span style="color:#CE9178">/usr/local/v2ray-core/v2ray=/usr/local/bin/v2ray</span></span>
 <span class="line"><span style="color:#D4D4D4">      - </span><span style="color:#CE9178">V2RAYA_LOG_FILE=/tmp/v2raya.log</span></span>
 <span class="line"><span style="color:#569CD6">    volumes</span><span style="color:#D4D4D4">:</span></span>
-<span class="line"><span style="color:#D4D4D4">      - </span><span style="color:#CE9178">/etc/v2raya:/etc/v2raya</span></span>
+<span class="line"><span style="color:#D4D4D4">      - </span><span style="color:#CE9178">/blog/v2raya:/blog/v2raya</span></span>
 <span class="line"><span style="color:#569CD6">    restart</span><span style="color:#D4D4D4">: </span><span style="color:#CE9178">always</span></span></code></pre>
 </div><p>在此配置中，管理面板端口为<code>2017</code>，而<code>50170-50172</code>是自定义选择的代理端口范围，可以映射3个（或更多）端口用于开放不同协议的代理端口（如http、https以及socks5）。</p>
 <p>确保刚刚安装的V2Ray (<code>/usr/local/v2ray-core/v2ray</code>) 映射到V2rayA目录下 (<code>/usr/local/bin/v2ray</code>)。</p>
