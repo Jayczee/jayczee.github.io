@@ -22,11 +22,11 @@ export http_proxy="http://proxy_address:port"
 
 ### 1. 配置环境变量
 
-首先，创建或编辑 `/etc/systemd/system/docker.service.d/http-proxy.conf` 文件：
+首先，创建或编辑 `/blog/systemd/system/docker.service.d/http-proxy.conf` 文件：
 
 ```bash
-sudo mkdir -p /etc/systemd/system/docker.service.d
-sudo vim /etc/systemd/system/docker.service.d/http-proxy.conf
+sudo mkdir -p /blog/systemd/system/docker.service.d
+sudo vim /blog/systemd/system/docker.service.d/http-proxy.conf
 ```
 
 在文件中输入如下内容：

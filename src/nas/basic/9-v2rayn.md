@@ -58,7 +58,7 @@ services:
       - /usr/local/v2ray-core/v2ray=/usr/local/bin/v2ray
       - V2RAYA_LOG_FILE=/tmp/v2raya.log
     volumes:
-      - /etc/v2raya:/etc/v2raya
+      - /blog/v2raya:/blog/v2raya
     restart: always
 ```
 

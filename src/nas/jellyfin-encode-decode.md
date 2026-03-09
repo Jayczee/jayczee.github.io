@@ -137,7 +137,7 @@ sudo apt-get install linux-headers-$(uname -r)
 Docker 默认的运行时是 runc，它不支持 NVIDIA GPU 加速。为了使用 NVIDIA GPU，你需要将 Docker 配置为使用 nvidia-container-runtime 作为运行时。
 
 2. 如何配置 Docker 使用 nvidia-container-runtime？
-你需要在 Docker 的配置文件（通常是 /etc/docker/daemon.json）中添加以下内容：
+你需要在 Docker 的配置文件（通常是 /blog/docker/daemon.json）中添加以下内容：
 
 {
     "runtimes": {

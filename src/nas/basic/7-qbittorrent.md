@@ -64,8 +64,8 @@ server{
     listen 12120 ssl;
     server_name qbit.domain.com;
 
-    ssl_certificate /etc/letsencrypt/live/jayczee.top/fullchain.pem;
-    ssl_certificate_key /etc/letsencrypt/live/jayczee.top/privkey.pem;
+    ssl_certificate /blog/letsencrypt/live/jayczee.top/fullchain.pem;
+    ssl_certificate_key /blog/letsencrypt/live/jayczee.top/privkey.pem;
 
     location / {
       proxy_pass              http://localhost:53000/;

@@ -123,8 +123,8 @@ server {
 
     set $jellyfin 127.0.0.1;
 
-    ssl_certificate /etc/letsencrypt/live/domain.com/fullchain.pem;
-    ssl_certificate_key /etc/letsencrypt/live/domain.com/privkey.pem; ## 配置证书地址
+    ssl_certificate /blog/letsencrypt/live/domain.com/fullchain.pem;
+    ssl_certificate_key /blog/letsencrypt/live/domain.com/privkey.pem; ## 配置证书地址
 
     add_header X-Frame-Options "SAMEORIGIN";
     add_header X-XSS-Protection "0";

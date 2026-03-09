@@ -22,9 +22,9 @@ services:
     container_name: nginx
     image: nginx
     volumes:
-      - /etc/nginx/conf.d:/etc/nginx/conf.d
-      - /etc/nginx/nginx.conf:/etc/nginx/nginx.conf
-      - /etc/letsencrypt:/etc/letsencrypt
+      - /blog/nginx/conf.d:/blog/nginx/conf.d
+      - /blog/nginx/nginx.conf:/blog/nginx/nginx.conf
+      - /blog/letsencrypt:/blog/letsencrypt
       - /var/log/nginx:/var/log/nginx
     environment:
       - NGINX_PORT=80
@@ -39,9 +39,9 @@ services:
 2. **容器名称**：指定容器的名称为 `nginx`。
 3. **镜像**：使用官方的 `nginx` 镜像。
 4. **挂载卷**：
-   - 将主机的 `/etc/nginx/conf.d` 目录挂载到容器的 `/etc/nginx/conf.d`，用于配置文件。
-   - 将主机的 `/etc/nginx/nginx.conf` 文件挂载到容器的 `/etc/nginx/nginx.conf`，用于主配置文件。
-   - 将主机的 `/etc/letsencrypt` 目录挂载到容器的 `/etc/letsencrypt`，用于 SSL 证书。
+   - 将主机的 `/blog/nginx/conf.d` 目录挂载到容器的 `/blog/nginx/conf.d`，用于配置文件。
+   - 将主机的 `/blog/nginx/nginx.conf` 文件挂载到容器的 `/blog/nginx/nginx.conf`，用于主配置文件。
+   - 将主机的 `/blog/letsencrypt` 目录挂载到容器的 `/blog/letsencrypt`，用于 SSL 证书。
    - 将主机的 `/var/log/nginx` 目录挂载到容器的 `/var/log/nginx`，用于日志文件。
 5. **环境变量**：
    - `NGINX_PORT` 设置为 80，指定 Nginx 监听的端口。
@@ -49,7 +49,7 @@ services:
 6. **特权模式**：设置为 `true`，允许容器获得额外的权限。
 7. **网络模式**：设置为 `host`，表示容器将使用主机的网络栈，容器和主机共享网络。
 
-与其他镜像不同的是，部署 Nginx 容器时，容器中并没有一个 `/etc/nginx/nginx.conf` 主配置文件（大部分镜像都会存在一个默认配置文件，直接将其映射到宿主机，在其基础上进行修改）。在此情况下，若直接部署 Nginx 镜像，容器会报错配置文件不存在。因此，需要在宿主机上创建一个主配置文件，并将其映射到容器内部。
+与其他镜像不同的是，部署 Nginx 容器时，容器中并没有一个 `/blog/nginx/nginx.conf` 主配置文件（大部分镜像都会存在一个默认配置文件，直接将其映射到宿主机，在其基础上进行修改）。在此情况下，若直接部署 Nginx 镜像，容器会报错配置文件不存在。因此，需要在宿主机上创建一个主配置文件，并将其映射到容器内部。
 
 ### 💡 Tips
 
@@ -64,7 +64,7 @@ services:
 
 挂载时，宿主机的目录优先级高于容器内的目录，宿主机的内容会覆盖容器内的内容。
 
-### 📝 创建配置文件 `/etc/nginx/nginx.conf`
+### 📝 创建配置文件 `/blog/nginx/nginx.conf`
 
 ```bash
 worker_processes auto;
@@ -78,19 +78,19 @@ http {
         tcp_nopush on;
         types_hash_max_size 2048;
 
-        include /etc/nginx/mime.types;
+        include /blog/nginx/mime.types;
         default_type application/octet-stream;
 
         ssl_protocols TLSv1 TLSv1.1 TLSv1.2 TLSv1.3; # Dropping SSLv3, ref: POODLE
         ssl_prefer_server_ciphers on;
         client_max_body_size 8192M;
 
-        include /etc/nginx/conf.d/*.conf;
-        include /etc/nginx/sites-enabled/*;
+        include /blog/nginx/conf.d/*.conf;
+        include /blog/nginx/sites-enabled/*;
 }
 ```
 
-### 📂 创建文件夹 `/etc/nginx/conf.d`
+### 📂 创建文件夹 `/blog/nginx/conf.d`
 
 在其中创建 `portainer.conf` 文件，写入如下内容：
 
@@ -104,8 +104,8 @@ server {
     server_name  portainer.domain.com; # 二级域名改为 portainer
 
     # 证书
-    ssl_certificate /etc/letsencrypt/live/domain.com/fullchain.pem;
-    ssl_certificate_key /etc/letsencrypt/live/domain.com/privkey.pem;
+    ssl_certificate /blog/letsencrypt/live/domain.com/fullchain.pem;
+    ssl_certificate_key /blog/letsencrypt/live/domain.com/privkey.pem;
 
     ssl_session_timeout 5m;
     ssl_protocols TLSv1 TLSv1.1 TLSv1.2;

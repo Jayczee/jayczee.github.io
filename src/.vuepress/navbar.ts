@@ -8,23 +8,23 @@ export default navbar([
     link: "/nas/",
   },
   {
-    text: "Win & Linux",
-    icon: "fab fa-linux",
-    link: "/win_linux/ollama.md"
+    text: "系统与工具",
+    icon: "tools",
+    link: "/system/",
   },
   {
     text: "编程相关",
-    icon: "pen-to-square",
-    link: "/code/fedex-crawler.md"
+    icon: "code",
+    link: "/projects/",
   },
   {
     text: "学习笔记",
     icon: "book",
-    link: "/note/mysql.md"
+    link: "/notes/",
   },
   {
-    text: "其他",
-    icon: "ellipsis",
-    link: "/etc/journal-to-japan.md"
+    text: "随笔",
+    icon: "pen",
+    link: "/blog/",
   }
 ]);

@@ -69,7 +69,7 @@ wsl <具体命令>
 
 ## 更新软件源
 
-顺手通过`cat /etc/issue`查看了一下wsl中安装的是最新版的Debian 13。
+顺手通过`cat /blog/issue`查看了一下wsl中安装的是最新版的Debian 13。
 
 ```bash
 sudo apt update && sudo apt full-upgrade -y
@@ -108,7 +108,7 @@ rsync -av \
   --exclude 'target' \
   --exclude '.gradle' \
   --exclude '.m2' \
-  /mnt/d/code/ /code/
+  /mnt/d/projects/ /projects/
 ```
 
 等待了几分钟即可。

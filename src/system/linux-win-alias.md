@@ -35,7 +35,7 @@ source ~/.bashrc
 
 ## 🌍 Linux 给所有用户添加别名
 
-上述操作仅对当前 SSH 用户生效。如果想要对服务器上的所有用户生效，对于 `bash` 用户而言，打开 `/etc/bash.bashrc`，重复上述操作即可。
+上述操作仅对当前 SSH 用户生效。如果想要对服务器上的所有用户生效，对于 `bash` 用户而言，打开 `/blog/bash.bashrc`，重复上述操作即可。
 
 ## 🪟 Windows PowerShell 添加别名
 

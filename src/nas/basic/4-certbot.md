@@ -49,7 +49,7 @@ certbot certonly -d "*.example.com" --manual --preferred-challenges dns-01 # 改
 
 ```bash
 # certbot certonly -d "*.example.com" -d example.com --manual --preferred-challenges dns-01
-Saving debug log to /etc/letsencrypt/log/letsencrypt.log
+Saving debug log to /blog/letsencrypt/log/letsencrypt.log
 - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 It contains these names: example.com
 - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
@@ -72,8 +72,8 @@ value(s) you ve just added.
 
 ```bash
 Successfully received certificate.
-Certificate is saved at: /etc/letsencrypt/live/******/fullchain.pem
-Key is saved at:         /etc/letsencrypt/live/******/privkey.pem
+Certificate is saved at: /blog/letsencrypt/live/******/fullchain.pem
+Key is saved at:         /blog/letsencrypt/live/******/privkey.pem
 This certificate expires on 2025-4-13.
 These files will be updated when the certificate renews.
 NEXT STEPS:

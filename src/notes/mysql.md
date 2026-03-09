@@ -26,7 +26,7 @@ order: 1
 6. **mysqld**启动时使用`-P`指定监听端口，同样客户端mysql启动时也可以使用`-P`指定服务端端口。
 7. 服务端处理客户端查询请求大致分为**连接管理**、**解析与优化**、**存储引擎**三个部分，如下图: 
 
-![MySQL客户端处理客户端请求](/assets/images/note/mysql/m-1.png)
+![MySQL客户端处理客户端请求](/assets/images/notes/mysql/m-1.png)
 
 8. 服务端与客户端建立连接后，服务端会创建一个线程处理该客户端的请求。当连接断开后，该线程会放入缓存，避免频繁创建与销毁线程带来的开销。
 9. 连接创建后，需要经过解析与优化，分别是**查询缓存**、**语法解析**、**查询优化**。
@@ -136,7 +136,7 @@ order: 1
 6. 单独修改字符集或比较规则时，只修改字符集，则比较规则将变为修改后的字符集默认的比较规则；只修改比较规则，则字符集将变为修改后的比较规则对应的字符集。
 7. MySQL中字符的转换依靠**服务器解码时的字符集**`character_set_client`、**服务器将请求转换成目标字符集**`character_set_connection`以及**服务器返回结果的字符集**`character_set_results`三个系统变量。过程如下：
 
-   ![MySQL字符集转换](/assets/images/note/mysql/m-2.png)
+   ![MySQL字符集转换](/assets/images/notes/mysql/m-2.png)
 
 8. 可以使用`SET NAMES 字符集名`将上述三个系统变量一口气改为客户端字符集，这样可以省去转换过程。
 
@@ -146,7 +146,7 @@ order: 1
 2. 记录在磁盘上的存放方式也被称为**行格式**或**记录格式**，分别有**Compact**、**Redundant**、**Dynamic**和**Compressed**行格式。
 3. **Compact**格式结构如下：
 
-   ![Compact 行格式结构](/assets/images/note/mysql/m-3.png)
+   ![Compact 行格式结构](/assets/images/notes/mysql/m-3.png)
 
    变长字段长度列表：变长字段即MySQL中`VARCHAR(M)`、`VARBINARY(M)`、各种`TEXT`类型、各种`BLOB`类型等长度不固定的类型的字段。变长字段中存储多少字节的数据是不固定的，所以在存储真实数据时需要顺便把这些数据占用的字节数也存起来。
 
@@ -159,11 +159,11 @@ order: 1
 8. 如果存在允许NULL值的列，每一列在NULL值列表中对应一个二进制位，也是逆序排序，若为0则该列为非NULL值，若为1则该列为NULL值。
 9. MySQL规定NULL值列表必须用整数个字节表示，一个字节有8位，可以记录8列，若允许NULL值的列不足8列，则高位补0。
 
-   ![NULL值列表高位补零](/assets/images/note/mysql/m-4.png)
+   ![NULL值列表高位补零](/assets/images/notes/mysql/m-4.png)
 
 10. 记录头由5个固定字节组成，即40位，代表着不同的含义：
 
-   ![记录头结构](/assets/images/note/mysql/m-5.png)
+   ![记录头结构](/assets/images/notes/mysql/m-5.png)
 
    | 名称          | 大小（单位：bit） | 描述                                              |
    |---------------|-------------------|---------------------------------------------------|
@@ -202,9 +202,9 @@ order: 1
 21. 一个页一般是16KB，当记录中的数据太多，当前页放不下的时候，会把多余的数据存储到其他页中，这种现象称为**行溢出**。
 22. Redundant行格式中，当某列数据非常长时，该行只会记录该列前*768字节*的数据，然后记录溢出页的地址。
 
-   ![Redundant存储行数据](/assets/images/note/mysql/m-6.png)
+   ![Redundant存储行数据](/assets/images/notes/mysql/m-6.png)
 
-   ![Redundant行格式](/assets/images/note/mysql/m-7.png)
+   ![Redundant行格式](/assets/images/notes/mysql/m-7.png)
 
 23. 不只是`VARCHAR(M)`类型的列，其他的`TEXT`、`BLOB`类型的列在存储数据非常多的时候也会发生行溢出。
 24. MySQL中要求一个页至少存储两行记录。
@@ -216,7 +216,7 @@ order: 1
 1. 页是InnoDB管理存储空间的基本单位。
 2. MySQL中有许多不同类型的页。
 
-   ![Index索引页结构](/assets/images/note/mysql/m-8.png)
+   ![Index索引页结构](/assets/images/notes/mysql/m-8.png)
 
 | 名称                     | 中文名               | 占用空间大小 | 简单描述                     |
 |------------------------|--------------------|------------|-----------------------------|
@@ -230,23 +230,23 @@ order: 1
 
 3. 我们自己插入的记录会以我们设置好的行格式存储在User Records的部分。User Records起初不存在，每当插入数据时会从Free Space中申请。Free Space使用完即页使用完了。
 
-   ![记录在Index索引页中的存储](/assets/images/note/mysql/m-9.png)
+   ![记录在Index索引页中的存储](/assets/images/notes/mysql/m-9.png)
 
 4. 当表有主键时，一行记录不会生成row_id，而是把原来row_id的位置存储主键那一列的数据。
 5. User Records中记录的存储格式如下（记录本身的信息进行了省略，只显示了记录头和数据部分）：
 
-   ![记录在Index索引页中的存储 2](/assets/images/note/mysql/m-10.png)
+   ![记录在Index索引页中的存储 2](/assets/images/notes/mysql/m-10.png)
 
 6. 当记录被删除时，记录头中的delete_mask将会从0置1，但是实际上并不会从磁盘上立刻删除，而是生成了一个“垃圾链表”，垃圾链表上的记录构成一个可重用空间，当有新纪录进来时会将数据覆盖到这个可重用空间上。
 7. heap_no 记录位置从2开始。0和1由两条隐藏记录`最小记录`和`最大记录`占用。
 8. 最小记录和最大记录都由5B的记录头和8B的固定部分组成：
 
-   ![最小记录和最大记录构成](/assets/images/note/mysql/m-11.png)
+   ![最小记录和最大记录构成](/assets/images/notes/mysql/m-11.png)
 
 9. record_type为记录的类型，0为普通记录，1为B+树非叶子节点记录，2为最小记录，3为最大记录。
 10. next_record为当前记录到下一条记录的偏移量。通过该值，从最小记录开始，经过用户记录，到最大记录结束，构成了一个单向链表。
 
-   ![记录链表](/assets/images/note/mysql/m-12.png)
+   ![记录链表](/assets/images/notes/mysql/m-12.png)
 
 11. 删除记录的步骤：
 - 将被删除记录的delete_mask置为1
@@ -328,9 +328,9 @@ order: 1
 5. 只有在存储目录项记录的页中，主键值最小的目录项记录的 `min_rec_mask` 值为 1，其他记录的 `min_rec_mask` 值均为 0。
 6. 存储目录项记录的页和存储用户记录的页是相互独立的，不会混合存储两种记录。
 
-   ![目录项记录结构](/assets/images/note/mysql/m-14.png)
+   ![目录项记录结构](/assets/images/notes/mysql/m-14.png)
 
-   ![B+树结构](/assets/images/note/mysql/m-15.png)
+   ![B+树结构](/assets/images/notes/mysql/m-15.png)
 
    实际用户记录存放在 B+ 树的最底层节点上，这些节点称为叶子节点或叶节点，其余用来存放目录项的节点称为非叶子节点或内节点，其中 B+ 树最上面的节点称为根节点。
 
@@ -455,7 +455,7 @@ order: 1
 7. 区分为四种状态（类型，State）：FREE, FREE_FRAG, FULL_FRAG, FSEG（Fragmented Segment）。前三个状态时区直属于表空间，最后一个状态时区才属于某一个段。
 8. 为了方便管理区（不在段中的），引入 XDES Entry（Extent Descriptor Entry），结构如下：
 
-   ![XDES Entry结构](/assets/images/note/mysql/m-16.png)
+   ![XDES Entry结构](/assets/images/notes/mysql/m-16.png)
 
    - **Segment ID**：表示当前区所在的段，前提是该区已经被分配给某个段了，否则没有意义。
    - **List Node**：指向前一个和后一个 XDES Entry。
@@ -472,7 +472,7 @@ order: 1
 13. 每个索引都有两个段，每个段都会维护上述三个链表。
 14. 用于定位上述链表的结构称为 List Base Node，链表基节点，结构如下：
 
-   ![List Base Node结构](/assets/images/note/mysql/m-17.png)
+   ![List Base Node结构](/assets/images/notes/mysql/m-17.png)
 
    - **List Length** 表明该链表一共有多少节点。
    - **First Node Page Number** 和 **First Node Offset** 表明该链表的头节点在表空间中的位置。
@@ -481,7 +481,7 @@ order: 1
    一般某个链表对应的 List Base Node 结构放置在表空间中固定的位置。
 15. 正如有 XDES Entry 描述区，描述段也有对应的结构，称为 INODE Entry，结构如下：
 
-   ![INODE Entry结构](/assets/images/note/mysql/m-18.png)
+   ![INODE Entry结构](/assets/images/notes/mysql/m-18.png)
 
    - **Segment ID**：所描述的段的编号。
    - **NOT_FULL_N_USED**：对应段的 NOT_FULL 链表已经使用了多少页，下次使用 NOT_FULL 可以直接依靠该值定位到，而不需要从头遍历节点。
@@ -491,7 +491,7 @@ order: 1
 
 16. 第一个组中的第一个页，即表空间中的第一个页，类型为 FSP_HDR 的页的结构如下：
 
-   ![FSP_HDR类型页结构](/assets/images/note/mysql/m-19.png)
+   ![FSP_HDR类型页结构](/assets/images/notes/mysql/m-19.png)
 
    | 名称                 | 中文名         | 占用空间大小 | 简单描述                       |
    |----------------------|----------------|--------------|--------------------------------|
@@ -503,7 +503,7 @@ order: 1
 
 17. File Space Header 结构如下：
 
-   ![File Space Header结构](/assets/images/note/mysql/m-20.png)
+   ![File Space Header结构](/assets/images/notes/mysql/m-20.png)
 
    | 名称                                   | 占用空间大小 | 描述                                                                                       |
    |----------------------------------------|--------------|--------------------------------------------------------------------------------------------|
@@ -534,11 +534,11 @@ order: 1
 19. 后续 XDES Entry 类型存储在每个组的第一个页（XDES 类型页）中，其结构和 FSP_HDR 非常相似。FSP_HDR 额外存储着表空间的一些属性。
 20. 与 FSP_HDR 类型的页对比，除了少了 File Space Header 部分之外，也就是除了少了记录表空间整体属性的部分之外，其余的部分是一样一样的。
 
-   ![XDES类型页结构](/assets/images/note/mysql/m-21.png)
+   ![XDES类型页结构](/assets/images/notes/mysql/m-21.png)
 
 21. INODE 类型页用于存储 INODE Entry 结构，INODE 类型页结构如下：
 
-   ![INODE类型页结构](/assets/images/note/mysql/m-22.png)
+   ![INODE类型页结构](/assets/images/notes/mysql/m-22.png)
 
    | 名称                              | 中文名               | 占用空间大小 | 简单描述                     |
    |-----------------------------------|----------------------|--------------|------------------------------|
@@ -558,7 +558,7 @@ order: 1
 
    其对应的是一个名为 SEGMENT HEADER 的结构，其定义如下：
 
-   ![SEGMENT HEADER结构](/assets/images/note/mysql/m-23.png)
+   ![SEGMENT HEADER结构](/assets/images/notes/mysql/m-23.png)
 
    | 名称                         | 占用字节数 | 描述                                   |
    |------------------------------|--------------|----------------------------------------|
@@ -570,7 +570,7 @@ order: 1
 
 24. 系统表空间和独立表空间结构类似，只不过整个 MySQL 进程只有一个系统表空间，其表空间 ID 为 0，结构如下：
 
-   ![系统表空间结构](/assets/images/note/mysql/m-24.png)
+   ![系统表空间结构](/assets/images/notes/mysql/m-24.png)
 
 25. MySQL 为了更好的管理用户数据而不得已引入的一些额外数据，这些数据也称为元数据。InnoDB 存储引擎特意定义了一些列的内部系统表（internal system table）来记录这些这些元数据:
 
@@ -645,7 +645,7 @@ order: 1
 
 30. 只要有了上述 4 个基本系统表，也就意味着可以获取其他系统表以及用户定义的表的所有元数据。但这 4 个表的元数据就无法通过其他表查询，而是将其存储在数据字典的头部，用一个固定的页来记录这 4 个基本表的聚簇索引和二级索引的位置，即 Data Dictionary Header，结构如下：
 
-   ![数据字典头部结构](/assets/images/note/mysql/m-25.png)
+   ![数据字典头部结构](/assets/images/notes/mysql/m-25.png)
 
    | 名称                        | 中文名               | 占用空间大小 | 简单描述                                         |
    |-----------------------------|----------------------|--------------|--------------------------------------------------|
@@ -695,7 +695,7 @@ mysql> SHOW TABLES LIKE 'innodb_sys%';
 
 32. 总结图
 
-   ![InnoDB表空间总结图](/assets/images/note/mysql/m-26.png)
+   ![InnoDB表空间总结图](/assets/images/notes/mysql/m-26.png)
 
 ## 第十章 单表的访问方法
 
@@ -789,7 +789,7 @@ mysql> SHOW TABLES LIKE 'innodb_sys%';
 
 8. 驱动表只访问一次，但被驱动表却可能被多次访问。访问次数取决于对驱动表执行单表查询后的结果集中的记录条数的连接执行方式称之为 **嵌套循环连接（Nested-Loop Join）**，这是最简单，也是最笨拙的一种连接查询算法。
 
-   ![嵌套循环连接](/assets/images/note/mysql/m-27.png)
+   ![嵌套循环连接](/assets/images/notes/mysql/m-27.png)
 
 9. 基于块的嵌套循环连接是指在内存中开辟一个 **join buffer**（默认大小256KB），将驱动表中的记录加载到 **join buffer** 中，然后访问被驱动表时，被驱动表的每一条记录一次性与驱动表的多条记录进行匹配，显著减少被驱动表从磁盘上 I/O 的代价。
 

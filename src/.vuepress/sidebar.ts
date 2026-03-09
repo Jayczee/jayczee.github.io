@@ -33,14 +33,14 @@ const getFiles = (dir) => {
 };
 
 const nasChildren = getFiles(path.join(__dirname, '../nas'));
-const codeChildren = getFiles(path.join(__dirname, '../code'));
+const projectsChildren = getFiles(path.join(__dirname, '../projects'));
 const nasBasicChildren = getFiles(path.join(__dirname, '../nas/basic'));
 const nasOptionalChildren = getFiles(path.join(__dirname, '../nas/optional'));
-const winLinuxChildren = getFiles(path.join(__dirname, '../win_linux'));
-const noteChildren = getFiles(path.join(__dirname, '../note'));
-const noteLeet150Children = getFiles(path.join(__dirname, '../note/leet150'));
-const noteJapaneseChildren = getFiles(path.join(__dirname, '../note/ni-hon-go-grammar'));
-const etcChildren = getFiles(path.join(__dirname, '../etc'));
+const systemChildren = getFiles(path.join(__dirname, '../system'));
+const notesChildren = getFiles(path.join(__dirname, '../notes'));
+const notesLeet150Children = getFiles(path.join(__dirname, '../notes/leet150'));
+const notesJapaneseChildren = getFiles(path.join(__dirname, '../notes/ni-hon-go-grammar'));
+const blogChildren = getFiles(path.join(__dirname, '../blog'));
 
 export default sidebar({
   "/": [
@@ -64,30 +64,30 @@ export default sidebar({
     },
     ...nasChildren
   ],
-  "/code":[
-    ...codeChildren
+  "/projects":[
+    ...projectsChildren
   ],
-  "/win_linux":[
-    ...winLinuxChildren
+  "/system":[
+    ...systemChildren
   ],
-  "/note":[
-    ...noteChildren,
+  "/notes":[
+    ...notesChildren,
     {
-      text: "日语0-N1语法 by 日语翻译小昊子",
+      text: "日语 0-N1 语法 by 日语翻译小昊子",
       collapsible: true,
       expanded: false,
       prefix: "ni-hon-go-grammar/",
-      children: noteJapaneseChildren
+      children: notesJapaneseChildren
     },
     {
-      text: "LeetCode面试经典150题",
+      text: "LeetCode 面试经典 150 题",
       collapsible: true,
       expanded: false,
       prefix: "leet150/",
-      children: noteLeet150Children
+      children: notesLeet150Children
     },
   ],
-  "/etc":[
-    ...etcChildren
+  "/blog":[
+    ...blogChildren
   ]
 });
