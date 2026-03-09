@@ -6,8 +6,8 @@
     <link>https://jayczee.cn/</link>
     <description>Whispering for nothing</description>
     <language>zh-CN</language>
-    <pubDate>Mon, 09 Mar 2026 03:08:02 GMT</pubDate>
-    <lastBuildDate>Mon, 09 Mar 2026 03:08:02 GMT</lastBuildDate>
+    <pubDate>Mon, 09 Mar 2026 08:51:01 GMT</pubDate>
+    <lastBuildDate>Mon, 09 Mar 2026 08:51:01 GMT</lastBuildDate>
     <generator>@vuepress/plugin-feed</generator>
     <docs>https://validator.w3.org/feed/docs/rss2.html</docs>
     <category>Linux</category>
@@ -20,6 +20,47 @@
     <category>LeetCode</category>
     <category>OpenClash</category>
     <category>NAS</category>
+    <item>
+      <title>Openclaw Skills</title>
+      <link>https://jayczee.cn/win_linux/openclaw-skills.html</link>
+      <guid>https://jayczee.cn/win_linux/openclaw-skills.html</guid>
+      <source url="https://jayczee.cn/rss.xml">Openclaw Skills</source>
+      <description>前言 起初是因为刚装好的Openclaw不自带websearch的能力，需要MCP或Skills来拓展，所以就在ClawHub上检索websearch以及其他用得上的Skills。 之所以没有第一个想到使用MCP（我使用Gemini CLI， Codex CLI等是优先使用MCP的），在我看来我MCP的大部分作用由于龙虾已经获得了宿主机的大部分权限所以...</description>
+      <category>Linux</category>
+      <category>Openclaw</category>
+      <pubDate>Mon, 09 Mar 2026 08:50:10 GMT</pubDate>
+      <content:encoded><![CDATA[<h2>前言</h2>
+<p>起初是因为刚装好的Openclaw不自带websearch的能力，需要MCP或Skills来拓展，所以就在<a href="https://clawhub.ai" target="_blank" rel="noopener noreferrer">ClawHub</a>上检索websearch以及其他用得上的Skills。</p>
+<p>之所以没有第一个想到使用MCP（我使用Gemini CLI， Codex CLI等是优先使用MCP的），在我看来我MCP的大部分作用由于龙虾已经获得了宿主机的大部分权限所以就不再需要了。</p>
+<p>安装skills之前需要在宿主机上安装clawhub，而且需要登录，防止安装skills碰到rate limit问题。</p>
+<p>安装SKILLS时可以直接告诉openclaw让其自己安装，不过会花费token。</p>
+<p>愿意动手可以自己在宿主机中安装clawhub来手动安装，然后配置仍然交由openclaw。</p>
+<h2>登录</h2>
+<p>在clawhub注册账号后，可以在宿主机上运行<code>clawhub login</code>进行登录。</p>
+<p>默认会提供一个认证链接，进入页面进行认证之后会回调临时起的本地服务。<br>
+如果无效，则重新进入登录链接，他在回调之前，页面上会提示，如果重定向失败请复制token：XXXX。复制该token，在宿主机中运行命令<code>clawhub login --token &lt;token&gt;</code>即可。</p>
+<h2>安装</h2>
+<p>告诉openclaw skill名称（即skill url最后的部分，例如<code>tavily-search</code>）和需要的配置信息即可。或者在宿主机运行：</p>
+<div class="language-bash" data-highlighter="shiki" data-ext="bash" data-title="bash" style="background-color:#1E1E1E;color:#D4D4D4"><pre class="shiki dark-plus vp-code"><code><span class="line"><span style="color:#DCDCAA">clawhub</span><span style="color:#CE9178"> install</span><span style="color:#CE9178"> xxx</span></span></code></pre>
+</div><p>随后手动配置，或让openclaw配置。</p>
+<h2><a class="header-anchor" href="#tavily-web-search-tavily-search"><span></span></a><a href="https://clawhub.ai/arun-8687/tavily-search" target="_blank" rel="noopener noreferrer">Tavily Web Search <code>tavily-search</code></a></h2>
+<p>WebSearch能力通常都需要配合Api Key来使用，具有相同功能的还有Brave Search。这款优点在于对返回结果干净，对LLM友好。</p>
+<p>先通过<a href="https://www.tavily.com/" target="_blank" rel="noopener noreferrer">Tavily官方</a>获取API Key，免费额度有每个月1000Credits。同时他也支持MCP方式的接入。</p>
+<p>将clawhub相关页面的url和申请到的API Key直接告诉openclaw让它自己配置即可。</p>
+<h2><a class="header-anchor" href="#agent-browser-agent-browser"><span></span></a><a href="https://clawhub.ai/TheSethRose/agent-browser" target="_blank" rel="noopener noreferrer">Agent Browser <code>agent-browser</code></a></h2>
+<p>Agent专用的无头浏览器，0配置，开箱即用。</p>
+<h2><a class="header-anchor" href="#baidu-search-baidu-search"><span></span></a><a href="https://clawhub.ai/ide-rea/baidu-search" target="_blank" rel="noopener noreferrer">Baidu Search <code>baidu-search</code></a></h2>
+<p>用于补充中文web search，需要到百度千帆平台创建API Key，每日有1000次赠送的免费搜索的额度。</p>
+<h2><a class="header-anchor" href="#multi-search-engine-multi-search-engine"><span></span></a><a href="https://clawhub.ai/gpyAngyoujun/multi-search-engine" target="_blank" rel="noopener noreferrer">Multi Search Engine <code>multi-search-engine</code></a></h2>
+<p>这款web search比较粗暴，<em><strong>不需要api key</strong></em>，只是使用自带的web fetch功能拼接url，去各大搜索引擎搜索结果然后总结归纳。</p>
+<h2><a class="header-anchor" href="#byterover-byterover"><span></span></a><a href="https://clawhub.ai/byteroverinc/byterover" target="_blank" rel="noopener noreferrer">ByteRover <code>byterover</code></a></h2>
+<p>简单来说，它可以完成保存编码记忆、检索记忆、跨 IDE / 跨 Agent 复用、团队共享以及降低重复错误、提升代码一致性。</p>
+<h2><a class="header-anchor" href="#openclaw-youtube-transcript-openclaw-youtube-transcript"><span></span></a><a href="https://clawhub.ai/YoavRez/openclaw-youtube-transcript" target="_blank" rel="noopener noreferrer">Openclaw Youtube Transcript <code>openclaw-youtube-transcript</code></a></h2>
+<p>最近网上比较火的一个应用，通过youtube链接来总结视频，但是它是通过字幕来总结的，不分析音频，对无字幕视频就有些困难了。</p>
+<h2><a class="header-anchor" href="#find-skills-find-skills"><span></span></a><a href="https://clawhub.ai/JimLiuxinghai/find-skills" target="_blank" rel="noopener noreferrer">Find Skills <code>find-skills</code></a></h2>
+<p>可以让龙虾自己寻找合适的skill来完成当前任务。</p>
+]]></content:encoded>
+    </item>
     <item>
       <title>Openclaw 接入EvoMap</title>
       <link>https://jayczee.cn/win_linux/openclaw-evomap.html</link>
