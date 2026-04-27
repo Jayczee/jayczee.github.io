@@ -6,10 +6,11 @@
     <link>https://jayczee.cn/</link>
     <description>Whispering for nothing</description>
     <language>zh-CN</language>
-    <pubDate>Mon, 27 Apr 2026 06:57:31 GMT</pubDate>
-    <lastBuildDate>Mon, 27 Apr 2026 06:57:31 GMT</lastBuildDate>
+    <pubDate>Mon, 27 Apr 2026 07:27:01 GMT</pubDate>
+    <lastBuildDate>Mon, 27 Apr 2026 07:27:01 GMT</lastBuildDate>
     <generator>@vuepress/plugin-feed</generator>
     <docs>https://validator.w3.org/feed/docs/rss2.html</docs>
+    <category>VPS</category>
     <category>Proxy</category>
     <category>Linux</category>
     <category>Openclaw</category>
@@ -21,6 +22,55 @@
     <category>LeetCode</category>
     <category>OpenClash</category>
     <category>NAS</category>
+    <item>
+      <title>VPS 常见概念笔记</title>
+      <link>https://jayczee.cn/system/vps-common-concept.html</link>
+      <guid>https://jayczee.cn/system/vps-common-concept.html</guid>
+      <source url="https://jayczee.cn/rss.xml">VPS 常见概念笔记</source>
+      <description>最近一直在研究自建或者和别人拼车节点，学习到了很多概念。 落地机 懂的都懂： 所谓落地，也就是链路的最终站。落地鸡不在乎线路，但很在乎IP质量。 原生 IP 、广播 IP： 如果想要看 Netflix、Disney+ 或者 用AI，必须得是当地的“原生 IP”。如果 IP 是机房广播过去的，大概率会被这些服务商拉黑。 家宽/住宅 IP： 顾名思义，这些...</description>
+      <category>VPS</category>
+      <pubDate>Mon, 27 Apr 2026 07:26:18 GMT</pubDate>
+      <content:encoded><![CDATA[<p>最近一直在研究自建或者和别人拼车节点，学习到了很多概念。</p>
+<h2>落地机</h2>
+<p><strong>懂的都懂：</strong> 所谓落地，也就是链路的最终站。落地鸡<strong>不在乎线路，但很在乎IP质量</strong>。</p>
+<ul>
+<li>
+<p><strong>原生 IP 、广播 IP：</strong> 如果想要看 Netflix、Disney+ 或者 用AI，必须得是当地的“原生 IP”。如果 IP 是机房广播过去的，大概率会被这些服务商拉黑。</p>
+</li>
+<li>
+<p><strong>家宽/住宅 IP：</strong> 顾名思义，这些IP的质量最高，会让服务器觉得你就是一个普通的当地住户。</p>
+</li>
+</ul>
+<h2>线路</h2>
+<ul>
+<li><strong>163 骨干网 (AS4134)：</strong> 免费国道，平时能跑，晚高峰就堵，丢包率就上来了。</li>
+<li><strong>精品线路 (CN2 GIA / AS9929 / CMIN2)：</strong> 买线路鸡的首选，好的线路机三网优化。不是三网优化就需要看自己的运营商进行选择。
+<ul>
+<li><strong>CN2 GIA (电信)</strong></li>
+<li><strong>AS9929 (联通)</strong></li>
+</ul>
+</li>
+<li><strong>IPLC / IEPL：</strong> 不经过防火墙，物理级别的点对点连接。只有贵这一个缺点，但最近动荡的比较多。</li>
+</ul>
+<h2>线路机 / 中转机</h2>
+<ul>
+<li><strong>为什么要线路鸡</strong> 因为有些落地机虽然 IP 漂亮，但它到你家的线路实在太烂。这时候我们找一台“连接你很快”且“连接落地机也很快”的机器做跳板。</li>
+<li><strong>常见选择</strong> 常见的配置是找一台香港或者日本的机器做中转。国内连香港延迟低，香港走精品线路去其他国家落地鸡也飞快，可以大幅度降低延迟。</li>
+</ul>
+<h2>谷歌送中</h2>
+<p>由于你的真实设备开着定位，或由于近期活动等巴拉巴拉原因，谷歌将你的IP地址标记为中国地区。<br>
+表现如下：</p>
+<ul>
+<li>谷歌随便搜索什么，页面最下方定位处于中国，<a href="http://xn--google-or3j76jq5kq94lrnd.com.hk" target="_blank" rel="noopener noreferrer">域名跳转到google.com.hk</a>。</li>
+<li>gemini不可用</li>
+<li>油管premium不可用。</li>
+<li>等等</li>
+</ul>
+<p>唯一好处是油管没广告。</p>
+<p>这个没招，只能避免，关闭网页定位权限，chrome下载虚拟定位插件，长期定位在与节点相同的位置。</p>
+<p>可以试试<em>报告IP问题</em>，谷歌直接搜索，提交节点的IP和IP所在地区，据网友反馈最快也要一两周。</p>
+]]></content:encoded>
+    </item>
     <item>
       <title>SublinkPro 自管理节点</title>
       <link>https://jayczee.cn/system/sublink-pro.html</link>
