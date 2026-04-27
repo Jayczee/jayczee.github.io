@@ -6,10 +6,11 @@
     <link>https://jayczee.cn/</link>
     <description>Whispering for nothing</description>
     <language>zh-CN</language>
-    <pubDate>Tue, 14 Apr 2026 07:34:11 GMT</pubDate>
-    <lastBuildDate>Tue, 14 Apr 2026 07:34:11 GMT</lastBuildDate>
+    <pubDate>Mon, 27 Apr 2026 06:57:31 GMT</pubDate>
+    <lastBuildDate>Mon, 27 Apr 2026 06:57:31 GMT</lastBuildDate>
     <generator>@vuepress/plugin-feed</generator>
     <docs>https://validator.w3.org/feed/docs/rss2.html</docs>
+    <category>Proxy</category>
     <category>Linux</category>
     <category>Openclaw</category>
     <category>EvoMap</category>
@@ -20,6 +21,21 @@
     <category>LeetCode</category>
     <category>OpenClash</category>
     <category>NAS</category>
+    <item>
+      <title>SublinkPro 自管理节点</title>
+      <link>https://jayczee.cn/system/sublink-pro.html</link>
+      <guid>https://jayczee.cn/system/sublink-pro.html</guid>
+      <source url="https://jayczee.cn/rss.xml">SublinkPro 自管理节点</source>
+      <description>最近发现个很有趣的项目，SublinkPro 从各个地方入手了很多自建节点，正愁左一个右一个，有些还是订阅链接交付我的，自带分流规则（虽然可以提取出节点）。 这个项目可以集中自管理节点和，嗯，供应商。 自己创建规则模板，更改节点命名，配置链式代理。 在服务器上搭了一个，畅用。</description>
+      <category>Proxy</category>
+      <pubDate>Mon, 27 Apr 2026 06:53:34 GMT</pubDate>
+      <content:encoded><![CDATA[<p>最近发现个很有趣的项目，<a href="https://github.com/ZeroDeng01/sublinkPro" target="_blank" rel="noopener noreferrer">SublinkPro</a></p>
+<p>从各个地方入手了很多自建节点，正愁左一个右一个，有些还是订阅链接交付我的，自带分流规则（虽然可以提取出节点）。</p>
+<p>这个项目可以集中自管理节点和，嗯，供应商。</p>
+<p>自己创建规则模板，更改节点命名，配置链式代理。</p>
+<p>在服务器上搭了一个，畅用。</p>
+]]></content:encoded>
+    </item>
     <item>
       <title>Openclaw Skills</title>
       <link>https://jayczee.cn/system/openclaw-skills.html</link>
