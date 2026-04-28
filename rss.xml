@@ -6,8 +6,8 @@
     <link>https://jayczee.cn/</link>
     <description>Whispering for nothing</description>
     <language>zh-CN</language>
-    <pubDate>Tue, 28 Apr 2026 02:18:51 GMT</pubDate>
-    <lastBuildDate>Tue, 28 Apr 2026 02:18:51 GMT</lastBuildDate>
+    <pubDate>Tue, 28 Apr 2026 02:30:12 GMT</pubDate>
+    <lastBuildDate>Tue, 28 Apr 2026 02:30:12 GMT</lastBuildDate>
     <generator>@vuepress/plugin-feed</generator>
     <docs>https://validator.w3.org/feed/docs/rss2.html</docs>
     <category>VPS</category>
@@ -4281,7 +4281,7 @@ Docker 默认的运行时是 runc，它不支持 NVIDIA GPU 加速。为了使�
 <span class="line"><span style="color:#D4D4D4">            - </span><span style="color:#CE9178">'SUPERUSER=jayczee'</span></span>
 <span class="line"><span style="color:#D4D4D4">            - </span><span style="color:#CE9178">'AUTH_SITE=iyuu'</span></span>
 <span class="line"><span style="color:#D4D4D4">            - </span><span style="color:#CE9178">'IYUU_SIGN=你的IYUU TOKEN'</span></span>
-<span class="line"><span style="color:#6A9955">            #- 'PROXY_HOST=http://192.168.10.229:50171' // 代理设置，注意容器所在的network是否和代理network处于同一段</span></span>
+<span class="line"><span style="color:#6A9955">            #- 'PROXY_HOST=http://192.168.10.229:50171' // 代理设置</span></span>
 <span class="line"><span style="color:#569CD6">        restart</span><span style="color:#D4D4D4">: </span><span style="color:#CE9178">always</span></span>
 <span class="line"><span style="color:#569CD6">        image</span><span style="color:#D4D4D4">: </span><span style="color:#CE9178">jxxghp/moviepilot-v2:latest</span></span>
 <span class="line"></span>
