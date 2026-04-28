@@ -75,7 +75,7 @@ services:
             - 'SUPERUSER=jayczee'
             - 'AUTH_SITE=iyuu'
             - 'IYUU_SIGN=你的IYUU TOKEN'
-            - 'PROXY_HOST=http://192.168.10.229:50171'
+            #- 'PROXY_HOST=http://192.168.10.229:50171' // 代理设置，注意容器所在的network是否和代理network处于同一段
         restart: always
         image: jxxghp/moviepilot-v2:latest
 
