@@ -35,7 +35,6 @@ const getFiles = (dir) => {
 const nasChildren = getFiles(path.join(__dirname, '../nas'));
 const projectsChildren = getFiles(path.join(__dirname, '../projects'));
 const nasBasicChildren = getFiles(path.join(__dirname, '../nas/basic'));
-const nasOptionalChildren = getFiles(path.join(__dirname, '../nas/optional'));
 const systemChildren = getFiles(path.join(__dirname, '../system'));
 const notesChildren = getFiles(path.join(__dirname, '../notes'));
 const notesLeet150Children = getFiles(path.join(__dirname, '../notes/leet150'));
@@ -54,13 +53,6 @@ export default sidebar({
       expanded: true,
       prefix: "basic/",
       children: nasBasicChildren
-    },
-    {
-      text: "可选服务",
-      collapsible: true,
-      expanded: true,
-      prefix: "optional/",
-      children: nasOptionalChildren
     },
     ...nasChildren
   ],

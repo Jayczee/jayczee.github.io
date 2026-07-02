@@ -53,7 +53,7 @@ NAS设备最好拥有一个公网IP以支持其下载与上传的功能（PT）�
 
 ## ⚙️ 常用服务
 
-以下是我在NAS上使用到的一些服务，分为基础服务和可选服务：
+以下是我在NAS上使用到的一些基础服务：
 
 ### 基建服务
 
@@ -74,22 +74,4 @@ NAS设备最好拥有一个公网IP以支持其下载与上传的功能（PT）�
 | [Jellyfin 影音服务器](./basic/8-jellyfin.md) ![Jellyfin](https://img.shields.io/badge/Jellyfin-ff3d00?style=flat-square&logo=jellyfin&logoColor=white) | 自建影音流媒体服务器 |
 | [Movie-Pilot 媒体整体与刮削](./basic/10-movie-pilot.md) ![Movie-Pilot](https://img.shields.io/badge/Movie--Pilot-ffcc00?style=flat-square&logo=movie&logoColor=black) | 媒体管理工具 |
 
----
-
-### 可选服务
-
-::: warning 注意
-以下服务为可选项，用户可以根据个人需求选择安装与否。
-:::
-
-| 服务名称 | 描述 |
-| -------- | ---- |
-| MySQL 数据库 | 关系型数据库 |
-| [TeamSpeak 游戏语音](./optional/teamspeak.md) ![TeamSpeak](https://img.shields.io/badge/TeamSpeak-1e90ff?style=flat-square&logo=teamspeak&logoColor=white) | 语音聊天工具 |
-| [Alist 搭配 Merilisearch 私有云盘](./optional/alist.md) ![Alist](https://img.shields.io/badge/Alist-ff9000?style=flat-square&logo=alist&logoColor=white) | 私有云盘解决方案 |
-| [ChatGPT-Web-Midjourney-Proxy 私有GPT UI](./optional/gpt.md) ![ChatGPT](https://img.shields.io/badge/ChatGPT-00bfff?style=flat-square&logo=openai&logoColor=white) | 私有GPT界面 |
-| [Beszel 服务器监控](./optional/beszel.md) ![Beszel](https://img.shields.io/badge/Beszel-ff4500?style=flat-square&logo=monitor&logoColor=white) | 服务器监控工具 |
-
----
-
-基建服务之间需要相互配合，以完成最基本的存储和影音需求。而可选服务则是个人的额外需求，用户可以根据需要选择安装与否。
+基建服务之间需要相互配合，以完成最基本的存储和影音需求。
