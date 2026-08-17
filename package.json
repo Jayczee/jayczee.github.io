@@ -2,8 +2,14 @@
   "name": "jayczee-docs",
   "description": "Whispering",
   "version": "2.0.0",
+  "packageManager": "pnpm@10.33.3",
   "license": "MIT",
   "type": "module",
+  "pnpm": {
+    "onlyBuiltDependencies": [
+      "esbuild"
+    ]
+  },
   "scripts": {
     "docs:build": "vuepress-vite build src",
     "docs:clean-dev": "vuepress-vite dev src --clean-cache",

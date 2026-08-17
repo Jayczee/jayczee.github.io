@@ -27,7 +27,6 @@ jobs:
       - name: 设置 pnpm
         uses: pnpm/action-setup@v4
         with:
-          version: 8
           run_install: false
 
 
@@ -38,10 +37,7 @@ jobs:
           cache: pnpm
 
       - name: 安装依赖
-        run: |
-          pnpm install -g corepack@latest
-          corepack enable
-          pnpm install --frozen-lockfile
+        run: pnpm install --frozen-lockfile
 
       - name: 构建文档
         env:
