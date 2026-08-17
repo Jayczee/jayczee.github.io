@@ -6,10 +6,12 @@
     <link>https://jayczee.cn/</link>
     <description>Whispering for nothing</description>
     <language>zh-CN</language>
-    <pubDate>Tue, 28 Apr 2026 02:30:12 GMT</pubDate>
-    <lastBuildDate>Tue, 28 Apr 2026 02:30:12 GMT</lastBuildDate>
+    <pubDate>Mon, 17 Aug 2026 03:24:09 GMT</pubDate>
+    <lastBuildDate>Mon, 17 Aug 2026 03:24:09 GMT</lastBuildDate>
     <generator>@vuepress/plugin-feed</generator>
     <docs>https://validator.w3.org/feed/docs/rss2.html</docs>
+    <category>Other</category>
+    <category>NAS</category>
     <category>VPS</category>
     <category>Proxy</category>
     <category>Linux</category>
@@ -18,10 +20,50 @@
     <category>Windows</category>
     <category>Code</category>
     <category>学习笔记</category>
-    <category>Other</category>
     <category>LeetCode</category>
     <category>OpenClash</category>
-    <category>NAS</category>
+    <item>
+      <title>从开头到现在各种ai中转站使用历程</title>
+      <link>https://jayczee.cn/blog/ai-relay-note.html</link>
+      <guid>https://jayczee.cn/blog/ai-relay-note.html</guid>
+      <source url="https://jayczee.cn/rss.xml">从开头到现在各种ai中转站使用历程</source>
+      <description>刚开始接触AI大概是在22年底到23年初这段时间。当时Copilot和GPT-3.5横空出世，真的是降维打击，相比之下同期出来的文心一言简直就是来做搞笑衬托的。 当时为了白嫖，满脑子想着怎么薅GitHub的学生包拿那一年的Copilot免费试用。结果我的号也不知道怎么回事，似乎黑得不行，找了好几家代认证的商家帮我搞资料最后全军覆没，大家统一得出结论：我...</description>
+      <category>Other</category>
+      <pubDate>Mon, 17 Aug 2026 02:48:10 GMT</pubDate>
+      <content:encoded><![CDATA[<p>刚开始接触AI大概是在22年底到23年初这段时间。当时Copilot和GPT-3.5横空出世，真的是降维打击，相比之下同期出来的文心一言简直就是来做搞笑衬托的。</p>
+<p>当时为了白嫖，满脑子想着怎么薅GitHub的学生包拿那一年的Copilot免费试用。结果我的号也不知道怎么回事，似乎黑得不行，找了好几家代认证的商家帮我搞资料最后全军覆没，大家统一得出结论：我的号被彻底风控了。没办法，最后只能妥协去买那种商家已经过了认证的GitHub学生包号池来用。不过那也是我头一次体验到写代码时按一下Tab键直接一键补全的快感，真的是用了就回不去了。</p>
+<p>后来有一阵子我特别沉迷于自己折腾搭建各种AI对话面板（比如NextChat之类的）。偶然在某个开源项目的ReadMe里得知了一家API中转站，没多想就试水充了大概100块钱，把API接入到自己搭的面板里。那也是我第一次真正用上GPT-4系列来辅助开发，遇到代码问题直接扔进去问，回答得非常流畅，效率提升了一大截。</p>
+<p>尝到甜头后，我又在GitHub上扒出了cline这个项目，这应该算是比较早的VSCode插件形式的Agent了。不过说实话，当时的体验一般，不管是那时候的模型智商，还是Agent本身的执行逻辑，跟现在的工具比起来还是差了点意思。</p>
+<p>时间来到24年，这算是个转折点。通过朋友的介绍我加入了L站（<a href="http://Linux.do" target="_blank" rel="noopener noreferrer">Linux.do</a>），在里面算是打开了新世界的大门。从论坛里了解到Claude code和codex，之后就完全投入了CLI的怀抱，命令行里敲几下就能解决问题。</p>
+<p>而且当时赶上了好时候，这两家官方的MAX套餐都还是不限量的状态。于是圈子里百花齐放，大家各种搞中转站号池、搭NewAPI，价格也是真的低到离谱。大概0.6一刀就能用到Claude，GPT更是只要0.2一刀。那段时间真的是爽用，完全不用考虑Token成本，随便造。</p>
+<p>可惜好景不长，官方肯定是被这帮中转薅得肉疼了，开始痛下杀手，给各个套餐加上了严格的限额。这一下中转圈可以说是大洗牌，死的死伤的伤。活下来的那些不仅质量直线下降，价格也跟着水涨船高。</p>
+<p>就拿我一直用的Duckcoding来说，价格变贵了不说，用Claude还经常遇到断流的恶心情况。有时候等它处理一个复杂问题，卡了几分钟眼看就要出结果了，它自己突然停了，体验甚至还不如一些用爱发电的公益站。</p>
+<p>尽管环境变差了，但即便是现在，中转站这行的利润空间依然非常可观，连一些正经的新闻媒体都发帖正告，说AI中转站已经属于灰色产业了。</p>
+<p>现在真正用量大的人，基本都被逼得去走另一条路：想尽办法去搞家庭宽带的纯净IP，尽可能把自己伪装成一个老老实实的本地人，去直接购买官方的Claude套餐。但即便是这样，Anthropic的封号潮依然是一波接一波，防不胜防。相比之下，OpenAI就显得温和多了，我自己官方正价购买的ChatGPT Plus就一直很稳，从来没有断过。</p>
+<p>当然了，现在我的使用策略也变了。如果这段时间AI用量比较少，我还是会去买点公益站或者便宜中转的额度顶一顶，毕竟按量付费的成本比雷打不动每个月交钱包月要低得多。只有把这两者结合起来看情况切换，才能最大程度节省开支。</p>
+]]></content:encoded>
+    </item>
+    <item>
+      <title>Codex 兜底 Moviepilot</title>
+      <link>https://jayczee.cn/nas/error-fix-by-codex.html</link>
+      <guid>https://jayczee.cn/nas/error-fix-by-codex.html</guid>
+      <source url="https://jayczee.cn/rss.xml">Codex 兜底 Moviepilot</source>
+      <description>缘由 moviepilot自动刮削资源经常会出错 比如无职转生第三季，自动刮削的元数据，第一集和第二集竟然单独放在一个文件夹中，第三集之后又单独放在一个文件夹中。 动漫电影你好世界元数据直接刮削失败。 怦然心动这么经典的老电影也刮削不到。 手动去调整非常费时费力。 解决 今天突然想到让codex去接管我的nas，这些服务我全部署在docker中，从服务...</description>
+      <category>NAS</category>
+      <pubDate>Mon, 17 Aug 2026 02:48:10 GMT</pubDate>
+      <content:encoded><![CDATA[<h2>缘由</h2>
+<p>moviepilot自动刮削资源经常会出错</p>
+<p>比如无职转生第三季，自动刮削的元数据，第一集和第二集竟然单独放在一个文件夹中，第三集之后又单独放在一个文件夹中。</p>
+<p>动漫电影你好世界元数据直接刮削失败。</p>
+<p>怦然心动这么经典的老电影也刮削不到。</p>
+<p>手动去调整非常费时费力。</p>
+<h2>解决</h2>
+<p>今天突然想到让codex去接管我的nas，这些服务我全部署在docker中，从服务的ui去调整这些bug非常麻烦，但是codex可以直接从数据库、源文件方面入手。</p>
+<p>配置好了ssh免密，让codex从内网访问nas。简单的提示词下，不一会儿就精准的找到了我描述的问题，还举一反三的列出了其他元数据缺失的资源及其原因。</p>
+<p>一句<em>修复</em>打出后，短短二十分钟，nas成年累月积累下来的数据上的小毛病一扫而空，清爽干净~</p>
+<p>最后仔细地研究一遍修复内容报告，不然真怕以后变得越来越懒，啥也不管就是一句话。</p>
+]]></content:encoded>
+    </item>
     <item>
       <title>VPS 常见概念笔记</title>
       <link>https://jayczee.cn/system/vps-common-concept.html</link>
@@ -5041,38 +5083,6 @@ Docker 默认的运行时是 runc，它不支持 NVIDIA GPU 加速。为了使�
 <p>此处规则代理，<strong>系统代理</strong>选择<strong>关闭</strong>，因为仅选择性使用代理。在需要代理时，将代理地址设置为本机的对应代理端口，不需要服务代理所有的系统请求。</p>
 ]]></content:encoded>
       <enclosure url="https://jayczee.cn/assets/images/nas/v2ray/v-1.png" type="image/png"/>
-    </item>
-    <item>
-      <title>Alist 私有云盘</title>
-      <link>https://jayczee.cn/nas/optional/alist.html</link>
-      <guid>https://jayczee.cn/nas/optional/alist.html</guid>
-      <source url="https://jayczee.cn/rss.xml">Alist 私有云盘</source>
-      <category>NAS</category>
-      <pubDate>Fri, 10 Jan 2025 06:48:26 GMT</pubDate>
-    </item>
-    <item>
-      <title>Beszel 服务器仪表盘</title>
-      <link>https://jayczee.cn/nas/optional/beszel.html</link>
-      <guid>https://jayczee.cn/nas/optional/beszel.html</guid>
-      <source url="https://jayczee.cn/rss.xml">Beszel 服务器仪表盘</source>
-      <category>NAS</category>
-      <pubDate>Fri, 10 Jan 2025 06:48:26 GMT</pubDate>
-    </item>
-    <item>
-      <title>Chatgpt 对话面板</title>
-      <link>https://jayczee.cn/nas/optional/gpt.html</link>
-      <guid>https://jayczee.cn/nas/optional/gpt.html</guid>
-      <source url="https://jayczee.cn/rss.xml">Chatgpt 对话面板</source>
-      <category>NAS</category>
-      <pubDate>Fri, 10 Jan 2025 06:48:26 GMT</pubDate>
-    </item>
-    <item>
-      <title>Teamspeak 私有语音服务器</title>
-      <link>https://jayczee.cn/nas/optional/teamspeak.html</link>
-      <guid>https://jayczee.cn/nas/optional/teamspeak.html</guid>
-      <source url="https://jayczee.cn/rss.xml">Teamspeak 私有语音服务器</source>
-      <category>NAS</category>
-      <pubDate>Fri, 10 Jan 2025 06:48:26 GMT</pubDate>
     </item>
   </channel>
 </rss>
