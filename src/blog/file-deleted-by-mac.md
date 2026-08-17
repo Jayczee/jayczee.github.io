@@ -1,10 +1,11 @@
 ---
 title: 踩坑记录 — 关于Mac云同步导致视频素材丢失的坑
 categories:
-	- Other
+  - Other
 tags:
   - Mac
   - iCloud
+order: 2
 ---
 
 # 踩坑记录
