@@ -54,24 +54,11 @@ jobs:
       - name: Configure SSH
         env:
           SSH_PRIVATE_KEY: ${{ secrets.SSH_PRIVATE_KEY }}
-          REMOTE_HOST: ${{ secrets.REMOTE_HOST }}
-          REMOTE_USER: ${{ secrets.REMOTE_USER }}
-          SSH_KNOWN_HOSTS: ${{ secrets.SSH_KNOWN_HOSTS }}
         run: |
           test -n "$SSH_PRIVATE_KEY"
-          test -n "$REMOTE_HOST"
-          test -n "$REMOTE_USER"
           install -d -m 700 ~/.ssh
           printf '%s\n' "$SSH_PRIVATE_KEY" > ~/.ssh/id_rsa
           chmod 600 ~/.ssh/id_rsa
-          if [ -n "$SSH_KNOWN_HOSTS" ]; then
-            printf '%s\n' "$SSH_KNOWN_HOSTS" > ~/.ssh/known_hosts
-          else
-            ssh-keyscan -T 10 -H "$REMOTE_HOST" > ~/.ssh/known_hosts
-          fi
-          chmod 600 ~/.ssh/known_hosts
-          ssh -o BatchMode=yes -o StrictHostKeyChecking=yes "$REMOTE_USER@$REMOTE_HOST" \
-            'command -v rsync >/dev/null && test -d /www/jayczee-docs && test -w /www/jayczee-docs'
 
       - name: Deploy to GitHub Pages
         uses: JamesIves/github-pages-deploy-action@v4
@@ -88,7 +75,7 @@ jobs:
           rsync -rlpz --delete-delay --delay-updates --chmod=Du=rwx,Dgo=rx,Fu=rw,Fgo=r \
             --exclude='/.well-known/' \
             --exclude='/.user.ini' \
-            -e 'ssh -o BatchMode=yes -o StrictHostKeyChecking=yes' \
+            -e 'ssh -o BatchMode=yes -o StrictHostKeyChecking=no -o UserKnownHostsFile=/dev/null' \
             dist/ "$REMOTE_USER@$REMOTE_HOST:/www/jayczee-docs/"
 
       - name: Remove SSH credentials
