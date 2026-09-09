@@ -1,5 +1,4 @@
+User-agent: *
+Disallow: /_astro/
 
-User-agent:*
-Disallow:
-
-Sitemap: https://jayczee.cn/sitemap.xml
+Sitemap: https://jayczee.cn/sitemap-index.xml
