@@ -3,6 +3,7 @@ title: 🌸 日本5天4晚自由行记
 published: 2025-05-21
 updated: 2026-03-09
 description: 大阪、东京和富士山的五天四晚自由行，记录护照签证、交通住宿以及旅途中的体验。
+image: /assets/images/travel-japan-fuji.jpg
 category: 生活随笔
 tags:
   - 日本旅行
