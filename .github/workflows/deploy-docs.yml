@@ -72,11 +72,8 @@ jobs:
           REMOTE_HOST: ${{ secrets.REMOTE_HOST }}
           REMOTE_USER: ${{ secrets.REMOTE_USER }}
         run: |
-          rsync -rlpz --delete-delay --delay-updates --chmod=Du=rwx,Dgo=rx,Fu=rw,Fgo=r \
-            --exclude='/.well-known/' \
-            --exclude='/.user.ini' \
-            -e 'ssh -o BatchMode=yes -o StrictHostKeyChecking=no -o UserKnownHostsFile=/dev/null' \
-            dist/ "$REMOTE_USER@$REMOTE_HOST:/www/jayczee-docs/"
+          scp -r -o BatchMode=yes -o StrictHostKeyChecking=no -o UserKnownHostsFile=/dev/null \
+            dist/* "$REMOTE_USER@$REMOTE_HOST:/www/jayczee-docs/"
 
       - name: Remove SSH credentials
         if: always()
