@@ -1,0 +1,25 @@
+---
+import MainGridLayout from "../layouts/MainGridLayout.astro";
+import { getSeriesList } from "../utils/series-utils";
+import { getPostUrlBySlug } from "../utils/url-utils";
+const series = await getSeriesList();
+---
+<MainGridLayout title="专题" description="NAS 搭建、算法题解与日语语法的系列文章。">
+    <div class="px-6 md:px-9 py-6 text-75">
+        <h1 class="mb-8 text-3xl font-bold text-90">专题</h1>
+        {series.map((group) => (
+            <section id={group.id} class="mb-10 scroll-mt-24">
+                <h2 class="text-xl font-bold text-90">{group.name}</h2>
+                <p class="my-3 text-sm text-75">{group.description} 共 {group.posts.length} 篇。</p>
+                <ol class="divide-y divide-[var(--line-divider)]">
+                    {group.posts.map((post, index) => (
+                        <li><a class="flex gap-3 py-3 hover:text-[var(--primary)] transition" href={getPostUrlBySlug(post.slug)}>
+                            <span class="w-6 shrink-0 text-50 tabular-nums">{index + 1}</span>
+                            <span class="min-w-0 break-words">{post.data.title}</span>
+                        </a></li>
+                    ))}
+                </ol>
+            </section>
+        ))}
+    </div>
+</MainGridLayout>

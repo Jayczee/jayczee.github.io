@@ -1,0 +1,20 @@
+---
+import { getSeriesList } from "../utils/series-utils";
+import { getPostUrlBySlug, url } from "../utils/url-utils";
+interface Props { name?: string; slug: string; }
+const { name, slug } = Astro.props;
+const series = name ? (await getSeriesList()).find((item) => item.name === name) : undefined;
+const index = series?.posts.findIndex((post) => post.slug === slug) ?? -1;
+const previous = series?.posts[index - 1];
+const next = series?.posts[index + 1];
+---
+{series && index >= 0 && (
+    <nav aria-label="专题阅读" class="mb-6 border-y border-[var(--line-divider)] py-4 text-sm">
+        <a href={url(`/series/#${series.id}`)} class="link font-medium text-[var(--primary)]">{series.name}</a>
+        <span class="text-50 ml-2">{index + 1} / {series.posts.length}</span>
+        <div class="mt-3 grid gap-2 md:grid-cols-2 text-75">
+            {previous ? <a class="link break-words" rel="prev" href={getPostUrlBySlug(previous.slug)}>上一篇：{previous.data.title}</a> : <span />}
+            {next && <a class="link break-words md:text-right" rel="next" href={getPostUrlBySlug(next.slug)}>下一篇：{next.data.title}</a>}
+        </div>
+    </nav>
+)}

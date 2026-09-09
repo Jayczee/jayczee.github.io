@@ -1,67 +1,96 @@
-
-name: Deploy Docs
+name: Deploy Blog
 
 on:
   push:
-    branches:
-      - main
+    branches: [main]
+  workflow_dispatch:
 
 permissions:
   contents: write
 
 concurrency:
-  group: ${{ github.ref }}  # 使用分支名作为分组
-  cancel-in-progress: true   # 取消进行中的工作流
+  group: deploy-blog-${{ github.ref }}
+  cancel-in-progress: false
 
 jobs:
-  deploy-gh-pages:
+  deploy:
     runs-on: ubuntu-latest
+    timeout-minutes: 20
     steps:
       - name: Checkout
         uses: actions/checkout@v4
-        with:
-          fetch-depth: 0
-          # 如果你文档需要 Git 子模块，取消注释下一行
-          # submodules: true
 
-      - name: 设置 pnpm
+      - name: Set up pnpm
         uses: pnpm/action-setup@v4
         with:
           run_install: false
 
-
-      - name: 设置 Node.js
+      - name: Set up Node.js
         uses: actions/setup-node@v4
         with:
-          node-version: 22
+          node-version-file: .nvmrc
           cache: pnpm
 
-      - name: 安装依赖
+      - name: Install dependencies
         run: pnpm install --frozen-lockfile
 
-      - name: 构建文档
+      - name: Check Astro
+        run: pnpm check
+
+      - name: Build blog and search index
         env:
           NODE_OPTIONS: --max_old_space_size=8192
-        run: |-
-          pnpm run docs:build
-          > src/.vuepress/dist/.nojekyll
+        run: pnpm build
 
-      - name: 部署文档
+      - name: Verify deployment files
+        run: |
+          test -s dist/index.html
+          test -s dist/pagefind/pagefind.js
+          test -s dist/rss.xml
+          test -s dist/sitemap-index.xml
+          test -f dist/.nojekyll
+          test "$(cat dist/CNAME)" = "jayczee.cn"
+
+      - name: Configure SSH
+        env:
+          SSH_PRIVATE_KEY: ${{ secrets.SSH_PRIVATE_KEY }}
+          REMOTE_HOST: ${{ secrets.REMOTE_HOST }}
+          REMOTE_USER: ${{ secrets.REMOTE_USER }}
+          SSH_KNOWN_HOSTS: ${{ secrets.SSH_KNOWN_HOSTS }}
+        run: |
+          test -n "$SSH_PRIVATE_KEY"
+          test -n "$REMOTE_HOST"
+          test -n "$REMOTE_USER"
+          install -d -m 700 ~/.ssh
+          printf '%s\n' "$SSH_PRIVATE_KEY" > ~/.ssh/id_rsa
+          chmod 600 ~/.ssh/id_rsa
+          if [ -n "$SSH_KNOWN_HOSTS" ]; then
+            printf '%s\n' "$SSH_KNOWN_HOSTS" > ~/.ssh/known_hosts
+          else
+            ssh-keyscan -T 10 -H "$REMOTE_HOST" > ~/.ssh/known_hosts
+          fi
+          chmod 600 ~/.ssh/known_hosts
+          ssh -o BatchMode=yes -o StrictHostKeyChecking=yes "$REMOTE_USER@$REMOTE_HOST" \
+            'command -v rsync >/dev/null && test -d /www/jayczee-docs && test -w /www/jayczee-docs'
+
+      - name: Deploy to GitHub Pages
         uses: JamesIves/github-pages-deploy-action@v4
         with:
-          # 部署文档
           branch: gh-pages
-          folder: src/.vuepress/dist
+          folder: dist
+          clean: true
 
-      - name: 设置 SSH 密钥
-        run: |
-          mkdir -p ~/.ssh
-          echo "${{ secrets.SSH_PRIVATE_KEY }}" > ~/.ssh/id_rsa
-          chmod 600 ~/.ssh/id_rsa
-      
-      - name: 部署文档到服务器
+      - name: Deploy to server
         env:
           REMOTE_HOST: ${{ secrets.REMOTE_HOST }}
           REMOTE_USER: ${{ secrets.REMOTE_USER }}
         run: |
-          scp -r -o StrictHostKeyChecking=no -o UserKnownHostsFile=/dev/null src/.vuepress/dist/* $REMOTE_USER@$REMOTE_HOST:/www/jayczee-docs/
+          rsync -rlpz --delete-delay --delay-updates --chmod=Du=rwx,Dgo=rx,Fu=rw,Fgo=r \
+            --exclude='/.well-known/' \
+            --exclude='/.user.ini' \
+            -e 'ssh -o BatchMode=yes -o StrictHostKeyChecking=yes' \
+            dist/ "$REMOTE_USER@$REMOTE_HOST:/www/jayczee-docs/"
+
+      - name: Remove SSH credentials
+        if: always()
+        run: rm -f ~/.ssh/id_rsa ~/.ssh/known_hosts
