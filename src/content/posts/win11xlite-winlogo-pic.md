@@ -6,7 +6,6 @@ description: 记录 Windows 11 X-Lite 未登录锁屏壁纸的修改尝试和最
 category: 系统与工具
 tags:
   - Windows
-  - 系统定制
 draft: false
 ---
 

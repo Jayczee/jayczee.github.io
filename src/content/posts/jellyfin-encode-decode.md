@@ -6,8 +6,6 @@ description: 理解直接播放、转码和硬件解码，安装 NVIDIA 驱动�
 category: NAS 与影音
 tags:
   - Jellyfin
-  - NVIDIA
-  - 硬件转码
 draft: false
 ---
 
@@ -135,9 +133,9 @@ services:
               - gpu
 ```
 
-:::tip
+:::tip[提示]
 如果安装过程中提示：
-```
+```text
 ERROR: Unable to find the kernel source tree for the currently running kernel. Please make sure you have installed the kernel source files for your kernel and that they are properly configured; on Red Hat Linux systems, for example, be sure you have the 'kernel-source' or 'kernel-devel' RPM installed. If you know the correct kernel source files are installed, you may specify the kernel source path with the '--kernel-source-path' command line option.
 ```
 
@@ -151,7 +149,7 @@ sudo apt-get install linux-headers-$(uname -r)
 
 另外，关于nvidia-container-runtime, 引用ai的回答:
 
-:::tip
+:::tip[提示]
 在 Docker 中，当你需要使用 NVIDIA GPU 加速时，通常会使用 nvidia-container-runtime 作为容器的运行时。这个运行时是由 NVIDIA 提供的，它允许容器访问宿主机的 GPU 资源。
 
 如果你在创建容器时遇到 unknown or invalid runtime name: nvidia 的错误，这是因为 Docker 默认并不知道 nvidia 这个运行时。你需要显式地配置 Docker，告诉它 nvidia 运行时对应的路径和参数。
@@ -162,6 +160,7 @@ Docker 默认的运行时是 runc，它不支持 NVIDIA GPU 加速。为了使�
 2. 如何配置 Docker 使用 nvidia-container-runtime？
 你需要在 Docker 的配置文件（通常是 /blog/docker/daemon.json）中添加以下内容：
 
+```json title="daemon.json"
 {
     "runtimes": {
         "nvidia": {
@@ -171,7 +170,9 @@ Docker 默认的运行时是 runc，它不支持 NVIDIA GPU 加速。为了使�
     },
     "default-runtime": "nvidia"
 }
+```
+
 解释：
 "runtimes": 定义了可用的运行时。你在这里添加了一个名为 nvidia 的运行时，并指定了它的路径 nvidia-container-runtime。
 "default-runtime": 指定了 Docker 默认使用的运行时。在这里，你将其设置为 nvidia，这样所有容器默认都会使用 nvidia-container-runtime
-```
+:::

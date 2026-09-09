@@ -6,8 +6,6 @@ description: 将物流面单 PDF 渲染成图片，通过条码识别提取 FedE
 category: 开发实践
 tags:
   - Java
-  - PDF
-  - 条码识别
   - 物流
 draft: false
 ---

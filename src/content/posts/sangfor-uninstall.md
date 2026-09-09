@@ -6,8 +6,7 @@ description: 排查深信服软件卸载后的残留服务、驱动和注册表�
 category: 系统与工具
 tags:
   - Windows
-  - PowerShell
-  - 故障排查
+  - 命令行
 draft: false
 ---
 
@@ -39,7 +38,7 @@ Win + R输入services.msc，Ctrl + Shift + Enter管理员运行，无效，仍�
 
 cmd运行`driverquery | findstr /i sangfor`，找到以下输出，说明还有残留驱动：
 
-```bash
+```text
 SangforVnic  Sangfor SSL VPN CS Sup Kernel        2012/11/20 20:31:43
 ```
 
@@ -55,7 +54,7 @@ SangforVnic  Sangfor SSL VPN CS Sup Kernel        2012/11/20 20:31:43
 
 通过询问gpt得知，这仅是一个绑定关系，表示某个COM组件启动时需要用到`SangforPWEx`服务，通过`sc query SangforPWEx`寻找相关的依赖，得到以下输出：
 
-```bash
+```text
 [SC] EnumQueryServicesStatus:OpenService 失败 1060:
 ```
 
@@ -63,7 +62,7 @@ SangforVnic  Sangfor SSL VPN CS Sup Kernel        2012/11/20 20:31:43
 
 上面因为已经删掉了相关服务，这些注册项已经属于无用注册项了，可以找一些注册表清理软件删除这些无用注册项，或者使用以下脚本专门删除Sangfor相关注册项（保存为xxx.ps1然后用pwsh运行）。
 
-```bash
+```powershell
 <#
 .SYNOPSIS
   Find & remove Sangfor leftovers (COM/AppID/TypeLib/etc.) with backup.

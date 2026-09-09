@@ -7,8 +7,6 @@ category: 系统与工具
 tags:
   - Linux
   - 文件系统
-  - 硬链接
-  - 软链接
 draft: false
 ---
 
@@ -155,7 +153,7 @@ mv myfile.txt /path/to/destination/
 
 ---
 
-::: tip
+:::tip[提示]
 **注意**：在执行文件操作时，务必小心，确保不会误删重要数据。尤其是在进行移动和删除操作时，建议提前备份重要文件。
 :::
 

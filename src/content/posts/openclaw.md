@@ -6,8 +6,6 @@ description: 在 Debian NAS 上安装 OpenClaw，完成 Gateway 配置并访问 
 category: AI 与大模型
 tags:
   - OpenClaw
-  - AI Agent
-  - Debian
 draft: false
 ---
 
@@ -43,7 +41,7 @@ curl -fsSL https://openclaw.ai/install.sh | bash
 
 Openclaw doctor会检查gateway状态，如果没有安装或配置，会提示以下相关信息：
 
-```bash
+```text
 gateway.mode is unset; gateway start will be blocked.            
 Fix: run openclaw configure and set Gateway mode (local/remote). 
 Or set directly: openclaw config set gateway.mode local          
@@ -85,7 +83,7 @@ Missing config: run openclaw setup first.
 
 openclaw官方很贴心的检测到并提示我们可以用打隧道的方式，直接端口转发。
 
-```bash
+```text
 Dashboard URL: http://127.0.0.1:18789/#token=xxx
 Copy to clipboard unavailable.
 No GUI detected. Open from your computer:
@@ -100,9 +98,9 @@ https://docs.openclaw.ai/web/control-ui
 
 在同一局域网的有GUI的机器，比如windows，macos，或者带GUI 的linux运行上述命令，然后访问地址即可。
 
-::::warning
+:::warning[注意]
 请确保openclaw的gateway已经启动，否则没有服务在监听对应端口时是无法打通隧道的。
-::::
+:::
 
 打通隧道后没有什么提示，弄得我一度以为没有打通隧道。
 

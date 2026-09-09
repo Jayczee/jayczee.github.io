@@ -7,7 +7,6 @@ category: 网络与服务
 tags:
   - Docker
   - 代理配置
-  - Linux
 draft: false
 ---
 
@@ -38,7 +37,7 @@ sudo vim /blog/systemd/system/docker.service.d/http-proxy.conf
 
 在文件中输入如下内容：
 
-```bash
+```ini title="http-proxy.conf"
 [Service]
 Environment="HTTP_PROXY=http://proxy_address:port"
 Environment="HTTPS_PROXY=http://proxy_address:port"

@@ -6,7 +6,6 @@ description: 理解镜像和容器，以及在个人 NAS 上用 Docker 部署服
 category: NAS 与影音
 tags:
   - Docker
-  - 容器
 draft: false
 series: 从零搭建 NAS
 seriesOrder: 1

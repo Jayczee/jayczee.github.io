@@ -5,7 +5,6 @@ updated: 2026-03-09
 description: 配合 DNS 服务商插件申请 Let’s Encrypt 证书，并配置自动续期。
 category: 网络与服务
 tags:
-  - Certbot
   - HTTPS
   - DNS
 draft: false
@@ -61,7 +60,7 @@ certbot certonly -d "*.example.com" --manual --preferred-challenges dns-01 # 改
 
 ### 📜 结果示例
 
-```bash
+```text
 # certbot certonly -d "*.example.com" -d example.com --manual --preferred-challenges dns-01
 Saving debug log to /blog/letsencrypt/log/letsencrypt.log
 - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
@@ -84,7 +83,7 @@ value(s) you ve just added.
 
 根据上述结果，需要在域名服务商处添加一条 **TXT** 类型的解析记录，并且值为 Certbot 给出的值。**添加完后再按 Enter 继续**，之后 Certbot 会验证是否存在该解析记录，若验证成功，Certbot 会继续创建证书。
 
-```bash
+```text
 Successfully received certificate.
 Certificate is saved at: /blog/letsencrypt/live/******/fullchain.pem
 Key is saved at:         /blog/letsencrypt/live/******/privkey.pem
@@ -100,7 +99,7 @@ This certificate will not be renewed automatically. Autorenewal of --manual cert
 
 ## ⚠️ 提示
 
-::: tip
+:::tip[提示]
 **DNS-01** 是一种用于域名所有权验证的挑战类型。在使用 SSL 证书申请时，证书颁发机构需要确认申请者对域名的控制权。DNS-01 挑战的具体步骤如下：
 
 1. **生成挑战**：请求证书时，证书颁发机构会生成一个特定的挑战字符串。

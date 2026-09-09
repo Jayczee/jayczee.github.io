@@ -7,7 +7,6 @@ category: NAS 与影音
 tags:
   - MoviePilot
   - Docker
-  - 媒体整理
 draft: false
 series: 从零搭建 NAS
 seriesOrder: 10
@@ -96,11 +95,11 @@ networks:
 
 此处使用的是 moviepilot-v2 版本，特别设置了 `SUPERUSER=jayczee`，管理员用户名设为 jayczee，同时设置了代理地址 (参考 [V2rayN & V2rayA](/posts/9-v2rayn/))，方便镜像从 GitHub 上更快速抓取项目。
 
-::: tip
+:::tip[提示]
 moviepilot 容器启动后，需要等待一段时间。容器会从 GitHub 上抓取前后端代码进行编译，速度比较慢，可以从 Portainer 中查看容器 log 了解进度。即便 log 中已经显示了 web 服务的地址且能够访问，但在实际登录管理员账号时会提示 502 或 404 等错误。这实际上是由于容器中的后端服务尚未完全部署完毕。当时踩了这个坑很久，一度对自己产生怀疑。
 :::
 
-::: warning
+:::warning[注意]
 moviepilot 内置了一个 nginx 来反向代理其中的 web 服务，修改上述的 NGINX_PORT 属性时，需要同步修改 ports 中的 target 与 published 端口。
 :::
 
@@ -124,7 +123,7 @@ moviepilot 内置了一个 nginx 来反向代理其中的 web 服务，修改上
 
 ![设置下载器相关参数](/assets/images/nas/moviepilot/moviepilot-5.png)
 
-::: tip
+:::tip[提示]
 下载器的地址，如果 Moviepilot 没有使用 host 模式（默认配置是这样，使用 host 会占用比较多的端口），则需要进入 Portainer 查看网关（即宿主机）的内网 IP 地址，然后通过宿主机连接对应的下载器的地址。
 
 ![查看Moviepilot网关地址](/assets/images/nas/moviepilot/moviepilot-6.png)
@@ -156,7 +155,7 @@ moviepilot 内置了一个 nginx 来反向代理其中的 web 服务，修改上
 
 整理方式选择硬链接 (相关文档: [软硬链接的区别](/posts/link/))，覆盖模式选择保留最新文件。
 
-::: tip
+:::tip[提示]
 我个人的目录结构如下：
 - 电影下载保存地址： `/mnt/data_hdd1/download_movie`
 - 整理后地址：`/mnt/data_hdd1/movie`

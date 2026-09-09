@@ -5,8 +5,6 @@ description: 整理 VPS 落地机、中转机、IP 类型和网络线路等常�
 category: 网络与服务
 tags:
   - VPS
-  - 网络线路
-  - IP 地址
 draft: false
 ---
 

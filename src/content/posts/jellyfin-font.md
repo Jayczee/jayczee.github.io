@@ -5,8 +5,6 @@ description: 为 Jellyfin 容器安装中文字体，解决播放时字幕显示
 category: NAS 与影音
 tags:
   - Jellyfin
-  - 字幕
-  - 字体
 draft: false
 ---
 

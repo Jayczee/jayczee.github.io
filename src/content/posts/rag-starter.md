@@ -6,9 +6,6 @@ description: 从 Markdown 文档开始，用 Python、Embedding 和 FAISS 串起
 category: AI 与大模型
 tags:
   - RAG
-  - Embedding
-  - Python
-  - FAISS
 draft: false
 ---
 

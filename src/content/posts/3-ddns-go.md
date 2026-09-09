@@ -5,7 +5,6 @@ updated: 2025-01-15
 description: 部署 DDNS-GO，将变化的公网 IP 自动更新到域名解析记录中。
 category: 网络与服务
 tags:
-  - DDNS
   - DNS
   - Docker
 draft: false
@@ -86,7 +85,7 @@ docker run -d --name ddns-go --restart=always --net=host -v /opt/ddns-go:/root j
 
 下方的**Build method**选择默认的**Web editor**，然后在编辑器内填写以下内容：
 
-```bash
+```yaml title="compose.yaml"
 services:
   ddns-go:
     image: jeessy/ddns-go

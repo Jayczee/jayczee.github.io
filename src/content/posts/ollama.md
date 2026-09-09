@@ -6,8 +6,6 @@ description: 用 Ollama 在 Windows 上下载和运行 DeepSeek R1 蒸馏模型�
 category: AI 与大模型
 tags:
   - Ollama
-  - DeepSeek
-  - 本地部署
 draft: false
 image: /assets/images/windows/ollama/ollama.png
 ---
@@ -60,11 +58,11 @@ Ollama是一个创新的平台，旨在简化人工智能模型的使用与部�
 
 ![Deepseek R1 不同版本及显存或内存需求](/assets/images/windows/ollama/o-5.png)
 
-:::warning
+:::warning[注意]
 **注意**：Deepseek R1实际上并没有14b的版本，只有671b的原版。tags中显示的7b、8b等其他版本均为通过Qwen模型进行提炼的更小版本。
 :::
 
-:::tip
+:::tip[提示]
 大模型在推理时，会将参数（param）加载到显存或内存中。如果计算机配备了高性能显卡进行推理，将参数加载到显存中比加载到内存中进行推理要更快。
 :::
 

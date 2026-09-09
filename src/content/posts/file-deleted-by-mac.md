@@ -6,7 +6,6 @@ description: 日本旅行的视频素材在 Mac 云同步过程中丢失，记�
 category: 生活随笔
 tags:
   - macOS
-  - 云同步
   - 数据备份
 draft: false
 ---

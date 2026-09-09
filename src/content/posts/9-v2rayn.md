@@ -5,8 +5,6 @@ updated: 2026-03-09
 description: 安装 V2Ray 和 v2rayA，配置代理节点、连接方式与分流规则。
 category: 网络与服务
 tags:
-  - V2Ray
-  - v2rayA
   - 代理配置
 draft: false
 series: 从零搭建 NAS

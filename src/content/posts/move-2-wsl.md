@@ -8,7 +8,6 @@ tags:
   - WSL2
   - Windows
   - Linux
-  - 开发环境
 draft: false
 ---
 
@@ -29,7 +28,7 @@ WSL2与Windows目前的适配非常棒。
 我比较喜欢Debian系统，所以wsl2中安装的也是debian。
 
 安装命令：
-```bash
+```powershell
 wsl --install -d Debian
 ```
 
@@ -38,7 +37,7 @@ wsl --install -d Debian
 wsl中安装的linux发行版似乎并非完全体，我下载的非常快，30s就下载安装完毕，直接可以启动了。
 
 检查wsl版本，确定版本是wsl2（在windows命令行中运行）：
-```bash
+```powershell
 wsl -l -v
 ```
 
@@ -58,13 +57,13 @@ wsl -l -v
     - A：wsl2会动态分配资源，并非像传统虚拟机和wsl1一样直接占用定量的资源。空闲不使用时不会占用CPU和GPU。且wsl2 的 GPU 访问是独立的接口，不会影响Windows中的驱动。
 
 在玩游戏前可执行命令来关闭wsl：
-```bash
+```powershell
 wsl --shutdown
 ```
 
-:::tip
+:::tip[提示]
 在宿主机windows中可以在命令行中运行：
-```bash
+```powershell
 wsl <具体命令>
 ```
 通过以上方法可以直接从windows中调用wsl环境下的命令，不用每次都单独进入运行wsl的cmd会话框。

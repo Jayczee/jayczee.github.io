@@ -6,7 +6,6 @@ description: 在软路由上配置 OpenClash，记录透明代理误分流问题
 category: 网络与服务
 tags:
   - OpenWrt
-  - OpenClash
   - 代理配置
 draft: false
 ---

@@ -5,7 +5,6 @@ updated: 2026-03-09
 description: 一次停电后的远程开机排查，记录 MAC 地址丢失、网络恢复和唤醒失败的问题。
 category: 网络与服务
 tags:
-  - Wake-on-LAN
   - OpenWrt
   - 远程访问
 draft: false

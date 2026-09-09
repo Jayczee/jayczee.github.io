@@ -7,7 +7,6 @@ category: NAS 与影音
 tags:
   - qBittorrent
   - Docker
-  - 下载管理
 draft: false
 series: 从零搭建 NAS
 seriesOrder: 7

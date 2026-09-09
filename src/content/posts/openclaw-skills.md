@@ -5,8 +5,6 @@ description: 通过 ClawHub 安装和配置 Skills，扩展 OpenClaw 的搜索�
 category: AI 与大模型
 tags:
   - OpenClaw
-  - Skills
-  - AI Agent
 draft: false
 ---
 

@@ -5,7 +5,6 @@ updated: 2025-03-21
 description: 安装 Portainer 管理面板，通过界面查看容器、镜像和存储卷。
 category: NAS 与影音
 tags:
-  - Portainer
   - Docker
 draft: false
 series: 从零搭建 NAS
@@ -29,7 +28,7 @@ Portainer简单来说是一款Docker管理面板程序，相同的程序还有�
 
 首先访问[Docker Hub](https://hub.docker.com)，在上方搜索栏中搜索portainer-ce，下载的是Portainer的社区CE（Community Edition）版，它还有商业版可供选择 🛠️。
 
-::: tip
+:::tip[提示]
 如果没有登录Docker Hub，可能会转到登录页面，没有账号可以注册一个，毕竟后续会经常使用。
 :::
 

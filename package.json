@@ -6,7 +6,9 @@
   "scripts": {
     "dev": "astro dev",
     "start": "astro dev",
-    "check": "astro check",
+    "check": "pnpm check:content && astro check",
+    "check:content": "node scripts/check-content.mjs",
+    "test:content": "node --test scripts/check-content.test.mjs",
     "build": "astro build && pagefind --site dist",
     "preview": "astro preview",
     "astro": "astro",

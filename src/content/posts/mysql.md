@@ -6,8 +6,6 @@ description: 《MySQL 是怎样运行的》读书笔记，涵盖记录结构、�
 category: 开发实践
 tags:
   - MySQL
-  - InnoDB
-  - 数据库
   - 读书笔记
 draft: false
 ---
@@ -767,7 +765,7 @@ mysql> SHOW TABLES LIKE 'innodb_sys%';
     ```
     Sort Union 是先根据 key1 < 'a' 从二级索引中获取主键记录进行排序，再根据 key3 > 'z' 从二级索引中获取主键记录进行排序，两个主键记录排序后再进行 Union 合并。
 
-    :::tip
+    :::tip[提示]
     之所以存在 Sort Union 合并，也仅是因为从二级索引中匹配到的记录较少，此时添加一个排序操作也不费时，才会使用 Sort Union 合并。
 
     之所以没有 Sort Interaction 合并，是因为 Interaction 合并原理是从二级索引中获取的记录过多，才取交集减少二级索引匹配记录数，若还要增加排序操作，则与设计初衷相违背。
@@ -897,7 +895,7 @@ mysql> SHOW TABLES LIKE 'innodb_sys%';
    - 使用 `SHOW INDEX` 语句展示出的 Cardinality 属性。
 
    已知：
-   ```
+   ```text
    一个值的重复次数 ≈ Rows ÷ Cardinality
    ```
    假设算出一个值的重复次数是 10 次，那么 IN 中有 20000 个参数时，其对应的记录数就直接估算为 10 * 20000 = 200000。
@@ -912,7 +910,7 @@ mysql> SHOW TABLES LIKE 'innodb_sys%';
 
     设计 MySQL 的大佬将这个猜测过程称为 **condition filtering**。此过程��能会使用索引，也可能使用统计数据，甚至可能是设计 MySQL 的大佬单纯的猜测，整个评估过程较复杂，不展开说明。
 
-    :::tip
+    :::tip[提示]
     在 MySQL 5.7 之前的版本中，查询优化器在计算驱动表扇出时，如果使用全表扫描，就直接使用表中记录的数量作为扇出值；如果使用索引，则直接使用满足范围条件的索引记录条数。MySQL 5.7 中引入了 condition filtering 功能，需猜测剩余搜索条件能过滤多少条记录，其实本质上是为了让成本估算更精确。所谓的纯粹猜测其实是很不严谨的，设计 MySQL 的大佬们称之为 **启发式规则**（heuristic）。
     :::
 

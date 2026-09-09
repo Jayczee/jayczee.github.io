@@ -5,9 +5,7 @@ updated: 2026-03-09
 description: 记录旧版 VuePress 博客的 Mac 风格代码块改造，以及 Shiki 高亮主题的配置。
 category: 开发实践
 tags:
-  - VuePress
-  - CSS
-  - 代码高亮
+  - 博客搭建
 draft: false
 ---
 

@@ -6,8 +6,6 @@ description: 比较 FedEx 物流状态查询的几种方案，记录 Selenium �
 category: 开发实践
 tags:
   - Java
-  - Selenium
-  - 爬虫
   - 物流
 draft: false
 ---
@@ -80,14 +78,14 @@ draft: false
 <span id="_1-页面提示-under-construction" class="legacy-anchor" aria-hidden="true"></span>
 
 ### 1. 页面提示 “Under Construction”
-::: warning
+:::warning[注意]
 在某些情况下，FedEx 页面会提示“Under Construction”，导致无法获取信息。为了解决这一问题，建议在代码中加入重试机制，以便在遇到此类问题时能够自动重试。
 :::
 
 <span id="_2-爬取速度慢" class="legacy-anchor" aria-hidden="true"></span>
 
 ### 2. 爬取速度慢
-::: tip
+:::tip[提示]
 由于每个单号的查询需要大约 10 秒钟，整体爬取速度较慢。为此，可以考虑使用多线程技术，开启多个窗口同时进行爬取。不过需要注意的是，多开 Chrome 浏览器会消耗大量内存，建议合理设置线程数量。
 :::
 
@@ -99,7 +97,7 @@ draft: false
 <span id="_4-访问频率过高被屏蔽" class="legacy-anchor" aria-hidden="true"></span>
 
 ### 4. 访问频率过高被屏蔽
-::: tip
+:::tip[提示]
 在进行大量查询时，频繁访问会导致被 FedEx 屏蔽。为了解决这个问题，可以使用代理池，通过实际测试发现，当查询次数超过 100 次时，便会被暂时禁止访问。可以考虑使用自己的代理节点，借助工具将其转为代理池，以均匀分配访问请求。
 :::
 

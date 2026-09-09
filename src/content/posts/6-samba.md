@@ -5,7 +5,6 @@ updated: 2025-03-21
 description: 使用 Docker 部署 Samba，让 Windows、Linux 等设备访问 NAS 上的共享目录。
 category: NAS 与影音
 tags:
-  - Samba
   - 文件共享
   - Docker
 draft: false
@@ -35,7 +34,7 @@ seriesOrder: 6
 
 ### Docker Compose 配置
 
-```yaml
+```yaml title="compose.yaml"
 services:
   samba:
     image: dperson/samba

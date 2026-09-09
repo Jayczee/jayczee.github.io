@@ -5,8 +5,7 @@ description: 让 Codex 通过 SSH 排查 MoviePilot 元数据缺失和目录错�
 category: NAS 与影音
 tags:
   - MoviePilot
-  - Codex
-  - 媒体整理
+  - AI 编程
 draft: false
 ---
 

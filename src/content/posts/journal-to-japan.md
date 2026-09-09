@@ -6,7 +6,6 @@ description: 大阪、东京和富士山的五天四晚自由行，记录护照�
 category: 生活随笔
 tags:
   - 日本旅行
-  - 自由行
 draft: false
 ---
 

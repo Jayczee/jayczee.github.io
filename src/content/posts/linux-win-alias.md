@@ -7,8 +7,7 @@ category: 系统与工具
 tags:
   - Linux
   - Windows
-  - Shell
-  - PowerShell
+  - 命令行
 draft: false
 ---
 

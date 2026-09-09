@@ -6,7 +6,6 @@ description: 通过 Docker 部署 Nginx，为 NAS 上的多个服务配置域名
 category: 网络与服务
 tags:
   - Nginx
-  - 反向代理
   - Docker
 draft: false
 series: 从零搭建 NAS
@@ -21,7 +20,7 @@ seriesOrder: 5
 
 与 [DDNS-GO](/posts/3-ddns-go/) 中的做法相同，采用在 Portainer Stacks 中添加 Docker Compose 文件的方式部署 Nginx 容器。以下是 Docker Compose 文件的示例：
 
-```bash
+```yaml title="compose.yaml"
 services:
   nginx:
     restart: always
@@ -80,7 +79,7 @@ services:
 
 ### 📝 创建配置文件 `/blog/nginx/nginx.conf`
 
-```bash
+```nginx title="nginx.conf"
 worker_processes auto;
 events {
         worker_connections 768;
@@ -110,7 +109,7 @@ http {
 
 在其中创建 `portainer.conf` 文件，写入如下内容：
 
-```bash
+```nginx title="portainer.conf"
 upstream portainer {
     server localhost:9000;
 }

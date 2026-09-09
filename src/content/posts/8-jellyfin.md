@@ -7,7 +7,6 @@ category: NAS 与影音
 tags:
   - Jellyfin
   - Docker
-  - 家庭影音
 draft: false
 series: 从零搭建 NAS
 seriesOrder: 8
@@ -54,7 +53,7 @@ services:
              - gpu
 ```
 
-::: tip
+:::tip[提示]
 
 Jellyfin的Docker镜像有许多修改版本，此处选择了`nyanmisaka/jellyfin`，该镜像支持Web串流H265格式的影片。
 
@@ -88,7 +87,7 @@ deploy:
 
 成功部署镜像后，访问`https://NASIP:8096`即可访问Jellyfin服务。初次访问需要设置语言、管理员账号密码等信息。元数据刮削等设置可保持默认即可，该部分功能将在[**Moviepilot**](/posts/10-movie-pilot/)中实现。
 
-:::tip
+:::tip[提示]
 
 安装完后可以先不进行下列设置，直接跳转到[**Moviepilot**](/posts/10-movie-pilot/)进行部署与配置，然后再回来进行媒体库相关的配置。
 
@@ -124,7 +123,7 @@ deploy:
 
 ## Nginx配置
 
-```bash
+```nginx title="jellyfin.conf"
 server {
     listen 1212 ssl http2; ## 外网访问端口
     server_name jellyfin.domain.com; ## 自定义jellyfin二级域名

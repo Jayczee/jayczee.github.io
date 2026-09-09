@@ -6,9 +6,6 @@ description: 记录 Claude Code 与 Codex 在日常开发中的体验、配置�
 category: AI 与大模型
 tags:
   - AI 编程
-  - Claude Code
-  - Codex
-  - MCP
 draft: false
 ---
 

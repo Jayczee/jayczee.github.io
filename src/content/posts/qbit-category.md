@@ -6,7 +6,6 @@ description: 启用自动分类管理，让 qBittorrent 根据分类填写保存
 category: NAS 与影音
 tags:
   - qBittorrent
-  - 下载管理
 draft: false
 ---
 
@@ -28,6 +27,6 @@ draft: false
 
 将分类管理设成`自动`后，修改分类时才会自动填写存储路径。并且还可以实现修改已下载文件的分类时自动转移文件位置的功能。
 
-::: tip
+:::tip[提示]
 在将该选项设为自动后，使用其他媒体整理工具（nastool、moviepilot等）的相关功能时也可以根据qBittorrent的分类来管理资源。例如`自动刷流`插件。
 :::
