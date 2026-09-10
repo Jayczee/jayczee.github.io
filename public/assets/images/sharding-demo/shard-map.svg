@@ -1,0 +1,44 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="760" height="470" viewBox="0 0 760 470" role="img" aria-labelledby="title desc">
+  <title id="title">一个逻辑表拆成四个物理分片</title>
+  <desc id="desc">t_order 逻辑表按 user_id 分片：库由 user_id 对 2 取模决定，表由 user_id 对 4 取模后右移一位决定，最终落到四个物理分片。</desc>
+  <defs>
+    <marker id="arrow" markerWidth="8" markerHeight="8" refX="7" refY="4" orient="auto"><path d="M0 0 L8 4 L0 8 Z" fill="#69716f"/></marker>
+  </defs>
+  <rect width="760" height="470" rx="8" fill="#f8faf9"/>
+  <g font-family="system-ui, -apple-system, sans-serif" fill="#202924" text-anchor="middle">
+    <text x="380" y="44" font-size="25" font-weight="650">一张逻辑表，四个物理分片</text>
+    <text x="380" y="76" font-size="18" fill="#53615a">库：user_id % 2　　表：(user_id % 4) &gt;&gt; 1</text>
+
+    <rect x="280" y="104" width="200" height="62" rx="5" fill="#eef1f0" stroke="#b9c4bf"/>
+    <text x="380" y="132" font-size="21">t_order</text>
+    <text x="380" y="156" font-size="16" fill="#53615a">应用只认这一张表</text>
+
+    <path d="M340 170 L120 250" stroke="#69716f" stroke-width="1.6" marker-end="url(#arrow)"/>
+    <path d="M364 170 L300 250" stroke="#69716f" stroke-width="1.6" marker-end="url(#arrow)"/>
+    <path d="M396 170 L460 250" stroke="#69716f" stroke-width="1.6" marker-end="url(#arrow)"/>
+    <path d="M420 170 L640 250" stroke="#69716f" stroke-width="1.6" marker-end="url(#arrow)"/>
+
+    <rect x="35" y="258" width="150" height="96" rx="5" fill="#e4eee7" stroke="#afc9b9"/>
+    <text x="110" y="288" font-size="19">ds_0.t_order_0</text>
+    <text x="110" y="318" font-size="16" fill="#53615a">user_id 100</text>
+    <text x="110" y="340" font-size="16" fill="#53615a">100 % 4 = 0</text>
+
+    <rect x="215" y="258" width="150" height="96" rx="5" fill="#e5edf4" stroke="#b1c4d5"/>
+    <text x="290" y="288" font-size="19">ds_1.t_order_0</text>
+    <text x="290" y="318" font-size="16" fill="#53615a">user_id 101</text>
+    <text x="290" y="340" font-size="16" fill="#53615a">101 % 4 = 1</text>
+
+    <rect x="395" y="258" width="150" height="96" rx="5" fill="#f1eaf2" stroke="#cbb9ce"/>
+    <text x="470" y="288" font-size="19">ds_0.t_order_1</text>
+    <text x="470" y="318" font-size="16" fill="#53615a">user_id 102</text>
+    <text x="470" y="340" font-size="16" fill="#53615a">102 % 4 = 2</text>
+
+    <rect x="575" y="258" width="150" height="96" rx="5" fill="#f3ecdf" stroke="#d3c1a4"/>
+    <text x="650" y="288" font-size="19">ds_1.t_order_1</text>
+    <text x="650" y="318" font-size="16" fill="#53615a">user_id 103</text>
+    <text x="650" y="340" font-size="16" fill="#53615a">103 % 4 = 3</text>
+
+    <text x="380" y="404" font-size="18" fill="#53615a">分片号 = user_id % 4；低 1 位决定库，高 1 位决定表</text>
+    <text x="380" y="436" font-size="18" fill="#8a7355">四个分片的数据量要尽量均匀，不然扩容时会很痛苦</text>
+  </g>
+</svg>
