@@ -1,0 +1,47 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="760" height="760" viewBox="0 0 760 760" role="img" aria-labelledby="title desc">
+  <title id="title">最终版的下单链路</title>
+  <desc id="desc">用户提交请求后先落受理单并立刻返回，后台按用户和 SKU 分片排队，在同一个事务里扣减库存、创建订单、写库存流水并更新受理单，之后支付或超时关单，最后由对账任务兜底。</desc>
+  <defs>
+    <marker id="arrow" markerWidth="8" markerHeight="8" refX="7" refY="4" orient="auto"><path d="M0 0 L8 4 L0 8 Z" fill="#69716f"/></marker>
+  </defs>
+  <rect width="760" height="760" rx="8" fill="#f8faf9"/>
+  <g font-family="system-ui, -apple-system, sans-serif" fill="#202924" text-anchor="middle">
+    <text x="380" y="44" font-size="25" font-weight="650">最终版：先受理，再慢慢处理</text>
+
+    <rect x="90" y="76" width="580" height="60" rx="5" fill="#e4eee7" stroke="#afc9b9"/>
+    <text x="380" y="113" font-size="22">用户提交（带 requestKey）</text>
+    <path d="M380 137V164" stroke="#69716f" stroke-width="2" marker-end="url(#arrow)"/>
+
+    <rect x="90" y="170" width="580" height="60" rx="5" fill="#fff" stroke="#afc9b9"/>
+    <text x="380" y="207" font-size="22">受理单落库（requestKey 唯一），立刻返回</text>
+    <path d="M380 231V258" stroke="#69716f" stroke-width="2" marker-end="url(#arrow)"/>
+
+    <rect x="90" y="264" width="580" height="60" rx="5" fill="#e5edf4" stroke="#b1c4d5"/>
+    <text x="380" y="301" font-size="22">分片队列：hash(用户 + SKU)，每片一个线程</text>
+    <path d="M380 325V352" stroke="#69716f" stroke-width="2" marker-end="url(#arrow)"/>
+
+    <rect x="60" y="358" width="640" height="150" rx="5" fill="#fff" stroke="#b1c4d5" stroke-dasharray="6 4"/>
+    <text x="380" y="386" font-size="20" fill="#53615a">一个事务里做完</text>
+    <rect x="90" y="400" width="270" height="44" rx="4" fill="#eef3f8" stroke="#c3d2e0"/>
+    <text x="225" y="428" font-size="19">扣减：可用 → 待处理</text>
+    <rect x="400" y="400" width="270" height="44" rx="4" fill="#eef3f8" stroke="#c3d2e0"/>
+    <text x="535" y="428" font-size="19">订单落库</text>
+    <rect x="90" y="452" width="270" height="44" rx="4" fill="#eef3f8" stroke="#c3d2e0"/>
+    <text x="225" y="480" font-size="19">写库存流水</text>
+    <rect x="400" y="452" width="270" height="44" rx="4" fill="#eef3f8" stroke="#c3d2e0"/>
+    <text x="535" y="480" font-size="19">受理单标记成功</text>
+    <path d="M380 509V536" stroke="#69716f" stroke-width="2" marker-end="url(#arrow)"/>
+
+    <rect x="90" y="542" width="270" height="66" rx="5" fill="#f1eaf2" stroke="#cbb9ce"/>
+    <text x="225" y="571" font-size="20">支付：待处理 → 已售</text>
+    <text x="225" y="596" font-size="17" fill="#53615a">状态改不动就是重复支付</text>
+    <rect x="400" y="542" width="270" height="66" rx="5" fill="#f6f1e6" stroke="#d8c8a8"/>
+    <text x="535" y="571" font-size="20">超时关单：还回可用</text>
+    <text x="535" y="596" font-size="17" fill="#53615a">受理单失败也一样回滚</text>
+
+    <path d="M380 610V642" stroke="#69716f" stroke-width="2" marker-end="url(#arrow)"/>
+    <rect x="90" y="648" width="580" height="62" rx="5" fill="#e4eee7" stroke="#afc9b9"/>
+    <text x="380" y="686" font-size="22">对账：库存守恒、流水对得上、金额对得上</text>
+    <text x="380" y="742" font-size="19" fill="#53615a">对账不是实时校验，它是最后一道防线。</text>
+  </g>
+</svg>
