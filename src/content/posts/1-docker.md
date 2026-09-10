@@ -3,6 +3,7 @@ title: Docker
 published: 2025-01-10
 updated: 2026-03-09
 description: 理解镜像和容器，以及在个人 NAS 上用 Docker 部署服务的理由。
+image: /assets/svg/docker.svg
 category: NAS 与影音
 tags:
   - Docker

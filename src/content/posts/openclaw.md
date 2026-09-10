@@ -3,6 +3,7 @@ title: Openclaw 安装与配置
 published: 2026-02-26
 updated: 2026-03-09
 description: 在 Debian NAS 上安装 OpenClaw，完成 Gateway 配置并访问 Web 界面。
+image: /assets/images/windows/openclaw/install.png
 category: AI 与大模型
 tags:
   - OpenClaw

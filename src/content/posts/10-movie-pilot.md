@@ -3,6 +3,7 @@ title: Movie-pilot 自动化媒体整理
 published: 2025-01-10
 updated: 2026-04-28
 description: 串起下载器和媒体服务器，用 MoviePilot 整理目录、刮削元数据和管理影音资源。
+image: /assets/images/nas/moviepilot/moviepilot-3.png
 category: NAS 与影音
 tags:
   - MoviePilot

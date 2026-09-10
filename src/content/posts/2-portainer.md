@@ -3,6 +3,7 @@ title: Portainer 容器管理
 published: 2025-01-10
 updated: 2025-03-21
 description: 安装 Portainer 管理面板，通过界面查看容器、镜像和存储卷。
+image: /assets/svg/portainer.svg
 category: NAS 与影音
 tags:
   - Docker

@@ -3,6 +3,7 @@ title: Jellyfin 媒体服务器
 published: 2025-01-10
 updated: 2026-03-09
 description: 部署 Jellyfin 媒体服务器，添加媒体库，并配置硬件转码和反向代理。
+image: /assets/images/nas/jellyfin/j-1.png
 category: NAS 与影音
 tags:
   - Jellyfin
