@@ -1,0 +1,31 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="760" height="420" viewBox="0 0 760 420" role="img" aria-labelledby="title desc">
+  <title id="title">SQLCipher 页面布局</title>
+  <desc id="desc">每页 4096 字节。第一页为 salt 16 字节、密文 4000 字节、IV 16 字节和 HMAC 64 字节。普通页为密文 4016 字节、IV 16 字节和 HMAC 64 字节。图中区块宽度不按字节数比例绘制。</desc>
+  <rect width="760" height="420" rx="8" fill="#f8faf9"/>
+  <g font-family="system-ui, -apple-system, sans-serif" fill="#202924">
+    <text x="30" y="40" font-size="23" font-weight="650">SQLCipher 4 · 每页 4096 字节</text>
+    <text x="30" y="82" font-size="18">第一页</text>
+    <rect x="30" y="100" width="110" height="77" fill="#f3e9cd" stroke="#c9b987"/>
+    <rect x="140" y="100" width="370" height="77" fill="#e4eee7" stroke="#afc9b9"/>
+    <rect x="510" y="100" width="90" height="77" fill="#e5edf4" stroke="#b1c4d5"/>
+    <rect x="600" y="100" width="130" height="77" fill="#f1eaf2" stroke="#cbb9ce"/>
+    <g text-anchor="middle" font-size="18">
+      <text x="85" y="130">salt</text><text x="85" y="158">16 B</text>
+      <text x="325" y="130">加密正文</text><text x="325" y="158">4000 B</text>
+      <text x="555" y="130">IV</text><text x="555" y="158">16 B</text>
+      <text x="665" y="130">HMAC</text><text x="665" y="158">64 B</text>
+    </g>
+    <text x="30" y="222" font-size="18">其余页面</text>
+    <rect x="30" y="240" width="480" height="77" fill="#e4eee7" stroke="#afc9b9"/>
+    <rect x="510" y="240" width="90" height="77" fill="#e5edf4" stroke="#b1c4d5"/>
+    <rect x="600" y="240" width="130" height="77" fill="#f1eaf2" stroke="#cbb9ce"/>
+    <g text-anchor="middle" font-size="18">
+      <text x="270" y="270">加密正文</text><text x="270" y="298">4016 B</text>
+      <text x="555" y="270">IV</text><text x="555" y="298">16 B</text>
+      <text x="665" y="270">HMAC</text><text x="665" y="298">64 B</text>
+    </g>
+    <path d="M510 330V338H730V330" fill="none" stroke="#69716f"/>
+    <text x="620" y="363" text-anchor="middle" font-size="17">保留区 80 B</text>
+    <text x="30" y="397" font-size="16" fill="#53615a">示意图不按字节比例绘制；第一页解密时恢复 SQLite 文件头。</text>
+  </g>
+</svg>

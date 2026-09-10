@@ -1,0 +1,29 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="760" height="740" viewBox="0 0 760 740" role="img" aria-labelledby="title desc">
+  <title id="title">微信数据库解密流程</title>
+  <desc id="desc">从运行中的客户端内存取得候选密钥，与数据库 salt 匹配，验证页面 HMAC，按页解密并恢复 SQLite 文件结构，再处理 WAL 更新、检查数据库并解析消息。旧实现的校验和事务处理并不完整。</desc>
+  <defs>
+    <marker id="arrow" markerWidth="8" markerHeight="8" refX="7" refY="4" orient="auto"><path d="M0 0 L8 4 L0 8 Z" fill="#69716f"/></marker>
+  </defs>
+  <rect width="760" height="740" rx="8" fill="#f8faf9"/>
+  <g font-family="system-ui, -apple-system, sans-serif" fill="#202924" text-anchor="middle">
+    <text x="380" y="45" font-size="25" font-weight="650">从候选密钥到可读消息</text>
+    <rect x="90" y="80" width="580" height="64" rx="5" fill="#e4eee7" stroke="#afc9b9"/>
+    <text x="380" y="120" font-size="24">读取客户端内存，寻找候选密钥</text>
+    <path d="M380 145V174" stroke="#69716f" stroke-width="2" marker-end="url(#arrow)"/>
+    <rect x="90" y="181" width="580" height="64" rx="5" fill="#fff" stroke="#afc9b9"/>
+    <text x="380" y="221" font-size="24">匹配数据库 salt，验证页面 HMAC</text>
+    <path d="M380 246V275" stroke="#69716f" stroke-width="2" marker-end="url(#arrow)"/>
+    <rect x="90" y="282" width="580" height="64" rx="5" fill="#fff" stroke="#afc9b9"/>
+    <text x="380" y="322" font-size="24">逐页解密，恢复 SQLite 文件结构</text>
+    <path d="M380 347V376" stroke="#69716f" stroke-width="2" marker-end="url(#arrow)"/>
+    <rect x="90" y="383" width="580" height="64" rx="5" fill="#e5edf4" stroke="#b1c4d5"/>
+    <text x="380" y="423" font-size="24">读取 WAL，处理主库以外的更新</text>
+    <path d="M380 448V477" stroke="#69716f" stroke-width="2" marker-end="url(#arrow)"/>
+    <rect x="90" y="484" width="580" height="64" rx="5" fill="#fff" stroke="#cbb9ce"/>
+    <text x="380" y="524" font-size="24">检查副本，交给 SQLite 读取记录</text>
+    <path d="M380 549V578" stroke="#69716f" stroke-width="2" marker-end="url(#arrow)"/>
+    <rect x="90" y="585" width="580" height="64" rx="5" fill="#f1eaf2" stroke="#cbb9ce"/>
+    <text x="380" y="625" font-size="24">关联会话和发送者，解压并解析正文</text>
+    <text x="380" y="694" font-size="21" fill="#53615a">流程示意；旧实现的逐页校验和 WAL 事务处理仍有缺项。</text>
+  </g>
+</svg>
