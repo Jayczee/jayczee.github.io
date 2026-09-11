@@ -1,0 +1,48 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="880" height="380" viewBox="0 0 880 380" role="img" aria-labelledby="title desc">
+  <title id="title">存量数据迁移的五步</title>
+  <desc id="desc">记录水位、分批读老表、按分片键分组、批量写分片表、全量校验后增量追平，最后切读切写。</desc>
+  <defs>
+    <marker id="arrow" markerWidth="8" markerHeight="8" refX="7" refY="4" orient="auto"><path d="M0 0 L8 4 L0 8 Z" fill="#69716f"/></marker>
+    <marker id="arrow2" markerWidth="8" markerHeight="8" refX="7" refY="4" orient="auto"><path d="M0 0 L8 4 L0 8 Z" fill="#a08a6a"/></marker>
+  </defs>
+  <rect width="880" height="380" rx="8" fill="#f8faf9"/>
+  <g font-family="system-ui, -apple-system, sans-serif" fill="#202924" text-anchor="middle">
+    <text x="440" y="46" font-size="25" font-weight="650">存量数据怎么搬过去</text>
+
+    <rect x="26" y="96" width="150" height="104" rx="5" fill="#eef1f0" stroke="#b9c4bf"/>
+    <text x="101" y="130" font-size="18">① 记水位</text>
+    <text x="101" y="158" font-size="15" fill="#53615a">记下开始时间</text>
+    <text x="101" y="180" font-size="15" fill="#53615a">和最大主键</text>
+
+    <rect x="196" y="96" width="150" height="104" rx="5" fill="#e4eee7" stroke="#afc9b9"/>
+    <text x="271" y="130" font-size="18">② 分批读</text>
+    <text x="271" y="158" font-size="15" fill="#53615a">按主键顺序</text>
+    <text x="271" y="180" font-size="15" fill="#53615a">每批 1000 行</text>
+
+    <rect x="366" y="96" width="150" height="104" rx="5" fill="#e5edf4" stroke="#b1c4d5"/>
+    <text x="441" y="130" font-size="18">③ 算分片</text>
+    <text x="441" y="158" font-size="15" fill="#53615a">按分片键分组</text>
+    <text x="441" y="180" font-size="15" fill="#53615a">一批只写一个片</text>
+
+    <rect x="536" y="96" width="150" height="104" rx="5" fill="#f1eaf2" stroke="#cbb9ce"/>
+    <text x="611" y="130" font-size="18">④ 批量写</text>
+    <text x="611" y="158" font-size="15" fill="#53615a">保留原主键</text>
+    <text x="611" y="180" font-size="15" fill="#53615a">可中断可重跑</text>
+
+    <rect x="706" y="96" width="150" height="104" rx="5" fill="#f3ecdf" stroke="#d3c1a4"/>
+    <text x="781" y="130" font-size="18">⑤ 校验</text>
+    <text x="781" y="158" font-size="15" fill="#53615a">行数 + 金额</text>
+    <text x="781" y="180" font-size="15" fill="#53615a">+ 抽样比对</text>
+
+    <path d="M180 148H192" stroke="#69716f" stroke-width="2" marker-end="url(#arrow)"/>
+    <path d="M350 148H362" stroke="#69716f" stroke-width="2" marker-end="url(#arrow)"/>
+    <path d="M520 148H532" stroke="#69716f" stroke-width="2" marker-end="url(#arrow)"/>
+    <path d="M690 148H702" stroke="#69716f" stroke-width="2" marker-end="url(#arrow)"/>
+
+    <rect x="196" y="250" width="490" height="76" rx="5" fill="#fdf6ec" stroke="#e0cba8"/>
+    <text x="441" y="282" font-size="17">迁移期间老表还在写：追平水位之后的增量</text>
+    <text x="441" y="308" font-size="15" fill="#53615a">轮询 update_time（生产上用 binlog / 双写），追平后再切读、切写</text>
+    <path d="M271 204V246" stroke="#a08a6a" stroke-width="2" stroke-dasharray="5 4" marker-end="url(#arrow2)"/>
+    <path d="M611 204V246" stroke="#a08a6a" stroke-width="2" stroke-dasharray="5 4" marker-end="url(#arrow2)"/>
+  </g>
+</svg>
