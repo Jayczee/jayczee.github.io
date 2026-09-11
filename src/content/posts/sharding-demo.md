@@ -4,6 +4,7 @@ published: 2025-03-25
 updated: 2026-09-11
 description: 用一个连着真实 MySQL 8 的项目，把订单表从单库单表迁到两个库四个分片：存量数据真的搬过去，读写真的走分片，再逐个复现自增主键、全路由、深分页、跨片 JOIN、跨片写事务和「动了分片键」这些坑。
 category: 开发实践
+image: /assets/images/sharding-demo/shardingSphereLogo.png
 tags:
   - Java
   - MySQL

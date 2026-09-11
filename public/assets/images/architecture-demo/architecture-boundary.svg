@@ -1,0 +1,29 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="900" height="430" viewBox="0 0 900 430" role="img" aria-labelledby="title desc">
+  <title id="title">单体和微服务的边界对比</title>
+  <desc id="desc">单体中的订单、库存和支付共享进程与事务；微服务拆成三个进程和三个数据库，通过网络调用连接。</desc>
+  <defs><marker id="arrow" markerWidth="8" markerHeight="8" refX="7" refY="4" orient="auto"><path d="M0 0L8 4L0 8Z" fill="#69716f"/></marker></defs>
+  <rect width="900" height="430" rx="8" fill="#f8faf9"/>
+  <g font-family="system-ui,-apple-system,sans-serif" fill="#202924" text-anchor="middle">
+    <text x="225" y="42" font-size="25" font-weight="650">单体：一个应用 jar</text>
+    <text x="675" y="42" font-size="25" font-weight="650">微服务：各自独立 jar</text>
+    <rect x="42" y="70" width="366" height="285" rx="10" fill="#e8f0eb" stroke="#afc9b9" stroke-width="2"/>
+    <text x="225" y="101" font-size="16" fill="#53615a">一个进程，一个数据库事务边界</text>
+    <rect x="80" y="135" width="290" height="68" rx="6" fill="#fff" stroke="#b9c4bf"/>
+    <text x="225" y="164" font-size="20">订单模块</text><text x="225" y="188" font-size="14" fill="#53615a">库存模块　支付模块</text>
+    <path d="M225 203V245" stroke="#69716f" stroke-width="2" marker-end="url(#arrow)"/>
+    <rect x="80" y="255" width="290" height="64" rx="6" fill="#fdf6ec" stroke="#d3c1a4"/>
+    <text x="225" y="282" font-size="18">同一个数据库</text><text x="225" y="304" font-size="14" fill="#53615a">一次提交 / 一次回滚</text>
+    <rect x="492" y="70" width="366" height="285" rx="10" fill="#eef1f5" stroke="#b7c5d6" stroke-width="2"/>
+    <text x="675" y="101" font-size="16" fill="#53615a">三个进程，网络调用，局部事务</text>
+    <rect x="512" y="135" width="95" height="68" rx="6" fill="#fff" stroke="#b9c4bf"/><text x="559" y="165" font-size="17">订单</text><text x="559" y="188" font-size="13" fill="#53615a">HTTP 入口</text>
+    <rect x="628" y="135" width="95" height="68" rx="6" fill="#fff" stroke="#b9c4bf"/><text x="675" y="165" font-size="17">库存</text><text x="675" y="188" font-size="13" fill="#53615a">Dubbo</text>
+    <rect x="744" y="135" width="95" height="68" rx="6" fill="#fff" stroke="#b9c4bf"/><text x="791" y="165" font-size="17">支付</text><text x="791" y="188" font-size="13" fill="#53615a">Dubbo</text>
+    <path d="M607 158H624" stroke="#69716f" stroke-width="2" marker-end="url(#arrow)"/>
+    <path d="M559 135V116H791V131" fill="none" stroke="#69716f" stroke-width="2" marker-end="url(#arrow)"/>
+    <path d="M559 204V245M675 204V245M791 204V245" stroke="#69716f" stroke-width="2" marker-end="url(#arrow)"/>
+    <rect x="512" y="255" width="95" height="64" rx="6" fill="#fdf6ec" stroke="#d3c1a4"/><text x="559" y="282" font-size="15">订单库</text><text x="559" y="304" font-size="12" fill="#53615a">局部提交</text>
+    <rect x="628" y="255" width="95" height="64" rx="6" fill="#fdf6ec" stroke="#d3c1a4"/><text x="675" y="282" font-size="15">库存库</text><text x="675" y="304" font-size="12" fill="#53615a">局部提交</text>
+    <rect x="744" y="255" width="95" height="64" rx="6" fill="#fdf6ec" stroke="#d3c1a4"/><text x="791" y="282" font-size="15">支付库</text><text x="791" y="304" font-size="12" fill="#53615a">局部提交</text>
+    <text x="450" y="397" font-size="17" fill="#8a7355">边界从代码模块变成网络与数据边界</text>
+  </g>
+</svg>

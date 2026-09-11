@@ -1,0 +1,40 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1000" height="570" viewBox="0 0 1000 570" role="img" aria-labelledby="title desc">
+  <title id="title">调用看起来像一个 Java 方法，实际跨了两个进程</title>
+  <desc id="desc">库存向 Nacos 登记地址，订单获取地址。订单进程中的代理通过网络直接调用库存进程中的实现，结果沿网络返回。业务请求不经过 Nacos 转发。</desc>
+  <defs>
+    <marker id="rpc-arrow" markerWidth="8" markerHeight="8" refX="7" refY="4" orient="auto"><path d="M0 0L8 4L0 8Z" fill="#256b51"/></marker>
+    <marker id="registry-arrow" markerWidth="8" markerHeight="8" refX="7" refY="4" orient="auto"><path d="M0 0L8 4L0 8Z" fill="#78857e"/></marker>
+  </defs>
+  <rect width="1000" height="570" rx="12" fill="#f7faf8"/>
+  <g font-family="system-ui,-apple-system,sans-serif" text-anchor="middle" fill="#22382d">
+    <text x="500" y="40" font-size="24" font-weight="650">同一句 inventory.ping()，方法实际在哪执行？</text>
+    <rect x="359" y="68" width="282" height="68" rx="8" fill="#fff5e5" stroke="#d6bd95"/>
+    <text x="500" y="95" font-size="20" font-weight="600">Nacos：保存服务地址</text>
+    <text x="500" y="120" font-size="15">帮助找到对方，业务请求直接发给对方</text>
+    <path d="M750 217V104H648" fill="none" stroke="#78857e" stroke-width="2" stroke-dasharray="6 5" marker-end="url(#registry-arrow)"/>
+    <text x="793" y="172" font-size="16">① 库存登记地址</text>
+    <path d="M360 110H245V210" fill="none" stroke="#78857e" stroke-width="2" stroke-dasharray="6 5" marker-end="url(#registry-arrow)"/>
+    <text x="203" y="172" font-size="16">② 订单获取地址</text>
+    <rect x="45" y="220" width="355" height="260" rx="10" fill="#e8f2ed" stroke="#a9cbb9" stroke-width="2"/>
+    <rect x="600" y="220" width="355" height="260" rx="10" fill="#eaf0f7" stroke="#b1c5db" stroke-width="2"/>
+    <text x="222" y="257" font-size="23" font-weight="600">订单应用：一个 JVM</text>
+    <text x="778" y="257" font-size="23" font-weight="600">库存应用：另一个 JVM</text>
+    <rect x="76" y="281" width="292" height="140" rx="7" fill="white" stroke="#b7ccbe"/>
+    <text x="222" y="311" font-size="18">RemoteGateway 中的 inventory</text>
+    <text x="222" y="343" font-size="20" font-weight="600">Dubbo 创建的代理对象</text>
+    <text x="222" y="375" font-size="17">@DubboReference</text>
+    <text x="222" y="401" font-size="15">你的代码调用 inventory.ping()</text>
+    <rect x="632" y="281" width="292" height="140" rx="7" fill="white" stroke="#b9cadb"/>
+    <text x="778" y="311" font-size="18">InventoryProvider</text>
+    <text x="778" y="343" font-size="20" font-weight="600">执行真正的 ping() 方法</text>
+    <text x="778" y="375" font-size="17">@DubboService</text>
+    <text x="778" y="401" font-size="15">return "inventory";</text>
+    <path d="M370 322H628" stroke="#256b51" stroke-width="3" marker-end="url(#rpc-arrow)"/>
+    <text x="500" y="304" font-size="17" fill="#256b51">③ 通过网络发出调用</text>
+    <path d="M632 383H373" stroke="#256b51" stroke-width="3" marker-end="url(#rpc-arrow)"/>
+    <text x="500" y="409" font-size="17" fill="#256b51">④ 通过网络返回结果</text>
+    <text x="222" y="453" font-size="16">发起调用的一方：消费端</text>
+    <text x="778" y="453" font-size="16">执行方法的一方：提供端</text>
+    <text x="500" y="524" font-size="19">普通 @Autowired 注入本应用的对象；这里注入的是能发远程请求的代理。</text>
+  </g>
+</svg>

@@ -1,0 +1,36 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="960" height="620" viewBox="0 0 960 620" role="img" aria-labelledby="title desc">
+  <title id="title">超时后按原请求号恢复</title>
+  <desc id="desc">订单和待办先在订单库提交。消息处理调用库存，库存提交成功但响应超时。重启后重放同一请求，库存返回已有预占，订单和消息一起更新为完成状态。</desc>
+  <defs><marker id="arrow" markerWidth="8" markerHeight="8" refX="7" refY="4" orient="auto"><path d="M0 0L8 4L0 8Z" fill="#69716f"/></marker></defs>
+  <rect width="960" height="620" rx="8" fill="#f8faf9"/>
+  <g font-family="system-ui,-apple-system,sans-serif" fill="#202924" text-anchor="middle">
+    <text x="480" y="42" font-size="25" font-weight="650">超时只说明没收到结果，不能撤销对方的提交</text>
+    <rect x="60" y="70" width="310" height="50" rx="6" fill="#e5edf4" stroke="#b1c4d5"/>
+    <text x="215" y="102" font-size="20">订单进程 / 订单库</text>
+    <rect x="590" y="70" width="310" height="50" rx="6" fill="#e4eee7" stroke="#afc9b9"/>
+    <text x="745" y="102" font-size="20">库存进程 / 库存库</text>
+    <path d="M215 120V560M745 120V560" stroke="#b9c4bf" stroke-width="2" stroke-dasharray="5 5"/>
+    <rect x="60" y="138" width="310" height="70" rx="6" fill="#eef3fa" stroke="#b1c4d5"/>
+    <text x="215" y="165" font-size="17">① 一个本地事务先保存</text>
+    <text x="215" y="190" font-size="16">订单 PENDING + 事件 PENDING</text>
+    <path d="M220 235H739" stroke="#69716f" stroke-width="2" marker-end="url(#arrow)"/>
+    <text x="480" y="226" font-size="16">② /drain 发出预占请求，requestId=resume</text>
+    <rect x="590" y="250" width="310" height="65" rx="6" fill="#e4eee7" stroke="#afc9b9"/>
+    <text x="745" y="276" font-size="17">③ 库存事务提交</text>
+    <text x="745" y="301" font-size="16">库存 98 / 2 / 0，预占 HELD</text>
+    <path d="M740 340H240" stroke="#bd8158" stroke-width="2" stroke-dasharray="6 5"/>
+    <path d="M229 330L249 350M249 330L229 350" stroke="#bd8158" stroke-width="2"/>
+    <text x="480" y="331" font-size="16" fill="#8a7355">④ 响应延迟，RPC 800 ms 超时</text>
+    <text x="215" y="372" font-size="16" fill="#53615a">订单仍 PENDING，事件留待重试</text>
+    <rect x="330" y="390" width="300" height="38" rx="6" fill="#f3ecdf" stroke="#d3c1a4"/>
+    <text x="480" y="415" font-size="16">订单与库存进程重启，记录仍在数据库</text>
+    <path d="M220 460H739" stroke="#69716f" stroke-width="2" marker-end="url(#arrow)"/>
+    <text x="480" y="450" font-size="16">⑤ 重放相同 requestId，库存不重复预占</text>
+    <path d="M740 495H221" stroke="#69716f" stroke-width="2" marker-end="url(#arrow)"/>
+    <text x="480" y="486" font-size="16">⑥ 返回已有 HELD 记录</text>
+    <rect x="60" y="520" width="390" height="50" rx="6" fill="#e5edf4" stroke="#b1c4d5"/>
+    <text x="255" y="550" font-size="17">⑦ 本地事务：订单 RESERVED + 事件 DONE</text>
+    <text x="745" y="550" font-size="17" fill="#53615a">库存始终只预占一次</text>
+    <text x="480" y="600" font-size="16" fill="#53615a">持久化待办 + 执行端幂等，让结果未知的请求可以重放</text>
+  </g>
+</svg>
