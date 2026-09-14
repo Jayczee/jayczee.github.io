@@ -13,6 +13,9 @@ const postsCollection = defineCollection({
 		lang: z.string().optional().default(""),
 		series: z.string().optional(),
 		seriesOrder: z.number().int().nonnegative().optional(),
+		comments: z.boolean().default(true),
+		discussion: z.number().int().positive().optional(),
+		commentTerm: z.string().min(1).optional(),
 
 		/* For internal use */
 		prevTitle: z.string().default(""),

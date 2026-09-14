@@ -1,0 +1,81 @@
+---
+import { giscusConfig, siteConfig } from "@/config";
+import discussions from "@/data/giscus-discussions.json";
+import redirects from "@/data/legacy-redirects.json";
+import { getCommentMapping } from "@utils/giscus-utils";
+import ImageWrapper from "./misc/ImageWrapper.astro";
+
+interface Props {
+	slug: string;
+	discussion?: number;
+	commentTerm?: string;
+}
+
+const { slug, discussion, commentTerm } = Astro.props;
+const target = getCommentMapping(slug, redirects, discussions, discussion, commentTerm);
+const revision = /^[a-f0-9]{40}$/.test(process.env.GITHUB_SHA ?? "")
+	? process.env.GITHUB_SHA!
+	: "main";
+const themeBase = giscusConfig.themeBaseUrl.replace("{revision}", revision);
+const discussionUrl = target.mapping === "number"
+	? `https://github.com/${giscusConfig.repo}/discussions/${target.term}`
+	: `https://github.com/${giscusConfig.repo}/discussions`;
+---
+<section id="comments" aria-labelledby="comments-title" data-pagefind-ignore class="comments-card card-base relative isolate mb-4 px-6 py-6 md:px-9">
+    {giscusConfig.bannerBackground && siteConfig.banner.enable && (
+        <div class="comments-backdrop absolute inset-0 -z-10 pointer-events-none" aria-hidden="true">
+            <ImageWrapper src={siteConfig.banner.src} basePath="/" position={siteConfig.banner.position} class="h-full w-full" />
+        </div>
+    )}
+    <header class="mb-5 flex flex-wrap items-center justify-between gap-3">
+        <div>
+            <h2 id="comments-title" class="text-xl font-bold text-90">评论与交流</h2>
+            <p class="mt-2 text-sm text-75">欢迎分享想法，登录 GitHub 后即可留言。</p>
+        </div>
+        <a class="link text-sm text-[var(--btn-content)]" href={discussionUrl} target="_blank" rel="noopener noreferrer">在 GitHub 查看 ↗</a>
+    </header>
+    <blog-comments
+        data-repo={giscusConfig.repo}
+        data-repo-id={giscusConfig.repoId}
+        data-category={giscusConfig.category}
+        data-category-id={giscusConfig.categoryId}
+        data-lang={giscusConfig.lang}
+        data-mapping={target.mapping}
+        data-term={target.term}
+        data-theme-base={themeBase}
+    >
+        <p data-comment-status role="status" class="text-sm text-75 py-4">滚动到此处后加载评论，内容由 GitHub Discussions 提供。</p>
+        <button data-comment-retry type="button" class="btn-regular rounded-lg px-4 py-2" hidden>重新加载评论</button>
+        <div data-comment-widget></div>
+    </blog-comments>
+    <noscript><p>启用 JavaScript 后可查看评论，也可以通过上方链接访问 GitHub 讨论。</p></noscript>
+</section>
+
+<style>
+    .comments-card,
+    :global(blog-comments giscus-widget)::part(iframe) {
+        color-scheme: light;
+    }
+    :global(.dark) .comments-card,
+    :global(.dark blog-comments giscus-widget)::part(iframe) {
+        color-scheme: dark;
+    }
+    .comments-backdrop {
+        opacity: 0.13;
+        mask-image: linear-gradient(to bottom, black, rgb(0 0 0 / 65%));
+    }
+    :global(.dark) .comments-backdrop {
+        display: none;
+    }
+    blog-comments {
+        display: block;
+        min-height: 160px;
+    }
+    blog-comments [hidden] {
+        display: none;
+    }
+</style>
+
+<script>
+    import "../scripts/giscus";
+</script>

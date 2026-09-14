@@ -61,5 +61,6 @@ screenshots/
 *.md
 *.mdx
 !/README.md
+!/docs/giscus.md
 !/src/content/**/*.md
 !/src/content/**/*.mdx

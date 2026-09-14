@@ -34,6 +34,9 @@ jobs:
       - name: Install dependencies
         run: pnpm install --frozen-lockfile
 
+      - name: Check Giscus mappings and themes
+        run: pnpm test:giscus
+
       - name: Check Astro
         run: pnpm check
 

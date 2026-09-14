@@ -80,6 +80,18 @@ export const licenseConfig: LicenseConfig = {
 	url: "https://creativecommons.org/licenses/by-nc-sa/4.0/",
 };
 
+export const giscusConfig = {
+	enable: true,
+	repo: "Jayczee/jayczee.github.io",
+	repoId: "R_kgDONoQl2A",
+	category: "General",
+	categoryId: "DIC_kwDONoQl2M4CmBAS",
+	lang: "zh-CN",
+	bannerBackground: true,
+	themeBaseUrl:
+		"https://cdn.jsdelivr.net/gh/Jayczee/jayczee.github.io@{revision}/public/giscus",
+};
+
 export const expressiveCodeConfig: ExpressiveCodeConfig = {
 	// Note: Some styles (such as background color) are being overridden, see the astro.config.mjs file.
 	// Please select a dark theme, as this blog theme currently only supports dark background color
