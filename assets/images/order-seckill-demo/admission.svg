@@ -1,0 +1,28 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="520" height="690" viewBox="0 0 520 690" role="img" aria-labelledby="title desc">
+  <title id="title">受理与落单是两件事</title>
+  <desc id="desc">请求经 Java 入口到 Redis，Lua 预占并写入 Stream 后返回已受理。后台消费者再读取任务，提交 MySQL 订单事务，之后确认消息。用户通过查询接口查看正式订单状态。</desc>
+  <defs><marker id="arrow" markerWidth="8" markerHeight="8" refX="7" refY="4" orient="auto"><path d="M0 0L8 4L0 8Z" fill="#65798d"/></marker></defs>
+  <rect width="520" height="690" rx="16" fill="#f3f6fb"/>
+  <g font-family="system-ui,-apple-system,sans-serif" fill="#23354a" text-anchor="middle">
+    <text x="260" y="39" font-size="23" font-weight="700">受理 ≠ 订单已生成</text>
+    <rect x="32" y="62" width="456" height="246" rx="12" fill="#eaf2ff" stroke="#a3bce1"/>
+    <text x="62" y="94" text-anchor="start" font-size="17" font-weight="650">前台请求</text>
+    <text x="260" y="127" font-size="18">用户 → Nginx → 任意 Java 实例</text>
+    <path d="M260 139V159" stroke="#65798d" stroke-width="2" marker-end="url(#arrow)"/>
+    <rect x="65" y="171" width="390" height="66" rx="8" fill="#fff"/>
+    <text x="260" y="196" font-size="19" font-weight="650">Redis：预占名额 + 写入 Stream</text>
+    <text x="260" y="221" font-size="16">在同一次 Lua 执行中完成</text>
+    <text x="260" y="273" font-size="19">返回 202：已受理，请稍后查询</text>
+    <path d="M32 332H488" stroke="#a3b2c1" stroke-dasharray="6 6"/>
+    <text x="260" y="359" font-size="16" fill="#52677e">HTTP 已返回，后台工作还没结束</text>
+    <rect x="32" y="381" width="456" height="246" rx="12" fill="#edf6f0" stroke="#a3c4ad"/>
+    <text x="62" y="413" text-anchor="start" font-size="17" font-weight="650">后台处理</text>
+    <text x="260" y="449" font-size="18">消费者读取 Stream 任务</text>
+    <path d="M260 459V480" stroke="#65798d" stroke-width="2" marker-end="url(#arrow)"/>
+    <rect x="65" y="492" width="390" height="66" rx="8" fill="#fff"/>
+    <text x="260" y="518" font-size="19" font-weight="650">MySQL：创建订单 + 扣正式库存</text>
+    <text x="260" y="543" font-size="16">同一个事务提交后，订单才是 UNPAID</text>
+    <text x="260" y="594" font-size="18">最后 XACK，告诉 Redis 任务已完成</text>
+    <text x="260" y="660" font-size="17">用户查询订单：QUEUED → UNPAID → PAID</text>
+  </g>
+</svg>
