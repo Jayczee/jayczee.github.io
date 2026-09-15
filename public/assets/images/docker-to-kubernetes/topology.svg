@@ -1,0 +1,36 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1000" height="630" viewBox="0 0 1000 630" role="img" aria-labelledby="title desc">
+  <title id="title">本例的 Kubernetes 与外部服务</title>
+  <desc id="desc">宿主机 Docker 运行 kind 节点和专用 MySQL、Nacos。节点中的 Deployment 管理 Pod，Service 提供入口。业务应用通过独立 Service 和 EndpointSlice 连接集群外的 MySQL、Nacos。</desc>
+  <defs><marker id="arrow" markerWidth="8" markerHeight="8" refX="7" refY="4" orient="auto"><path d="M0 0L8 4L0 8Z" fill="#55636d"/></marker></defs>
+  <rect width="1000" height="630" rx="8" fill="#f7f9fb"/>
+  <g font-family="system-ui,-apple-system,sans-serif" fill="#24343f" text-anchor="middle">
+    <text x="500" y="40" font-size="25" font-weight="650">一台宿主机上的实验环境</text>
+    <rect x="24" y="62" width="952" height="504" rx="8" fill="#fff" stroke="#bccbd5" stroke-width="2"/>
+    <text x="90" y="95" font-size="18">Docker</text>
+    <rect x="46" y="115" width="625" height="425" rx="8" fill="#eef5fa" stroke="#9fc0d7"/>
+    <text x="358" y="146" font-size="21" font-weight="600">kind 节点容器</text>
+    <text x="358" y="173" font-size="15" fill="#5c6e7a">控制平面 + kubelet + containerd</text>
+    <rect x="74" y="201" width="570" height="307" rx="6" fill="#fff" stroke="#bfd1de" stroke-dasharray="6 4"/>
+    <text x="359" y="228" font-size="17">order-lab 命名空间</text>
+    <rect x="97" y="253" width="180" height="53" rx="6" fill="#e4f0fa" stroke="#9cbdd4"/>
+    <text x="187" y="285" font-size="18">Service hello:80</text>
+    <rect x="343" y="253" width="275" height="53" rx="6" fill="#eaf3ee" stroke="#a7c8b4"/>
+    <text x="480" y="285" font-size="18">Deployment hello：2 副本</text>
+    <rect x="97" y="351" width="210" height="65" rx="6" fill="#f0f7f2" stroke="#a7c8b4"/>
+    <text x="202" y="377" font-size="18">Pod A</text><text x="202" y="399" font-size="14">hello 容器 :8080</text>
+    <rect x="383" y="351" width="210" height="65" rx="6" fill="#f0f7f2" stroke="#a7c8b4"/>
+    <text x="488" y="377" font-size="18">Pod B</text><text x="488" y="399" font-size="14">hello 容器 :8080</text>
+    <path d="M187 306V330H202V347M187 330H488V347" fill="none" stroke="#55636d" stroke-width="2" marker-end="url(#arrow)"/>
+    <text x="359" y="453" font-size="16">后半篇：gateway / orders / inventory / payment</text>
+    <text x="359" y="481" font-size="14" fill="#5c6e7a">也是独立的 Deployment 与 Pod</text>
+    <rect x="717" y="163" width="216" height="81" rx="6" fill="#fcf4e8" stroke="#d9c39e"/>
+    <text x="825" y="196" font-size="21">MySQL</text><text x="825" y="223" font-size="15">专用 Docker 数据卷</text>
+    <rect x="717" y="283" width="216" height="81" rx="6" fill="#f0edf8" stroke="#c4b9da"/>
+    <text x="825" y="316" font-size="21">Nacos</text><text x="825" y="343" font-size="15">注册中心 / 配置中心</text>
+    <path d="M671 432H694V203H713M694 324H713" fill="none" stroke="#55636d" stroke-width="2" marker-end="url(#arrow)"/>
+    <text x="825" y="418" font-size="16">集群外，kind 网络内</text>
+    <text x="825" y="448" font-size="14" fill="#5c6e7a">Service + EndpointSlice</text>
+    <text x="825" y="473" font-size="14" fill="#5c6e7a">指向这两个容器的地址</text>
+    <text x="500" y="604" font-size="17" fill="#647580">两个 Pod 不是两台机器；这个实验不提供宿主机故障隔离。</text>
+  </g>
+</svg>
