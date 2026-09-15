@@ -1,0 +1,150 @@
+html {
+	color-scheme: dark;
+}
+main {
+	--blog-text: #e0e6eb;
+	--blog-muted: #a5b4bf;
+	--blog-primary: oklch(0.75 0.1 220);
+	--blog-primary-hover: oklch(0.82 0.09 220);
+	--blog-button-text: #13242b;
+	--blog-surface: oklch(0.23 0.015 220);
+	--blog-solid: oklch(0.25 0.02 220);
+	--blog-inset: oklch(0.2 0.02 220);
+	--blog-hover: oklch(0.33 0.035 220);
+	--blog-border: oklch(0.42 0.025 220 / 70%);
+	--blog-success: #85ceaa;
+	--blog-attention: #e2c078;
+	--blog-danger: #f18d9b;
+}
+
+html,
+body {
+	background: transparent;
+}
+main {
+	--color-fg-default: var(--blog-text);
+	--color-fg-muted: var(--blog-muted);
+	--color-fg-subtle: var(--blog-muted);
+	--color-canvas-default: var(--blog-surface);
+	--color-canvas-overlay: var(--blog-solid);
+	--color-canvas-inset: var(--blog-inset);
+	--color-canvas-subtle: var(--blog-inset);
+	--color-border-default: var(--blog-border);
+	--color-border-muted: var(--blog-border);
+	--color-neutral-muted: var(--blog-inset);
+	--color-accent-fg: var(--blog-primary);
+	--color-accent-emphasis: var(--blog-primary);
+	--color-accent-muted: var(--blog-border);
+	--color-accent-subtle: var(--blog-inset);
+	--color-btn-text: var(--blog-text);
+	--color-btn-bg: var(--blog-inset);
+	--color-btn-border: var(--blog-border);
+	--color-btn-hover-bg: var(--blog-hover);
+	--color-btn-hover-border: var(--blog-primary);
+	--color-btn-active-bg: var(--blog-hover);
+	--color-btn-active-border: var(--blog-primary);
+	--color-btn-selected-bg: var(--blog-hover);
+	--color-btn-shadow: none;
+	--color-btn-inset-shadow: none;
+	--color-btn-primary-text: var(--blog-button-text);
+	--color-btn-primary-bg: var(--blog-primary);
+	--color-btn-primary-border: transparent;
+	--color-btn-primary-hover-bg: var(--blog-primary-hover);
+	--color-btn-primary-hover-border: transparent;
+	--color-btn-primary-selected-bg: var(--blog-primary-hover);
+	--color-btn-primary-shadow: none;
+	--color-btn-primary-inset-shadow: none;
+	--color-btn-primary-selected-shadow: none;
+	--color-btn-primary-disabled-bg: var(--blog-hover);
+	--color-btn-primary-disabled-text: var(--blog-muted);
+	--color-btn-primary-disabled-border: transparent;
+	--color-action-list-item-default-hover-bg: var(--blog-hover);
+	--color-segmented-control-bg: var(--blog-inset);
+	--color-segmented-control-button-bg: var(--blog-solid);
+	--color-segmented-control-button-selected-border: var(--blog-border);
+	--color-primer-shadow-inset: none;
+	--color-social-reaction-bg-hover: var(--blog-hover);
+	--color-social-reaction-bg-reacted-hover: var(--blog-hover);
+	--color-scale-gray-1: var(--blog-inset);
+	--color-scale-blue-1: var(--blog-hover);
+	--color-success-fg: var(--blog-success);
+	--color-attention-fg: var(--blog-attention);
+	--color-attention-muted: var(--blog-border);
+	--color-attention-subtle: var(--blog-inset);
+	--color-danger-fg: var(--blog-danger);
+	--color-danger-muted: var(--blog-border);
+	--color-danger-subtle: var(--blog-inset);
+	--color-prettylights-syntax-comment: var(--blog-muted);
+	--color-prettylights-syntax-constant: var(--blog-primary);
+	--color-prettylights-syntax-entity: var(--blog-primary);
+	--color-prettylights-syntax-storage-modifier-import: var(--blog-text);
+	--color-prettylights-syntax-entity-tag: var(--blog-success);
+	--color-prettylights-syntax-keyword: var(--blog-danger);
+	--color-prettylights-syntax-string: var(--blog-primary);
+	--color-prettylights-syntax-variable: var(--blog-attention);
+	--color-prettylights-syntax-brackethighlighter-unmatched: var(--blog-danger);
+	--color-prettylights-syntax-invalid-illegal-text: var(--blog-button-text);
+	--color-prettylights-syntax-invalid-illegal-bg: var(--blog-danger);
+	--color-prettylights-syntax-carriage-return-text: var(--blog-button-text);
+	--color-prettylights-syntax-carriage-return-bg: var(--blog-danger);
+	--color-prettylights-syntax-string-regexp: var(--blog-success);
+	--color-prettylights-syntax-markup-list: var(--blog-attention);
+	--color-prettylights-syntax-markup-heading: var(--blog-primary);
+	--color-prettylights-syntax-markup-italic: var(--blog-text);
+	--color-prettylights-syntax-markup-bold: var(--blog-text);
+	--color-prettylights-syntax-markup-deleted-text: var(--blog-danger);
+	--color-prettylights-syntax-markup-deleted-bg: var(--blog-inset);
+	--color-prettylights-syntax-markup-inserted-text: var(--blog-success);
+	--color-prettylights-syntax-markup-inserted-bg: var(--blog-inset);
+	--color-prettylights-syntax-markup-changed-text: var(--blog-attention);
+	--color-prettylights-syntax-markup-changed-bg: var(--blog-inset);
+	--color-prettylights-syntax-markup-ignored-text: var(--blog-muted);
+	--color-prettylights-syntax-markup-ignored-bg: var(--blog-inset);
+	--color-prettylights-syntax-meta-diff-range: var(--blog-primary);
+	--color-prettylights-syntax-brackethighlighter-angle: var(--blog-muted);
+	--color-prettylights-syntax-sublimelinter-gutter-mark: var(--blog-muted);
+	--color-prettylights-syntax-constant-other-reference-link: var(
+		--blog-primary
+	);
+	color: var(--blog-text);
+	font-family: Roboto, system-ui, -apple-system, "Segoe UI", sans-serif;
+}
+.gsc-main {
+	background: transparent;
+}
+.gsc-comment-box,
+.gsc-comment {
+	border-radius: 1rem;
+	background: var(--blog-surface);
+}
+.gsc-comment-box-tabs,
+.gsc-reply-box {
+	background: var(--blog-inset);
+}
+.gsc-comment-box-textarea {
+	border-radius: 0.75rem;
+	background: var(--blog-surface);
+}
+.gsc-comment-box-textarea:focus {
+	outline: 2px solid var(--blog-primary);
+	outline-offset: -2px;
+	box-shadow: none;
+}
+button,
+.btn {
+	border-radius: 0.65rem;
+}
+.gsc-reactions-button {
+	border-radius: 999px;
+}
+.gsc-comment-content {
+	line-height: 1.8;
+}
+.gsc-comment-header {
+	border-radius: 1rem 1rem 0 0;
+}
+a:focus-visible,
+button:focus-visible {
+	outline: 2px solid var(--blog-primary);
+	outline-offset: 3px;
+}
