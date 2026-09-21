@@ -1,0 +1,36 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="560" height="790" viewBox="0 0 560 790" role="img" aria-labelledby="title desc">
+  <title id="title">Kafka 订单链路的三个确认点</title>
+  <desc id="desc">用户申请在 MySQL 同一事务中预留库存、保存请求和 outbox，提交后返回已受理。发送程序读 outbox，Kafka 确认后标记已发送。消费者创建订单，MySQL 提交后再提交消费进度。Kafka 中间按三个分区保存订单消息。</desc>
+  <defs><marker id="arrow" markerWidth="8" markerHeight="8" refX="7" refY="4" orient="auto"><path d="M0 0L8 4L0 8Z" fill="#62768f"/></marker></defs>
+  <rect width="560" height="790" rx="16" fill="#f4f7fc"/>
+  <g font-family="system-ui,-apple-system,sans-serif" fill="#20344d" text-anchor="middle">
+    <text x="280" y="38" font-size="23" font-weight="700">一笔申请，三个不同的确认点</text>
+    <text x="280" y="78" font-size="19">用户申请下单</text>
+    <path d="M280 90V113" stroke="#62768f" stroke-width="2" marker-end="url(#arrow)"/>
+    <rect x="30" y="125" width="500" height="102" rx="10" fill="#eaf2ff" stroke="#a4bcdf"/>
+    <text x="280" y="153" font-size="20" font-weight="650">① MySQL 受理事务提交</text>
+    <text x="280" y="182" font-size="17">预留库存 + 请求记录 + outbox 待发送消息</text>
+    <text x="280" y="207" font-size="17">返回 202 / QUEUED，不代表正式订单已生成</text>
+    <path d="M280 228V253" stroke="#62768f" stroke-width="2" marker-end="url(#arrow)"/>
+    <text x="280" y="282" font-size="19">发送程序读取 outbox → 发送 Kafka</text>
+    <path d="M280 295V321" stroke="#62768f" stroke-width="2" marker-end="url(#arrow)"/>
+    <rect x="30" y="335" width="500" height="134" rx="10" fill="#f1ecfa" stroke="#baacd1"/>
+    <text x="280" y="364" font-size="20" font-weight="650">② Kafka 确认收到消息</text>
+    <text x="280" y="393" font-size="17">seckill.orders.v1</text>
+    <rect x="54" y="409" width="140" height="36" rx="6" fill="#fff"/>
+    <rect x="210" y="409" width="140" height="36" rx="6" fill="#fff"/>
+    <rect x="366" y="409" width="140" height="36" rx="6" fill="#fff"/>
+    <text x="124" y="433" font-size="17">分区 0</text>
+    <text x="280" y="433" font-size="17">分区 1</text>
+    <text x="436" y="433" font-size="17">分区 2</text>
+    <text x="280" y="497" font-size="16" fill="#596c84">此后发送程序才能标记 outbox 已发送</text>
+    <path d="M280 510V536" stroke="#62768f" stroke-width="2" marker-end="url(#arrow)"/>
+    <text x="280" y="566" font-size="19">同组消费者分工读取消息</text>
+    <path d="M280 579V602" stroke="#62768f" stroke-width="2" marker-end="url(#arrow)"/>
+    <rect x="30" y="615" width="500" height="102" rx="10" fill="#edf6ef" stroke="#a7c4ad"/>
+    <text x="280" y="644" font-size="20" font-weight="650">③ MySQL 正式订单事务提交</text>
+    <text x="280" y="673" font-size="17">请求改为 UNPAID；库存不再重复扣减</text>
+    <text x="280" y="699" font-size="17">最后提交 offset，记录消费进度</text>
+    <text x="280" y="757" font-size="17" fill="#596c84">任何两步之间都可能退出，重复处理靠业务幂等</text>
+  </g>
+</svg>
