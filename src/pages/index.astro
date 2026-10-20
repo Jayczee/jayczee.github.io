@@ -1,0 +1,121 @@
+---
+import { Icon } from "astro-icon/components";
+import ImageWrapper from "../components/misc/ImageWrapper.astro";
+import { profileConfig, siteConfig } from "../config";
+import Layout from "../layouts/Layout.astro";
+import { url } from "../utils/url-utils";
+
+// Landing page of the site: a full-screen hero with entries to the blog and the resume.
+// It intentionally doesn't use MainGridLayout (no navbar / sidebar / banner),
+// so links here use `data-no-swup` to do a full page load (see the swup `ignore` option in astro.config.mjs).
+
+const entries = [
+	{
+		label: "博文",
+		desc: "Blog",
+		href: url("/blog/"),
+		icon: "material-symbols:article-outline-rounded",
+		primary: true,
+	},
+	{
+		label: "About me",
+		desc: "Resume",
+		href: url("/resume/"),
+		icon: "material-symbols:person-outline-rounded",
+		primary: false,
+	},
+];
+---
+
+<Layout description={siteConfig.subtitle}>
+    <div id="landing" class="relative min-h-screen w-full overflow-hidden flex items-center justify-center px-6">
+        <!-- Background: reuse the banner image -->
+        {siteConfig.banner.enable && (
+            <!-- ImageWrapper always adds `relative`, so position it via a wrapper -->
+            <div class="absolute inset-0">
+                <ImageWrapper id="landing-bg" alt="Background image" src={siteConfig.banner.src} position={siteConfig.banner.position}
+                              class="w-full h-full scale-105 blur-[2px]"
+                ></ImageWrapper>
+            </div>
+        )}
+        <div class="absolute inset-0 bg-gradient-to-b from-black/40 via-black/30 to-black/60 dark:from-black/60 dark:via-black/50 dark:to-black/80"></div>
+
+        <!-- Hero -->
+        <main class="relative z-10 flex flex-col items-center text-center max-w-xl">
+            {profileConfig.avatar && (
+                <div class="landing-item w-28 h-28 md:w-32 md:h-32 rounded-full overflow-hidden ring-4 ring-white/30 shadow-2xl mb-6" style="animation-delay: 0ms">
+                    <ImageWrapper src={profileConfig.avatar} alt="Avatar" class="w-full h-full"></ImageWrapper>
+                </div>
+            )}
+
+            <h1 class="landing-item text-4xl md:text-5xl font-bold text-white tracking-tight mb-3" style="animation-delay: 100ms">
+                {profileConfig.name}
+            </h1>
+            <div class="landing-item h-1 w-8 rounded-full bg-[var(--primary)] mb-4" style="animation-delay: 150ms"></div>
+            {profileConfig.bio && (
+                <p class="landing-item text-white/75 text-base md:text-lg mb-10" style="animation-delay: 200ms">{profileConfig.bio}</p>
+            )}
+
+            <!-- Entry buttons -->
+            <div class="landing-item flex flex-col sm:flex-row gap-4 w-full sm:w-auto" style="animation-delay: 300ms">
+                {entries.map((e) => (
+                    <a href={e.href} data-no-swup
+                       class:list={[
+                           "landing-btn group flex items-center whitespace-nowrap justify-center gap-3 h-14 px-8 rounded-2xl font-bold text-lg",
+                           "transition duration-300 hover:-translate-y-0.5 active:scale-95 backdrop-blur-md",
+                           e.primary
+                               ? "bg-[var(--primary)] text-white shadow-lg shadow-black/20 hover:brightness-110"
+                               : "bg-white/15 text-white ring-1 ring-white/40 hover:bg-white/25",
+                       ]}
+                    >
+                        <Icon name={e.icon} class="text-[1.5rem]"></Icon>
+                        <span>{e.label}</span>
+                        <Icon name="material-symbols:arrow-forward-rounded" class="text-[1.25rem] -ml-1 opacity-70 transition group-hover:translate-x-1"></Icon>
+                    </a>
+                ))}
+            </div>
+
+            <!-- Social links -->
+            {profileConfig.links.length > 0 && (
+                <div class="landing-item flex gap-3 mt-10" style="animation-delay: 400ms">
+                    {profileConfig.links.map((item) => (
+                        <a rel="me" aria-label={item.name} href={item.url} target="_blank"
+                           class="flex items-center justify-center w-10 h-10 rounded-xl text-white/70 hover:text-white hover:bg-white/15 transition active:scale-90"
+                        >
+                            <Icon name={item.icon} class="text-[1.375rem]"></Icon>
+                        </a>
+                    ))}
+                </div>
+            )}
+        </main>
+
+        <footer class="absolute bottom-4 left-0 right-0 text-center text-xs text-white/50 z-10">
+            © {new Date().getFullYear()} {profileConfig.name}
+        </footer>
+    </div>
+</Layout>
+
+<style>
+    @keyframes landing-fade-in-up {
+        from {
+            opacity: 0;
+            transform: translateY(1.5rem);
+        }
+        to {
+            opacity: 1;
+            transform: translateY(0);
+        }
+    }
+
+    .landing-item {
+        opacity: 0;
+        animation: landing-fade-in-up 600ms cubic-bezier(0.22, 1, 0.36, 1) forwards;
+    }
+
+    @media (prefers-reduced-motion: reduce) {
+        .landing-item {
+            opacity: 1;
+            animation: none;
+        }
+    }
+</style>

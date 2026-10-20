@@ -1,0 +1,136 @@
+---
+import { Icon } from "astro-icon/components";
+import ImageWrapper from "../components/misc/ImageWrapper.astro";
+import { profileConfig } from "../config";
+import { resume } from "../data/resume";
+import MainGridLayout from "../layouts/MainGridLayout.astro";
+
+// Resume page. Edit the content in src/data/resume.ts
+---
+
+<MainGridLayout title="About me" description={`${resume.name} - ${resume.title}`}>
+    <div class="flex flex-col gap-4">
+        <!-- Header -->
+        <section class="card-base px-6 md:px-9 py-6 md:py-8 flex flex-col md:flex-row gap-6 items-center md:items-start onload-animation">
+            {profileConfig.avatar && (
+                <div class="shrink-0 w-24 h-24 md:w-28 md:h-28 rounded-2xl overflow-hidden">
+                    <ImageWrapper src={profileConfig.avatar} alt="Avatar" class="w-full h-full"></ImageWrapper>
+                </div>
+            )}
+            <div class="flex-1 text-center md:text-left">
+                <h1 class="text-3xl font-bold text-90 mb-1">{resume.name}</h1>
+                <div class="text-lg font-bold text-[var(--primary)] mb-2">{resume.title}</div>
+                {resume.location && (
+                    <div class="flex items-center justify-center md:justify-start gap-1.5 text-50 text-sm mb-4">
+                        <Icon name="fa6-solid:location-dot"></Icon>{resume.location}
+                    </div>
+                )}
+                <div class="flex flex-wrap gap-2 justify-center md:justify-start">
+                    {resume.contacts.map((c) => (
+                        <a href={c.url} target={c.url?.startsWith("http") ? "_blank" : null} aria-label={c.name}
+                           class="btn-regular rounded-lg h-9 px-3 gap-2 text-sm font-medium active:scale-95">
+                            <Icon name={c.icon} class="text-base"></Icon>{c.text}
+                        </a>
+                    ))}
+                </div>
+            </div>
+        </section>
+
+        <!-- Summary -->
+        <section class="card-base px-6 md:px-9 py-6 onload-animation">
+            <h2 class="resume-heading text-90">个人简介</h2>
+            <p class="text-75 leading-relaxed">{resume.summary}</p>
+        </section>
+
+        <!-- Experience -->
+        <section class="card-base px-6 md:px-9 py-6 onload-animation">
+            <h2 class="resume-heading text-90">工作经历</h2>
+            <ol class="relative border-l-2 border-[var(--line-divider)] ml-1.5">
+                {resume.experiences.map((exp) => (
+                    <li class="relative pl-6 pb-6 last:pb-0">
+                        <span class="absolute -left-[0.47rem] top-1.5 w-3 h-3 rounded-full bg-[var(--primary)] ring-4 ring-[var(--card-bg)]"></span>
+                        <div class="flex flex-col md:flex-row md:items-baseline md:justify-between gap-1 mb-2">
+                            <div class="text-90 font-bold text-lg">
+                                {exp.company}<span class="text-50 font-normal text-base"> · {exp.role}</span>
+                            </div>
+                            <div class="text-50 text-sm shrink-0">
+                                {exp.start} – {exp.end ?? "至今"}{exp.location && ` · ${exp.location}`}
+                            </div>
+                        </div>
+                        <ul class="list-disc pl-5 space-y-1 text-75 marker:text-[var(--primary)]">
+                            {exp.highlights.map((h) => <li>{h}</li>)}
+                        </ul>
+                    </li>
+                ))}
+            </ol>
+        </section>
+
+        <!-- Projects -->
+        <section class="card-base px-6 md:px-9 py-6 onload-animation">
+            <h2 class="resume-heading text-90">项目经历</h2>
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+                {resume.projects.map((p) => (
+                    <div class="rounded-xl p-4 bg-[var(--btn-regular-bg)] transition">
+                        <div class="flex items-center justify-between gap-2 mb-1">
+                            <div class="text-90 font-bold">{p.name}</div>
+                            {p.url && (
+                                <a href={p.url} target="_blank" aria-label={`${p.name} link`} class="text-50 hover:text-[var(--primary)] transition">
+                                    <Icon name="fa6-solid:arrow-up-right-from-square" class="text-sm"></Icon>
+                                </a>
+                            )}
+                        </div>
+                        {p.role && <div class="text-50 text-sm mb-2">{p.role}</div>}
+                        <p class="text-75 text-sm leading-relaxed mb-3">{p.description}</p>
+                        <div class="flex flex-wrap gap-1.5">
+                            {p.tech.map((t) => (
+                                <span class="text-xs px-2 py-0.5 rounded-md bg-[var(--card-bg)] text-[var(--primary)] font-medium">{t}</span>
+                            ))}
+                        </div>
+                    </div>
+                ))}
+            </div>
+        </section>
+
+        <!-- Skills -->
+        <section class="card-base px-6 md:px-9 py-6 onload-animation">
+            <h2 class="resume-heading text-90">技能</h2>
+            <div class="flex flex-col gap-3">
+                {resume.skills.map((g) => (
+                    <div class="flex flex-col md:flex-row md:items-center gap-2">
+                        <div class="text-50 text-sm w-28 shrink-0">{g.category}</div>
+                        <div class="flex flex-wrap gap-2">
+                            {g.items.map((s) => (
+                                <span class="btn-regular rounded-lg h-8 px-3 text-sm font-medium cursor-default">{s}</span>
+                            ))}
+                        </div>
+                    </div>
+                ))}
+            </div>
+        </section>
+
+        <!-- Education -->
+        <section class="card-base px-6 md:px-9 py-6 onload-animation">
+            <h2 class="resume-heading text-90">教育经历</h2>
+            <div class="flex flex-col gap-3">
+                {resume.education.map((e) => (
+                    <div class="flex flex-col md:flex-row md:items-baseline md:justify-between gap-1">
+                        <div class="text-90 font-bold">
+                            {e.school}<span class="text-50 font-normal"> · {e.degree} · {e.major}</span>
+                        </div>
+                        <div class="text-50 text-sm">{e.start} – {e.end}</div>
+                    </div>
+                ))}
+            </div>
+        </section>
+    </div>
+</MainGridLayout>
+
+<style>
+    .resume-heading {
+        @apply relative text-xl font-bold mb-4 pl-3;
+    }
+    .resume-heading::before {
+        content: "";
+        @apply absolute left-0 top-1/2 -translate-y-1/2 w-1 h-5 rounded-full bg-[var(--primary)];
+    }
+</style>

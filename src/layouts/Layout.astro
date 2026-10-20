@@ -33,7 +33,8 @@ let { title, banner, description, lang, setOGTypeArticle } = Astro.props;
 // apply a class to the body element to decide the height of the banner, only used for initial page load
 // Swup can update the body for each page visit, but it's after the page transition, causing a delay for banner height change
 // so use Swup hooks instead to change the height immediately when a link is clicked
-const isHomePage = pathsEqual(Astro.url.pathname, url("/"));
+// The blog list (/blog/) is the "home" of the blog section; the site root (/) is a standalone landing page
+const isHomePage = pathsEqual(Astro.url.pathname, url("/blog/"));
 
 // defines global css variables
 // why doing this in Layout instead of GlobalStyles: https://github.com/withastro/astro/issues/6728#issuecomment-1502203757
@@ -274,7 +275,7 @@ function setClickOutsideToClose(panel: string, ignores: string[]) {
 				return;
 			}
 		}
-		panelDom!.classList.add("float-panel-closed");
+		panelDom?.classList.add("float-panel-closed");	// panels don't exist on the landing page
 	});
 }
 setClickOutsideToClose("display-setting", ["display-setting", "display-settings-switch"])
@@ -361,7 +362,7 @@ function showBanner() {
 
 	const banner = document.getElementById('banner');
 	if (!banner) {
-		console.error('Banner element not found');
+		// Pages without the main grid layout (e.g. the landing page) have no banner
 		return;
 	}
 
@@ -413,7 +414,7 @@ const setup = () => {
 	window.swup.hooks.on('visit:start', (visit: {to: {url: string}}) => {
 		// change banner height immediately when a link is clicked
 		const bodyElement = document.querySelector('body')
-		if (pathsEqual(visit.to.url, url('/'))) {
+		if (pathsEqual(visit.to.url, url('/blog/'))) {
 			bodyElement!.classList.add('lg:is-home');
 		} else {
 			bodyElement!.classList.remove('lg:is-home');

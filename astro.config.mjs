@@ -50,6 +50,8 @@ export default defineConfig({
 			updateHead: true,
 			updateBodyClass: false,
 			globalInstance: true,
+			// The landing page (/) doesn't share the blog's layout, so always do a full page load to/from it
+			ignore: [/^\/(?:[?#].*)?$/],
 		}),
 		icon({
 			include: {
