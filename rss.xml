@@ -1,4 +1,146 @@
-<?xml version="1.0" encoding="UTF-8"?><rss version="2.0" xmlns:content="http://purl.org/rss/1.0/modules/content/"><channel><title>Jayczee&apos;s Blog</title><description>Whispering for nothing</description><link>https://jayczee.cn/</link><language>zh_CN</language><item><title>opencode go计划deepseek-flash模型经newapi接入ChatGPT Desktop产生的工具调用问题</title><link>https://jayczee.cn/posts/opencode-go-deepseek-flash-newapi-chatgpt-desktop-tool-call/</link><guid isPermaLink="true">https://jayczee.cn/posts/opencode-go-deepseek-flash-newapi-chatgpt-desktop-tool-call/</guid><description>OpenCode Go 的 DeepSeek Flash 经 new-api 接入桌面端后，聊天正常，但读文件和执行命令频繁出错。这篇用尽量通俗的方式记录原因和解决过程。</description><pubDate>Thu, 24 Sep 2026 00:00:00 GMT</pubDate><content:encoded>&lt;p&gt;最近我开通了 OpenCode Go，想把里面的 DeepSeek Flash 接到自己的 new-api，再给 ChatGPT Desktop 里的 Codex Agent 使用。&lt;/p&gt;
+<?xml version="1.0" encoding="UTF-8"?><rss version="2.0" xmlns:content="http://purl.org/rss/1.0/modules/content/"><channel><title>Jayczee&apos;s Blog</title><description>Whispering for nothing</description><link>https://jayczee.cn/</link><language>zh_CN</language><item><title>给创维电视去广告：不 root，只用 ADB</title><link>https://jayczee.cn/posts/skyworth-tv-debloat/</link><guid isPermaLink="true">https://jayczee.cn/posts/skyworth-tv-debloat/</guid><description>开机广告、关机广告、屏保广告轮着来，实在忍不了。用 ADB 扫出局域网里的电视，把酷开那套广告包禁掉，顺手记下几个坑。</description><pubDate>Tue, 20 Oct 2026 00:00:00 GMT</pubDate><content:encoded>&lt;p&gt;&lt;img src=&quot;/assets/images/skyworth-tv-debloat/cover.png&quot; alt=&quot;去广告前后的电视首页对比&quot; /&gt;&lt;/p&gt;
+&lt;p&gt;家里有台创维电视A7D，经典国产电视广告满天飞。&lt;/p&gt;
+&lt;p&gt;忍了很久，这周研究了一下，尝试删除。&lt;/p&gt;
+&lt;p&gt;省流：只用了 ADB。删掉广告相关的系统包即可。&lt;/p&gt;
+&lt;h2&gt;先把电视找出来&lt;/h2&gt;
+&lt;p&gt;由于想到折腾这个的时候是在远程操作，忘掉了家里电视的局域网IP。虽然电视是插网线的，路由器后台的 DHCP 列表里肯定有，但又懒得登路由器，干脆直接扫网段。&lt;/p&gt;
+&lt;p&gt;ADB一般走 5555 端口，直接扫。PowerShell 7 的 &lt;code&gt;ForEach-Object -Parallel&lt;/code&gt; ：&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;$targets = 1..254 | ForEach-Object { &quot;192.168.10.$_&quot; }
+$targets | ForEach-Object -ThrottleLimit 64 -Parallel {
+  $c = [System.Net.Sockets.TcpClient]::new()
+  try {
+    $t = $c.ConnectAsync($_, 5555)
+    if ($t.Wait(700) -and $c.Connected) { $_ }
+  } catch {} finally { $c.Dispose() }
+}
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;结果只出来一个地址：&lt;code&gt;192.168.10.175&lt;/code&gt;。顺手 &lt;code&gt;arp -a&lt;/code&gt; 看了 MAC（&lt;code&gt;08-28-02-66-c6-d5&lt;/code&gt;），因为家里的设备只有电视开着ADB调试，所以基本断定这就是电视。&lt;/p&gt;
+&lt;p&gt;如果电视支持 mDNS，&lt;code&gt;adb mdns services&lt;/code&gt; 也能直接列出来，我这台没反应，只能硬扫。&lt;/p&gt;
+&lt;h2&gt;连上去，先摸个底&lt;/h2&gt;
+&lt;p&gt;连接之前，负责连接的设备需要装adb库。&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;adb connect 192.168.10.175:5555
+adb devices -l
+&lt;/code&gt;&lt;/pre&gt;
+&lt;pre&gt;&lt;code&gt;192.168.10.175:5555   device product:Sky_rtk2885n_8R145_A5D model:8R134_A7D device:rtk2885n
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;创维 8R134_A7D，Realtek rtk2885n 的方案。因为之前我已经开过电视里的网络调试开关，所以连上的时候电视没弹授权框，我记得应该是要弹的（存疑）。&lt;/p&gt;
+&lt;p&gt;再查版本：&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;adb shell &quot;getprop ro.product.brand; getprop ro.build.version.release; getprop ro.build.type&quot;
+&lt;/code&gt;&lt;/pre&gt;
+&lt;pre&gt;&lt;code&gt;Skyworth
+11
+user
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;&lt;code&gt;user&lt;/code&gt; 版本，也就是说 &lt;code&gt;/system&lt;/code&gt; 只读，没有 root 可玩。这台机器总共 3.2G 内存，开机就用掉 2.3G，一台电视能吃掉这么多，后台确实有东西在跑。&lt;/p&gt;
+&lt;h2&gt;广告位置&lt;/h2&gt;
+&lt;p&gt;&lt;code&gt;pm list packages -s&lt;/code&gt; 列系统包，一眼就能看出是酷开的底子，包名清一色 &lt;code&gt;com.tianci.*&lt;/code&gt; 和 &lt;code&gt;com.coocaa.*&lt;/code&gt;。&lt;/p&gt;
+&lt;p&gt;其实直接看包名就看出个大概了：&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;adb shell &quot;dumpsys package com.tianci.ad | head -60&quot;
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;输出的 Activity 列表几乎是自报家门：&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;code&gt;com.tianci.ad/.ui.BootViewActivity&lt;/code&gt;，挂在 &lt;code&gt;com.tianci.ad.bootview&lt;/code&gt; 这个 action 上，开机广告&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;com.tianci.ad/.PowerOffActivity&lt;/code&gt;，&lt;code&gt;com.tianci.ad.poweroff&lt;/code&gt;，关机广告&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;com.tianci.ad/.ScreensaverActivity&lt;/code&gt;，&lt;code&gt;com.tianci.ad.screensaver&lt;/code&gt;，屏保广告&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;com.tianci.ad/com.coocaa.adsdk.landing.LandingWebActivity&lt;/code&gt; 这一类，广告落地页&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;com.tianci.ad/com.coocaa.adcore.ActiveTaskActivity&lt;/code&gt;，任务型广告&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;其实这样也挺好的，厂家把广告整合到几个包里，只删除包就行了，要是内嵌到正经服务里那就吐了。&lt;/p&gt;
+&lt;h2&gt;只禁，不卸&lt;/h2&gt;
+&lt;p&gt;毕竟莫得源码进行分析，不知道直接删除会不会把把电视弄成大块板砖了，所以先备份一份数据，然后只采用禁用的方案。&lt;/p&gt;
+&lt;p&gt;使用的命令是 &lt;code&gt;pm disable-user&lt;/code&gt;。想要恢复&lt;code&gt;pm enable&lt;/code&gt; 就回来了；&lt;/p&gt;
+&lt;p&gt;先记一份当前的禁用列表，出事了方便对照：&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;adb shell &quot;pm list packages -d&quot; &amp;gt; backup.txt
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;然后照名单来：&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;$pkgs = @(
+  &quot;com.tianci.ad&quot;,
+  &quot;com.tianci.push&quot;,
+  &quot;com.tianci.autoinstaller&quot;,
+  &quot;com.coocaa.messageprovider&quot;,
+  &quot;com.coocaa.lifeassistant&quot;,
+  &quot;com.coocaa.screensaver&quot;,
+  &quot;com.tianci.appstore&quot;,
+  &quot;com.coocaa.NewStoreSystem&quot;,
+  &quot;com.coocaa.app_browser&quot;,
+  &quot;com.coocaa.guide&quot;
+)
+foreach ($p in $pkgs) { adb shell &quot;pm disable-user --user 0 $p&quot; }
+&lt;/code&gt;&lt;/pre&gt;
+&lt;table&gt;
+&lt;thead&gt;
+&lt;tr&gt;
+&lt;th&gt;包名&lt;/th&gt;
+&lt;th&gt;干什么的&lt;/th&gt;
+&lt;/tr&gt;
+&lt;/thead&gt;
+&lt;tbody&gt;
+&lt;tr&gt;
+&lt;td&gt;&lt;code&gt;com.tianci.ad&lt;/code&gt;&lt;/td&gt;
+&lt;td&gt;广告 SDK 本体，开机、关机、屏保、落地页都在这&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;&lt;code&gt;com.tianci.push&lt;/code&gt;&lt;/td&gt;
+&lt;td&gt;广告推送&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;&lt;code&gt;com.tianci.autoinstaller&lt;/code&gt;&lt;/td&gt;
+&lt;td&gt;静默装 App 的那位&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;&lt;code&gt;com.coocaa.messageprovider&lt;/code&gt;&lt;/td&gt;
+&lt;td&gt;消息中心，推的基本是广告&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;&lt;code&gt;com.coocaa.lifeassistant&lt;/code&gt;&lt;/td&gt;
+&lt;td&gt;生活助手，首页推荐位之一&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;&lt;code&gt;com.coocaa.screensaver&lt;/code&gt;&lt;/td&gt;
+&lt;td&gt;酷开屏保&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;&lt;code&gt;com.tianci.appstore&lt;/code&gt;&lt;/td&gt;
+&lt;td&gt;应用商店，推荐位和自动更新&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;&lt;code&gt;com.coocaa.NewStoreSystem&lt;/code&gt;&lt;/td&gt;
+&lt;td&gt;新商店，同上&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;&lt;code&gt;com.coocaa.app_browser&lt;/code&gt;&lt;/td&gt;
+&lt;td&gt;内置浏览器，广告落地页会用&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;&lt;code&gt;com.coocaa.guide&lt;/code&gt;&lt;/td&gt;
+&lt;td&gt;开机引导，带推荐下载&lt;/td&gt;
+&lt;/tr&gt;
+&lt;/tbody&gt;
+&lt;/table&gt;
+&lt;p&gt;每条回一句 &lt;code&gt;new state: disabled-user&lt;/code&gt;，十个全过。&lt;/p&gt;
+&lt;h2&gt;这台机器不能 &lt;code&gt;adb reboot&lt;/code&gt;&lt;/h2&gt;
+&lt;p&gt;随后重启验证，&lt;code&gt;adb reboot&lt;/code&gt; 直接报错：&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;/system/bin/sh: /system/bin/reboot: inaccessible or not found
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;&lt;code&gt;/system/bin/reboot&lt;/code&gt; 压根不存在，真正的在 &lt;code&gt;/vendor/bin/&lt;/code&gt; 下。换成 &lt;code&gt;svc power reboot&lt;/code&gt;，命令没报错，五秒后设备离线。&lt;/p&gt;
+&lt;p&gt;然后再也没回来。&lt;/p&gt;
+&lt;p&gt;ping 不通，&lt;code&gt;arp -a&lt;/code&gt; 里 MAC 也没了。我甚至试了 WoL，魔术包往 &lt;code&gt;192.168.10.255&lt;/code&gt; 和 &lt;code&gt;255.255.255.255&lt;/code&gt; 的 9、7 端口各发了一轮，一点反应都没有。后来才反应过来，这台机器的 &lt;code&gt;svc power reboot&lt;/code&gt; 压根没在重启，是直接关机了。&lt;/p&gt;
+&lt;p&gt;最后只能走过去按遥控器的电源键。&lt;/p&gt;
+&lt;p&gt;重启了，完美。开屏清爽。&lt;/p&gt;
+&lt;h2&gt;还剩什么&lt;/h2&gt;
+&lt;p&gt;按这几个包的分工，开机广告、关机广告、屏保广告、推送弹窗和商店推荐都该没了。&lt;/p&gt;
+&lt;p&gt;还在的：&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;strong&gt;桌面&lt;/strong&gt;。&lt;code&gt;com.tianci.de&lt;/code&gt; 是创维的桌面，它自己内嵌了一套 &lt;code&gt;com.coocaa.adsdk.landing.*&lt;/code&gt; 的 Activity，首页那排“精选”就是它画的。禁掉它就没桌面了，只能换第三方 launcher，这就不是小改了，没继续折腾。&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;App 里的贴片&lt;/strong&gt;。小电视、芒果这些，广告是服务端下发的，本地删不掉，除非买会员，在考虑dns侧的禁用，不知道有没有效果。&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h2&gt;一键恢复&lt;/h2&gt;
+&lt;pre&gt;&lt;code&gt;adb shell pm enable com.tianci.ad
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;十个包挨个 &lt;code&gt;pm enable&lt;/code&gt;。&lt;/p&gt;
+&lt;hr /&gt;
+&lt;p&gt;还好广告包独立。禁包还是轻轻松松。&lt;/p&gt;
+</content:encoded></item><item><title>opencode go计划deepseek-flash模型经newapi接入ChatGPT Desktop产生的工具调用问题</title><link>https://jayczee.cn/posts/opencode-go-deepseek-flash-newapi-chatgpt-desktop-tool-call/</link><guid isPermaLink="true">https://jayczee.cn/posts/opencode-go-deepseek-flash-newapi-chatgpt-desktop-tool-call/</guid><description>OpenCode Go 的 DeepSeek Flash 经 new-api 接入桌面端后，聊天正常，但读文件和执行命令频繁出错。这篇用尽量通俗的方式记录原因和解决过程。</description><pubDate>Thu, 24 Sep 2026 00:00:00 GMT</pubDate><content:encoded>&lt;p&gt;最近我开通了 OpenCode Go，想把里面的 DeepSeek Flash 接到自己的 new-api，再给 ChatGPT Desktop 里的 Codex Agent 使用。&lt;/p&gt;
 &lt;p&gt;刚开始看起来很顺利：配好地址和密钥，问一句话，模型能正常回答。我以为这就算接完了。&lt;/p&gt;
 &lt;p&gt;真正让它干活时，问题才出来。只要涉及读文件、执行命令、搜索代码或修改文件，对话就可能突然中断。有时它还会直接回复这样一大段奇怪文字：&lt;/p&gt;
 &lt;pre&gt;&lt;code&gt;&amp;lt;｜｜DSML｜｜ calls&amp;gt;
@@ -10814,6 +10956,80 @@ for (int i = 0; i &amp;lt; len; i++) {
 &lt;blockquote&gt;
 &lt;p&gt;&lt;strong&gt;提示&lt;/strong&gt;：在很多情况下，使用外部的 ASS 字幕会导致显示问题，若更换为 SRT 字幕则可以避免此类困扰。&lt;/p&gt;
 &lt;/blockquote&gt;
+</content:encoded></item><item><title>LeetCode 27：移除元素</title><link>https://jayczee.cn/posts/leetcode/27/</link><guid isPermaLink="true">https://jayczee.cn/posts/leetcode/27/</guid><description>LeetCode 27 移除元素，记录解题思路和 Java 实现。涉及数组、双指针。</description><pubDate>Tue, 25 Feb 2025 00:00:00 GMT</pubDate><content:encoded>&lt;p&gt;&amp;lt;span id=&quot;🔗-相关链接&quot; class=&quot;legacy-anchor&quot; aria-hidden=&quot;true&quot;&amp;gt;&amp;lt;/span&amp;gt;&lt;/p&gt;
+&lt;h2&gt;🔗 相关链接&lt;/h2&gt;
+&lt;p&gt;&lt;a href=&quot;https://leetcode.cn/problems/remove-element/description/?envType=study-plan-v2&amp;amp;envId=top-interview-150&quot;&gt;移除元素&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;&amp;lt;span id=&quot;📜-题目描述&quot; class=&quot;legacy-anchor&quot; aria-hidden=&quot;true&quot;&amp;gt;&amp;lt;/span&amp;gt;&lt;/p&gt;
+&lt;h2&gt;📜 题目描述&lt;/h2&gt;
+&lt;p&gt;给定一个数组 &lt;code&gt;nums&lt;/code&gt; 和一个值 &lt;code&gt;val&lt;/code&gt;，需要 &lt;strong&gt;原地&lt;/strong&gt; 移除所有数值等于 &lt;code&gt;val&lt;/code&gt; 的元素。元素的顺序可能发生改变。然后返回 &lt;code&gt;nums&lt;/code&gt; 中与 &lt;code&gt;val&lt;/code&gt; 不同的元素的数量。&lt;/p&gt;
+&lt;p&gt;假设 &lt;code&gt;nums&lt;/code&gt; 中不等于 &lt;code&gt;val&lt;/code&gt; 的元素数量为 &lt;code&gt;k&lt;/code&gt;，需要执行以下操作：&lt;/p&gt;
+&lt;ol&gt;
+&lt;li&gt;更改 &lt;code&gt;nums&lt;/code&gt; 数组，使 &lt;code&gt;nums&lt;/code&gt; 的前 &lt;code&gt;k&lt;/code&gt; 个元素包含不等于 &lt;code&gt;val&lt;/code&gt; 的元素。&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;nums&lt;/code&gt; 的其余元素和 &lt;code&gt;nums&lt;/code&gt; 的大小并不重要。&lt;/li&gt;
+&lt;li&gt;返回 &lt;code&gt;k&lt;/code&gt;。&lt;/li&gt;
+&lt;/ol&gt;
+&lt;p&gt;&amp;lt;span id=&quot;🧪-用户评测&quot; class=&quot;legacy-anchor&quot; aria-hidden=&quot;true&quot;&amp;gt;&amp;lt;/span&amp;gt;&lt;/p&gt;
+&lt;h2&gt;🧪 用户评测&lt;/h2&gt;
+&lt;p&gt;评测机将使用以下代码测试解决方案：&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;int[] nums = [...]; // 输入数组
+int val = ...; // 要移除的值
+int[] expectedNums = [...]; // 长度正确的预期答案。
+// 它以不等于 val 的值排序。
+
+int k = removeElement(nums, val); // 调用你的实现
+
+assert k == expectedNums.length;
+sort(nums, 0, k); // 排序 nums 的前 k 个元素
+for (int i = 0; i &amp;lt; actualLength; i++) {
+    assert nums[i] == expectedNums[i];
+}
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;如果所有的断言都通过，解决方案将会通过。&lt;/p&gt;
+&lt;p&gt;&amp;lt;span id=&quot;📊-示例&quot; class=&quot;legacy-anchor&quot; aria-hidden=&quot;true&quot;&amp;gt;&amp;lt;/span&amp;gt;&lt;/p&gt;
+&lt;h2&gt;📊 示例&lt;/h2&gt;
+&lt;h3&gt;示例 1&lt;/h3&gt;
+&lt;p&gt;&lt;strong&gt;输入：&lt;/strong&gt;&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;nums = [3,2,2,3], val = 3
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;&lt;strong&gt;输出：&lt;/strong&gt;&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;2, nums = [2,2,,]
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;&lt;strong&gt;解释：&lt;/strong&gt;
+函数应返回 &lt;code&gt;k = 2&lt;/code&gt;，并且 &lt;code&gt;nums&lt;/code&gt; 中的前两个元素均为 &lt;code&gt;2&lt;/code&gt;。返回的 &lt;code&gt;k&lt;/code&gt; 个元素之外留下的内容并不重要（因此它们并不计入评测）。&lt;/p&gt;
+&lt;h3&gt;示例 2&lt;/h3&gt;
+&lt;p&gt;&lt;strong&gt;输入：&lt;/strong&gt;&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;nums = [0,1,2,2,3,0,4,2], val = 2
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;&lt;strong&gt;输出：&lt;/strong&gt;&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;5, nums = [0,1,4,0,3,,]
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;&lt;strong&gt;解释：&lt;/strong&gt;
+函数应返回 &lt;code&gt;k = 5&lt;/code&gt;，并且 &lt;code&gt;nums&lt;/code&gt; 中的前五个元素为 &lt;code&gt;0,1,4,0,3&lt;/code&gt;。注意这五个元素可以任意顺序返回。返回的 &lt;code&gt;k&lt;/code&gt; 个元素之外留下的内容并不重要（因此它们并不计入评测）。&lt;/p&gt;
+&lt;p&gt;&amp;lt;span id=&quot;📝-提示&quot; class=&quot;legacy-anchor&quot; aria-hidden=&quot;true&quot;&amp;gt;&amp;lt;/span&amp;gt;&lt;/p&gt;
+&lt;h2&gt;📝 提示&lt;/h2&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;code&gt;0 &amp;lt;= nums.length &amp;lt;= 100&lt;/code&gt;&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;0 &amp;lt;= nums[i] &amp;lt;= 50&lt;/code&gt;&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;0 &amp;lt;= val &amp;lt;= 100&lt;/code&gt;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;&amp;lt;span id=&quot;💡-思路&quot; class=&quot;legacy-anchor&quot; aria-hidden=&quot;true&quot;&amp;gt;&amp;lt;/span&amp;gt;&lt;/p&gt;
+&lt;h2&gt;💡 思路&lt;/h2&gt;
+&lt;p&gt;使用快慢指针，两个指针都从头部开始遍历，慢指针指向当前位置，快指针指向扫描位置。快指针循环向前移动并比较当前位置的值是否等于移除值，若是则跳过，若不是则把当前位置值设置为扫描值，并把有效长度 +1。&lt;/p&gt;
+&lt;p&gt;&amp;lt;span id=&quot;💻-代码实现&quot; class=&quot;legacy-anchor&quot; aria-hidden=&quot;true&quot;&amp;gt;&amp;lt;/span&amp;gt;&lt;/p&gt;
+&lt;h2&gt;💻 代码实现&lt;/h2&gt;
+&lt;pre&gt;&lt;code&gt;int slow = 0;
+int fast = 0;
+int length = 0;
+while (fast &amp;lt; nums.length) {
+    if (nums[fast] != val) {
+        nums[slow] = nums[fast];
+        length++;
+        slow++;
+    }
+    fast++;
+}
+return length;
+&lt;/code&gt;&lt;/pre&gt;
 </content:encoded></item><item><title>LeetCode 26：移除有序数组中的重复项</title><link>https://jayczee.cn/posts/leetcode/26/</link><guid isPermaLink="true">https://jayczee.cn/posts/leetcode/26/</guid><description>LeetCode 26 移除有序数组中的重复项，记录解题思路和 Java 实现。涉及数组、双指针。</description><pubDate>Tue, 25 Feb 2025 00:00:00 GMT</pubDate><content:encoded>&lt;p&gt;&amp;lt;span id=&quot;🔗-相关链接&quot; class=&quot;legacy-anchor&quot; aria-hidden=&quot;true&quot;&amp;gt;&amp;lt;/span&amp;gt;&lt;/p&gt;
 &lt;h2&gt;🔗 相关链接&lt;/h2&gt;
 &lt;p&gt;&lt;a href=&quot;https://leetcode.cn/problems/remove-duplicates-from-sorted-array/description/?envType=study-plan-v2&amp;amp;envId=top-interview-150&quot;&gt;移除有序数组中的重复项&lt;/a&gt;&lt;/p&gt;
@@ -10891,80 +11107,6 @@ for (int i = 0; i &amp;lt; k; i++) {
         }
         return length;
     }
-&lt;/code&gt;&lt;/pre&gt;
-</content:encoded></item><item><title>LeetCode 27：移除元素</title><link>https://jayczee.cn/posts/leetcode/27/</link><guid isPermaLink="true">https://jayczee.cn/posts/leetcode/27/</guid><description>LeetCode 27 移除元素，记录解题思路和 Java 实现。涉及数组、双指针。</description><pubDate>Tue, 25 Feb 2025 00:00:00 GMT</pubDate><content:encoded>&lt;p&gt;&amp;lt;span id=&quot;🔗-相关链接&quot; class=&quot;legacy-anchor&quot; aria-hidden=&quot;true&quot;&amp;gt;&amp;lt;/span&amp;gt;&lt;/p&gt;
-&lt;h2&gt;🔗 相关链接&lt;/h2&gt;
-&lt;p&gt;&lt;a href=&quot;https://leetcode.cn/problems/remove-element/description/?envType=study-plan-v2&amp;amp;envId=top-interview-150&quot;&gt;移除元素&lt;/a&gt;&lt;/p&gt;
-&lt;p&gt;&amp;lt;span id=&quot;📜-题目描述&quot; class=&quot;legacy-anchor&quot; aria-hidden=&quot;true&quot;&amp;gt;&amp;lt;/span&amp;gt;&lt;/p&gt;
-&lt;h2&gt;📜 题目描述&lt;/h2&gt;
-&lt;p&gt;给定一个数组 &lt;code&gt;nums&lt;/code&gt; 和一个值 &lt;code&gt;val&lt;/code&gt;，需要 &lt;strong&gt;原地&lt;/strong&gt; 移除所有数值等于 &lt;code&gt;val&lt;/code&gt; 的元素。元素的顺序可能发生改变。然后返回 &lt;code&gt;nums&lt;/code&gt; 中与 &lt;code&gt;val&lt;/code&gt; 不同的元素的数量。&lt;/p&gt;
-&lt;p&gt;假设 &lt;code&gt;nums&lt;/code&gt; 中不等于 &lt;code&gt;val&lt;/code&gt; 的元素数量为 &lt;code&gt;k&lt;/code&gt;，需要执行以下操作：&lt;/p&gt;
-&lt;ol&gt;
-&lt;li&gt;更改 &lt;code&gt;nums&lt;/code&gt; 数组，使 &lt;code&gt;nums&lt;/code&gt; 的前 &lt;code&gt;k&lt;/code&gt; 个元素包含不等于 &lt;code&gt;val&lt;/code&gt; 的元素。&lt;/li&gt;
-&lt;li&gt;&lt;code&gt;nums&lt;/code&gt; 的其余元素和 &lt;code&gt;nums&lt;/code&gt; 的大小并不重要。&lt;/li&gt;
-&lt;li&gt;返回 &lt;code&gt;k&lt;/code&gt;。&lt;/li&gt;
-&lt;/ol&gt;
-&lt;p&gt;&amp;lt;span id=&quot;🧪-用户评测&quot; class=&quot;legacy-anchor&quot; aria-hidden=&quot;true&quot;&amp;gt;&amp;lt;/span&amp;gt;&lt;/p&gt;
-&lt;h2&gt;🧪 用户评测&lt;/h2&gt;
-&lt;p&gt;评测机将使用以下代码测试解决方案：&lt;/p&gt;
-&lt;pre&gt;&lt;code&gt;int[] nums = [...]; // 输入数组
-int val = ...; // 要移除的值
-int[] expectedNums = [...]; // 长度正确的预期答案。
-// 它以不等于 val 的值排序。
-
-int k = removeElement(nums, val); // 调用你的实现
-
-assert k == expectedNums.length;
-sort(nums, 0, k); // 排序 nums 的前 k 个元素
-for (int i = 0; i &amp;lt; actualLength; i++) {
-    assert nums[i] == expectedNums[i];
-}
-&lt;/code&gt;&lt;/pre&gt;
-&lt;p&gt;如果所有的断言都通过，解决方案将会通过。&lt;/p&gt;
-&lt;p&gt;&amp;lt;span id=&quot;📊-示例&quot; class=&quot;legacy-anchor&quot; aria-hidden=&quot;true&quot;&amp;gt;&amp;lt;/span&amp;gt;&lt;/p&gt;
-&lt;h2&gt;📊 示例&lt;/h2&gt;
-&lt;h3&gt;示例 1&lt;/h3&gt;
-&lt;p&gt;&lt;strong&gt;输入：&lt;/strong&gt;&lt;/p&gt;
-&lt;pre&gt;&lt;code&gt;nums = [3,2,2,3], val = 3
-&lt;/code&gt;&lt;/pre&gt;
-&lt;p&gt;&lt;strong&gt;输出：&lt;/strong&gt;&lt;/p&gt;
-&lt;pre&gt;&lt;code&gt;2, nums = [2,2,,]
-&lt;/code&gt;&lt;/pre&gt;
-&lt;p&gt;&lt;strong&gt;解释：&lt;/strong&gt;
-函数应返回 &lt;code&gt;k = 2&lt;/code&gt;，并且 &lt;code&gt;nums&lt;/code&gt; 中的前两个元素均为 &lt;code&gt;2&lt;/code&gt;。返回的 &lt;code&gt;k&lt;/code&gt; 个元素之外留下的内容并不重要（因此它们并不计入评测）。&lt;/p&gt;
-&lt;h3&gt;示例 2&lt;/h3&gt;
-&lt;p&gt;&lt;strong&gt;输入：&lt;/strong&gt;&lt;/p&gt;
-&lt;pre&gt;&lt;code&gt;nums = [0,1,2,2,3,0,4,2], val = 2
-&lt;/code&gt;&lt;/pre&gt;
-&lt;p&gt;&lt;strong&gt;输出：&lt;/strong&gt;&lt;/p&gt;
-&lt;pre&gt;&lt;code&gt;5, nums = [0,1,4,0,3,,]
-&lt;/code&gt;&lt;/pre&gt;
-&lt;p&gt;&lt;strong&gt;解释：&lt;/strong&gt;
-函数应返回 &lt;code&gt;k = 5&lt;/code&gt;，并且 &lt;code&gt;nums&lt;/code&gt; 中的前五个元素为 &lt;code&gt;0,1,4,0,3&lt;/code&gt;。注意这五个元素可以任意顺序返回。返回的 &lt;code&gt;k&lt;/code&gt; 个元素之外留下的内容并不重要（因此它们并不计入评测）。&lt;/p&gt;
-&lt;p&gt;&amp;lt;span id=&quot;📝-提示&quot; class=&quot;legacy-anchor&quot; aria-hidden=&quot;true&quot;&amp;gt;&amp;lt;/span&amp;gt;&lt;/p&gt;
-&lt;h2&gt;📝 提示&lt;/h2&gt;
-&lt;ul&gt;
-&lt;li&gt;&lt;code&gt;0 &amp;lt;= nums.length &amp;lt;= 100&lt;/code&gt;&lt;/li&gt;
-&lt;li&gt;&lt;code&gt;0 &amp;lt;= nums[i] &amp;lt;= 50&lt;/code&gt;&lt;/li&gt;
-&lt;li&gt;&lt;code&gt;0 &amp;lt;= val &amp;lt;= 100&lt;/code&gt;&lt;/li&gt;
-&lt;/ul&gt;
-&lt;p&gt;&amp;lt;span id=&quot;💡-思路&quot; class=&quot;legacy-anchor&quot; aria-hidden=&quot;true&quot;&amp;gt;&amp;lt;/span&amp;gt;&lt;/p&gt;
-&lt;h2&gt;💡 思路&lt;/h2&gt;
-&lt;p&gt;使用快慢指针，两个指针都从头部开始遍历，慢指针指向当前位置，快指针指向扫描位置。快指针循环向前移动并比较当前位置的值是否等于移除值，若是则跳过，若不是则把当前位置值设置为扫描值，并把有效长度 +1。&lt;/p&gt;
-&lt;p&gt;&amp;lt;span id=&quot;💻-代码实现&quot; class=&quot;legacy-anchor&quot; aria-hidden=&quot;true&quot;&amp;gt;&amp;lt;/span&amp;gt;&lt;/p&gt;
-&lt;h2&gt;💻 代码实现&lt;/h2&gt;
-&lt;pre&gt;&lt;code&gt;int slow = 0;
-int fast = 0;
-int length = 0;
-while (fast &amp;lt; nums.length) {
-    if (nums[fast] != val) {
-        nums[slow] = nums[fast];
-        length++;
-        slow++;
-    }
-    fast++;
-}
-return length;
 &lt;/code&gt;&lt;/pre&gt;
 </content:encoded></item><item><title>LeetCode 88：合并两个有序数组</title><link>https://jayczee.cn/posts/leetcode/88/</link><guid isPermaLink="true">https://jayczee.cn/posts/leetcode/88/</guid><description>LeetCode 88 合并两个有序数组，记录解题思路和 Java 实现。涉及数组、双指针、排序。</description><pubDate>Tue, 25 Feb 2025 00:00:00 GMT</pubDate><content:encoded>&lt;p&gt;&amp;lt;span id=&quot;🔗-原题链接&quot; class=&quot;legacy-anchor&quot; aria-hidden=&quot;true&quot;&amp;gt;&amp;lt;/span&amp;gt;&lt;/p&gt;
 &lt;h2&gt;🔗 原题链接&lt;/h2&gt;
