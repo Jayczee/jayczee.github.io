@@ -29,27 +29,204 @@ const entries = [
 
 <Layout description={siteConfig.subtitle}>
     <div id="landing" class="relative min-h-screen w-full overflow-hidden flex items-center justify-center px-6">
-        <!-- Background: reuse the banner image -->
+        <!-- SVG Filters for authentic ZZZ street-chalk / dry-brush texture -->
+        <svg class="sr-only" aria-hidden="true">
+            <defs>
+                <filter id="zzz-chalk" x="-10%" y="-10%" width="120%" height="120%">
+                    <feTurbulence type="fractalNoise" baseFrequency="0.045 0.14" numOctaves="3" seed="7" result="noise" />
+                    <feDisplacementMap in="SourceGraphic" in2="noise" scale="3.2" xChannelSelector="R" yChannelSelector="G" />
+                </filter>
+                <filter id="zzz-sky-marker" x="-10%" y="-10%" width="120%" height="120%">
+                    <feTurbulence type="fractalNoise" baseFrequency="0.06 0.09" numOctaves="2" seed="3" result="noise" />
+                    <feDisplacementMap in="SourceGraphic" in2="noise" scale="1.8" xChannelSelector="R" yChannelSelector="G" />
+                </filter>
+            </defs>
+        </svg>
+
+        <!-- Mobile / Tablet Background (< lg): reuse the blurred banner image -->
         {siteConfig.banner.enable && (
-            <!-- ImageWrapper always adds `relative`, so position it via a wrapper -->
-            <div class="absolute inset-0">
+            <div class="absolute inset-0 lg:hidden">
                 <ImageWrapper id="landing-bg" alt="Background image" src={siteConfig.banner.src} position={siteConfig.banner.position}
                               class="w-full h-full scale-105 blur-[2px]"
                 ></ImageWrapper>
             </div>
         )}
-        <div class="absolute inset-0 bg-gradient-to-b from-black/40 via-black/30 to-black/60 dark:from-black/60 dark:via-black/50 dark:to-black/80"></div>
+        <div class="absolute inset-0 lg:hidden bg-gradient-to-b from-black/40 via-black/30 to-black/60 dark:from-black/60 dark:via-black/50 dark:to-black/80"></div>
 
-        <!-- Hero -->
-        <main class="relative z-10 flex flex-col items-center text-center max-w-xl">
+        <!-- Widescreen Background (lg+): full-screen animated video -->
+        <div class="hidden lg:block absolute inset-0 bg-[#0d1726]">
+            <video
+                id="landing-video"
+                autoplay
+                loop
+                muted
+                playsinline
+                poster={url("/videos/landing-poster.webp")}
+                class="w-full h-full object-cover object-[50%_25%] select-none pointer-events-none"
+            >
+                <source src={url("/videos/landing-bg.mp4")} type="video/mp4" />
+            </video>
+            <!-- Subtle edge vignette to enhance wall & sky typography contrast without dimming Belle -->
+            <div class="pointer-events-none absolute inset-0 bg-[radial-gradient(circle_at_52%_50%,transparent_55%,rgba(0,0,0,0.28)_100%)]"></div>
+        </div>
+
+        <!-- ================================================================= -->
+        <!-- WIDESCREEN SCENE OVERLAY (lg+): Wall Graffiti & Sky Signage       -->
+        <!-- ================================================================= -->
+        <div class="hidden lg:block absolute inset-0 z-10 pointer-events-none">
+            <!-- Upper-Left Building Wall: Crown + Jayczee + Exploring the world -->
+            <div
+                class="landing-item absolute top-[14.5%] left-[6.8%] xl:left-[7.4%] select-none pointer-events-auto"
+                style="animation-delay: 80ms"
+            >
+                <div class="zzz-wall-group">
+                    <!-- Hand-drawn 3-point graffiti crown matching original Belle artwork -->
+                    <svg
+                        viewBox="0 0 120 82"
+                        class="w-[4.6rem] xl:w-[5.4rem] h-auto ml-[6.8rem] xl:ml-[8.4rem] -mb-3 xl:-mb-4 opacity-95 zzz-chalk-el"
+                        fill="none"
+                        aria-hidden="true"
+                    >
+                        <path
+                            d="M18 60 L12 22 L40 43 L60 12 L80 43 L108 20 L98 60 Z"
+                            stroke="rgba(232, 241, 249, 0.94)"
+                            stroke-width="6.5"
+                            stroke-linecap="round"
+                            stroke-linejoin="round"
+                        />
+                        <path
+                            d="M16 71 C42 68, 76 67, 101 70"
+                            stroke="rgba(232, 241, 249, 0.9)"
+                            stroke-width="5.5"
+                            stroke-linecap="round"
+                        />
+                    </svg>
+
+                    <!-- Main Wall Graffiti Title: Jayczee -->
+                    <div class="relative inline-block">
+                        <span class="zzz-wall-title zzz-chalk-el block">
+                            {profileConfig.name}
+                        </span>
+                        <!-- Expressive dry-brush underline slash -->
+                        <svg
+                            viewBox="0 0 360 28"
+                            class="w-[74%] h-auto -mt-2 xl:-mt-3 ml-2 opacity-90 zzz-chalk-el"
+                            fill="none"
+                            aria-hidden="true"
+                        >
+                            <path
+                                d="M6 18 C95 8, 220 6, 352 13"
+                                stroke="rgba(230, 239, 248, 0.88)"
+                                stroke-width="5.2"
+                                stroke-linecap="round"
+                            />
+                            <path
+                                d="M28 24 C110 17, 200 16, 290 20"
+                                stroke="rgba(230, 239, 248, 0.58)"
+                                stroke-width="2.5"
+                                stroke-linecap="round"
+                            />
+                        </svg>
+                    </div>
+
+                    <!-- Wall Subtitle: Exploring the world -->
+                    {profileConfig.bio && (
+                        <p class="zzz-wall-sub zzz-chalk-el mt-1 ml-[4.6rem] xl:ml-[5.8rem]">
+                            {profileConfig.bio}
+                        </p>
+                    )}
+                </div>
+            </div>
+
+            <!-- Upper-Right Sky Area: Staggered Street-Art Navigation Buttons -->
+            <nav
+                aria-label="Primary Navigation"
+                class="landing-item absolute top-[11.5%] right-[4.8%] xl:right-[5.6%] pointer-events-auto select-none"
+                style="animation-delay: 180ms"
+            >
+                <div class="zzz-sky-group flex flex-col items-start gap-2 xl:gap-2.5">
+                    {entries.map((e, idx) => (
+                        <a
+                            href={e.href}
+                            data-no-swup
+                            class:list={[
+                                "zzz-sky-link group relative inline-flex items-center gap-2.5 px-1 py-0.5",
+                                idx === 1 ? "ml-8 xl:ml-10" : "",
+                            ]}
+                        >
+                            {idx === 0 && (
+                                <span class="zzz-sky-dash mr-0.5" aria-hidden="true">
+                                    <span class="block w-8 xl:w-10 h-[3.5px] bg-white rounded-full"></span>
+                                    <span class="block w-5 xl:w-6 h-[2.2px] bg-white/85 rounded-full mt-1 ml-2"></span>
+                                </span>
+                            )}
+                            <span class="zzz-sky-text">
+                                {e.label}
+                            </span>
+                            <span
+                                class="zzz-sky-arrow inline-flex items-center justify-center transition-transform duration-300 group-hover:translate-x-1.5 group-hover:-translate-y-0.5"
+                                aria-hidden="true"
+                            >
+                                !
+                            </span>
+                            <!-- Brush stroke hover underline -->
+                            <svg
+                                viewBox="0 0 200 14"
+                                class="pointer-events-none absolute -bottom-1 left-0 w-full h-3 opacity-85 group-hover:opacity-100 transition-opacity duration-300"
+                                fill="none"
+                                aria-hidden="true"
+                            >
+                                <path
+                                    d="M6 10 C64 4, 138 3, 194 8"
+                                    class="stroke-white/85 group-hover:stroke-[#ff6b00] transition-colors duration-300"
+                                    stroke-width="3.8"
+                                    stroke-linecap="round"
+                                />
+                            </svg>
+                        </a>
+                    ))}
+                </div>
+            </nav>
+
+            <!-- Bottom-Right Subtle Social Icons on Widescreen -->
+            {profileConfig.links.length > 0 && (
+                <div
+                    class="landing-item absolute bottom-5 right-6 flex items-center gap-2.5 pointer-events-auto"
+                    style="animation-delay: 320ms"
+                >
+                    {profileConfig.links.map((item) => (
+                        <a
+                            rel="me"
+                            aria-label={item.name}
+                            href={item.url}
+                            target="_blank"
+                            class="flex items-center justify-center w-9 h-9 rounded-xl bg-black/25 backdrop-blur-sm ring-1 ring-white/20 text-white/80 hover:text-white hover:bg-black/45 transition active:scale-90"
+                        >
+                            <Icon name={item.icon} class="text-[1.2rem]"></Icon>
+                        </a>
+                    ))}
+                </div>
+            )}
+        </div>
+
+        <!-- ================================================================= -->
+        <!-- MOBILE / TABLET HERO (< lg): Centered Avatar + Particle Title     -->
+        <!-- ================================================================= -->
+        <main class="relative z-10 flex lg:hidden flex-col items-center text-center max-w-xl">
             {profileConfig.avatar && (
-                <div class="landing-item w-28 h-28 md:w-32 md:h-32 rounded-full overflow-hidden ring-4 ring-white/30 shadow-2xl mb-6" style="animation-delay: 0ms">
+                <div class="landing-item w-40 h-40 md:w-48 md:h-48 rounded-full overflow-hidden ring-4 ring-white/30 shadow-2xl mb-6 transition-transform duration-500 hover:scale-[1.03]" style="animation-delay: 0ms">
                     <ImageWrapper src={profileConfig.avatar} alt="Avatar" class="w-full h-full"></ImageWrapper>
                 </div>
             )}
 
-            <h1 class="landing-item text-4xl md:text-5xl font-bold text-white tracking-tight mb-3" style="animation-delay: 100ms">
-                {profileConfig.name}
+            <h1 class="landing-item relative flex items-center justify-center mb-2" style="animation-delay: 100ms">
+                <span class="sr-only">{profileConfig.name}</span>
+                <canvas
+                    id="particle-title"
+                    data-name={profileConfig.name}
+                    aria-hidden="true"
+                    class="block w-[19rem] h-[4.25rem] md:w-[23rem] md:h-[5.25rem] select-none"
+                ></canvas>
             </h1>
             <div class="landing-item h-1 w-8 rounded-full bg-[var(--primary)] mb-4" style="animation-delay: 150ms"></div>
             {profileConfig.bio && (
@@ -89,13 +266,37 @@ const entries = [
             )}
         </main>
 
-        <footer class="absolute bottom-4 left-0 right-0 text-center text-xs text-white/50 z-10">
+        <footer class="absolute bottom-4 left-0 right-0 text-center text-xs text-white/50 z-10 pointer-events-none">
             © {new Date().getFullYear()} {profileConfig.name}
         </footer>
     </div>
 </Layout>
 
 <style>
+    @font-face {
+        font-family: "Kaushan Script";
+        src: url("/fonts/kaushan-script.woff2") format("woff2");
+        font-weight: 400;
+        font-style: normal;
+        font-display: swap;
+    }
+
+    @font-face {
+        font-family: "Caveat Brush";
+        src: url("/fonts/caveat-brush.woff2") format("woff2");
+        font-weight: 400;
+        font-style: normal;
+        font-display: swap;
+    }
+
+    @font-face {
+        font-family: "Ma Shan Zheng";
+        src: url("/fonts/ma-shan-zheng-bowen.woff2") format("woff2");
+        font-weight: 400;
+        font-style: normal;
+        font-display: swap;
+    }
+
     @keyframes landing-fade-in-up {
         from {
             opacity: 0;
@@ -112,6 +313,80 @@ const entries = [
         animation: landing-fade-in-up 600ms cubic-bezier(0.22, 1, 0.36, 1) forwards;
     }
 
+    /* Upper-Left Building Wall Graffiti */
+    .zzz-wall-group {
+        transform: rotate(-16deg) skewX(-6deg);
+        transform-origin: left center;
+    }
+
+    .zzz-chalk-el {
+        filter: url(#zzz-chalk) drop-shadow(3px 6px 9px rgba(6, 12, 24, 0.55));
+    }
+
+    .zzz-wall-title {
+        font-family: "Kaushan Script", "SignPainter-HouseScript", "Brush Script MT", cursive;
+        font-size: clamp(4.8rem, 7.6vw, 7.8rem);
+        line-height: 1.04;
+        letter-spacing: 0.01em;
+        padding: 0.1em 0.15em 0.05em 0.05em;
+        background: linear-gradient(
+            175deg,
+            rgba(241, 247, 253, 0.96) 0%,
+            rgba(203, 218, 232, 0.88) 62%,
+            rgba(170, 190, 209, 0.8) 100%
+        );
+        -webkit-background-clip: text;
+        background-clip: text;
+        color: transparent;
+    }
+
+    .zzz-wall-sub {
+        font-family: "Caveat Brush", "Kaushan Script", "Chalkboard SE", cursive;
+        font-size: clamp(1.5rem, 2.3vw, 2.35rem);
+        letter-spacing: 0.07em;
+        text-transform: uppercase;
+        color: rgba(218, 231, 243, 0.9);
+    }
+
+    /* Upper-Right Sky Handwritten Signage */
+    .zzz-sky-group {
+        transform: rotate(-13.5deg) skewX(-6deg);
+        transform-origin: right top;
+    }
+
+    .zzz-sky-link {
+        filter: drop-shadow(0 3px 10px rgba(10, 42, 88, 0.62));
+        transition: transform 260ms cubic-bezier(0.22, 1, 0.36, 1), filter 260ms ease;
+    }
+
+    .zzz-sky-link:hover {
+        transform: translate(5px, -2px) scale(1.05);
+        filter: drop-shadow(0 5px 16px rgba(10, 42, 88, 0.82));
+    }
+
+    .zzz-sky-text {
+        font-family: "Caveat Brush", "Kaushan Script", "Ma Shan Zheng", cursive;
+        font-size: clamp(1.95rem, 2.65vw, 2.75rem);
+        line-height: 1.1;
+        letter-spacing: 0.04em;
+        color: #ffffff;
+        text-shadow: 0 2px 6px rgba(12, 45, 92, 0.45);
+        transition: color 250ms ease;
+    }
+
+    .zzz-sky-link:hover .zzz-sky-text,
+    .zzz-sky-link:hover .zzz-sky-arrow {
+        color: #fff3e6;
+    }
+
+    .zzz-sky-arrow {
+        font-family: "Caveat Brush", "Kaushan Script", cursive;
+        font-weight: 800;
+        font-size: clamp(1.75rem, 2.35vw, 2.45rem);
+        color: #ffffff;
+        transition: color 250ms ease, transform 250ms ease;
+    }
+
     @media (prefers-reduced-motion: reduce) {
         .landing-item {
             opacity: 1;
@@ -119,3 +394,244 @@ const entries = [
         }
     }
 </style>
+
+<script>
+	interface Particle {
+		ox: number;
+		oy: number;
+		x: number;
+		y: number;
+		vx: number;
+		vy: number;
+		nx: number;
+		ny: number;
+		phase: number;
+		size: number;
+	}
+
+	function buildColorLUT(): string[] {
+		const stops: [number, [number, number, number]][] = [
+			[0.0, [255, 255, 255]],
+			[0.18, [125, 211, 252]], // #7dd3fc 冰蓝
+			[0.32, [186, 230, 253]], // #bae6fd 淡冰蓝
+			[0.5, [255, 255, 255]],
+			[0.68, [253, 186, 116]], // #fdba74 暖橙
+			[0.82, [254, 215, 170]], // #fed7aa 浅暖橙
+			[1.0, [255, 255, 255]],
+		];
+		const lut: string[] = new Array(256);
+		for (let i = 0; i < 256; i++) {
+			const t = i / 256;
+			let s0 = stops[0];
+			let s1 = stops[stops.length - 1];
+			for (let j = 0; j < stops.length - 1; j++) {
+				if (t >= stops[j][0] && t <= stops[j + 1][0]) {
+					s0 = stops[j];
+					s1 = stops[j + 1];
+					break;
+				}
+			}
+			const localT = (t - s0[0]) / (s1[0] - s0[0] || 1);
+			const smoothT = localT * localT * (3 - 2 * localT);
+			const r = Math.round(s0[1][0] + (s1[1][0] - s0[1][0]) * smoothT);
+			const g = Math.round(s0[1][1] + (s1[1][1] - s0[1][1]) * smoothT);
+			const b = Math.round(s0[1][2] + (s1[1][2] - s0[1][2]) * smoothT);
+			lut[i] = `rgb(${r},${g},${b})`;
+		}
+		return lut;
+	}
+
+	function setupParticleTitle() {
+		const canvas = document.getElementById("particle-title") as HTMLCanvasElement | null;
+		if (!canvas) return;
+		const ctx = canvas.getContext("2d");
+		if (!ctx) return;
+
+		const text = canvas.dataset.name || "Jayczee";
+		const reducedMotion = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+		const colorLUT = buildColorLUT();
+
+		let width = 0;
+		let height = 0;
+		let dpr = 1;
+		let particles: Particle[] = [];
+		let rafId: number | null = null;
+		const pointer = { x: -9999, y: -9999, radius: 46 };
+
+		function sampleText(scatter = false) {
+			if (!canvas || !ctx) return;
+			const rect = canvas.getBoundingClientRect();
+			if (rect.width === 0 || rect.height === 0) {
+				if (rafId !== null) {
+					cancelAnimationFrame(rafId);
+					rafId = null;
+				}
+				return;
+			}
+			width = Math.max(Math.round(rect.width), 280);
+			height = Math.max(Math.round(rect.height), 64);
+			dpr = Math.min(window.devicePixelRatio || 1, 2);
+
+			canvas.width = width * dpr;
+			canvas.height = height * dpr;
+			ctx.setTransform(dpr, 0, 0, dpr, 0, 0);
+
+			const offscreen = document.createElement("canvas");
+			offscreen.width = width;
+			offscreen.height = height;
+			const octx = offscreen.getContext("2d");
+			if (!octx) return;
+
+			const fontSize = width >= 340 ? 54 : 44;
+			octx.font = `800 ${fontSize}px ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif`;
+			octx.textAlign = "center";
+			octx.textBaseline = "middle";
+			octx.fillStyle = "#ffffff";
+			octx.fillText(text, width / 2, height / 2 + 2);
+
+			const img = octx.getImageData(0, 0, width, height).data;
+			particles = [];
+			const step = 2;
+
+			for (let y = 0; y < height; y += step) {
+				for (let x = 0; x < width; x += step) {
+					const alpha = img[(y * width + x) * 4 + 3];
+					if (alpha > 120) {
+						particles.push({
+							ox: x,
+							oy: y,
+							x: scatter && !reducedMotion ? x + (Math.random() - 0.5) * 20 : x,
+							y: scatter && !reducedMotion ? y + (Math.random() - 0.5) * 20 : y,
+							vx: 0,
+							vy: 0,
+							nx: x / width,
+							ny: y / height,
+							phase: Math.random() * 14,
+							size: 1.85,
+						});
+					}
+				}
+			}
+
+			drawStaticOrWake();
+		}
+
+		function stepFrame(now: number) {
+			if (!ctx) return;
+			ctx.clearRect(0, 0, width, height);
+
+			const r = pointer.radius;
+			const rSq = r * r;
+			const waveOffset = now * 0.045;
+
+			for (let i = 0; i < particles.length; i++) {
+				const p = particles[i];
+				const dx = pointer.x - p.x;
+				const dy = pointer.y - p.y;
+				const distSq = dx * dx + dy * dy;
+
+				if (distSq < rSq) {
+					const dist = Math.sqrt(distSq) || 1;
+					const force = (r - dist) / r;
+					p.vx -= (dx / dist) * force * 3.4;
+					p.vy -= (dy / dist) * force * 3.4;
+				}
+
+				const hx = p.ox - p.x;
+				const hy = p.oy - p.y;
+				p.vx = (p.vx + hx * 0.12) * 0.78;
+				p.vy = (p.vy + hy * 0.12) * 0.78;
+				p.x += p.vx;
+				p.y += p.vy;
+
+				if (
+					Math.abs(hx) <= 0.15 &&
+					Math.abs(hy) <= 0.15 &&
+					Math.abs(p.vx) <= 0.08 &&
+					Math.abs(p.vy) <= 0.08
+				) {
+					p.x = p.ox;
+					p.y = p.oy;
+				}
+
+				const energyShift = (Math.abs(p.vx) + Math.abs(p.vy)) * 6;
+				const lutIdx =
+					Math.floor(p.nx * 220 + p.ny * 45 + p.phase - waveOffset + energyShift) & 255;
+				ctx.fillStyle = colorLUT[lutIdx];
+				ctx.fillRect(p.x, p.y, p.size, p.size);
+			}
+
+			if (!document.hidden) {
+				rafId = requestAnimationFrame(stepFrame);
+			} else {
+				rafId = null;
+			}
+		}
+
+		function wake() {
+			if (reducedMotion) return;
+			if (rafId === null) {
+				rafId = requestAnimationFrame(stepFrame);
+			}
+		}
+
+		function drawStaticOrWake() {
+			if (!ctx) return;
+			if (reducedMotion) {
+				ctx.clearRect(0, 0, width, height);
+				for (const p of particles) {
+					const lutIdx = Math.floor(p.nx * 220 + p.ny * 45) & 255;
+					ctx.fillStyle = colorLUT[lutIdx];
+					ctx.fillRect(p.ox, p.oy, p.size, p.size);
+				}
+				return;
+			}
+			wake();
+		}
+
+		document.addEventListener("visibilitychange", () => {
+			if (!document.hidden) wake();
+		});
+
+		canvas.addEventListener("pointermove", (e) => {
+			const rect = canvas.getBoundingClientRect();
+			pointer.x = e.clientX - rect.left;
+			pointer.y = e.clientY - rect.top;
+			wake();
+		});
+
+		canvas.addEventListener("pointerleave", () => {
+			pointer.x = -9999;
+			pointer.y = -9999;
+			wake();
+		});
+
+		canvas.addEventListener("pointerdown", (e) => {
+			if (reducedMotion) return;
+			const rect = canvas.getBoundingClientRect();
+			const cx = e.clientX - rect.left;
+			const cy = e.clientY - rect.top;
+			for (const p of particles) {
+				const dx = p.x - cx;
+				const dy = p.y - cy;
+				const dist = Math.hypot(dx, dy) || 1;
+				if (dist < 90) {
+					const impulse = ((90 - dist) / 90) * 8;
+					p.vx += (dx / dist) * impulse;
+					p.vy += (dy / dist) * impulse;
+				}
+			}
+			wake();
+		});
+
+		let resizeTimer: ReturnType<typeof setTimeout>;
+		window.addEventListener("resize", () => {
+			clearTimeout(resizeTimer);
+			resizeTimer = setTimeout(() => sampleText(false), 120);
+		});
+
+		sampleText(true);
+	}
+
+	setupParticleTitle();
+</script>
