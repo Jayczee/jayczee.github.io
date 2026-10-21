@@ -7,9 +7,9 @@ import ImageWrapper from "../misc/ImageWrapper.astro";
 const config = profileConfig;
 ---
 <div class="card-base p-3">
-    <a aria-label="Go to About Page" href={url('/about/')}
+    <a aria-label="Go to Resume Page" href={url('/resume/')}
        class="group block relative mx-auto mt-1 lg:mx-0 lg:mt-0 mb-3
-       max-w-[12rem] lg:max-w-none overflow-hidden rounded-xl active:scale-95">
+       max-w-[12rem] lg:max-w-none overflow-hidden rounded-xl active:scale-95 ring-2 ring-[var(--primary)]/30 hover:ring-[var(--primary)] transition duration-300">
         <div class="absolute transition pointer-events-none group-hover:bg-black/30 group-active:bg-black/50
         w-full h-full z-50 flex items-center justify-center">
             <Icon name="fa6-regular:address-card"
@@ -19,9 +19,15 @@ const config = profileConfig;
         <ImageWrapper src={config.avatar || ""} alt="Profile Image of the Author" class="mx-auto lg:w-full h-full lg:mt-0 "></ImageWrapper>
     </a>
     <div class="px-2">
-        <div class="font-bold text-xl text-center mb-1 dark:text-neutral-50 transition">{config.name}</div>
-        <div class="h-1 w-5 bg-[var(--primary)] mx-auto rounded-full mb-2 transition"></div>
-        <div class="text-center text-neutral-400 mb-2.5 transition">{config.bio}</div>
+        <div class="flex items-center justify-center gap-1.5 mb-1">
+            <svg viewBox="0 0 120 82" class="w-5 h-auto text-[var(--primary)] opacity-90 -translate-y-0.5" fill="none" aria-hidden="true">
+                <path d="M18 60 L12 22 L40 43 L60 12 L80 43 L108 20 L98 60 Z" stroke="currentColor" stroke-width="8" stroke-linecap="round" stroke-linejoin="round"/>
+                <path d="M16 71 C42 68, 76 67, 101 70" stroke="currentColor" stroke-width="7" stroke-linecap="round"/>
+            </svg>
+            <div class="font-bold text-xl text-center dark:text-neutral-50 transition tracking-wide">{config.name}</div>
+        </div>
+        <div class="h-1 w-6 bg-[var(--primary)] mx-auto rounded-full mb-2.5 transition"></div>
+        <div class="text-center text-neutral-400 mb-2.5 transition text-sm">{config.bio}</div>
         <div class="flex flex-wrap gap-2 justify-center mb-1">
             {config.links.length > 1 && config.links.map(item =>
                     <a rel="me" aria-label={item.name} href={item.url} target="_blank" class="btn-regular rounded-lg h-10 w-10 active:scale-90">

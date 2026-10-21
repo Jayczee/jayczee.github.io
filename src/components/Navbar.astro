@@ -70,13 +70,21 @@ let links: NavBarLink[] = navBarConfig.links.map(
 
     .navbar-glass {
         background-color: var(--card-bg);
+        border-bottom: 1px solid var(--line-divider);
     }
 
-    @supports (backdrop-filter: blur(12px)) or (-webkit-backdrop-filter: blur(12px)) {
+    @supports (backdrop-filter: blur(16px)) or (-webkit-backdrop-filter: blur(16px)) {
         .navbar-glass {
-            background-color: color-mix(in srgb, var(--card-bg) 78%, transparent);
-            -webkit-backdrop-filter: blur(12px);
-            backdrop-filter: blur(12px);
+            background-color: color-mix(in srgb, var(--card-bg) 75%, transparent);
+            -webkit-backdrop-filter: blur(16px);
+            backdrop-filter: blur(16px);
+            border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+            box-shadow: 0 4px 20px -2px rgba(0, 0, 0, 0.05);
+        }
+        :global(.dark) .navbar-glass {
+            background-color: rgba(13, 23, 38, 0.78);
+            border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+            box-shadow: 0 4px 24px -2px rgba(0, 0, 0, 0.4);
         }
     }
 </style>
