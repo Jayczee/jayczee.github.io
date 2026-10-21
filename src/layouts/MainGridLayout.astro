@@ -57,20 +57,19 @@ const mainPanelTop = siteConfig.banner.enable
     <ImageWrapper id="banner" alt="Banner image of the blog" class:list={["object-cover h-full transition duration-700 opacity-0 scale-105"]}
                   src={siteConfig.banner.src} position={siteConfig.banner.position}
     >
+        <video
+            id="banner-video"
+            autoplay
+            loop
+            muted
+            playsinline
+            preload="auto"
+            class:list={["absolute inset-0 w-full h-full object-cover transition-opacity duration-700 opacity-0 pointer-events-none"]}
+            style={`object-position: ${siteConfig.banner.position || 'center'}`}
+        >
+            <source src={url("/videos/landing-bg.mp4")} type="video/mp4" />
+        </video>
     </ImageWrapper>
-    <video
-        id="banner-video"
-        autoplay
-        loop
-        muted
-        playsinline
-        preload="auto"
-        class:list={["absolute top-0 left-0 w-full object-cover transition duration-700 opacity-0 pointer-events-none"]}
-        style={`object-position: ${siteConfig.banner.position || 'center'}`}
-    >
-        <source src={url("/videos/landing-bg.mp4")} type="video/mp4" />
-    </video>
-    <div class="transition absolute inset-0 dark:bg-black/10 pointer-events-none"></div>
 </div>}
 
 <!-- Main content -->
