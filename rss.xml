@@ -10956,80 +10956,6 @@ for (int i = 0; i &amp;lt; len; i++) {
 &lt;blockquote&gt;
 &lt;p&gt;&lt;strong&gt;提示&lt;/strong&gt;：在很多情况下，使用外部的 ASS 字幕会导致显示问题，若更换为 SRT 字幕则可以避免此类困扰。&lt;/p&gt;
 &lt;/blockquote&gt;
-</content:encoded></item><item><title>LeetCode 27：移除元素</title><link>https://jayczee.cn/posts/leetcode/27/</link><guid isPermaLink="true">https://jayczee.cn/posts/leetcode/27/</guid><description>LeetCode 27 移除元素，记录解题思路和 Java 实现。涉及数组、双指针。</description><pubDate>Tue, 25 Feb 2025 00:00:00 GMT</pubDate><content:encoded>&lt;p&gt;&amp;lt;span id=&quot;🔗-相关链接&quot; class=&quot;legacy-anchor&quot; aria-hidden=&quot;true&quot;&amp;gt;&amp;lt;/span&amp;gt;&lt;/p&gt;
-&lt;h2&gt;🔗 相关链接&lt;/h2&gt;
-&lt;p&gt;&lt;a href=&quot;https://leetcode.cn/problems/remove-element/description/?envType=study-plan-v2&amp;amp;envId=top-interview-150&quot;&gt;移除元素&lt;/a&gt;&lt;/p&gt;
-&lt;p&gt;&amp;lt;span id=&quot;📜-题目描述&quot; class=&quot;legacy-anchor&quot; aria-hidden=&quot;true&quot;&amp;gt;&amp;lt;/span&amp;gt;&lt;/p&gt;
-&lt;h2&gt;📜 题目描述&lt;/h2&gt;
-&lt;p&gt;给定一个数组 &lt;code&gt;nums&lt;/code&gt; 和一个值 &lt;code&gt;val&lt;/code&gt;，需要 &lt;strong&gt;原地&lt;/strong&gt; 移除所有数值等于 &lt;code&gt;val&lt;/code&gt; 的元素。元素的顺序可能发生改变。然后返回 &lt;code&gt;nums&lt;/code&gt; 中与 &lt;code&gt;val&lt;/code&gt; 不同的元素的数量。&lt;/p&gt;
-&lt;p&gt;假设 &lt;code&gt;nums&lt;/code&gt; 中不等于 &lt;code&gt;val&lt;/code&gt; 的元素数量为 &lt;code&gt;k&lt;/code&gt;，需要执行以下操作：&lt;/p&gt;
-&lt;ol&gt;
-&lt;li&gt;更改 &lt;code&gt;nums&lt;/code&gt; 数组，使 &lt;code&gt;nums&lt;/code&gt; 的前 &lt;code&gt;k&lt;/code&gt; 个元素包含不等于 &lt;code&gt;val&lt;/code&gt; 的元素。&lt;/li&gt;
-&lt;li&gt;&lt;code&gt;nums&lt;/code&gt; 的其余元素和 &lt;code&gt;nums&lt;/code&gt; 的大小并不重要。&lt;/li&gt;
-&lt;li&gt;返回 &lt;code&gt;k&lt;/code&gt;。&lt;/li&gt;
-&lt;/ol&gt;
-&lt;p&gt;&amp;lt;span id=&quot;🧪-用户评测&quot; class=&quot;legacy-anchor&quot; aria-hidden=&quot;true&quot;&amp;gt;&amp;lt;/span&amp;gt;&lt;/p&gt;
-&lt;h2&gt;🧪 用户评测&lt;/h2&gt;
-&lt;p&gt;评测机将使用以下代码测试解决方案：&lt;/p&gt;
-&lt;pre&gt;&lt;code&gt;int[] nums = [...]; // 输入数组
-int val = ...; // 要移除的值
-int[] expectedNums = [...]; // 长度正确的预期答案。
-// 它以不等于 val 的值排序。
-
-int k = removeElement(nums, val); // 调用你的实现
-
-assert k == expectedNums.length;
-sort(nums, 0, k); // 排序 nums 的前 k 个元素
-for (int i = 0; i &amp;lt; actualLength; i++) {
-    assert nums[i] == expectedNums[i];
-}
-&lt;/code&gt;&lt;/pre&gt;
-&lt;p&gt;如果所有的断言都通过，解决方案将会通过。&lt;/p&gt;
-&lt;p&gt;&amp;lt;span id=&quot;📊-示例&quot; class=&quot;legacy-anchor&quot; aria-hidden=&quot;true&quot;&amp;gt;&amp;lt;/span&amp;gt;&lt;/p&gt;
-&lt;h2&gt;📊 示例&lt;/h2&gt;
-&lt;h3&gt;示例 1&lt;/h3&gt;
-&lt;p&gt;&lt;strong&gt;输入：&lt;/strong&gt;&lt;/p&gt;
-&lt;pre&gt;&lt;code&gt;nums = [3,2,2,3], val = 3
-&lt;/code&gt;&lt;/pre&gt;
-&lt;p&gt;&lt;strong&gt;输出：&lt;/strong&gt;&lt;/p&gt;
-&lt;pre&gt;&lt;code&gt;2, nums = [2,2,,]
-&lt;/code&gt;&lt;/pre&gt;
-&lt;p&gt;&lt;strong&gt;解释：&lt;/strong&gt;
-函数应返回 &lt;code&gt;k = 2&lt;/code&gt;，并且 &lt;code&gt;nums&lt;/code&gt; 中的前两个元素均为 &lt;code&gt;2&lt;/code&gt;。返回的 &lt;code&gt;k&lt;/code&gt; 个元素之外留下的内容并不重要（因此它们并不计入评测）。&lt;/p&gt;
-&lt;h3&gt;示例 2&lt;/h3&gt;
-&lt;p&gt;&lt;strong&gt;输入：&lt;/strong&gt;&lt;/p&gt;
-&lt;pre&gt;&lt;code&gt;nums = [0,1,2,2,3,0,4,2], val = 2
-&lt;/code&gt;&lt;/pre&gt;
-&lt;p&gt;&lt;strong&gt;输出：&lt;/strong&gt;&lt;/p&gt;
-&lt;pre&gt;&lt;code&gt;5, nums = [0,1,4,0,3,,]
-&lt;/code&gt;&lt;/pre&gt;
-&lt;p&gt;&lt;strong&gt;解释：&lt;/strong&gt;
-函数应返回 &lt;code&gt;k = 5&lt;/code&gt;，并且 &lt;code&gt;nums&lt;/code&gt; 中的前五个元素为 &lt;code&gt;0,1,4,0,3&lt;/code&gt;。注意这五个元素可以任意顺序返回。返回的 &lt;code&gt;k&lt;/code&gt; 个元素之外留下的内容并不重要（因此它们并不计入评测）。&lt;/p&gt;
-&lt;p&gt;&amp;lt;span id=&quot;📝-提示&quot; class=&quot;legacy-anchor&quot; aria-hidden=&quot;true&quot;&amp;gt;&amp;lt;/span&amp;gt;&lt;/p&gt;
-&lt;h2&gt;📝 提示&lt;/h2&gt;
-&lt;ul&gt;
-&lt;li&gt;&lt;code&gt;0 &amp;lt;= nums.length &amp;lt;= 100&lt;/code&gt;&lt;/li&gt;
-&lt;li&gt;&lt;code&gt;0 &amp;lt;= nums[i] &amp;lt;= 50&lt;/code&gt;&lt;/li&gt;
-&lt;li&gt;&lt;code&gt;0 &amp;lt;= val &amp;lt;= 100&lt;/code&gt;&lt;/li&gt;
-&lt;/ul&gt;
-&lt;p&gt;&amp;lt;span id=&quot;💡-思路&quot; class=&quot;legacy-anchor&quot; aria-hidden=&quot;true&quot;&amp;gt;&amp;lt;/span&amp;gt;&lt;/p&gt;
-&lt;h2&gt;💡 思路&lt;/h2&gt;
-&lt;p&gt;使用快慢指针，两个指针都从头部开始遍历，慢指针指向当前位置，快指针指向扫描位置。快指针循环向前移动并比较当前位置的值是否等于移除值，若是则跳过，若不是则把当前位置值设置为扫描值，并把有效长度 +1。&lt;/p&gt;
-&lt;p&gt;&amp;lt;span id=&quot;💻-代码实现&quot; class=&quot;legacy-anchor&quot; aria-hidden=&quot;true&quot;&amp;gt;&amp;lt;/span&amp;gt;&lt;/p&gt;
-&lt;h2&gt;💻 代码实现&lt;/h2&gt;
-&lt;pre&gt;&lt;code&gt;int slow = 0;
-int fast = 0;
-int length = 0;
-while (fast &amp;lt; nums.length) {
-    if (nums[fast] != val) {
-        nums[slow] = nums[fast];
-        length++;
-        slow++;
-    }
-    fast++;
-}
-return length;
-&lt;/code&gt;&lt;/pre&gt;
 </content:encoded></item><item><title>LeetCode 26：移除有序数组中的重复项</title><link>https://jayczee.cn/posts/leetcode/26/</link><guid isPermaLink="true">https://jayczee.cn/posts/leetcode/26/</guid><description>LeetCode 26 移除有序数组中的重复项，记录解题思路和 Java 实现。涉及数组、双指针。</description><pubDate>Tue, 25 Feb 2025 00:00:00 GMT</pubDate><content:encoded>&lt;p&gt;&amp;lt;span id=&quot;🔗-相关链接&quot; class=&quot;legacy-anchor&quot; aria-hidden=&quot;true&quot;&amp;gt;&amp;lt;/span&amp;gt;&lt;/p&gt;
 &lt;h2&gt;🔗 相关链接&lt;/h2&gt;
 &lt;p&gt;&lt;a href=&quot;https://leetcode.cn/problems/remove-duplicates-from-sorted-array/description/?envType=study-plan-v2&amp;amp;envId=top-interview-150&quot;&gt;移除有序数组中的重复项&lt;/a&gt;&lt;/p&gt;
@@ -11107,6 +11033,80 @@ for (int i = 0; i &amp;lt; k; i++) {
         }
         return length;
     }
+&lt;/code&gt;&lt;/pre&gt;
+</content:encoded></item><item><title>LeetCode 27：移除元素</title><link>https://jayczee.cn/posts/leetcode/27/</link><guid isPermaLink="true">https://jayczee.cn/posts/leetcode/27/</guid><description>LeetCode 27 移除元素，记录解题思路和 Java 实现。涉及数组、双指针。</description><pubDate>Tue, 25 Feb 2025 00:00:00 GMT</pubDate><content:encoded>&lt;p&gt;&amp;lt;span id=&quot;🔗-相关链接&quot; class=&quot;legacy-anchor&quot; aria-hidden=&quot;true&quot;&amp;gt;&amp;lt;/span&amp;gt;&lt;/p&gt;
+&lt;h2&gt;🔗 相关链接&lt;/h2&gt;
+&lt;p&gt;&lt;a href=&quot;https://leetcode.cn/problems/remove-element/description/?envType=study-plan-v2&amp;amp;envId=top-interview-150&quot;&gt;移除元素&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;&amp;lt;span id=&quot;📜-题目描述&quot; class=&quot;legacy-anchor&quot; aria-hidden=&quot;true&quot;&amp;gt;&amp;lt;/span&amp;gt;&lt;/p&gt;
+&lt;h2&gt;📜 题目描述&lt;/h2&gt;
+&lt;p&gt;给定一个数组 &lt;code&gt;nums&lt;/code&gt; 和一个值 &lt;code&gt;val&lt;/code&gt;，需要 &lt;strong&gt;原地&lt;/strong&gt; 移除所有数值等于 &lt;code&gt;val&lt;/code&gt; 的元素。元素的顺序可能发生改变。然后返回 &lt;code&gt;nums&lt;/code&gt; 中与 &lt;code&gt;val&lt;/code&gt; 不同的元素的数量。&lt;/p&gt;
+&lt;p&gt;假设 &lt;code&gt;nums&lt;/code&gt; 中不等于 &lt;code&gt;val&lt;/code&gt; 的元素数量为 &lt;code&gt;k&lt;/code&gt;，需要执行以下操作：&lt;/p&gt;
+&lt;ol&gt;
+&lt;li&gt;更改 &lt;code&gt;nums&lt;/code&gt; 数组，使 &lt;code&gt;nums&lt;/code&gt; 的前 &lt;code&gt;k&lt;/code&gt; 个元素包含不等于 &lt;code&gt;val&lt;/code&gt; 的元素。&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;nums&lt;/code&gt; 的其余元素和 &lt;code&gt;nums&lt;/code&gt; 的大小并不重要。&lt;/li&gt;
+&lt;li&gt;返回 &lt;code&gt;k&lt;/code&gt;。&lt;/li&gt;
+&lt;/ol&gt;
+&lt;p&gt;&amp;lt;span id=&quot;🧪-用户评测&quot; class=&quot;legacy-anchor&quot; aria-hidden=&quot;true&quot;&amp;gt;&amp;lt;/span&amp;gt;&lt;/p&gt;
+&lt;h2&gt;🧪 用户评测&lt;/h2&gt;
+&lt;p&gt;评测机将使用以下代码测试解决方案：&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;int[] nums = [...]; // 输入数组
+int val = ...; // 要移除的值
+int[] expectedNums = [...]; // 长度正确的预期答案。
+// 它以不等于 val 的值排序。
+
+int k = removeElement(nums, val); // 调用你的实现
+
+assert k == expectedNums.length;
+sort(nums, 0, k); // 排序 nums 的前 k 个元素
+for (int i = 0; i &amp;lt; actualLength; i++) {
+    assert nums[i] == expectedNums[i];
+}
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;如果所有的断言都通过，解决方案将会通过。&lt;/p&gt;
+&lt;p&gt;&amp;lt;span id=&quot;📊-示例&quot; class=&quot;legacy-anchor&quot; aria-hidden=&quot;true&quot;&amp;gt;&amp;lt;/span&amp;gt;&lt;/p&gt;
+&lt;h2&gt;📊 示例&lt;/h2&gt;
+&lt;h3&gt;示例 1&lt;/h3&gt;
+&lt;p&gt;&lt;strong&gt;输入：&lt;/strong&gt;&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;nums = [3,2,2,3], val = 3
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;&lt;strong&gt;输出：&lt;/strong&gt;&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;2, nums = [2,2,,]
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;&lt;strong&gt;解释：&lt;/strong&gt;
+函数应返回 &lt;code&gt;k = 2&lt;/code&gt;，并且 &lt;code&gt;nums&lt;/code&gt; 中的前两个元素均为 &lt;code&gt;2&lt;/code&gt;。返回的 &lt;code&gt;k&lt;/code&gt; 个元素之外留下的内容并不重要（因此它们并不计入评测）。&lt;/p&gt;
+&lt;h3&gt;示例 2&lt;/h3&gt;
+&lt;p&gt;&lt;strong&gt;输入：&lt;/strong&gt;&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;nums = [0,1,2,2,3,0,4,2], val = 2
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;&lt;strong&gt;输出：&lt;/strong&gt;&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;5, nums = [0,1,4,0,3,,]
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;&lt;strong&gt;解释：&lt;/strong&gt;
+函数应返回 &lt;code&gt;k = 5&lt;/code&gt;，并且 &lt;code&gt;nums&lt;/code&gt; 中的前五个元素为 &lt;code&gt;0,1,4,0,3&lt;/code&gt;。注意这五个元素可以任意顺序返回。返回的 &lt;code&gt;k&lt;/code&gt; 个元素之外留下的内容并不重要（因此它们并不计入评测）。&lt;/p&gt;
+&lt;p&gt;&amp;lt;span id=&quot;📝-提示&quot; class=&quot;legacy-anchor&quot; aria-hidden=&quot;true&quot;&amp;gt;&amp;lt;/span&amp;gt;&lt;/p&gt;
+&lt;h2&gt;📝 提示&lt;/h2&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;code&gt;0 &amp;lt;= nums.length &amp;lt;= 100&lt;/code&gt;&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;0 &amp;lt;= nums[i] &amp;lt;= 50&lt;/code&gt;&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;0 &amp;lt;= val &amp;lt;= 100&lt;/code&gt;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;&amp;lt;span id=&quot;💡-思路&quot; class=&quot;legacy-anchor&quot; aria-hidden=&quot;true&quot;&amp;gt;&amp;lt;/span&amp;gt;&lt;/p&gt;
+&lt;h2&gt;💡 思路&lt;/h2&gt;
+&lt;p&gt;使用快慢指针，两个指针都从头部开始遍历，慢指针指向当前位置，快指针指向扫描位置。快指针循环向前移动并比较当前位置的值是否等于移除值，若是则跳过，若不是则把当前位置值设置为扫描值，并把有效长度 +1。&lt;/p&gt;
+&lt;p&gt;&amp;lt;span id=&quot;💻-代码实现&quot; class=&quot;legacy-anchor&quot; aria-hidden=&quot;true&quot;&amp;gt;&amp;lt;/span&amp;gt;&lt;/p&gt;
+&lt;h2&gt;💻 代码实现&lt;/h2&gt;
+&lt;pre&gt;&lt;code&gt;int slow = 0;
+int fast = 0;
+int length = 0;
+while (fast &amp;lt; nums.length) {
+    if (nums[fast] != val) {
+        nums[slow] = nums[fast];
+        length++;
+        slow++;
+    }
+    fast++;
+}
+return length;
 &lt;/code&gt;&lt;/pre&gt;
 </content:encoded></item><item><title>LeetCode 88：合并两个有序数组</title><link>https://jayczee.cn/posts/leetcode/88/</link><guid isPermaLink="true">https://jayczee.cn/posts/leetcode/88/</guid><description>LeetCode 88 合并两个有序数组，记录解题思路和 Java 实现。涉及数组、双指针、排序。</description><pubDate>Tue, 25 Feb 2025 00:00:00 GMT</pubDate><content:encoded>&lt;p&gt;&amp;lt;span id=&quot;🔗-原题链接&quot; class=&quot;legacy-anchor&quot; aria-hidden=&quot;true&quot;&amp;gt;&amp;lt;/span&amp;gt;&lt;/p&gt;
 &lt;h2&gt;🔗 原题链接&lt;/h2&gt;
