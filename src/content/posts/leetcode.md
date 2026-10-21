@@ -2,7 +2,7 @@
 title: LeetCode 面试经典 150 题题解
 published: 2025-02-25
 updated: 2026-05-27
-description: 精选 LeetCode 面试经典 150 题核心题解合集，涵盖数组、双指针、滑动窗口、贪心与动态规划等核心考点，包含详细解题思路与 Java 代码实现。题目与题解分离，支持折叠展开阅读。
+description: 精选 LeetCode 面试经典 150 题核心题解合集，涵盖数组、双指针、滑动窗口、贪心与动态规划等核心考点，包含详细解题思路与 Java 代码实现。整题默认折叠收缩，支持目录快速跳转与一键展开。
 category: 算法题解
 tags:
   - LeetCode
@@ -14,19 +14,36 @@ tags:
 draft: false
 ---
 
-> 本文系统整理了 **LeetCode 面试经典 150 题**（Top Interview 150）的核心题解，包含原题链接、题目描述、边界示例、解题思路与标准 Java 代码实现。
+> 本文系统整理了 **LeetCode 面试经典 150 题**（Top Interview 150）的核心题解，包含题目描述、输入输出示例、约束提示、解题思路与标准 Java 代码实现。
 > 
-> 💡 **阅读指南**：为方便自测与独立思考，每一题的题解思路与代码**默认折叠隐藏**。你可以通过右侧目录快速跳转至对应题目，阅读题意与示例后，点击「💡 查看题解与代码实现」展开对照学习。
+> 💡 **阅读指南**：为方便自测与独立思考，**每道题目的完整内容（包括描述、示例与代码）默认全部收缩折叠**。你可以通过右侧目录快速跳转，或点击题目卡片展开阅读。
+
+<div class="flex flex-wrap items-center gap-3 my-6 not-prose">
+  <button id="expand-all-btn" type="button" class="btn-regular rounded-xl px-4 py-2 text-xs font-semibold text-[var(--primary)] hover:bg-[var(--primary)] hover:text-white transition active:scale-95">
+    📖 全部展开
+  </button>
+  <button id="collapse-all-btn" type="button" class="btn-regular rounded-xl px-4 py-2 text-xs font-semibold text-75 hover:text-90 transition active:scale-95">
+    📕 全部收起
+  </button>
+  <span class="text-xs text-50">共 32 道经典高频题 · 默认全部折叠</span>
+</div>
 
 ---
 
 ## 01. LeetCode 88：合并两个有序数组
 
-#### 🔗 原题链接
+<details class="problem-card">
+<summary class="problem-summary">📖 展开查看题目详情、示例与完整题解</summary>
+
+<div class="problem-content">
+
+**🔗 原题链接**
+
 
 [合并两个有序数组](https://leetcode.cn/problems/merge-sorted-array/description/?envType=study-plan-v2&envId=top-interview-150)
 
-#### 📝 合并两个有序数组
+**📝 题目描述**
+
 
 给定两个按 **非递减顺序** 排列的整数数组 `nums1` 和 `nums2`，另有两个整数 `m` 和 `n`，分别表示 `nums1` 和 `nums2` 中的元素数目。
 
@@ -34,9 +51,11 @@ draft: false
 
 > **注意：** 最终，合并后数组不应由函数返回，而是存储在数组 `nums1` 中。为了应对这种情况，`nums1` 的初始长度为 `m + n`，其中前 `m` 个元素表示应合并的元素，后 `n` 个元素为 0，应忽略。`nums2` 的长度为 `n`。
 
-#### 📊 示例
+**📊 示例**
 
-##### 示例 1
+
+**示例 1：**
+
 
 **输入：**
 
@@ -53,7 +72,8 @@ nums2 = [2, 5, 6], n = 3
 
 **解释：** 需要合并 `[1, 2, 3]` 和 `[2, 5, 6]`。合并结果是 `[1, 2, 2, 3, 5, 6]`，其中斜体加粗标注的为 `nums1` 中的元素。
 
-##### 示例 2
+**示例 2：**
+
 
 **输入：**
 
@@ -70,7 +90,8 @@ nums2 = [], n = 0
 
 **解释：** 需要合并 `[1]` 和 `[]`。合并结果是 `[1]`。
 
-##### 示例 3
+**示例 3：**
+
 
 **输入：**
 
@@ -87,7 +108,8 @@ nums2 = [1], n = 1
 
 **解释：** 需要合并的数组是 `[]` 和 `[1]`。合并结果是 `[1]`。注意，因为 `m = 0`，所以 `nums1` 中没有元素。`nums1` 中仅存的 0 仅仅是为了确保合并结果可以顺利存放到 `nums1` 中。
 
-#### 🔍 提示
+**🔍 提示**
+
 
 - `nums1.length == m + n`
 - `nums2.length == n`
@@ -95,18 +117,18 @@ nums2 = [1], n = 1
 - `1 <= m + n <= 200`
 - `-10^9 <= nums1[i], nums2[j] <= 10^9`
 
-#### 🚀 进阶
+**🚀 进阶**
+
 
 你可以设计实现一个时间复杂度为 O(m + n) 的算法解决此问题吗？
 
-<details class="solution-details">
-<summary>💡 查看题解与代码实现</summary>
+**💡 解题思路**
 
-#### 💡 思路
 
 l为`nums1`的有效元素末尾，r为`nums2`有效元素末尾，cur为`nums1`整个数组的末尾。当`nums1`和`nums2`都有元素时，即`l>=0`且`r>=0`时，比较`nums1[l]`和`nums2[r]`的大小，将其更大值放入`nums1[cur]`。并移动相关指针。当`nums1`没有元素，但`nums2`还有时，直接将`nums2`剩余元素放入`nums1`中`cur`及`cur`之前的位置。当`nums1`剩余元素，`nums2`没元素时，此时排序已经完成，直接不处理，返回即可。
 
-#### 💻 代码实现
+**💻 代码实现 (Java)**
+
 
 ```java
 public void merge(int[] nums1, int m, int[] nums2, int n) {
@@ -129,17 +151,25 @@ public void merge(int[] nums1, int m, int[] nums2, int n) {
 }
 ```
 
+</div>
 </details>
 
 ---
 
 ## 02. LeetCode 27：移除元素
 
-#### 🔗 相关链接
+<details class="problem-card">
+<summary class="problem-summary">📖 展开查看题目详情、示例与完整题解</summary>
+
+<div class="problem-content">
+
+**🔗 原题链接**
+
 
 [移除元素](https://leetcode.cn/problems/remove-element/description/?envType=study-plan-v2&envId=top-interview-150)
 
-#### 📜 题目描述
+**📝 题目描述**
+
 
 给定一个数组 `nums` 和一个值 `val`，需要 **原地** 移除所有数值等于 `val` 的元素。元素的顺序可能发生改变。然后返回 `nums` 中与 `val` 不同的元素的数量。
 
@@ -149,7 +179,8 @@ public void merge(int[] nums1, int m, int[] nums2, int n) {
 2. `nums` 的其余元素和 `nums` 的大小并不重要。
 3. 返回 `k`。
 
-#### 🧪 用户评测
+**🧪 用户评测**
+
 
 评测机将使用以下代码测试解决方案：
 
@@ -170,9 +201,11 @@ for (int i = 0; i < actualLength; i++) {
 
 如果所有的断言都通过，解决方案将会通过。
 
-#### 📊 示例
+**📊 示例**
 
-##### 示例 1
+
+**示例 1：**
+
 
 **输入：**
 
@@ -189,7 +222,8 @@ nums = [3,2,2,3], val = 3
 **解释：** 
 函数应返回 `k = 2`，并且 `nums` 中的前两个元素均为 `2`。返回的 `k` 个元素之外留下的内容并不重要（因此它们并不计入评测）。
 
-##### 示例 2
+**示例 2：**
+
 
 **输入：**
 
@@ -206,20 +240,20 @@ nums = [0,1,2,2,3,0,4,2], val = 2
 **解释：** 
 函数应返回 `k = 5`，并且 `nums` 中的前五个元素为 `0,1,4,0,3`。注意这五个元素可以任意顺序返回。返回的 `k` 个元素之外留下的内容并不重要（因此它们并不计入评测）。
 
-#### 📝 提示
+**🔍 提示**
+
 
 - `0 <= nums.length <= 100`
 - `0 <= nums[i] <= 50`
 - `0 <= val <= 100`
 
-<details class="solution-details">
-<summary>💡 查看题解与代码实现</summary>
+**💡 解题思路**
 
-#### 💡 思路
 
 使用快慢指针，两个指针都从头部开始遍历，慢指针指向当前位置，快指针指向扫描位置。快指针循环向前移动并比较当前位置的值是否等于移除值，若是则跳过，若不是则把当前位置值设置为扫描值，并把有效长度 +1。
 
-#### 💻 代码实现
+**💻 代码实现 (Java)**
+
 
 ```java
 int slow = 0;
@@ -236,17 +270,25 @@ while (fast < nums.length) {
 return length;
 ```
 
+</div>
 </details>
 
 ---
 
 ## 03. LeetCode 26：移除有序数组中的重复项
 
-#### 🔗 相关链接
+<details class="problem-card">
+<summary class="problem-summary">📖 展开查看题目详情、示例与完整题解</summary>
+
+<div class="problem-content">
+
+**🔗 原题链接**
+
 
 [移除有序数组中的重复项](https://leetcode.cn/problems/remove-duplicates-from-sorted-array/description/?envType=study-plan-v2&envId=top-interview-150)
 
-#### 📜 题目描述
+**📝 题目描述**
+
 
 给定一个 **非严格递增排列** 的数组 `nums`，需要 **原地** 删除重复出现的元素，使每个元素只出现一次，返回删除后数组的新长度。元素的相对顺序应该保持一致。然后返回 `nums` 中唯一元素的个数。
 
@@ -256,7 +298,8 @@ return length;
 2. `nums` 的其余元素与 `nums` 的大小不重要。
 3. 返回 `k`。
 
-#### 🧪 判题标准
+**🧪 判题标准**
+
 
 系统会用下面的代码来测试题解：
 
@@ -274,9 +317,11 @@ for (int i = 0; i < k; i++) {
 
 如果所有的断言都通过，那么题解将会通过。
 
-#### 📊 示例
+**📊 示例**
 
-##### 示例 1
+
+**示例 1：**
+
 
 **输入：**
 
@@ -293,7 +338,8 @@ nums = [1,1,2]
 **解释：** 
 函数应返回新的长度 `2`，并且原数组 `nums` 的前两个元素被修改为 `1, 2`。不需要考虑数组中超出新长度后面的元素。
 
-##### 示例 2
+**示例 2：**
+
 
 **输入：**
 
@@ -310,20 +356,20 @@ nums = [0,0,1,1,1,2,2,3,3,4]
 **解释：** 
 函数应返回新的长度 `5`，并且原数组 `nums` 的前五个元素被修改为 `0, 1, 2, 3, 4`。不需要考虑数组中超出新长度后面的元素。
 
-#### 📝 提示
+**🔍 提示**
+
 
 - `1 <= nums.length <= 3 * 10^4`
 - `-10^4 <= nums[i] <= 10^4`
 - `nums` 已按 **非严格递增** 排列
 
-<details class="solution-details">
-<summary>💡 查看题解与代码实现</summary>
+**💡 解题思路**
 
-#### 💡 思路
 
 相较于[027 移除元素](#02-leetcode-27移除元素)，该题需要删除有序数组中的重复项，即要删除的元素是动态的，我们可以开辟一个数组，记录某值在之前的记录中是否出现过。其他的思路仍然像[027 移除元素](#02-leetcode-27移除元素)一样。
 
-#### 💻 代码实现
+**💻 代码实现 (Java)**
+
 
 ```java
 public int removeDuplicates(int[] nums) {
@@ -347,21 +393,30 @@ public int removeDuplicates(int[] nums) {
     }
 ```
 
+</div>
 </details>
 
 ---
 
 ## 04. LeetCode 80：移除有序数组中的重复项 II
 
-#### 🔗 相关链接
+<details class="problem-card">
+<summary class="problem-summary">📖 展开查看题目详情、示例与完整题解</summary>
+
+<div class="problem-content">
+
+**🔗 原题链接**
+
 
 [移除有序数组中的重复项 II](https://leetcode.cn/problems/remove-duplicates-from-sorted-array-ii/description/?envType=study-plan-v2&envId=top-interview-150)
 
-#### 📜 题目描述
+**📝 题目描述**
+
 
 给定一个有序数组 `nums`，需要 **原地** 删除重复出现的元素，使得出现次数超过两次的元素只出现两次，返回删除后数组的新长度。不要使用额外的数组空间，必须在 **原地** 修改输入数组，并在使用 O(1) 额外空间的条件下完成。
 
-##### 说明
+**说明**
+
 
 为什么返回数值是整数，但输出的答案是数组呢？
 
@@ -380,9 +435,11 @@ for (int i = 0; i < len; i++) {
 }
 ```
 
-#### 📊 示例
+**📊 示例**
 
-##### 示例 1
+
+**示例 1：**
+
 
 **输入：**
 
@@ -399,7 +456,8 @@ nums = [1,1,1,2,2,3]
 **解释：** 
 函数应返回新长度 `length = 5`，并且原数组的前五个元素被修改为 `1, 1, 2, 2, 3`。不需要考虑数组中超出新长度后面的元素。
 
-##### 示例 2
+**示例 2：**
+
 
 **输入：**
 
@@ -416,16 +474,15 @@ nums = [0,0,1,1,1,1,2,3,3]
 **解释：** 
 函数应返回新长度 `length = 7`，并且原数组的前七个元素被修改为 `0, 0, 1, 1, 2, 3, 3`。不需要考虑数组中超出新长度后面的元素。
 
-#### 📝 提示
+**🔍 提示**
+
 
 - `1 <= nums.length <= 3 * 10^4`
 - `-10^4 <= nums[i] <= 10^4`
 - `nums` 已按升序排列
 
-<details class="solution-details">
-<summary>💡 查看题解与代码实现</summary>
+**💡 解题思路**
 
-#### 💡 思路
 
 对比[026 移除有序数组中的重复项](#03-leetcode-26移除有序数组中的重复项)，该题难度上升在不能开辟额外的数组保存某个值是否达到删除的条件。根据题目，每个数字最多可以出现两次，即需要满足条件 `nums[i] == nums[i-1] == nums[i-2]` (i >= 2)。
 
@@ -440,7 +497,8 @@ nums = [0,0,1,1,1,1,2,3,3]
 因为本题要求相同元素最多出现两次而非一次，所以我们需要检查上上个应该被保留的元素 `nums[slow−2]` 是否和当前待检查元素 `nums[fast]` 相同。当且仅当 `nums[slow−2]=nums[fast]` 时，当前待检查元素 `nums[fast]` 不应该被保留（因为此时必然有 `nums[slow−2]=nums[slow−1]=nums[fast]`）。最后，`slow` 即为处理好的数组的长度。
 :::
 
-#### 💻 代码实现
+**💻 代码实现 (Java)**
+
 
 ```java
 public int removeDuplicates(int[] nums) {
@@ -459,25 +517,35 @@ public int removeDuplicates(int[] nums) {
     }
 ```
 
+</div>
 </details>
 
 ---
 
 ## 05. LeetCode 169：多数元素
 
-#### 🔗 相关链接
+<details class="problem-card">
+<summary class="problem-summary">📖 展开查看题目详情、示例与完整题解</summary>
+
+<div class="problem-content">
+
+**🔗 原题链接**
+
 
 [多数元素](https://leetcode.cn/problems/majority-element/description/?envType=study-plan-v2&envId=top-interview-150)
 
-#### 📜 题目描述
+**📝 题目描述**
+
 
 给定一个大小为 `n` 的数组 `nums`，返回其中的多数元素。多数元素是指在数组中出现次数 **大于 ⌊ n/2 ⌋** 的元素。
 
 可以假设数组是非空的，并且给定的数组总是存在多数元素。
 
-#### 📊 示例
+**📊 示例**
 
-##### 示例 1
+
+**示例 1：**
+
 
 **输入：**
 
@@ -491,7 +559,8 @@ nums = [3,2,3]
 3
 ```
 
-##### 示例 2
+**示例 2：**
+
 
 **输入：**
 
@@ -505,22 +574,23 @@ nums = [2,2,1,1,1,2,2]
 2
 ```
 
-#### 📝 提示
+**🔍 提示**
+
 
 - `n == nums.length`
 - `1 <= n <= 5 * 10^4`
 - `-10^9 <= nums[i] <= 10^9`
 
-#### 🚀 进阶
+**🚀 进阶**
+
 
 尝试设计时间复杂度为 O(n)、空间复杂度为 O(1) 的算法解决此问题。
 
-<details class="solution-details">
-<summary>💡 查看题解与代码实现</summary>
+**💡 解题思路**
 
-#### 💡 思路
 
-##### Boyer-Moore 投票算法
+**Boyer-Moore 投票算法**
+
 
 引用题解评论区某个老哥的描述：
 
@@ -538,7 +608,8 @@ nums = [2,2,1,1,1,2,2]
 
 就这样各路军阀一直以这种以一敌一同归于尽的方式厮杀下去，直到少数阵营都死光，那么最后剩下的几个必然属于多数阵营，`winner` 就是多数阵营。（多数阵营 51个，少数阵营只有49个，死剩下的2个就是多数阵营的人）
 
-#### 💻 代码实现
+**💻 代码实现 (Java)**
+
 
 ```java
 public int majorityElement(int[] nums) {
@@ -557,23 +628,33 @@ public int majorityElement(int[] nums) {
     }
 ```
 
+</div>
 </details>
 
 ---
 
 ## 06. LeetCode 189：轮转数组
 
-#### 原题链接
+<details class="problem-card">
+<summary class="problem-summary">📖 展开查看题目详情、示例与完整题解</summary>
+
+<div class="problem-content">
+
+**🔗 原题链接**
+
 
 [轮转数组](https://leetcode.cn/problems/rotate-array/description/?envType=study-plan-v2&envId=top-interview-150)
 
-#### 问题描述
+**📝 题目描述**
+
 
 给定一个整数数组 `nums`，将数组中的元素向右轮转 `k` 个位置，其中 `k` 是非负数。
 
-#### 示例
+**📊 示例**
 
-##### 示例 1
+
+**示例 1：**
+
 
 **输入:** 
 ```plaintext
@@ -588,7 +669,8 @@ nums = [1,2,3,4,5,6,7], k = 3
 - 向右轮转 2 步: `[6,7,1,2,3,4,5]`
 - 向右轮转 3 步: `[5,6,7,1,2,3,4]`
 
-##### 示例 2
+**示例 2：**
+
 
 **输入:** 
 ```plaintext
@@ -602,26 +684,27 @@ nums = [-1,-100,3,99], k = 2
 - 向右轮转 1 步: `[99,-1,-100,3]`
 - 向右轮转 2 步: `[3,99,-1,-100]`
 
-#### 提示
+**🔍 提示**
+
 
 - `1 <= nums.length <= 10^5`
 - `-2^31 <= nums[i] <= 2^31 - 1`
 - `0 <= k <= 10^5`
 
-#### 进阶
+**🚀 进阶**
+
 
 尽可能想出更多的解决方案，至少有三种不同的方法可以解决这个问题。你可以使用空间复杂度为 O(1) 的原地算法解决这个问题吗？
 
-<details class="solution-details">
-<summary>💡 查看题解与代码实现</summary>
+**💡 解题思路**
 
-#### 思路
 
 1. 开辟额外数组空间,复制原数组，再将新数组中的元素放置到原数组下标+k的位置，超出长度从头开始计算。
 2. 环状替换，把第n个元素替换到n + k mod nums.length的位置，再将原来（n + k） mod nums.length替换到 （n + k + k）mod nums.length的位置，持续循环。每次替换完回到最初的n时，需要手动将n + 1(通过循环实现)，直到已替换的长度length == nums.length。
 3. 数组翻转，先翻转整个数组，再翻转[0,k-1]和[k, nums.length -1]，k = nums.length % k。
 
-#### 代码实现
+**💻 代码实现 (Java)**
+
 
 1. 开辟额外数组空间
 
@@ -681,17 +764,25 @@ public void rotate(int[] nums, int k) {
     }
 ```
 
+</div>
 </details>
 
 ---
 
 ## 07. LeetCode 121：买卖股票的最佳时机
 
-#### 🔗 相关链接
+<details class="problem-card">
+<summary class="problem-summary">📖 展开查看题目详情、示例与完整题解</summary>
+
+<div class="problem-content">
+
+**🔗 原题链接**
+
 
 [买卖股票的最佳时机](https://leetcode.cn/problems/best-time-to-buy-and-sell-stock/description/?envType=study-plan-v2&envId=top-interview-150)
 
-#### 📜 题目描述
+**📝 题目描述**
+
 
 给定一个数组 `prices`，它的第 `i` 个元素 `prices[i]` 表示一支给定股票第 `i` 天的价格。
 
@@ -699,9 +790,11 @@ public void rotate(int[] nums, int k) {
 
 返回你可以从这笔交易中获取的最大利润。如果你不能获取任何利润，返回 0 。
 
-#### 📊 示例
+**📊 示例**
 
-##### 示例 1
+
+**示例 1：**
+
 
 **输入：** 
 ```plaintext
@@ -715,7 +808,8 @@ public void rotate(int[] nums, int k) {
 在第 2 天（股票价格 = 1）的时候买入，在第 5 天（股票价格 = 6）的时候卖出，最大利润 = 6 - 1 = 5 。  
 注意利润不能是 7 - 1 = 6，因为卖出价格需要大于买入价格；同时，你不能在买入前卖出股票。
 
-##### 示例 2
+**示例 2：**
+
 
 **输入：** 
 ```plaintext
@@ -728,19 +822,19 @@ prices = [7,6,4,3,1]
 **解释：** 
 在这种情况下，没有交易完成，所以最大利润为 0。
 
-#### 📝 提示
+**🔍 提示**
+
 
 - `1 <= prices.length <= 10^5`
 - `0 <= prices[i] <= 10^4`
 
-<details class="solution-details">
-<summary>💡 查看题解与代码实现</summary>
+**💡 解题思路**
 
-#### 💡 思路
 
 遍历一遍数组，维护一个历史最低价格，每趟循环计算当前价格减历史最低价格的盈利，若大于之前得出max，则赋值给max。
 
-#### 💻 代码实现
+**💻 代码实现 (Java)**
+
 
 ```java
 public int maxProfit(int[] prices) {
@@ -759,27 +853,38 @@ public int maxProfit(int[] prices) {
 }
 ```
 
+</div>
 </details>
 
 ---
 
 ## 08. LeetCode 122：买卖股票的最佳时机 II
 
-#### 🔗 相关链接
+<details class="problem-card">
+<summary class="problem-summary">📖 展开查看题目详情、示例与完整题解</summary>
+
+<div class="problem-content">
+
+**🔗 原题链接**
+
 
 [买卖股票的最佳时机 II](https://leetcode.cn/problems/best-time-to-buy-and-sell-stock-ii/description/?envType=study-plan-v2&envId=top-interview-150)
 
-#### 📜 股票交易最大利润
+**📝 题目描述**
+
 
 给定一个整数数组 `prices`，其中 `prices[i]` 表示某支股票第 `i` 天的价格。在每一天，可以决定是否购买和/或出售股票。注意，在任何时候最多只能持有一股股票，也可以选择在同一天买入并出售。
 
-#### 🎯 目标
+**🎯 目标**
+
 
 返回能够获得的最大利润。
 
-#### 📊 示例
+**📊 示例**
 
-##### 示例 1
+
+**示例 1：**
+
 
 **输入：**
 ```plaintext
@@ -794,7 +899,8 @@ prices = [7,1,5,3,6,4]
 - 随后，在第 4 天（股票价格 = 3）时买入，在第 5 天（股票价格 = 6）时卖出，获得利润 = 6 - 3 = 3。
 - 最大总利润为 4 + 3 = 7。
 
-##### 示例 2
+**示例 2：**
+
 
 **输入：**
 ```plaintext
@@ -808,7 +914,8 @@ prices = [1,2,3,4,5]
 - 在第 1 天（股票价格 = 1）时买入，在第 5 天（股票价格 = 5）时卖出，获得利润 = 5 - 1 = 4。
 - 最大总利润为 4。
 
-##### 示例 3
+**示例 3：**
+
 
 **输入：**
 ```plaintext
@@ -821,17 +928,17 @@ prices = [7,6,4,3,1]
 **解释：**
 - 在这种情况下，无法获得正利润，因此不参与交易可以获得最大利润，最大利润为 0。
 
-#### 📝 提示
+**🔍 提示**
+
 
 - `1 <= prices.length <= 3 * 10^4`
 - `0 <= prices[i] <= 10^4`
 
-<details class="solution-details">
-<summary>💡 查看题解与代码实现</summary>
+**💡 解题思路**
 
-#### 💡 思路
 
-##### 动态规划
+**动态规划**
+
 
 由于在任何时候最多只能持有一种股票，那么在第n天交易结束时具有不持有股票和持有股票两种状态，即 `dp[n][0]` 和 `dp[n][1]`。 n从0开始计算。
 
@@ -851,13 +958,16 @@ prices = [7,6,4,3,1]
 
 根据定义：`dp[0][0] = 0, dp[0][1] = -price[0]`。
 
-##### 贪心
+**贪心**
+
 
 由于交易次数不受限，所以计算每一个 `price[i] - price[i-1] > 0` 的总和即可。
 
-#### 💻 代码实现
+**💻 代码实现 (Java)**
 
-##### 动态规划
+
+**动态规划**
+
 
 ```java
 public int maxProfit(int[] prices) {
@@ -875,7 +985,8 @@ public int maxProfit(int[] prices) {
 }
 ```
 
-##### 贪心
+**贪心**
+
 
 ```java
 public int maxProfit(int[] prices) {
@@ -890,27 +1001,38 @@ public int maxProfit(int[] prices) {
 }
 ```
 
+</div>
 </details>
 
 ---
 
 ## 09. LeetCode 55：跳跃游戏
 
-#### 🔗 相关链接
+<details class="problem-card">
+<summary class="problem-summary">📖 展开查看题目详情、示例与完整题解</summary>
+
+<div class="problem-content">
+
+**🔗 原题链接**
+
 
 [跳跃游戏](https://leetcode.cn/problems/jump-game/?envType=study-plan-v2&envId=top-interview-150)
 
-#### 📜 题目描述
+**📝 题目描述**
+
 
 给定一个非负整数数组 `nums`，最初位于数组的第一个下标。数组中的每个元素代表在该位置可以跳跃的最大长度。
 
-#### 🎯 目标
+**🎯 目标**
+
 
 判断是否能够到达最后一个下标。如果可以，返回 `true`；否则，返回 `false`。
 
-#### 📊 示例
+**📊 示例**
 
-##### 示例 1
+
+**示例 1：**
+
 
 **输入：**
 ```plaintext
@@ -925,7 +1047,8 @@ true
 
 ---
 
-##### 示例 2
+**示例 2：**
+
 
 **输入：**
 ```plaintext
@@ -938,21 +1061,22 @@ false
 **解释：** 
 无论怎样，总会到达下标为 3 的位置。但该下标的最大跳跃长度是 0，因此永远不可能到达最后一个下标。
 
-#### 📝 提示
+**🔍 提示**
+
 
 - `1 <= nums.length <= 10^4`
 - `0 <= nums[i] <= 10^5`
 
-<details class="solution-details">
-<summary>💡 查看题解与代码实现</summary>
+**💡 解题思路**
 
-#### 💡 思路
 
-##### 贪心
+**贪心**
+
 
 维护一个与 `nums` 等长的布尔数组，表示每个元素是否可达。遍历一遍 `nums`，根据 `nums` 的值将对应布尔数组的区间更新为 `true`，遍历完成后返回布尔数组最后一个元素的值。若中间可更新区间超过了数组长度末尾，则直接返回 `true`。
 
-#### 💻 代码实现
+**💻 代码实现 (Java)**
+
 
 ```java
 public boolean canJump(int[] nums) {
@@ -974,17 +1098,25 @@ public boolean canJump(int[] nums) {
 }
 ```
 
+</div>
 </details>
 
 ---
 
 ## 10. LeetCode 45：跳跃游戏 II
 
-#### 🔗 相关链接
+<details class="problem-card">
+<summary class="problem-summary">📖 展开查看题目详情、示例与完整题解</summary>
+
+<div class="problem-content">
+
+**🔗 原题链接**
+
 
 [跳跃游戏 II](https://leetcode.cn/problems/jump-game-ii/?envType=study-plan-v2&envId=top-interview-150)
 
-#### 📜 题目描述
+**📝 题目描述**
+
 
 给定一个长度为 `n` 的 0 索引整数数组 `nums`。初始位置为 `nums[0]`。
 
@@ -993,13 +1125,16 @@ public boolean canJump(int[] nums) {
 - \(0 \leq j \leq nums[i]\)
 - \(i + j < n\)
 
-#### 🎯 目标
+**🎯 目标**
+
 
 返回到达 `nums[n - 1]` 的最小跳跃次数。生成的测试用例可以到达 `nums[n - 1]`。
 
-#### 📊 示例
+**📊 示例**
 
-##### 示例 1
+
+**示例 1：**
+
 
 **输入：**
 ```plaintext
@@ -1015,7 +1150,8 @@ nums = [2, 3, 1, 1, 4]
 
 ---
 
-##### 示例 2
+**示例 2：**
+
 
 **输入：**
 ```plaintext
@@ -1026,21 +1162,21 @@ nums = [2, 3, 0, 1, 4]
 2
 ```
 
-#### 📝 提示
+**🔍 提示**
+
 
 - `1 <= nums.length <= 10^4`
 - `0 <= nums[i] <= 1000`
 
 **注意**：题目保证可以到达 `nums[n-1]`。
 
-<details class="solution-details">
-<summary>💡 查看题解与代码实现</summary>
+**💡 解题思路**
 
-#### 💡 思路
 
 和[跳跃游戏](#09-leetcode-55跳跃游戏)思路类似，只不过维护一个是否可到达的数组改为维护一个到达此处需要的最少步数的数组。
 
-#### 💻 代码实现
+**💻 代码实现 (Java)**
+
 
 ```java
 public int jump(int[] nums) {
@@ -1065,54 +1201,67 @@ public int jump(int[] nums) {
 }
 ```
 
+</div>
 </details>
 
 ---
 
 ## 11. LeetCode 274：H指数
 
-#### 相关链接
+<details class="problem-card">
+<summary class="problem-summary">📖 展开查看题目详情、示例与完整题解</summary>
+
+<div class="problem-content">
+
+**🔗 原题链接**
+
 
 [LeetCode 274 H指数](https://leetcode.cn/problems/h-index/description/?envType=study-plan-v2&envId=top-interview-150)
 
-#### 题目描述
+**📝 题目描述**
+
 
 给定一个整数数组 `citations`，其中 `citations[i]` 表示研究者的第 i 篇论文被引用的次数。需要计算并返回该研究者的 h 指数。
 
-#### H 指数定义
+**H 指数定义**
+
 
 根据维基百科上的定义，h 代表“高引用次数”。一名科研人员的 h 指数是指他（她）至少发表了 h 篇论文，并且至少有 h 篇论文被引用次数大于等于 h。如果 h 有多种可能的值，h 指数是其中最大的那个。
 
-#### 示例
+**📊 示例**
 
-##### 示例 1
+
+**示例 1：**
+
 
 - **输入**: `citations = [3, 0, 6, 1, 5]`
 - **输出**: `3`  
   **解释**: 给定数组表示研究者总共有 5 篇论文，每篇论文相应的被引用了 3, 0, 6, 1, 5 次。由于研究者有 3 篇论文每篇至少被引用了 3 次，其余两篇论文每篇被引用不多于 3 次，所以她的 h 指数是 3。
 
-##### 示例 2
+**示例 2：**
+
 
 - **输入**: `citations = [1, 3, 1]`
 - **输出**: `1`
 
-#### 提示
+**🔍 提示**
+
 
 - `n == citations.length`
 - `1 <= n <= 5000`
 - `0 <= citations[i] <= 1000`
 
-<details class="solution-details">
-<summary>💡 查看题解与代码实现</summary>
+**💡 解题思路**
 
-#### 思路
 
 1. 由于数组元素最大值为 1000，从后向前循环遍历数组，每趟计算是否存在大于等于 i 的数字 i 个。
 2. 二分查找：设查找范围的初始左边界 `left` 为 0，初始右边界 `right` 为 n。每次在查找范围内取中点 `mid`，同时扫描整个数组，判断是否至少有 `mid` 个数大于 `mid`。如果有，说明要寻找的 h 在搜索区间的右边，反之则在左边。
 
-#### 代码实现
+**💻 代码实现 (Java)**
 
-##### 方法 1: 线性扫描
+
+**方法 1: 线性扫描**
+
 
 ```java
 public int hIndex(int[] citations) {
@@ -1127,7 +1276,8 @@ public int hIndex(int[] citations) {
 }
 ```
 
-##### 方法 2: 二分查找
+**方法 2: 二分查找**
+
 
 ```java
 public int hIndex(int[] citations) {
@@ -1150,17 +1300,25 @@ public int hIndex(int[] citations) {
 }
 ```
 
+</div>
 </details>
 
 ---
 
 ## 12. LeetCode 380：O(1)时间插入、删除和获取随机元素
 
-#### 相关链接
+<details class="problem-card">
+<summary class="problem-summary">📖 展开查看题目详情、示例与完整题解</summary>
+
+<div class="problem-content">
+
+**🔗 原题链接**
+
 
 [LeetCode 380 O(1)时间插入、删除和获取随机元素](https://leetcode.cn/problems/insert-delete-getrandom-o1/description/?envType=study-plan-v2&envId=top-interview-150)
 
-#### 描述
+**📝 题目描述**
+
 
 设计一个 `RandomizedSet` 类，支持以下操作：
 
@@ -1171,22 +1329,26 @@ public int hIndex(int[] citations) {
 
 必须实现类的所有函数，并满足每个函数的平均时间复杂度为 O(1)。
 
-#### 示例
+**📊 示例**
 
-##### 输入
+
+**输入**
+
 
 ```plaintext
 ["RandomizedSet", "insert", "remove", "insert", "getRandom", "remove", "insert", "getRandom"]
 [[], [1], [2], [2], [], [1], [2], []]
 ```
 
-##### 输出
+**输出**
+
 
 ```plaintext
 [null, true, false, true, 2, true, false, 2]
 ```
 
-##### 解释
+**解释**
+
 
 ```plaintext
 RandomizedSet randomizedSet = new RandomizedSet();
@@ -1199,23 +1361,23 @@ randomizedSet.insert(2); // 2 已在集合中，所以返回 false 。
 randomizedSet.getRandom(); // 由于 2 是集合中唯一的数字，getRandom 总是返回 2 。
 ```
 
-#### 提示
+**🔍 提示**
+
 
 - `-231 <= val <= 231 - 1`
 - 最多调用 `insert`、`remove` 和 `getRandom` 函数 `2 * 10^5` 次
 - 在调用 `getRandom` 方法时，数据结构中至少存在一个元素。
 
-<details class="solution-details">
-<summary>💡 查看题解与代码实现</summary>
+**💡 解题思路**
 
-#### 思路
 
 用一个 `Map` 存储已有的值（key）和其在 `Stack` 中的下标（value）。
 添加时记录当前最后的下标（index）。
 删除时查找其下标，与 `Stack` 最后的元素交换，然后通过 `pop` 直接删除元素，`index--`。
 随机通过 `Random` 类，传入 `Stack` 的 `size` 进行随机取数。
 
-#### 代码实现
+**💻 代码实现 (Java)**
+
 
 ```java
 class RandomizedSet {
@@ -1256,26 +1418,36 @@ class RandomizedSet {
 }
 ```
 
+</div>
 </details>
 
 ---
 
 ## 13. LeetCode 238：除自身以外数组的乘积
 
-#### 📚 相关链接
+<details class="problem-card">
+<summary class="problem-summary">📖 展开查看题目详情、示例与完整题解</summary>
+
+<div class="problem-content">
+
+**🔗 原题链接**
+
 
 [LeetCode 238: 除自身以外数组的乘积](https://leetcode.cn/problems/product-of-array-except-self/description/?envType=study-plan-v2&envId=top-interview-150)
 
-#### 📝 题目描述
+**📝 题目描述**
+
 
 给定一个整数数组 `nums`，返回数组 `answer`，其中 `answer[i]` 等于 `nums` 中除 `nums[i]` 之外其余各元素的乘积。
 
 **要求：**  
 - 不要使用除法，且在 O(n) 时间复杂度内完成此题。
 
-#### 💡 示例
+**📊 示例**
 
-##### 示例 1
+
+**示例 1：**
+
 **输入:**  
 ```plaintext
 nums = [1, 2, 3, 4]
@@ -1285,7 +1457,8 @@ nums = [1, 2, 3, 4]
 [24, 12, 8, 6]
 ```
 
-##### 示例 2
+**示例 2：**
+
 **输入:**  
 ```plaintext
 nums = [-1, 1, 0, -3, 3]
@@ -1295,18 +1468,18 @@ nums = [-1, 1, 0, -3, 3]
 [0, 0, 9, 0, 0]
 ```
 
-#### ⚠️ 提示
+**🔍 提示**
+
 - `2 <= nums.length <= 10^5`
 - `-30 <= nums[i] <= 30`
 - 输入保证数组 `answer[i]` 在 32 位整数范围内
 
-#### 🔍 进阶
+**🚀 进阶**
+
 可以在 O(1) 的额外空间复杂度内完成这个题目吗？（出于对空间复杂度分析的目的，输出数组不被视为额外空间。）
 
-<details class="solution-details">
-<summary>💡 查看题解与代码实现</summary>
+**💡 解题思路**
 
-#### 💭 思路
 
 1. 维护两个数组，一个 `prefix` 一个 `suffix`，使用两个循环填充这两个数组：
 
@@ -1319,9 +1492,11 @@ nums = [-1, 1, 0, -3, 3]
 
    由于输出数组不算额外空间，所以先将 `prefix` 放进 `ans`，再把 `suffix` 乘到 `ans` 上。
 
-#### 💻 代码实现
+**💻 代码实现 (Java)**
 
-##### 1. 维护两个数组
+
+**1. 维护两个数组**
+
 
 ```java
 public int[] productExceptSelf(int[] nums) {
@@ -1357,7 +1532,8 @@ public int[] productExceptSelf(int[] nums) {
 }
 ```
 
-##### 2. 动态维护 `suffix` 和 `prefix`
+**2. 动态维护 `suffix` 和 `prefix`**
+
 
 ```java
 public int[] productExceptSelf(int[] nums) {
@@ -1385,17 +1561,25 @@ public int[] productExceptSelf(int[] nums) {
 }
 ```
 
+</div>
 </details>
 
 ---
 
 ## 14. LeetCode 134：加油站
 
-#### 🚀 相关链接
+<details class="problem-card">
+<summary class="problem-summary">📖 展开查看题目详情、示例与完整题解</summary>
+
+<div class="problem-content">
+
+**🔗 原题链接**
+
 
 [LeetCode 134 - 加油站](https://leetcode.cn/problems/gas-station/description/?envType=study-plan-v2&envId=top-interview-150)
 
-#### 📜 描述
+**📝 题目描述**
+
 
 在一条环路上有 `n` 个加油站，其中第 `i` 个加油站有汽油 `gas[i]` 升。
 
@@ -1403,9 +1587,11 @@ public int[] productExceptSelf(int[] nums) {
 
 给定两个整数数组 `gas` 和 `cost`，如果可以按顺序绕环路行驶一周，则返回出发时加油站的编号，否则返回 `-1`。如果存在解，则保证它是唯一的。
 
-#### 💡 示例
+**📊 示例**
 
-##### 示例 1
+
+**示例 1：**
+
 **输入:**  
 ```plaintext
 gas = [1,2,3,4,5], cost = [3,4,5,1,2]
@@ -1423,7 +1609,8 @@ gas = [1,2,3,4,5], cost = [3,4,5,1,2]
 开往 3 号加油站，你需要消耗 5 升汽油，正好足够你返回到 3 号加油站。  
 因此，3 可为起始索引。
 
-##### 示例 2
+**示例 2：**
+
 **输入:**  
 ```plaintext
 gas = [2,3,4], cost = [3,4,3]
@@ -1440,21 +1627,21 @@ gas = [2,3,4], cost = [3,4,3]
 你无法返回 2 号加油站，因为返程需要消耗 4 升汽油，但是你的油箱只有 3 升汽油。  
 因此，无论怎样，你都不可能绕环路行驶一周。
 
-#### 📝 提示
+**🔍 提示**
+
 - `gas.length == n`
 - `cost.length == n`
 - `1 <= n <= 10^5`
 - `0 <= gas[i], cost[i] <= 10^4`
 
-<details class="solution-details">
-<summary>💡 查看题解与代码实现</summary>
+**💡 解题思路**
 
-#### 💭 思路
 贪心，从头开始遍历每个加油站是否可以走完一轮，若当前加油站走到某个加油站后不能继续往前走时，从停下的加油站继续遍历。  
 使用两个循环，外层循环计数 `i`，最大为数组长度 `n`，维护从 `i` 开始总油量 `sumOfGas` 和总消耗 `sumOfCost`；  
 内部循环从 `i` 开始，访问 `(i + cur) % n` 下标的元素，更新 `sumOfGas` 和 `sumOfCost`。若前者小于后者，则从 `i` 加油站出发不能走完一趟，从 `i + cur` 开始新一趟循环。
 
-#### 💻 代码实现
+**💻 代码实现 (Java)**
+
 
 ```java
 public int canCompleteCircuit(int[] gas, int[] cost) {
@@ -1481,17 +1668,25 @@ public int canCompleteCircuit(int[] gas, int[] cost) {
     }
 ```
 
+</div>
 </details>
 
 ---
 
 ## 15. LeetCode 135：分发糖果
 
-#### 🚀 相关链接
+<details class="problem-card">
+<summary class="problem-summary">📖 展开查看题目详情、示例与完整题解</summary>
+
+<div class="problem-content">
+
+**🔗 原题链接**
+
 
 [LeetCode 135 - 分发糖果](https://leetcode.cn/problems/candy/description/?envType=study-plan-v2&envId=top-interview-150)
 
-#### 📜 描述
+**📝 题目描述**
+
 
 有 `n` 个孩子站成一排。给你一个整数数组 `ratings` 表示每个孩子的评分。你需要按照以下要求，给这些孩子分发糖果：
 
@@ -1500,27 +1695,28 @@ public int canCompleteCircuit(int[] gas, int[] cost) {
 
 请你给每个孩子分发糖果，计算并返回需要准备的 **最少糖果数目**。
 
-#### 💡 示例
+**📊 示例**
+
 
 - **输入**: `ratings = [1,0,2]`
 - **输出**: `5`
 - **解释**: 你可以分别给第一个、第二个、第三个孩子分发 `2`、`1`、`2` 颗糖果。
 
-##### 示例 2
+**示例 2：**
+
 
 - **输入**: `ratings = [1,2,2]`
 - **输出**: `4`
 - **解释**: 你可以分别给第一个、第二个、第三个孩子分发 `1`、`2`、`1` 颗糖果。第三个孩子只得到 `1` 颗糖果，这满足题面中的两个条件。
 
-#### 📝 提示
+**🔍 提示**
+
 - `n == ratings.length`
 - `1 <= n <= 2 * 10^4`
 - `0 <= ratings[i] <= 2 * 10^4`
 
-<details class="solution-details">
-<summary>💡 查看题解与代码实现</summary>
+**💡 解题思路**
 
-#### 💭 思路
 
 1. 两次遍历。
 
@@ -1537,7 +1733,8 @@ public int canCompleteCircuit(int[] gas, int[] cost) {
 - 如果当前孩子比前一个孩子评分高，则认为当前处于升序序列中，分发的糖果比前一个孩子多1个。
 - 否则就认为当前在降序序列中，直接给当前孩子分1个糖果，同时记录当前降序序列长度，降序序列中前面每个孩子都要再+1个糖果。（即总糖果数加一个降序序列长度）
 
-#### 💻 代码实现
+**💻 代码实现 (Java)**
+
 
 1. 两次遍历
 
@@ -1589,47 +1786,57 @@ public int canCompleteCircuit(int[] gas, int[] cost) {
     }
 ```
 
+</div>
 </details>
 
 ---
 
 ## 16. LeetCode 42：接雨水
 
-#### 🚀 相关链接
+<details class="problem-card">
+<summary class="problem-summary">📖 展开查看题目详情、示例与完整题解</summary>
+
+<div class="problem-content">
+
+**🔗 原题链接**
+
 
 [LeetCode 042 - 接雨水](https://leetcode.cn/problems/trapping-rain-water/description/?envType=study-plan-v2&envId=top-interview-150)
 
-#### 📜 描述
+**📝 题目描述**
+
 
 给定 `n` 个非负整数表示每个宽度为 `1` 的柱子的高度图，计算按此排列的柱子，下雨之后能接多少雨水。
 
-#### 💡 示例
+**📊 示例**
+
 
 - **输入**: `height = [0,1,0,2,1,0,1,3,2,1,2,1]`
 - **输出**: `6`
 - **解释**: 上面是由数组 `[0,1,0,2,1,0,1,3,2,1,2,1]` 表示的高度图，在这种情况下，可以接 `6` 个单位的雨水（蓝色部分表示雨水）。
 
-##### 示例 2
+**示例 2：**
+
 
 - **输入**: `height = [4,2,0,3,2,5]`
 - **输出**: `9`
 
-#### 📝 提示
+**🔍 提示**
+
 - `n == height.length`
 - `1 <= n <= 2 * 10^4`
 - `0 <= height[i] <= 10^5`
 
-<details class="solution-details">
-<summary>💡 查看题解与代码实现</summary>
+**💡 解题思路**
 
-#### 💭 思路
 
 1. **双指针法**：
    - 使用两个数组 `leftMax` 和 `rightMax` 分别记录每个位置的左边最大高度和右边最大高度。
    - 对于每个位置，能接的雨水量等于 `min(leftMax[i], rightMax[i]) - height[i]`。
    - 最终将所有位置的雨水量累加即为结果。
 
-#### 💻 代码实现
+**💻 代码实现 (Java)**
+
 
 ```java
 public int trap(int[] height) {
@@ -1652,17 +1859,25 @@ public int trap(int[] height) {
 }
 ```
 
+</div>
 </details>
 
 ---
 
 ## 17. LeetCode 13：罗马数字转整数
 
-#### 🚀 相关链接
+<details class="problem-card">
+<summary class="problem-summary">📖 展开查看题目详情、示例与完整题解</summary>
+
+<div class="problem-content">
+
+**🔗 原题链接**
+
 
 [LeetCode 013 - 罗马数字转整数](https://leetcode.cn/problems/roman-to-integer/description/?envType=study-plan-v2&envId=top-interview-150)
 
-#### 📜 描述
+**📝 题目描述**
+
 
 罗马数字包含以下七种字符: `I`, `V`, `X`, `L`, `C`, `D` 和 `M`。
 
@@ -1686,36 +1901,43 @@ public int trap(int[] height) {
 
 给定一个罗马数字，将其转换成整数。
 
-#### 💡 示例
+**📊 示例**
 
-##### 示例 1
+
+**示例 1：**
+
 
 - **输入**: `s = "III"`
 - **输出**: `3`
 
-##### 示例 2
+**示例 2：**
+
 
 - **输入**: `s = "IV"`
 - **输出**: `4`
 
-##### 示例 3
+**示例 3：**
+
 
 - **输入**: `s = "IX"`
 - **输出**: `9`
 
-##### 示例 4
+**示例 4：**
+
 
 - **输入**: `s = "LVIII"`
 - **输出**: `58`
 - **解释**: `L = 50`, `V = 5`, `III = 3`.
 
-##### 示例 5
+**示例 5：**
+
 
 - **输入**: `s = "MCMXCIV"`
 - **输出**: `1994`
 - **解释**: `M = 1000`, `CM = 900`, `XC = 90`, `IV = 4`.
 
-#### 📝 提示
+**🔍 提示**
+
 
 - `1 <= s.length <= 15`
 - `s` 仅含字符 `('I', 'V', 'X', 'L', 'C', 'D', 'M')`
@@ -1723,15 +1945,14 @@ public int trap(int[] height) {
 - 题目所给测试用例皆符合罗马数字书写规则，不会出现跨位等情况。
 - `IL` 和 `IM` 这样的例子并不符合题目要求，`49` 应该写作 `XLIX`，`999` 应该写作 `CMXCIX`。
 
-<details class="solution-details">
-<summary>💡 查看题解与代码实现</summary>
+**💡 解题思路**
 
-#### 💭 思路
 
 1. 使用哈希表存储每个罗马字符对应的整数值。
 2. 遍历字符串 `s`，如果当前字符比下一个字符小，则将当前字符的值减去，否则加上当前字符的值。最后将结果累加即可。
 
-#### 💻 代码实现
+**💻 代码实现 (Java)**
+
 
 ```java
 public int romanToInt(String s) {
@@ -1763,17 +1984,25 @@ public int romanToInt(String s) {
 }
 ```
 
+</div>
 </details>
 
 ---
 
 ## 18. LeetCode 12：整数转罗马数字
 
-#### 🚀 相关链接
+<details class="problem-card">
+<summary class="problem-summary">📖 展开查看题目详情、示例与完整题解</summary>
+
+<div class="problem-content">
+
+**🔗 原题链接**
+
 
 [LeetCode 012 - 整数转罗马数字](https://leetcode.cn/problems/integer-to-roman/?envType=study-plan-v2&envId=top-interview-150)
 
-#### 📜 描述
+**📝 题目描述**
+
 
 罗马数字通过七个不同的符号来代表不同的数值：
 
@@ -1795,9 +2024,11 @@ public int romanToInt(String s) {
 
 给定一个整数，将其转换为罗马数字。
 
-#### 💡 示例
+**📊 示例**
 
-##### 示例 1
+
+**示例 1：**
+
 
 - **输入**: `num = 3749`
 - **输出**: `"MMMDCCXLIX"`
@@ -1807,7 +2038,8 @@ public int romanToInt(String s) {
   - 40 = XL （50 (L) 减 10 (X)）
   - 9 = IX （10 (X) 减 1 (I)）
 
-##### 示例 2
+**示例 2：**
+
 
 - **输入**: `num = 58`
 - **输出**: `"LVIII"`
@@ -1815,7 +2047,8 @@ public int romanToInt(String s) {
   - 50 = L
   - 8 = VIII
 
-##### 示例 3
+**示例 3：**
+
 
 - **输入**: `num = 1994`
 - **输入**: `"MCMXCIV"`
@@ -1825,18 +2058,18 @@ public int romanToInt(String s) {
   - 90 = XC
   - 4 = IV
 
-#### 📝 提示
+**🔍 提示**
+
 
 - `1 <= num <= 3999`
 
-<details class="solution-details">
-<summary>💡 查看题解与代码实现</summary>
+**💡 解题思路**
 
-#### 💭 思路
 
 将整数从大到小依次减去最大的可表示罗马数字对应的值，直到整数减为 0。
 
-#### 💻 代码实现
+**💻 代码实现 (Java)**
+
 
 ```java
 public String intToRoman(int num) {
@@ -1856,52 +2089,63 @@ public String intToRoman(int num) {
 }
 ```
 
+</div>
 </details>
 
 ---
 
 ## 19. LeetCode 58：最后一个单词的长度
 
-#### 🚀 相关链接
+<details class="problem-card">
+<summary class="problem-summary">📖 展开查看题目详情、示例与完整题解</summary>
+
+<div class="problem-content">
+
+**🔗 原题链接**
+
 
 [LeetCode 058 - 最后一个单词的长度](https://leetcode.cn/problems/length-of-last-word/description/?envType=study-plan-v2&envId=top-interview-150)
 
-#### 📜 描述
+**📝 题目描述**
+
 
 给你一个字符串 `s`，由若干单词组成，单词前后用一些空格字符隔开。返回字符串中 **最后一个** 单词的长度。
 
 **单词** 是指仅由字母组成、不包含任何空格字符的最大子字符串。
 
-#### 💡 示例
+**📊 示例**
 
-##### 示例 1
+
+**示例 1：**
+
 
 - **输入**: `s = "Hello World"`
 - **输出**: `5`
 - **解释**: 最后一个单词是“World”，长度为 5。
 
-##### 示例 2
+**示例 2：**
+
 
 - **输入**: `s = "   fly me   to   the moon  "`
 - **输出**: `4`
 - **解释**: 最后一个单词是“moon”，长度为 4。
 
-##### 示例 3
+**示例 3：**
+
 
 - **输入**: `s = "luffy is still joyboy"`
 - **输出**: `6`
 - **解释**: 最后一个单词是“joyboy”，长度为 6。
 
-#### 📝 提示
+**🔍 提示**
+
 
 - `1 <= s.length <= 10^4`
 - `s` 仅有英文字母和空格 `' '` 组成
 - `s` 中至少存在一个单词
 
-<details class="solution-details">
-<summary>💡 查看题解与代码实现</summary>
+**💡 解题思路**
 
-#### 💭 思路
 
 从字符串的末尾开始遍历，找到最后一个单词的开头和结尾，计算其长度。
 
@@ -1912,7 +2156,8 @@ public String intToRoman(int num) {
    - 如果当前字符是空格，且 `flag` 为 `true`，则返回当前计算的长度。
 3. 如果遍历结束后仍未返回，则返回当前计算的长度。
 
-#### 💻 代码实现
+**💻 代码实现 (Java)**
+
 
 ```java
 public int lengthOfLastWord(String s) {
@@ -1934,49 +2179,60 @@ public int lengthOfLastWord(String s) {
 }
 ```
 
+</div>
 </details>
 
 ---
 
 ## 20. LeetCode 14：最长公共前缀
 
-#### 🚀 相关链接
+<details class="problem-card">
+<summary class="problem-summary">📖 展开查看题目详情、示例与完整题解</summary>
+
+<div class="problem-content">
+
+**🔗 原题链接**
+
 
 [LeetCode 14 - 最长公共前缀](https://leetcode.cn/problems/longest-common-prefix/description/?envType=study-plan-v2&envId=top-interview-150)
 
-#### 📜 描述
+**📝 题目描述**
+
 
 编写一个函数来查找字符串数组中的最长公共前缀。
 
 如果不存在公共前缀，返回空字符串 `""`。
 
-#### 💡 示例
+**📊 示例**
 
-##### 示例 1
+
+**示例 1：**
+
 
 - **输入**: `strs = ["flower","flow","flight"]`
 - **输出**: `"fl"`
 
-##### 示例 2
+**示例 2：**
+
 
 - **输入**: `strs = ["dog","racecar","car"]`
 - **输出**: `""`
 - **解释**: 输入不存在公共前缀。
 
-#### 📝 提示
+**🔍 提示**
+
 
 1. `1 <= strs.length <= 200`
 2. `0 <= strs[i].length <= 200`
 3. `strs[i]` 如果非空，则仅由小写英文字母组成
 
-<details class="solution-details">
-<summary>💡 查看题解与代码实现</summary>
+**💡 解题思路**
 
-#### 💭 思路
 
 通过将字符串数组排序，比较第一个和最后一个字符串的公共前缀，这样可以减少比较的次数，提高效率。
 
-#### 💻 代码实现
+**💻 代码实现 (Java)**
+
 
 ```java
 public String longestCommonPrefix(String[] strs) {
@@ -1997,17 +2253,25 @@ public String longestCommonPrefix(String[] strs) {
     }
 ```
 
+</div>
 </details>
 
 ---
 
 ## 21. LeetCode 151：反转字符串中的单词
 
-#### 🚀 相关链接
+<details class="problem-card">
+<summary class="problem-summary">📖 展开查看题目详情、示例与完整题解</summary>
+
+<div class="problem-content">
+
+**🔗 原题链接**
+
 
 [LeetCode 151 - 反转字符串中的单词](https://leetcode.cn/problems/reverse-words-in-a-string/description/?envType=study-plan-v2&envId=top-interview-150)
 
-#### 📜 描述
+**📝 题目描述**
+
 
 给你一个字符串 `s` ，请你反转字符串中 **单词** 的顺序。
 
@@ -2017,39 +2281,42 @@ public String longestCommonPrefix(String[] strs) {
 
 **注意**：输入字符串 `s` 中可能会存在前导空格、尾随空格或者单词间的多个空格。返回的结果字符串中，单词间应当仅用单个空格分隔，且不包含任何额外的空格。
 
-#### 💡 示例
+**📊 示例**
+
 
 - **输入**: `s = "the sky is blue"`
 - **输出**: `"blue is sky the"`
 
-##### 示例 2
+**示例 2：**
+
 
 - **输入**: `s = "  hello world  "`
 - **输出**: `"world hello"`
 - **解释**: 反转后的字符串中不能存在前导空格和尾随空格。
 
-##### 示例 3
+**示例 3：**
+
 
 - **输入**: `s = "a good   example"`
 - **输出**: `"example good a"`
 - **解释**: 如果两个单词间有多余的空格，反转后的字符串需要将单词间的空格减少到仅有一个。
 
-#### 📝 提示
+**🔍 提示**
+
 
 - `1 <= s.length <= 10^4`
 - `s` 包含英文大小写字母、数字和空格 `' '`
 - `s` 中 **至少存在一个** 单词
 
-<details class="solution-details">
-<summary>💡 查看题解与代码实现</summary>
+**💡 解题思路**
 
-#### 💭 思路
 
 1. 去除字符串的前导和尾随空格。
 2. 反转整个字符串。
 3. 反转每个单词，并去除多余的空格。
 
-#### 💻 代码实现
+**💻 代码实现 (Java)**
+
 
 ```java
 public String reverseWords(String s) {
@@ -2086,17 +2353,25 @@ public void reverse(StringBuilder sb, int start, int end) {
 }
 ```
 
+</div>
 </details>
 
 ---
 
 ## 22. LeetCode 6：Z 字形变换
 
-#### 🚀 相关链接
+<details class="problem-card">
+<summary class="problem-summary">📖 展开查看题目详情、示例与完整题解</summary>
+
+<div class="problem-content">
+
+**🔗 原题链接**
+
 
 [LeetCode 6 - Z 字形变换](https://leetcode.cn/problems/zigzag-conversion/description/?envType=study-plan-v2&envId=top-interview-150)
 
-#### 📜 描述
+**📝 题目描述**
+
 
 将一个给定字符串 `s` 根据给定的行数 `numRows`，以从上往下、从左到右进行 Z 字形排列。
 
@@ -2116,9 +2391,11 @@ Y   I   R
 string convert(string s, int numRows);
 ```
 
-#### 💡 示例
+**📊 示例**
 
-##### 示例 1
+
+**示例 1：**
+
 
 - **输入**: `s = "PAYPALISHIRING"`, `numRows = 3`
 - **输出**: `"PAHNAPLSIIGYIR"`
@@ -2129,7 +2406,8 @@ string convert(string s, int numRows);
   Y   I   R
   ```
 
-##### 示例 2
+**示例 2：**
+
 
 - **输入**: `s = "PAYPALISHIRING"`, `numRows = 4`
 - **输出**: `"PINALSIGYAHRPI"`
@@ -2141,24 +2419,25 @@ string convert(string s, int numRows);
   P     I
   ```
 
-##### 示例 3
+**示例 3：**
+
 
 - **输入**: `s = "A"`, `numRows = 1`
 - **输出**: `"A"`
 
-#### 📝 提示
+**🔍 提示**
+
 - `1 <= s.length <= 1000`
 - `s` 由英文字母（小写和大写）、`','` 和 `'.'` 组成
 - `1 <= numRows <= 1000`
 
-<details class="solution-details">
-<summary>💡 查看题解与代码实现</summary>
+**💡 解题思路**
 
-#### 💭 思路
 
 **模拟法**：使用一个列表来存储每一行的字符串，然后按照 Z 字形排列的顺序将字符添加到对应的行中。最后将每一行的字符串拼接起来即可。使用一个flag来表示当前顺序是向下移动还是向上移动。
 
-#### 💻 代码实现
+**💻 代码实现 (Java)**
+
 
 ```java
 public String convert(String s, int numRows) {
@@ -2186,61 +2465,75 @@ public String convert(String s, int numRows) {
 }
 ```
 
+</div>
 </details>
 
 ---
 
 ## 23. LeetCode 28：找出字符串中第一个匹配项的下标
 
-#### 🚀 相关链接
+<details class="problem-card">
+<summary class="problem-summary">📖 展开查看题目详情、示例与完整题解</summary>
+
+<div class="problem-content">
+
+**🔗 原题链接**
+
 
 [LeetCode 28 - 找出字符串中第一个匹配项的下标](https://leetcode.cn/problems/find-the-index-of-the-first-occurrence-in-a-string/description/?envType=study-plan-v2&envId=top-interview-150)
 
-#### 📜 描述
+**📝 题目描述**
+
 
 给你两个字符串 `haystack` 和 `needle` ，请你在 `haystack` 字符串中找出 `needle` 字符串的第一个匹配项的下标（下标从 0 开始）。如果 `needle` 不是 `haystack` 的一部分，则返回 `-1`。
 
-#### 💡 示例
+**📊 示例**
 
-##### 示例 1
+
+**示例 1：**
+
 
 - **输入**: `haystack = "sadbutsad", needle = "sad"`
 - **输出**: `0`
 - **解释**: `"sad"` 在下标 `0` 和 `6` 处匹配。第一个匹配项的下标是 `0`，所以返回 `0`。
 
-##### 示例 2
+**示例 2：**
+
 
 - **输入**: `haystack = "leetcode", needle = "leeto"`
 - **输出**: `-1`
 - **解释**: `"leeto"` 没有在 `"leetcode"` 中出现，所以返回 `-1`。
 
-#### 📝 提示
+**🔍 提示**
+
 
 - `1 <= haystack.length, needle.length <= 10^4`
 - `haystack` 和 `needle` 仅由小写英文字符组成
 
-<details class="solution-details">
-<summary>💡 查看题解与代码实现</summary>
+**💡 解题思路**
 
-#### 💭 思路
 
-##### 1. KMP算法
+**1. KMP算法**
+
 
 KMP算法是一种用于字符串匹配的经典算法，其核心思想是通过构建部分的匹配表（next数组），在匹配失败时能够跳过一部分字符，从而提高匹配效率。具体思路如下：
 
 1. **构建next数组**：计算模式串（needle）的next数组，next数组的每个元素表示在当前字符匹配失败时，模式串中下一个字符的位置。
 2. **使用next数组进行匹配**：在匹配过程中，如果当前字符匹配失败，则根据next数组的值移动模式串的位置，而不是直接移动主串的位置。
 
-##### 2. Sunday算法
+**2. Sunday算法**
+
 
 Sunday算法是一种更高效的字符串匹配算法，其核心思想是通过对模式串和主串的字符进行比较，并根据最后一次匹配失败的位置来决定下一步的移动距离。具体思路如下：
 
 1. **预处理偏移表**：计算模式串中每个字符在模式串中的位置，并为每个字符生成一个偏移量。
 2. **匹配过程中使用偏移表**：在匹配失败时，根据主串中下一个字符的位置来决定模式串的移动距离。
 
-#### 💻 代码实现
+**💻 代码实现 (Java)**
 
-##### KMP算法
+
+**KMP算法**
+
 
 ```java
 public int strStr(String haystack, String needle) {
@@ -2283,7 +2576,8 @@ private int[] buildNextArr(String pattern) {
 }
 ```
 
-##### Sunday算法
+**Sunday算法**
+
 
 ```java
 public int strStr(String haystack, String needle) {
@@ -2326,17 +2620,25 @@ public int strStr(String haystack, String needle) {
 }
 ```
 
+</div>
 </details>
 
 ---
 
 ## 24. LeetCode 68：文本左右对齐
 
-#### 🚀 相关链接
+<details class="problem-card">
+<summary class="problem-summary">📖 展开查看题目详情、示例与完整题解</summary>
+
+<div class="problem-content">
+
+**🔗 原题链接**
+
 
 [LeetCode 68 - 文本左右对齐](https://leetcode.cn/problems/text-justification/description/?envType=study-plan-v2&envId=top-interview-150)
 
-#### 📜 描述
+**📝 题目描述**
+
 
 给定一个单词数组 `words` 和一个长度 `maxWidth`，重新排版单词，使其成为每行恰好有 `maxWidth` 个字符，且左右两端对齐的文本。
 
@@ -2346,9 +2648,11 @@ public int strStr(String haystack, String needle) {
 
 文本的最后一行应为左对齐，且单词之间不插入额外的空格。
 
-#### 💡 示例
+**📊 示例**
 
-##### 示例 1
+
+**示例 1：**
+
 
 - **输入**: `words = ["This", "is", "an", "example", "of", "text", "justification."]`, `maxWidth = 16`
 - **输出**:
@@ -2360,7 +2664,8 @@ public int strStr(String haystack, String needle) {
   ]
   ```
 
-##### 示例 2
+**示例 2：**
+
 
 - **输入**: `words = ["What","must","be","acknowledgment","shall","be"]`, `maxWidth = 16`
 - **输出**:
@@ -2372,7 +2677,8 @@ public int strStr(String haystack, String needle) {
   ]
   ```
 
-##### 示例 3
+**示例 3：**
+
 
 - **输入**: `words = ["Science","is","what","we","understand","well","enough","to","explain","to","a","computer.","Art","is","everything","else","we","do"]`, `maxWidth = 20`
 - **输出**:
@@ -2387,23 +2693,23 @@ public int strStr(String haystack, String needle) {
   ]
   ```
 
-#### 📝 提示
+**🔍 提示**
+
 - `1 <= words.length <= 300`
 - `1 <= words[i].length <= 20`
 - `words[i]` 由小写英文字母和符号组成
 - `1 <= maxWidth <= 100`
 - `words[i].length <= maxWidth`
 
-<details class="solution-details">
-<summary>💡 查看题解与代码实现</summary>
+**💡 解题思路**
 
-#### 💭 思路
 
 1. **贪心算法**：尽可能多地往每行中放置单词，直到无法再放置下一个单词为止。
 2. **均匀分配空格**：对于非最后一行，尽可能均匀分配单词间的空格数量，如果无法均匀分配，则左侧的空格数要多于右侧的空格数。
 3. **最后一行左对齐**：对于最后一行，单词之间不插入额外的空格，直接在右侧填充空格以满足 `maxWidth` 的要求。
 
-#### 💻 代码实现
+**💻 代码实现 (Java)**
+
 
 ```java
 public List<String> fullJustify(String[] words, int maxWidth) {
@@ -2483,17 +2789,25 @@ public String adjustSpaces(String s, int maxWidth) {
 }
 ```
 
+</div>
 </details>
 
 ---
 
 ## 25. LeetCode 125：验证回文串
 
-#### 🚀 相关链接
+<details class="problem-card">
+<summary class="problem-summary">📖 展开查看题目详情、示例与完整题解</summary>
+
+<div class="problem-content">
+
+**🔗 原题链接**
+
 
 [LeetCode 125 - 验证回文串](https://leetcode.cn/problems/valid-palindrome/description/?envType=study-plan-v2&envId=top-interview-150)
 
-#### 📜 描述
+**📝 题目描述**
+
 
 如果在将所有大写字符转换为小写字符、并移除所有非字母数字字符之后，短语正着读和反着读都一样。则可以认为该短语是一个 **回文串** 。
 
@@ -2501,40 +2815,44 @@ public String adjustSpaces(String s, int maxWidth) {
 
 给你一个字符串 `s`，如果它是 **回文串**，返回 `true` ；否则，返回 `false`。
 
-#### 💡 示例
+**📊 示例**
 
-##### 示例 1
+
+**示例 1：**
+
 
 - **输入**: `s = "A man, a plan, a canal: Panama"`
 - **输出**: `true`
 - **解释**: `"amanaplanacanalpanama"` 是回文串。
 
-##### 示例 2
+**示例 2：**
+
 
 - **输入**: `s = "race a car"`
 - **输出**: `false`
 - **解释**: `"raceacar"` 不是回文串。
 
-##### 示例 3
+**示例 3：**
+
 
 - **输入**: `s = " "`
 - **输出**: `true`
 - **解释**: 在移除非字母数字字符之后，`s` 是一个空字符串 `""` 。由于空字符串正着反着读都一样，所以是回文串。
 
-#### 📝 提示
+**🔍 提示**
+
 
 - `1 <= s.length <= 2 * 10^5`
 - `s` 仅由可打印的 ASCII 字符组成
 
-<details class="solution-details">
-<summary>💡 查看题解与代码实现</summary>
+**💡 解题思路**
 
-#### 💭 思路
 
 1. **预处理字符串**：首先移除所有非字母数字字符，并将所有大写字符转换为小写字符。
 2. **双指针验证**：使用双指针从字符串的两端向中间移动，逐一比较字符是否相同。如果有任何一对字符不相同，则返回 `false`；如果所有字符都相同，则返回 `true`。
 
-#### 💻 代码实现
+**💻 代码实现 (Java)**
+
 
 ```java
 public boolean isPalindrome(String s) {
@@ -2552,17 +2870,25 @@ public boolean isPalindrome(String s) {
 }
 ```
 
+</div>
 </details>
 
 ---
 
 ## 26. LeetCode 392：判断子序列
 
-#### 🚀 相关链接
+<details class="problem-card">
+<summary class="problem-summary">📖 展开查看题目详情、示例与完整题解</summary>
+
+<div class="problem-content">
+
+**🔗 原题链接**
+
 
 [LeetCode 392 - 判断子序列](https://leetcode.cn/problems/is-subsequence/description/?envType=study-plan-v2&envId=top-interview-150)
 
-#### 📜 描述
+**📝 题目描述**
+
 
 给定字符串 `s` 和 `t` ，判断 `s` 是否为 `t` 的子序列。
 
@@ -2576,27 +2902,28 @@ public boolean isPalindrome(String s) {
 
 特别感谢 @pbrother 添加此问题并且创建所有测试用例。
 
-#### 💡 示例
+**📊 示例**
+
 
 - **输入**: `s = "abc", t = "ahbgdc"`
 - **输出**: `true`
 - **解释**: `"abc"` 是 `"ahbgdc"` 的子序列。
 
-##### 示例 2
+**示例 2：**
+
 
 - **输入**: `s = "axc", t = "ahbgdc"`
 - **输出**: `false`
 - **解释**: `"axc"` 不是 `"ahbgdc"` 的子序列。
 
-#### 📝 提示
+**🔍 提示**
+
 - `0 <= s.length <= 100`
 - `0 <= t.length <= 10^4`
 - 两个字符串都只由小写字符组成。
 
-<details class="solution-details">
-<summary>💡 查看题解与代码实现</summary>
+**💡 解题思路**
 
-#### 💭 思路
 
 1. **双指针**：
    - 使用两个指针分别遍历 `s` 和 `t`，如果 `s` 的当前字符与 `t` 的当前字符匹配，则移动 `s` 的指针；否则只移动 `t` 的指针。
@@ -2606,7 +2933,8 @@ public boolean isPalindrome(String s) {
    - 预处理 `t`，构建一个二维数组 `dp`，其中 `dp[i][j]` 表示在 `t` 的第 `i` 个位置之后，字符 `j` 出现的位置。
    - 使用该数组快速判断 `s` 是否为 `t` 的子序列。
 
-#### 💻 代码实现
+**💻 代码实现 (Java)**
+
 
 ```java
 public boolean isSubsequence(String s, String t) {
@@ -2642,17 +2970,25 @@ public boolean isSubsequence(String s, String t) {
 }
 ```
 
+</div>
 </details>
 
 ---
 
 ## 27. LeetCode 167：两数之和 II - 输入有序数组
 
-#### 🚀 相关链接
+<details class="problem-card">
+<summary class="problem-summary">📖 展开查看题目详情、示例与完整题解</summary>
+
+<div class="problem-content">
+
+**🔗 原题链接**
+
 
 [LeetCode 167 - 两数之和 II - 输入有序数组](https://leetcode.cn/problems/two-sum-ii-input-array-is-sorted/?envType=study-plan-v2&envId=top-interview-150)
 
-#### 📜 描述
+**📝 题目描述**
+
 
 给你一个下标从 `1` 开始的整数数组 `numbers`，该数组已按 **非递减顺序排列**，请你从数组中找出满足相加之和等于目标数 `target` 的两个数。如果设这两个数分别是 `numbers[index1]` 和 `numbers[index2]`，则 `1 <= index1 < index2 <= numbers.length`。
 
@@ -2662,34 +2998,37 @@ public boolean isSubsequence(String s, String t) {
 
 你所设计的解决方案必须只使用常量级的额外空间。
 
-#### 💡 示例
+**📊 示例**
 
-##### 示例 1
+
+**示例 1：**
+
 - **输入**: `numbers = [2,7,11,15], target = 9`
 - **输出**: `[1,2]`
 - **解释**: `2` 与 `7` 之和等于目标数 `9`。因此 `index1 = 1`, `index2 = 2`。返回 `[1, 2]`。
 
-##### 示例 2
+**示例 2：**
+
 - **输入**: `numbers = [2,3,4], target = 6`
 - **输出**: `[1,3]`
 - **解释**: `2` 与 `4` 之和等于目标数 `6`。因此 `index1 = 1`, `index2 = 3`。返回 `[1, 3]`。
 
-##### 示例 3
+**示例 3：**
+
 - **输入**: `numbers = [-1,0], target = -1`
 - **输出**: `[1,2]`
 - **解释**: `-1` 与 `0` 之和等于目标数 `-1`。因此 `index1 = 1`, `index2 = 2`。返回 `[1, 2]`。
 
-#### 📝 提示
+**🔍 提示**
+
 - `2 <= numbers.length <= 3 * 10^4`
 - `-1000 <= numbers[i] <= 1000`
 - `numbers` 按 **非递减顺序** 排列
 - `-1000 <= target <= 1000`
 - **仅存在一个有效答案**
 
-<details class="solution-details">
-<summary>💡 查看题解与代码实现</summary>
+**💡 解题思路**
 
-#### 💭 思路
 
 由于数组已经是有序的，可以使用双指针的方法来解决这个问题。具体思路如下：
 
@@ -2699,7 +3038,8 @@ public boolean isSubsequence(String s, String t) {
 4. 如果和小于 `target`，则将 `left` 指针向右移动。
 5. 如果和等于 `target`，则返回这两个指针的位置。
 
-#### 💻 代码实现
+**💻 代码实现 (Java)**
+
 
 ```java
 public int[] twoSum(int[] numbers, int target) {
@@ -2718,17 +3058,25 @@ public int[] twoSum(int[] numbers, int target) {
 }
 ```
 
+</div>
 </details>
 
 ---
 
 ## 28. LeetCode 11：盛最多水的容器
 
-#### 🚀 相关链接
+<details class="problem-card">
+<summary class="problem-summary">📖 展开查看题目详情、示例与完整题解</summary>
+
+<div class="problem-content">
+
+**🔗 原题链接**
+
 
 [LeetCode 11 - 盛最多水的容器](https://leetcode.cn/problems/container-with-most-water/description/?envType=study-plan-v2&envId=top-interview-150)
 
-#### 📜 描述
+**📝 题目描述**
+
 
 给定一个长度为 `n` 的整数数组 `height`。有 `n` 条垂线，第 `i` 条线的两个端点是 `(i, 0)` 和 `(i, height[i])`。
 
@@ -2738,33 +3086,36 @@ public int[] twoSum(int[] numbers, int target) {
 
 **说明**：你不能倾斜容器。
 
-#### 💡 示例
+**📊 示例**
 
-##### 示例 1
+
+**示例 1：**
+
 
 - **输入**: `[1,8,6,2,5,4,8,3,7]`
 - **输出**: `49`
 - **解释**: 图中垂直线代表输入数组 `[1,8,6,2,5,4,8,3,7]`。在此情况下，容器能够容纳水（表示为蓝色部分）的最大值为 `49`。
 
-##### 示例 2
+**示例 2：**
+
 
 - **输入**: `height = [1,1]`
 - **输出**: `1`
 
-#### 📝 提示
+**🔍 提示**
+
 
 - `n == height.length`
 - `2 <= n <= 10^5`
 - `0 <= height[i] <= 10^4`
 
-<details class="solution-details">
-<summary>💡 查看题解与代码实现</summary>
+**💡 解题思路**
 
-#### 💭 思路
 
 使用**双指针**的方法来解决该问题。初始时，双指针分别指向数组的左右两端。计算当前双指针所指向的线构成的容器的面积，并更新最大面积。然后，将较短的那条线的指针向中间移动，继续计算面积，直到两个指针相遇。
 
-#### 💻 代码实现
+**💻 代码实现 (Java)**
+
 
 ```java
 public int maxArea(int[] height) {
@@ -2785,25 +3136,35 @@ public int maxArea(int[] height) {
 }
 ```
 
+</div>
 </details>
 
 ---
 
 ## 29. LeetCode 15：三数之和
 
-#### 🚀 相关链接
+<details class="problem-card">
+<summary class="problem-summary">📖 展开查看题目详情、示例与完整题解</summary>
+
+<div class="problem-content">
+
+**🔗 原题链接**
+
 
 [LeetCode 15 - 三数之和](https://leetcode.cn/problems/3sum/description/?envType=study-plan-v2&envId=top-interview-150)
 
-#### 📜 描述
+**📝 题目描述**
+
 
 给你一个整数数组 `nums`，判断是否存在三元组 `[nums[i], nums[j], nums[k]]` 满足 `i != j`、`i != k` 且 `j != k`，同时还满足 `nums[i] + nums[j] + nums[k] == 0`。请你返回所有和为 `0` 且不重复的三元组。
 
 **注意**：答案中不可以包含重复的三元组。
 
-#### 💡 示例
+**📊 示例**
 
-##### 示例 1
+
+**示例 1：**
+
 
 - **输入**: `nums = [-1,0,1,2,-1,-4]`
 - **输出**: `[[-1,-1,2],[-1,0,1]]`
@@ -2814,33 +3175,35 @@ public int maxArea(int[] height) {
   - 不同的三元组是 `[-1,0,1]` 和 `[-1,-1,2]`。
   - 注意，输出的顺序和三元组的顺序并不重要。
 
-##### 示例 2
+**示例 2：**
+
 
 - **输入**: `nums = [0,1,1]`
 - **输出**: `[]`
 - **解释**: 唯一可能的三元组和不为 `0`。
 
-##### 示例 3
+**示例 3：**
+
 
 - **输入**: `nums = [0,0,0]`
 - **输出**: `[[0,0,0]]`
 - **解释**: 唯一可能的三元组和为 `0`。
 
-#### 📝 提示
+**🔍 提示**
+
 
 - `3 <= nums.length <= 3000`
 - `-10^5 <= nums[i] <= 10^5`
 
-<details class="solution-details">
-<summary>💡 查看题解与代码实现</summary>
+**💡 解题思路**
 
-#### 💭 思路
 
 1. **排序**：首先对数组进行排序，便于后续操作。
 2. **双指针**：遍历数组，对于每个元素 `nums[i]`，使用双指针 `l` 和 `r` 分别指向 `i+1` 和 `nums.length-1`，寻找满足 `nums[i] + nums[l] + nums[r] == 0` 的三元组。
 3. **去重**：为了避免重复的三元组，当 `nums[i] == nums[i-1]` 时，跳过当前元素。同时，在找到满足条件的三元组后，移动指针 `l` 和 `r` 时也需跳过重复元素。
 
-#### 💻 代码实现
+**💻 代码实现 (Java)**
+
 
 ```java
 public List<List<Integer>> threeSum(int[] nums) {
@@ -2869,52 +3232,63 @@ public List<List<Integer>> threeSum(int[] nums) {
 }
 ```
 
+</div>
 </details>
 
 ---
 
 ## 30. LeetCode 209：长度最小的子数组
 
-#### 🚀 相关链接
+<details class="problem-card">
+<summary class="problem-summary">📖 展开查看题目详情、示例与完整题解</summary>
+
+<div class="problem-content">
+
+**🔗 原题链接**
+
 
 [LeetCode 209 - 长度最小的子数组](https://leetcode.cn/problems/minimum-size-subarray-sum/?envType=study-plan-v2&envId=top-interview-150)
 
-#### 📜 描述
+**📝 题目描述**
+
 
 给定一个含有 `n` 个正整数的数组和一个正整数 `target`。
 
 找出该数组中满足其总和大于等于 `target` 的长度最小的 **子数组** `[numsl, numsl+1, ..., numsr-1, numsr]`，并返回其长度。如果不存在符合条件的子数组，返回 `0`。
 
-#### 💡 示例
+**📊 示例**
+
 
 - **输入**: `target = 7, nums = [2,3,1,2,4,3]`
 - **输出**: `2`
 - **解释**: 子数组 `[4,3]` 是该条件下的长度最小的子数组。
 
-##### 示例 2
+**示例 2：**
+
 
 - **输入**: `target = 4, nums = [1,4,4]`
 - **输出**: `1`
 
-##### 示例 3
+**示例 3：**
+
 
 - **输入**: `target = 11, nums = [1,1,1,1,1,1,1,1]`
 - **输出**: `0`
 
-#### 📝 提示
+**🔍 提示**
+
 
 - `1 <= target <= 10^9`
 - `1 <= nums.length <= 10^5`
 - `1 <= nums[i] <= 10^4`
 
-##### 进阶
+**🚀 进阶**
+
 
 如果你已经实现 `O(n)` 时间复杂度的解法，请尝试设计一个 `O(n log(n))` 时间复杂度的解法。
 
-<details class="solution-details">
-<summary>💡 查看题解与代码实现</summary>
+**💡 解题思路**
 
-#### 💭 思路
 
 1. **暴力解法**：
    - 使用双重循环枚举所有可能的子数组，计算子数组的和，并记录最小的长度。
@@ -2931,7 +3305,8 @@ public List<List<Integer>> threeSum(int[] nums) {
    - 如果 `sum < target`，扩大窗口（`end++`）。
    - 时间复杂度：`O(n)`。
 
-#### 💻 代码实现
+**💻 代码实现 (Java)**
+
 
 1. **暴力解法**（超时）
 
@@ -3002,35 +3377,47 @@ public int lengthOfLongestSubstring(String s) {
     }
 ```
 
+</div>
 </details>
 
 ---
 
 ## 31. LeetCode 3：无重复字符的最长子串
 
-#### 🚀 相关链接
+<details class="problem-card">
+<summary class="problem-summary">📖 展开查看题目详情、示例与完整题解</summary>
+
+<div class="problem-content">
+
+**🔗 原题链接**
+
 
 [LeetCode 3 - 无重复字符的最长子串](https://leetcode.cn/problems/longest-substring-without-repeating-characters/?envType=study-plan-v2&envId=top-interview-150)
 
-#### 📜 描述
+**📝 题目描述**
+
 
 给定一个字符串 `s` ，请你找出其中不含有重复字符的 **最长** 子串的长度。
 
-#### 💡 示例
+**📊 示例**
 
-##### 示例 1
+
+**示例 1：**
+
 
 - **输入**: `s = "abcabcbb"`
 - **输出**: `3`
 - **解释**: 因为无重复字符的最长子串是 `"abc"`，所以其长度为 `3`。
 
-##### 示例 2
+**示例 2：**
+
 
 - **输入**: `s = "bbbbb"`
 - **输出**: `1`
 - **解释**: 因为无重复字符的最长子串是 `"b"`，所以其长度为 `1`。
 
-##### 示例 3
+**示例 3：**
+
 
 - **输入**: `s = "pwwkew"`
 - **输出**: `3`
@@ -3038,15 +3425,14 @@ public int lengthOfLongestSubstring(String s) {
   
   请注意，你的答案必须是 **子串** 的长度，`"pwke"` 是一个子序列，不是子串。
 
-#### 📝 提示
+**🔍 提示**
+
 
 - `0 <= s.length <= 5 * 10^4`
 - `s` 由英文字母、数字、符号和空格组成
 
-<details class="solution-details">
-<summary>💡 查看题解与代码实现</summary>
+**💡 解题思路**
 
-#### 💭 思路
 
 使用 **滑动窗口** 的思想来解决这个问题：
 
@@ -3056,7 +3442,8 @@ public int lengthOfLongestSubstring(String s) {
 4. 如果当前字符 `s[r]` 已经在 `list` 中，则移除 `list` 中的第一个字符并收缩左边界 `l`。
 5. 在每次扩展或收缩窗口时，记录窗口的最大长度。
 
-#### 💻 代码实现
+**💻 代码实现 (Java)**
+
 
 ```java
 public int lengthOfLongestSubstring(String s) {
@@ -3083,25 +3470,35 @@ public int lengthOfLongestSubstring(String s) {
 }
 ```
 
+</div>
 </details>
 
 ---
 
 ## 32. LeetCode 30：串联所有单词的子串
 
-#### 🚀 相关链接
+<details class="problem-card">
+<summary class="problem-summary">📖 展开查看题目详情、示例与完整题解</summary>
+
+<div class="problem-content">
+
+**🔗 原题链接**
+
 
 [LeetCode 30 - 串联所有单词的子串](https://leetcode.cn/problems/substring-with-concatenation-of-all-words/description/?envType=study-plan-v2&envId=top-interview-150)
 
-#### 📜 描述
+**📝 题目描述**
+
 
 给定一个字符串 `s` 和一个字符串数组 `words`。`words` 中所有字符串 **长度相同**。
 
 `s` 中的 **串联子串** 是指一个包含 `words` 中所有字符串以任意顺序排列连接起来的子串。
 
-#### 💡 示例
+**📊 示例**
 
-##### 示例 1
+
+**示例 1：**
+
 
 - **输入**: `s = "barfoothefoobarman"`, `words = ["foo","bar"]`
 - **输出**: `[0,9]`
@@ -3109,13 +3506,15 @@ public int lengthOfLongestSubstring(String s) {
   - 子串 `"barfoo"` 开始位置是 `0`。它是 `words` 中以 `["bar","foo"]` 顺序排列的连接。
   - 子串 `"foobar"` 开始位置是 `9`。它是 `words` 中以 `["foo","bar"]` 顺序排列的连接。
 
-##### 示例 2
+**示例 2：**
+
 
 - **输入**: `s = "wordgoodgoodgoodbestword"`, `words = ["word","good","best","word"]`
 - **输出**: `[]`
 - **解释**: 没有符合条件的子串。
 
-##### 示例 3
+**示例 3：**
+
 
 - **输入**: `s = "barfoofoobarthefoobarman"`, `words = ["bar","foo","the"]`
 - **输出**: `[6,9,12]`
@@ -3124,19 +3523,19 @@ public int lengthOfLongestSubstring(String s) {
   - 子串 `"barthefoo"` 开始位置是 `9`。
   - 子串 `"thefoobar"` 开始位置是 `12`。
 
-#### 📝 提示
+**🔍 提示**
+
 
 - `1 <= s.length <= 10^4`
 - `1 <= words.length <= 5000`
 - `1 <= words[i].length <= 30`
 - `words[i]` 和 `s` 由小写英文字母组成
 
-<details class="solution-details">
-<summary>💡 查看题解与代码实现</summary>
+**💡 解题思路**
 
-#### 💭 思路
 
-##### 方法一：滑动窗口 + 哈希表
+**方法一：滑动窗口 + 哈希表**
+
 
 1. **预处理**：
    - 计算每个单词的长度 `wordLen` 和所有单词连接后的总长度 `groupLen`。
@@ -3147,7 +3546,8 @@ public int lengthOfLongestSubstring(String s) {
    - 对于每个窗口，统计窗口内单词出现的频率，并与 `words` 的频率进行比较。
    - 具体实现为使用一个哈希表，key为单词，用words数组进行初始化，words数组每出现一次就减1，窗口内出现一次就加1，若该窗口使hashmap中的值全为0，则该窗口起始位置为1个答案。
 
-#### 💻 代码实现
+**💻 代码实现 (Java)**
+
 
 ```java
 public List<Integer> findSubstring(String s, String[] words) {
@@ -3194,7 +3594,51 @@ public List<Integer> findSubstring(String s, String[] words) {
 }
 ```
 
+</div>
 </details>
 
 ---
 
+
+<script>
+function initProblemCollapsible() {
+  const expandBtn = document.getElementById(expand-all-btn);
+  const collapseBtn = document.getElementById(collapse-all-btn);
+  const detailsList = document.querySelectorAll(details.problem-card);
+
+  expandBtn?.addEventListener(click, () => {
+    detailsList.forEach(d => (d.open = true));
+  });
+
+  collapseBtn?.addEventListener(click, () => {
+    detailsList.forEach(d => (d.open = false));
+  });
+
+  const openByHash = () => {
+    const hash = window.location.hash;
+    if (hash) {
+      try {
+        const heading = document.querySelector(decodeURIComponent(hash));
+        const section = heading?.closest(section) || heading?.parentElement;
+        const details = section?.querySelector(details.problem-card);
+        if (details) {
+          details.open = true;
+          details.scrollIntoView({ behavior: "smooth", block: "start" });
+        }
+      } catch (e) {}
+    }
+  };
+
+  openByHash();
+  window.addEventListener(hashchange, openByHash);
+}
+
+// Support Swup page transitions
+if (document.readyState === "loading") {
+  document.addEventListener("DOMContentLoaded", initProblemCollapsible);
+} else {
+  initProblemCollapsible();
+}
+document.addEventListener("swup:enable", initProblemCollapsible);
+window.swup?.hooks?.on("page:view", initProblemCollapsible);
+</script>
