@@ -1,5 +1,4 @@
-<?xml version="1.0" encoding="UTF-8"?><rss version="2.0" xmlns:content="http://purl.org/rss/1.0/modules/content/"><channel><title>Jayczee&apos;s Blog</title><description>Whispering for nothing</description><link>https://jayczee.cn/</link><language>zh_CN</language><item><title>给创维电视去广告：不 root，只用 ADB</title><link>https://jayczee.cn/posts/skyworth-tv-debloat/</link><guid isPermaLink="true">https://jayczee.cn/posts/skyworth-tv-debloat/</guid><description>开机广告、关机广告、屏保广告轮着来，实在忍不了。用 ADB 扫出局域网里的电视，把酷开那套广告包禁掉，顺手记下几个坑。</description><pubDate>Tue, 20 Oct 2026 00:00:00 GMT</pubDate><content:encoded>&lt;p&gt;&lt;img src=&quot;/assets/images/skyworth-tv-debloat/cover.png&quot; alt=&quot;去广告前后的电视首页对比&quot; /&gt;&lt;/p&gt;
-&lt;p&gt;家里有台创维电视A7D，经典国产电视广告满天飞。&lt;/p&gt;
+<?xml version="1.0" encoding="UTF-8"?><rss version="2.0" xmlns:content="http://purl.org/rss/1.0/modules/content/"><channel><title>Jayczee&apos;s Blog</title><description>Whispering for nothing</description><link>https://jayczee.cn/</link><language>zh_CN</language><item><title>给创维电视去广告：不 root，只用 ADB</title><link>https://jayczee.cn/posts/skyworth-tv-debloat/</link><guid isPermaLink="true">https://jayczee.cn/posts/skyworth-tv-debloat/</guid><description>开机广告、关机广告、屏保广告轮着来，实在忍不了。用 ADB 扫出局域网里的电视，把酷开那套广告包禁掉，顺手记下几个坑。</description><pubDate>Tue, 20 Oct 2026 00:00:00 GMT</pubDate><content:encoded>&lt;p&gt;家里有台创维电视A7D，经典国产电视广告满天飞。&lt;/p&gt;
 &lt;p&gt;忍了很久，这周研究了一下，尝试删除。&lt;/p&gt;
 &lt;p&gt;省流：只用了 ADB。删掉广告相关的系统包即可。&lt;/p&gt;
 &lt;h2&gt;先把电视找出来&lt;/h2&gt;
@@ -140,7 +139,7 @@ foreach ($p in $pkgs) { adb shell &quot;pm disable-user --user 0 $p&quot; }
 &lt;p&gt;十个包挨个 &lt;code&gt;pm enable&lt;/code&gt;。&lt;/p&gt;
 &lt;hr /&gt;
 &lt;p&gt;还好广告包独立。禁包还是轻轻松松。&lt;/p&gt;
-</content:encoded></item><item><title>opencode go计划deepseek-flash模型经newapi接入ChatGPT Desktop产生的工具调用问题</title><link>https://jayczee.cn/posts/opencode-go-deepseek-flash-newapi-chatgpt-desktop-tool-call/</link><guid isPermaLink="true">https://jayczee.cn/posts/opencode-go-deepseek-flash-newapi-chatgpt-desktop-tool-call/</guid><description>OpenCode Go 的 DeepSeek Flash 经 new-api 接入桌面端后，聊天正常，但读文件和执行命令频繁出错。这篇用尽量通俗的方式记录原因和解决过程。</description><pubDate>Thu, 24 Sep 2026 00:00:00 GMT</pubDate><content:encoded>&lt;p&gt;最近我开通了 OpenCode Go，想把里面的 DeepSeek Flash 接到自己的 new-api，再给 ChatGPT Desktop 里的 Codex Agent 使用。&lt;/p&gt;
+</content:encoded></item><item><title>opencode go计划deepseek-flash模型经newapi接入ChatGPT Desktop产生的工具调用问题</title><link>https://jayczee.cn/posts/opencode-go-deepseek-flash-newapi-chatgpt-desktop-tool-call/</link><guid isPermaLink="true">https://jayczee.cn/posts/opencode-go-deepseek-flash-newapi-chatgpt-desktop-tool-call/</guid><description>OpenCode Go 的 DeepSeek Flash 经 new-api 接入桌面端后，聊天正常，但读文件和执行命令频繁出错。这篇用尽量通俗的方式记录原因和解决过程。</description><pubDate>Thu, 24 Sep 2026 00:00:00 GMT</pubDate><content:encoded>&lt;p&gt;最近我开通了 OpenCode Go，想把里面的 DeepSeek Flash 接到自己的 new-api，再接入ChatGPT Desktop。&lt;/p&gt;
 &lt;p&gt;刚开始看起来很顺利：配好地址和密钥，问一句话，模型能正常回答。我以为这就算接完了。&lt;/p&gt;
 &lt;p&gt;真正让它干活时，问题才出来。只要涉及读文件、执行命令、搜索代码或修改文件，对话就可能突然中断。有时它还会直接回复这样一大段奇怪文字：&lt;/p&gt;
 &lt;pre&gt;&lt;code&gt;&amp;lt;｜｜DSML｜｜ calls&amp;gt;
@@ -153,9 +152,6 @@ foreach ($p in $pkgs) { adb shell &quot;pm disable-user --user 0 $p&quot; }
 &lt;/code&gt;&lt;/pre&gt;
 &lt;p&gt;这些东西不是模型想对用户说的话，而是它准备发给客户端的“工具调用指令”。正常情况下，我们不应该看到它。&lt;/p&gt;
 &lt;p&gt;为什么普通聊天没问题，一干活就坏了？这要从 Agent 是怎么工作的说起。&lt;/p&gt;
-&lt;blockquote&gt;
-&lt;p&gt;标题里写的 ChatGPT Desktop 是我平时对桌面端的称呼。这次实际测试的是其中的 Codex Agent，请求走 &lt;code&gt;/v1/responses&lt;/code&gt;，不是常见的 &lt;code&gt;/v1/chat/completions&lt;/code&gt;。&lt;/p&gt;
-&lt;/blockquote&gt;
 &lt;h2&gt;聊天和使用工具是两回事&lt;/h2&gt;
 &lt;p&gt;普通聊天很简单：&lt;/p&gt;
 &lt;pre&gt;&lt;code&gt;用户提问 → 模型生成文字 → 客户端显示文字
@@ -177,7 +173,7 @@ foreach ($p in $pkgs) { adb shell &quot;pm disable-user --user 0 $p&quot; }
 &lt;p&gt;如果只是文字聊天，中转服务能把文字送过去再送回来就够了。要使用工具，则要求整条链路都听得懂同一套“暗号”。&lt;/p&gt;
 &lt;h2&gt;我的请求经过了哪些服务&lt;/h2&gt;
 &lt;p&gt;这次的实际链路是：&lt;/p&gt;
-&lt;pre&gt;&lt;code&gt;ChatGPT Desktop 中的 Codex Agent
+&lt;pre&gt;&lt;code&gt;Codex
     ↓
 nginx
     ↓
@@ -232,8 +228,7 @@ OpenCode Go 的 DeepSeek Flash
 &lt;pre&gt;&lt;code&gt;The `reasoning_text` in the thinking mode must be passed back to the API.
 &lt;/code&gt;&lt;/pre&gt;
 &lt;p&gt;意思是：在思考模式下，对话进入下一轮时，上游要求把前一轮与工具调用相关的 &lt;code&gt;reasoning&lt;/code&gt; 记录一起带回来。经过多层中转后，某些旧历史只保留了工具调用，这部分记录却丢了。&lt;/p&gt;
-&lt;p&gt;已经丢失的内容不可能凭空找回。所以我只在“这一段历史有工具调用，但没有任何 reasoning 记录”时，补上一条清楚的占位说明：这次思考记录没有保存在对话里。&lt;/p&gt;
-&lt;p&gt;这不是伪造模型的思考内容，只是补齐上游强制要求的格式。正常保留完整的新对话不会被改动。&lt;/p&gt;
+&lt;p&gt;已经丢失的内容不可能凭空找回。所以我只在“这一段历史有工具调用，但没有任何 reasoning 记录”时，补上一条清楚的占位说明：这次思考记录没有保存在对话里。来补齐上游强制要求的格式。&lt;/p&gt;
 &lt;h2&gt;为什么还要在报错后再试一次&lt;/h2&gt;
 &lt;p&gt;按道理说，请求发出前已经整理过历史，应该不会再有配对错误。但请求还要经过 new-api 和上游的再次转换，边界情况下仍然可能被拒绝。&lt;/p&gt;
 &lt;p&gt;因此桥接还做了一个很保守的重试：只有当上游明确说某个 &lt;code&gt;call_id&lt;/code&gt; 缺少调用结果，或者某个结果找不到调用时，才针对这一个 ID 修好后再发一次。&lt;/p&gt;
@@ -10408,6 +10403,66 @@ randomizedSet.getRandom(); // 由于 2 是集合中唯一的数字，getRandom �
     }
 }
 &lt;/code&gt;&lt;/pre&gt;
+</content:encoded></item><item><title>LeetCode 55：跳跃游戏</title><link>https://jayczee.cn/posts/leetcode/55/</link><guid isPermaLink="true">https://jayczee.cn/posts/leetcode/55/</guid><description>LeetCode 55 跳跃游戏，记录解题思路和 Java 实现。涉及数组、贪心。</description><pubDate>Wed, 05 Mar 2025 00:00:00 GMT</pubDate><content:encoded>&lt;p&gt;&amp;lt;span id=&quot;🔗-相关链接&quot; class=&quot;legacy-anchor&quot; aria-hidden=&quot;true&quot;&amp;gt;&amp;lt;/span&amp;gt;&lt;/p&gt;
+&lt;h2&gt;🔗 相关链接&lt;/h2&gt;
+&lt;p&gt;&lt;a href=&quot;https://leetcode.cn/problems/jump-game/?envType=study-plan-v2&amp;amp;envId=top-interview-150&quot;&gt;跳跃游戏&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;&amp;lt;span id=&quot;📜-题目描述&quot; class=&quot;legacy-anchor&quot; aria-hidden=&quot;true&quot;&amp;gt;&amp;lt;/span&amp;gt;&lt;/p&gt;
+&lt;h2&gt;📜 题目描述&lt;/h2&gt;
+&lt;p&gt;给定一个非负整数数组 &lt;code&gt;nums&lt;/code&gt;，最初位于数组的第一个下标。数组中的每个元素代表在该位置可以跳跃的最大长度。&lt;/p&gt;
+&lt;p&gt;&amp;lt;span id=&quot;🎯-目标&quot; class=&quot;legacy-anchor&quot; aria-hidden=&quot;true&quot;&amp;gt;&amp;lt;/span&amp;gt;&lt;/p&gt;
+&lt;h2&gt;🎯 目标&lt;/h2&gt;
+&lt;p&gt;判断是否能够到达最后一个下标。如果可以，返回 &lt;code&gt;true&lt;/code&gt;；否则，返回 &lt;code&gt;false&lt;/code&gt;。&lt;/p&gt;
+&lt;p&gt;&amp;lt;span id=&quot;📊-示例&quot; class=&quot;legacy-anchor&quot; aria-hidden=&quot;true&quot;&amp;gt;&amp;lt;/span&amp;gt;&lt;/p&gt;
+&lt;h2&gt;📊 示例&lt;/h2&gt;
+&lt;h3&gt;示例 1&lt;/h3&gt;
+&lt;p&gt;&lt;strong&gt;输入：&lt;/strong&gt;&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;nums = [2, 3, 1, 1, 4]
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;&lt;strong&gt;输出：&lt;/strong&gt;&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;true
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;&lt;strong&gt;解释：&lt;/strong&gt;
+可以先跳 1 步，从下标 0 到达下标 1，然后再从下标 1 跳 3 步到达最后一个下标。&lt;/p&gt;
+&lt;hr /&gt;
+&lt;h3&gt;示例 2&lt;/h3&gt;
+&lt;p&gt;&lt;strong&gt;输入：&lt;/strong&gt;&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;nums = [3, 2, 1, 0, 4]
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;&lt;strong&gt;输出：&lt;/strong&gt;&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;false
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;&lt;strong&gt;解释：&lt;/strong&gt;
+无论怎样，总会到达下标为 3 的位置。但该下标的最大跳跃长度是 0，因此永远不可能到达最后一个下标。&lt;/p&gt;
+&lt;p&gt;&amp;lt;span id=&quot;📝-提示&quot; class=&quot;legacy-anchor&quot; aria-hidden=&quot;true&quot;&amp;gt;&amp;lt;/span&amp;gt;&lt;/p&gt;
+&lt;h2&gt;📝 提示&lt;/h2&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;code&gt;1 &amp;lt;= nums.length &amp;lt;= 10^4&lt;/code&gt;&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;0 &amp;lt;= nums[i] &amp;lt;= 10^5&lt;/code&gt;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;&amp;lt;span id=&quot;💡-思路&quot; class=&quot;legacy-anchor&quot; aria-hidden=&quot;true&quot;&amp;gt;&amp;lt;/span&amp;gt;&lt;/p&gt;
+&lt;h2&gt;💡 思路&lt;/h2&gt;
+&lt;h3&gt;贪心&lt;/h3&gt;
+&lt;p&gt;维护一个与 &lt;code&gt;nums&lt;/code&gt; 等长的布尔数组，表示每个元素是否可达。遍历一遍 &lt;code&gt;nums&lt;/code&gt;，根据 &lt;code&gt;nums&lt;/code&gt; 的值将对应布尔数组的区间更新为 &lt;code&gt;true&lt;/code&gt;，遍历完成后返回布尔数组最后一个元素的值。若中间可更新区间超过了数组长度末尾，则直接返回 &lt;code&gt;true&lt;/code&gt;。&lt;/p&gt;
+&lt;p&gt;&amp;lt;span id=&quot;💻-代码实现&quot; class=&quot;legacy-anchor&quot; aria-hidden=&quot;true&quot;&amp;gt;&amp;lt;/span&amp;gt;&lt;/p&gt;
+&lt;h2&gt;💻 代码实现&lt;/h2&gt;
+&lt;pre&gt;&lt;code&gt;public boolean canJump(int[] nums) {
+    boolean[] arr = new boolean[nums.length];
+    arr[0] = true;
+    for (int i = 0; i &amp;lt; nums.length; i++) {
+        if (!arr[i]) {
+            continue;
+        }
+        int range = nums[i];
+        if (i + range &amp;gt;= nums.length - 1) {
+            return true;
+        }
+        for (int j = i; j &amp;lt;= Math.min(i + range, nums.length - 1); j++) {
+            arr[j] = true;
+        }
+    }
+    return arr[nums.length - 1];
+}
+&lt;/code&gt;&lt;/pre&gt;
 </content:encoded></item><item><title>LeetCode 45：跳跃游戏 II</title><link>https://jayczee.cn/posts/leetcode/45/</link><guid isPermaLink="true">https://jayczee.cn/posts/leetcode/45/</guid><description>LeetCode 45 跳跃游戏 II，记录解题思路和 Java 实现。涉及数组、动态规划。</description><pubDate>Wed, 05 Mar 2025 00:00:00 GMT</pubDate><content:encoded>&lt;p&gt;&amp;lt;span id=&quot;🔗-相关链接&quot; class=&quot;legacy-anchor&quot; aria-hidden=&quot;true&quot;&amp;gt;&amp;lt;/span&amp;gt;&lt;/p&gt;
 &lt;h2&gt;🔗 相关链接&lt;/h2&gt;
 &lt;p&gt;&lt;a href=&quot;https://leetcode.cn/problems/jump-game-ii/?envType=study-plan-v2&amp;amp;envId=top-interview-150&quot;&gt;跳跃游戏 II&lt;/a&gt;&lt;/p&gt;
@@ -10473,66 +10528,6 @@ randomizedSet.getRandom(); // 由于 2 是集合中唯一的数字，getRandom �
         }
     }
     return steps[nums.length - 1];
-}
-&lt;/code&gt;&lt;/pre&gt;
-</content:encoded></item><item><title>LeetCode 55：跳跃游戏</title><link>https://jayczee.cn/posts/leetcode/55/</link><guid isPermaLink="true">https://jayczee.cn/posts/leetcode/55/</guid><description>LeetCode 55 跳跃游戏，记录解题思路和 Java 实现。涉及数组、贪心。</description><pubDate>Wed, 05 Mar 2025 00:00:00 GMT</pubDate><content:encoded>&lt;p&gt;&amp;lt;span id=&quot;🔗-相关链接&quot; class=&quot;legacy-anchor&quot; aria-hidden=&quot;true&quot;&amp;gt;&amp;lt;/span&amp;gt;&lt;/p&gt;
-&lt;h2&gt;🔗 相关链接&lt;/h2&gt;
-&lt;p&gt;&lt;a href=&quot;https://leetcode.cn/problems/jump-game/?envType=study-plan-v2&amp;amp;envId=top-interview-150&quot;&gt;跳跃游戏&lt;/a&gt;&lt;/p&gt;
-&lt;p&gt;&amp;lt;span id=&quot;📜-题目描述&quot; class=&quot;legacy-anchor&quot; aria-hidden=&quot;true&quot;&amp;gt;&amp;lt;/span&amp;gt;&lt;/p&gt;
-&lt;h2&gt;📜 题目描述&lt;/h2&gt;
-&lt;p&gt;给定一个非负整数数组 &lt;code&gt;nums&lt;/code&gt;，最初位于数组的第一个下标。数组中的每个元素代表在该位置可以跳跃的最大长度。&lt;/p&gt;
-&lt;p&gt;&amp;lt;span id=&quot;🎯-目标&quot; class=&quot;legacy-anchor&quot; aria-hidden=&quot;true&quot;&amp;gt;&amp;lt;/span&amp;gt;&lt;/p&gt;
-&lt;h2&gt;🎯 目标&lt;/h2&gt;
-&lt;p&gt;判断是否能够到达最后一个下标。如果可以，返回 &lt;code&gt;true&lt;/code&gt;；否则，返回 &lt;code&gt;false&lt;/code&gt;。&lt;/p&gt;
-&lt;p&gt;&amp;lt;span id=&quot;📊-示例&quot; class=&quot;legacy-anchor&quot; aria-hidden=&quot;true&quot;&amp;gt;&amp;lt;/span&amp;gt;&lt;/p&gt;
-&lt;h2&gt;📊 示例&lt;/h2&gt;
-&lt;h3&gt;示例 1&lt;/h3&gt;
-&lt;p&gt;&lt;strong&gt;输入：&lt;/strong&gt;&lt;/p&gt;
-&lt;pre&gt;&lt;code&gt;nums = [2, 3, 1, 1, 4]
-&lt;/code&gt;&lt;/pre&gt;
-&lt;p&gt;&lt;strong&gt;输出：&lt;/strong&gt;&lt;/p&gt;
-&lt;pre&gt;&lt;code&gt;true
-&lt;/code&gt;&lt;/pre&gt;
-&lt;p&gt;&lt;strong&gt;解释：&lt;/strong&gt;
-可以先跳 1 步，从下标 0 到达下标 1，然后再从下标 1 跳 3 步到达最后一个下标。&lt;/p&gt;
-&lt;hr /&gt;
-&lt;h3&gt;示例 2&lt;/h3&gt;
-&lt;p&gt;&lt;strong&gt;输入：&lt;/strong&gt;&lt;/p&gt;
-&lt;pre&gt;&lt;code&gt;nums = [3, 2, 1, 0, 4]
-&lt;/code&gt;&lt;/pre&gt;
-&lt;p&gt;&lt;strong&gt;输出：&lt;/strong&gt;&lt;/p&gt;
-&lt;pre&gt;&lt;code&gt;false
-&lt;/code&gt;&lt;/pre&gt;
-&lt;p&gt;&lt;strong&gt;解释：&lt;/strong&gt;
-无论怎样，总会到达下标为 3 的位置。但该下标的最大跳跃长度是 0，因此永远不可能到达最后一个下标。&lt;/p&gt;
-&lt;p&gt;&amp;lt;span id=&quot;📝-提示&quot; class=&quot;legacy-anchor&quot; aria-hidden=&quot;true&quot;&amp;gt;&amp;lt;/span&amp;gt;&lt;/p&gt;
-&lt;h2&gt;📝 提示&lt;/h2&gt;
-&lt;ul&gt;
-&lt;li&gt;&lt;code&gt;1 &amp;lt;= nums.length &amp;lt;= 10^4&lt;/code&gt;&lt;/li&gt;
-&lt;li&gt;&lt;code&gt;0 &amp;lt;= nums[i] &amp;lt;= 10^5&lt;/code&gt;&lt;/li&gt;
-&lt;/ul&gt;
-&lt;p&gt;&amp;lt;span id=&quot;💡-思路&quot; class=&quot;legacy-anchor&quot; aria-hidden=&quot;true&quot;&amp;gt;&amp;lt;/span&amp;gt;&lt;/p&gt;
-&lt;h2&gt;💡 思路&lt;/h2&gt;
-&lt;h3&gt;贪心&lt;/h3&gt;
-&lt;p&gt;维护一个与 &lt;code&gt;nums&lt;/code&gt; 等长的布尔数组，表示每个元素是否可达。遍历一遍 &lt;code&gt;nums&lt;/code&gt;，根据 &lt;code&gt;nums&lt;/code&gt; 的值将对应布尔数组的区间更新为 &lt;code&gt;true&lt;/code&gt;，遍历完成后返回布尔数组最后一个元素的值。若中间可更新区间超过了数组长度末尾，则直接返回 &lt;code&gt;true&lt;/code&gt;。&lt;/p&gt;
-&lt;p&gt;&amp;lt;span id=&quot;💻-代码实现&quot; class=&quot;legacy-anchor&quot; aria-hidden=&quot;true&quot;&amp;gt;&amp;lt;/span&amp;gt;&lt;/p&gt;
-&lt;h2&gt;💻 代码实现&lt;/h2&gt;
-&lt;pre&gt;&lt;code&gt;public boolean canJump(int[] nums) {
-    boolean[] arr = new boolean[nums.length];
-    arr[0] = true;
-    for (int i = 0; i &amp;lt; nums.length; i++) {
-        if (!arr[i]) {
-            continue;
-        }
-        int range = nums[i];
-        if (i + range &amp;gt;= nums.length - 1) {
-            return true;
-        }
-        for (int j = i; j &amp;lt;= Math.min(i + range, nums.length - 1); j++) {
-            arr[j] = true;
-        }
-    }
-    return arr[nums.length - 1];
 }
 &lt;/code&gt;&lt;/pre&gt;
 </content:encoded></item><item><title>LeetCode 122：买卖股票的最佳时机 II</title><link>https://jayczee.cn/posts/leetcode/122/</link><guid isPermaLink="true">https://jayczee.cn/posts/leetcode/122/</guid><description>LeetCode 122 买卖股票的最佳时机 II，记录解题思路和 Java 实现。涉及数组、动态规划、贪心。</description><pubDate>Tue, 04 Mar 2025 00:00:00 GMT</pubDate><content:encoded>&lt;p&gt;&amp;lt;span id=&quot;🔗-相关链接&quot; class=&quot;legacy-anchor&quot; aria-hidden=&quot;true&quot;&amp;gt;&amp;lt;/span&amp;gt;&lt;/p&gt;
