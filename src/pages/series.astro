@@ -4,7 +4,7 @@ import { getSeriesList } from "../utils/series-utils";
 import { getPostUrlBySlug } from "../utils/url-utils";
 const series = await getSeriesList();
 ---
-<MainGridLayout title="专题" description="NAS 搭建、算法题解与日语语法的系列文章。">
+<MainGridLayout title="专题" description="NAS 搭建与日语语法的系列文章。">
     <div class="px-6 md:px-9 py-6 text-75">
         <h1 class="mb-8 text-3xl font-bold text-90">专题</h1>
         {series.map((group) => (

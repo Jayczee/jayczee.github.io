@@ -120,4 +120,31 @@
         margin: 1em 0;
     }
 
+    details {
+        @apply my-5 rounded-2xl border border-[var(--line-divider)] overflow-hidden transition-all duration-200;
+
+        summary {
+            @apply cursor-pointer font-bold px-4 py-3 bg-[var(--btn-regular-bg)] select-none text-90 flex items-center gap-2 hover:text-[var(--primary)] transition;
+            list-style: none;
+            &::-webkit-details-marker {
+                display: none;
+            }
+            &:before {
+                content: "▶";
+                @apply text-xs text-[var(--primary)] transition-transform duration-200 inline-block;
+            }
+        }
+
+        &[open] > summary {
+            @apply border-b border-[var(--line-divider)] mb-3;
+            &:before {
+                transform: rotate(90deg);
+            }
+        }
+
+        > *:not(summary) {
+            @apply px-4;
+        }
+    }
+
 }
