@@ -108,7 +108,6 @@ $pkgs = @(
   "com.coocaa.messageprovider",
   "com.coocaa.lifeassistant",
   "com.coocaa.screensaver",
-  "com.tianci.appstore",
   "com.coocaa.NewStoreSystem",
   "com.coocaa.app_browser",
   "com.coocaa.guide"
@@ -124,12 +123,30 @@ foreach ($p in $pkgs) { adb shell "pm disable-user --user 0 $p" }
 | `com.coocaa.messageprovider` | 消息中心，推的基本是广告 |
 | `com.coocaa.lifeassistant` | 生活助手，首页推荐位之一 |
 | `com.coocaa.screensaver` | 酷开屏保 |
-| `com.tianci.appstore` | 应用商店，推荐位和自动更新 |
 | `com.coocaa.NewStoreSystem` | 新商店，同上 |
 | `com.coocaa.app_browser` | 内置浏览器，广告落地页会用 |
 | `com.coocaa.guide` | 开机引导，带推荐下载 |
 
-每条回一句 `new state: disabled-user`，十个全过。
+每条回一句 `new state: disabled-user`，九个全过。
+
+## 应用商店不能禁
+
+一开始名单里还有 `com.tianci.appstore`。禁掉之后开机、桌面都正常，但点“我的应用”会直接提示已被禁用。
+
+查了一下，这个页面其实长在应用商店里：
+
+```text
+coocaa.intent.action.APP_STORE_MYAPPS
+  -> com.tianci.appstore/...appstore3.pages.home.v3.AppStoreHomeActivityV3
+```
+
+自己装的 Kodi、Jellyfin 都在这个列表里，禁了等于把自己的应用入口也一起关了。所以这个包最后又放回去了：
+
+```bash
+adb shell pm enable com.tianci.appstore
+```
+
+商店里的推荐位会跟着回来一点，但开机、关机、屏保、推送这些大头还是禁着的。
 
 ## 这台机器不能 `adb reboot`
 
@@ -164,7 +181,7 @@ ping 不通，`arp -a` 里 MAC 也没了。我甚至试了 WoL，魔术包往 `1
 adb shell pm enable com.tianci.ad
 ```
 
-十个包挨个 `pm enable`。
+九个包挨个 `pm enable`。
 
 ---
 
