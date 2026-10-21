@@ -179,10 +179,12 @@ const bannerOffset =
 		@apply h-[var(--banner-height-home)]
 	}
 
-	.enable-banner.is-home #banner {
+	.enable-banner.is-home #banner,
+	.enable-banner.is-home #banner-video {
 		@apply h-[var(--banner-height-home)] translate-y-0
 	}
-	.enable-banner #banner {
+	.enable-banner #banner,
+	.enable-banner #banner-video {
 		@apply h-[var(--banner-height-home)] translate-y-[var(--bannerOffset)]
 	}
 	.enable-banner.is-home #main-grid {
@@ -369,12 +371,36 @@ function showBanner() {
 	banner.classList.remove('opacity-0', 'scale-105');
 }
 
+function initBannerVideo() {
+	if (!siteConfig.banner.enable) return;
+
+	const video = document.getElementById('banner-video') as HTMLVideoElement | null;
+	if (!video) return;
+
+	const showVideo = () => {
+		video.classList.remove('opacity-0');
+		video.classList.add('opacity-100');
+		if (video.paused) {
+			video.play().catch(() => {});
+		}
+	};
+
+	if (video.readyState >= 2) {
+		showVideo();
+	} else {
+		video.addEventListener('canplay', showVideo, { once: true });
+		video.addEventListener('playing', showVideo, { once: true });
+		video.play().catch(() => {});
+	}
+}
+
 function init() {
 	// disableAnimation()()		// TODO
 	loadTheme();
 	loadHue();
 	initCustomScrollbar();
 	showBanner();
+	initBannerVideo();
 }
 
 /* Load settings when entering the site */
@@ -433,6 +459,7 @@ const setup = () => {
 		}
 	});
 	window.swup.hooks.on('page:view', () => {
+		initBannerVideo();
 		// hide the temp high element when the transition is done
 		const heightExtend = document.getElementById('page-height-extend')
 		if (heightExtend) {

@@ -13,6 +13,7 @@ import {
 	BANNER_HEIGHT_EXTEND,
 	MAIN_PANEL_OVERLAPS_BANNER_HEIGHT,
 } from "../constants/constants";
+import { url } from "../utils/url-utils";
 import Layout from "./Layout.astro";
 
 interface Props {
@@ -57,6 +58,19 @@ const mainPanelTop = siteConfig.banner.enable
                   src={siteConfig.banner.src} position={siteConfig.banner.position}
     >
     </ImageWrapper>
+    <video
+        id="banner-video"
+        autoplay
+        loop
+        muted
+        playsinline
+        preload="auto"
+        class:list={["absolute top-0 left-0 w-full object-cover transition duration-700 opacity-0 pointer-events-none"]}
+        style={`object-position: ${siteConfig.banner.position || 'center'}`}
+    >
+        <source src={url("/videos/landing-bg.mp4")} type="video/mp4" />
+    </video>
+    <div class="transition absolute inset-0 dark:bg-black/10 pointer-events-none"></div>
 </div>}
 
 <!-- Main content -->
