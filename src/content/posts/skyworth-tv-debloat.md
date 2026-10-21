@@ -10,8 +10,6 @@ tags:
 draft: false
 ---
 
-![去广告前后的电视首页对比](/assets/images/skyworth-tv-debloat/cover.png)
-
 家里有台创维电视A7D，经典国产电视广告满天飞。
 
 忍了很久，这周研究了一下，尝试删除。
