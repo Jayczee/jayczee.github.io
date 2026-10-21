@@ -55,16 +55,19 @@ const entries = [
 
         <!-- Widescreen Background (lg+): full-screen animated video -->
         <div class="hidden lg:block absolute inset-0 bg-[#0d1726]">
+            <link rel="preload" as="image" href={url("/videos/landing-poster.webp")} media="(min-width: 1024px)" />
+            <link rel="preload" as="video" href={url("/videos/landing-bg.mp4")} type="video/mp4" media="(min-width: 1024px)" />
             <video
                 id="landing-video"
                 autoplay
                 loop
                 muted
                 playsinline
+                preload="auto"
                 poster={url("/videos/landing-poster.webp")}
                 class="w-full h-full object-cover object-[50%_25%] select-none pointer-events-none"
             >
-                <source src={url("/videos/landing-bg.mp4")} type="video/mp4" />
+                <source src={url("/videos/landing-bg.mp4")} type="video/mp4" media="(min-width: 1024px)" />
             </video>
             <!-- Subtle edge vignette to enhance wall & sky typography contrast without dimming Belle -->
             <div class="pointer-events-none absolute inset-0 bg-[radial-gradient(circle_at_52%_50%,transparent_55%,rgba(0,0,0,0.28)_100%)]"></div>
