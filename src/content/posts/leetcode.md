@@ -19,10 +19,10 @@ draft: false
 > 💡 **阅读指南**：为方便自测与独立思考，**每道题目的完整内容（包括描述、示例与代码）默认全部收缩折叠**。你可以通过右侧目录快速跳转，或点击题目卡片展开阅读。
 
 <div class="flex flex-wrap items-center gap-3 my-6 not-prose">
-  <button id="expand-all-btn" type="button" class="btn-regular rounded-xl px-4 py-2 text-xs font-semibold text-[var(--primary)] hover:bg-[var(--primary)] hover:text-white transition active:scale-95">
+  <button id="expand-all-btn" type="button" onclick="document.querySelectorAll('details.problem-card').forEach(function(d){d.open=true})" class="btn-regular rounded-xl px-4 py-2 text-xs font-semibold text-[var(--primary)] hover:bg-[var(--primary)] hover:text-white transition active:scale-95 cursor-pointer">
     📖 全部展开
   </button>
-  <button id="collapse-all-btn" type="button" class="btn-regular rounded-xl px-4 py-2 text-xs font-semibold text-75 hover:text-90 transition active:scale-95">
+  <button id="collapse-all-btn" type="button" onclick="document.querySelectorAll('details.problem-card').forEach(function(d){d.open=false})" class="btn-regular rounded-xl px-4 py-2 text-xs font-semibold text-75 hover:text-90 transition active:scale-95 cursor-pointer">
     📕 全部收起
   </button>
   <span class="text-xs text-50">共 32 道经典高频题 · 默认全部折叠</span>
@@ -3600,45 +3600,74 @@ public List<Integer> findSubstring(String s, String[] words) {
 ---
 
 
-<script>
-function initProblemCollapsible() {
-  const expandBtn = document.getElementById(expand-all-btn);
-  const collapseBtn = document.getElementById(collapse-all-btn);
-  const detailsList = document.querySelectorAll(details.problem-card);
-
-  expandBtn?.addEventListener(click, () => {
-    detailsList.forEach(d => (d.open = true));
-  });
-
-  collapseBtn?.addEventListener(click, () => {
-    detailsList.forEach(d => (d.open = false));
-  });
-
-  const openByHash = () => {
+<script is:inline>
+(() => {
+  const openTargetDetails = () => {
     const hash = window.location.hash;
-    if (hash) {
-      try {
-        const heading = document.querySelector(decodeURIComponent(hash));
-        const section = heading?.closest(section) || heading?.parentElement;
-        const details = section?.querySelector(details.problem-card);
-        if (details) {
-          details.open = true;
-          details.scrollIntoView({ behavior: "smooth", block: "start" });
-        }
-      } catch (e) {}
-    }
+    if (!hash || hash.length <= 1) return;
+    try {
+      const heading = document.querySelector(decodeURIComponent(hash));
+      const section = heading?.closest('section') || heading?.parentElement;
+      const details = section?.querySelector('details.problem-card')
+        || (heading?.nextElementSibling?.matches('details.problem-card') ? heading.nextElementSibling : null);
+      if (details) {
+        details.open = true;
+        details.scrollIntoView({ behavior: 'smooth', block: 'start' });
+      }
+    } catch (_) {}
   };
 
-  openByHash();
-  window.addEventListener(hashchange, openByHash);
-}
+  if (!window.__leetcodeAccordionInited) {
+    window.__leetcodeAccordionInited = true;
 
-// Support Swup page transitions
-if (document.readyState === "loading") {
-  document.addEventListener("DOMContentLoaded", initProblemCollapsible);
-} else {
-  initProblemCollapsible();
-}
-document.addEventListener("swup:enable", initProblemCollapsible);
-window.swup?.hooks?.on("page:view", initProblemCollapsible);
+    document.addEventListener('click', (e) => {
+      const target = e.target;
+      if (!(target instanceof Element)) return;
+
+      const expandBtn = target.closest('#expand-all-btn');
+      if (expandBtn) {
+        document.querySelectorAll('details.problem-card').forEach((d) => {
+          d.open = true;
+        });
+        return;
+      }
+
+      const collapseBtn = target.closest('#collapse-all-btn');
+      if (collapseBtn) {
+        document.querySelectorAll('details.problem-card').forEach((d) => {
+          d.open = false;
+        });
+        return;
+      }
+
+      const anchor = target.closest('a[href^="#"]');
+      if (anchor) {
+        const hash = anchor.getAttribute('href');
+        if (hash && hash.length > 1) {
+          try {
+            const heading = document.querySelector(decodeURIComponent(hash));
+            const section = heading?.closest('section') || heading?.parentElement;
+            const details = section?.querySelector('details.problem-card')
+              || (heading?.nextElementSibling?.matches('details.problem-card') ? heading.nextElementSibling : null);
+            if (details) {
+              details.open = true;
+            }
+          } catch (_) {}
+        }
+      }
+    });
+
+    window.addEventListener('hashchange', openTargetDetails);
+  }
+
+  // Handle immediate open on page load or navigation
+  if (document.readyState === 'loading') {
+    document.addEventListener('DOMContentLoaded', openTargetDetails, { once: true });
+  } else {
+    openTargetDetails();
+  }
+  document.addEventListener('swup:enable', openTargetDetails);
+  document.addEventListener('swup:page:view', openTargetDetails);
+  window.swup?.hooks?.on('page:view', openTargetDetails);
+})();
 </script>
