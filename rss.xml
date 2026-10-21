@@ -59,7 +59,6 @@ user
   &quot;com.coocaa.messageprovider&quot;,
   &quot;com.coocaa.lifeassistant&quot;,
   &quot;com.coocaa.screensaver&quot;,
-  &quot;com.tianci.appstore&quot;,
   &quot;com.coocaa.NewStoreSystem&quot;,
   &quot;com.coocaa.app_browser&quot;,
   &quot;com.coocaa.guide&quot;
@@ -99,10 +98,6 @@ foreach ($p in $pkgs) { adb shell &quot;pm disable-user --user 0 $p&quot; }
 &lt;td&gt;酷开屏保&lt;/td&gt;
 &lt;/tr&gt;
 &lt;tr&gt;
-&lt;td&gt;&lt;code&gt;com.tianci.appstore&lt;/code&gt;&lt;/td&gt;
-&lt;td&gt;应用商店，推荐位和自动更新&lt;/td&gt;
-&lt;/tr&gt;
-&lt;tr&gt;
 &lt;td&gt;&lt;code&gt;com.coocaa.NewStoreSystem&lt;/code&gt;&lt;/td&gt;
 &lt;td&gt;新商店，同上&lt;/td&gt;
 &lt;/tr&gt;
@@ -116,7 +111,17 @@ foreach ($p in $pkgs) { adb shell &quot;pm disable-user --user 0 $p&quot; }
 &lt;/tr&gt;
 &lt;/tbody&gt;
 &lt;/table&gt;
-&lt;p&gt;每条回一句 &lt;code&gt;new state: disabled-user&lt;/code&gt;，十个全过。&lt;/p&gt;
+&lt;p&gt;每条回一句 &lt;code&gt;new state: disabled-user&lt;/code&gt;，九个全过。&lt;/p&gt;
+&lt;h2&gt;应用商店不能禁&lt;/h2&gt;
+&lt;p&gt;一开始名单里还有 &lt;code&gt;com.tianci.appstore&lt;/code&gt;。禁掉之后开机、桌面都正常，但点“我的应用”会直接提示已被禁用。&lt;/p&gt;
+&lt;p&gt;查了一下，这个页面其实长在应用商店里：&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;coocaa.intent.action.APP_STORE_MYAPPS
+  -&amp;gt; com.tianci.appstore/...appstore3.pages.home.v3.AppStoreHomeActivityV3
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;自己装的 Kodi、Jellyfin 都在这个列表里，禁了等于把自己的应用入口也一起关了。所以这个包最后又放回去了：&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;adb shell pm enable com.tianci.appstore
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;商店里的推荐位会跟着回来一点，但开机、关机、屏保、推送这些大头还是禁着的。&lt;/p&gt;
 &lt;h2&gt;这台机器不能 &lt;code&gt;adb reboot&lt;/code&gt;&lt;/h2&gt;
 &lt;p&gt;随后重启验证，&lt;code&gt;adb reboot&lt;/code&gt; 直接报错：&lt;/p&gt;
 &lt;pre&gt;&lt;code&gt;/system/bin/sh: /system/bin/reboot: inaccessible or not found
@@ -136,7 +141,7 @@ foreach ($p in $pkgs) { adb shell &quot;pm disable-user --user 0 $p&quot; }
 &lt;h2&gt;一键恢复&lt;/h2&gt;
 &lt;pre&gt;&lt;code&gt;adb shell pm enable com.tianci.ad
 &lt;/code&gt;&lt;/pre&gt;
-&lt;p&gt;十个包挨个 &lt;code&gt;pm enable&lt;/code&gt;。&lt;/p&gt;
+&lt;p&gt;九个包挨个 &lt;code&gt;pm enable&lt;/code&gt;。&lt;/p&gt;
 &lt;hr /&gt;
 &lt;p&gt;还好广告包独立。禁包还是轻轻松松。&lt;/p&gt;
 </content:encoded></item><item><title>opencode go计划deepseek-flash模型经newapi接入ChatGPT Desktop产生的工具调用问题</title><link>https://jayczee.cn/posts/opencode-go-deepseek-flash-newapi-chatgpt-desktop-tool-call/</link><guid isPermaLink="true">https://jayczee.cn/posts/opencode-go-deepseek-flash-newapi-chatgpt-desktop-tool-call/</guid><description>OpenCode Go 的 DeepSeek Flash 经 new-api 接入桌面端后，聊天正常，但读文件和执行命令频繁出错。这篇用尽量通俗的方式记录原因和解决过程。</description><pubDate>Thu, 24 Sep 2026 00:00:00 GMT</pubDate><content:encoded>&lt;p&gt;最近我开通了 OpenCode Go，想把里面的 DeepSeek Flash 接到自己的 new-api，再接入ChatGPT Desktop。&lt;/p&gt;
