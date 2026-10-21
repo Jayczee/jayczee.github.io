@@ -57,6 +57,8 @@ const entries = [
         <div class="hidden lg:block absolute inset-0 bg-[#0d1726]">
             <link rel="preload" as="image" href={url("/videos/landing-poster.webp")} media="(min-width: 1024px)" />
             <link rel="preload" as="video" href={url("/videos/landing-bg.mp4")} type="video/mp4" media="(min-width: 1024px)" />
+            <link rel="preload" as="font" type="font/woff2" href={url("/fonts/kaushan-script.woff2")} crossorigin media="(min-width: 1024px)" />
+            <link rel="preload" as="font" type="font/woff2" href={url("/fonts/caveat-brush.woff2")} crossorigin media="(min-width: 1024px)" />
             <video
                 id="landing-video"
                 autoplay
@@ -79,8 +81,7 @@ const entries = [
         <div class="hidden lg:block absolute inset-0 z-10 pointer-events-none">
             <!-- Upper-Left Building Wall: Crown + Jayczee + Exploring the world -->
             <div
-                class="landing-item absolute top-[14.5%] left-[6.8%] xl:left-[7.4%] select-none pointer-events-auto"
-                style="animation-delay: 80ms"
+                class="absolute top-[14.5%] left-[6.8%] xl:left-[7.4%] select-none pointer-events-auto"
             >
                 <div class="zzz-wall-group">
                     <!-- Hand-drawn 3-point graffiti crown matching original Belle artwork -->
@@ -91,6 +92,8 @@ const entries = [
                         aria-hidden="true"
                     >
                         <path
+                            class="crown-path-1"
+                            pathLength="1000"
                             d="M18 60 L12 22 L40 43 L60 12 L80 43 L108 20 L98 60 Z"
                             stroke="rgba(232, 241, 249, 0.94)"
                             stroke-width="6.5"
@@ -98,6 +101,8 @@ const entries = [
                             stroke-linejoin="round"
                         />
                         <path
+                            class="crown-path-2"
+                            pathLength="100"
                             d="M16 71 C42 68, 76 67, 101 70"
                             stroke="rgba(232, 241, 249, 0.9)"
                             stroke-width="5.5"
@@ -105,11 +110,44 @@ const entries = [
                         />
                     </svg>
 
-                    <!-- Main Wall Graffiti Title: Jayczee -->
+                    <!-- Main Wall Graffiti Title: Jayczee (Handwritten Stroke Flow) -->
                     <div class="relative inline-block">
-                        <span class="zzz-wall-title zzz-chalk-el block">
-                            {profileConfig.name}
-                        </span>
+                        <span class="sr-only">{profileConfig.name}</span>
+                        <svg
+                            viewBox="0 0 310 145"
+                            class="zzz-wall-title-svg zzz-chalk-el block w-[23.5rem] xl:w-[28.5rem] max-w-full h-auto overflow-visible select-none"
+                            aria-hidden="true"
+                        >
+                            <defs>
+                                <mask id="jayczee-write-mask" maskUnits="userSpaceOnUse" x="-30" y="-30" width="370" height="200">
+                                    <rect x="-30" y="-30" width="370" height="200" fill="black" />
+                                    <path
+                                        class="jayczee-pen-path"
+                                        pathLength="1000"
+                                        d="M 25.9 43.2 C 37.8 34.8, 46.3 33.1, 42.9 50.1 C 37.8 73.0, 32.7 92.5, 19.1 111.2 C 12.3 119.8, 24.2 126.5, 36.1 118.0 C 48.0 107.8, 49.7 90.0, 58.2 77.2 C 66.7 64.5, 77.8 63.7, 70.1 79.0 C 63.3 90.8, 73.5 94.2, 85.4 84.0 C 93.9 70.5, 104.1 67.0, 107.5 81.5 C 110.9 94.2, 121.1 70.5, 126.2 84.0 C 129.6 102.8, 127.9 126.5, 117.7 132.5 C 109.2 136.8, 114.3 115.5, 129.6 87.5 C 138.1 70.5, 154.2 67.0, 146.6 84.0 C 141.5 94.2, 156.8 94.2, 167.0 81.5 C 172.1 70.5, 188.2 67.0, 178.9 81.5 C 171.2 90.0, 170.4 115.5, 179.8 124.8 C 190.8 129.9, 196.8 107.0, 205.2 84.0 C 212.9 68.8, 226.5 65.3, 219.7 84.0 C 214.6 94.2, 233.3 90.8, 239.2 81.5 C 246.9 68.8, 260.5 65.3, 253.7 84.0 C 248.6 94.2, 273.2 87.5, 290.2 79.0"
+                                        stroke="white"
+                                        stroke-width="52"
+                                        stroke-linecap="round"
+                                        stroke-linejoin="round"
+                                        fill="none"
+                                    />
+                                </mask>
+                                <linearGradient id="jayczee-text-grad" x1="0%" y1="0%" x2="0%" y2="100%">
+                                    <stop offset="0%" stop-color="rgba(241, 247, 253, 0.96)" />
+                                    <stop offset="62%" stop-color="rgba(203, 218, 232, 0.88)" />
+                                    <stop offset="100%" stop-color="rgba(170, 190, 209, 0.8)" />
+                                </linearGradient>
+                            </defs>
+                            <text
+                                x="14"
+                                y="92"
+                                class="zzz-wall-title-text"
+                                fill="url(#jayczee-text-grad)"
+                                mask="url(#jayczee-write-mask)"
+                            >
+                                {profileConfig.name}
+                            </text>
+                        </svg>
                         <!-- Expressive dry-brush underline slash -->
                         <svg
                             viewBox="0 0 360 28"
@@ -118,12 +156,16 @@ const entries = [
                             aria-hidden="true"
                         >
                             <path
+                                class="underline-path-1"
+                                pathLength="1000"
                                 d="M6 18 C95 8, 220 6, 352 13"
                                 stroke="rgba(230, 239, 248, 0.88)"
                                 stroke-width="5.2"
                                 stroke-linecap="round"
                             />
                             <path
+                                class="underline-path-2"
+                                pathLength="1000"
                                 d="M28 24 C110 17, 200 16, 290 20"
                                 stroke="rgba(230, 239, 248, 0.58)"
                                 stroke-width="2.5"
@@ -144,8 +186,7 @@ const entries = [
             <!-- Upper-Right Sky Area: Staggered Street-Art Navigation Buttons -->
             <nav
                 aria-label="Primary Navigation"
-                class="landing-item absolute top-[11.5%] right-[4.8%] xl:right-[5.6%] pointer-events-auto select-none"
-                style="animation-delay: 180ms"
+                class="zzz-sky-nav absolute top-[11.5%] right-[4.8%] xl:right-[5.6%] pointer-events-auto select-none"
             >
                 <div class="zzz-sky-group flex flex-col items-start gap-2 xl:gap-2.5">
                     {entries.map((e, idx) => (
@@ -154,7 +195,7 @@ const entries = [
                             data-no-swup
                             class:list={[
                                 "zzz-sky-link group relative inline-flex items-center gap-2.5 px-1 py-0.5",
-                                idx === 1 ? "ml-8 xl:ml-10" : "",
+                                idx === 0 ? "zzz-sky-link-1" : "zzz-sky-link-2 ml-8 xl:ml-10",
                             ]}
                         >
                             {idx === 0 && (
@@ -194,8 +235,7 @@ const entries = [
             <!-- Bottom-Right Subtle Social Icons on Widescreen -->
             {profileConfig.links.length > 0 && (
                 <div
-                    class="landing-item absolute bottom-5 right-6 flex items-center gap-2.5 pointer-events-auto"
-                    style="animation-delay: 320ms"
+                    class="zzz-social-widescreen absolute bottom-5 right-6 flex items-center gap-2.5 pointer-events-auto"
                 >
                     {profileConfig.links.map((item) => (
                         <a
@@ -326,35 +366,104 @@ const entries = [
         filter: url(#zzz-chalk) drop-shadow(3px 6px 9px rgba(6, 12, 24, 0.55));
     }
 
-    .zzz-wall-title {
-        font-family: "Kaushan Script", "SignPainter-HouseScript", "Brush Script MT", cursive;
-        font-size: clamp(4.8rem, 7.6vw, 7.8rem);
-        line-height: 1.04;
-        letter-spacing: 0.01em;
-        padding: 0.1em 0.15em 0.05em 0.05em;
-        background: linear-gradient(
-            175deg,
-            rgba(241, 247, 253, 0.96) 0%,
-            rgba(203, 218, 232, 0.88) 62%,
-            rgba(170, 190, 209, 0.8) 100%
-        );
-        -webkit-background-clip: text;
-        background-clip: text;
-        color: transparent;
+    /* 1. Crown stroke drawing */
+    .crown-path-1 {
+        stroke-dasharray: 1000;
+        stroke-dashoffset: 1000;
+        animation: draw-crown 440ms cubic-bezier(0.3, 0, 0.2, 1) 80ms forwards;
+    }
+    .crown-path-2 {
+        stroke-dasharray: 100;
+        stroke-dashoffset: 100;
+        animation: draw-crown-base 220ms cubic-bezier(0.3, 0, 0.2, 1) 440ms forwards;
+    }
+    @keyframes draw-crown {
+        0% { stroke-dashoffset: 1000; }
+        100% { stroke-dashoffset: 0; }
+    }
+    @keyframes draw-crown-base {
+        0% { stroke-dashoffset: 100; }
+        100% { stroke-dashoffset: 0; }
     }
 
+    /* 2. Main Wall Graffiti Title: Jayczee (Handwritten Stroke Mask) */
+    .zzz-wall-title-text {
+        font-family: "Kaushan Script", "SignPainter-HouseScript", "Brush Script MT", cursive;
+        font-size: 82px;
+        font-weight: 400;
+        letter-spacing: 0.01em;
+    }
+
+    .jayczee-pen-path {
+        stroke-dasharray: 1000;
+        stroke-dashoffset: 1000;
+        animation: draw-jayczee 1250ms cubic-bezier(0.42, 0, 0.58, 1) 450ms forwards;
+    }
+    @keyframes draw-jayczee {
+        0% { stroke-dashoffset: 1000; }
+        100% { stroke-dashoffset: 0; }
+    }
+
+    /* 3. Underline slash dynamic streaks */
+    .underline-path-1 {
+        stroke-dasharray: 1000;
+        stroke-dashoffset: 1000;
+        animation: draw-underline 420ms cubic-bezier(0.25, 1, 0.5, 1) 1600ms forwards;
+    }
+    .underline-path-2 {
+        stroke-dasharray: 1000;
+        stroke-dashoffset: 1000;
+        animation: draw-underline 380ms cubic-bezier(0.25, 1, 0.5, 1) 1720ms forwards;
+    }
+    @keyframes draw-underline {
+        0% { stroke-dashoffset: 1000; }
+        100% { stroke-dashoffset: 0; }
+    }
+
+    /* 4. Subtitle Exploring the world chalk reveal */
     .zzz-wall-sub {
         font-family: "Caveat Brush", "Kaushan Script", "Chalkboard SE", cursive;
         font-size: clamp(1.5rem, 2.3vw, 2.35rem);
         letter-spacing: 0.07em;
         text-transform: uppercase;
         color: rgba(218, 231, 243, 0.9);
+        clip-path: inset(-15% 100% -15% -5%);
+        animation: draw-subtitle 680ms cubic-bezier(0.25, 1, 0.5, 1) 1950ms forwards;
+    }
+    @keyframes draw-subtitle {
+        0% {
+            clip-path: inset(-15% 100% -15% -5%);
+            opacity: 0.3;
+        }
+        100% {
+            clip-path: inset(-15% -5% -15% -5%);
+            opacity: 1;
+        }
     }
 
-    /* Upper-Right Sky Handwritten Signage */
+    /* 5. Upper-Right Sky Handwritten Signage Pop-in */
     .zzz-sky-group {
         transform: rotate(-13.5deg) skewX(-6deg);
         transform-origin: right top;
+    }
+
+    .zzz-sky-nav {
+        opacity: 0;
+        animation: sky-nav-enter 650ms cubic-bezier(0.22, 1.2, 0.36, 1) 2450ms forwards;
+    }
+    @keyframes sky-nav-enter {
+        0% {
+            opacity: 0;
+            transform: translateY(1.2rem) scale(0.92);
+        }
+        60% {
+            opacity: 1;
+            transform: translateY(-0.1rem) scale(1.03);
+        }
+        100% {
+            opacity: 1;
+            transform: translateY(0) scale(1);
+        }
     }
 
     .zzz-sky-link {
@@ -365,6 +474,23 @@ const entries = [
     .zzz-sky-link:hover {
         transform: translate(5px, -2px) scale(1.05);
         filter: drop-shadow(0 5px 16px rgba(10, 42, 88, 0.82));
+    }
+
+    .zzz-sky-link-1 {
+        animation: sky-btn-bounce 450ms cubic-bezier(0.34, 1.56, 0.64, 1) 2500ms both;
+    }
+    .zzz-sky-link-2 {
+        animation: sky-btn-bounce 450ms cubic-bezier(0.34, 1.56, 0.64, 1) 2650ms both;
+    }
+    @keyframes sky-btn-bounce {
+        0% {
+            opacity: 0;
+            transform: translateX(1.2rem);
+        }
+        100% {
+            opacity: 1;
+            transform: translateX(0);
+        }
     }
 
     .zzz-sky-text {
@@ -390,10 +516,36 @@ const entries = [
         transition: color 250ms ease, transform 250ms ease;
     }
 
+    /* 6. Bottom-Right Social Icons */
+    .zzz-social-widescreen {
+        opacity: 0;
+        animation: landing-fade-in-up 500ms ease 2850ms forwards;
+    }
+
     @media (prefers-reduced-motion: reduce) {
         .landing-item {
             opacity: 1;
             animation: none;
+        }
+        .crown-path-1,
+        .crown-path-2,
+        .jayczee-pen-path,
+        .underline-path-1,
+        .underline-path-2 {
+            stroke-dashoffset: 0 !important;
+            animation: none !important;
+        }
+        .zzz-wall-sub {
+            clip-path: none !important;
+            animation: none !important;
+        }
+        .zzz-sky-nav,
+        .zzz-sky-link-1,
+        .zzz-sky-link-2,
+        .zzz-social-widescreen {
+            opacity: 1 !important;
+            transform: none !important;
+            animation: none !important;
         }
     }
 </style>
