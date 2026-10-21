@@ -8514,22 +8514,34 @@ private void checkStockLog(List&amp;lt;StockRow&amp;gt; stocks, List&amp;lt;Stri
 &lt;blockquote&gt;
 &lt;p&gt;&lt;strong&gt;提示&lt;/strong&gt;：在很多情况下，使用外部的 ASS 字幕会导致显示问题，若更换为 SRT 字幕则可以避免此类困扰。&lt;/p&gt;
 &lt;/blockquote&gt;
-</content:encoded></item><item><title>LeetCode 面试经典 150 题题解</title><link>https://jayczee.cn/posts/leetcode/</link><guid isPermaLink="true">https://jayczee.cn/posts/leetcode/</guid><description>精选 LeetCode 面试经典 150 题核心题解合集，涵盖数组、双指针、滑动窗口、贪心与动态规划等核心考点，包含详细解题思路与 Java 代码实现。题目与题解分离，支持折叠展开阅读。</description><pubDate>Tue, 25 Feb 2025 00:00:00 GMT</pubDate><content:encoded>&lt;blockquote&gt;
-&lt;p&gt;本文系统整理了 &lt;strong&gt;LeetCode 面试经典 150 题&lt;/strong&gt;（Top Interview 150）的核心题解，包含原题链接、题目描述、边界示例、解题思路与标准 Java 代码实现。&lt;/p&gt;
-&lt;p&gt;💡 &lt;strong&gt;阅读指南&lt;/strong&gt;：为方便自测与独立思考，每一题的题解思路与代码&lt;strong&gt;默认折叠隐藏&lt;/strong&gt;。你可以通过右侧目录快速跳转至对应题目，阅读题意与示例后，点击「💡 查看题解与代码实现」展开对照学习。&lt;/p&gt;
+</content:encoded></item><item><title>LeetCode 面试经典 150 题题解</title><link>https://jayczee.cn/posts/leetcode/</link><guid isPermaLink="true">https://jayczee.cn/posts/leetcode/</guid><description>精选 LeetCode 面试经典 150 题核心题解合集，涵盖数组、双指针、滑动窗口、贪心与动态规划等核心考点，包含详细解题思路与 Java 代码实现。整题默认折叠收缩，支持目录快速跳转与一键展开。</description><pubDate>Tue, 25 Feb 2025 00:00:00 GMT</pubDate><content:encoded>&lt;blockquote&gt;
+&lt;p&gt;本文系统整理了 &lt;strong&gt;LeetCode 面试经典 150 题&lt;/strong&gt;（Top Interview 150）的核心题解，包含题目描述、输入输出示例、约束提示、解题思路与标准 Java 代码实现。&lt;/p&gt;
+&lt;p&gt;💡 &lt;strong&gt;阅读指南&lt;/strong&gt;：为方便自测与独立思考，&lt;strong&gt;每道题目的完整内容（包括描述、示例与代码）默认全部收缩折叠&lt;/strong&gt;。你可以通过右侧目录快速跳转，或点击题目卡片展开阅读。&lt;/p&gt;
 &lt;/blockquote&gt;
+&lt;p&gt;&amp;lt;div class=&quot;flex flex-wrap items-center gap-3 my-6 not-prose&quot;&amp;gt;
+&amp;lt;button id=&quot;expand-all-btn&quot; type=&quot;button&quot; onclick=&quot;document.querySelectorAll(&apos;details.problem-card&apos;).forEach(function(d){d.open=true})&quot; class=&quot;btn-regular rounded-xl px-4 py-2 text-xs font-semibold text-[var(--primary)] hover:bg-[var(--primary)] hover:text-white transition active:scale-95 cursor-pointer&quot;&amp;gt;
+📖 全部展开
+&amp;lt;/button&amp;gt;
+&amp;lt;button id=&quot;collapse-all-btn&quot; type=&quot;button&quot; onclick=&quot;document.querySelectorAll(&apos;details.problem-card&apos;).forEach(function(d){d.open=false})&quot; class=&quot;btn-regular rounded-xl px-4 py-2 text-xs font-semibold text-75 hover:text-90 transition active:scale-95 cursor-pointer&quot;&amp;gt;
+📕 全部收起
+&amp;lt;/button&amp;gt;
+&amp;lt;span class=&quot;text-xs text-50&quot;&amp;gt;共 32 道经典高频题 · 默认全部折叠&amp;lt;/span&amp;gt;
+&amp;lt;/div&amp;gt;&lt;/p&gt;
 &lt;hr /&gt;
 &lt;h2&gt;01. LeetCode 88：合并两个有序数组&lt;/h2&gt;
-&lt;h4&gt;🔗 原题链接&lt;/h4&gt;
+&lt;p&gt;&amp;lt;details class=&quot;problem-card&quot;&amp;gt;
+&amp;lt;summary class=&quot;problem-summary&quot;&amp;gt;📖 展开查看题目详情、示例与完整题解&amp;lt;/summary&amp;gt;&lt;/p&gt;
+&lt;p&gt;&amp;lt;div class=&quot;problem-content&quot;&amp;gt;&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;🔗 原题链接&lt;/strong&gt;&lt;/p&gt;
 &lt;p&gt;&lt;a href=&quot;https://leetcode.cn/problems/merge-sorted-array/description/?envType=study-plan-v2&amp;amp;envId=top-interview-150&quot;&gt;合并两个有序数组&lt;/a&gt;&lt;/p&gt;
-&lt;h4&gt;📝 合并两个有序数组&lt;/h4&gt;
+&lt;p&gt;&lt;strong&gt;📝 题目描述&lt;/strong&gt;&lt;/p&gt;
 &lt;p&gt;给定两个按 &lt;strong&gt;非递减顺序&lt;/strong&gt; 排列的整数数组 &lt;code&gt;nums1&lt;/code&gt; 和 &lt;code&gt;nums2&lt;/code&gt;，另有两个整数 &lt;code&gt;m&lt;/code&gt; 和 &lt;code&gt;n&lt;/code&gt;，分别表示 &lt;code&gt;nums1&lt;/code&gt; 和 &lt;code&gt;nums2&lt;/code&gt; 中的元素数目。&lt;/p&gt;
 &lt;p&gt;请你 &lt;strong&gt;合并&lt;/strong&gt; &lt;code&gt;nums2&lt;/code&gt; 到 &lt;code&gt;nums1&lt;/code&gt; 中，使合并后的数组同样按 &lt;strong&gt;非递减顺序&lt;/strong&gt; 排列。&lt;/p&gt;
 &lt;blockquote&gt;
 &lt;p&gt;&lt;strong&gt;注意：&lt;/strong&gt; 最终，合并后数组不应由函数返回，而是存储在数组 &lt;code&gt;nums1&lt;/code&gt; 中。为了应对这种情况，&lt;code&gt;nums1&lt;/code&gt; 的初始长度为 &lt;code&gt;m + n&lt;/code&gt;，其中前 &lt;code&gt;m&lt;/code&gt; 个元素表示应合并的元素，后 &lt;code&gt;n&lt;/code&gt; 个元素为 0，应忽略。&lt;code&gt;nums2&lt;/code&gt; 的长度为 &lt;code&gt;n&lt;/code&gt;。&lt;/p&gt;
 &lt;/blockquote&gt;
-&lt;h4&gt;📊 示例&lt;/h4&gt;
-&lt;h5&gt;示例 1&lt;/h5&gt;
+&lt;p&gt;&lt;strong&gt;📊 示例&lt;/strong&gt;&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;示例 1：&lt;/strong&gt;&lt;/p&gt;
 &lt;p&gt;&lt;strong&gt;输入：&lt;/strong&gt;&lt;/p&gt;
 &lt;pre&gt;&lt;code&gt;nums1 = [1, 2, 3, 0, 0, 0], m = 3
 nums2 = [2, 5, 6], n = 3
@@ -8538,7 +8550,7 @@ nums2 = [2, 5, 6], n = 3
 &lt;pre&gt;&lt;code&gt;[1, 2, 2, 3, 5, 6]
 &lt;/code&gt;&lt;/pre&gt;
 &lt;p&gt;&lt;strong&gt;解释：&lt;/strong&gt; 需要合并 &lt;code&gt;[1, 2, 3]&lt;/code&gt; 和 &lt;code&gt;[2, 5, 6]&lt;/code&gt;。合并结果是 &lt;code&gt;[1, 2, 2, 3, 5, 6]&lt;/code&gt;，其中斜体加粗标注的为 &lt;code&gt;nums1&lt;/code&gt; 中的元素。&lt;/p&gt;
-&lt;h5&gt;示例 2&lt;/h5&gt;
+&lt;p&gt;&lt;strong&gt;示例 2：&lt;/strong&gt;&lt;/p&gt;
 &lt;p&gt;&lt;strong&gt;输入：&lt;/strong&gt;&lt;/p&gt;
 &lt;pre&gt;&lt;code&gt;nums1 = [1], m = 1
 nums2 = [], n = 0
@@ -8547,7 +8559,7 @@ nums2 = [], n = 0
 &lt;pre&gt;&lt;code&gt;[1]
 &lt;/code&gt;&lt;/pre&gt;
 &lt;p&gt;&lt;strong&gt;解释：&lt;/strong&gt; 需要合并 &lt;code&gt;[1]&lt;/code&gt; 和 &lt;code&gt;[]&lt;/code&gt;。合并结果是 &lt;code&gt;[1]&lt;/code&gt;。&lt;/p&gt;
-&lt;h5&gt;示例 3&lt;/h5&gt;
+&lt;p&gt;&lt;strong&gt;示例 3：&lt;/strong&gt;&lt;/p&gt;
 &lt;p&gt;&lt;strong&gt;输入：&lt;/strong&gt;&lt;/p&gt;
 &lt;pre&gt;&lt;code&gt;nums1 = [0], m = 0
 nums2 = [1], n = 1
@@ -8556,7 +8568,7 @@ nums2 = [1], n = 1
 &lt;pre&gt;&lt;code&gt;[1]
 &lt;/code&gt;&lt;/pre&gt;
 &lt;p&gt;&lt;strong&gt;解释：&lt;/strong&gt; 需要合并的数组是 &lt;code&gt;[]&lt;/code&gt; 和 &lt;code&gt;[1]&lt;/code&gt;。合并结果是 &lt;code&gt;[1]&lt;/code&gt;。注意，因为 &lt;code&gt;m = 0&lt;/code&gt;，所以 &lt;code&gt;nums1&lt;/code&gt; 中没有元素。&lt;code&gt;nums1&lt;/code&gt; 中仅存的 0 仅仅是为了确保合并结果可以顺利存放到 &lt;code&gt;nums1&lt;/code&gt; 中。&lt;/p&gt;
-&lt;h4&gt;🔍 提示&lt;/h4&gt;
+&lt;p&gt;&lt;strong&gt;🔍 提示&lt;/strong&gt;&lt;/p&gt;
 &lt;ul&gt;
 &lt;li&gt;&lt;code&gt;nums1.length == m + n&lt;/code&gt;&lt;/li&gt;
 &lt;li&gt;&lt;code&gt;nums2.length == n&lt;/code&gt;&lt;/li&gt;
@@ -8564,13 +8576,11 @@ nums2 = [1], n = 1
 &lt;li&gt;&lt;code&gt;1 &amp;lt;= m + n &amp;lt;= 200&lt;/code&gt;&lt;/li&gt;
 &lt;li&gt;&lt;code&gt;-10^9 &amp;lt;= nums1[i], nums2[j] &amp;lt;= 10^9&lt;/code&gt;&lt;/li&gt;
 &lt;/ul&gt;
-&lt;h4&gt;🚀 进阶&lt;/h4&gt;
+&lt;p&gt;&lt;strong&gt;🚀 进阶&lt;/strong&gt;&lt;/p&gt;
 &lt;p&gt;你可以设计实现一个时间复杂度为 O(m + n) 的算法解决此问题吗？&lt;/p&gt;
-&lt;p&gt;&amp;lt;details class=&quot;solution-details&quot;&amp;gt;
-&amp;lt;summary&amp;gt;💡 查看题解与代码实现&amp;lt;/summary&amp;gt;&lt;/p&gt;
-&lt;h4&gt;💡 思路&lt;/h4&gt;
+&lt;p&gt;&lt;strong&gt;💡 解题思路&lt;/strong&gt;&lt;/p&gt;
 &lt;p&gt;l为&lt;code&gt;nums1&lt;/code&gt;的有效元素末尾，r为&lt;code&gt;nums2&lt;/code&gt;有效元素末尾，cur为&lt;code&gt;nums1&lt;/code&gt;整个数组的末尾。当&lt;code&gt;nums1&lt;/code&gt;和&lt;code&gt;nums2&lt;/code&gt;都有元素时，即&lt;code&gt;l&amp;gt;=0&lt;/code&gt;且&lt;code&gt;r&amp;gt;=0&lt;/code&gt;时，比较&lt;code&gt;nums1[l]&lt;/code&gt;和&lt;code&gt;nums2[r]&lt;/code&gt;的大小，将其更大值放入&lt;code&gt;nums1[cur]&lt;/code&gt;。并移动相关指针。当&lt;code&gt;nums1&lt;/code&gt;没有元素，但&lt;code&gt;nums2&lt;/code&gt;还有时，直接将&lt;code&gt;nums2&lt;/code&gt;剩余元素放入&lt;code&gt;nums1&lt;/code&gt;中&lt;code&gt;cur&lt;/code&gt;及&lt;code&gt;cur&lt;/code&gt;之前的位置。当&lt;code&gt;nums1&lt;/code&gt;剩余元素，&lt;code&gt;nums2&lt;/code&gt;没元素时，此时排序已经完成，直接不处理，返回即可。&lt;/p&gt;
-&lt;h4&gt;💻 代码实现&lt;/h4&gt;
+&lt;p&gt;&lt;strong&gt;💻 代码实现 (Java)&lt;/strong&gt;&lt;/p&gt;
 &lt;pre&gt;&lt;code&gt;public void merge(int[] nums1, int m, int[] nums2, int n) {
     int l = m - 1, r = n - 1, cur = m + n - 1;
     while (l &amp;gt;=0 &amp;amp;&amp;amp; r &amp;gt;= 0) {
@@ -8590,12 +8600,16 @@ nums2 = [1], n = 1
     }
 }
 &lt;/code&gt;&lt;/pre&gt;
-&lt;p&gt;&amp;lt;/details&amp;gt;&lt;/p&gt;
+&lt;p&gt;&amp;lt;/div&amp;gt;
+&amp;lt;/details&amp;gt;&lt;/p&gt;
 &lt;hr /&gt;
 &lt;h2&gt;02. LeetCode 27：移除元素&lt;/h2&gt;
-&lt;h4&gt;🔗 相关链接&lt;/h4&gt;
+&lt;p&gt;&amp;lt;details class=&quot;problem-card&quot;&amp;gt;
+&amp;lt;summary class=&quot;problem-summary&quot;&amp;gt;📖 展开查看题目详情、示例与完整题解&amp;lt;/summary&amp;gt;&lt;/p&gt;
+&lt;p&gt;&amp;lt;div class=&quot;problem-content&quot;&amp;gt;&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;🔗 原题链接&lt;/strong&gt;&lt;/p&gt;
 &lt;p&gt;&lt;a href=&quot;https://leetcode.cn/problems/remove-element/description/?envType=study-plan-v2&amp;amp;envId=top-interview-150&quot;&gt;移除元素&lt;/a&gt;&lt;/p&gt;
-&lt;h4&gt;📜 题目描述&lt;/h4&gt;
+&lt;p&gt;&lt;strong&gt;📝 题目描述&lt;/strong&gt;&lt;/p&gt;
 &lt;p&gt;给定一个数组 &lt;code&gt;nums&lt;/code&gt; 和一个值 &lt;code&gt;val&lt;/code&gt;，需要 &lt;strong&gt;原地&lt;/strong&gt; 移除所有数值等于 &lt;code&gt;val&lt;/code&gt; 的元素。元素的顺序可能发生改变。然后返回 &lt;code&gt;nums&lt;/code&gt; 中与 &lt;code&gt;val&lt;/code&gt; 不同的元素的数量。&lt;/p&gt;
 &lt;p&gt;假设 &lt;code&gt;nums&lt;/code&gt; 中不等于 &lt;code&gt;val&lt;/code&gt; 的元素数量为 &lt;code&gt;k&lt;/code&gt;，需要执行以下操作：&lt;/p&gt;
 &lt;ol&gt;
@@ -8603,7 +8617,7 @@ nums2 = [1], n = 1
 &lt;li&gt;&lt;code&gt;nums&lt;/code&gt; 的其余元素和 &lt;code&gt;nums&lt;/code&gt; 的大小并不重要。&lt;/li&gt;
 &lt;li&gt;返回 &lt;code&gt;k&lt;/code&gt;。&lt;/li&gt;
 &lt;/ol&gt;
-&lt;h4&gt;🧪 用户评测&lt;/h4&gt;
+&lt;p&gt;&lt;strong&gt;🧪 用户评测&lt;/strong&gt;&lt;/p&gt;
 &lt;p&gt;评测机将使用以下代码测试解决方案：&lt;/p&gt;
 &lt;pre&gt;&lt;code&gt;int[] nums = [...]; // 输入数组
 int val = ...; // 要移除的值
@@ -8619,8 +8633,8 @@ for (int i = 0; i &amp;lt; actualLength; i++) {
 }
 &lt;/code&gt;&lt;/pre&gt;
 &lt;p&gt;如果所有的断言都通过，解决方案将会通过。&lt;/p&gt;
-&lt;h4&gt;📊 示例&lt;/h4&gt;
-&lt;h5&gt;示例 1&lt;/h5&gt;
+&lt;p&gt;&lt;strong&gt;📊 示例&lt;/strong&gt;&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;示例 1：&lt;/strong&gt;&lt;/p&gt;
 &lt;p&gt;&lt;strong&gt;输入：&lt;/strong&gt;&lt;/p&gt;
 &lt;pre&gt;&lt;code&gt;nums = [3,2,2,3], val = 3
 &lt;/code&gt;&lt;/pre&gt;
@@ -8629,7 +8643,7 @@ for (int i = 0; i &amp;lt; actualLength; i++) {
 &lt;/code&gt;&lt;/pre&gt;
 &lt;p&gt;&lt;strong&gt;解释：&lt;/strong&gt;
 函数应返回 &lt;code&gt;k = 2&lt;/code&gt;，并且 &lt;code&gt;nums&lt;/code&gt; 中的前两个元素均为 &lt;code&gt;2&lt;/code&gt;。返回的 &lt;code&gt;k&lt;/code&gt; 个元素之外留下的内容并不重要（因此它们并不计入评测）。&lt;/p&gt;
-&lt;h5&gt;示例 2&lt;/h5&gt;
+&lt;p&gt;&lt;strong&gt;示例 2：&lt;/strong&gt;&lt;/p&gt;
 &lt;p&gt;&lt;strong&gt;输入：&lt;/strong&gt;&lt;/p&gt;
 &lt;pre&gt;&lt;code&gt;nums = [0,1,2,2,3,0,4,2], val = 2
 &lt;/code&gt;&lt;/pre&gt;
@@ -8638,17 +8652,15 @@ for (int i = 0; i &amp;lt; actualLength; i++) {
 &lt;/code&gt;&lt;/pre&gt;
 &lt;p&gt;&lt;strong&gt;解释：&lt;/strong&gt;
 函数应返回 &lt;code&gt;k = 5&lt;/code&gt;，并且 &lt;code&gt;nums&lt;/code&gt; 中的前五个元素为 &lt;code&gt;0,1,4,0,3&lt;/code&gt;。注意这五个元素可以任意顺序返回。返回的 &lt;code&gt;k&lt;/code&gt; 个元素之外留下的内容并不重要（因此它们并不计入评测）。&lt;/p&gt;
-&lt;h4&gt;📝 提示&lt;/h4&gt;
+&lt;p&gt;&lt;strong&gt;🔍 提示&lt;/strong&gt;&lt;/p&gt;
 &lt;ul&gt;
 &lt;li&gt;&lt;code&gt;0 &amp;lt;= nums.length &amp;lt;= 100&lt;/code&gt;&lt;/li&gt;
 &lt;li&gt;&lt;code&gt;0 &amp;lt;= nums[i] &amp;lt;= 50&lt;/code&gt;&lt;/li&gt;
 &lt;li&gt;&lt;code&gt;0 &amp;lt;= val &amp;lt;= 100&lt;/code&gt;&lt;/li&gt;
 &lt;/ul&gt;
-&lt;p&gt;&amp;lt;details class=&quot;solution-details&quot;&amp;gt;
-&amp;lt;summary&amp;gt;💡 查看题解与代码实现&amp;lt;/summary&amp;gt;&lt;/p&gt;
-&lt;h4&gt;💡 思路&lt;/h4&gt;
+&lt;p&gt;&lt;strong&gt;💡 解题思路&lt;/strong&gt;&lt;/p&gt;
 &lt;p&gt;使用快慢指针，两个指针都从头部开始遍历，慢指针指向当前位置，快指针指向扫描位置。快指针循环向前移动并比较当前位置的值是否等于移除值，若是则跳过，若不是则把当前位置值设置为扫描值，并把有效长度 +1。&lt;/p&gt;
-&lt;h4&gt;💻 代码实现&lt;/h4&gt;
+&lt;p&gt;&lt;strong&gt;💻 代码实现 (Java)&lt;/strong&gt;&lt;/p&gt;
 &lt;pre&gt;&lt;code&gt;int slow = 0;
 int fast = 0;
 int length = 0;
@@ -8662,12 +8674,16 @@ while (fast &amp;lt; nums.length) {
 }
 return length;
 &lt;/code&gt;&lt;/pre&gt;
-&lt;p&gt;&amp;lt;/details&amp;gt;&lt;/p&gt;
+&lt;p&gt;&amp;lt;/div&amp;gt;
+&amp;lt;/details&amp;gt;&lt;/p&gt;
 &lt;hr /&gt;
 &lt;h2&gt;03. LeetCode 26：移除有序数组中的重复项&lt;/h2&gt;
-&lt;h4&gt;🔗 相关链接&lt;/h4&gt;
+&lt;p&gt;&amp;lt;details class=&quot;problem-card&quot;&amp;gt;
+&amp;lt;summary class=&quot;problem-summary&quot;&amp;gt;📖 展开查看题目详情、示例与完整题解&amp;lt;/summary&amp;gt;&lt;/p&gt;
+&lt;p&gt;&amp;lt;div class=&quot;problem-content&quot;&amp;gt;&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;🔗 原题链接&lt;/strong&gt;&lt;/p&gt;
 &lt;p&gt;&lt;a href=&quot;https://leetcode.cn/problems/remove-duplicates-from-sorted-array/description/?envType=study-plan-v2&amp;amp;envId=top-interview-150&quot;&gt;移除有序数组中的重复项&lt;/a&gt;&lt;/p&gt;
-&lt;h4&gt;📜 题目描述&lt;/h4&gt;
+&lt;p&gt;&lt;strong&gt;📝 题目描述&lt;/strong&gt;&lt;/p&gt;
 &lt;p&gt;给定一个 &lt;strong&gt;非严格递增排列&lt;/strong&gt; 的数组 &lt;code&gt;nums&lt;/code&gt;，需要 &lt;strong&gt;原地&lt;/strong&gt; 删除重复出现的元素，使每个元素只出现一次，返回删除后数组的新长度。元素的相对顺序应该保持一致。然后返回 &lt;code&gt;nums&lt;/code&gt; 中唯一元素的个数。&lt;/p&gt;
 &lt;p&gt;考虑 &lt;code&gt;nums&lt;/code&gt; 的唯一元素的数量为 &lt;code&gt;k&lt;/code&gt;，需要执行以下操作：&lt;/p&gt;
 &lt;ol&gt;
@@ -8675,7 +8691,7 @@ return length;
 &lt;li&gt;&lt;code&gt;nums&lt;/code&gt; 的其余元素与 &lt;code&gt;nums&lt;/code&gt; 的大小不重要。&lt;/li&gt;
 &lt;li&gt;返回 &lt;code&gt;k&lt;/code&gt;。&lt;/li&gt;
 &lt;/ol&gt;
-&lt;h4&gt;🧪 判题标准&lt;/h4&gt;
+&lt;p&gt;&lt;strong&gt;🧪 判题标准&lt;/strong&gt;&lt;/p&gt;
 &lt;p&gt;系统会用下面的代码来测试题解：&lt;/p&gt;
 &lt;pre&gt;&lt;code&gt;int[] nums = [...]; // 输入数组
 int[] expectedNums = [...]; // 长度正确的期望答案
@@ -8688,8 +8704,8 @@ for (int i = 0; i &amp;lt; k; i++) {
 }
 &lt;/code&gt;&lt;/pre&gt;
 &lt;p&gt;如果所有的断言都通过，那么题解将会通过。&lt;/p&gt;
-&lt;h4&gt;📊 示例&lt;/h4&gt;
-&lt;h5&gt;示例 1&lt;/h5&gt;
+&lt;p&gt;&lt;strong&gt;📊 示例&lt;/strong&gt;&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;示例 1：&lt;/strong&gt;&lt;/p&gt;
 &lt;p&gt;&lt;strong&gt;输入：&lt;/strong&gt;&lt;/p&gt;
 &lt;pre&gt;&lt;code&gt;nums = [1,1,2]
 &lt;/code&gt;&lt;/pre&gt;
@@ -8698,7 +8714,7 @@ for (int i = 0; i &amp;lt; k; i++) {
 &lt;/code&gt;&lt;/pre&gt;
 &lt;p&gt;&lt;strong&gt;解释：&lt;/strong&gt;
 函数应返回新的长度 &lt;code&gt;2&lt;/code&gt;，并且原数组 &lt;code&gt;nums&lt;/code&gt; 的前两个元素被修改为 &lt;code&gt;1, 2&lt;/code&gt;。不需要考虑数组中超出新长度后面的元素。&lt;/p&gt;
-&lt;h5&gt;示例 2&lt;/h5&gt;
+&lt;p&gt;&lt;strong&gt;示例 2：&lt;/strong&gt;&lt;/p&gt;
 &lt;p&gt;&lt;strong&gt;输入：&lt;/strong&gt;&lt;/p&gt;
 &lt;pre&gt;&lt;code&gt;nums = [0,0,1,1,1,2,2,3,3,4]
 &lt;/code&gt;&lt;/pre&gt;
@@ -8707,17 +8723,15 @@ for (int i = 0; i &amp;lt; k; i++) {
 &lt;/code&gt;&lt;/pre&gt;
 &lt;p&gt;&lt;strong&gt;解释：&lt;/strong&gt;
 函数应返回新的长度 &lt;code&gt;5&lt;/code&gt;，并且原数组 &lt;code&gt;nums&lt;/code&gt; 的前五个元素被修改为 &lt;code&gt;0, 1, 2, 3, 4&lt;/code&gt;。不需要考虑数组中超出新长度后面的元素。&lt;/p&gt;
-&lt;h4&gt;📝 提示&lt;/h4&gt;
+&lt;p&gt;&lt;strong&gt;🔍 提示&lt;/strong&gt;&lt;/p&gt;
 &lt;ul&gt;
 &lt;li&gt;&lt;code&gt;1 &amp;lt;= nums.length &amp;lt;= 3 * 10^4&lt;/code&gt;&lt;/li&gt;
 &lt;li&gt;&lt;code&gt;-10^4 &amp;lt;= nums[i] &amp;lt;= 10^4&lt;/code&gt;&lt;/li&gt;
 &lt;li&gt;&lt;code&gt;nums&lt;/code&gt; 已按 &lt;strong&gt;非严格递增&lt;/strong&gt; 排列&lt;/li&gt;
 &lt;/ul&gt;
-&lt;p&gt;&amp;lt;details class=&quot;solution-details&quot;&amp;gt;
-&amp;lt;summary&amp;gt;💡 查看题解与代码实现&amp;lt;/summary&amp;gt;&lt;/p&gt;
-&lt;h4&gt;💡 思路&lt;/h4&gt;
+&lt;p&gt;&lt;strong&gt;💡 解题思路&lt;/strong&gt;&lt;/p&gt;
 &lt;p&gt;相较于&lt;a href=&quot;#02-leetcode-27%E7%A7%BB%E9%99%A4%E5%85%83%E7%B4%A0&quot;&gt;027 移除元素&lt;/a&gt;，该题需要删除有序数组中的重复项，即要删除的元素是动态的，我们可以开辟一个数组，记录某值在之前的记录中是否出现过。其他的思路仍然像&lt;a href=&quot;#02-leetcode-27%E7%A7%BB%E9%99%A4%E5%85%83%E7%B4%A0&quot;&gt;027 移除元素&lt;/a&gt;一样。&lt;/p&gt;
-&lt;h4&gt;💻 代码实现&lt;/h4&gt;
+&lt;p&gt;&lt;strong&gt;💻 代码实现 (Java)&lt;/strong&gt;&lt;/p&gt;
 &lt;pre&gt;&lt;code&gt;public int removeDuplicates(int[] nums) {
         if (nums.length == 1) {
             return 1;
@@ -8738,14 +8752,18 @@ for (int i = 0; i &amp;lt; k; i++) {
         return length;
     }
 &lt;/code&gt;&lt;/pre&gt;
-&lt;p&gt;&amp;lt;/details&amp;gt;&lt;/p&gt;
+&lt;p&gt;&amp;lt;/div&amp;gt;
+&amp;lt;/details&amp;gt;&lt;/p&gt;
 &lt;hr /&gt;
 &lt;h2&gt;04. LeetCode 80：移除有序数组中的重复项 II&lt;/h2&gt;
-&lt;h4&gt;🔗 相关链接&lt;/h4&gt;
+&lt;p&gt;&amp;lt;details class=&quot;problem-card&quot;&amp;gt;
+&amp;lt;summary class=&quot;problem-summary&quot;&amp;gt;📖 展开查看题目详情、示例与完整题解&amp;lt;/summary&amp;gt;&lt;/p&gt;
+&lt;p&gt;&amp;lt;div class=&quot;problem-content&quot;&amp;gt;&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;🔗 原题链接&lt;/strong&gt;&lt;/p&gt;
 &lt;p&gt;&lt;a href=&quot;https://leetcode.cn/problems/remove-duplicates-from-sorted-array-ii/description/?envType=study-plan-v2&amp;amp;envId=top-interview-150&quot;&gt;移除有序数组中的重复项 II&lt;/a&gt;&lt;/p&gt;
-&lt;h4&gt;📜 题目描述&lt;/h4&gt;
+&lt;p&gt;&lt;strong&gt;📝 题目描述&lt;/strong&gt;&lt;/p&gt;
 &lt;p&gt;给定一个有序数组 &lt;code&gt;nums&lt;/code&gt;，需要 &lt;strong&gt;原地&lt;/strong&gt; 删除重复出现的元素，使得出现次数超过两次的元素只出现两次，返回删除后数组的新长度。不要使用额外的数组空间，必须在 &lt;strong&gt;原地&lt;/strong&gt; 修改输入数组，并在使用 O(1) 额外空间的条件下完成。&lt;/p&gt;
-&lt;h5&gt;说明&lt;/h5&gt;
+&lt;p&gt;&lt;strong&gt;说明&lt;/strong&gt;&lt;/p&gt;
 &lt;p&gt;为什么返回数值是整数，但输出的答案是数组呢？&lt;/p&gt;
 &lt;p&gt;请注意，输入数组是以「引用」方式传递的，这意味着在函数里修改输入数组对于调用者是可见的。&lt;/p&gt;
 &lt;p&gt;可以想象内部操作如下：&lt;/p&gt;
@@ -8758,8 +8776,8 @@ for (int i = 0; i &amp;lt; len; i++) {
     print(nums[i]);
 }
 &lt;/code&gt;&lt;/pre&gt;
-&lt;h4&gt;📊 示例&lt;/h4&gt;
-&lt;h5&gt;示例 1&lt;/h5&gt;
+&lt;p&gt;&lt;strong&gt;📊 示例&lt;/strong&gt;&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;示例 1：&lt;/strong&gt;&lt;/p&gt;
 &lt;p&gt;&lt;strong&gt;输入：&lt;/strong&gt;&lt;/p&gt;
 &lt;pre&gt;&lt;code&gt;nums = [1,1,1,2,2,3]
 &lt;/code&gt;&lt;/pre&gt;
@@ -8768,7 +8786,7 @@ for (int i = 0; i &amp;lt; len; i++) {
 &lt;/code&gt;&lt;/pre&gt;
 &lt;p&gt;&lt;strong&gt;解释：&lt;/strong&gt;
 函数应返回新长度 &lt;code&gt;length = 5&lt;/code&gt;，并且原数组的前五个元素被修改为 &lt;code&gt;1, 1, 2, 2, 3&lt;/code&gt;。不需要考虑数组中超出新长度后面的元素。&lt;/p&gt;
-&lt;h5&gt;示例 2&lt;/h5&gt;
+&lt;p&gt;&lt;strong&gt;示例 2：&lt;/strong&gt;&lt;/p&gt;
 &lt;p&gt;&lt;strong&gt;输入：&lt;/strong&gt;&lt;/p&gt;
 &lt;pre&gt;&lt;code&gt;nums = [0,0,1,1,1,1,2,3,3]
 &lt;/code&gt;&lt;/pre&gt;
@@ -8777,15 +8795,13 @@ for (int i = 0; i &amp;lt; len; i++) {
 &lt;/code&gt;&lt;/pre&gt;
 &lt;p&gt;&lt;strong&gt;解释：&lt;/strong&gt;
 函数应返回新长度 &lt;code&gt;length = 7&lt;/code&gt;，并且原数组的前七个元素被修改为 &lt;code&gt;0, 0, 1, 1, 2, 3, 3&lt;/code&gt;。不需要考虑数组中超出新长度后面的元素。&lt;/p&gt;
-&lt;h4&gt;📝 提示&lt;/h4&gt;
+&lt;p&gt;&lt;strong&gt;🔍 提示&lt;/strong&gt;&lt;/p&gt;
 &lt;ul&gt;
 &lt;li&gt;&lt;code&gt;1 &amp;lt;= nums.length &amp;lt;= 3 * 10^4&lt;/code&gt;&lt;/li&gt;
 &lt;li&gt;&lt;code&gt;-10^4 &amp;lt;= nums[i] &amp;lt;= 10^4&lt;/code&gt;&lt;/li&gt;
 &lt;li&gt;&lt;code&gt;nums&lt;/code&gt; 已按升序排列&lt;/li&gt;
 &lt;/ul&gt;
-&lt;p&gt;&amp;lt;details class=&quot;solution-details&quot;&amp;gt;
-&amp;lt;summary&amp;gt;💡 查看题解与代码实现&amp;lt;/summary&amp;gt;&lt;/p&gt;
-&lt;h4&gt;💡 思路&lt;/h4&gt;
+&lt;p&gt;&lt;strong&gt;💡 解题思路&lt;/strong&gt;&lt;/p&gt;
 &lt;p&gt;对比&lt;a href=&quot;#03-leetcode-26%E7%A7%BB%E9%99%A4%E6%9C%89%E5%BA%8F%E6%95%B0%E7%BB%84%E4%B8%AD%E7%9A%84%E9%87%8D%E5%A4%8D%E9%A1%B9&quot;&gt;026 移除有序数组中的重复项&lt;/a&gt;，该题难度上升在不能开辟额外的数组保存某个值是否达到删除的条件。根据题目，每个数字最多可以出现两次，即需要满足条件 &lt;code&gt;nums[i] == nums[i-1] == nums[i-2]&lt;/code&gt; (i &amp;gt;= 2)。&lt;/p&gt;
 &lt;p&gt;使用 &lt;code&gt;while&lt;/code&gt; 循环和快慢指针遍历数组，初始化 &lt;code&gt;slow&lt;/code&gt; 和 &lt;code&gt;fast&lt;/code&gt; 为 2（数组长度小于 2 的条件不需要比较，可以直接返回）并比较 &lt;code&gt;nums[slow-2]&lt;/code&gt; 与 &lt;code&gt;nums[fast]&lt;/code&gt;，若不同则直接赋值。&lt;/p&gt;
 &lt;p&gt;&lt;code&gt;nums[slow-2]&lt;/code&gt; 表示已经被确定需要保留的值，即刚开始 &lt;code&gt;slow&lt;/code&gt; 和 &lt;code&gt;fast&lt;/code&gt; 都为 2 时，&lt;code&gt;0&lt;/code&gt;（&lt;code&gt;slow-2&lt;/code&gt;）为第一个确定需要保留的元素。若 &lt;code&gt;nums[slow-2]&lt;/code&gt; 与 &lt;code&gt;nums[slow-1]&lt;/code&gt; 相同，则 &lt;code&gt;nums[slow]&lt;/code&gt; 不需要被保留。&lt;/p&gt;
@@ -8794,7 +8810,7 @@ for (int i = 0; i &amp;lt; len; i++) {
 我们定义两个指针 &lt;code&gt;slow&lt;/code&gt; 和 &lt;code&gt;fast&lt;/code&gt; 分别为慢指针和快指针，其中慢指针表示处理出的数组的长度，快指针表示已经检查过的数组的长度，即 &lt;code&gt;nums[fast]&lt;/code&gt; 表示待检查的第一个元素，&lt;code&gt;nums[slow−1]&lt;/code&gt; 为上一个应该被保留的元素所移动到的指定位置。&lt;/p&gt;
 &lt;p&gt;因为本题要求相同元素最多出现两次而非一次，所以我们需要检查上上个应该被保留的元素 &lt;code&gt;nums[slow−2]&lt;/code&gt; 是否和当前待检查元素 &lt;code&gt;nums[fast]&lt;/code&gt; 相同。当且仅当 &lt;code&gt;nums[slow−2]=nums[fast]&lt;/code&gt; 时，当前待检查元素 &lt;code&gt;nums[fast]&lt;/code&gt; 不应该被保留（因为此时必然有 &lt;code&gt;nums[slow−2]=nums[slow−1]=nums[fast]&lt;/code&gt;）。最后，&lt;code&gt;slow&lt;/code&gt; 即为处理好的数组的长度。
 :::&lt;/p&gt;
-&lt;h4&gt;💻 代码实现&lt;/h4&gt;
+&lt;p&gt;&lt;strong&gt;💻 代码实现 (Java)&lt;/strong&gt;&lt;/p&gt;
 &lt;pre&gt;&lt;code&gt;public int removeDuplicates(int[] nums) {
         if (nums.length &amp;lt;= 2) {
             return nums.length;
@@ -8810,41 +8826,43 @@ for (int i = 0; i &amp;lt; len; i++) {
         return slow;
     }
 &lt;/code&gt;&lt;/pre&gt;
-&lt;p&gt;&amp;lt;/details&amp;gt;&lt;/p&gt;
+&lt;p&gt;&amp;lt;/div&amp;gt;
+&amp;lt;/details&amp;gt;&lt;/p&gt;
 &lt;hr /&gt;
 &lt;h2&gt;05. LeetCode 169：多数元素&lt;/h2&gt;
-&lt;h4&gt;🔗 相关链接&lt;/h4&gt;
+&lt;p&gt;&amp;lt;details class=&quot;problem-card&quot;&amp;gt;
+&amp;lt;summary class=&quot;problem-summary&quot;&amp;gt;📖 展开查看题目详情、示例与完整题解&amp;lt;/summary&amp;gt;&lt;/p&gt;
+&lt;p&gt;&amp;lt;div class=&quot;problem-content&quot;&amp;gt;&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;🔗 原题链接&lt;/strong&gt;&lt;/p&gt;
 &lt;p&gt;&lt;a href=&quot;https://leetcode.cn/problems/majority-element/description/?envType=study-plan-v2&amp;amp;envId=top-interview-150&quot;&gt;多数元素&lt;/a&gt;&lt;/p&gt;
-&lt;h4&gt;📜 题目描述&lt;/h4&gt;
+&lt;p&gt;&lt;strong&gt;📝 题目描述&lt;/strong&gt;&lt;/p&gt;
 &lt;p&gt;给定一个大小为 &lt;code&gt;n&lt;/code&gt; 的数组 &lt;code&gt;nums&lt;/code&gt;，返回其中的多数元素。多数元素是指在数组中出现次数 &lt;strong&gt;大于 ⌊ n/2 ⌋&lt;/strong&gt; 的元素。&lt;/p&gt;
 &lt;p&gt;可以假设数组是非空的，并且给定的数组总是存在多数元素。&lt;/p&gt;
-&lt;h4&gt;📊 示例&lt;/h4&gt;
-&lt;h5&gt;示例 1&lt;/h5&gt;
+&lt;p&gt;&lt;strong&gt;📊 示例&lt;/strong&gt;&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;示例 1：&lt;/strong&gt;&lt;/p&gt;
 &lt;p&gt;&lt;strong&gt;输入：&lt;/strong&gt;&lt;/p&gt;
 &lt;pre&gt;&lt;code&gt;nums = [3,2,3]
 &lt;/code&gt;&lt;/pre&gt;
 &lt;p&gt;&lt;strong&gt;输出：&lt;/strong&gt;&lt;/p&gt;
 &lt;pre&gt;&lt;code&gt;3
 &lt;/code&gt;&lt;/pre&gt;
-&lt;h5&gt;示例 2&lt;/h5&gt;
+&lt;p&gt;&lt;strong&gt;示例 2：&lt;/strong&gt;&lt;/p&gt;
 &lt;p&gt;&lt;strong&gt;输入：&lt;/strong&gt;&lt;/p&gt;
 &lt;pre&gt;&lt;code&gt;nums = [2,2,1,1,1,2,2]
 &lt;/code&gt;&lt;/pre&gt;
 &lt;p&gt;&lt;strong&gt;输出：&lt;/strong&gt;&lt;/p&gt;
 &lt;pre&gt;&lt;code&gt;2
 &lt;/code&gt;&lt;/pre&gt;
-&lt;h4&gt;📝 提示&lt;/h4&gt;
+&lt;p&gt;&lt;strong&gt;🔍 提示&lt;/strong&gt;&lt;/p&gt;
 &lt;ul&gt;
 &lt;li&gt;&lt;code&gt;n == nums.length&lt;/code&gt;&lt;/li&gt;
 &lt;li&gt;&lt;code&gt;1 &amp;lt;= n &amp;lt;= 5 * 10^4&lt;/code&gt;&lt;/li&gt;
 &lt;li&gt;&lt;code&gt;-10^9 &amp;lt;= nums[i] &amp;lt;= 10^9&lt;/code&gt;&lt;/li&gt;
 &lt;/ul&gt;
-&lt;h4&gt;🚀 进阶&lt;/h4&gt;
+&lt;p&gt;&lt;strong&gt;🚀 进阶&lt;/strong&gt;&lt;/p&gt;
 &lt;p&gt;尝试设计时间复杂度为 O(n)、空间复杂度为 O(1) 的算法解决此问题。&lt;/p&gt;
-&lt;p&gt;&amp;lt;details class=&quot;solution-details&quot;&amp;gt;
-&amp;lt;summary&amp;gt;💡 查看题解与代码实现&amp;lt;/summary&amp;gt;&lt;/p&gt;
-&lt;h4&gt;💡 思路&lt;/h4&gt;
-&lt;h5&gt;Boyer-Moore 投票算法&lt;/h5&gt;
+&lt;p&gt;&lt;strong&gt;💡 解题思路&lt;/strong&gt;&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;Boyer-Moore 投票算法&lt;/strong&gt;&lt;/p&gt;
 &lt;p&gt;引用题解评论区某个老哥的描述：&lt;/p&gt;
 &lt;p&gt;“同归于尽消杀法”：&lt;/p&gt;
 &lt;p&gt;由于多数超过50%，比如100个数，那么多数至少51个，剩下少数是49个。&lt;/p&gt;
@@ -8853,7 +8871,7 @@ for (int i = 0; i &amp;lt; len; i++) {
 &lt;p&gt;如果新来到的士兵不是同一阵营，则前方阵营派一个士兵和它同归于尽。此时前方阵营兵力 &lt;code&gt;count--&lt;/code&gt;。（即使双方都死光，这块高地的旗帜 &lt;code&gt;winner&lt;/code&gt; 依然不变，因为已经没有活着的士兵可以去换上自己的新旗帜）&lt;/p&gt;
 &lt;p&gt;当下一个士兵到来，发现前方阵营已经没有兵力，新士兵就成了领主，&lt;code&gt;winner&lt;/code&gt; 变成这个士兵所属阵营的旗帜，现存兵力 &lt;code&gt;count++&lt;/code&gt;。&lt;/p&gt;
 &lt;p&gt;就这样各路军阀一直以这种以一敌一同归于尽的方式厮杀下去，直到少数阵营都死光，那么最后剩下的几个必然属于多数阵营，&lt;code&gt;winner&lt;/code&gt; 就是多数阵营。（多数阵营 51个，少数阵营只有49个，死剩下的2个就是多数阵营的人）&lt;/p&gt;
-&lt;h4&gt;💻 代码实现&lt;/h4&gt;
+&lt;p&gt;&lt;strong&gt;💻 代码实现 (Java)&lt;/strong&gt;&lt;/p&gt;
 &lt;pre&gt;&lt;code&gt;public int majorityElement(int[] nums) {
         int cur = 0, count = 0;
         for (int num: nums){
@@ -8869,15 +8887,19 @@ for (int i = 0; i &amp;lt; len; i++) {
         return cur;
     }
 &lt;/code&gt;&lt;/pre&gt;
-&lt;p&gt;&amp;lt;/details&amp;gt;&lt;/p&gt;
+&lt;p&gt;&amp;lt;/div&amp;gt;
+&amp;lt;/details&amp;gt;&lt;/p&gt;
 &lt;hr /&gt;
 &lt;h2&gt;06. LeetCode 189：轮转数组&lt;/h2&gt;
-&lt;h4&gt;原题链接&lt;/h4&gt;
+&lt;p&gt;&amp;lt;details class=&quot;problem-card&quot;&amp;gt;
+&amp;lt;summary class=&quot;problem-summary&quot;&amp;gt;📖 展开查看题目详情、示例与完整题解&amp;lt;/summary&amp;gt;&lt;/p&gt;
+&lt;p&gt;&amp;lt;div class=&quot;problem-content&quot;&amp;gt;&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;🔗 原题链接&lt;/strong&gt;&lt;/p&gt;
 &lt;p&gt;&lt;a href=&quot;https://leetcode.cn/problems/rotate-array/description/?envType=study-plan-v2&amp;amp;envId=top-interview-150&quot;&gt;轮转数组&lt;/a&gt;&lt;/p&gt;
-&lt;h4&gt;问题描述&lt;/h4&gt;
+&lt;p&gt;&lt;strong&gt;📝 题目描述&lt;/strong&gt;&lt;/p&gt;
 &lt;p&gt;给定一个整数数组 &lt;code&gt;nums&lt;/code&gt;，将数组中的元素向右轮转 &lt;code&gt;k&lt;/code&gt; 个位置，其中 &lt;code&gt;k&lt;/code&gt; 是非负数。&lt;/p&gt;
-&lt;h4&gt;示例&lt;/h4&gt;
-&lt;h5&gt;示例 1&lt;/h5&gt;
+&lt;p&gt;&lt;strong&gt;📊 示例&lt;/strong&gt;&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;示例 1：&lt;/strong&gt;&lt;/p&gt;
 &lt;p&gt;&lt;strong&gt;输入:&lt;/strong&gt;&lt;/p&gt;
 &lt;pre&gt;&lt;code&gt;nums = [1,2,3,4,5,6,7], k = 3
 &lt;/code&gt;&lt;/pre&gt;
@@ -8890,7 +8912,7 @@ for (int i = 0; i &amp;lt; len; i++) {
 &lt;li&gt;向右轮转 2 步: &lt;code&gt;[6,7,1,2,3,4,5]&lt;/code&gt;&lt;/li&gt;
 &lt;li&gt;向右轮转 3 步: &lt;code&gt;[5,6,7,1,2,3,4]&lt;/code&gt;&lt;/li&gt;
 &lt;/ul&gt;
-&lt;h5&gt;示例 2&lt;/h5&gt;
+&lt;p&gt;&lt;strong&gt;示例 2：&lt;/strong&gt;&lt;/p&gt;
 &lt;p&gt;&lt;strong&gt;输入:&lt;/strong&gt;&lt;/p&gt;
 &lt;pre&gt;&lt;code&gt;nums = [-1,-100,3,99], k = 2
 &lt;/code&gt;&lt;/pre&gt;
@@ -8902,23 +8924,21 @@ for (int i = 0; i &amp;lt; len; i++) {
 &lt;li&gt;向右轮转 1 步: &lt;code&gt;[99,-1,-100,3]&lt;/code&gt;&lt;/li&gt;
 &lt;li&gt;向右轮转 2 步: &lt;code&gt;[3,99,-1,-100]&lt;/code&gt;&lt;/li&gt;
 &lt;/ul&gt;
-&lt;h4&gt;提示&lt;/h4&gt;
+&lt;p&gt;&lt;strong&gt;🔍 提示&lt;/strong&gt;&lt;/p&gt;
 &lt;ul&gt;
 &lt;li&gt;&lt;code&gt;1 &amp;lt;= nums.length &amp;lt;= 10^5&lt;/code&gt;&lt;/li&gt;
 &lt;li&gt;&lt;code&gt;-2^31 &amp;lt;= nums[i] &amp;lt;= 2^31 - 1&lt;/code&gt;&lt;/li&gt;
 &lt;li&gt;&lt;code&gt;0 &amp;lt;= k &amp;lt;= 10^5&lt;/code&gt;&lt;/li&gt;
 &lt;/ul&gt;
-&lt;h4&gt;进阶&lt;/h4&gt;
+&lt;p&gt;&lt;strong&gt;🚀 进阶&lt;/strong&gt;&lt;/p&gt;
 &lt;p&gt;尽可能想出更多的解决方案，至少有三种不同的方法可以解决这个问题。你可以使用空间复杂度为 O(1) 的原地算法解决这个问题吗？&lt;/p&gt;
-&lt;p&gt;&amp;lt;details class=&quot;solution-details&quot;&amp;gt;
-&amp;lt;summary&amp;gt;💡 查看题解与代码实现&amp;lt;/summary&amp;gt;&lt;/p&gt;
-&lt;h4&gt;思路&lt;/h4&gt;
+&lt;p&gt;&lt;strong&gt;💡 解题思路&lt;/strong&gt;&lt;/p&gt;
 &lt;ol&gt;
 &lt;li&gt;开辟额外数组空间,复制原数组，再将新数组中的元素放置到原数组下标+k的位置，超出长度从头开始计算。&lt;/li&gt;
 &lt;li&gt;环状替换，把第n个元素替换到n + k mod nums.length的位置，再将原来（n + k） mod nums.length替换到 （n + k + k）mod nums.length的位置，持续循环。每次替换完回到最初的n时，需要手动将n + 1(通过循环实现)，直到已替换的长度length == nums.length。&lt;/li&gt;
 &lt;li&gt;数组翻转，先翻转整个数组，再翻转[0,k-1]和[k, nums.length -1]，k = nums.length % k。&lt;/li&gt;
 &lt;/ol&gt;
-&lt;h4&gt;代码实现&lt;/h4&gt;
+&lt;p&gt;&lt;strong&gt;💻 代码实现 (Java)&lt;/strong&gt;&lt;/p&gt;
 &lt;ol&gt;
 &lt;li&gt;开辟额外数组空间&lt;/li&gt;
 &lt;/ol&gt;
@@ -8974,17 +8994,21 @@ for (int i = 0; i &amp;lt; len; i++) {
         }
     }
 &lt;/code&gt;&lt;/pre&gt;
-&lt;p&gt;&amp;lt;/details&amp;gt;&lt;/p&gt;
+&lt;p&gt;&amp;lt;/div&amp;gt;
+&amp;lt;/details&amp;gt;&lt;/p&gt;
 &lt;hr /&gt;
 &lt;h2&gt;07. LeetCode 121：买卖股票的最佳时机&lt;/h2&gt;
-&lt;h4&gt;🔗 相关链接&lt;/h4&gt;
+&lt;p&gt;&amp;lt;details class=&quot;problem-card&quot;&amp;gt;
+&amp;lt;summary class=&quot;problem-summary&quot;&amp;gt;📖 展开查看题目详情、示例与完整题解&amp;lt;/summary&amp;gt;&lt;/p&gt;
+&lt;p&gt;&amp;lt;div class=&quot;problem-content&quot;&amp;gt;&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;🔗 原题链接&lt;/strong&gt;&lt;/p&gt;
 &lt;p&gt;&lt;a href=&quot;https://leetcode.cn/problems/best-time-to-buy-and-sell-stock/description/?envType=study-plan-v2&amp;amp;envId=top-interview-150&quot;&gt;买卖股票的最佳时机&lt;/a&gt;&lt;/p&gt;
-&lt;h4&gt;📜 题目描述&lt;/h4&gt;
+&lt;p&gt;&lt;strong&gt;📝 题目描述&lt;/strong&gt;&lt;/p&gt;
 &lt;p&gt;给定一个数组 &lt;code&gt;prices&lt;/code&gt;，它的第 &lt;code&gt;i&lt;/code&gt; 个元素 &lt;code&gt;prices[i]&lt;/code&gt; 表示一支给定股票第 &lt;code&gt;i&lt;/code&gt; 天的价格。&lt;/p&gt;
 &lt;p&gt;你只能选择某一天买入这只股票，并选择在未来的某一个不同的日子卖出该股票。设计一个算法来计算你所能获取的最大利润。&lt;/p&gt;
 &lt;p&gt;返回你可以从这笔交易中获取的最大利润。如果你不能获取任何利润，返回 0 。&lt;/p&gt;
-&lt;h4&gt;📊 示例&lt;/h4&gt;
-&lt;h5&gt;示例 1&lt;/h5&gt;
+&lt;p&gt;&lt;strong&gt;📊 示例&lt;/strong&gt;&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;示例 1：&lt;/strong&gt;&lt;/p&gt;
 &lt;p&gt;&lt;strong&gt;输入：&lt;/strong&gt;&lt;/p&gt;
 &lt;pre&gt;&lt;code&gt;[7,1,5,3,6,4]
 &lt;/code&gt;&lt;/pre&gt;
@@ -8994,7 +9018,7 @@ for (int i = 0; i &amp;lt; len; i++) {
 &lt;p&gt;&lt;strong&gt;解释：&lt;/strong&gt;
 在第 2 天（股票价格 = 1）的时候买入，在第 5 天（股票价格 = 6）的时候卖出，最大利润 = 6 - 1 = 5 。&lt;br /&gt;
 注意利润不能是 7 - 1 = 6，因为卖出价格需要大于买入价格；同时，你不能在买入前卖出股票。&lt;/p&gt;
-&lt;h5&gt;示例 2&lt;/h5&gt;
+&lt;p&gt;&lt;strong&gt;示例 2：&lt;/strong&gt;&lt;/p&gt;
 &lt;p&gt;&lt;strong&gt;输入：&lt;/strong&gt;&lt;/p&gt;
 &lt;pre&gt;&lt;code&gt;prices = [7,6,4,3,1]
 &lt;/code&gt;&lt;/pre&gt;
@@ -9003,16 +9027,14 @@ for (int i = 0; i &amp;lt; len; i++) {
 &lt;/code&gt;&lt;/pre&gt;
 &lt;p&gt;&lt;strong&gt;解释：&lt;/strong&gt;
 在这种情况下，没有交易完成，所以最大利润为 0。&lt;/p&gt;
-&lt;h4&gt;📝 提示&lt;/h4&gt;
+&lt;p&gt;&lt;strong&gt;🔍 提示&lt;/strong&gt;&lt;/p&gt;
 &lt;ul&gt;
 &lt;li&gt;&lt;code&gt;1 &amp;lt;= prices.length &amp;lt;= 10^5&lt;/code&gt;&lt;/li&gt;
 &lt;li&gt;&lt;code&gt;0 &amp;lt;= prices[i] &amp;lt;= 10^4&lt;/code&gt;&lt;/li&gt;
 &lt;/ul&gt;
-&lt;p&gt;&amp;lt;details class=&quot;solution-details&quot;&amp;gt;
-&amp;lt;summary&amp;gt;💡 查看题解与代码实现&amp;lt;/summary&amp;gt;&lt;/p&gt;
-&lt;h4&gt;💡 思路&lt;/h4&gt;
+&lt;p&gt;&lt;strong&gt;💡 解题思路&lt;/strong&gt;&lt;/p&gt;
 &lt;p&gt;遍历一遍数组，维护一个历史最低价格，每趟循环计算当前价格减历史最低价格的盈利，若大于之前得出max，则赋值给max。&lt;/p&gt;
-&lt;h4&gt;💻 代码实现&lt;/h4&gt;
+&lt;p&gt;&lt;strong&gt;💻 代码实现 (Java)&lt;/strong&gt;&lt;/p&gt;
 &lt;pre&gt;&lt;code&gt;public int maxProfit(int[] prices) {
     if (prices.length == 1) {
         return 0;
@@ -9028,17 +9050,21 @@ for (int i = 0; i &amp;lt; len; i++) {
     return max;
 }
 &lt;/code&gt;&lt;/pre&gt;
-&lt;p&gt;&amp;lt;/details&amp;gt;&lt;/p&gt;
+&lt;p&gt;&amp;lt;/div&amp;gt;
+&amp;lt;/details&amp;gt;&lt;/p&gt;
 &lt;hr /&gt;
 &lt;h2&gt;08. LeetCode 122：买卖股票的最佳时机 II&lt;/h2&gt;
-&lt;h4&gt;🔗 相关链接&lt;/h4&gt;
+&lt;p&gt;&amp;lt;details class=&quot;problem-card&quot;&amp;gt;
+&amp;lt;summary class=&quot;problem-summary&quot;&amp;gt;📖 展开查看题目详情、示例与完整题解&amp;lt;/summary&amp;gt;&lt;/p&gt;
+&lt;p&gt;&amp;lt;div class=&quot;problem-content&quot;&amp;gt;&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;🔗 原题链接&lt;/strong&gt;&lt;/p&gt;
 &lt;p&gt;&lt;a href=&quot;https://leetcode.cn/problems/best-time-to-buy-and-sell-stock-ii/description/?envType=study-plan-v2&amp;amp;envId=top-interview-150&quot;&gt;买卖股票的最佳时机 II&lt;/a&gt;&lt;/p&gt;
-&lt;h4&gt;📜 股票交易最大利润&lt;/h4&gt;
+&lt;p&gt;&lt;strong&gt;📝 题目描述&lt;/strong&gt;&lt;/p&gt;
 &lt;p&gt;给定一个整数数组 &lt;code&gt;prices&lt;/code&gt;，其中 &lt;code&gt;prices[i]&lt;/code&gt; 表示某支股票第 &lt;code&gt;i&lt;/code&gt; 天的价格。在每一天，可以决定是否购买和/或出售股票。注意，在任何时候最多只能持有一股股票，也可以选择在同一天买入并出售。&lt;/p&gt;
-&lt;h4&gt;🎯 目标&lt;/h4&gt;
+&lt;p&gt;&lt;strong&gt;🎯 目标&lt;/strong&gt;&lt;/p&gt;
 &lt;p&gt;返回能够获得的最大利润。&lt;/p&gt;
-&lt;h4&gt;📊 示例&lt;/h4&gt;
-&lt;h5&gt;示例 1&lt;/h5&gt;
+&lt;p&gt;&lt;strong&gt;📊 示例&lt;/strong&gt;&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;示例 1：&lt;/strong&gt;&lt;/p&gt;
 &lt;p&gt;&lt;strong&gt;输入：&lt;/strong&gt;&lt;/p&gt;
 &lt;pre&gt;&lt;code&gt;prices = [7,1,5,3,6,4]
 &lt;/code&gt;&lt;/pre&gt;
@@ -9051,7 +9077,7 @@ for (int i = 0; i &amp;lt; len; i++) {
 &lt;li&gt;随后，在第 4 天（股票价格 = 3）时买入，在第 5 天（股票价格 = 6）时卖出，获得利润 = 6 - 3 = 3。&lt;/li&gt;
 &lt;li&gt;最大总利润为 4 + 3 = 7。&lt;/li&gt;
 &lt;/ul&gt;
-&lt;h5&gt;示例 2&lt;/h5&gt;
+&lt;p&gt;&lt;strong&gt;示例 2：&lt;/strong&gt;&lt;/p&gt;
 &lt;p&gt;&lt;strong&gt;输入：&lt;/strong&gt;&lt;/p&gt;
 &lt;pre&gt;&lt;code&gt;prices = [1,2,3,4,5]
 &lt;/code&gt;&lt;/pre&gt;
@@ -9063,7 +9089,7 @@ for (int i = 0; i &amp;lt; len; i++) {
 &lt;li&gt;在第 1 天（股票价格 = 1）时买入，在第 5 天（股票价格 = 5）时卖出，获得利润 = 5 - 1 = 4。&lt;/li&gt;
 &lt;li&gt;最大总利润为 4。&lt;/li&gt;
 &lt;/ul&gt;
-&lt;h5&gt;示例 3&lt;/h5&gt;
+&lt;p&gt;&lt;strong&gt;示例 3：&lt;/strong&gt;&lt;/p&gt;
 &lt;p&gt;&lt;strong&gt;输入：&lt;/strong&gt;&lt;/p&gt;
 &lt;pre&gt;&lt;code&gt;prices = [7,6,4,3,1]
 &lt;/code&gt;&lt;/pre&gt;
@@ -9074,15 +9100,13 @@ for (int i = 0; i &amp;lt; len; i++) {
 &lt;ul&gt;
 &lt;li&gt;在这种情况下，无法获得正利润，因此不参与交易可以获得最大利润，最大利润为 0。&lt;/li&gt;
 &lt;/ul&gt;
-&lt;h4&gt;📝 提示&lt;/h4&gt;
+&lt;p&gt;&lt;strong&gt;🔍 提示&lt;/strong&gt;&lt;/p&gt;
 &lt;ul&gt;
 &lt;li&gt;&lt;code&gt;1 &amp;lt;= prices.length &amp;lt;= 3 * 10^4&lt;/code&gt;&lt;/li&gt;
 &lt;li&gt;&lt;code&gt;0 &amp;lt;= prices[i] &amp;lt;= 10^4&lt;/code&gt;&lt;/li&gt;
 &lt;/ul&gt;
-&lt;p&gt;&amp;lt;details class=&quot;solution-details&quot;&amp;gt;
-&amp;lt;summary&amp;gt;💡 查看题解与代码实现&amp;lt;/summary&amp;gt;&lt;/p&gt;
-&lt;h4&gt;💡 思路&lt;/h4&gt;
-&lt;h5&gt;动态规划&lt;/h5&gt;
+&lt;p&gt;&lt;strong&gt;💡 解题思路&lt;/strong&gt;&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;动态规划&lt;/strong&gt;&lt;/p&gt;
 &lt;p&gt;由于在任何时候最多只能持有一种股票，那么在第n天交易结束时具有不持有股票和持有股票两种状态，即 &lt;code&gt;dp[n][0]&lt;/code&gt; 和 &lt;code&gt;dp[n][1]&lt;/code&gt;。 n从0开始计算。&lt;/p&gt;
 &lt;p&gt;不持有股票时，截止第n天所能获得的最大利润需要参考前一天的状态：&lt;/p&gt;
 &lt;ul&gt;
@@ -9101,10 +9125,10 @@ for (int i = 0; i &amp;lt; len; i++) {
 &lt;/ul&gt;
 &lt;p&gt;算出最后一天的 &lt;code&gt;dp[n][0]&lt;/code&gt; 即可。&lt;/p&gt;
 &lt;p&gt;根据定义：&lt;code&gt;dp[0][0] = 0, dp[0][1] = -price[0]&lt;/code&gt;。&lt;/p&gt;
-&lt;h5&gt;贪心&lt;/h5&gt;
+&lt;p&gt;&lt;strong&gt;贪心&lt;/strong&gt;&lt;/p&gt;
 &lt;p&gt;由于交易次数不受限，所以计算每一个 &lt;code&gt;price[i] - price[i-1] &amp;gt; 0&lt;/code&gt; 的总和即可。&lt;/p&gt;
-&lt;h4&gt;💻 代码实现&lt;/h4&gt;
-&lt;h5&gt;动态规划&lt;/h5&gt;
+&lt;p&gt;&lt;strong&gt;💻 代码实现 (Java)&lt;/strong&gt;&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;动态规划&lt;/strong&gt;&lt;/p&gt;
 &lt;pre&gt;&lt;code&gt;public int maxProfit(int[] prices) {
     int[][] dp = new int[prices.length][2];
     for (int i = 0; i &amp;lt; prices.length; i++) {
@@ -9119,7 +9143,7 @@ for (int i = 0; i &amp;lt; len; i++) {
     return dp[prices.length - 1][0];
 }
 &lt;/code&gt;&lt;/pre&gt;
-&lt;h5&gt;贪心&lt;/h5&gt;
+&lt;p&gt;&lt;strong&gt;贪心&lt;/strong&gt;&lt;/p&gt;
 &lt;pre&gt;&lt;code&gt;public int maxProfit(int[] prices) {
     int sum = 0;
     for (int i = 1; i &amp;lt; prices.length; i++) {
@@ -9131,17 +9155,21 @@ for (int i = 0; i &amp;lt; len; i++) {
     return sum;
 }
 &lt;/code&gt;&lt;/pre&gt;
-&lt;p&gt;&amp;lt;/details&amp;gt;&lt;/p&gt;
+&lt;p&gt;&amp;lt;/div&amp;gt;
+&amp;lt;/details&amp;gt;&lt;/p&gt;
 &lt;hr /&gt;
 &lt;h2&gt;09. LeetCode 55：跳跃游戏&lt;/h2&gt;
-&lt;h4&gt;🔗 相关链接&lt;/h4&gt;
+&lt;p&gt;&amp;lt;details class=&quot;problem-card&quot;&amp;gt;
+&amp;lt;summary class=&quot;problem-summary&quot;&amp;gt;📖 展开查看题目详情、示例与完整题解&amp;lt;/summary&amp;gt;&lt;/p&gt;
+&lt;p&gt;&amp;lt;div class=&quot;problem-content&quot;&amp;gt;&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;🔗 原题链接&lt;/strong&gt;&lt;/p&gt;
 &lt;p&gt;&lt;a href=&quot;https://leetcode.cn/problems/jump-game/?envType=study-plan-v2&amp;amp;envId=top-interview-150&quot;&gt;跳跃游戏&lt;/a&gt;&lt;/p&gt;
-&lt;h4&gt;📜 题目描述&lt;/h4&gt;
+&lt;p&gt;&lt;strong&gt;📝 题目描述&lt;/strong&gt;&lt;/p&gt;
 &lt;p&gt;给定一个非负整数数组 &lt;code&gt;nums&lt;/code&gt;，最初位于数组的第一个下标。数组中的每个元素代表在该位置可以跳跃的最大长度。&lt;/p&gt;
-&lt;h4&gt;🎯 目标&lt;/h4&gt;
+&lt;p&gt;&lt;strong&gt;🎯 目标&lt;/strong&gt;&lt;/p&gt;
 &lt;p&gt;判断是否能够到达最后一个下标。如果可以，返回 &lt;code&gt;true&lt;/code&gt;；否则，返回 &lt;code&gt;false&lt;/code&gt;。&lt;/p&gt;
-&lt;h4&gt;📊 示例&lt;/h4&gt;
-&lt;h5&gt;示例 1&lt;/h5&gt;
+&lt;p&gt;&lt;strong&gt;📊 示例&lt;/strong&gt;&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;示例 1：&lt;/strong&gt;&lt;/p&gt;
 &lt;p&gt;&lt;strong&gt;输入：&lt;/strong&gt;&lt;/p&gt;
 &lt;pre&gt;&lt;code&gt;nums = [2, 3, 1, 1, 4]
 &lt;/code&gt;&lt;/pre&gt;
@@ -9151,7 +9179,7 @@ for (int i = 0; i &amp;lt; len; i++) {
 &lt;p&gt;&lt;strong&gt;解释：&lt;/strong&gt;
 可以先跳 1 步，从下标 0 到达下标 1，然后再从下标 1 跳 3 步到达最后一个下标。&lt;/p&gt;
 &lt;hr /&gt;
-&lt;h5&gt;示例 2&lt;/h5&gt;
+&lt;p&gt;&lt;strong&gt;示例 2：&lt;/strong&gt;&lt;/p&gt;
 &lt;p&gt;&lt;strong&gt;输入：&lt;/strong&gt;&lt;/p&gt;
 &lt;pre&gt;&lt;code&gt;nums = [3, 2, 1, 0, 4]
 &lt;/code&gt;&lt;/pre&gt;
@@ -9160,17 +9188,15 @@ for (int i = 0; i &amp;lt; len; i++) {
 &lt;/code&gt;&lt;/pre&gt;
 &lt;p&gt;&lt;strong&gt;解释：&lt;/strong&gt;
 无论怎样，总会到达下标为 3 的位置。但该下标的最大跳跃长度是 0，因此永远不可能到达最后一个下标。&lt;/p&gt;
-&lt;h4&gt;📝 提示&lt;/h4&gt;
+&lt;p&gt;&lt;strong&gt;🔍 提示&lt;/strong&gt;&lt;/p&gt;
 &lt;ul&gt;
 &lt;li&gt;&lt;code&gt;1 &amp;lt;= nums.length &amp;lt;= 10^4&lt;/code&gt;&lt;/li&gt;
 &lt;li&gt;&lt;code&gt;0 &amp;lt;= nums[i] &amp;lt;= 10^5&lt;/code&gt;&lt;/li&gt;
 &lt;/ul&gt;
-&lt;p&gt;&amp;lt;details class=&quot;solution-details&quot;&amp;gt;
-&amp;lt;summary&amp;gt;💡 查看题解与代码实现&amp;lt;/summary&amp;gt;&lt;/p&gt;
-&lt;h4&gt;💡 思路&lt;/h4&gt;
-&lt;h5&gt;贪心&lt;/h5&gt;
+&lt;p&gt;&lt;strong&gt;💡 解题思路&lt;/strong&gt;&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;贪心&lt;/strong&gt;&lt;/p&gt;
 &lt;p&gt;维护一个与 &lt;code&gt;nums&lt;/code&gt; 等长的布尔数组，表示每个元素是否可达。遍历一遍 &lt;code&gt;nums&lt;/code&gt;，根据 &lt;code&gt;nums&lt;/code&gt; 的值将对应布尔数组的区间更新为 &lt;code&gt;true&lt;/code&gt;，遍历完成后返回布尔数组最后一个元素的值。若中间可更新区间超过了数组长度末尾，则直接返回 &lt;code&gt;true&lt;/code&gt;。&lt;/p&gt;
-&lt;h4&gt;💻 代码实现&lt;/h4&gt;
+&lt;p&gt;&lt;strong&gt;💻 代码实现 (Java)&lt;/strong&gt;&lt;/p&gt;
 &lt;pre&gt;&lt;code&gt;public boolean canJump(int[] nums) {
     boolean[] arr = new boolean[nums.length];
     arr[0] = true;
@@ -9189,22 +9215,26 @@ for (int i = 0; i &amp;lt; len; i++) {
     return arr[nums.length - 1];
 }
 &lt;/code&gt;&lt;/pre&gt;
-&lt;p&gt;&amp;lt;/details&amp;gt;&lt;/p&gt;
+&lt;p&gt;&amp;lt;/div&amp;gt;
+&amp;lt;/details&amp;gt;&lt;/p&gt;
 &lt;hr /&gt;
 &lt;h2&gt;10. LeetCode 45：跳跃游戏 II&lt;/h2&gt;
-&lt;h4&gt;🔗 相关链接&lt;/h4&gt;
+&lt;p&gt;&amp;lt;details class=&quot;problem-card&quot;&amp;gt;
+&amp;lt;summary class=&quot;problem-summary&quot;&amp;gt;📖 展开查看题目详情、示例与完整题解&amp;lt;/summary&amp;gt;&lt;/p&gt;
+&lt;p&gt;&amp;lt;div class=&quot;problem-content&quot;&amp;gt;&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;🔗 原题链接&lt;/strong&gt;&lt;/p&gt;
 &lt;p&gt;&lt;a href=&quot;https://leetcode.cn/problems/jump-game-ii/?envType=study-plan-v2&amp;amp;envId=top-interview-150&quot;&gt;跳跃游戏 II&lt;/a&gt;&lt;/p&gt;
-&lt;h4&gt;📜 题目描述&lt;/h4&gt;
+&lt;p&gt;&lt;strong&gt;📝 题目描述&lt;/strong&gt;&lt;/p&gt;
 &lt;p&gt;给定一个长度为 &lt;code&gt;n&lt;/code&gt; 的 0 索引整数数组 &lt;code&gt;nums&lt;/code&gt;。初始位置为 &lt;code&gt;nums[0]&lt;/code&gt;。&lt;/p&gt;
 &lt;p&gt;每个元素 &lt;code&gt;nums[i]&lt;/code&gt; 表示从索引 &lt;code&gt;i&lt;/code&gt; 向后跳转的最大长度。换句话说，如果在 &lt;code&gt;nums[i]&lt;/code&gt; 处，可以跳转到任意 &lt;code&gt;nums[i + j]&lt;/code&gt; 处，条件如下：&lt;/p&gt;
 &lt;ul&gt;
 &lt;li&gt;(0 \leq j \leq nums[i])&lt;/li&gt;
 &lt;li&gt;(i + j &amp;lt; n)&lt;/li&gt;
 &lt;/ul&gt;
-&lt;h4&gt;🎯 目标&lt;/h4&gt;
+&lt;p&gt;&lt;strong&gt;🎯 目标&lt;/strong&gt;&lt;/p&gt;
 &lt;p&gt;返回到达 &lt;code&gt;nums[n - 1]&lt;/code&gt; 的最小跳跃次数。生成的测试用例可以到达 &lt;code&gt;nums[n - 1]&lt;/code&gt;。&lt;/p&gt;
-&lt;h4&gt;📊 示例&lt;/h4&gt;
-&lt;h5&gt;示例 1&lt;/h5&gt;
+&lt;p&gt;&lt;strong&gt;📊 示例&lt;/strong&gt;&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;示例 1：&lt;/strong&gt;&lt;/p&gt;
 &lt;p&gt;&lt;strong&gt;输入：&lt;/strong&gt;&lt;/p&gt;
 &lt;pre&gt;&lt;code&gt;nums = [2, 3, 1, 1, 4]
 &lt;/code&gt;&lt;/pre&gt;
@@ -9215,24 +9245,22 @@ for (int i = 0; i &amp;lt; len; i++) {
 跳到最后一个位置的最小跳跃数是 2。
 从下标为 0 跳到下标为 1 的位置，跳 1 步，然后跳 3 步到达数组的最后一个位置。&lt;/p&gt;
 &lt;hr /&gt;
-&lt;h5&gt;示例 2&lt;/h5&gt;
+&lt;p&gt;&lt;strong&gt;示例 2：&lt;/strong&gt;&lt;/p&gt;
 &lt;p&gt;&lt;strong&gt;输入：&lt;/strong&gt;&lt;/p&gt;
 &lt;pre&gt;&lt;code&gt;nums = [2, 3, 0, 1, 4]
 &lt;/code&gt;&lt;/pre&gt;
 &lt;p&gt;&lt;strong&gt;输出：&lt;/strong&gt;&lt;/p&gt;
 &lt;pre&gt;&lt;code&gt;2
 &lt;/code&gt;&lt;/pre&gt;
-&lt;h4&gt;📝 提示&lt;/h4&gt;
+&lt;p&gt;&lt;strong&gt;🔍 提示&lt;/strong&gt;&lt;/p&gt;
 &lt;ul&gt;
 &lt;li&gt;&lt;code&gt;1 &amp;lt;= nums.length &amp;lt;= 10^4&lt;/code&gt;&lt;/li&gt;
 &lt;li&gt;&lt;code&gt;0 &amp;lt;= nums[i] &amp;lt;= 1000&lt;/code&gt;&lt;/li&gt;
 &lt;/ul&gt;
 &lt;p&gt;&lt;strong&gt;注意&lt;/strong&gt;：题目保证可以到达 &lt;code&gt;nums[n-1]&lt;/code&gt;。&lt;/p&gt;
-&lt;p&gt;&amp;lt;details class=&quot;solution-details&quot;&amp;gt;
-&amp;lt;summary&amp;gt;💡 查看题解与代码实现&amp;lt;/summary&amp;gt;&lt;/p&gt;
-&lt;h4&gt;💡 思路&lt;/h4&gt;
+&lt;p&gt;&lt;strong&gt;💡 解题思路&lt;/strong&gt;&lt;/p&gt;
 &lt;p&gt;和&lt;a href=&quot;#09-leetcode-55%E8%B7%B3%E8%B7%83%E6%B8%B8%E6%88%8F&quot;&gt;跳跃游戏&lt;/a&gt;思路类似，只不过维护一个是否可到达的数组改为维护一个到达此处需要的最少步数的数组。&lt;/p&gt;
-&lt;h4&gt;💻 代码实现&lt;/h4&gt;
+&lt;p&gt;&lt;strong&gt;💻 代码实现 (Java)&lt;/strong&gt;&lt;/p&gt;
 &lt;pre&gt;&lt;code&gt;public int jump(int[] nums) {
     if (nums.length == 1) {
         return 0;
@@ -9254,42 +9282,44 @@ for (int i = 0; i &amp;lt; len; i++) {
     return steps[nums.length - 1];
 }
 &lt;/code&gt;&lt;/pre&gt;
-&lt;p&gt;&amp;lt;/details&amp;gt;&lt;/p&gt;
+&lt;p&gt;&amp;lt;/div&amp;gt;
+&amp;lt;/details&amp;gt;&lt;/p&gt;
 &lt;hr /&gt;
 &lt;h2&gt;11. LeetCode 274：H指数&lt;/h2&gt;
-&lt;h4&gt;相关链接&lt;/h4&gt;
+&lt;p&gt;&amp;lt;details class=&quot;problem-card&quot;&amp;gt;
+&amp;lt;summary class=&quot;problem-summary&quot;&amp;gt;📖 展开查看题目详情、示例与完整题解&amp;lt;/summary&amp;gt;&lt;/p&gt;
+&lt;p&gt;&amp;lt;div class=&quot;problem-content&quot;&amp;gt;&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;🔗 原题链接&lt;/strong&gt;&lt;/p&gt;
 &lt;p&gt;&lt;a href=&quot;https://leetcode.cn/problems/h-index/description/?envType=study-plan-v2&amp;amp;envId=top-interview-150&quot;&gt;LeetCode 274 H指数&lt;/a&gt;&lt;/p&gt;
-&lt;h4&gt;题目描述&lt;/h4&gt;
+&lt;p&gt;&lt;strong&gt;📝 题目描述&lt;/strong&gt;&lt;/p&gt;
 &lt;p&gt;给定一个整数数组 &lt;code&gt;citations&lt;/code&gt;，其中 &lt;code&gt;citations[i]&lt;/code&gt; 表示研究者的第 i 篇论文被引用的次数。需要计算并返回该研究者的 h 指数。&lt;/p&gt;
-&lt;h4&gt;H 指数定义&lt;/h4&gt;
+&lt;p&gt;&lt;strong&gt;H 指数定义&lt;/strong&gt;&lt;/p&gt;
 &lt;p&gt;根据维基百科上的定义，h 代表“高引用次数”。一名科研人员的 h 指数是指他（她）至少发表了 h 篇论文，并且至少有 h 篇论文被引用次数大于等于 h。如果 h 有多种可能的值，h 指数是其中最大的那个。&lt;/p&gt;
-&lt;h4&gt;示例&lt;/h4&gt;
-&lt;h5&gt;示例 1&lt;/h5&gt;
+&lt;p&gt;&lt;strong&gt;📊 示例&lt;/strong&gt;&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;示例 1：&lt;/strong&gt;&lt;/p&gt;
 &lt;ul&gt;
 &lt;li&gt;&lt;strong&gt;输入&lt;/strong&gt;: &lt;code&gt;citations = [3, 0, 6, 1, 5]&lt;/code&gt;&lt;/li&gt;
 &lt;li&gt;&lt;strong&gt;输出&lt;/strong&gt;: &lt;code&gt;3&lt;/code&gt;&lt;br /&gt;
 &lt;strong&gt;解释&lt;/strong&gt;: 给定数组表示研究者总共有 5 篇论文，每篇论文相应的被引用了 3, 0, 6, 1, 5 次。由于研究者有 3 篇论文每篇至少被引用了 3 次，其余两篇论文每篇被引用不多于 3 次，所以她的 h 指数是 3。&lt;/li&gt;
 &lt;/ul&gt;
-&lt;h5&gt;示例 2&lt;/h5&gt;
+&lt;p&gt;&lt;strong&gt;示例 2：&lt;/strong&gt;&lt;/p&gt;
 &lt;ul&gt;
 &lt;li&gt;&lt;strong&gt;输入&lt;/strong&gt;: &lt;code&gt;citations = [1, 3, 1]&lt;/code&gt;&lt;/li&gt;
 &lt;li&gt;&lt;strong&gt;输出&lt;/strong&gt;: &lt;code&gt;1&lt;/code&gt;&lt;/li&gt;
 &lt;/ul&gt;
-&lt;h4&gt;提示&lt;/h4&gt;
+&lt;p&gt;&lt;strong&gt;🔍 提示&lt;/strong&gt;&lt;/p&gt;
 &lt;ul&gt;
 &lt;li&gt;&lt;code&gt;n == citations.length&lt;/code&gt;&lt;/li&gt;
 &lt;li&gt;&lt;code&gt;1 &amp;lt;= n &amp;lt;= 5000&lt;/code&gt;&lt;/li&gt;
 &lt;li&gt;&lt;code&gt;0 &amp;lt;= citations[i] &amp;lt;= 1000&lt;/code&gt;&lt;/li&gt;
 &lt;/ul&gt;
-&lt;p&gt;&amp;lt;details class=&quot;solution-details&quot;&amp;gt;
-&amp;lt;summary&amp;gt;💡 查看题解与代码实现&amp;lt;/summary&amp;gt;&lt;/p&gt;
-&lt;h4&gt;思路&lt;/h4&gt;
+&lt;p&gt;&lt;strong&gt;💡 解题思路&lt;/strong&gt;&lt;/p&gt;
 &lt;ol&gt;
 &lt;li&gt;由于数组元素最大值为 1000，从后向前循环遍历数组，每趟计算是否存在大于等于 i 的数字 i 个。&lt;/li&gt;
 &lt;li&gt;二分查找：设查找范围的初始左边界 &lt;code&gt;left&lt;/code&gt; 为 0，初始右边界 &lt;code&gt;right&lt;/code&gt; 为 n。每次在查找范围内取中点 &lt;code&gt;mid&lt;/code&gt;，同时扫描整个数组，判断是否至少有 &lt;code&gt;mid&lt;/code&gt; 个数大于 &lt;code&gt;mid&lt;/code&gt;。如果有，说明要寻找的 h 在搜索区间的右边，反之则在左边。&lt;/li&gt;
 &lt;/ol&gt;
-&lt;h4&gt;代码实现&lt;/h4&gt;
-&lt;h5&gt;方法 1: 线性扫描&lt;/h5&gt;
+&lt;p&gt;&lt;strong&gt;💻 代码实现 (Java)&lt;/strong&gt;&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;方法 1: 线性扫描&lt;/strong&gt;&lt;/p&gt;
 &lt;pre&gt;&lt;code&gt;public int hIndex(int[] citations) {
     for (int i = 1000; i &amp;gt;= 0; i--) {
         int finalI = i;
@@ -9301,7 +9331,7 @@ for (int i = 0; i &amp;lt; len; i++) {
     return 0;
 }
 &lt;/code&gt;&lt;/pre&gt;
-&lt;h5&gt;方法 2: 二分查找&lt;/h5&gt;
+&lt;p&gt;&lt;strong&gt;方法 2: 二分查找&lt;/strong&gt;&lt;/p&gt;
 &lt;pre&gt;&lt;code&gt;public int hIndex(int[] citations) {
     int left = 0, right = citations.length;
     while (left &amp;lt; right) {
@@ -9321,12 +9351,16 @@ for (int i = 0; i &amp;lt; len; i++) {
     return left;
 }
 &lt;/code&gt;&lt;/pre&gt;
-&lt;p&gt;&amp;lt;/details&amp;gt;&lt;/p&gt;
+&lt;p&gt;&amp;lt;/div&amp;gt;
+&amp;lt;/details&amp;gt;&lt;/p&gt;
 &lt;hr /&gt;
 &lt;h2&gt;12. LeetCode 380：O(1)时间插入、删除和获取随机元素&lt;/h2&gt;
-&lt;h4&gt;相关链接&lt;/h4&gt;
+&lt;p&gt;&amp;lt;details class=&quot;problem-card&quot;&amp;gt;
+&amp;lt;summary class=&quot;problem-summary&quot;&amp;gt;📖 展开查看题目详情、示例与完整题解&amp;lt;/summary&amp;gt;&lt;/p&gt;
+&lt;p&gt;&amp;lt;div class=&quot;problem-content&quot;&amp;gt;&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;🔗 原题链接&lt;/strong&gt;&lt;/p&gt;
 &lt;p&gt;&lt;a href=&quot;https://leetcode.cn/problems/insert-delete-getrandom-o1/description/?envType=study-plan-v2&amp;amp;envId=top-interview-150&quot;&gt;LeetCode 380 O(1)时间插入、删除和获取随机元素&lt;/a&gt;&lt;/p&gt;
-&lt;h4&gt;描述&lt;/h4&gt;
+&lt;p&gt;&lt;strong&gt;📝 题目描述&lt;/strong&gt;&lt;/p&gt;
 &lt;p&gt;设计一个 &lt;code&gt;RandomizedSet&lt;/code&gt; 类，支持以下操作：&lt;/p&gt;
 &lt;ul&gt;
 &lt;li&gt;&lt;code&gt;RandomizedSet()&lt;/code&gt; 初始化 &lt;code&gt;RandomizedSet&lt;/code&gt; 对象。&lt;/li&gt;
@@ -9335,15 +9369,15 @@ for (int i = 0; i &amp;lt; len; i++) {
 &lt;li&gt;&lt;code&gt;int getRandom()&lt;/code&gt; 随机返回现有集合中的一项（测试用例保证调用此方法时集合中至少存在一个元素）。每个元素应该有相同的概率被返回。&lt;/li&gt;
 &lt;/ul&gt;
 &lt;p&gt;必须实现类的所有函数，并满足每个函数的平均时间复杂度为 O(1)。&lt;/p&gt;
-&lt;h4&gt;示例&lt;/h4&gt;
-&lt;h5&gt;输入&lt;/h5&gt;
+&lt;p&gt;&lt;strong&gt;📊 示例&lt;/strong&gt;&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;输入&lt;/strong&gt;&lt;/p&gt;
 &lt;pre&gt;&lt;code&gt;[&quot;RandomizedSet&quot;, &quot;insert&quot;, &quot;remove&quot;, &quot;insert&quot;, &quot;getRandom&quot;, &quot;remove&quot;, &quot;insert&quot;, &quot;getRandom&quot;]
 [[], [1], [2], [2], [], [1], [2], []]
 &lt;/code&gt;&lt;/pre&gt;
-&lt;h5&gt;输出&lt;/h5&gt;
+&lt;p&gt;&lt;strong&gt;输出&lt;/strong&gt;&lt;/p&gt;
 &lt;pre&gt;&lt;code&gt;[null, true, false, true, 2, true, false, 2]
 &lt;/code&gt;&lt;/pre&gt;
-&lt;h5&gt;解释&lt;/h5&gt;
+&lt;p&gt;&lt;strong&gt;解释&lt;/strong&gt;&lt;/p&gt;
 &lt;pre&gt;&lt;code&gt;RandomizedSet randomizedSet = new RandomizedSet();
 randomizedSet.insert(1); // 向集合中插入 1 。返回 true 表示 1 被成功地插入。
 randomizedSet.remove(2); // 返回 false ，表示集合中不存在 2 。
@@ -9353,20 +9387,18 @@ randomizedSet.remove(1); // 从集合中移除 1 ，返回 true 。集合现在�
 randomizedSet.insert(2); // 2 已在集合中，所以返回 false 。
 randomizedSet.getRandom(); // 由于 2 是集合中唯一的数字，getRandom 总是返回 2 。
 &lt;/code&gt;&lt;/pre&gt;
-&lt;h4&gt;提示&lt;/h4&gt;
+&lt;p&gt;&lt;strong&gt;🔍 提示&lt;/strong&gt;&lt;/p&gt;
 &lt;ul&gt;
 &lt;li&gt;&lt;code&gt;-231 &amp;lt;= val &amp;lt;= 231 - 1&lt;/code&gt;&lt;/li&gt;
 &lt;li&gt;最多调用 &lt;code&gt;insert&lt;/code&gt;、&lt;code&gt;remove&lt;/code&gt; 和 &lt;code&gt;getRandom&lt;/code&gt; 函数 &lt;code&gt;2 * 10^5&lt;/code&gt; 次&lt;/li&gt;
 &lt;li&gt;在调用 &lt;code&gt;getRandom&lt;/code&gt; 方法时，数据结构中至少存在一个元素。&lt;/li&gt;
 &lt;/ul&gt;
-&lt;p&gt;&amp;lt;details class=&quot;solution-details&quot;&amp;gt;
-&amp;lt;summary&amp;gt;💡 查看题解与代码实现&amp;lt;/summary&amp;gt;&lt;/p&gt;
-&lt;h4&gt;思路&lt;/h4&gt;
+&lt;p&gt;&lt;strong&gt;💡 解题思路&lt;/strong&gt;&lt;/p&gt;
 &lt;p&gt;用一个 &lt;code&gt;Map&lt;/code&gt; 存储已有的值（key）和其在 &lt;code&gt;Stack&lt;/code&gt; 中的下标（value）。
 添加时记录当前最后的下标（index）。
 删除时查找其下标，与 &lt;code&gt;Stack&lt;/code&gt; 最后的元素交换，然后通过 &lt;code&gt;pop&lt;/code&gt; 直接删除元素，&lt;code&gt;index--&lt;/code&gt;。
 随机通过 &lt;code&gt;Random&lt;/code&gt; 类，传入 &lt;code&gt;Stack&lt;/code&gt; 的 &lt;code&gt;size&lt;/code&gt; 进行随机取数。&lt;/p&gt;
-&lt;h4&gt;代码实现&lt;/h4&gt;
+&lt;p&gt;&lt;strong&gt;💻 代码实现 (Java)&lt;/strong&gt;&lt;/p&gt;
 &lt;pre&gt;&lt;code&gt;class RandomizedSet {
     private final Map&amp;lt;Integer, Integer&amp;gt; valMap = new HashMap&amp;lt;&amp;gt;();
     private List&amp;lt;Integer&amp;gt; stack = new ArrayList&amp;lt;&amp;gt;();
@@ -9404,43 +9436,45 @@ randomizedSet.getRandom(); // 由于 2 是集合中唯一的数字，getRandom �
     }
 }
 &lt;/code&gt;&lt;/pre&gt;
-&lt;p&gt;&amp;lt;/details&amp;gt;&lt;/p&gt;
+&lt;p&gt;&amp;lt;/div&amp;gt;
+&amp;lt;/details&amp;gt;&lt;/p&gt;
 &lt;hr /&gt;
 &lt;h2&gt;13. LeetCode 238：除自身以外数组的乘积&lt;/h2&gt;
-&lt;h4&gt;📚 相关链接&lt;/h4&gt;
+&lt;p&gt;&amp;lt;details class=&quot;problem-card&quot;&amp;gt;
+&amp;lt;summary class=&quot;problem-summary&quot;&amp;gt;📖 展开查看题目详情、示例与完整题解&amp;lt;/summary&amp;gt;&lt;/p&gt;
+&lt;p&gt;&amp;lt;div class=&quot;problem-content&quot;&amp;gt;&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;🔗 原题链接&lt;/strong&gt;&lt;/p&gt;
 &lt;p&gt;&lt;a href=&quot;https://leetcode.cn/problems/product-of-array-except-self/description/?envType=study-plan-v2&amp;amp;envId=top-interview-150&quot;&gt;LeetCode 238: 除自身以外数组的乘积&lt;/a&gt;&lt;/p&gt;
-&lt;h4&gt;📝 题目描述&lt;/h4&gt;
+&lt;p&gt;&lt;strong&gt;📝 题目描述&lt;/strong&gt;&lt;/p&gt;
 &lt;p&gt;给定一个整数数组 &lt;code&gt;nums&lt;/code&gt;，返回数组 &lt;code&gt;answer&lt;/code&gt;，其中 &lt;code&gt;answer[i]&lt;/code&gt; 等于 &lt;code&gt;nums&lt;/code&gt; 中除 &lt;code&gt;nums[i]&lt;/code&gt; 之外其余各元素的乘积。&lt;/p&gt;
 &lt;p&gt;&lt;strong&gt;要求：&lt;/strong&gt;&lt;/p&gt;
 &lt;ul&gt;
 &lt;li&gt;不要使用除法，且在 O(n) 时间复杂度内完成此题。&lt;/li&gt;
 &lt;/ul&gt;
-&lt;h4&gt;💡 示例&lt;/h4&gt;
-&lt;h5&gt;示例 1&lt;/h5&gt;
+&lt;p&gt;&lt;strong&gt;📊 示例&lt;/strong&gt;&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;示例 1：&lt;/strong&gt;&lt;/p&gt;
 &lt;p&gt;&lt;strong&gt;输入:&lt;/strong&gt;&lt;/p&gt;
 &lt;pre&gt;&lt;code&gt;nums = [1, 2, 3, 4]
 &lt;/code&gt;&lt;/pre&gt;
 &lt;p&gt;&lt;strong&gt;输出:&lt;/strong&gt;&lt;/p&gt;
 &lt;pre&gt;&lt;code&gt;[24, 12, 8, 6]
 &lt;/code&gt;&lt;/pre&gt;
-&lt;h5&gt;示例 2&lt;/h5&gt;
+&lt;p&gt;&lt;strong&gt;示例 2：&lt;/strong&gt;&lt;/p&gt;
 &lt;p&gt;&lt;strong&gt;输入:&lt;/strong&gt;&lt;/p&gt;
 &lt;pre&gt;&lt;code&gt;nums = [-1, 1, 0, -3, 3]
 &lt;/code&gt;&lt;/pre&gt;
 &lt;p&gt;&lt;strong&gt;输出:&lt;/strong&gt;&lt;/p&gt;
 &lt;pre&gt;&lt;code&gt;[0, 0, 9, 0, 0]
 &lt;/code&gt;&lt;/pre&gt;
-&lt;h4&gt;⚠️ 提示&lt;/h4&gt;
+&lt;p&gt;&lt;strong&gt;🔍 提示&lt;/strong&gt;&lt;/p&gt;
 &lt;ul&gt;
 &lt;li&gt;&lt;code&gt;2 &amp;lt;= nums.length &amp;lt;= 10^5&lt;/code&gt;&lt;/li&gt;
 &lt;li&gt;&lt;code&gt;-30 &amp;lt;= nums[i] &amp;lt;= 30&lt;/code&gt;&lt;/li&gt;
 &lt;li&gt;输入保证数组 &lt;code&gt;answer[i]&lt;/code&gt; 在 32 位整数范围内&lt;/li&gt;
 &lt;/ul&gt;
-&lt;h4&gt;🔍 进阶&lt;/h4&gt;
+&lt;p&gt;&lt;strong&gt;🚀 进阶&lt;/strong&gt;&lt;/p&gt;
 &lt;p&gt;可以在 O(1) 的额外空间复杂度内完成这个题目吗？（出于对空间复杂度分析的目的，输出数组不被视为额外空间。）&lt;/p&gt;
-&lt;p&gt;&amp;lt;details class=&quot;solution-details&quot;&amp;gt;
-&amp;lt;summary&amp;gt;💡 查看题解与代码实现&amp;lt;/summary&amp;gt;&lt;/p&gt;
-&lt;h4&gt;💭 思路&lt;/h4&gt;
+&lt;p&gt;&lt;strong&gt;💡 解题思路&lt;/strong&gt;&lt;/p&gt;
 &lt;ol&gt;
 &lt;li&gt;
 &lt;p&gt;维护两个数组，一个 &lt;code&gt;prefix&lt;/code&gt; 一个 &lt;code&gt;suffix&lt;/code&gt;，使用两个循环填充这两个数组：&lt;/p&gt;
@@ -9455,8 +9489,8 @@ randomizedSet.getRandom(); // 由于 2 是集合中唯一的数字，getRandom �
 &lt;p&gt;由于输出数组不算额外空间，所以先将 &lt;code&gt;prefix&lt;/code&gt; 放进 &lt;code&gt;ans&lt;/code&gt;，再把 &lt;code&gt;suffix&lt;/code&gt; 乘到 &lt;code&gt;ans&lt;/code&gt; 上。&lt;/p&gt;
 &lt;/li&gt;
 &lt;/ol&gt;
-&lt;h4&gt;💻 代码实现&lt;/h4&gt;
-&lt;h5&gt;1. 维护两个数组&lt;/h5&gt;
+&lt;p&gt;&lt;strong&gt;💻 代码实现 (Java)&lt;/strong&gt;&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;1. 维护两个数组&lt;/strong&gt;&lt;/p&gt;
 &lt;pre&gt;&lt;code&gt;public int[] productExceptSelf(int[] nums) {
     if (nums.length == 2) {
         return new int[]{nums[1], nums[0]};
@@ -9489,7 +9523,7 @@ randomizedSet.getRandom(); // 由于 2 是集合中唯一的数字，getRandom �
     return ans;
 }
 &lt;/code&gt;&lt;/pre&gt;
-&lt;h5&gt;2. 动态维护 &lt;code&gt;suffix&lt;/code&gt; 和 &lt;code&gt;prefix&lt;/code&gt;&lt;/h5&gt;
+&lt;p&gt;&lt;strong&gt;2. 动态维护 &lt;code&gt;suffix&lt;/code&gt; 和 &lt;code&gt;prefix&lt;/code&gt;&lt;/strong&gt;&lt;/p&gt;
 &lt;pre&gt;&lt;code&gt;public int[] productExceptSelf(int[] nums) {
     if (nums.length == 2) {
         return new int[]{nums[1], nums[0]};
@@ -9514,17 +9548,21 @@ randomizedSet.getRandom(); // 由于 2 是集合中唯一的数字，getRandom �
     return ans;
 }
 &lt;/code&gt;&lt;/pre&gt;
-&lt;p&gt;&amp;lt;/details&amp;gt;&lt;/p&gt;
+&lt;p&gt;&amp;lt;/div&amp;gt;
+&amp;lt;/details&amp;gt;&lt;/p&gt;
 &lt;hr /&gt;
 &lt;h2&gt;14. LeetCode 134：加油站&lt;/h2&gt;
-&lt;h4&gt;🚀 相关链接&lt;/h4&gt;
+&lt;p&gt;&amp;lt;details class=&quot;problem-card&quot;&amp;gt;
+&amp;lt;summary class=&quot;problem-summary&quot;&amp;gt;📖 展开查看题目详情、示例与完整题解&amp;lt;/summary&amp;gt;&lt;/p&gt;
+&lt;p&gt;&amp;lt;div class=&quot;problem-content&quot;&amp;gt;&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;🔗 原题链接&lt;/strong&gt;&lt;/p&gt;
 &lt;p&gt;&lt;a href=&quot;https://leetcode.cn/problems/gas-station/description/?envType=study-plan-v2&amp;amp;envId=top-interview-150&quot;&gt;LeetCode 134 - 加油站&lt;/a&gt;&lt;/p&gt;
-&lt;h4&gt;📜 描述&lt;/h4&gt;
+&lt;p&gt;&lt;strong&gt;📝 题目描述&lt;/strong&gt;&lt;/p&gt;
 &lt;p&gt;在一条环路上有 &lt;code&gt;n&lt;/code&gt; 个加油站，其中第 &lt;code&gt;i&lt;/code&gt; 个加油站有汽油 &lt;code&gt;gas[i]&lt;/code&gt; 升。&lt;/p&gt;
 &lt;p&gt;你有一辆油箱容量无限的汽车，从第 &lt;code&gt;i&lt;/code&gt; 个加油站开往第 &lt;code&gt;i+1&lt;/code&gt; 个加油站需要消耗汽油 &lt;code&gt;cost[i]&lt;/code&gt; 升。你从其中的一个加油站出发，开始时油箱为空。&lt;/p&gt;
 &lt;p&gt;给定两个整数数组 &lt;code&gt;gas&lt;/code&gt; 和 &lt;code&gt;cost&lt;/code&gt;，如果可以按顺序绕环路行驶一周，则返回出发时加油站的编号，否则返回 &lt;code&gt;-1&lt;/code&gt;。如果存在解，则保证它是唯一的。&lt;/p&gt;
-&lt;h4&gt;💡 示例&lt;/h4&gt;
-&lt;h5&gt;示例 1&lt;/h5&gt;
+&lt;p&gt;&lt;strong&gt;📊 示例&lt;/strong&gt;&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;示例 1：&lt;/strong&gt;&lt;/p&gt;
 &lt;p&gt;&lt;strong&gt;输入:&lt;/strong&gt;&lt;/p&gt;
 &lt;pre&gt;&lt;code&gt;gas = [1,2,3,4,5], cost = [3,4,5,1,2]
 &lt;/code&gt;&lt;/pre&gt;
@@ -9539,7 +9577,7 @@ randomizedSet.getRandom(); // 由于 2 是集合中唯一的数字，getRandom �
 开往 2 号加油站，此时油箱有 6 - 4 + 3 = 5 升汽油&lt;br /&gt;
 开往 3 号加油站，你需要消耗 5 升汽油，正好足够你返回到 3 号加油站。&lt;br /&gt;
 因此，3 可为起始索引。&lt;/p&gt;
-&lt;h5&gt;示例 2&lt;/h5&gt;
+&lt;p&gt;&lt;strong&gt;示例 2：&lt;/strong&gt;&lt;/p&gt;
 &lt;p&gt;&lt;strong&gt;输入:&lt;/strong&gt;&lt;/p&gt;
 &lt;pre&gt;&lt;code&gt;gas = [2,3,4], cost = [3,4,3]
 &lt;/code&gt;&lt;/pre&gt;
@@ -9553,20 +9591,18 @@ randomizedSet.getRandom(); // 由于 2 是集合中唯一的数字，getRandom �
 开往 1 号加油站，此时油箱有 3 - 3 + 3 = 3 升汽油&lt;br /&gt;
 你无法返回 2 号加油站，因为返程需要消耗 4 升汽油，但是你的油箱只有 3 升汽油。&lt;br /&gt;
 因此，无论怎样，你都不可能绕环路行驶一周。&lt;/p&gt;
-&lt;h4&gt;📝 提示&lt;/h4&gt;
+&lt;p&gt;&lt;strong&gt;🔍 提示&lt;/strong&gt;&lt;/p&gt;
 &lt;ul&gt;
 &lt;li&gt;&lt;code&gt;gas.length == n&lt;/code&gt;&lt;/li&gt;
 &lt;li&gt;&lt;code&gt;cost.length == n&lt;/code&gt;&lt;/li&gt;
 &lt;li&gt;&lt;code&gt;1 &amp;lt;= n &amp;lt;= 10^5&lt;/code&gt;&lt;/li&gt;
 &lt;li&gt;&lt;code&gt;0 &amp;lt;= gas[i], cost[i] &amp;lt;= 10^4&lt;/code&gt;&lt;/li&gt;
 &lt;/ul&gt;
-&lt;p&gt;&amp;lt;details class=&quot;solution-details&quot;&amp;gt;
-&amp;lt;summary&amp;gt;💡 查看题解与代码实现&amp;lt;/summary&amp;gt;&lt;/p&gt;
-&lt;h4&gt;💭 思路&lt;/h4&gt;
+&lt;p&gt;&lt;strong&gt;💡 解题思路&lt;/strong&gt;&lt;/p&gt;
 &lt;p&gt;贪心，从头开始遍历每个加油站是否可以走完一轮，若当前加油站走到某个加油站后不能继续往前走时，从停下的加油站继续遍历。&lt;br /&gt;
 使用两个循环，外层循环计数 &lt;code&gt;i&lt;/code&gt;，最大为数组长度 &lt;code&gt;n&lt;/code&gt;，维护从 &lt;code&gt;i&lt;/code&gt; 开始总油量 &lt;code&gt;sumOfGas&lt;/code&gt; 和总消耗 &lt;code&gt;sumOfCost&lt;/code&gt;；&lt;br /&gt;
 内部循环从 &lt;code&gt;i&lt;/code&gt; 开始，访问 &lt;code&gt;(i + cur) % n&lt;/code&gt; 下标的元素，更新 &lt;code&gt;sumOfGas&lt;/code&gt; 和 &lt;code&gt;sumOfCost&lt;/code&gt;。若前者小于后者，则从 &lt;code&gt;i&lt;/code&gt; 加油站出发不能走完一趟，从 &lt;code&gt;i + cur&lt;/code&gt; 开始新一趟循环。&lt;/p&gt;
-&lt;h4&gt;💻 代码实现&lt;/h4&gt;
+&lt;p&gt;&lt;strong&gt;💻 代码实现 (Java)&lt;/strong&gt;&lt;/p&gt;
 &lt;pre&gt;&lt;code&gt;public int canCompleteCircuit(int[] gas, int[] cost) {
         int i = 0, n = gas.length;
         while (i &amp;lt; n) {
@@ -9590,39 +9626,41 @@ randomizedSet.getRandom(); // 由于 2 是集合中唯一的数字，getRandom �
         return -1;
     }
 &lt;/code&gt;&lt;/pre&gt;
-&lt;p&gt;&amp;lt;/details&amp;gt;&lt;/p&gt;
+&lt;p&gt;&amp;lt;/div&amp;gt;
+&amp;lt;/details&amp;gt;&lt;/p&gt;
 &lt;hr /&gt;
 &lt;h2&gt;15. LeetCode 135：分发糖果&lt;/h2&gt;
-&lt;h4&gt;🚀 相关链接&lt;/h4&gt;
+&lt;p&gt;&amp;lt;details class=&quot;problem-card&quot;&amp;gt;
+&amp;lt;summary class=&quot;problem-summary&quot;&amp;gt;📖 展开查看题目详情、示例与完整题解&amp;lt;/summary&amp;gt;&lt;/p&gt;
+&lt;p&gt;&amp;lt;div class=&quot;problem-content&quot;&amp;gt;&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;🔗 原题链接&lt;/strong&gt;&lt;/p&gt;
 &lt;p&gt;&lt;a href=&quot;https://leetcode.cn/problems/candy/description/?envType=study-plan-v2&amp;amp;envId=top-interview-150&quot;&gt;LeetCode 135 - 分发糖果&lt;/a&gt;&lt;/p&gt;
-&lt;h4&gt;📜 描述&lt;/h4&gt;
+&lt;p&gt;&lt;strong&gt;📝 题目描述&lt;/strong&gt;&lt;/p&gt;
 &lt;p&gt;有 &lt;code&gt;n&lt;/code&gt; 个孩子站成一排。给你一个整数数组 &lt;code&gt;ratings&lt;/code&gt; 表示每个孩子的评分。你需要按照以下要求，给这些孩子分发糖果：&lt;/p&gt;
 &lt;ol&gt;
 &lt;li&gt;每个孩子至少分配到 1 个糖果。&lt;/li&gt;
 &lt;li&gt;相邻两个孩子中，评分更高的孩子会获得更多的糖果。&lt;/li&gt;
 &lt;/ol&gt;
 &lt;p&gt;请你给每个孩子分发糖果，计算并返回需要准备的 &lt;strong&gt;最少糖果数目&lt;/strong&gt;。&lt;/p&gt;
-&lt;h4&gt;💡 示例&lt;/h4&gt;
+&lt;p&gt;&lt;strong&gt;📊 示例&lt;/strong&gt;&lt;/p&gt;
 &lt;ul&gt;
 &lt;li&gt;&lt;strong&gt;输入&lt;/strong&gt;: &lt;code&gt;ratings = [1,0,2]&lt;/code&gt;&lt;/li&gt;
 &lt;li&gt;&lt;strong&gt;输出&lt;/strong&gt;: &lt;code&gt;5&lt;/code&gt;&lt;/li&gt;
 &lt;li&gt;&lt;strong&gt;解释&lt;/strong&gt;: 你可以分别给第一个、第二个、第三个孩子分发 &lt;code&gt;2&lt;/code&gt;、&lt;code&gt;1&lt;/code&gt;、&lt;code&gt;2&lt;/code&gt; 颗糖果。&lt;/li&gt;
 &lt;/ul&gt;
-&lt;h5&gt;示例 2&lt;/h5&gt;
+&lt;p&gt;&lt;strong&gt;示例 2：&lt;/strong&gt;&lt;/p&gt;
 &lt;ul&gt;
 &lt;li&gt;&lt;strong&gt;输入&lt;/strong&gt;: &lt;code&gt;ratings = [1,2,2]&lt;/code&gt;&lt;/li&gt;
 &lt;li&gt;&lt;strong&gt;输出&lt;/strong&gt;: &lt;code&gt;4&lt;/code&gt;&lt;/li&gt;
 &lt;li&gt;&lt;strong&gt;解释&lt;/strong&gt;: 你可以分别给第一个、第二个、第三个孩子分发 &lt;code&gt;1&lt;/code&gt;、&lt;code&gt;2&lt;/code&gt;、&lt;code&gt;1&lt;/code&gt; 颗糖果。第三个孩子只得到 &lt;code&gt;1&lt;/code&gt; 颗糖果，这满足题面中的两个条件。&lt;/li&gt;
 &lt;/ul&gt;
-&lt;h4&gt;📝 提示&lt;/h4&gt;
+&lt;p&gt;&lt;strong&gt;🔍 提示&lt;/strong&gt;&lt;/p&gt;
 &lt;ul&gt;
 &lt;li&gt;&lt;code&gt;n == ratings.length&lt;/code&gt;&lt;/li&gt;
 &lt;li&gt;&lt;code&gt;1 &amp;lt;= n &amp;lt;= 2 * 10^4&lt;/code&gt;&lt;/li&gt;
 &lt;li&gt;&lt;code&gt;0 &amp;lt;= ratings[i] &amp;lt;= 2 * 10^4&lt;/code&gt;&lt;/li&gt;
 &lt;/ul&gt;
-&lt;p&gt;&amp;lt;details class=&quot;solution-details&quot;&amp;gt;
-&amp;lt;summary&amp;gt;💡 查看题解与代码实现&amp;lt;/summary&amp;gt;&lt;/p&gt;
-&lt;h4&gt;💭 思路&lt;/h4&gt;
+&lt;p&gt;&lt;strong&gt;💡 解题思路&lt;/strong&gt;&lt;/p&gt;
 &lt;ol&gt;
 &lt;li&gt;两次遍历。&lt;/li&gt;
 &lt;/ol&gt;
@@ -9644,7 +9682,7 @@ randomizedSet.getRandom(); // 由于 2 是集合中唯一的数字，getRandom �
 &lt;li&gt;如果当前孩子比前一个孩子评分高，则认为当前处于升序序列中，分发的糖果比前一个孩子多1个。&lt;/li&gt;
 &lt;li&gt;否则就认为当前在降序序列中，直接给当前孩子分1个糖果，同时记录当前降序序列长度，降序序列中前面每个孩子都要再+1个糖果。（即总糖果数加一个降序序列长度）&lt;/li&gt;
 &lt;/ul&gt;
-&lt;h4&gt;💻 代码实现&lt;/h4&gt;
+&lt;p&gt;&lt;strong&gt;💻 代码实现 (Java)&lt;/strong&gt;&lt;/p&gt;
 &lt;ol&gt;
 &lt;li&gt;两次遍历&lt;/li&gt;
 &lt;/ol&gt;
@@ -9693,33 +9731,35 @@ randomizedSet.getRandom(); // 由于 2 是集合中唯一的数字，getRandom �
         return sum;
     }
 &lt;/code&gt;&lt;/pre&gt;
-&lt;p&gt;&amp;lt;/details&amp;gt;&lt;/p&gt;
+&lt;p&gt;&amp;lt;/div&amp;gt;
+&amp;lt;/details&amp;gt;&lt;/p&gt;
 &lt;hr /&gt;
 &lt;h2&gt;16. LeetCode 42：接雨水&lt;/h2&gt;
-&lt;h4&gt;🚀 相关链接&lt;/h4&gt;
+&lt;p&gt;&amp;lt;details class=&quot;problem-card&quot;&amp;gt;
+&amp;lt;summary class=&quot;problem-summary&quot;&amp;gt;📖 展开查看题目详情、示例与完整题解&amp;lt;/summary&amp;gt;&lt;/p&gt;
+&lt;p&gt;&amp;lt;div class=&quot;problem-content&quot;&amp;gt;&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;🔗 原题链接&lt;/strong&gt;&lt;/p&gt;
 &lt;p&gt;&lt;a href=&quot;https://leetcode.cn/problems/trapping-rain-water/description/?envType=study-plan-v2&amp;amp;envId=top-interview-150&quot;&gt;LeetCode 042 - 接雨水&lt;/a&gt;&lt;/p&gt;
-&lt;h4&gt;📜 描述&lt;/h4&gt;
+&lt;p&gt;&lt;strong&gt;📝 题目描述&lt;/strong&gt;&lt;/p&gt;
 &lt;p&gt;给定 &lt;code&gt;n&lt;/code&gt; 个非负整数表示每个宽度为 &lt;code&gt;1&lt;/code&gt; 的柱子的高度图，计算按此排列的柱子，下雨之后能接多少雨水。&lt;/p&gt;
-&lt;h4&gt;💡 示例&lt;/h4&gt;
+&lt;p&gt;&lt;strong&gt;📊 示例&lt;/strong&gt;&lt;/p&gt;
 &lt;ul&gt;
 &lt;li&gt;&lt;strong&gt;输入&lt;/strong&gt;: &lt;code&gt;height = [0,1,0,2,1,0,1,3,2,1,2,1]&lt;/code&gt;&lt;/li&gt;
 &lt;li&gt;&lt;strong&gt;输出&lt;/strong&gt;: &lt;code&gt;6&lt;/code&gt;&lt;/li&gt;
 &lt;li&gt;&lt;strong&gt;解释&lt;/strong&gt;: 上面是由数组 &lt;code&gt;[0,1,0,2,1,0,1,3,2,1,2,1]&lt;/code&gt; 表示的高度图，在这种情况下，可以接 &lt;code&gt;6&lt;/code&gt; 个单位的雨水（蓝色部分表示雨水）。&lt;/li&gt;
 &lt;/ul&gt;
-&lt;h5&gt;示例 2&lt;/h5&gt;
+&lt;p&gt;&lt;strong&gt;示例 2：&lt;/strong&gt;&lt;/p&gt;
 &lt;ul&gt;
 &lt;li&gt;&lt;strong&gt;输入&lt;/strong&gt;: &lt;code&gt;height = [4,2,0,3,2,5]&lt;/code&gt;&lt;/li&gt;
 &lt;li&gt;&lt;strong&gt;输出&lt;/strong&gt;: &lt;code&gt;9&lt;/code&gt;&lt;/li&gt;
 &lt;/ul&gt;
-&lt;h4&gt;📝 提示&lt;/h4&gt;
+&lt;p&gt;&lt;strong&gt;🔍 提示&lt;/strong&gt;&lt;/p&gt;
 &lt;ul&gt;
 &lt;li&gt;&lt;code&gt;n == height.length&lt;/code&gt;&lt;/li&gt;
 &lt;li&gt;&lt;code&gt;1 &amp;lt;= n &amp;lt;= 2 * 10^4&lt;/code&gt;&lt;/li&gt;
 &lt;li&gt;&lt;code&gt;0 &amp;lt;= height[i] &amp;lt;= 10^5&lt;/code&gt;&lt;/li&gt;
 &lt;/ul&gt;
-&lt;p&gt;&amp;lt;details class=&quot;solution-details&quot;&amp;gt;
-&amp;lt;summary&amp;gt;💡 查看题解与代码实现&amp;lt;/summary&amp;gt;&lt;/p&gt;
-&lt;h4&gt;💭 思路&lt;/h4&gt;
+&lt;p&gt;&lt;strong&gt;💡 解题思路&lt;/strong&gt;&lt;/p&gt;
 &lt;ol&gt;
 &lt;li&gt;&lt;strong&gt;双指针法&lt;/strong&gt;：
 &lt;ul&gt;
@@ -9729,7 +9769,7 @@ randomizedSet.getRandom(); // 由于 2 是集合中唯一的数字，getRandom �
 &lt;/ul&gt;
 &lt;/li&gt;
 &lt;/ol&gt;
-&lt;h4&gt;💻 代码实现&lt;/h4&gt;
+&lt;p&gt;&lt;strong&gt;💻 代码实现 (Java)&lt;/strong&gt;&lt;/p&gt;
 &lt;pre&gt;&lt;code&gt;public int trap(int[] height) {
     int len = height.length;
     int[] leftMax = new int[height.length];
@@ -9749,12 +9789,16 @@ randomizedSet.getRandom(); // 由于 2 是集合中唯一的数字，getRandom �
     return sum;
 }
 &lt;/code&gt;&lt;/pre&gt;
-&lt;p&gt;&amp;lt;/details&amp;gt;&lt;/p&gt;
+&lt;p&gt;&amp;lt;/div&amp;gt;
+&amp;lt;/details&amp;gt;&lt;/p&gt;
 &lt;hr /&gt;
 &lt;h2&gt;17. LeetCode 13：罗马数字转整数&lt;/h2&gt;
-&lt;h4&gt;🚀 相关链接&lt;/h4&gt;
+&lt;p&gt;&amp;lt;details class=&quot;problem-card&quot;&amp;gt;
+&amp;lt;summary class=&quot;problem-summary&quot;&amp;gt;📖 展开查看题目详情、示例与完整题解&amp;lt;/summary&amp;gt;&lt;/p&gt;
+&lt;p&gt;&amp;lt;div class=&quot;problem-content&quot;&amp;gt;&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;🔗 原题链接&lt;/strong&gt;&lt;/p&gt;
 &lt;p&gt;&lt;a href=&quot;https://leetcode.cn/problems/roman-to-integer/description/?envType=study-plan-v2&amp;amp;envId=top-interview-150&quot;&gt;LeetCode 013 - 罗马数字转整数&lt;/a&gt;&lt;/p&gt;
-&lt;h4&gt;📜 描述&lt;/h4&gt;
+&lt;p&gt;&lt;strong&gt;📝 题目描述&lt;/strong&gt;&lt;/p&gt;
 &lt;p&gt;罗马数字包含以下七种字符: &lt;code&gt;I&lt;/code&gt;, &lt;code&gt;V&lt;/code&gt;, &lt;code&gt;X&lt;/code&gt;, &lt;code&gt;L&lt;/code&gt;, &lt;code&gt;C&lt;/code&gt;, &lt;code&gt;D&lt;/code&gt; 和 &lt;code&gt;M&lt;/code&gt;。&lt;/p&gt;
 &lt;table&gt;
 &lt;thead&gt;
@@ -9802,35 +9846,35 @@ randomizedSet.getRandom(); // 由于 2 是集合中唯一的数字，getRandom �
 &lt;li&gt;&lt;code&gt;C&lt;/code&gt; 可以放在 &lt;code&gt;D&lt;/code&gt; (500) 和 &lt;code&gt;M&lt;/code&gt; (1000) 的左边，来表示 &lt;code&gt;400&lt;/code&gt; 和 &lt;code&gt;900&lt;/code&gt;。&lt;/li&gt;
 &lt;/ul&gt;
 &lt;p&gt;给定一个罗马数字，将其转换成整数。&lt;/p&gt;
-&lt;h4&gt;💡 示例&lt;/h4&gt;
-&lt;h5&gt;示例 1&lt;/h5&gt;
+&lt;p&gt;&lt;strong&gt;📊 示例&lt;/strong&gt;&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;示例 1：&lt;/strong&gt;&lt;/p&gt;
 &lt;ul&gt;
 &lt;li&gt;&lt;strong&gt;输入&lt;/strong&gt;: &lt;code&gt;s = &quot;III&quot;&lt;/code&gt;&lt;/li&gt;
 &lt;li&gt;&lt;strong&gt;输出&lt;/strong&gt;: &lt;code&gt;3&lt;/code&gt;&lt;/li&gt;
 &lt;/ul&gt;
-&lt;h5&gt;示例 2&lt;/h5&gt;
+&lt;p&gt;&lt;strong&gt;示例 2：&lt;/strong&gt;&lt;/p&gt;
 &lt;ul&gt;
 &lt;li&gt;&lt;strong&gt;输入&lt;/strong&gt;: &lt;code&gt;s = &quot;IV&quot;&lt;/code&gt;&lt;/li&gt;
 &lt;li&gt;&lt;strong&gt;输出&lt;/strong&gt;: &lt;code&gt;4&lt;/code&gt;&lt;/li&gt;
 &lt;/ul&gt;
-&lt;h5&gt;示例 3&lt;/h5&gt;
+&lt;p&gt;&lt;strong&gt;示例 3：&lt;/strong&gt;&lt;/p&gt;
 &lt;ul&gt;
 &lt;li&gt;&lt;strong&gt;输入&lt;/strong&gt;: &lt;code&gt;s = &quot;IX&quot;&lt;/code&gt;&lt;/li&gt;
 &lt;li&gt;&lt;strong&gt;输出&lt;/strong&gt;: &lt;code&gt;9&lt;/code&gt;&lt;/li&gt;
 &lt;/ul&gt;
-&lt;h5&gt;示例 4&lt;/h5&gt;
+&lt;p&gt;&lt;strong&gt;示例 4：&lt;/strong&gt;&lt;/p&gt;
 &lt;ul&gt;
 &lt;li&gt;&lt;strong&gt;输入&lt;/strong&gt;: &lt;code&gt;s = &quot;LVIII&quot;&lt;/code&gt;&lt;/li&gt;
 &lt;li&gt;&lt;strong&gt;输出&lt;/strong&gt;: &lt;code&gt;58&lt;/code&gt;&lt;/li&gt;
 &lt;li&gt;&lt;strong&gt;解释&lt;/strong&gt;: &lt;code&gt;L = 50&lt;/code&gt;, &lt;code&gt;V = 5&lt;/code&gt;, &lt;code&gt;III = 3&lt;/code&gt;.&lt;/li&gt;
 &lt;/ul&gt;
-&lt;h5&gt;示例 5&lt;/h5&gt;
+&lt;p&gt;&lt;strong&gt;示例 5：&lt;/strong&gt;&lt;/p&gt;
 &lt;ul&gt;
 &lt;li&gt;&lt;strong&gt;输入&lt;/strong&gt;: &lt;code&gt;s = &quot;MCMXCIV&quot;&lt;/code&gt;&lt;/li&gt;
 &lt;li&gt;&lt;strong&gt;输出&lt;/strong&gt;: &lt;code&gt;1994&lt;/code&gt;&lt;/li&gt;
 &lt;li&gt;&lt;strong&gt;解释&lt;/strong&gt;: &lt;code&gt;M = 1000&lt;/code&gt;, &lt;code&gt;CM = 900&lt;/code&gt;, &lt;code&gt;XC = 90&lt;/code&gt;, &lt;code&gt;IV = 4&lt;/code&gt;.&lt;/li&gt;
 &lt;/ul&gt;
-&lt;h4&gt;📝 提示&lt;/h4&gt;
+&lt;p&gt;&lt;strong&gt;🔍 提示&lt;/strong&gt;&lt;/p&gt;
 &lt;ul&gt;
 &lt;li&gt;&lt;code&gt;1 &amp;lt;= s.length &amp;lt;= 15&lt;/code&gt;&lt;/li&gt;
 &lt;li&gt;&lt;code&gt;s&lt;/code&gt; 仅含字符 &lt;code&gt;(&apos;I&apos;, &apos;V&apos;, &apos;X&apos;, &apos;L&apos;, &apos;C&apos;, &apos;D&apos;, &apos;M&apos;)&lt;/code&gt;&lt;/li&gt;
@@ -9838,14 +9882,12 @@ randomizedSet.getRandom(); // 由于 2 是集合中唯一的数字，getRandom �
 &lt;li&gt;题目所给测试用例皆符合罗马数字书写规则，不会出现跨位等情况。&lt;/li&gt;
 &lt;li&gt;&lt;code&gt;IL&lt;/code&gt; 和 &lt;code&gt;IM&lt;/code&gt; 这样的例子并不符合题目要求，&lt;code&gt;49&lt;/code&gt; 应该写作 &lt;code&gt;XLIX&lt;/code&gt;，&lt;code&gt;999&lt;/code&gt; 应该写作 &lt;code&gt;CMXCIX&lt;/code&gt;。&lt;/li&gt;
 &lt;/ul&gt;
-&lt;p&gt;&amp;lt;details class=&quot;solution-details&quot;&amp;gt;
-&amp;lt;summary&amp;gt;💡 查看题解与代码实现&amp;lt;/summary&amp;gt;&lt;/p&gt;
-&lt;h4&gt;💭 思路&lt;/h4&gt;
+&lt;p&gt;&lt;strong&gt;💡 解题思路&lt;/strong&gt;&lt;/p&gt;
 &lt;ol&gt;
 &lt;li&gt;使用哈希表存储每个罗马字符对应的整数值。&lt;/li&gt;
 &lt;li&gt;遍历字符串 &lt;code&gt;s&lt;/code&gt;，如果当前字符比下一个字符小，则将当前字符的值减去，否则加上当前字符的值。最后将结果累加即可。&lt;/li&gt;
 &lt;/ol&gt;
-&lt;h4&gt;💻 代码实现&lt;/h4&gt;
+&lt;p&gt;&lt;strong&gt;💻 代码实现 (Java)&lt;/strong&gt;&lt;/p&gt;
 &lt;pre&gt;&lt;code&gt;public int romanToInt(String s) {
     final Map&amp;lt;Character, Integer&amp;gt; map = Map.of(
             &apos;I&apos;, 1,
@@ -9874,12 +9916,16 @@ randomizedSet.getRandom(); // 由于 2 是集合中唯一的数字，getRandom �
     return res;
 }
 &lt;/code&gt;&lt;/pre&gt;
-&lt;p&gt;&amp;lt;/details&amp;gt;&lt;/p&gt;
+&lt;p&gt;&amp;lt;/div&amp;gt;
+&amp;lt;/details&amp;gt;&lt;/p&gt;
 &lt;hr /&gt;
 &lt;h2&gt;18. LeetCode 12：整数转罗马数字&lt;/h2&gt;
-&lt;h4&gt;🚀 相关链接&lt;/h4&gt;
+&lt;p&gt;&amp;lt;details class=&quot;problem-card&quot;&amp;gt;
+&amp;lt;summary class=&quot;problem-summary&quot;&amp;gt;📖 展开查看题目详情、示例与完整题解&amp;lt;/summary&amp;gt;&lt;/p&gt;
+&lt;p&gt;&amp;lt;div class=&quot;problem-content&quot;&amp;gt;&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;🔗 原题链接&lt;/strong&gt;&lt;/p&gt;
 &lt;p&gt;&lt;a href=&quot;https://leetcode.cn/problems/integer-to-roman/?envType=study-plan-v2&amp;amp;envId=top-interview-150&quot;&gt;LeetCode 012 - 整数转罗马数字&lt;/a&gt;&lt;/p&gt;
-&lt;h4&gt;📜 描述&lt;/h4&gt;
+&lt;p&gt;&lt;strong&gt;📝 题目描述&lt;/strong&gt;&lt;/p&gt;
 &lt;p&gt;罗马数字通过七个不同的符号来代表不同的数值：&lt;/p&gt;
 &lt;table&gt;
 &lt;thead&gt;
@@ -9926,8 +9972,8 @@ randomizedSet.getRandom(); // 由于 2 是集合中唯一的数字，getRandom �
 &lt;li&gt;只有 10 的次方（I, X, C, M）最多可以连续附加 3 次以代表 10 的倍数。你不能多次附加 5 (V)，50 (L) 或 500 (D)。如果需要将符号附加 4 次，请使用 &lt;strong&gt;减法形式&lt;/strong&gt;。&lt;/li&gt;
 &lt;/ol&gt;
 &lt;p&gt;给定一个整数，将其转换为罗马数字。&lt;/p&gt;
-&lt;h4&gt;💡 示例&lt;/h4&gt;
-&lt;h5&gt;示例 1&lt;/h5&gt;
+&lt;p&gt;&lt;strong&gt;📊 示例&lt;/strong&gt;&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;示例 1：&lt;/strong&gt;&lt;/p&gt;
 &lt;ul&gt;
 &lt;li&gt;&lt;strong&gt;输入&lt;/strong&gt;: &lt;code&gt;num = 3749&lt;/code&gt;&lt;/li&gt;
 &lt;li&gt;&lt;strong&gt;输出&lt;/strong&gt;: &lt;code&gt;&quot;MMMDCCXLIX&quot;&lt;/code&gt;&lt;/li&gt;
@@ -9940,7 +9986,7 @@ randomizedSet.getRandom(); // 由于 2 是集合中唯一的数字，getRandom �
 &lt;/ul&gt;
 &lt;/li&gt;
 &lt;/ul&gt;
-&lt;h5&gt;示例 2&lt;/h5&gt;
+&lt;p&gt;&lt;strong&gt;示例 2：&lt;/strong&gt;&lt;/p&gt;
 &lt;ul&gt;
 &lt;li&gt;&lt;strong&gt;输入&lt;/strong&gt;: &lt;code&gt;num = 58&lt;/code&gt;&lt;/li&gt;
 &lt;li&gt;&lt;strong&gt;输出&lt;/strong&gt;: &lt;code&gt;&quot;LVIII&quot;&lt;/code&gt;&lt;/li&gt;
@@ -9951,7 +9997,7 @@ randomizedSet.getRandom(); // 由于 2 是集合中唯一的数字，getRandom �
 &lt;/ul&gt;
 &lt;/li&gt;
 &lt;/ul&gt;
-&lt;h5&gt;示例 3&lt;/h5&gt;
+&lt;p&gt;&lt;strong&gt;示例 3：&lt;/strong&gt;&lt;/p&gt;
 &lt;ul&gt;
 &lt;li&gt;&lt;strong&gt;输入&lt;/strong&gt;: &lt;code&gt;num = 1994&lt;/code&gt;&lt;/li&gt;
 &lt;li&gt;&lt;strong&gt;输入&lt;/strong&gt;: &lt;code&gt;&quot;MCMXCIV&quot;&lt;/code&gt;&lt;/li&gt;
@@ -9964,15 +10010,13 @@ randomizedSet.getRandom(); // 由于 2 是集合中唯一的数字，getRandom �
 &lt;/ul&gt;
 &lt;/li&gt;
 &lt;/ul&gt;
-&lt;h4&gt;📝 提示&lt;/h4&gt;
+&lt;p&gt;&lt;strong&gt;🔍 提示&lt;/strong&gt;&lt;/p&gt;
 &lt;ul&gt;
 &lt;li&gt;&lt;code&gt;1 &amp;lt;= num &amp;lt;= 3999&lt;/code&gt;&lt;/li&gt;
 &lt;/ul&gt;
-&lt;p&gt;&amp;lt;details class=&quot;solution-details&quot;&amp;gt;
-&amp;lt;summary&amp;gt;💡 查看题解与代码实现&amp;lt;/summary&amp;gt;&lt;/p&gt;
-&lt;h4&gt;💭 思路&lt;/h4&gt;
+&lt;p&gt;&lt;strong&gt;💡 解题思路&lt;/strong&gt;&lt;/p&gt;
 &lt;p&gt;将整数从大到小依次减去最大的可表示罗马数字对应的值，直到整数减为 0。&lt;/p&gt;
-&lt;h4&gt;💻 代码实现&lt;/h4&gt;
+&lt;p&gt;&lt;strong&gt;💻 代码实现 (Java)&lt;/strong&gt;&lt;/p&gt;
 &lt;pre&gt;&lt;code&gt;public String intToRoman(int num) {
     int[] values = {1000, 900, 500, 400, 100, 90, 50, 40, 10, 9, 5, 4, 1};
     String[] symbols = {&quot;M&quot;, &quot;CM&quot;, &quot;D&quot;, &quot;CD&quot;, &quot;C&quot;, &quot;XC&quot;, &quot;L&quot;, &quot;XL&quot;, &quot;X&quot;, &quot;IX&quot;, &quot;V&quot;, &quot;IV&quot;, &quot;I&quot;};
@@ -9989,42 +10033,44 @@ randomizedSet.getRandom(); // 由于 2 是集合中唯一的数字，getRandom �
     return sb.toString();
 }
 &lt;/code&gt;&lt;/pre&gt;
-&lt;p&gt;&amp;lt;/details&amp;gt;&lt;/p&gt;
+&lt;p&gt;&amp;lt;/div&amp;gt;
+&amp;lt;/details&amp;gt;&lt;/p&gt;
 &lt;hr /&gt;
 &lt;h2&gt;19. LeetCode 58：最后一个单词的长度&lt;/h2&gt;
-&lt;h4&gt;🚀 相关链接&lt;/h4&gt;
+&lt;p&gt;&amp;lt;details class=&quot;problem-card&quot;&amp;gt;
+&amp;lt;summary class=&quot;problem-summary&quot;&amp;gt;📖 展开查看题目详情、示例与完整题解&amp;lt;/summary&amp;gt;&lt;/p&gt;
+&lt;p&gt;&amp;lt;div class=&quot;problem-content&quot;&amp;gt;&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;🔗 原题链接&lt;/strong&gt;&lt;/p&gt;
 &lt;p&gt;&lt;a href=&quot;https://leetcode.cn/problems/length-of-last-word/description/?envType=study-plan-v2&amp;amp;envId=top-interview-150&quot;&gt;LeetCode 058 - 最后一个单词的长度&lt;/a&gt;&lt;/p&gt;
-&lt;h4&gt;📜 描述&lt;/h4&gt;
+&lt;p&gt;&lt;strong&gt;📝 题目描述&lt;/strong&gt;&lt;/p&gt;
 &lt;p&gt;给你一个字符串 &lt;code&gt;s&lt;/code&gt;，由若干单词组成，单词前后用一些空格字符隔开。返回字符串中 &lt;strong&gt;最后一个&lt;/strong&gt; 单词的长度。&lt;/p&gt;
 &lt;p&gt;&lt;strong&gt;单词&lt;/strong&gt; 是指仅由字母组成、不包含任何空格字符的最大子字符串。&lt;/p&gt;
-&lt;h4&gt;💡 示例&lt;/h4&gt;
-&lt;h5&gt;示例 1&lt;/h5&gt;
+&lt;p&gt;&lt;strong&gt;📊 示例&lt;/strong&gt;&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;示例 1：&lt;/strong&gt;&lt;/p&gt;
 &lt;ul&gt;
 &lt;li&gt;&lt;strong&gt;输入&lt;/strong&gt;: &lt;code&gt;s = &quot;Hello World&quot;&lt;/code&gt;&lt;/li&gt;
 &lt;li&gt;&lt;strong&gt;输出&lt;/strong&gt;: &lt;code&gt;5&lt;/code&gt;&lt;/li&gt;
 &lt;li&gt;&lt;strong&gt;解释&lt;/strong&gt;: 最后一个单词是“World”，长度为 5。&lt;/li&gt;
 &lt;/ul&gt;
-&lt;h5&gt;示例 2&lt;/h5&gt;
+&lt;p&gt;&lt;strong&gt;示例 2：&lt;/strong&gt;&lt;/p&gt;
 &lt;ul&gt;
 &lt;li&gt;&lt;strong&gt;输入&lt;/strong&gt;: &lt;code&gt;s = &quot;   fly me   to   the moon  &quot;&lt;/code&gt;&lt;/li&gt;
 &lt;li&gt;&lt;strong&gt;输出&lt;/strong&gt;: &lt;code&gt;4&lt;/code&gt;&lt;/li&gt;
 &lt;li&gt;&lt;strong&gt;解释&lt;/strong&gt;: 最后一个单词是“moon”，长度为 4。&lt;/li&gt;
 &lt;/ul&gt;
-&lt;h5&gt;示例 3&lt;/h5&gt;
+&lt;p&gt;&lt;strong&gt;示例 3：&lt;/strong&gt;&lt;/p&gt;
 &lt;ul&gt;
 &lt;li&gt;&lt;strong&gt;输入&lt;/strong&gt;: &lt;code&gt;s = &quot;luffy is still joyboy&quot;&lt;/code&gt;&lt;/li&gt;
 &lt;li&gt;&lt;strong&gt;输出&lt;/strong&gt;: &lt;code&gt;6&lt;/code&gt;&lt;/li&gt;
 &lt;li&gt;&lt;strong&gt;解释&lt;/strong&gt;: 最后一个单词是“joyboy”，长度为 6。&lt;/li&gt;
 &lt;/ul&gt;
-&lt;h4&gt;📝 提示&lt;/h4&gt;
+&lt;p&gt;&lt;strong&gt;🔍 提示&lt;/strong&gt;&lt;/p&gt;
 &lt;ul&gt;
 &lt;li&gt;&lt;code&gt;1 &amp;lt;= s.length &amp;lt;= 10^4&lt;/code&gt;&lt;/li&gt;
 &lt;li&gt;&lt;code&gt;s&lt;/code&gt; 仅有英文字母和空格 &lt;code&gt;&apos; &apos;&lt;/code&gt; 组成&lt;/li&gt;
 &lt;li&gt;&lt;code&gt;s&lt;/code&gt; 中至少存在一个单词&lt;/li&gt;
 &lt;/ul&gt;
-&lt;p&gt;&amp;lt;details class=&quot;solution-details&quot;&amp;gt;
-&amp;lt;summary&amp;gt;💡 查看题解与代码实现&amp;lt;/summary&amp;gt;&lt;/p&gt;
-&lt;h4&gt;💭 思路&lt;/h4&gt;
+&lt;p&gt;&lt;strong&gt;💡 解题思路&lt;/strong&gt;&lt;/p&gt;
 &lt;p&gt;从字符串的末尾开始遍历，找到最后一个单词的开头和结尾，计算其长度。&lt;/p&gt;
 &lt;ol&gt;
 &lt;li&gt;初始化一个标志位 &lt;code&gt;flag&lt;/code&gt; 为 &lt;code&gt;false&lt;/code&gt;，用于判断是否进入了最后一个单词。&lt;/li&gt;
@@ -10037,7 +10083,7 @@ randomizedSet.getRandom(); // 由于 2 是集合中唯一的数字，getRandom �
 &lt;/li&gt;
 &lt;li&gt;如果遍历结束后仍未返回，则返回当前计算的长度。&lt;/li&gt;
 &lt;/ol&gt;
-&lt;h4&gt;💻 代码实现&lt;/h4&gt;
+&lt;p&gt;&lt;strong&gt;💻 代码实现 (Java)&lt;/strong&gt;&lt;/p&gt;
 &lt;pre&gt;&lt;code&gt;public int lengthOfLastWord(String s) {
     int len = s.length();
     boolean flag = false;
@@ -10056,37 +10102,39 @@ randomizedSet.getRandom(); // 由于 2 是集合中唯一的数字，getRandom �
     return res;
 }
 &lt;/code&gt;&lt;/pre&gt;
-&lt;p&gt;&amp;lt;/details&amp;gt;&lt;/p&gt;
+&lt;p&gt;&amp;lt;/div&amp;gt;
+&amp;lt;/details&amp;gt;&lt;/p&gt;
 &lt;hr /&gt;
 &lt;h2&gt;20. LeetCode 14：最长公共前缀&lt;/h2&gt;
-&lt;h4&gt;🚀 相关链接&lt;/h4&gt;
+&lt;p&gt;&amp;lt;details class=&quot;problem-card&quot;&amp;gt;
+&amp;lt;summary class=&quot;problem-summary&quot;&amp;gt;📖 展开查看题目详情、示例与完整题解&amp;lt;/summary&amp;gt;&lt;/p&gt;
+&lt;p&gt;&amp;lt;div class=&quot;problem-content&quot;&amp;gt;&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;🔗 原题链接&lt;/strong&gt;&lt;/p&gt;
 &lt;p&gt;&lt;a href=&quot;https://leetcode.cn/problems/longest-common-prefix/description/?envType=study-plan-v2&amp;amp;envId=top-interview-150&quot;&gt;LeetCode 14 - 最长公共前缀&lt;/a&gt;&lt;/p&gt;
-&lt;h4&gt;📜 描述&lt;/h4&gt;
+&lt;p&gt;&lt;strong&gt;📝 题目描述&lt;/strong&gt;&lt;/p&gt;
 &lt;p&gt;编写一个函数来查找字符串数组中的最长公共前缀。&lt;/p&gt;
 &lt;p&gt;如果不存在公共前缀，返回空字符串 &lt;code&gt;&quot;&quot;&lt;/code&gt;。&lt;/p&gt;
-&lt;h4&gt;💡 示例&lt;/h4&gt;
-&lt;h5&gt;示例 1&lt;/h5&gt;
+&lt;p&gt;&lt;strong&gt;📊 示例&lt;/strong&gt;&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;示例 1：&lt;/strong&gt;&lt;/p&gt;
 &lt;ul&gt;
 &lt;li&gt;&lt;strong&gt;输入&lt;/strong&gt;: &lt;code&gt;strs = [&quot;flower&quot;,&quot;flow&quot;,&quot;flight&quot;]&lt;/code&gt;&lt;/li&gt;
 &lt;li&gt;&lt;strong&gt;输出&lt;/strong&gt;: &lt;code&gt;&quot;fl&quot;&lt;/code&gt;&lt;/li&gt;
 &lt;/ul&gt;
-&lt;h5&gt;示例 2&lt;/h5&gt;
+&lt;p&gt;&lt;strong&gt;示例 2：&lt;/strong&gt;&lt;/p&gt;
 &lt;ul&gt;
 &lt;li&gt;&lt;strong&gt;输入&lt;/strong&gt;: &lt;code&gt;strs = [&quot;dog&quot;,&quot;racecar&quot;,&quot;car&quot;]&lt;/code&gt;&lt;/li&gt;
 &lt;li&gt;&lt;strong&gt;输出&lt;/strong&gt;: &lt;code&gt;&quot;&quot;&lt;/code&gt;&lt;/li&gt;
 &lt;li&gt;&lt;strong&gt;解释&lt;/strong&gt;: 输入不存在公共前缀。&lt;/li&gt;
 &lt;/ul&gt;
-&lt;h4&gt;📝 提示&lt;/h4&gt;
+&lt;p&gt;&lt;strong&gt;🔍 提示&lt;/strong&gt;&lt;/p&gt;
 &lt;ol&gt;
 &lt;li&gt;&lt;code&gt;1 &amp;lt;= strs.length &amp;lt;= 200&lt;/code&gt;&lt;/li&gt;
 &lt;li&gt;&lt;code&gt;0 &amp;lt;= strs[i].length &amp;lt;= 200&lt;/code&gt;&lt;/li&gt;
 &lt;li&gt;&lt;code&gt;strs[i]&lt;/code&gt; 如果非空，则仅由小写英文字母组成&lt;/li&gt;
 &lt;/ol&gt;
-&lt;p&gt;&amp;lt;details class=&quot;solution-details&quot;&amp;gt;
-&amp;lt;summary&amp;gt;💡 查看题解与代码实现&amp;lt;/summary&amp;gt;&lt;/p&gt;
-&lt;h4&gt;💭 思路&lt;/h4&gt;
+&lt;p&gt;&lt;strong&gt;💡 解题思路&lt;/strong&gt;&lt;/p&gt;
 &lt;p&gt;通过将字符串数组排序，比较第一个和最后一个字符串的公共前缀，这样可以减少比较的次数，提高效率。&lt;/p&gt;
-&lt;h4&gt;💻 代码实现&lt;/h4&gt;
+&lt;p&gt;&lt;strong&gt;💻 代码实现 (Java)&lt;/strong&gt;&lt;/p&gt;
 &lt;pre&gt;&lt;code&gt;public String longestCommonPrefix(String[] strs) {
         if (strs.length == 1) {
             return strs[0];
@@ -10104,48 +10152,50 @@ randomizedSet.getRandom(); // 由于 2 是集合中唯一的数字，getRandom �
         return s1;
     }
 &lt;/code&gt;&lt;/pre&gt;
-&lt;p&gt;&amp;lt;/details&amp;gt;&lt;/p&gt;
+&lt;p&gt;&amp;lt;/div&amp;gt;
+&amp;lt;/details&amp;gt;&lt;/p&gt;
 &lt;hr /&gt;
 &lt;h2&gt;21. LeetCode 151：反转字符串中的单词&lt;/h2&gt;
-&lt;h4&gt;🚀 相关链接&lt;/h4&gt;
+&lt;p&gt;&amp;lt;details class=&quot;problem-card&quot;&amp;gt;
+&amp;lt;summary class=&quot;problem-summary&quot;&amp;gt;📖 展开查看题目详情、示例与完整题解&amp;lt;/summary&amp;gt;&lt;/p&gt;
+&lt;p&gt;&amp;lt;div class=&quot;problem-content&quot;&amp;gt;&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;🔗 原题链接&lt;/strong&gt;&lt;/p&gt;
 &lt;p&gt;&lt;a href=&quot;https://leetcode.cn/problems/reverse-words-in-a-string/description/?envType=study-plan-v2&amp;amp;envId=top-interview-150&quot;&gt;LeetCode 151 - 反转字符串中的单词&lt;/a&gt;&lt;/p&gt;
-&lt;h4&gt;📜 描述&lt;/h4&gt;
+&lt;p&gt;&lt;strong&gt;📝 题目描述&lt;/strong&gt;&lt;/p&gt;
 &lt;p&gt;给你一个字符串 &lt;code&gt;s&lt;/code&gt; ，请你反转字符串中 &lt;strong&gt;单词&lt;/strong&gt; 的顺序。&lt;/p&gt;
 &lt;p&gt;&lt;strong&gt;单词&lt;/strong&gt; 是由非空格字符组成的字符串。&lt;code&gt;s&lt;/code&gt; 中使用至少一个空格将字符串中的 &lt;strong&gt;单词&lt;/strong&gt; 分隔开。&lt;/p&gt;
 &lt;p&gt;返回 &lt;strong&gt;单词&lt;/strong&gt; 顺序颠倒且 &lt;strong&gt;单词&lt;/strong&gt; 之间用单个空格连接的结果字符串。&lt;/p&gt;
 &lt;p&gt;&lt;strong&gt;注意&lt;/strong&gt;：输入字符串 &lt;code&gt;s&lt;/code&gt; 中可能会存在前导空格、尾随空格或者单词间的多个空格。返回的结果字符串中，单词间应当仅用单个空格分隔，且不包含任何额外的空格。&lt;/p&gt;
-&lt;h4&gt;💡 示例&lt;/h4&gt;
+&lt;p&gt;&lt;strong&gt;📊 示例&lt;/strong&gt;&lt;/p&gt;
 &lt;ul&gt;
 &lt;li&gt;&lt;strong&gt;输入&lt;/strong&gt;: &lt;code&gt;s = &quot;the sky is blue&quot;&lt;/code&gt;&lt;/li&gt;
 &lt;li&gt;&lt;strong&gt;输出&lt;/strong&gt;: &lt;code&gt;&quot;blue is sky the&quot;&lt;/code&gt;&lt;/li&gt;
 &lt;/ul&gt;
-&lt;h5&gt;示例 2&lt;/h5&gt;
+&lt;p&gt;&lt;strong&gt;示例 2：&lt;/strong&gt;&lt;/p&gt;
 &lt;ul&gt;
 &lt;li&gt;&lt;strong&gt;输入&lt;/strong&gt;: &lt;code&gt;s = &quot;  hello world  &quot;&lt;/code&gt;&lt;/li&gt;
 &lt;li&gt;&lt;strong&gt;输出&lt;/strong&gt;: &lt;code&gt;&quot;world hello&quot;&lt;/code&gt;&lt;/li&gt;
 &lt;li&gt;&lt;strong&gt;解释&lt;/strong&gt;: 反转后的字符串中不能存在前导空格和尾随空格。&lt;/li&gt;
 &lt;/ul&gt;
-&lt;h5&gt;示例 3&lt;/h5&gt;
+&lt;p&gt;&lt;strong&gt;示例 3：&lt;/strong&gt;&lt;/p&gt;
 &lt;ul&gt;
 &lt;li&gt;&lt;strong&gt;输入&lt;/strong&gt;: &lt;code&gt;s = &quot;a good   example&quot;&lt;/code&gt;&lt;/li&gt;
 &lt;li&gt;&lt;strong&gt;输出&lt;/strong&gt;: &lt;code&gt;&quot;example good a&quot;&lt;/code&gt;&lt;/li&gt;
 &lt;li&gt;&lt;strong&gt;解释&lt;/strong&gt;: 如果两个单词间有多余的空格，反转后的字符串需要将单词间的空格减少到仅有一个。&lt;/li&gt;
 &lt;/ul&gt;
-&lt;h4&gt;📝 提示&lt;/h4&gt;
+&lt;p&gt;&lt;strong&gt;🔍 提示&lt;/strong&gt;&lt;/p&gt;
 &lt;ul&gt;
 &lt;li&gt;&lt;code&gt;1 &amp;lt;= s.length &amp;lt;= 10^4&lt;/code&gt;&lt;/li&gt;
 &lt;li&gt;&lt;code&gt;s&lt;/code&gt; 包含英文大小写字母、数字和空格 &lt;code&gt;&apos; &apos;&lt;/code&gt;&lt;/li&gt;
 &lt;li&gt;&lt;code&gt;s&lt;/code&gt; 中 &lt;strong&gt;至少存在一个&lt;/strong&gt; 单词&lt;/li&gt;
 &lt;/ul&gt;
-&lt;p&gt;&amp;lt;details class=&quot;solution-details&quot;&amp;gt;
-&amp;lt;summary&amp;gt;💡 查看题解与代码实现&amp;lt;/summary&amp;gt;&lt;/p&gt;
-&lt;h4&gt;💭 思路&lt;/h4&gt;
+&lt;p&gt;&lt;strong&gt;💡 解题思路&lt;/strong&gt;&lt;/p&gt;
 &lt;ol&gt;
 &lt;li&gt;去除字符串的前导和尾随空格。&lt;/li&gt;
 &lt;li&gt;反转整个字符串。&lt;/li&gt;
 &lt;li&gt;反转每个单词，并去除多余的空格。&lt;/li&gt;
 &lt;/ol&gt;
-&lt;h4&gt;💻 代码实现&lt;/h4&gt;
+&lt;p&gt;&lt;strong&gt;💻 代码实现 (Java)&lt;/strong&gt;&lt;/p&gt;
 &lt;pre&gt;&lt;code&gt;public String reverseWords(String s) {
     StringBuilder sb = new StringBuilder(s.trim());
     if (sb.indexOf(&quot; &quot;) == -1) {
@@ -10179,12 +10229,16 @@ public void reverse(StringBuilder sb, int start, int end) {
     }
 }
 &lt;/code&gt;&lt;/pre&gt;
-&lt;p&gt;&amp;lt;/details&amp;gt;&lt;/p&gt;
+&lt;p&gt;&amp;lt;/div&amp;gt;
+&amp;lt;/details&amp;gt;&lt;/p&gt;
 &lt;hr /&gt;
 &lt;h2&gt;22. LeetCode 6：Z 字形变换&lt;/h2&gt;
-&lt;h4&gt;🚀 相关链接&lt;/h4&gt;
+&lt;p&gt;&amp;lt;details class=&quot;problem-card&quot;&amp;gt;
+&amp;lt;summary class=&quot;problem-summary&quot;&amp;gt;📖 展开查看题目详情、示例与完整题解&amp;lt;/summary&amp;gt;&lt;/p&gt;
+&lt;p&gt;&amp;lt;div class=&quot;problem-content&quot;&amp;gt;&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;🔗 原题链接&lt;/strong&gt;&lt;/p&gt;
 &lt;p&gt;&lt;a href=&quot;https://leetcode.cn/problems/zigzag-conversion/description/?envType=study-plan-v2&amp;amp;envId=top-interview-150&quot;&gt;LeetCode 6 - Z 字形变换&lt;/a&gt;&lt;/p&gt;
-&lt;h4&gt;📜 描述&lt;/h4&gt;
+&lt;p&gt;&lt;strong&gt;📝 题目描述&lt;/strong&gt;&lt;/p&gt;
 &lt;p&gt;将一个给定字符串 &lt;code&gt;s&lt;/code&gt; 根据给定的行数 &lt;code&gt;numRows&lt;/code&gt;，以从上往下、从左到右进行 Z 字形排列。&lt;/p&gt;
 &lt;p&gt;比如输入字符串为 &lt;code&gt;&quot;PAYPALISHIRING&quot;&lt;/code&gt; 行数为 &lt;code&gt;3&lt;/code&gt; 时，排列如下：&lt;/p&gt;
 &lt;pre&gt;&lt;code&gt;P   A   H   N
@@ -10195,8 +10249,8 @@ Y   I   R
 &lt;p&gt;请你实现这个将字符串进行指定行数变换的函数：&lt;/p&gt;
 &lt;pre&gt;&lt;code&gt;string convert(string s, int numRows);
 &lt;/code&gt;&lt;/pre&gt;
-&lt;h4&gt;💡 示例&lt;/h4&gt;
-&lt;h5&gt;示例 1&lt;/h5&gt;
+&lt;p&gt;&lt;strong&gt;📊 示例&lt;/strong&gt;&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;示例 1：&lt;/strong&gt;&lt;/p&gt;
 &lt;ul&gt;
 &lt;li&gt;&lt;strong&gt;输入&lt;/strong&gt;: &lt;code&gt;s = &quot;PAYPALISHIRING&quot;&lt;/code&gt;, &lt;code&gt;numRows = 3&lt;/code&gt;&lt;/li&gt;
 &lt;li&gt;&lt;strong&gt;输出&lt;/strong&gt;: &lt;code&gt;&quot;PAHNAPLSIIGYIR&quot;&lt;/code&gt;&lt;/li&gt;
@@ -10206,7 +10260,7 @@ Y   I   R
 &lt;/code&gt;&lt;/pre&gt;
 &lt;/li&gt;
 &lt;/ul&gt;
-&lt;h5&gt;示例 2&lt;/h5&gt;
+&lt;p&gt;&lt;strong&gt;示例 2：&lt;/strong&gt;&lt;/p&gt;
 &lt;ul&gt;
 &lt;li&gt;&lt;strong&gt;输入&lt;/strong&gt;: &lt;code&gt;s = &quot;PAYPALISHIRING&quot;&lt;/code&gt;, &lt;code&gt;numRows = 4&lt;/code&gt;&lt;/li&gt;
 &lt;li&gt;&lt;strong&gt;输出&lt;/strong&gt;: &lt;code&gt;&quot;PINALSIGYAHRPI&quot;&lt;/code&gt;&lt;/li&gt;
@@ -10217,22 +10271,20 @@ P     I
 &lt;/code&gt;&lt;/pre&gt;
 &lt;/li&gt;
 &lt;/ul&gt;
-&lt;h5&gt;示例 3&lt;/h5&gt;
+&lt;p&gt;&lt;strong&gt;示例 3：&lt;/strong&gt;&lt;/p&gt;
 &lt;ul&gt;
 &lt;li&gt;&lt;strong&gt;输入&lt;/strong&gt;: &lt;code&gt;s = &quot;A&quot;&lt;/code&gt;, &lt;code&gt;numRows = 1&lt;/code&gt;&lt;/li&gt;
 &lt;li&gt;&lt;strong&gt;输出&lt;/strong&gt;: &lt;code&gt;&quot;A&quot;&lt;/code&gt;&lt;/li&gt;
 &lt;/ul&gt;
-&lt;h4&gt;📝 提示&lt;/h4&gt;
+&lt;p&gt;&lt;strong&gt;🔍 提示&lt;/strong&gt;&lt;/p&gt;
 &lt;ul&gt;
 &lt;li&gt;&lt;code&gt;1 &amp;lt;= s.length &amp;lt;= 1000&lt;/code&gt;&lt;/li&gt;
 &lt;li&gt;&lt;code&gt;s&lt;/code&gt; 由英文字母（小写和大写）、&lt;code&gt;&apos;,&apos;&lt;/code&gt; 和 &lt;code&gt;&apos;.&apos;&lt;/code&gt; 组成&lt;/li&gt;
 &lt;li&gt;&lt;code&gt;1 &amp;lt;= numRows &amp;lt;= 1000&lt;/code&gt;&lt;/li&gt;
 &lt;/ul&gt;
-&lt;p&gt;&amp;lt;details class=&quot;solution-details&quot;&amp;gt;
-&amp;lt;summary&amp;gt;💡 查看题解与代码实现&amp;lt;/summary&amp;gt;&lt;/p&gt;
-&lt;h4&gt;💭 思路&lt;/h4&gt;
+&lt;p&gt;&lt;strong&gt;💡 解题思路&lt;/strong&gt;&lt;/p&gt;
 &lt;p&gt;&lt;strong&gt;模拟法&lt;/strong&gt;：使用一个列表来存储每一行的字符串，然后按照 Z 字形排列的顺序将字符添加到对应的行中。最后将每一行的字符串拼接起来即可。使用一个flag来表示当前顺序是向下移动还是向上移动。&lt;/p&gt;
-&lt;h4&gt;💻 代码实现&lt;/h4&gt;
+&lt;p&gt;&lt;strong&gt;💻 代码实现 (Java)&lt;/strong&gt;&lt;/p&gt;
 &lt;pre&gt;&lt;code&gt;public String convert(String s, int numRows) {
     if (numRows == 1) return s;
     final List&amp;lt;StringBuilder&amp;gt; sbList = new ArrayList&amp;lt;&amp;gt;();
@@ -10257,48 +10309,50 @@ P     I
     return totalBuilder.toString();
 }
 &lt;/code&gt;&lt;/pre&gt;
-&lt;p&gt;&amp;lt;/details&amp;gt;&lt;/p&gt;
+&lt;p&gt;&amp;lt;/div&amp;gt;
+&amp;lt;/details&amp;gt;&lt;/p&gt;
 &lt;hr /&gt;
 &lt;h2&gt;23. LeetCode 28：找出字符串中第一个匹配项的下标&lt;/h2&gt;
-&lt;h4&gt;🚀 相关链接&lt;/h4&gt;
+&lt;p&gt;&amp;lt;details class=&quot;problem-card&quot;&amp;gt;
+&amp;lt;summary class=&quot;problem-summary&quot;&amp;gt;📖 展开查看题目详情、示例与完整题解&amp;lt;/summary&amp;gt;&lt;/p&gt;
+&lt;p&gt;&amp;lt;div class=&quot;problem-content&quot;&amp;gt;&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;🔗 原题链接&lt;/strong&gt;&lt;/p&gt;
 &lt;p&gt;&lt;a href=&quot;https://leetcode.cn/problems/find-the-index-of-the-first-occurrence-in-a-string/description/?envType=study-plan-v2&amp;amp;envId=top-interview-150&quot;&gt;LeetCode 28 - 找出字符串中第一个匹配项的下标&lt;/a&gt;&lt;/p&gt;
-&lt;h4&gt;📜 描述&lt;/h4&gt;
+&lt;p&gt;&lt;strong&gt;📝 题目描述&lt;/strong&gt;&lt;/p&gt;
 &lt;p&gt;给你两个字符串 &lt;code&gt;haystack&lt;/code&gt; 和 &lt;code&gt;needle&lt;/code&gt; ，请你在 &lt;code&gt;haystack&lt;/code&gt; 字符串中找出 &lt;code&gt;needle&lt;/code&gt; 字符串的第一个匹配项的下标（下标从 0 开始）。如果 &lt;code&gt;needle&lt;/code&gt; 不是 &lt;code&gt;haystack&lt;/code&gt; 的一部分，则返回 &lt;code&gt;-1&lt;/code&gt;。&lt;/p&gt;
-&lt;h4&gt;💡 示例&lt;/h4&gt;
-&lt;h5&gt;示例 1&lt;/h5&gt;
+&lt;p&gt;&lt;strong&gt;📊 示例&lt;/strong&gt;&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;示例 1：&lt;/strong&gt;&lt;/p&gt;
 &lt;ul&gt;
 &lt;li&gt;&lt;strong&gt;输入&lt;/strong&gt;: &lt;code&gt;haystack = &quot;sadbutsad&quot;, needle = &quot;sad&quot;&lt;/code&gt;&lt;/li&gt;
 &lt;li&gt;&lt;strong&gt;输出&lt;/strong&gt;: &lt;code&gt;0&lt;/code&gt;&lt;/li&gt;
 &lt;li&gt;&lt;strong&gt;解释&lt;/strong&gt;: &lt;code&gt;&quot;sad&quot;&lt;/code&gt; 在下标 &lt;code&gt;0&lt;/code&gt; 和 &lt;code&gt;6&lt;/code&gt; 处匹配。第一个匹配项的下标是 &lt;code&gt;0&lt;/code&gt;，所以返回 &lt;code&gt;0&lt;/code&gt;。&lt;/li&gt;
 &lt;/ul&gt;
-&lt;h5&gt;示例 2&lt;/h5&gt;
+&lt;p&gt;&lt;strong&gt;示例 2：&lt;/strong&gt;&lt;/p&gt;
 &lt;ul&gt;
 &lt;li&gt;&lt;strong&gt;输入&lt;/strong&gt;: &lt;code&gt;haystack = &quot;leetcode&quot;, needle = &quot;leeto&quot;&lt;/code&gt;&lt;/li&gt;
 &lt;li&gt;&lt;strong&gt;输出&lt;/strong&gt;: &lt;code&gt;-1&lt;/code&gt;&lt;/li&gt;
 &lt;li&gt;&lt;strong&gt;解释&lt;/strong&gt;: &lt;code&gt;&quot;leeto&quot;&lt;/code&gt; 没有在 &lt;code&gt;&quot;leetcode&quot;&lt;/code&gt; 中出现，所以返回 &lt;code&gt;-1&lt;/code&gt;。&lt;/li&gt;
 &lt;/ul&gt;
-&lt;h4&gt;📝 提示&lt;/h4&gt;
+&lt;p&gt;&lt;strong&gt;🔍 提示&lt;/strong&gt;&lt;/p&gt;
 &lt;ul&gt;
 &lt;li&gt;&lt;code&gt;1 &amp;lt;= haystack.length, needle.length &amp;lt;= 10^4&lt;/code&gt;&lt;/li&gt;
 &lt;li&gt;&lt;code&gt;haystack&lt;/code&gt; 和 &lt;code&gt;needle&lt;/code&gt; 仅由小写英文字符组成&lt;/li&gt;
 &lt;/ul&gt;
-&lt;p&gt;&amp;lt;details class=&quot;solution-details&quot;&amp;gt;
-&amp;lt;summary&amp;gt;💡 查看题解与代码实现&amp;lt;/summary&amp;gt;&lt;/p&gt;
-&lt;h4&gt;💭 思路&lt;/h4&gt;
-&lt;h5&gt;1. KMP算法&lt;/h5&gt;
+&lt;p&gt;&lt;strong&gt;💡 解题思路&lt;/strong&gt;&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;1. KMP算法&lt;/strong&gt;&lt;/p&gt;
 &lt;p&gt;KMP算法是一种用于字符串匹配的经典算法，其核心思想是通过构建部分的匹配表（next数组），在匹配失败时能够跳过一部分字符，从而提高匹配效率。具体思路如下：&lt;/p&gt;
 &lt;ol&gt;
 &lt;li&gt;&lt;strong&gt;构建next数组&lt;/strong&gt;：计算模式串（needle）的next数组，next数组的每个元素表示在当前字符匹配失败时，模式串中下一个字符的位置。&lt;/li&gt;
 &lt;li&gt;&lt;strong&gt;使用next数组进行匹配&lt;/strong&gt;：在匹配过程中，如果当前字符匹配失败，则根据next数组的值移动模式串的位置，而不是直接移动主串的位置。&lt;/li&gt;
 &lt;/ol&gt;
-&lt;h5&gt;2. Sunday算法&lt;/h5&gt;
+&lt;p&gt;&lt;strong&gt;2. Sunday算法&lt;/strong&gt;&lt;/p&gt;
 &lt;p&gt;Sunday算法是一种更高效的字符串匹配算法，其核心思想是通过对模式串和主串的字符进行比较，并根据最后一次匹配失败的位置来决定下一步的移动距离。具体思路如下：&lt;/p&gt;
 &lt;ol&gt;
 &lt;li&gt;&lt;strong&gt;预处理偏移表&lt;/strong&gt;：计算模式串中每个字符在模式串中的位置，并为每个字符生成一个偏移量。&lt;/li&gt;
 &lt;li&gt;&lt;strong&gt;匹配过程中使用偏移表&lt;/strong&gt;：在匹配失败时，根据主串中下一个字符的位置来决定模式串的移动距离。&lt;/li&gt;
 &lt;/ol&gt;
-&lt;h4&gt;💻 代码实现&lt;/h4&gt;
-&lt;h5&gt;KMP算法&lt;/h5&gt;
+&lt;p&gt;&lt;strong&gt;💻 代码实现 (Java)&lt;/strong&gt;&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;KMP算法&lt;/strong&gt;&lt;/p&gt;
 &lt;pre&gt;&lt;code&gt;public int strStr(String haystack, String needle) {
     int[] next = buildNextArr(needle);
 
@@ -10338,7 +10392,7 @@ private int[] buildNextArr(String pattern) {
     return next;
 }
 &lt;/code&gt;&lt;/pre&gt;
-&lt;h5&gt;Sunday算法&lt;/h5&gt;
+&lt;p&gt;&lt;strong&gt;Sunday算法&lt;/strong&gt;&lt;/p&gt;
 &lt;pre&gt;&lt;code&gt;public int strStr(String haystack, String needle) {
     int scanIndex = 0, hayStackIndex = 0, needleIndex = 0, hayLen = haystack.length(), needleLen = needle.length();
     Map&amp;lt;Character, Integer&amp;gt; offsetMap = new HashMap&amp;lt;&amp;gt;();
@@ -10378,18 +10432,22 @@ private int[] buildNextArr(String pattern) {
     return -1;
 }
 &lt;/code&gt;&lt;/pre&gt;
-&lt;p&gt;&amp;lt;/details&amp;gt;&lt;/p&gt;
+&lt;p&gt;&amp;lt;/div&amp;gt;
+&amp;lt;/details&amp;gt;&lt;/p&gt;
 &lt;hr /&gt;
 &lt;h2&gt;24. LeetCode 68：文本左右对齐&lt;/h2&gt;
-&lt;h4&gt;🚀 相关链接&lt;/h4&gt;
+&lt;p&gt;&amp;lt;details class=&quot;problem-card&quot;&amp;gt;
+&amp;lt;summary class=&quot;problem-summary&quot;&amp;gt;📖 展开查看题目详情、示例与完整题解&amp;lt;/summary&amp;gt;&lt;/p&gt;
+&lt;p&gt;&amp;lt;div class=&quot;problem-content&quot;&amp;gt;&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;🔗 原题链接&lt;/strong&gt;&lt;/p&gt;
 &lt;p&gt;&lt;a href=&quot;https://leetcode.cn/problems/text-justification/description/?envType=study-plan-v2&amp;amp;envId=top-interview-150&quot;&gt;LeetCode 68 - 文本左右对齐&lt;/a&gt;&lt;/p&gt;
-&lt;h4&gt;📜 描述&lt;/h4&gt;
+&lt;p&gt;&lt;strong&gt;📝 题目描述&lt;/strong&gt;&lt;/p&gt;
 &lt;p&gt;给定一个单词数组 &lt;code&gt;words&lt;/code&gt; 和一个长度 &lt;code&gt;maxWidth&lt;/code&gt;，重新排版单词，使其成为每行恰好有 &lt;code&gt;maxWidth&lt;/code&gt; 个字符，且左右两端对齐的文本。&lt;/p&gt;
 &lt;p&gt;你应该使用 &lt;strong&gt;“贪心算法”&lt;/strong&gt; 来放置给定的单词；也就是说，尽可能多地往每行中放置单词。必要时可用空格 &lt;code&gt;&apos; &apos;&lt;/code&gt; 填充，使得每行恰好有 &lt;code&gt;maxWidth&lt;/code&gt; 个字符。&lt;/p&gt;
 &lt;p&gt;要求尽可能均匀分配单词间的空格数量。如果某一行单词间的空格不能均匀分配，则左侧放置的空格数要多于右侧的空格数。&lt;/p&gt;
 &lt;p&gt;文本的最后一行应为左对齐，且单词之间不插入额外的空格。&lt;/p&gt;
-&lt;h4&gt;💡 示例&lt;/h4&gt;
-&lt;h5&gt;示例 1&lt;/h5&gt;
+&lt;p&gt;&lt;strong&gt;📊 示例&lt;/strong&gt;&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;示例 1：&lt;/strong&gt;&lt;/p&gt;
 &lt;ul&gt;
 &lt;li&gt;&lt;strong&gt;输入&lt;/strong&gt;: &lt;code&gt;words = [&quot;This&quot;, &quot;is&quot;, &quot;an&quot;, &quot;example&quot;, &quot;of&quot;, &quot;text&quot;, &quot;justification.&quot;]&lt;/code&gt;, &lt;code&gt;maxWidth = 16&lt;/code&gt;&lt;/li&gt;
 &lt;li&gt;&lt;strong&gt;输出&lt;/strong&gt;:&lt;pre&gt;&lt;code&gt;[
@@ -10400,7 +10458,7 @@ private int[] buildNextArr(String pattern) {
 &lt;/code&gt;&lt;/pre&gt;
 &lt;/li&gt;
 &lt;/ul&gt;
-&lt;h5&gt;示例 2&lt;/h5&gt;
+&lt;p&gt;&lt;strong&gt;示例 2：&lt;/strong&gt;&lt;/p&gt;
 &lt;ul&gt;
 &lt;li&gt;&lt;strong&gt;输入&lt;/strong&gt;: &lt;code&gt;words = [&quot;What&quot;,&quot;must&quot;,&quot;be&quot;,&quot;acknowledgment&quot;,&quot;shall&quot;,&quot;be&quot;]&lt;/code&gt;, &lt;code&gt;maxWidth = 16&lt;/code&gt;&lt;/li&gt;
 &lt;li&gt;&lt;strong&gt;输出&lt;/strong&gt;:&lt;pre&gt;&lt;code&gt;[
@@ -10411,7 +10469,7 @@ private int[] buildNextArr(String pattern) {
 &lt;/code&gt;&lt;/pre&gt;
 &lt;/li&gt;
 &lt;/ul&gt;
-&lt;h5&gt;示例 3&lt;/h5&gt;
+&lt;p&gt;&lt;strong&gt;示例 3：&lt;/strong&gt;&lt;/p&gt;
 &lt;ul&gt;
 &lt;li&gt;&lt;strong&gt;输入&lt;/strong&gt;: &lt;code&gt;words = [&quot;Science&quot;,&quot;is&quot;,&quot;what&quot;,&quot;we&quot;,&quot;understand&quot;,&quot;well&quot;,&quot;enough&quot;,&quot;to&quot;,&quot;explain&quot;,&quot;to&quot;,&quot;a&quot;,&quot;computer.&quot;,&quot;Art&quot;,&quot;is&quot;,&quot;everything&quot;,&quot;else&quot;,&quot;we&quot;,&quot;do&quot;]&lt;/code&gt;, &lt;code&gt;maxWidth = 20&lt;/code&gt;&lt;/li&gt;
 &lt;li&gt;&lt;strong&gt;输出&lt;/strong&gt;:&lt;pre&gt;&lt;code&gt;[
@@ -10425,7 +10483,7 @@ private int[] buildNextArr(String pattern) {
 &lt;/code&gt;&lt;/pre&gt;
 &lt;/li&gt;
 &lt;/ul&gt;
-&lt;h4&gt;📝 提示&lt;/h4&gt;
+&lt;p&gt;&lt;strong&gt;🔍 提示&lt;/strong&gt;&lt;/p&gt;
 &lt;ul&gt;
 &lt;li&gt;&lt;code&gt;1 &amp;lt;= words.length &amp;lt;= 300&lt;/code&gt;&lt;/li&gt;
 &lt;li&gt;&lt;code&gt;1 &amp;lt;= words[i].length &amp;lt;= 20&lt;/code&gt;&lt;/li&gt;
@@ -10433,15 +10491,13 @@ private int[] buildNextArr(String pattern) {
 &lt;li&gt;&lt;code&gt;1 &amp;lt;= maxWidth &amp;lt;= 100&lt;/code&gt;&lt;/li&gt;
 &lt;li&gt;&lt;code&gt;words[i].length &amp;lt;= maxWidth&lt;/code&gt;&lt;/li&gt;
 &lt;/ul&gt;
-&lt;p&gt;&amp;lt;details class=&quot;solution-details&quot;&amp;gt;
-&amp;lt;summary&amp;gt;💡 查看题解与代码实现&amp;lt;/summary&amp;gt;&lt;/p&gt;
-&lt;h4&gt;💭 思路&lt;/h4&gt;
+&lt;p&gt;&lt;strong&gt;💡 解题思路&lt;/strong&gt;&lt;/p&gt;
 &lt;ol&gt;
 &lt;li&gt;&lt;strong&gt;贪心算法&lt;/strong&gt;：尽可能多地往每行中放置单词，直到无法再放置下一个单词为止。&lt;/li&gt;
 &lt;li&gt;&lt;strong&gt;均匀分配空格&lt;/strong&gt;：对于非最后一行，尽可能均匀分配单词间的空格数量，如果无法均匀分配，则左侧的空格数要多于右侧的空格数。&lt;/li&gt;
 &lt;li&gt;&lt;strong&gt;最后一行左对齐&lt;/strong&gt;：对于最后一行，单词之间不插入额外的空格，直接在右侧填充空格以满足 &lt;code&gt;maxWidth&lt;/code&gt; 的要求。&lt;/li&gt;
 &lt;/ol&gt;
-&lt;h4&gt;💻 代码实现&lt;/h4&gt;
+&lt;p&gt;&lt;strong&gt;💻 代码实现 (Java)&lt;/strong&gt;&lt;/p&gt;
 &lt;pre&gt;&lt;code&gt;public List&amp;lt;String&amp;gt; fullJustify(String[] words, int maxWidth) {
     List&amp;lt;String&amp;gt; res = new ArrayList&amp;lt;&amp;gt;();
     int i = 0;
@@ -10518,47 +10574,49 @@ public String adjustSpaces(String s, int maxWidth) {
     return result.toString();
 }
 &lt;/code&gt;&lt;/pre&gt;
-&lt;p&gt;&amp;lt;/details&amp;gt;&lt;/p&gt;
+&lt;p&gt;&amp;lt;/div&amp;gt;
+&amp;lt;/details&amp;gt;&lt;/p&gt;
 &lt;hr /&gt;
 &lt;h2&gt;25. LeetCode 125：验证回文串&lt;/h2&gt;
-&lt;h4&gt;🚀 相关链接&lt;/h4&gt;
+&lt;p&gt;&amp;lt;details class=&quot;problem-card&quot;&amp;gt;
+&amp;lt;summary class=&quot;problem-summary&quot;&amp;gt;📖 展开查看题目详情、示例与完整题解&amp;lt;/summary&amp;gt;&lt;/p&gt;
+&lt;p&gt;&amp;lt;div class=&quot;problem-content&quot;&amp;gt;&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;🔗 原题链接&lt;/strong&gt;&lt;/p&gt;
 &lt;p&gt;&lt;a href=&quot;https://leetcode.cn/problems/valid-palindrome/description/?envType=study-plan-v2&amp;amp;envId=top-interview-150&quot;&gt;LeetCode 125 - 验证回文串&lt;/a&gt;&lt;/p&gt;
-&lt;h4&gt;📜 描述&lt;/h4&gt;
+&lt;p&gt;&lt;strong&gt;📝 题目描述&lt;/strong&gt;&lt;/p&gt;
 &lt;p&gt;如果在将所有大写字符转换为小写字符、并移除所有非字母数字字符之后，短语正着读和反着读都一样。则可以认为该短语是一个 &lt;strong&gt;回文串&lt;/strong&gt; 。&lt;/p&gt;
 &lt;p&gt;字母和数字都属于字母数字字符。&lt;/p&gt;
 &lt;p&gt;给你一个字符串 &lt;code&gt;s&lt;/code&gt;，如果它是 &lt;strong&gt;回文串&lt;/strong&gt;，返回 &lt;code&gt;true&lt;/code&gt; ；否则，返回 &lt;code&gt;false&lt;/code&gt;。&lt;/p&gt;
-&lt;h4&gt;💡 示例&lt;/h4&gt;
-&lt;h5&gt;示例 1&lt;/h5&gt;
+&lt;p&gt;&lt;strong&gt;📊 示例&lt;/strong&gt;&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;示例 1：&lt;/strong&gt;&lt;/p&gt;
 &lt;ul&gt;
 &lt;li&gt;&lt;strong&gt;输入&lt;/strong&gt;: &lt;code&gt;s = &quot;A man, a plan, a canal: Panama&quot;&lt;/code&gt;&lt;/li&gt;
 &lt;li&gt;&lt;strong&gt;输出&lt;/strong&gt;: &lt;code&gt;true&lt;/code&gt;&lt;/li&gt;
 &lt;li&gt;&lt;strong&gt;解释&lt;/strong&gt;: &lt;code&gt;&quot;amanaplanacanalpanama&quot;&lt;/code&gt; 是回文串。&lt;/li&gt;
 &lt;/ul&gt;
-&lt;h5&gt;示例 2&lt;/h5&gt;
+&lt;p&gt;&lt;strong&gt;示例 2：&lt;/strong&gt;&lt;/p&gt;
 &lt;ul&gt;
 &lt;li&gt;&lt;strong&gt;输入&lt;/strong&gt;: &lt;code&gt;s = &quot;race a car&quot;&lt;/code&gt;&lt;/li&gt;
 &lt;li&gt;&lt;strong&gt;输出&lt;/strong&gt;: &lt;code&gt;false&lt;/code&gt;&lt;/li&gt;
 &lt;li&gt;&lt;strong&gt;解释&lt;/strong&gt;: &lt;code&gt;&quot;raceacar&quot;&lt;/code&gt; 不是回文串。&lt;/li&gt;
 &lt;/ul&gt;
-&lt;h5&gt;示例 3&lt;/h5&gt;
+&lt;p&gt;&lt;strong&gt;示例 3：&lt;/strong&gt;&lt;/p&gt;
 &lt;ul&gt;
 &lt;li&gt;&lt;strong&gt;输入&lt;/strong&gt;: &lt;code&gt;s = &quot; &quot;&lt;/code&gt;&lt;/li&gt;
 &lt;li&gt;&lt;strong&gt;输出&lt;/strong&gt;: &lt;code&gt;true&lt;/code&gt;&lt;/li&gt;
 &lt;li&gt;&lt;strong&gt;解释&lt;/strong&gt;: 在移除非字母数字字符之后，&lt;code&gt;s&lt;/code&gt; 是一个空字符串 &lt;code&gt;&quot;&quot;&lt;/code&gt; 。由于空字符串正着反着读都一样，所以是回文串。&lt;/li&gt;
 &lt;/ul&gt;
-&lt;h4&gt;📝 提示&lt;/h4&gt;
+&lt;p&gt;&lt;strong&gt;🔍 提示&lt;/strong&gt;&lt;/p&gt;
 &lt;ul&gt;
 &lt;li&gt;&lt;code&gt;1 &amp;lt;= s.length &amp;lt;= 2 * 10^5&lt;/code&gt;&lt;/li&gt;
 &lt;li&gt;&lt;code&gt;s&lt;/code&gt; 仅由可打印的 ASCII 字符组成&lt;/li&gt;
 &lt;/ul&gt;
-&lt;p&gt;&amp;lt;details class=&quot;solution-details&quot;&amp;gt;
-&amp;lt;summary&amp;gt;💡 查看题解与代码实现&amp;lt;/summary&amp;gt;&lt;/p&gt;
-&lt;h4&gt;💭 思路&lt;/h4&gt;
+&lt;p&gt;&lt;strong&gt;💡 解题思路&lt;/strong&gt;&lt;/p&gt;
 &lt;ol&gt;
 &lt;li&gt;&lt;strong&gt;预处理字符串&lt;/strong&gt;：首先移除所有非字母数字字符，并将所有大写字符转换为小写字符。&lt;/li&gt;
 &lt;li&gt;&lt;strong&gt;双指针验证&lt;/strong&gt;：使用双指针从字符串的两端向中间移动，逐一比较字符是否相同。如果有任何一对字符不相同，则返回 &lt;code&gt;false&lt;/code&gt;；如果所有字符都相同，则返回 &lt;code&gt;true&lt;/code&gt;。&lt;/li&gt;
 &lt;/ol&gt;
-&lt;h4&gt;💻 代码实现&lt;/h4&gt;
+&lt;p&gt;&lt;strong&gt;💻 代码实现 (Java)&lt;/strong&gt;&lt;/p&gt;
 &lt;pre&gt;&lt;code&gt;public boolean isPalindrome(String s) {
     s = s.replaceAll(&quot;[^a-zA-Z0-9]&quot;, &quot;&quot;).toLowerCase();
     int left = 0, right = s.length() - 1;
@@ -10573,39 +10631,41 @@ public String adjustSpaces(String s, int maxWidth) {
     return true;
 }
 &lt;/code&gt;&lt;/pre&gt;
-&lt;p&gt;&amp;lt;/details&amp;gt;&lt;/p&gt;
+&lt;p&gt;&amp;lt;/div&amp;gt;
+&amp;lt;/details&amp;gt;&lt;/p&gt;
 &lt;hr /&gt;
 &lt;h2&gt;26. LeetCode 392：判断子序列&lt;/h2&gt;
-&lt;h4&gt;🚀 相关链接&lt;/h4&gt;
+&lt;p&gt;&amp;lt;details class=&quot;problem-card&quot;&amp;gt;
+&amp;lt;summary class=&quot;problem-summary&quot;&amp;gt;📖 展开查看题目详情、示例与完整题解&amp;lt;/summary&amp;gt;&lt;/p&gt;
+&lt;p&gt;&amp;lt;div class=&quot;problem-content&quot;&amp;gt;&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;🔗 原题链接&lt;/strong&gt;&lt;/p&gt;
 &lt;p&gt;&lt;a href=&quot;https://leetcode.cn/problems/is-subsequence/description/?envType=study-plan-v2&amp;amp;envId=top-interview-150&quot;&gt;LeetCode 392 - 判断子序列&lt;/a&gt;&lt;/p&gt;
-&lt;h4&gt;📜 描述&lt;/h4&gt;
+&lt;p&gt;&lt;strong&gt;📝 题目描述&lt;/strong&gt;&lt;/p&gt;
 &lt;p&gt;给定字符串 &lt;code&gt;s&lt;/code&gt; 和 &lt;code&gt;t&lt;/code&gt; ，判断 &lt;code&gt;s&lt;/code&gt; 是否为 &lt;code&gt;t&lt;/code&gt; 的子序列。&lt;/p&gt;
 &lt;p&gt;字符串的一个子序列是原始字符串删除一些（也可以不删除）字符而不改变剩余字符相对位置形成的新字符串。（例如，&quot;ace&quot;是&quot;abcde&quot;的一个子序列，而&quot;aec&quot;不是）。&lt;/p&gt;
 &lt;p&gt;&lt;strong&gt;进阶&lt;/strong&gt;：&lt;/p&gt;
 &lt;p&gt;如果有大量输入的 &lt;code&gt;S&lt;/code&gt;，称作 &lt;code&gt;S1, S2, .., Sk&lt;/code&gt; 其中 &lt;code&gt;k &amp;gt;= 10亿&lt;/code&gt;，你需要依次检查它们是否为 &lt;code&gt;T&lt;/code&gt; 的子序列。在这种情况下，你会怎样改变代码？&lt;/p&gt;
 &lt;p&gt;&lt;strong&gt;致谢&lt;/strong&gt;：&lt;/p&gt;
 &lt;p&gt;特别感谢 @pbrother 添加此问题并且创建所有测试用例。&lt;/p&gt;
-&lt;h4&gt;💡 示例&lt;/h4&gt;
+&lt;p&gt;&lt;strong&gt;📊 示例&lt;/strong&gt;&lt;/p&gt;
 &lt;ul&gt;
 &lt;li&gt;&lt;strong&gt;输入&lt;/strong&gt;: &lt;code&gt;s = &quot;abc&quot;, t = &quot;ahbgdc&quot;&lt;/code&gt;&lt;/li&gt;
 &lt;li&gt;&lt;strong&gt;输出&lt;/strong&gt;: &lt;code&gt;true&lt;/code&gt;&lt;/li&gt;
 &lt;li&gt;&lt;strong&gt;解释&lt;/strong&gt;: &lt;code&gt;&quot;abc&quot;&lt;/code&gt; 是 &lt;code&gt;&quot;ahbgdc&quot;&lt;/code&gt; 的子序列。&lt;/li&gt;
 &lt;/ul&gt;
-&lt;h5&gt;示例 2&lt;/h5&gt;
+&lt;p&gt;&lt;strong&gt;示例 2：&lt;/strong&gt;&lt;/p&gt;
 &lt;ul&gt;
 &lt;li&gt;&lt;strong&gt;输入&lt;/strong&gt;: &lt;code&gt;s = &quot;axc&quot;, t = &quot;ahbgdc&quot;&lt;/code&gt;&lt;/li&gt;
 &lt;li&gt;&lt;strong&gt;输出&lt;/strong&gt;: &lt;code&gt;false&lt;/code&gt;&lt;/li&gt;
 &lt;li&gt;&lt;strong&gt;解释&lt;/strong&gt;: &lt;code&gt;&quot;axc&quot;&lt;/code&gt; 不是 &lt;code&gt;&quot;ahbgdc&quot;&lt;/code&gt; 的子序列。&lt;/li&gt;
 &lt;/ul&gt;
-&lt;h4&gt;📝 提示&lt;/h4&gt;
+&lt;p&gt;&lt;strong&gt;🔍 提示&lt;/strong&gt;&lt;/p&gt;
 &lt;ul&gt;
 &lt;li&gt;&lt;code&gt;0 &amp;lt;= s.length &amp;lt;= 100&lt;/code&gt;&lt;/li&gt;
 &lt;li&gt;&lt;code&gt;0 &amp;lt;= t.length &amp;lt;= 10^4&lt;/code&gt;&lt;/li&gt;
 &lt;li&gt;两个字符串都只由小写字符组成。&lt;/li&gt;
 &lt;/ul&gt;
-&lt;p&gt;&amp;lt;details class=&quot;solution-details&quot;&amp;gt;
-&amp;lt;summary&amp;gt;💡 查看题解与代码实现&amp;lt;/summary&amp;gt;&lt;/p&gt;
-&lt;h4&gt;💭 思路&lt;/h4&gt;
+&lt;p&gt;&lt;strong&gt;💡 解题思路&lt;/strong&gt;&lt;/p&gt;
 &lt;ol&gt;
 &lt;li&gt;
 &lt;p&gt;&lt;strong&gt;双指针&lt;/strong&gt;：&lt;/p&gt;
@@ -10622,7 +10682,7 @@ public String adjustSpaces(String s, int maxWidth) {
 &lt;/ul&gt;
 &lt;/li&gt;
 &lt;/ol&gt;
-&lt;h4&gt;💻 代码实现&lt;/h4&gt;
+&lt;p&gt;&lt;strong&gt;💻 代码实现 (Java)&lt;/strong&gt;&lt;/p&gt;
 &lt;pre&gt;&lt;code&gt;public boolean isSubsequence(String s, String t) {
     int[][] arr = new int[t.length() + 1][26];
 
@@ -10655,36 +10715,40 @@ public String adjustSpaces(String s, int maxWidth) {
     return true;
 }
 &lt;/code&gt;&lt;/pre&gt;
-&lt;p&gt;&amp;lt;/details&amp;gt;&lt;/p&gt;
+&lt;p&gt;&amp;lt;/div&amp;gt;
+&amp;lt;/details&amp;gt;&lt;/p&gt;
 &lt;hr /&gt;
 &lt;h2&gt;27. LeetCode 167：两数之和 II - 输入有序数组&lt;/h2&gt;
-&lt;h4&gt;🚀 相关链接&lt;/h4&gt;
+&lt;p&gt;&amp;lt;details class=&quot;problem-card&quot;&amp;gt;
+&amp;lt;summary class=&quot;problem-summary&quot;&amp;gt;📖 展开查看题目详情、示例与完整题解&amp;lt;/summary&amp;gt;&lt;/p&gt;
+&lt;p&gt;&amp;lt;div class=&quot;problem-content&quot;&amp;gt;&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;🔗 原题链接&lt;/strong&gt;&lt;/p&gt;
 &lt;p&gt;&lt;a href=&quot;https://leetcode.cn/problems/two-sum-ii-input-array-is-sorted/?envType=study-plan-v2&amp;amp;envId=top-interview-150&quot;&gt;LeetCode 167 - 两数之和 II - 输入有序数组&lt;/a&gt;&lt;/p&gt;
-&lt;h4&gt;📜 描述&lt;/h4&gt;
+&lt;p&gt;&lt;strong&gt;📝 题目描述&lt;/strong&gt;&lt;/p&gt;
 &lt;p&gt;给你一个下标从 &lt;code&gt;1&lt;/code&gt; 开始的整数数组 &lt;code&gt;numbers&lt;/code&gt;，该数组已按 &lt;strong&gt;非递减顺序排列&lt;/strong&gt;，请你从数组中找出满足相加之和等于目标数 &lt;code&gt;target&lt;/code&gt; 的两个数。如果设这两个数分别是 &lt;code&gt;numbers[index1]&lt;/code&gt; 和 &lt;code&gt;numbers[index2]&lt;/code&gt;，则 &lt;code&gt;1 &amp;lt;= index1 &amp;lt; index2 &amp;lt;= numbers.length&lt;/code&gt;。&lt;/p&gt;
 &lt;p&gt;以长度为 &lt;code&gt;2&lt;/code&gt; 的整数数组 &lt;code&gt;[index1, index2]&lt;/code&gt; 的形式返回这两个整数的下标 &lt;code&gt;index1&lt;/code&gt; 和 &lt;code&gt;index2&lt;/code&gt;。&lt;/p&gt;
 &lt;p&gt;你可以假设每个输入 &lt;strong&gt;只对应唯一的答案&lt;/strong&gt;，而且你 &lt;strong&gt;不可以&lt;/strong&gt; 重复使用相同的元素。&lt;/p&gt;
 &lt;p&gt;你所设计的解决方案必须只使用常量级的额外空间。&lt;/p&gt;
-&lt;h4&gt;💡 示例&lt;/h4&gt;
-&lt;h5&gt;示例 1&lt;/h5&gt;
+&lt;p&gt;&lt;strong&gt;📊 示例&lt;/strong&gt;&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;示例 1：&lt;/strong&gt;&lt;/p&gt;
 &lt;ul&gt;
 &lt;li&gt;&lt;strong&gt;输入&lt;/strong&gt;: &lt;code&gt;numbers = [2,7,11,15], target = 9&lt;/code&gt;&lt;/li&gt;
 &lt;li&gt;&lt;strong&gt;输出&lt;/strong&gt;: &lt;code&gt;[1,2]&lt;/code&gt;&lt;/li&gt;
 &lt;li&gt;&lt;strong&gt;解释&lt;/strong&gt;: &lt;code&gt;2&lt;/code&gt; 与 &lt;code&gt;7&lt;/code&gt; 之和等于目标数 &lt;code&gt;9&lt;/code&gt;。因此 &lt;code&gt;index1 = 1&lt;/code&gt;, &lt;code&gt;index2 = 2&lt;/code&gt;。返回 &lt;code&gt;[1, 2]&lt;/code&gt;。&lt;/li&gt;
 &lt;/ul&gt;
-&lt;h5&gt;示例 2&lt;/h5&gt;
+&lt;p&gt;&lt;strong&gt;示例 2：&lt;/strong&gt;&lt;/p&gt;
 &lt;ul&gt;
 &lt;li&gt;&lt;strong&gt;输入&lt;/strong&gt;: &lt;code&gt;numbers = [2,3,4], target = 6&lt;/code&gt;&lt;/li&gt;
 &lt;li&gt;&lt;strong&gt;输出&lt;/strong&gt;: &lt;code&gt;[1,3]&lt;/code&gt;&lt;/li&gt;
 &lt;li&gt;&lt;strong&gt;解释&lt;/strong&gt;: &lt;code&gt;2&lt;/code&gt; 与 &lt;code&gt;4&lt;/code&gt; 之和等于目标数 &lt;code&gt;6&lt;/code&gt;。因此 &lt;code&gt;index1 = 1&lt;/code&gt;, &lt;code&gt;index2 = 3&lt;/code&gt;。返回 &lt;code&gt;[1, 3]&lt;/code&gt;。&lt;/li&gt;
 &lt;/ul&gt;
-&lt;h5&gt;示例 3&lt;/h5&gt;
+&lt;p&gt;&lt;strong&gt;示例 3：&lt;/strong&gt;&lt;/p&gt;
 &lt;ul&gt;
 &lt;li&gt;&lt;strong&gt;输入&lt;/strong&gt;: &lt;code&gt;numbers = [-1,0], target = -1&lt;/code&gt;&lt;/li&gt;
 &lt;li&gt;&lt;strong&gt;输出&lt;/strong&gt;: &lt;code&gt;[1,2]&lt;/code&gt;&lt;/li&gt;
 &lt;li&gt;&lt;strong&gt;解释&lt;/strong&gt;: &lt;code&gt;-1&lt;/code&gt; 与 &lt;code&gt;0&lt;/code&gt; 之和等于目标数 &lt;code&gt;-1&lt;/code&gt;。因此 &lt;code&gt;index1 = 1&lt;/code&gt;, &lt;code&gt;index2 = 2&lt;/code&gt;。返回 &lt;code&gt;[1, 2]&lt;/code&gt;。&lt;/li&gt;
 &lt;/ul&gt;
-&lt;h4&gt;📝 提示&lt;/h4&gt;
+&lt;p&gt;&lt;strong&gt;🔍 提示&lt;/strong&gt;&lt;/p&gt;
 &lt;ul&gt;
 &lt;li&gt;&lt;code&gt;2 &amp;lt;= numbers.length &amp;lt;= 3 * 10^4&lt;/code&gt;&lt;/li&gt;
 &lt;li&gt;&lt;code&gt;-1000 &amp;lt;= numbers[i] &amp;lt;= 1000&lt;/code&gt;&lt;/li&gt;
@@ -10692,9 +10756,7 @@ public String adjustSpaces(String s, int maxWidth) {
 &lt;li&gt;&lt;code&gt;-1000 &amp;lt;= target &amp;lt;= 1000&lt;/code&gt;&lt;/li&gt;
 &lt;li&gt;&lt;strong&gt;仅存在一个有效答案&lt;/strong&gt;&lt;/li&gt;
 &lt;/ul&gt;
-&lt;p&gt;&amp;lt;details class=&quot;solution-details&quot;&amp;gt;
-&amp;lt;summary&amp;gt;💡 查看题解与代码实现&amp;lt;/summary&amp;gt;&lt;/p&gt;
-&lt;h4&gt;💭 思路&lt;/h4&gt;
+&lt;p&gt;&lt;strong&gt;💡 解题思路&lt;/strong&gt;&lt;/p&gt;
 &lt;p&gt;由于数组已经是有序的，可以使用双指针的方法来解决这个问题。具体思路如下：&lt;/p&gt;
 &lt;ol&gt;
 &lt;li&gt;初始化两个指针，一个指向数组的起始位置（&lt;code&gt;left&lt;/code&gt;），另一个指向数组的末尾（&lt;code&gt;right&lt;/code&gt;）。&lt;/li&gt;
@@ -10703,7 +10765,7 @@ public String adjustSpaces(String s, int maxWidth) {
 &lt;li&gt;如果和小于 &lt;code&gt;target&lt;/code&gt;，则将 &lt;code&gt;left&lt;/code&gt; 指针向右移动。&lt;/li&gt;
 &lt;li&gt;如果和等于 &lt;code&gt;target&lt;/code&gt;，则返回这两个指针的位置。&lt;/li&gt;
 &lt;/ol&gt;
-&lt;h4&gt;💻 代码实现&lt;/h4&gt;
+&lt;p&gt;&lt;strong&gt;💻 代码实现 (Java)&lt;/strong&gt;&lt;/p&gt;
 &lt;pre&gt;&lt;code&gt;public int[] twoSum(int[] numbers, int target) {
     int left = 0, right = numbers.length - 1;
     while (left &amp;lt; right) {
@@ -10719,39 +10781,41 @@ public String adjustSpaces(String s, int maxWidth) {
     return new int[]{left + 1, right + 1};
 }
 &lt;/code&gt;&lt;/pre&gt;
-&lt;p&gt;&amp;lt;/details&amp;gt;&lt;/p&gt;
+&lt;p&gt;&amp;lt;/div&amp;gt;
+&amp;lt;/details&amp;gt;&lt;/p&gt;
 &lt;hr /&gt;
 &lt;h2&gt;28. LeetCode 11：盛最多水的容器&lt;/h2&gt;
-&lt;h4&gt;🚀 相关链接&lt;/h4&gt;
+&lt;p&gt;&amp;lt;details class=&quot;problem-card&quot;&amp;gt;
+&amp;lt;summary class=&quot;problem-summary&quot;&amp;gt;📖 展开查看题目详情、示例与完整题解&amp;lt;/summary&amp;gt;&lt;/p&gt;
+&lt;p&gt;&amp;lt;div class=&quot;problem-content&quot;&amp;gt;&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;🔗 原题链接&lt;/strong&gt;&lt;/p&gt;
 &lt;p&gt;&lt;a href=&quot;https://leetcode.cn/problems/container-with-most-water/description/?envType=study-plan-v2&amp;amp;envId=top-interview-150&quot;&gt;LeetCode 11 - 盛最多水的容器&lt;/a&gt;&lt;/p&gt;
-&lt;h4&gt;📜 描述&lt;/h4&gt;
+&lt;p&gt;&lt;strong&gt;📝 题目描述&lt;/strong&gt;&lt;/p&gt;
 &lt;p&gt;给定一个长度为 &lt;code&gt;n&lt;/code&gt; 的整数数组 &lt;code&gt;height&lt;/code&gt;。有 &lt;code&gt;n&lt;/code&gt; 条垂线，第 &lt;code&gt;i&lt;/code&gt; 条线的两个端点是 &lt;code&gt;(i, 0)&lt;/code&gt; 和 &lt;code&gt;(i, height[i])&lt;/code&gt;。&lt;/p&gt;
 &lt;p&gt;找出其中的两条线，使得它们与 &lt;code&gt;x&lt;/code&gt; 轴共同构成的容器可以容纳最多的水。&lt;/p&gt;
 &lt;p&gt;返回容器可以储存的最大水量。&lt;/p&gt;
 &lt;p&gt;&lt;strong&gt;说明&lt;/strong&gt;：你不能倾斜容器。&lt;/p&gt;
-&lt;h4&gt;💡 示例&lt;/h4&gt;
-&lt;h5&gt;示例 1&lt;/h5&gt;
+&lt;p&gt;&lt;strong&gt;📊 示例&lt;/strong&gt;&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;示例 1：&lt;/strong&gt;&lt;/p&gt;
 &lt;ul&gt;
 &lt;li&gt;&lt;strong&gt;输入&lt;/strong&gt;: &lt;code&gt;[1,8,6,2,5,4,8,3,7]&lt;/code&gt;&lt;/li&gt;
 &lt;li&gt;&lt;strong&gt;输出&lt;/strong&gt;: &lt;code&gt;49&lt;/code&gt;&lt;/li&gt;
 &lt;li&gt;&lt;strong&gt;解释&lt;/strong&gt;: 图中垂直线代表输入数组 &lt;code&gt;[1,8,6,2,5,4,8,3,7]&lt;/code&gt;。在此情况下，容器能够容纳水（表示为蓝色部分）的最大值为 &lt;code&gt;49&lt;/code&gt;。&lt;/li&gt;
 &lt;/ul&gt;
-&lt;h5&gt;示例 2&lt;/h5&gt;
+&lt;p&gt;&lt;strong&gt;示例 2：&lt;/strong&gt;&lt;/p&gt;
 &lt;ul&gt;
 &lt;li&gt;&lt;strong&gt;输入&lt;/strong&gt;: &lt;code&gt;height = [1,1]&lt;/code&gt;&lt;/li&gt;
 &lt;li&gt;&lt;strong&gt;输出&lt;/strong&gt;: &lt;code&gt;1&lt;/code&gt;&lt;/li&gt;
 &lt;/ul&gt;
-&lt;h4&gt;📝 提示&lt;/h4&gt;
+&lt;p&gt;&lt;strong&gt;🔍 提示&lt;/strong&gt;&lt;/p&gt;
 &lt;ul&gt;
 &lt;li&gt;&lt;code&gt;n == height.length&lt;/code&gt;&lt;/li&gt;
 &lt;li&gt;&lt;code&gt;2 &amp;lt;= n &amp;lt;= 10^5&lt;/code&gt;&lt;/li&gt;
 &lt;li&gt;&lt;code&gt;0 &amp;lt;= height[i] &amp;lt;= 10^4&lt;/code&gt;&lt;/li&gt;
 &lt;/ul&gt;
-&lt;p&gt;&amp;lt;details class=&quot;solution-details&quot;&amp;gt;
-&amp;lt;summary&amp;gt;💡 查看题解与代码实现&amp;lt;/summary&amp;gt;&lt;/p&gt;
-&lt;h4&gt;💭 思路&lt;/h4&gt;
+&lt;p&gt;&lt;strong&gt;💡 解题思路&lt;/strong&gt;&lt;/p&gt;
 &lt;p&gt;使用&lt;strong&gt;双指针&lt;/strong&gt;的方法来解决该问题。初始时，双指针分别指向数组的左右两端。计算当前双指针所指向的线构成的容器的面积，并更新最大面积。然后，将较短的那条线的指针向中间移动，继续计算面积，直到两个指针相遇。&lt;/p&gt;
-&lt;h4&gt;💻 代码实现&lt;/h4&gt;
+&lt;p&gt;&lt;strong&gt;💻 代码实现 (Java)&lt;/strong&gt;&lt;/p&gt;
 &lt;pre&gt;&lt;code&gt;public int maxArea(int[] height) {
     int i = 0, j = height.length - 1;
     int area = 0;
@@ -10769,16 +10833,20 @@ public String adjustSpaces(String s, int maxWidth) {
     return area;
 }
 &lt;/code&gt;&lt;/pre&gt;
-&lt;p&gt;&amp;lt;/details&amp;gt;&lt;/p&gt;
+&lt;p&gt;&amp;lt;/div&amp;gt;
+&amp;lt;/details&amp;gt;&lt;/p&gt;
 &lt;hr /&gt;
 &lt;h2&gt;29. LeetCode 15：三数之和&lt;/h2&gt;
-&lt;h4&gt;🚀 相关链接&lt;/h4&gt;
+&lt;p&gt;&amp;lt;details class=&quot;problem-card&quot;&amp;gt;
+&amp;lt;summary class=&quot;problem-summary&quot;&amp;gt;📖 展开查看题目详情、示例与完整题解&amp;lt;/summary&amp;gt;&lt;/p&gt;
+&lt;p&gt;&amp;lt;div class=&quot;problem-content&quot;&amp;gt;&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;🔗 原题链接&lt;/strong&gt;&lt;/p&gt;
 &lt;p&gt;&lt;a href=&quot;https://leetcode.cn/problems/3sum/description/?envType=study-plan-v2&amp;amp;envId=top-interview-150&quot;&gt;LeetCode 15 - 三数之和&lt;/a&gt;&lt;/p&gt;
-&lt;h4&gt;📜 描述&lt;/h4&gt;
+&lt;p&gt;&lt;strong&gt;📝 题目描述&lt;/strong&gt;&lt;/p&gt;
 &lt;p&gt;给你一个整数数组 &lt;code&gt;nums&lt;/code&gt;，判断是否存在三元组 &lt;code&gt;[nums[i], nums[j], nums[k]]&lt;/code&gt; 满足 &lt;code&gt;i != j&lt;/code&gt;、&lt;code&gt;i != k&lt;/code&gt; 且 &lt;code&gt;j != k&lt;/code&gt;，同时还满足 &lt;code&gt;nums[i] + nums[j] + nums[k] == 0&lt;/code&gt;。请你返回所有和为 &lt;code&gt;0&lt;/code&gt; 且不重复的三元组。&lt;/p&gt;
 &lt;p&gt;&lt;strong&gt;注意&lt;/strong&gt;：答案中不可以包含重复的三元组。&lt;/p&gt;
-&lt;h4&gt;💡 示例&lt;/h4&gt;
-&lt;h5&gt;示例 1&lt;/h5&gt;
+&lt;p&gt;&lt;strong&gt;📊 示例&lt;/strong&gt;&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;示例 1：&lt;/strong&gt;&lt;/p&gt;
 &lt;ul&gt;
 &lt;li&gt;&lt;strong&gt;输入&lt;/strong&gt;: &lt;code&gt;nums = [-1,0,1,2,-1,-4]&lt;/code&gt;&lt;/li&gt;
 &lt;li&gt;&lt;strong&gt;输出&lt;/strong&gt;: &lt;code&gt;[[-1,-1,2],[-1,0,1]]&lt;/code&gt;&lt;/li&gt;
@@ -10792,32 +10860,30 @@ public String adjustSpaces(String s, int maxWidth) {
 &lt;/ul&gt;
 &lt;/li&gt;
 &lt;/ul&gt;
-&lt;h5&gt;示例 2&lt;/h5&gt;
+&lt;p&gt;&lt;strong&gt;示例 2：&lt;/strong&gt;&lt;/p&gt;
 &lt;ul&gt;
 &lt;li&gt;&lt;strong&gt;输入&lt;/strong&gt;: &lt;code&gt;nums = [0,1,1]&lt;/code&gt;&lt;/li&gt;
 &lt;li&gt;&lt;strong&gt;输出&lt;/strong&gt;: &lt;code&gt;[]&lt;/code&gt;&lt;/li&gt;
 &lt;li&gt;&lt;strong&gt;解释&lt;/strong&gt;: 唯一可能的三元组和不为 &lt;code&gt;0&lt;/code&gt;。&lt;/li&gt;
 &lt;/ul&gt;
-&lt;h5&gt;示例 3&lt;/h5&gt;
+&lt;p&gt;&lt;strong&gt;示例 3：&lt;/strong&gt;&lt;/p&gt;
 &lt;ul&gt;
 &lt;li&gt;&lt;strong&gt;输入&lt;/strong&gt;: &lt;code&gt;nums = [0,0,0]&lt;/code&gt;&lt;/li&gt;
 &lt;li&gt;&lt;strong&gt;输出&lt;/strong&gt;: &lt;code&gt;[[0,0,0]]&lt;/code&gt;&lt;/li&gt;
 &lt;li&gt;&lt;strong&gt;解释&lt;/strong&gt;: 唯一可能的三元组和为 &lt;code&gt;0&lt;/code&gt;。&lt;/li&gt;
 &lt;/ul&gt;
-&lt;h4&gt;📝 提示&lt;/h4&gt;
+&lt;p&gt;&lt;strong&gt;🔍 提示&lt;/strong&gt;&lt;/p&gt;
 &lt;ul&gt;
 &lt;li&gt;&lt;code&gt;3 &amp;lt;= nums.length &amp;lt;= 3000&lt;/code&gt;&lt;/li&gt;
 &lt;li&gt;&lt;code&gt;-10^5 &amp;lt;= nums[i] &amp;lt;= 10^5&lt;/code&gt;&lt;/li&gt;
 &lt;/ul&gt;
-&lt;p&gt;&amp;lt;details class=&quot;solution-details&quot;&amp;gt;
-&amp;lt;summary&amp;gt;💡 查看题解与代码实现&amp;lt;/summary&amp;gt;&lt;/p&gt;
-&lt;h4&gt;💭 思路&lt;/h4&gt;
+&lt;p&gt;&lt;strong&gt;💡 解题思路&lt;/strong&gt;&lt;/p&gt;
 &lt;ol&gt;
 &lt;li&gt;&lt;strong&gt;排序&lt;/strong&gt;：首先对数组进行排序，便于后续操作。&lt;/li&gt;
 &lt;li&gt;&lt;strong&gt;双指针&lt;/strong&gt;：遍历数组，对于每个元素 &lt;code&gt;nums[i]&lt;/code&gt;，使用双指针 &lt;code&gt;l&lt;/code&gt; 和 &lt;code&gt;r&lt;/code&gt; 分别指向 &lt;code&gt;i+1&lt;/code&gt; 和 &lt;code&gt;nums.length-1&lt;/code&gt;，寻找满足 &lt;code&gt;nums[i] + nums[l] + nums[r] == 0&lt;/code&gt; 的三元组。&lt;/li&gt;
 &lt;li&gt;&lt;strong&gt;去重&lt;/strong&gt;：为了避免重复的三元组，当 &lt;code&gt;nums[i] == nums[i-1]&lt;/code&gt; 时，跳过当前元素。同时，在找到满足条件的三元组后，移动指针 &lt;code&gt;l&lt;/code&gt; 和 &lt;code&gt;r&lt;/code&gt; 时也需跳过重复元素。&lt;/li&gt;
 &lt;/ol&gt;
-&lt;h4&gt;💻 代码实现&lt;/h4&gt;
+&lt;p&gt;&lt;strong&gt;💻 代码实现 (Java)&lt;/strong&gt;&lt;/p&gt;
 &lt;pre&gt;&lt;code&gt;public List&amp;lt;List&amp;lt;Integer&amp;gt;&amp;gt; threeSum(int[] nums) {
     Set&amp;lt;List&amp;lt;Integer&amp;gt;&amp;gt; set = new HashSet&amp;lt;&amp;gt;();
     Arrays.sort(nums);
@@ -10843,41 +10909,43 @@ public String adjustSpaces(String s, int maxWidth) {
     return set.stream().toList();
 }
 &lt;/code&gt;&lt;/pre&gt;
-&lt;p&gt;&amp;lt;/details&amp;gt;&lt;/p&gt;
+&lt;p&gt;&amp;lt;/div&amp;gt;
+&amp;lt;/details&amp;gt;&lt;/p&gt;
 &lt;hr /&gt;
 &lt;h2&gt;30. LeetCode 209：长度最小的子数组&lt;/h2&gt;
-&lt;h4&gt;🚀 相关链接&lt;/h4&gt;
+&lt;p&gt;&amp;lt;details class=&quot;problem-card&quot;&amp;gt;
+&amp;lt;summary class=&quot;problem-summary&quot;&amp;gt;📖 展开查看题目详情、示例与完整题解&amp;lt;/summary&amp;gt;&lt;/p&gt;
+&lt;p&gt;&amp;lt;div class=&quot;problem-content&quot;&amp;gt;&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;🔗 原题链接&lt;/strong&gt;&lt;/p&gt;
 &lt;p&gt;&lt;a href=&quot;https://leetcode.cn/problems/minimum-size-subarray-sum/?envType=study-plan-v2&amp;amp;envId=top-interview-150&quot;&gt;LeetCode 209 - 长度最小的子数组&lt;/a&gt;&lt;/p&gt;
-&lt;h4&gt;📜 描述&lt;/h4&gt;
+&lt;p&gt;&lt;strong&gt;📝 题目描述&lt;/strong&gt;&lt;/p&gt;
 &lt;p&gt;给定一个含有 &lt;code&gt;n&lt;/code&gt; 个正整数的数组和一个正整数 &lt;code&gt;target&lt;/code&gt;。&lt;/p&gt;
 &lt;p&gt;找出该数组中满足其总和大于等于 &lt;code&gt;target&lt;/code&gt; 的长度最小的 &lt;strong&gt;子数组&lt;/strong&gt; &lt;code&gt;[numsl, numsl+1, ..., numsr-1, numsr]&lt;/code&gt;，并返回其长度。如果不存在符合条件的子数组，返回 &lt;code&gt;0&lt;/code&gt;。&lt;/p&gt;
-&lt;h4&gt;💡 示例&lt;/h4&gt;
+&lt;p&gt;&lt;strong&gt;📊 示例&lt;/strong&gt;&lt;/p&gt;
 &lt;ul&gt;
 &lt;li&gt;&lt;strong&gt;输入&lt;/strong&gt;: &lt;code&gt;target = 7, nums = [2,3,1,2,4,3]&lt;/code&gt;&lt;/li&gt;
 &lt;li&gt;&lt;strong&gt;输出&lt;/strong&gt;: &lt;code&gt;2&lt;/code&gt;&lt;/li&gt;
 &lt;li&gt;&lt;strong&gt;解释&lt;/strong&gt;: 子数组 &lt;code&gt;[4,3]&lt;/code&gt; 是该条件下的长度最小的子数组。&lt;/li&gt;
 &lt;/ul&gt;
-&lt;h5&gt;示例 2&lt;/h5&gt;
+&lt;p&gt;&lt;strong&gt;示例 2：&lt;/strong&gt;&lt;/p&gt;
 &lt;ul&gt;
 &lt;li&gt;&lt;strong&gt;输入&lt;/strong&gt;: &lt;code&gt;target = 4, nums = [1,4,4]&lt;/code&gt;&lt;/li&gt;
 &lt;li&gt;&lt;strong&gt;输出&lt;/strong&gt;: &lt;code&gt;1&lt;/code&gt;&lt;/li&gt;
 &lt;/ul&gt;
-&lt;h5&gt;示例 3&lt;/h5&gt;
+&lt;p&gt;&lt;strong&gt;示例 3：&lt;/strong&gt;&lt;/p&gt;
 &lt;ul&gt;
 &lt;li&gt;&lt;strong&gt;输入&lt;/strong&gt;: &lt;code&gt;target = 11, nums = [1,1,1,1,1,1,1,1]&lt;/code&gt;&lt;/li&gt;
 &lt;li&gt;&lt;strong&gt;输出&lt;/strong&gt;: &lt;code&gt;0&lt;/code&gt;&lt;/li&gt;
 &lt;/ul&gt;
-&lt;h4&gt;📝 提示&lt;/h4&gt;
+&lt;p&gt;&lt;strong&gt;🔍 提示&lt;/strong&gt;&lt;/p&gt;
 &lt;ul&gt;
 &lt;li&gt;&lt;code&gt;1 &amp;lt;= target &amp;lt;= 10^9&lt;/code&gt;&lt;/li&gt;
 &lt;li&gt;&lt;code&gt;1 &amp;lt;= nums.length &amp;lt;= 10^5&lt;/code&gt;&lt;/li&gt;
 &lt;li&gt;&lt;code&gt;1 &amp;lt;= nums[i] &amp;lt;= 10^4&lt;/code&gt;&lt;/li&gt;
 &lt;/ul&gt;
-&lt;h5&gt;进阶&lt;/h5&gt;
+&lt;p&gt;&lt;strong&gt;🚀 进阶&lt;/strong&gt;&lt;/p&gt;
 &lt;p&gt;如果你已经实现 &lt;code&gt;O(n)&lt;/code&gt; 时间复杂度的解法，请尝试设计一个 &lt;code&gt;O(n log(n))&lt;/code&gt; 时间复杂度的解法。&lt;/p&gt;
-&lt;p&gt;&amp;lt;details class=&quot;solution-details&quot;&amp;gt;
-&amp;lt;summary&amp;gt;💡 查看题解与代码实现&amp;lt;/summary&amp;gt;&lt;/p&gt;
-&lt;h4&gt;💭 思路&lt;/h4&gt;
+&lt;p&gt;&lt;strong&gt;💡 解题思路&lt;/strong&gt;&lt;/p&gt;
 &lt;ol&gt;
 &lt;li&gt;
 &lt;p&gt;&lt;strong&gt;暴力解法&lt;/strong&gt;：&lt;/p&gt;
@@ -10904,7 +10972,7 @@ public String adjustSpaces(String s, int maxWidth) {
 &lt;/ul&gt;
 &lt;/li&gt;
 &lt;/ol&gt;
-&lt;h4&gt;💻 代码实现&lt;/h4&gt;
+&lt;p&gt;&lt;strong&gt;💻 代码实现 (Java)&lt;/strong&gt;&lt;/p&gt;
 &lt;ol&gt;
 &lt;li&gt;&lt;strong&gt;暴力解法&lt;/strong&gt;（超时）&lt;/li&gt;
 &lt;/ol&gt;
@@ -10971,27 +11039,31 @@ public String adjustSpaces(String s, int maxWidth) {
         return ans;
     }
 &lt;/code&gt;&lt;/pre&gt;
-&lt;p&gt;&amp;lt;/details&amp;gt;&lt;/p&gt;
+&lt;p&gt;&amp;lt;/div&amp;gt;
+&amp;lt;/details&amp;gt;&lt;/p&gt;
 &lt;hr /&gt;
 &lt;h2&gt;31. LeetCode 3：无重复字符的最长子串&lt;/h2&gt;
-&lt;h4&gt;🚀 相关链接&lt;/h4&gt;
+&lt;p&gt;&amp;lt;details class=&quot;problem-card&quot;&amp;gt;
+&amp;lt;summary class=&quot;problem-summary&quot;&amp;gt;📖 展开查看题目详情、示例与完整题解&amp;lt;/summary&amp;gt;&lt;/p&gt;
+&lt;p&gt;&amp;lt;div class=&quot;problem-content&quot;&amp;gt;&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;🔗 原题链接&lt;/strong&gt;&lt;/p&gt;
 &lt;p&gt;&lt;a href=&quot;https://leetcode.cn/problems/longest-substring-without-repeating-characters/?envType=study-plan-v2&amp;amp;envId=top-interview-150&quot;&gt;LeetCode 3 - 无重复字符的最长子串&lt;/a&gt;&lt;/p&gt;
-&lt;h4&gt;📜 描述&lt;/h4&gt;
+&lt;p&gt;&lt;strong&gt;📝 题目描述&lt;/strong&gt;&lt;/p&gt;
 &lt;p&gt;给定一个字符串 &lt;code&gt;s&lt;/code&gt; ，请你找出其中不含有重复字符的 &lt;strong&gt;最长&lt;/strong&gt; 子串的长度。&lt;/p&gt;
-&lt;h4&gt;💡 示例&lt;/h4&gt;
-&lt;h5&gt;示例 1&lt;/h5&gt;
+&lt;p&gt;&lt;strong&gt;📊 示例&lt;/strong&gt;&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;示例 1：&lt;/strong&gt;&lt;/p&gt;
 &lt;ul&gt;
 &lt;li&gt;&lt;strong&gt;输入&lt;/strong&gt;: &lt;code&gt;s = &quot;abcabcbb&quot;&lt;/code&gt;&lt;/li&gt;
 &lt;li&gt;&lt;strong&gt;输出&lt;/strong&gt;: &lt;code&gt;3&lt;/code&gt;&lt;/li&gt;
 &lt;li&gt;&lt;strong&gt;解释&lt;/strong&gt;: 因为无重复字符的最长子串是 &lt;code&gt;&quot;abc&quot;&lt;/code&gt;，所以其长度为 &lt;code&gt;3&lt;/code&gt;。&lt;/li&gt;
 &lt;/ul&gt;
-&lt;h5&gt;示例 2&lt;/h5&gt;
+&lt;p&gt;&lt;strong&gt;示例 2：&lt;/strong&gt;&lt;/p&gt;
 &lt;ul&gt;
 &lt;li&gt;&lt;strong&gt;输入&lt;/strong&gt;: &lt;code&gt;s = &quot;bbbbb&quot;&lt;/code&gt;&lt;/li&gt;
 &lt;li&gt;&lt;strong&gt;输出&lt;/strong&gt;: &lt;code&gt;1&lt;/code&gt;&lt;/li&gt;
 &lt;li&gt;&lt;strong&gt;解释&lt;/strong&gt;: 因为无重复字符的最长子串是 &lt;code&gt;&quot;b&quot;&lt;/code&gt;，所以其长度为 &lt;code&gt;1&lt;/code&gt;。&lt;/li&gt;
 &lt;/ul&gt;
-&lt;h5&gt;示例 3&lt;/h5&gt;
+&lt;p&gt;&lt;strong&gt;示例 3：&lt;/strong&gt;&lt;/p&gt;
 &lt;ul&gt;
 &lt;li&gt;
 &lt;p&gt;&lt;strong&gt;输入&lt;/strong&gt;: &lt;code&gt;s = &quot;pwwkew&quot;&lt;/code&gt;&lt;/p&gt;
@@ -11004,14 +11076,12 @@ public String adjustSpaces(String s, int maxWidth) {
 &lt;p&gt;请注意，你的答案必须是 &lt;strong&gt;子串&lt;/strong&gt; 的长度，&lt;code&gt;&quot;pwke&quot;&lt;/code&gt; 是一个子序列，不是子串。&lt;/p&gt;
 &lt;/li&gt;
 &lt;/ul&gt;
-&lt;h4&gt;📝 提示&lt;/h4&gt;
+&lt;p&gt;&lt;strong&gt;🔍 提示&lt;/strong&gt;&lt;/p&gt;
 &lt;ul&gt;
 &lt;li&gt;&lt;code&gt;0 &amp;lt;= s.length &amp;lt;= 5 * 10^4&lt;/code&gt;&lt;/li&gt;
 &lt;li&gt;&lt;code&gt;s&lt;/code&gt; 由英文字母、数字、符号和空格组成&lt;/li&gt;
 &lt;/ul&gt;
-&lt;p&gt;&amp;lt;details class=&quot;solution-details&quot;&amp;gt;
-&amp;lt;summary&amp;gt;💡 查看题解与代码实现&amp;lt;/summary&amp;gt;&lt;/p&gt;
-&lt;h4&gt;💭 思路&lt;/h4&gt;
+&lt;p&gt;&lt;strong&gt;💡 解题思路&lt;/strong&gt;&lt;/p&gt;
 &lt;p&gt;使用 &lt;strong&gt;滑动窗口&lt;/strong&gt; 的思想来解决这个问题：&lt;/p&gt;
 &lt;ol&gt;
 &lt;li&gt;维护一个窗口，窗口的左边界和右边界分别用 &lt;code&gt;l&lt;/code&gt; 和 &lt;code&gt;r&lt;/code&gt; 表示。&lt;/li&gt;
@@ -11020,7 +11090,7 @@ public String adjustSpaces(String s, int maxWidth) {
 &lt;li&gt;如果当前字符 &lt;code&gt;s[r]&lt;/code&gt; 已经在 &lt;code&gt;list&lt;/code&gt; 中，则移除 &lt;code&gt;list&lt;/code&gt; 中的第一个字符并收缩左边界 &lt;code&gt;l&lt;/code&gt;。&lt;/li&gt;
 &lt;li&gt;在每次扩展或收缩窗口时，记录窗口的最大长度。&lt;/li&gt;
 &lt;/ol&gt;
-&lt;h4&gt;💻 代码实现&lt;/h4&gt;
+&lt;p&gt;&lt;strong&gt;💻 代码实现 (Java)&lt;/strong&gt;&lt;/p&gt;
 &lt;pre&gt;&lt;code&gt;public int lengthOfLongestSubstring(String s) {
     List&amp;lt;Character&amp;gt; list = new ArrayList&amp;lt;&amp;gt;();
     int l = 0, r = 0, ans = 0;
@@ -11044,16 +11114,20 @@ public String adjustSpaces(String s, int maxWidth) {
     return ans;
 }
 &lt;/code&gt;&lt;/pre&gt;
-&lt;p&gt;&amp;lt;/details&amp;gt;&lt;/p&gt;
+&lt;p&gt;&amp;lt;/div&amp;gt;
+&amp;lt;/details&amp;gt;&lt;/p&gt;
 &lt;hr /&gt;
 &lt;h2&gt;32. LeetCode 30：串联所有单词的子串&lt;/h2&gt;
-&lt;h4&gt;🚀 相关链接&lt;/h4&gt;
+&lt;p&gt;&amp;lt;details class=&quot;problem-card&quot;&amp;gt;
+&amp;lt;summary class=&quot;problem-summary&quot;&amp;gt;📖 展开查看题目详情、示例与完整题解&amp;lt;/summary&amp;gt;&lt;/p&gt;
+&lt;p&gt;&amp;lt;div class=&quot;problem-content&quot;&amp;gt;&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;🔗 原题链接&lt;/strong&gt;&lt;/p&gt;
 &lt;p&gt;&lt;a href=&quot;https://leetcode.cn/problems/substring-with-concatenation-of-all-words/description/?envType=study-plan-v2&amp;amp;envId=top-interview-150&quot;&gt;LeetCode 30 - 串联所有单词的子串&lt;/a&gt;&lt;/p&gt;
-&lt;h4&gt;📜 描述&lt;/h4&gt;
+&lt;p&gt;&lt;strong&gt;📝 题目描述&lt;/strong&gt;&lt;/p&gt;
 &lt;p&gt;给定一个字符串 &lt;code&gt;s&lt;/code&gt; 和一个字符串数组 &lt;code&gt;words&lt;/code&gt;。&lt;code&gt;words&lt;/code&gt; 中所有字符串 &lt;strong&gt;长度相同&lt;/strong&gt;。&lt;/p&gt;
 &lt;p&gt;&lt;code&gt;s&lt;/code&gt; 中的 &lt;strong&gt;串联子串&lt;/strong&gt; 是指一个包含 &lt;code&gt;words&lt;/code&gt; 中所有字符串以任意顺序排列连接起来的子串。&lt;/p&gt;
-&lt;h4&gt;💡 示例&lt;/h4&gt;
-&lt;h5&gt;示例 1&lt;/h5&gt;
+&lt;p&gt;&lt;strong&gt;📊 示例&lt;/strong&gt;&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;示例 1：&lt;/strong&gt;&lt;/p&gt;
 &lt;ul&gt;
 &lt;li&gt;&lt;strong&gt;输入&lt;/strong&gt;: &lt;code&gt;s = &quot;barfoothefoobarman&quot;&lt;/code&gt;, &lt;code&gt;words = [&quot;foo&quot;,&quot;bar&quot;]&lt;/code&gt;&lt;/li&gt;
 &lt;li&gt;&lt;strong&gt;输出&lt;/strong&gt;: &lt;code&gt;[0,9]&lt;/code&gt;&lt;/li&gt;
@@ -11064,13 +11138,13 @@ public String adjustSpaces(String s, int maxWidth) {
 &lt;/ul&gt;
 &lt;/li&gt;
 &lt;/ul&gt;
-&lt;h5&gt;示例 2&lt;/h5&gt;
+&lt;p&gt;&lt;strong&gt;示例 2：&lt;/strong&gt;&lt;/p&gt;
 &lt;ul&gt;
 &lt;li&gt;&lt;strong&gt;输入&lt;/strong&gt;: &lt;code&gt;s = &quot;wordgoodgoodgoodbestword&quot;&lt;/code&gt;, &lt;code&gt;words = [&quot;word&quot;,&quot;good&quot;,&quot;best&quot;,&quot;word&quot;]&lt;/code&gt;&lt;/li&gt;
 &lt;li&gt;&lt;strong&gt;输出&lt;/strong&gt;: &lt;code&gt;[]&lt;/code&gt;&lt;/li&gt;
 &lt;li&gt;&lt;strong&gt;解释&lt;/strong&gt;: 没有符合条件的子串。&lt;/li&gt;
 &lt;/ul&gt;
-&lt;h5&gt;示例 3&lt;/h5&gt;
+&lt;p&gt;&lt;strong&gt;示例 3：&lt;/strong&gt;&lt;/p&gt;
 &lt;ul&gt;
 &lt;li&gt;&lt;strong&gt;输入&lt;/strong&gt;: &lt;code&gt;s = &quot;barfoofoobarthefoobarman&quot;&lt;/code&gt;, &lt;code&gt;words = [&quot;bar&quot;,&quot;foo&quot;,&quot;the&quot;]&lt;/code&gt;&lt;/li&gt;
 &lt;li&gt;&lt;strong&gt;输出&lt;/strong&gt;: &lt;code&gt;[6,9,12]&lt;/code&gt;&lt;/li&gt;
@@ -11082,17 +11156,15 @@ public String adjustSpaces(String s, int maxWidth) {
 &lt;/ul&gt;
 &lt;/li&gt;
 &lt;/ul&gt;
-&lt;h4&gt;📝 提示&lt;/h4&gt;
+&lt;p&gt;&lt;strong&gt;🔍 提示&lt;/strong&gt;&lt;/p&gt;
 &lt;ul&gt;
 &lt;li&gt;&lt;code&gt;1 &amp;lt;= s.length &amp;lt;= 10^4&lt;/code&gt;&lt;/li&gt;
 &lt;li&gt;&lt;code&gt;1 &amp;lt;= words.length &amp;lt;= 5000&lt;/code&gt;&lt;/li&gt;
 &lt;li&gt;&lt;code&gt;1 &amp;lt;= words[i].length &amp;lt;= 30&lt;/code&gt;&lt;/li&gt;
 &lt;li&gt;&lt;code&gt;words[i]&lt;/code&gt; 和 &lt;code&gt;s&lt;/code&gt; 由小写英文字母组成&lt;/li&gt;
 &lt;/ul&gt;
-&lt;p&gt;&amp;lt;details class=&quot;solution-details&quot;&amp;gt;
-&amp;lt;summary&amp;gt;💡 查看题解与代码实现&amp;lt;/summary&amp;gt;&lt;/p&gt;
-&lt;h4&gt;💭 思路&lt;/h4&gt;
-&lt;h5&gt;方法一：滑动窗口 + 哈希表&lt;/h5&gt;
+&lt;p&gt;&lt;strong&gt;💡 解题思路&lt;/strong&gt;&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;方法一：滑动窗口 + 哈希表&lt;/strong&gt;&lt;/p&gt;
 &lt;ol&gt;
 &lt;li&gt;
 &lt;p&gt;&lt;strong&gt;预处理&lt;/strong&gt;：&lt;/p&gt;
@@ -11110,7 +11182,7 @@ public String adjustSpaces(String s, int maxWidth) {
 &lt;/ul&gt;
 &lt;/li&gt;
 &lt;/ol&gt;
-&lt;h4&gt;💻 代码实现&lt;/h4&gt;
+&lt;p&gt;&lt;strong&gt;💻 代码实现 (Java)&lt;/strong&gt;&lt;/p&gt;
 &lt;pre&gt;&lt;code&gt;public List&amp;lt;Integer&amp;gt; findSubstring(String s, String[] words) {
     int wordLen = words[0].length();
     int groupLen = wordLen * words.length;
@@ -11154,8 +11226,78 @@ public String adjustSpaces(String s, int maxWidth) {
     return ans;
 }
 &lt;/code&gt;&lt;/pre&gt;
-&lt;p&gt;&amp;lt;/details&amp;gt;&lt;/p&gt;
+&lt;p&gt;&amp;lt;/div&amp;gt;
+&amp;lt;/details&amp;gt;&lt;/p&gt;
 &lt;hr /&gt;
+&lt;p&gt;&amp;lt;script is:inline&amp;gt;
+(() =&amp;gt; {
+const openTargetDetails = () =&amp;gt; {
+const hash = window.location.hash;
+if (!hash || hash.length &amp;lt;= 1) return;
+try {
+const heading = document.querySelector(decodeURIComponent(hash));
+const section = heading?.closest(&apos;section&apos;) || heading?.parentElement;
+const details = section?.querySelector(&apos;details.problem-card&apos;)
+|| (heading?.nextElementSibling?.matches(&apos;details.problem-card&apos;) ? heading.nextElementSibling : null);
+if (details) {
+details.open = true;
+details.scrollIntoView({ behavior: &apos;smooth&apos;, block: &apos;start&apos; });
+}
+} catch (_) {}
+};&lt;/p&gt;
+&lt;p&gt;if (!window.__leetcodeAccordionInited) {
+window.__leetcodeAccordionInited = true;&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;document.addEventListener(&apos;click&apos;, (e) =&amp;gt; {
+  const target = e.target;
+  if (!(target instanceof Element)) return;
+
+  const expandBtn = target.closest(&apos;#expand-all-btn&apos;);
+  if (expandBtn) {
+    document.querySelectorAll(&apos;details.problem-card&apos;).forEach((d) =&amp;gt; {
+      d.open = true;
+    });
+    return;
+  }
+
+  const collapseBtn = target.closest(&apos;#collapse-all-btn&apos;);
+  if (collapseBtn) {
+    document.querySelectorAll(&apos;details.problem-card&apos;).forEach((d) =&amp;gt; {
+      d.open = false;
+    });
+    return;
+  }
+
+  const anchor = target.closest(&apos;a[href^=&quot;#&quot;]&apos;);
+  if (anchor) {
+    const hash = anchor.getAttribute(&apos;href&apos;);
+    if (hash &amp;amp;&amp;amp; hash.length &amp;gt; 1) {
+      try {
+        const heading = document.querySelector(decodeURIComponent(hash));
+        const section = heading?.closest(&apos;section&apos;) || heading?.parentElement;
+        const details = section?.querySelector(&apos;details.problem-card&apos;)
+          || (heading?.nextElementSibling?.matches(&apos;details.problem-card&apos;) ? heading.nextElementSibling : null);
+        if (details) {
+          details.open = true;
+        }
+      } catch (_) {}
+    }
+  }
+});
+
+window.addEventListener(&apos;hashchange&apos;, openTargetDetails);
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;}&lt;/p&gt;
+&lt;p&gt;// Handle immediate open on page load or navigation
+if (document.readyState === &apos;loading&apos;) {
+document.addEventListener(&apos;DOMContentLoaded&apos;, openTargetDetails, { once: true });
+} else {
+openTargetDetails();
+}
+document.addEventListener(&apos;swup:enable&apos;, openTargetDetails);
+document.addEventListener(&apos;swup:page:view&apos;, openTargetDetails);
+window.swup?.hooks?.on(&apos;page:view&apos;, openTargetDetails);
+})();
+&amp;lt;/script&amp;gt;&lt;/p&gt;
 </content:encoded></item><item><title>《MySQL是怎样运行的：从根上理解MySQL》</title><link>https://jayczee.cn/posts/mysql/</link><guid isPermaLink="true">https://jayczee.cn/posts/mysql/</guid><description>《MySQL 是怎样运行的》读书笔记，涵盖记录结构、数据页、索引、表空间和查询优化。</description><pubDate>Sat, 08 Feb 2025 00:00:00 GMT</pubDate><content:encoded>&lt;h2&gt;感谢原书作者&lt;/h2&gt;
 &lt;p&gt;感谢原书作者的总结，原书地址：&lt;a href=&quot;https://juejin.cn/book/6844733769996304392&quot;&gt;原书地址&lt;/a&gt;&lt;/p&gt;
 &lt;p&gt;免费分享出来的Github Page：&lt;a href=&quot;https://relph1119.github.io/mysql-learning-notes/#/&quot;&gt;Github Page&lt;/a&gt;&lt;/p&gt;
