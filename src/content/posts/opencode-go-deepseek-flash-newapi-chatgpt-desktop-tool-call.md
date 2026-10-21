@@ -11,7 +11,7 @@ tags:
 draft: false
 ---
 
-最近我开通了 OpenCode Go，想把里面的 DeepSeek Flash 接到自己的 new-api，再给 ChatGPT Desktop 里的 Codex Agent 使用。
+最近我开通了 OpenCode Go，想把里面的 DeepSeek Flash 接到自己的 new-api，再接入ChatGPT Desktop。
 
 刚开始看起来很顺利：配好地址和密钥，问一句话，模型能正常回答。我以为这就算接完了。
 
@@ -31,7 +31,6 @@ draft: false
 
 为什么普通聊天没问题，一干活就坏了？这要从 Agent 是怎么工作的说起。
 
-> 标题里写的 ChatGPT Desktop 是我平时对桌面端的称呼。这次实际测试的是其中的 Codex Agent，请求走 `/v1/responses`，不是常见的 `/v1/chat/completions`。
 
 ## 聊天和使用工具是两回事
 
@@ -66,7 +65,7 @@ draft: false
 这次的实际链路是：
 
 ~~~text
-ChatGPT Desktop 中的 Codex Agent
+Codex
     ↓
 nginx
     ↓
@@ -150,9 +149,7 @@ The `reasoning_text` in the thinking mode must be passed back to the API.
 
 意思是：在思考模式下，对话进入下一轮时，上游要求把前一轮与工具调用相关的 `reasoning` 记录一起带回来。经过多层中转后，某些旧历史只保留了工具调用，这部分记录却丢了。
 
-已经丢失的内容不可能凭空找回。所以我只在“这一段历史有工具调用，但没有任何 reasoning 记录”时，补上一条清楚的占位说明：这次思考记录没有保存在对话里。
-
-这不是伪造模型的思考内容，只是补齐上游强制要求的格式。正常保留完整的新对话不会被改动。
+已经丢失的内容不可能凭空找回。所以我只在“这一段历史有工具调用，但没有任何 reasoning 记录”时，补上一条清楚的占位说明：这次思考记录没有保存在对话里。来补齐上游强制要求的格式。
 
 ## 为什么还要在报错后再试一次
 
