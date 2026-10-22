@@ -1,25 +1,426 @@
 ---
-
-import { getEntry, render } from "astro:content";
-import Markdown from "@components/misc/Markdown.astro";
-import I18nKey from "../i18n/i18nKey";
-import { i18n } from "../i18n/translation";
+import { Icon } from "astro-icon/components";
+import ImageWrapper from "../components/misc/ImageWrapper.astro";
+import GithubCalendar from "../components/widget/GithubCalendar.svelte";
+import { profileConfig } from "../config";
 import MainGridLayout from "../layouts/MainGridLayout.astro";
 
-const aboutPost = await getEntry("spec", "about");
+// 精选项目与盒带 (Project Cartridges)
+const projects = [
+	{
+		id: "CARTRIDGE-01",
+		title: "个人博客与数字空间",
+		subtitle: "Digital Space & Retro Geek Blog",
+		category: "WEB / OPEN SOURCE",
+		url: "https://github.com/Jayczee/jayczee.github.io",
+		tech: ["Astro", "Tailwind CSS", "Svelte", "TypeScript", "Web Audio"],
+		description:
+			"基于 Astro 深度定制的个人技术空间与展示主页。具备全站搜索、暗色模式、磁带轮旋转动效、Web Audio 拟真音效系统与精细排版，追求极速加载与沉浸质感。",
+		status: "RELEASED // V2.0",
+		statusClass: "text-emerald-500 border-emerald-500/30 bg-emerald-500/10",
+		icon: "fa6-solid:laptop-code"
+	},
+	{
+		id: "CARTRIDGE-02",
+		title: "AI 工具协议重写代理 (Rewrite Proxy)",
+		subtitle: "Protocol Translation Middleware for Codex & DeepSeek",
+		category: "AI / MIDDLEWARE",
+		url: "/posts/opencode-go-deepseek-flash-newapi-chatgpt-desktop-tool-call/",
+		tech: ["Python", "Nginx", "DeepSeek", "new-api", "Tool Call"],
+		description:
+			"用于解决桌面端 Codex Agent 与国产大模型协议方言差异。支持流式 DSML 裸标签拦截还原、custom 自由文本工具参数解包封包，以及中断造成的悬挂调用自动修复。",
+		status: "OPERATIONAL // IN-USE",
+		statusClass: "text-amber-500 border-amber-500/30 bg-amber-500/10",
+		icon: "fa6-solid:robot"
+	},
+	{
+		id: "CARTRIDGE-03",
+		title: "HomeLab 与家庭私有云生态",
+		subtitle: "Self-Hosted Cloud & Media Center",
+		category: "DEVOPS / HOMELAB",
+		url: "/posts/7-openwrt-ikuai-ipv6-ddns-homeassistant-tailscale-docker/",
+		tech: ["Docker", "Linux", "NAS", "Tailscale", "Nginx", "Jellyfin"],
+		description:
+			"基于 Linux 与 Docker 打造的 7x24h 家庭私有云基底。整合内网穿透、Jellyfin 媒体硬件转码、自动化网络备份与异地组网，真正将数据主权掌握在自己手中。",
+		status: "ONLINE // 7x24H",
+		statusClass: "text-sky-500 border-sky-500/30 bg-sky-500/10",
+		icon: "fa6-solid:server"
+	},
+];
 
-if (!aboutPost) {
-	throw new Error("About page content not found");
-}
+// 技术栈与工具箱 (Tech Stack & Tooling Matrix)
+const techStacks = [
+	{
+		category: "01 // 核心语言 (CORE LANGUAGES)",
+		icon: "fa6-solid:code",
+		items: ["Java", "TypeScript", "JavaScript", "Python", "SQL", "Bash"],
+	},
+	{
+		category: "02 // 前端与全栈 (FRONTEND & FULLSTACK)",
+		icon: "fa6-solid:laptop-code",
+		items: ["Vue", "React", "Astro", "Tailwind CSS", "Svelte", "HTML5 / CSS3"],
+	},
+	{
+		category: "03 // 后端与基础设施 (BACKEND & INFRA)",
+		icon: "fa6-solid:server",
+		items: ["Spring Boot", "Node.js", "Docker", "Nginx", "Redis", "MySQL", "Linux"],
+	},
+	{
+		category: "04 // 折腾利器与环境 (TOOLS & HOMELAB)",
+		icon: "fa6-solid:screwdriver-wrench",
+		items: ["VS Code", "Git", "Cursor", "NAS (Synology/Unraid)", "Postman", "Tailscale"],
+	},
+];
 
-const { Content } = await render(aboutPost);
+// 当前关注的探索方向 (Core Directives)
+const focusAreas = [
+	{
+		id: "DIR-01",
+		title: "AI Agent 与智能体工作流",
+		desc: "探索大模型工具调用（Tool Call）、Prompt 架构与智能体在真实编码场景的深度落地与生产力赋能。",
+		icon: "fa6-solid:robot",
+		tag: "LLM // AGENTIC"
+	},
+	{
+		id: "DIR-02",
+		title: "现代全栈架构与高质感体验",
+		desc: "专注 Astro / Vue / Tailwind 生态，追求极致的首屏速度、细腻的微交互与独特的极客美学设计。",
+		icon: "fa6-solid:microchip",
+		tag: "FULLSTACK // UI"
+	},
+	{
+		id: "DIR-03",
+		title: "自建服务与软硬件折腾",
+		desc: "7x24h NAS、容器生态、异地组网与网络穿透，把每一次踩坑排错的过程沉淀为实用实战手册。",
+		icon: "fa6-solid:hard-drive",
+		tag: "HOMELAB // CLOUD"
+	},
+];
+
+// 开发者工作台装备清单 (Hardware & Desk Gear)
+const deskGear = [
+	{
+		category: "计算平台",
+		name: "MacBook Pro + PC 工作站",
+		desc: "macOS 专注沉浸式全栈编码与内容生产，Windows / Linux 专注容器测试与服务折腾",
+		icon: "fa6-solid:laptop"
+	},
+	{
+		category: "私有存储",
+		name: "HomeLab NAS 存储阵列",
+		desc: "家庭私有云中心，全天候运行 Docker 容器、Jellyfin 影音与自动化数据备份",
+		icon: "fa6-solid:server"
+	},
+	{
+		category: "输入外设",
+		name: "客制化机械键盘",
+		desc: "段落回弹手感，长时间敲击代码与排查故障的舒适保障",
+		icon: "fa6-solid:keyboard"
+	},
+	{
+		category: "音频氛围",
+		name: "Hi-Fi 耳机系统",
+		desc: "沉浸式 Lo-Fi / Synthwave 编码声场，与全站复古磁带美学同频共振",
+		icon: "fa6-solid:headphones"
+	}
+];
 ---
-<MainGridLayout title={i18n(I18nKey.about)} description={i18n(I18nKey.about)}>
-    <div class="flex w-full rounded-[var(--radius-large)] overflow-hidden relative min-h-32">
-        <div class="card-base z-10 px-9 py-6 relative w-full ">
-            <Markdown class="mt-2">
-                <Content />
-            </Markdown>
-        </div>
+
+<MainGridLayout title="关于 // OPERATOR DOSSIER" description="Jayczee - Profile, Showcase & Geek Gear">
+    <div class="flex flex-col gap-5">
+
+        <!-- 1. 顶层：机密特工工牌档案 (Operator Dossier ID Card) -->
+        <section class="card-base rounded-2xl relative overflow-hidden p-6 md:p-8 onload-animation border border-[var(--primary)]/30 shadow-lg">
+            <!-- 四角机械金属螺栓装饰 -->
+            <div class="absolute top-2.5 left-2.5 w-2 h-2 rounded-full border border-black/20 dark:border-white/20 flex items-center justify-center text-[7px] text-black/30 dark:text-white/30 font-mono select-none pointer-events-none">+</div>
+            <div class="absolute top-2.5 right-2.5 w-2 h-2 rounded-full border border-black/20 dark:border-white/20 flex items-center justify-center text-[7px] text-black/30 dark:text-white/30 font-mono select-none pointer-events-none">+</div>
+            <div class="absolute bottom-2.5 left-2.5 w-2 h-2 rounded-full border border-black/20 dark:border-white/20 flex items-center justify-center text-[7px] text-black/30 dark:text-white/30 font-mono select-none pointer-events-none">+</div>
+            <div class="absolute bottom-2.5 right-2.5 w-2 h-2 rounded-full border border-black/20 dark:border-white/20 flex items-center justify-center text-[7px] text-black/30 dark:text-white/30 font-mono select-none pointer-events-none">+</div>
+
+            <!-- 顶部机密横幅条 -->
+            <div class="flex flex-wrap items-center justify-between gap-2 pb-4 mb-6 border-b border-[var(--line-divider)] font-mono text-[11px] select-none">
+                <div class="flex items-center gap-2 text-[var(--primary)] font-bold">
+                    <span class="inline-block w-2 h-2 rounded-full bg-[var(--primary)] shadow-[0_0_8px_var(--primary)] animate-pulse"></span>
+                    <span class="tracking-widest">CLASSIFIED // OPERATOR DOSSIER</span>
+                </div>
+                <div class="flex items-center gap-3 text-black/50 dark:text-white/50 text-[10px]">
+                    <span class="bg-black/5 dark:bg-white/5 px-2 py-0.5 rounded border border-[var(--line-divider)]">SYS-ID: JZ-2716</span>
+                    <span class="text-emerald-500 font-bold">● STATUS: OPERATIONAL</span>
+                </div>
+            </div>
+
+            <!-- 主体身份卡详情 -->
+            <div class="flex flex-col md:flex-row gap-6 items-center md:items-start">
+                <!-- 头像区域（带机密封条贴纸） -->
+                <div class="relative shrink-0 group">
+                    <div class="w-28 h-28 md:w-32 md:h-32 rounded-2xl overflow-hidden ring-2 ring-[var(--primary)]/50 shadow-xl relative bg-black/10">
+                        <ImageWrapper src={profileConfig.avatar || "assets/images/avatar.png"} alt="Avatar" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"></ImageWrapper>
+                        <!-- 扫描线微弱暗纹 -->
+                        <div class="absolute inset-0 bg-gradient-to-b from-transparent via-black/10 to-transparent pointer-events-none opacity-40"></div>
+                    </div>
+                    <!-- 物理胶带贴纸标 -->
+                    <div class="absolute -top-2 -right-2 px-2 py-0.5 rounded text-[9px] font-mono font-bold bg-[var(--primary)] text-white shadow-md transform rotate-6 border border-white/20">
+                        OPERATOR
+                    </div>
+                </div>
+
+                <!-- 文本信息 -->
+                <div class="flex-1 text-center md:text-left">
+                    <div class="flex flex-col md:flex-row md:items-center gap-2.5 mb-2.5">
+                        <h1 class="text-3xl md:text-4xl font-extrabold text-90 tracking-tight font-mono">Jayczee</h1>
+                        <span class="inline-flex items-center gap-1.5 px-3 py-1 rounded-full text-xs font-mono font-bold bg-[var(--btn-regular-bg)] text-[var(--primary)] self-center md:self-auto border border-[var(--primary)]/30">
+                            <span class="w-2 h-2 rounded-full bg-[var(--primary)] animate-ping"></span>
+                            Fullstack · 折腾 & 创造
+                        </span>
+                    </div>
+
+                    <!-- 真实初心宣言 -->
+                    <p class="text-75 text-sm md:text-base leading-relaxed mb-4 max-w-2xl">
+                        你好，我是 <span class="text-90 font-bold">Jayczee</span>，默默无闻的编程爱好者一名。<br/>
+                        这里记录一些开发实践、NAS 折腾和学习笔记。遇到问题、试过办法，再把过程写下来，方便以后查，也希望能帮到碰上相同问题的人。
+                    </p>
+
+                    <!-- 极客芯片标签 -->
+                    <div class="flex flex-wrap gap-2 justify-center md:justify-start mb-5 font-mono text-xs">
+                        <span class="px-2.5 py-1 rounded-lg bg-[var(--card-bg)] border border-[var(--line-divider)] text-75">📍 China</span>
+                        <span class="px-2.5 py-1 rounded-lg bg-[var(--card-bg)] border border-[var(--line-divider)] text-75">☕ Coffee & Lo-Fi</span>
+                        <span class="px-2.5 py-1 rounded-lg bg-[var(--card-bg)] border border-[var(--line-divider)] text-75">⚡ Fullstack & AI Agent</span>
+                        <span class="px-2.5 py-1 rounded-lg bg-[var(--card-bg)] border border-[var(--line-divider)] text-75">🗄️ HomeLab Self-Hosted</span>
+                    </div>
+
+                    <!-- 交互按键操作栏（带音效与反馈） -->
+                    <div class="flex flex-wrap gap-2.5 justify-center md:justify-start items-center">
+                        <a href="https://github.com/Jayczee" target="_blank" aria-label="GitHub"
+                           class="btn-regular rounded-xl h-9 px-3.5 gap-2 text-xs font-mono font-bold hover:text-[var(--primary)] hover:border-[var(--primary)] transition active:scale-95 border border-[var(--line-divider)]">
+                            <Icon name="fa6-brands:github" class="text-sm"></Icon>
+                            <span>GITHUB</span>
+                            <Icon name="fa6-solid:arrow-up-right-from-square" class="text-[10px] opacity-60"></Icon>
+                        </a>
+
+                        <!-- 点击复制邮箱 -->
+                        <button type="button" id="copy-email-btn"
+                                class="btn-regular rounded-xl h-9 px-3.5 gap-2 text-xs font-mono font-bold hover:text-[var(--primary)] hover:border-[var(--primary)] transition active:scale-95 border border-[var(--line-divider)] relative cursor-pointer">
+                            <Icon name="fa6-solid:envelope" class="text-sm"></Icon>
+                            <span>EMAIL ME</span>
+                            <span id="copy-email-badge" class="absolute -top-3 -right-2 px-1.5 py-0.5 rounded text-[9px] font-mono font-bold bg-emerald-500 text-white shadow transition-all duration-200 opacity-0 scale-90 pointer-events-none">
+                                ✓ COPIED!
+                            </span>
+                        </button>
+
+                        <a href="/blog/" aria-label="Articles"
+                           class="btn-regular rounded-xl h-9 px-3.5 gap-2 text-xs font-mono font-bold hover:text-[var(--primary)] hover:border-[var(--primary)] transition active:scale-95 border border-[var(--line-divider)]">
+                            <Icon name="fa6-solid:newspaper" class="text-sm"></Icon>
+                            <span>ARCHIVE // 博文</span>
+                        </a>
+
+                        <button type="button" id="about-open-terminal"
+                                class="btn-regular rounded-xl h-9 px-3.5 gap-2 text-xs font-mono font-bold hover:text-[var(--primary)] hover:border-[var(--primary)] transition active:scale-95 border border-[var(--line-divider)] cursor-pointer">
+                            <Icon name="fa6-solid:terminal" class="text-xs text-[var(--primary)]"></Icon>
+                            <span>QUERY (⌘K)</span>
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- 2. 当前核心探索方向 (Core Directives) -->
+        <section class="grid grid-cols-1 md:grid-cols-3 gap-4 onload-animation">
+            {focusAreas.map((item) => (
+                <div class="card-base p-5 rounded-2xl flex flex-col justify-between gap-3 border border-[var(--line-divider)] hover:border-[var(--primary)]/60 transition-all duration-300 hover:-translate-y-0.5 shadow-sm">
+                    <div class="flex items-center justify-between text-xs font-mono">
+                        <span class="text-[var(--primary)] font-bold">{item.id}</span>
+                        <span class="px-2 py-0.5 rounded text-[10px] bg-black/5 dark:bg-white/5 text-50 border border-[var(--line-divider)]">{item.tag}</span>
+                    </div>
+                    <div>
+                        <div class="flex items-center gap-2 text-[var(--primary)] font-bold text-base mb-1.5">
+                            <Icon name={item.icon} class="text-lg shrink-0"></Icon>
+                            <span>{item.title}</span>
+                        </div>
+                        <p class="text-75 text-xs md:text-sm leading-relaxed">{item.desc}</p>
+                    </div>
+                </div>
+            ))}
+        </section>
+
+        <!-- 3. 精选项目盒带 (Project Cartridges) -->
+        <section class="card-base p-6 md:p-8 rounded-2xl onload-animation border border-[var(--line-divider)]">
+            <div class="flex items-center justify-between mb-5 pb-3 border-b border-[var(--line-divider)] font-mono">
+                <div class="flex items-center gap-2">
+                    <span class="w-2 h-3.5 bg-[var(--primary)] rounded-xs"></span>
+                    <h2 class="text-base md:text-lg font-bold text-90 tracking-wide">精选项目与折腾盒带</h2>
+                </div>
+                <span class="text-50 text-xs">PROJECT CARTRIDGES // 3 LOADED</span>
+            </div>
+
+            <div class="grid grid-cols-1 gap-4">
+                {projects.map((p) => (
+                    <div class="rounded-xl p-5 bg-[var(--btn-regular-bg)] border border-[var(--line-divider)] hover:border-[var(--primary)] transition-all duration-300 relative group">
+                        <div class="flex flex-col sm:flex-row sm:items-center justify-between gap-2 mb-2.5">
+                            <div class="flex flex-wrap items-center gap-2">
+                                <span class="font-mono text-xs font-bold text-[var(--primary)]">{p.id}</span>
+                                <span class="text-90 font-bold text-base md:text-lg group-hover:text-[var(--primary)] transition-colors">{p.title}</span>
+                                <span class="text-[10px] font-mono px-2 py-0.5 rounded bg-[var(--card-bg)] text-50 border border-[var(--line-divider)]">
+                                    {p.category}
+                                </span>
+                            </div>
+                            <div class="flex items-center gap-3 self-start sm:self-auto">
+                                <span class={`text-[10px] font-mono font-bold px-2 py-0.5 rounded border ${p.statusClass}`}>
+                                    {p.status}
+                                </span>
+                                {p.url && (
+                                    <a href={p.url} target={p.url.startsWith("http") ? "_blank" : undefined}
+                                       aria-label={`${p.title} 链接`}
+                                       class="inline-flex items-center gap-1 text-xs text-50 hover:text-[var(--primary)] transition font-mono font-bold">
+                                        <span>OPEN</span>
+                                        <Icon name="fa6-solid:arrow-up-right-from-square" class="text-xs"></Icon>
+                                    </a>
+                                )}
+                            </div>
+                        </div>
+
+                        <p class="text-75 text-xs md:text-sm leading-relaxed mb-3.5">{p.description}</p>
+
+                        <div class="flex flex-wrap gap-1.5 font-mono">
+                            {p.tech.map((t) => (
+                                <span class="text-[11px] px-2.5 py-0.5 rounded-md bg-[var(--card-bg)] text-[var(--primary)] font-bold border border-[var(--primary)]/20">
+                                    #{t}
+                                </span>
+                            ))}
+                        </div>
+                    </div>
+                ))}
+            </div>
+        </section>
+
+        <!-- 4. 技术栈与工具箱 (Tech Stack & Tooling Matrix) -->
+        <section class="card-base p-6 md:p-8 rounded-2xl onload-animation border border-[var(--line-divider)]">
+            <div class="flex items-center justify-between mb-5 pb-3 border-b border-[var(--line-divider)] font-mono">
+                <div class="flex items-center gap-2">
+                    <span class="w-2 h-3.5 bg-[var(--primary)] rounded-xs"></span>
+                    <h2 class="text-base md:text-lg font-bold text-90 tracking-wide">技术栈与工具箱</h2>
+                </div>
+                <span class="text-50 text-xs">TECH STACK // MATRIX</span>
+            </div>
+
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+                {techStacks.map((group) => (
+                    <div class="rounded-xl p-4.5 bg-[var(--btn-regular-bg)] border border-[var(--line-divider)] flex flex-col gap-3 hover:border-[var(--primary)]/40 transition">
+                        <div class="text-xs font-mono font-bold text-75 flex items-center justify-between">
+                            <span class="flex items-center gap-2 text-[var(--primary)]">
+                                <Icon name={group.icon} class="text-sm"></Icon>
+                                {group.category}
+                            </span>
+                        </div>
+                        <div class="flex flex-wrap gap-2">
+                            {group.items.map((tech) => (
+                                <span class="text-xs px-2.5 py-1 rounded-lg bg-[var(--card-bg)] text-75 font-mono font-medium border border-[var(--line-divider)] transition-all hover:text-[var(--primary)] hover:border-[var(--primary)] hover:scale-105">
+                                    {tech}
+                                </span>
+                            ))}
+                        </div>
+                    </div>
+                ))}
+            </div>
+        </section>
+
+        <!-- 5. 开发者桌面装备清单 (Desk Setup & Gear) -->
+        <section class="card-base p-6 md:p-8 rounded-2xl onload-animation border border-[var(--line-divider)]">
+            <div class="flex items-center justify-between mb-5 pb-3 border-b border-[var(--line-divider)] font-mono">
+                <div class="flex items-center gap-2">
+                    <span class="w-2 h-3.5 bg-[var(--primary)] rounded-xs"></span>
+                    <h2 class="text-base md:text-lg font-bold text-90 tracking-wide">极客装备库 // Desk Setup</h2>
+                </div>
+                <span class="text-50 text-xs">HARDWARE GEAR // LOG</span>
+            </div>
+
+            <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
+                {deskGear.map((gear) => (
+                    <div class="rounded-xl p-4 bg-[var(--btn-regular-bg)] border border-[var(--line-divider)] flex items-start gap-3.5 hover:border-[var(--primary)]/50 transition">
+                        <div class="w-10 h-10 rounded-xl bg-[var(--card-bg)] border border-[var(--line-divider)] flex items-center justify-center shrink-0 text-[var(--primary)] text-lg">
+                            <Icon name={gear.icon}></Icon>
+                        </div>
+                        <div class="min-w-0 flex-1">
+                            <div class="flex items-center justify-between mb-1">
+                                <span class="text-90 font-bold text-sm">{gear.name}</span>
+                                <span class="text-[10px] font-mono px-1.5 py-0.5 rounded bg-[var(--card-bg)] text-50 border border-[var(--line-divider)]">{gear.category}</span>
+                            </div>
+                            <p class="text-75 text-xs leading-relaxed">{gear.desc}</p>
+                        </div>
+                    </div>
+                ))}
+            </div>
+        </section>
+
+        <!-- 6. GitHub 全年代码提交热力图 -->
+        <GithubCalendar client:load username="Jayczee" />
+
+        <!-- 7. 终端结语与通讯凭据 (Station Terminal Epilogue) -->
+        <section class="card-base p-6 md:p-8 rounded-2xl onload-animation border border-[var(--line-divider)] font-mono relative overflow-hidden">
+            <div class="flex items-center justify-between pb-3 mb-4 border-b border-[var(--line-divider)] text-xs text-50">
+                <span class="flex items-center gap-2 text-[var(--primary)] font-bold">
+                    <span class="w-1.5 h-1.5 rounded-full bg-[var(--primary)] animate-pulse"></span>
+                    STATION TERMINAL // JAYCZEE.CN
+                </span>
+                <span>BAUD: 115200 // BUFFER OK</span>
+            </div>
+
+            <div class="text-xs md:text-sm text-75 leading-relaxed space-y-2.5">
+                <p>>_ 这里是我的个人技术空间、一份持续生长的数字展板。</p>
+                <p>>_ 后续如果有了新的开源项目、折腾日志或好玩的技术尝试，我都会同步更新记录在此。</p>
+                <p>>_ 如果你对本站的内容、折腾项目或者某篇技术实践感兴趣，随时欢迎通过邮件交流探讨。</p>
+                <p class="text-[var(--primary)] font-bold pt-2 select-none">
+                    // END OF TRANSMISSION // WHISPERING FOR NOTHING.
+                </p>
+            </div>
+        </section>
+
     </div>
 </MainGridLayout>
+
+<script>
+    import { playSfx } from "../utils/sfx";
+
+    function initAboutInteractions() {
+        const copyBtn = document.getElementById('copy-email-btn');
+        const copyBadge = document.getElementById('copy-email-badge');
+        if (copyBtn && copyBadge) {
+            copyBtn.onclick = () => {
+                navigator.clipboard.writeText('jayczee2716@gmail.com').then(() => {
+                    playSfx('click');
+                    copyBadge.classList.remove('opacity-0', 'scale-90');
+                    copyBadge.classList.add('opacity-100', 'scale-100');
+                    setTimeout(() => {
+                        copyBadge.classList.add('opacity-0', 'scale-90');
+                        copyBadge.classList.remove('opacity-100', 'scale-100');
+                    }, 2000);
+                }).catch(() => {
+                    // Fallback to mailto
+                    window.location.href = 'mailto:jayczee2716@gmail.com';
+                });
+            };
+        }
+
+        const openTerminalBtn = document.getElementById('about-open-terminal');
+        if (openTerminalBtn) {
+            openTerminalBtn.onclick = () => {
+                playSfx('switch');
+                const searchTrigger = document.querySelector('button[aria-label^="Open Terminal Search"]') as HTMLElement | null;
+                if (searchTrigger) {
+                    searchTrigger.click();
+                } else {
+                    window.dispatchEvent(new KeyboardEvent('keydown', { key: 'k', metaKey: true, bubbles: true }));
+                }
+            };
+        }
+    }
+
+    if (document.readyState === 'loading') {
+        document.addEventListener('DOMContentLoaded', initAboutInteractions);
+    } else {
+        initAboutInteractions();
+    }
+
+    if (window.swup) {
+        window.swup.hooks.on('page:view', initAboutInteractions);
+    }
+</script>
