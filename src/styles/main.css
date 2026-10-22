@@ -113,7 +113,15 @@
 }
 
 .custom-md img, #post-cover img {
-    @apply cursor-zoom-in
+    @apply cursor-zoom-in max-w-full h-auto;
+}
+
+.custom-md svg {
+    @apply max-w-full h-auto;
+}
+
+.custom-md table {
+    @apply max-w-full block overflow-x-auto;
 }
 
 ::selection {

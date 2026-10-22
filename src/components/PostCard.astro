@@ -44,14 +44,34 @@ const hasCover = image !== undefined && image !== null && image !== "";
 const coverWidth = "36%";
 const issueNumber = String(index + 1).padStart(2, "0");
 const isFirst = index === 0;
+const isWide = !isFirst && (index % 6 === 3);
 
 const { remarkPluginFrontmatter } = await entry.render();
+
+// Natural physics variations for Bento Mode collage
+const tapeAngles = [-3.5, 2.2, -1.8, 3.8, -2.5, 1.6, -4.1, 2.9];
+const tapeOffsets = [24, 34, 18, 42, 28, 36, 16, 30];
+const stampAngles = [11, -8, 14, -12, 8, -14, 6, -10];
+const stampTops = [-16, -12, -18, -14, -16, -10, -18, -12];
+const stampRights = [24, 18, 30, 20, 26, 16, 28, 22];
+
+const tapeRot = tapeAngles[index % tapeAngles.length];
+const tapeLeft = tapeOffsets[index % tapeOffsets.length];
+const stampRot = stampAngles[index % stampAngles.length];
+const stampTop = isFirst ? -20 : stampTops[index % stampTops.length];
+const stampRight = isFirst ? 28 : stampRights[index % stampRights.length];
 ---
-<div class:list={[
-    "card-base post-card-box flex flex-col md:flex-row w-full rounded-[var(--radius-large)] relative transition-all duration-300",
-    isFirst ? "bento-hero-card" : "",
-    className
-]} style={style}>
+<div
+    class:list={[
+        "card-base post-card-box flex flex-col md:flex-row w-full rounded-[var(--radius-large)] relative transition-all duration-300",
+        isFirst ? "bento-hero-card" : "",
+        isWide ? "bento-wide-card" : "",
+        className
+    ]}
+    data-category={category || ""}
+    data-tags={JSON.stringify(tags || [])}
+    style={`${style || ""}; --tape-rot: ${tapeRot}deg; --tape-left: ${tapeLeft}px; --stamp-rot: ${stampRot}deg; --stamp-top: ${stampTop}px; --stamp-right: ${stampRight}px;`}
+>
 
     <!-- Tape Mode Physical Shell Elements: Corner Screws -->
     <div class="tape-decor tape-screw top-2.5 left-2.5"></div>
@@ -73,16 +93,32 @@ const { remarkPluginFrontmatter } = await entry.render();
         <div class="tape-side-groove w-1 h-3 rounded-full"></div>
     </div>
 
-    <!-- Bento Mode Physical Asset 1: Washi Tape Strip at Corner -->
-    <div class="bento-decor hidden absolute -top-3.5 left-6 w-24 h-7 z-30 pointer-events-none -rotate-3 select-none drop-shadow-sm">
+    <!-- Tape Mode Sticky Note Badge on Latest Tape -->
+    {isFirst && (
+        <div class="tape-decor tape-sticky-badge absolute top-2 right-12 z-30 pointer-events-none select-none -rotate-1">
+            <div class="px-2.5 py-0.5 rounded bg-gradient-to-r from-amber-300 via-yellow-400 to-amber-300 text-black font-mono font-black text-[10px] tracking-wider shadow-[0_2px_8px_rgba(0,0,0,0.4)] border border-yellow-200/80 flex items-center gap-1.5">
+                <span class="w-1.5 h-1.5 rounded-full bg-red-600 animate-ping"></span>
+                <span>★ MASTER TAPE // #01</span>
+            </div>
+        </div>
+    )}
+
+    <!-- Bento Mode Physical Asset 1: Washi Tape Strip at Corner with natural random angle -->
+    <div
+        class="bento-decor hidden absolute -top-3.5 w-24 h-7 z-30 pointer-events-none select-none drop-shadow-sm transition-transform"
+        style="left: var(--tape-left); transform: rotate(var(--tape-rot));"
+    >
         <img src="/assets/decor/washi-tape.png" alt="Washi Tape" class="w-full h-full object-contain pointer-events-none" />
     </div>
 
-    <!-- Bento Mode Physical Asset 2: Rubber Ink Stamp -->
-    <div class:list={[
-        "bento-decor hidden absolute z-30 pointer-events-none select-none",
-        isFirst ? "-top-4 right-6 w-24 h-24 rotate-12" : "-top-3 right-3 w-16 h-16 rotate-6"
-    ]}>
+    <!-- Bento Mode Physical Asset 2: Rubber Ink Stamp with natural random angle -->
+    <div
+        class:list={[
+            "bento-decor hidden absolute z-30 pointer-events-none select-none transition-transform",
+            isFirst ? "w-24 h-24" : "w-16 h-16"
+        ]}
+        style="top: var(--stamp-top); right: var(--stamp-right); transform: rotate(var(--stamp-rot));"
+    >
         <img src="/assets/decor/zine-stamp.png" alt="Zine Stamp" class="w-full h-full object-contain pointer-events-none" />
     </div>
 
@@ -121,7 +157,7 @@ const { remarkPluginFrontmatter } = await entry.render();
             ) : (
                 <div class="bento-decor hidden items-center justify-between border-b border-dashed border-black/10 dark:border-white/10 pb-1.5 mb-2 font-mono text-[10px] text-black/50 dark:text-white/50">
                     <span class="font-bold text-[var(--primary)] uppercase tracking-wider">// ISSUE #{issueNumber}</span>
-                    <span class="tracking-widest uppercase">ZINE FEED</span>
+                    <span class="tracking-widest uppercase">{isWide ? "SPOTLIGHT FEATURE" : "ZINE FEED"}</span>
                 </div>
             )}
 
@@ -169,6 +205,7 @@ const { remarkPluginFrontmatter } = await entry.render();
             url={url}
             title={title}
             issueNumber={issueNumber}
+            wordsCount={remarkPluginFrontmatter.words}
             class="w-full h-full min-h-[190px]"
         />
     </div>
@@ -176,7 +213,7 @@ const { remarkPluginFrontmatter } = await entry.render();
     <!-- RIGHT/TOP BLOCK: BENTO MODE -> Magazine Polaroid Cover (when cover exists) -->
     {hasCover && (
         <a href={url} aria-label={title} class="bento-decor hidden group post-card-cover relative overflow-hidden active:scale-95">
-            <div class="absolute pointer-events-none z-10 w-full h-full group-hover:bg-black/30 group-active:bg-black/50 transition"></div>
+            <div class="absolute pointer-events-none z-10 w-full h-full group-hover:bg-black/25 group-active:bg-black/40 transition"></div>
             <div class="absolute pointer-events-none z-20 w-full h-full flex items-center justify-center">
                 <Icon name="material-symbols:chevron-right-rounded" class="transition opacity-0 group-hover:opacity-100 scale-50 group-hover:scale-100 text-white text-5xl"></Icon>
             </div>

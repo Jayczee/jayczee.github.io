@@ -8,6 +8,7 @@ interface Props {
 	url?: string;
 	title?: string;
 	issueNumber?: string;
+	wordsCount?: number;
 }
 const {
 	class: className = "",
@@ -16,9 +17,17 @@ const {
 	url: postUrl = "#",
 	title = "",
 	issueNumber = "01",
+	wordsCount = 1000,
 } = Astro.props;
 
 const hasCover = !!coverImage;
+
+// Deterministic 3-digit counter reading derived from article content
+const num = wordsCount ? Math.min(999, Math.floor(wordsCount / 10)) : (Number(issueNumber) * 47) % 999;
+const cStr = String(num).padStart(3, "0");
+const d1 = Number(cStr[0]);
+const d2 = Number(cStr[1]);
+const d3 = Number(cStr[2]);
 ---
 <div class:list={["tape-vcr-deck relative rounded-xl overflow-hidden bg-[#0c1017] border-2 border-[#1c2331] shadow-[inset_0_2px_8px_rgba(0,0,0,0.9)] flex flex-col justify-between p-3 select-none group/deck", className]}>
 
@@ -66,14 +75,31 @@ const hasCover = !!coverImage;
             </svg>
         </div>
 
-        <!-- Center Ruler & Ticks -->
+        <!-- Center Mechanical Rolling Counter Box & Ruler Ticks -->
         <div class="flex flex-col items-center justify-center gap-1 z-10 select-none px-1">
-            <div class="flex items-center gap-2 font-mono text-[9px] text-[var(--primary)] font-extrabold tracking-widest drop-shadow">
-                <span>100</span>
-                <span class="opacity-50">50</span>
-                <span>0</span>
+            <div class="tape-counter-box flex items-center px-1.5 py-0.5 rounded bg-black/90 border border-white/20 shadow-[inset_0_1px_3px_rgba(0,0,0,0.9)]">
+                <!-- Hundreds digit -->
+                <div class="digit-wheel overflow-hidden h-[13px] leading-[13px] w-[9px] text-center font-mono font-bold text-[9px] text-white/75">
+                    <div class="digit-strip strip-hundreds" style={`--init-pos: -${d1 * 13}px;`}>
+                        {Array.from({ length: 20 }, (_, i) => <span>{i % 10}</span>)}
+                    </div>
+                </div>
+                <!-- Tens digit -->
+                <div class="digit-wheel overflow-hidden h-[13px] leading-[13px] w-[9px] text-center font-mono font-bold text-[9px] text-white/75 border-x border-white/10">
+                    <div class="digit-strip strip-tens" style={`--init-pos: -${d2 * 13}px;`}>
+                        {Array.from({ length: 20 }, (_, i) => <span>{i % 10}</span>)}
+                    </div>
+                </div>
+                <!-- Ones digit -->
+                <div class="digit-wheel overflow-hidden h-[13px] leading-[13px] w-[9px] text-center font-mono font-bold text-[9px] text-[var(--primary)]">
+                    <div class="digit-strip strip-ones" style={`--init-pos: -${d3 * 13}px;`}>
+                        {Array.from({ length: 20 }, (_, i) => <span>{i % 10}</span>)}
+                    </div>
+                </div>
             </div>
-            <div class="flex items-center gap-0.5 w-12 h-1">
+
+            <!-- Ticks ruler -->
+            <div class="flex items-center gap-0.5 w-12 h-1 mt-0.5">
                 <div class="h-full w-0.5 bg-white/50"></div>
                 <div class="h-2/3 w-0.5 bg-white/20"></div>
                 <div class="h-full w-0.5 bg-[var(--primary)] shadow-[0_0_4px_var(--primary)]"></div>
@@ -106,3 +132,34 @@ const hasCover = !!coverImage;
     </div>
 
 </div>
+
+<style>
+    .digit-strip {
+        display: flex;
+        flex-direction: column;
+        transform: translateY(var(--init-pos, 0px));
+        transition: transform 0.4s ease;
+    }
+    :global(#posts-container[data-blog-view="tape"] .post-card-box:hover) .strip-ones {
+        animation: tape-roll-ones 0.35s linear infinite;
+    }
+    :global(#posts-container[data-blog-view="tape"] .post-card-box:hover) .strip-tens {
+        animation: tape-roll-tens 0.9s linear infinite;
+    }
+    :global(#posts-container[data-blog-view="tape"] .post-card-box:hover) .strip-hundreds {
+        animation: tape-roll-hundreds 2.4s linear infinite;
+    }
+
+    @keyframes tape-roll-ones {
+        from { transform: translateY(0); }
+        to { transform: translateY(-130px); }
+    }
+    @keyframes tape-roll-tens {
+        from { transform: translateY(0); }
+        to { transform: translateY(-130px); }
+    }
+    @keyframes tape-roll-hundreds {
+        from { transform: translateY(0); }
+        to { transform: translateY(-130px); }
+    }
+</style>

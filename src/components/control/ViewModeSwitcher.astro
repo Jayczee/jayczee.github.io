@@ -7,8 +7,8 @@ const { class: className = "" } = Astro.props;
 ---
 
 <div class:list={["view-mode-bar flex items-center justify-between mb-4 px-1 select-none", className]}>
-    <div class="flex items-center gap-2 text-xs font-mono tracking-wider text-black/50 dark:text-white/45 uppercase">
-        <span class="inline-block w-2 h-2 rounded-full bg-[var(--primary)] animate-pulse"></span>
+    <div class="flex items-center gap-2 text-xs font-mono tracking-wider text-black/55 dark:text-white/45 uppercase">
+        <span class="inline-block w-2 h-2 rounded-full bg-[var(--primary)] animate-pulse shadow-[0_0_6px_var(--primary)]"></span>
         <span class="font-bold tracking-widest text-[0.7rem]">TERMINAL // VIEW ARCHIVE</span>
     </div>
 

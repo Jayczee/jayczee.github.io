@@ -300,15 +300,38 @@ const interval = 50;
             border-radius: 0 1.25rem 1.25rem 0 !important;
         }
 
-        /* Non-hero Articles: Vertical Magazine Tile */
-        #posts-container[data-blog-view="bento"] .post-card-box:not(.bento-hero-card) {
+        /* Wide Spotlight Article: 2-Column Horizontal Spread */
+        #posts-container[data-blog-view="bento"] .bento-wide-card {
+            grid-column: span 2 / span 2 !important;
+            display: flex !important;
+            flex-direction: row !important;
+        }
+        #posts-container[data-blog-view="bento"] .bento-wide-card .post-card-title {
+            font-size: 1.6rem !important;
+            line-height: 2.1rem !important;
+        }
+        #posts-container[data-blog-view="bento"] .bento-wide-card .post-card-cover {
+            order: 2 !important;
+            width: 35% !important;
+            min-height: 200px !important;
+            height: auto !important;
+            max-height: none !important;
+            border-radius: 0 1.25rem 1.25rem 0 !important;
+        }
+        #posts-container[data-blog-view="bento"] .bento-wide-card .post-card-content {
+            width: 65% !important;
+            padding: 1.5rem !important;
+        }
+
+        /* Non-hero & Non-wide Articles: Vertical Magazine Tile */
+        #posts-container[data-blog-view="bento"] .post-card-box:not(.bento-hero-card):not(.bento-wide-card) {
             display: flex !important;
             flex-direction: column !important;
             height: 100% !important;
         }
 
         /* Cover Image on top like a printed press photo */
-        #posts-container[data-blog-view="bento"] .post-card-box:not(.bento-hero-card) .post-card-cover {
+        #posts-container[data-blog-view="bento"] .post-card-box:not(.bento-hero-card):not(.bento-wide-card) .post-card-cover {
             order: -1 !important;
             position: relative !important;
             width: 100% !important;
@@ -323,14 +346,14 @@ const interval = 50;
             overflow: hidden !important;
         }
 
-        #posts-container[data-blog-view="bento"] .post-card-box:not(.bento-hero-card) .post-card-cover img {
+        #posts-container[data-blog-view="bento"] .post-card-box:not(.bento-hero-card):not(.bento-wide-card) .post-card-cover img {
             object-fit: cover !important;
             width: 100% !important;
             height: 100% !important;
         }
 
         /* Content block for 2-column card */
-        #posts-container[data-blog-view="bento"] .post-card-box:not(.bento-hero-card) .post-card-content {
+        #posts-container[data-blog-view="bento"] .post-card-box:not(.bento-hero-card):not(.bento-wide-card) .post-card-content {
             width: 100% !important;
             padding: 1.25rem 1.35rem 1.25rem 1.35rem !important;
             display: flex !important;
@@ -338,15 +361,26 @@ const interval = 50;
             flex: 1 1 auto !important;
         }
 
-        #posts-container[data-blog-view="bento"] .post-card-box:not(.bento-hero-card) .post-card-title {
+        #posts-container[data-blog-view="bento"] .post-card-box:not(.bento-hero-card):not(.bento-wide-card) .post-card-title {
             font-size: 1.25rem !important;
             line-height: 1.7rem !important;
             margin-bottom: 0.5rem !important;
         }
 
-        #posts-container[data-blog-view="bento"] .post-card-box:not(.bento-hero-card) .post-card-title::before {
+        #posts-container[data-blog-view="bento"] .post-card-box:not(.bento-hero-card):not(.bento-wide-card) .post-card-title::before {
             display: none !important;
         }
+    }
+
+    /* Polaroid Photo Lift & Tilt on Card Hover in Bento Mode */
+    #posts-container[data-blog-view="bento"] .post-card-cover {
+        transition: transform 0.35s cubic-bezier(0.16, 1, 0.3, 1), box-shadow 0.35s ease !important;
+        transform-origin: center bottom;
+    }
+    #posts-container[data-blog-view="bento"] .post-card-box:hover .post-card-cover {
+        transform: perspective(800px) rotateX(2.5deg) rotateY(-1.5deg) translateY(-4px) scale(1.015) !important;
+        box-shadow: 0 14px 28px -6px rgba(0, 0, 0, 0.3), 0 0 0 1px rgba(255, 255, 255, 0.1) !important;
+        z-index: 20 !important;
     }
 
     /* Common Card Divider hide in both rich modes */

@@ -3,41 +3,43 @@ interface Props {
 	badge?: string;
 	url?: string;
 	label?: string;
+	index?: number;
 }
-const { badge, url, label } = Astro.props;
+const { badge, url, label, index } = Astro.props;
+const idxStr = index ? String(index).padStart(2, "0") : "";
 ---
-<a href={url} aria-label={label}>
+<a href={url} aria-label={label} class="group block mb-1 last:mb-0 select-none">
     <button
-        class:list={`
-            w-full
-            h-10
-            rounded-lg
-            bg-none
-            hover:bg-[var(--btn-plain-bg-hover)]
-            active:bg-[var(--btn-plain-bg-active)]
-            transition-all
-            pl-2
-            hover:pl-3
-
-            text-neutral-700
-            hover:text-[var(--primary)]
-            dark:text-neutral-300
-            dark:hover:text-[var(--primary)]
-        `
-        }
+        type="button"
+        class="w-full h-10 rounded-xl px-2.5 transition-all duration-200 relative flex items-center justify-between text-left
+        text-neutral-700 dark:text-neutral-300
+        hover:text-[var(--primary)] dark:hover:text-[var(--primary)]
+        hover:bg-black/[0.04] dark:hover:bg-white/[0.06]
+        active:scale-[0.98]"
     >
-        <div class="flex items-center justify-between relative mr-2">
-            <div class="overflow-hidden text-left whitespace-nowrap overflow-ellipsis  ">
+        <!-- Left indicator bar on hover -->
+        <div class="absolute left-0 top-2 bottom-2 w-1 rounded-r bg-[var(--primary)] opacity-0 group-hover:opacity-100 transition-opacity"></div>
+
+        <div class="flex items-center gap-2 overflow-hidden mr-2">
+            {idxStr && (
+                <span class="font-mono text-[11px] text-black/35 dark:text-white/35 group-hover:text-[var(--primary)] transition-colors shrink-0">
+                    {idxStr}.
+                </span>
+            )}
+            <span class="truncate font-medium text-sm">
                 <slot></slot>
-            </div>
-            { badge !== undefined && badge !== null && badge !== '' &&
-                <div class="transition px-2 h-7 ml-4 min-w-[2rem] rounded-lg text-sm font-bold
-                    text-[var(--btn-content)] dark:text-[var(--deep-text)]
-                    bg-[var(--btn-regular-bg)] dark:bg-[var(--primary)]
-                    flex items-center justify-center">
-                    { badge }
-                </div>
-            }
+            </span>
         </div>
+
+        {badge !== undefined && badge !== null && badge !== '' && (
+            <div class="transition-all px-2 py-0.5 min-w-[1.75rem] h-6 rounded-md text-xs font-mono font-bold
+                text-black/60 dark:text-[var(--primary)]
+                bg-black/5 dark:bg-black/60
+                border border-black/10 dark:border-white/10
+                group-hover:border-[var(--primary)]/50 group-hover:shadow-[0_0_8px_color-mix(in_srgb,var(--primary)_30%,transparent)]
+                flex items-center justify-center shrink-0">
+                {badge}
+            </div>
+        )}
     </button>
 </a>

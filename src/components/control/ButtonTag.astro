@@ -5,9 +5,19 @@ interface Props {
 	href?: string;
 	label?: string;
 }
-const { dot, href, label }: Props = Astro.props;
+const { href, label }: Props = Astro.props;
 ---
-<a href={href} aria-label={label} class="btn-regular h-8 text-sm px-3 rounded-lg">
-    {dot && <div class="h-1 w-1 bg-[var(--btn-content)] dark:bg-[var(--card-bg)] transition rounded-md mr-2"></div>}
+<a
+    href={href}
+    aria-label={label}
+    class="group inline-flex items-center h-7 text-xs font-mono px-2.5 rounded-lg
+    bg-black/[0.035] dark:bg-white/[0.04]
+    border border-black/10 dark:border-white/10
+    text-neutral-600 dark:text-neutral-300
+    hover:border-[var(--primary)]/60 hover:text-[var(--primary)] dark:hover:text-[var(--primary)]
+    hover:bg-[var(--primary)]/10 dark:hover:bg-[var(--primary)]/15
+    active:scale-95 transition-all duration-200"
+>
+    <span class="text-[var(--primary)] font-bold opacity-60 group-hover:opacity-100 transition-opacity mr-1">#</span>
     <slot></slot>
 </a>

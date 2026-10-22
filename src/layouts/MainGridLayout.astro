@@ -33,6 +33,7 @@ const {
 	setOGTypeArticle,
 	headings = [],
 } = Astro.props;
+const hasHeadings = headings && headings.length > 0;
 const hasBannerCredit =
 	siteConfig.banner.enable && siteConfig.banner.credit.enable;
 const hasBannerLink = !!siteConfig.banner.credit.url;
@@ -76,7 +77,7 @@ const mainPanelTop = siteConfig.banner.enable
 <div class="absolute w-full z-30 pointer-events-none" style={`top: ${mainPanelTop}`}>
     <!-- The pointer-events-none here prevent blocking the click event of the TOC -->
     <div class="relative max-w-[var(--page-width)] mx-auto pointer-events-auto">
-        <div id="main-grid" class="transition duration-700 w-full left-0 right-0 grid grid-cols-[17.5rem_auto] grid-rows-[auto_1fr_auto] lg:grid-rows-[auto]
+        <div id="main-grid" class="transition duration-700 w-full left-0 right-0 grid grid-cols-[17.5rem_minmax(0,1fr)] grid-rows-[auto_1fr_auto] lg:grid-rows-[auto]
     mx-auto gap-4 px-0 md:px-4"
         >
             <!-- Banner image credit -->
@@ -95,7 +96,7 @@ const mainPanelTop = siteConfig.banner.enable
 
             <SideBar class="mb-4 row-start-2 row-end-3 col-span-2 lg:row-start-1 lg:row-end-2 lg:col-span-1 lg:max-w-[17.5rem] onload-animation" headings={headings}></SideBar>
 
-            <main id="swup-container" class="transition-swup-fade col-span-2 lg:col-span-1 overflow-hidden">
+            <main id="swup-container" class="transition-swup-fade col-span-2 lg:col-span-1 min-w-0 max-w-full overflow-hidden">
                 <div id="content-wrapper" class="onload-animation">
                     <!-- the overflow-hidden here prevent long text break the layout-->
                     <!-- make id different from windows.swup global property -->
@@ -115,24 +116,28 @@ const mainPanelTop = siteConfig.banner.enable
     </div>
 </div>
 
-<!-- The things that should be under the banner, only the TOC for now -->
+<!-- Fixed Table of Contents (TOC) docked to page right margin (only shown when post has headings) -->
 <div class="absolute w-full z-0 hidden 2xl:block">
     <div class="relative max-w-[var(--page-width)] mx-auto">
-        <!-- TOC component -->
-        {siteConfig.toc.enable && <div id="toc-wrapper" class:list={["hidden lg:block transition absolute top-0 -right-[var(--toc-width)] w-[var(--toc-width)] items-center",
+        {siteConfig.toc.enable && hasHeadings && <div id="toc-wrapper" class:list={["hidden lg:block transition absolute top-0 -right-[var(--toc-width)] w-[var(--toc-width)] items-center",
             {"toc-hide": siteConfig.banner.enable}]}
         >
-            <div id="toc-inner-wrapper" class="fixed top-14 w-[var(--toc-width)] h-[calc(100vh_-_20rem)] overflow-y-scroll overflow-x-hidden hide-scrollbar">
-                <div id="toc" class="w-full h-full transition-swup-fade ">
-                    <div class="h-8 w-full"></div>
+            <div id="toc-inner-wrapper" class="fixed top-20 w-[var(--toc-width)] max-w-[17.5rem] h-[calc(100vh_-_16rem)] overflow-y-auto overflow-x-hidden hide-scrollbar bg-black/5 dark:bg-[#0c1017]/90 backdrop-blur-md rounded-2xl p-3 border border-black/10 dark:border-white/10 shadow-xl">
+                <div class="flex items-center justify-between px-1.5 py-1 mb-2 font-mono text-[10px] text-black/45 dark:text-white/40 border-b border-black/10 dark:border-white/10 select-none tracking-wider">
+                    <div class="flex items-center gap-1.5 font-bold text-[var(--primary)]">
+                        <span class="w-1.5 h-1.5 rounded-full bg-[var(--primary)] animate-pulse"></span>
+                        <span>INDEX // TOC</span>
+                    </div>
+                    <span class="text-[9px] opacity-60">NAV</span>
+                </div>
+                <div id="toc" class="w-full transition-swup-fade">
                     <TOC headings={headings}></TOC>
-                    <div class="h-8 w-full"></div>
                 </div>
             </div>
         </div>}
 
-        <!-- #toc needs to exist for Swup to work normally -->
-        {!siteConfig.toc.enable && <div id="toc"></div>}
+        <!-- #toc placeholder for Swup if no headings or TOC disabled -->
+        {(!siteConfig.toc.enable || !hasHeadings) && <div id="toc-wrapper" class="toc-disabled hidden"><div id="toc" class="hidden"></div></div>}
     </div>
 </div>
 </Layout>

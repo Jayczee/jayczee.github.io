@@ -23,10 +23,11 @@ const style = Astro.props.style;
 <WidgetLayout name={i18n(I18nKey.categories)} id="categories" isCollapsed={isCollapsed} collapsedHeight={COLLAPSED_HEIGHT}
                 class={className} style={style}
 >
-    {categories.map((c) =>
+    {categories.map((c, i) =>
         <ButtonLink
             url={c.url}
-            badge={String(c.count)}
+            badge={String(c.count).padStart(2, "0")}
+            index={i + 1}
             label={`View all posts in the ${c.name.trim()} category`}
         >
             {c.name.trim()}
