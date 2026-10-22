@@ -2,15 +2,35 @@
 import type { CollectionEntry } from "astro:content";
 import { getPostUrlBySlug } from "@utils/url-utils";
 import PostCard from "./PostCard.astro";
+import ViewModeSwitcher from "./control/ViewModeSwitcher.astro";
 
 const { page } = Astro.props;
 
 let delay = 0;
 const interval = 50;
 ---
-<div class="transition flex flex-col rounded-[var(--radius-large)] bg-[var(--card-bg)] py-1 md:py-0 md:bg-transparent md:gap-4 mb-4">
-    {page.data.map((entry: CollectionEntry<"posts">) => (
+
+<ViewModeSwitcher />
+
+<script is:inline>
+    (function () {
+        try {
+            const m = localStorage.getItem("blog-view-mode") || "tape";
+            const c = document.getElementById("posts-container");
+            if (c) c.setAttribute("data-blog-view", m);
+            document.documentElement.setAttribute("data-blog-view", m);
+        } catch (e) {}
+    })();
+</script>
+
+<div
+    id="posts-container"
+    data-blog-view="tape"
+    class="posts-container-grid transition-all duration-300 rounded-[var(--radius-large)] mb-4"
+>
+    {page.data.map((entry: CollectionEntry<"posts">, index: number) => (
         <PostCard
+                index={index}
                 entry={entry}
                 title={entry.data.title}
                 tags={entry.data.tags}
@@ -26,3 +46,312 @@ const interval = 50;
         ></PostCard>
     ))}
 </div>
+
+<style is:global>
+    /* =========================================================
+       DUAL MODE ARTISTIC ENGINE: TAPE ARCHIVE vs STREET ZINE
+       ========================================================= */
+
+    /* Ensure parent container doesn't clip card hover transforms or glow */
+    #swup-container {
+        overflow: visible !important;
+    }
+
+    /* ---------------------------------------------------------
+       1. PHYSICAL VHS CASSETTE SCREWS
+       --------------------------------------------------------- */
+    /* Light Mode Screws: Brushed Stainless Steel */
+    html:not(.dark) .tape-screw {
+        position: absolute;
+        width: 10px;
+        height: 10px;
+        border-radius: 50%;
+        background: radial-gradient(circle at 35% 35%, #ffffff 0%, #cbd5e1 55%, #64748b 100%);
+        box-shadow: inset 0 1px 1px rgba(255, 255, 255, 0.9), 0 1px 2px rgba(0, 0, 0, 0.18);
+        z-index: 25;
+        pointer-events: none;
+    }
+    html:not(.dark) .tape-screw::after {
+        content: '+';
+        position: absolute;
+        inset: 0;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        font-size: 8px;
+        line-height: 1;
+        color: #475569;
+        font-family: monospace, sans-serif;
+        font-weight: 900;
+    }
+    /* Dark Mode Screws: Stealth Gunmetal */
+    html.dark .tape-screw {
+        position: absolute;
+        width: 10px;
+        height: 10px;
+        border-radius: 50%;
+        background: radial-gradient(circle at 35% 35%, #9ca3af 0%, #374151 60%, #111827 100%);
+        box-shadow: inset 0 1px 1px rgba(255, 255, 255, 0.4), 0 1px 2px rgba(0, 0, 0, 0.9);
+        z-index: 25;
+        pointer-events: none;
+    }
+    html.dark .tape-screw::after {
+        content: '+';
+        position: absolute;
+        inset: 0;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        font-size: 8px;
+        line-height: 1;
+        color: rgba(17, 24, 39, 0.9);
+        font-family: monospace, sans-serif;
+        font-weight: 900;
+    }
+
+    /* ---------------------------------------------------------
+       2. MODE A: 录像档案 (Tape Archive - Authentic VCR Hardware)
+       --------------------------------------------------------- */
+    #posts-container[data-blog-view="tape"] {
+        display: flex;
+        flex-direction: column;
+        gap: 1.25rem;
+        padding-right: 14px;
+        box-sizing: border-box;
+    }
+
+    /* Show Tape Elements, Hide Bento Elements */
+    #posts-container[data-blog-view="tape"] .tape-decor {
+        display: flex !important;
+    }
+    #posts-container[data-blog-view="tape"] .bento-decor {
+        display: none !important;
+    }
+
+    /* Side grip grooves */
+    html:not(.dark) #posts-container[data-blog-view="tape"] .tape-side-groove {
+        background-color: rgba(0, 0, 0, 0.12) !important;
+        border-right: 1px solid rgba(255, 255, 255, 0.8) !important;
+        box-shadow: inset 0 1px 2px rgba(0, 0, 0, 0.12) !important;
+    }
+    html.dark #posts-container[data-blog-view="tape"] .tape-side-groove {
+        background-color: rgba(0, 0, 0, 0.6) !important;
+        border-right: 1px solid rgba(255, 255, 255, 0.1) !important;
+        box-shadow: inset 0 1px 2px rgba(0, 0, 0, 0.7) !important;
+    }
+
+    /* --- LIGHT MODE TAPE CASSETTE: Retro Studio Warm Ivory / Light Grey --- */
+    html:not(.dark) #posts-container[data-blog-view="tape"] .post-card-box {
+        background-color: #ebe7de !important;
+        background-image: linear-gradient(180deg, #f7f4ed 0%, #e6dfd2 100%) !important;
+        border: 2px solid #d4cdc1 !important;
+        border-radius: 1.25rem !important;
+        box-shadow:
+            inset 1px 1px 0 rgba(255, 255, 255, 0.95),
+            inset -1px -1px 0 rgba(0, 0, 0, 0.14),
+            0 8px 24px -4px rgba(0, 0, 0, 0.08) !important;
+        padding: 0.75rem 0.85rem !important;
+        overflow: hidden !important;
+        transition: transform 0.3s cubic-bezier(0.16, 1, 0.3, 1), box-shadow 0.3s ease, border-color 0.3s ease !important;
+    }
+
+    html:not(.dark) #posts-container[data-blog-view="tape"] .post-card-box:hover {
+        transform: translateX(8px) translateY(-2px) !important;
+        border-color: var(--primary) !important;
+        box-shadow:
+            inset 1px 1px 0 rgba(255, 255, 255, 0.95),
+            0 0 16px 1px color-mix(in srgb, var(--primary) 40%, transparent),
+            0 14px 28px -4px rgba(0, 0, 0, 0.14) !important;
+    }
+
+    /* Light Mode Cassette Label Sticker (Clean, warm cream paper with faint ruling & orange header) */
+    html:not(.dark) #posts-container[data-blog-view="tape"] .post-card-content {
+        background-color: #fffdfa !important;
+        background-image:
+            linear-gradient(to bottom, transparent 96%, rgba(0, 0, 0, 0.035) 96%),
+            radial-gradient(ellipse at top left, rgba(255, 255, 255, 0.9) 0%, transparent 70%) !important;
+        background-size: 100% 32px, 100% 100% !important;
+        border: 1px solid #ddd7cb !important;
+        border-top: 3.5px solid var(--primary) !important;
+        border-radius: 0.85rem !important;
+        box-shadow: inset 0 1px 3px rgba(0, 0, 0, 0.05), 0 2px 6px rgba(0, 0, 0, 0.03) !important;
+        position: relative !important;
+    }
+
+    /* --- DARK MODE TAPE CASSETTE: Stealth Charcoal Black Molded Plastic --- */
+    html.dark #posts-container[data-blog-view="tape"] .post-card-box {
+        background-color: #12151e !important;
+        background-image: linear-gradient(180deg, #171c26 0%, #0e1118 100%) !important;
+        border: 2px solid #232938 !important;
+        border-radius: 1.25rem !important;
+        box-shadow:
+            inset 1px 1px 0 rgba(255, 255, 255, 0.12),
+            inset -1px -1px 0 rgba(0, 0, 0, 0.9),
+            0 10px 24px -4px rgba(0, 0, 0, 0.6) !important;
+        padding: 0.75rem 0.85rem !important;
+        overflow: hidden !important;
+        transition: transform 0.3s cubic-bezier(0.16, 1, 0.3, 1), box-shadow 0.3s ease, border-color 0.3s ease !important;
+    }
+
+    html.dark #posts-container[data-blog-view="tape"] .post-card-box:hover {
+        transform: translateX(8px) translateY(-2px) !important;
+        border-color: color-mix(in srgb, var(--primary) 80%, #252d3b) !important;
+        box-shadow:
+            inset 1px 1px 0 rgba(255, 255, 255, 0.22),
+            inset -1px -1px 0 rgba(0, 0, 0, 0.9),
+            0 0 16px 1px color-mix(in srgb, var(--primary) 35%, transparent),
+            -4px 14px 28px -4px rgba(0, 0, 0, 0.7) !important;
+    }
+
+    /* Dark Mode Cassette Label Sticker (Technical slate paper with faint ruling & orange header) */
+    html.dark #posts-container[data-blog-view="tape"] .post-card-content {
+        background-color: #171d27 !important;
+        background-image:
+            linear-gradient(to bottom, transparent 96%, rgba(255, 255, 255, 0.025) 96%),
+            radial-gradient(ellipse at top left, rgba(255, 255, 255, 0.04) 0%, transparent 70%) !important;
+        background-size: 100% 32px, 100% 100% !important;
+        border: 1px solid rgba(255, 255, 255, 0.08) !important;
+        border-top: 3.5px solid var(--primary) !important;
+        border-radius: 0.85rem !important;
+        box-shadow: inset 0 2px 6px rgba(0, 0, 0, 0.6) !important;
+        position: relative !important;
+    }
+
+    /* Active Spool Rotation Animation on Tape Hover */
+    #posts-container[data-blog-view="tape"] .post-card-box:hover .tape-gear-left {
+        animation: tape-spin 2s linear infinite !important;
+    }
+    #posts-container[data-blog-view="tape"] .post-card-box:hover .tape-gear-right {
+        animation: tape-spin 2s linear infinite !important;
+    }
+
+    @keyframes tape-spin {
+        from { transform: rotate(0deg); }
+        to { transform: rotate(360deg); }
+    }
+
+    /* ---------------------------------------------------------
+       3. MODE B: 街头画报 (Street Bento Zine - Indie Art Tabloid)
+       --------------------------------------------------------- */
+    #posts-container[data-blog-view="bento"] {
+        display: flex;
+        flex-direction: column;
+        gap: 1.5rem;
+        padding: 0.6rem 0.25rem;
+        box-sizing: border-box;
+    }
+
+    /* Show Bento Elements, Hide Tape Elements */
+    #posts-container[data-blog-view="bento"] .tape-decor {
+        display: none !important;
+    }
+    #posts-container[data-blog-view="bento"] .bento-decor {
+        display: flex !important;
+    }
+
+    /* Zine Clipping Paper Box */
+    html:not(.dark) #posts-container[data-blog-view="bento"] .post-card-box {
+        background: #ffffff !important;
+        border: 1.5px solid rgba(0, 0, 0, 0.1) !important;
+        border-radius: 1.25rem !important;
+        box-shadow: 0 4px 18px -2px rgba(0, 0, 0, 0.06) !important;
+        padding: 0 !important;
+        position: relative !important;
+        overflow: visible !important;
+        transition: transform 0.3s cubic-bezier(0.16, 1, 0.3, 1), box-shadow 0.3s ease !important;
+    }
+    html.dark #posts-container[data-blog-view="bento"] .post-card-box {
+        background: #161c26 !important;
+        border: 1.5px solid rgba(255, 255, 255, 0.1) !important;
+        border-radius: 1.25rem !important;
+        box-shadow: 0 8px 24px -4px rgba(0, 0, 0, 0.5) !important;
+        padding: 0 !important;
+        position: relative !important;
+        overflow: visible !important;
+        transition: transform 0.3s cubic-bezier(0.16, 1, 0.3, 1), box-shadow 0.3s ease !important;
+    }
+
+    /* Zine Floating Physics on Hover */
+    #posts-container[data-blog-view="bento"] .post-card-box:hover {
+        transform: translateY(-6px) rotate(-0.35deg) !important;
+        box-shadow: 0 16px 36px -6px color-mix(in srgb, var(--primary) 20%, rgba(0, 0, 0, 0.25)) !important;
+    }
+
+    /* Bento Mode Desktop Grid (md:) */
+    @media (min-width: 768px) {
+        #posts-container[data-blog-view="bento"] {
+            display: grid !important;
+            grid-template-columns: repeat(2, minmax(0, 1fr)) !important;
+            gap: 2rem 1.25rem !important; /* Extra vertical room for washi tape overlap */
+            align-items: stretch !important;
+        }
+
+        /* Hero Article: 2-Column Full Editorial Feature */
+        #posts-container[data-blog-view="bento"] .bento-hero-card {
+            grid-column: span 2 / span 2 !important;
+        }
+        #posts-container[data-blog-view="bento"] .bento-hero-card .post-card-title {
+            font-size: 2rem !important;
+            line-height: 2.5rem !important;
+        }
+        #posts-container[data-blog-view="bento"] .bento-hero-card .post-card-cover {
+            width: 38% !important;
+            min-height: 220px !important;
+            border-radius: 0 1.25rem 1.25rem 0 !important;
+        }
+
+        /* Non-hero Articles: Vertical Magazine Tile */
+        #posts-container[data-blog-view="bento"] .post-card-box:not(.bento-hero-card) {
+            display: flex !important;
+            flex-direction: column !important;
+            height: 100% !important;
+        }
+
+        /* Cover Image on top like a printed press photo */
+        #posts-container[data-blog-view="bento"] .post-card-box:not(.bento-hero-card) .post-card-cover {
+            order: -1 !important;
+            position: relative !important;
+            width: 100% !important;
+            height: 13rem !important;
+            max-height: 13rem !important;
+            top: auto !important;
+            right: auto !important;
+            bottom: auto !important;
+            left: auto !important;
+            margin: 0 !important;
+            border-radius: 1.25rem 1.25rem 0 0 !important;
+            overflow: hidden !important;
+        }
+
+        #posts-container[data-blog-view="bento"] .post-card-box:not(.bento-hero-card) .post-card-cover img {
+            object-fit: cover !important;
+            width: 100% !important;
+            height: 100% !important;
+        }
+
+        /* Content block for 2-column card */
+        #posts-container[data-blog-view="bento"] .post-card-box:not(.bento-hero-card) .post-card-content {
+            width: 100% !important;
+            padding: 1.25rem 1.35rem 1.25rem 1.35rem !important;
+            display: flex !important;
+            flex-direction: column !important;
+            flex: 1 1 auto !important;
+        }
+
+        #posts-container[data-blog-view="bento"] .post-card-box:not(.bento-hero-card) .post-card-title {
+            font-size: 1.25rem !important;
+            line-height: 1.7rem !important;
+            margin-bottom: 0.5rem !important;
+        }
+
+        #posts-container[data-blog-view="bento"] .post-card-box:not(.bento-hero-card) .post-card-title::before {
+            display: none !important;
+        }
+    }
+
+    /* Common Card Divider hide in both rich modes */
+    #posts-container[data-blog-view="tape"] .post-divider,
+    #posts-container[data-blog-view="bento"] .post-divider {
+        display: none !important;
+    }
+</style>

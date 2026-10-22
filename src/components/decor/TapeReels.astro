@@ -1,0 +1,108 @@
+---
+import ImageWrapper from "../misc/ImageWrapper.astro";
+
+interface Props {
+	class?: string;
+	coverImage?: string;
+	coverBasePath?: string;
+	url?: string;
+	title?: string;
+	issueNumber?: string;
+}
+const {
+	class: className = "",
+	coverImage,
+	coverBasePath = "",
+	url: postUrl = "#",
+	title = "",
+	issueNumber = "01",
+} = Astro.props;
+
+const hasCover = !!coverImage;
+---
+<div class:list={["tape-vcr-deck relative rounded-xl overflow-hidden bg-[#0c1017] border-2 border-[#1c2331] shadow-[inset_0_2px_8px_rgba(0,0,0,0.9)] flex flex-col justify-between p-3 select-none group/deck", className]}>
+
+    <!-- CRT Screen / Cover Image Backdrop (when cover exists) -->
+    {hasCover && (
+        <div class="absolute inset-0 z-0 overflow-hidden pointer-events-none">
+            <div class="w-full h-full scale-105 opacity-35 group-hover:opacity-80 transition-opacity duration-500 filter brightness-90 contrast-125">
+                <ImageWrapper src={coverImage} basePath={coverBasePath} alt={title} class="w-full h-full object-cover" />
+            </div>
+            <!-- CRT Scanline Overlay -->
+            <div class="absolute inset-0 bg-[linear-gradient(rgba(18,22,30,0)_50%,rgba(0,0,0,0.5)_50%)] bg-[length:100%_4px] opacity-40 pointer-events-none"></div>
+            <!-- Vignette shadow -->
+            <div class="absolute inset-0 bg-[radial-gradient(ellipse_at_center,transparent_40%,rgba(0,0,0,0.8)_100%)] pointer-events-none"></div>
+        </div>
+    )}
+
+    <!-- Glass Reflection Highlight across deck -->
+    <div class="absolute inset-0 bg-gradient-to-tr from-white/[0.04] via-transparent to-white/[0.08] pointer-events-none z-10"></div>
+
+    <!-- Top VCR Status Bar -->
+    <div class="relative z-20 flex items-center justify-between text-[10px] font-mono tracking-wider">
+        <div class="flex items-center gap-1.5 px-1.5 py-0.5 rounded bg-black/75 backdrop-blur-sm border border-white/10 text-white/80">
+            <span class="w-1.5 h-1.5 rounded-full bg-[var(--primary)] animate-pulse"></span>
+            <span class="font-bold text-[var(--primary)]">REC</span>
+            <span class="text-white/40 text-[9px]">48kHz</span>
+        </div>
+        <div class="px-1.5 py-0.5 rounded bg-black/75 backdrop-blur-sm border border-white/10 text-[9px] text-white/60 font-mono">
+            CH-{issueNumber} // SP
+        </div>
+    </div>
+
+    <!-- Center Magnetic Tape Spool Window -->
+    <div class="relative z-20 my-auto py-2 flex items-center justify-between px-3 rounded-lg bg-black/60 backdrop-blur-md border border-white/15 shadow-[inset_0_2px_6px_rgba(0,0,0,0.8)]">
+        <!-- Magnetic Ribbon Line -->
+        <div class="absolute inset-x-2 top-1/2 -translate-y-1/2 h-3 bg-gradient-to-r from-[#2c1d1a] via-[#1a1210] to-[#2c1d1a] opacity-95 border-y border-white/10 pointer-events-none"></div>
+
+        <!-- Left Spool (Wound Reel) -->
+        <div class="relative w-11 h-11 flex items-center justify-center shrink-0">
+            <div class="absolute inset-0 rounded-full border-[5px] border-[#3a2520] shadow-sm"></div>
+            <svg viewBox="0 0 40 40" class="tape-gear-left w-8 h-8 transition-transform z-10">
+                <circle cx="20" cy="20" r="16" fill="#e2e4e8" stroke="#9ca3af" stroke-width="1.5" />
+                <circle cx="20" cy="20" r="7.5" fill="#18181b" />
+                <path d="M20 7v5 M20 28v5 M7 20h5 M28 20h5 M11 11l3.5 3.5 M25.5 25.5l3.5 3.5 M11 29l3.5-3.5 M25.5 14.5l3.5-3.5" stroke="#374151" stroke-width="2.2" stroke-linecap="round" />
+                <circle cx="20" cy="20" r="4" fill="#fafafa" stroke="#d1d5db" stroke-width="0.5" />
+            </svg>
+        </div>
+
+        <!-- Center Ruler & Ticks -->
+        <div class="flex flex-col items-center justify-center gap-1 z-10 select-none px-1">
+            <div class="flex items-center gap-2 font-mono text-[9px] text-[var(--primary)] font-extrabold tracking-widest drop-shadow">
+                <span>100</span>
+                <span class="opacity-50">50</span>
+                <span>0</span>
+            </div>
+            <div class="flex items-center gap-0.5 w-12 h-1">
+                <div class="h-full w-0.5 bg-white/50"></div>
+                <div class="h-2/3 w-0.5 bg-white/20"></div>
+                <div class="h-full w-0.5 bg-[var(--primary)] shadow-[0_0_4px_var(--primary)]"></div>
+                <div class="h-2/3 w-0.5 bg-white/20"></div>
+                <div class="h-full w-0.5 bg-white/50"></div>
+            </div>
+        </div>
+
+        <!-- Right Spool (Take-up Reel) -->
+        <div class="relative w-11 h-11 flex items-center justify-center shrink-0">
+            <div class="absolute inset-1 rounded-full border-[2.5px] border-[#3a2520]"></div>
+            <svg viewBox="0 0 40 40" class="tape-gear-right w-8 h-8 transition-transform z-10">
+                <circle cx="20" cy="20" r="16" fill="#e2e4e8" stroke="#9ca3af" stroke-width="1.5" />
+                <circle cx="20" cy="20" r="7.5" fill="#18181b" />
+                <path d="M20 7v5 M20 28v5 M7 20h5 M28 20h5 M11 11l3.5 3.5 M25.5 25.5l3.5 3.5 M11 29l3.5-3.5 M25.5 14.5l3.5-3.5" stroke="#374151" stroke-width="2.2" stroke-linecap="round" />
+                <circle cx="20" cy="20" r="4" fill="#fafafa" stroke="#d1d5db" stroke-width="0.5" />
+            </svg>
+        </div>
+    </div>
+
+    <!-- Bottom Action / Counter HUD -->
+    <div class="relative z-20 flex items-center justify-between text-[10px] font-mono">
+        <a href={postUrl} aria-label={`Play ${title}`} class="flex items-center gap-1.5 px-2 py-0.5 rounded bg-[var(--primary)]/90 hover:bg-[var(--primary)] text-black font-extrabold tracking-wider transition-all duration-200 active:scale-95 shadow-sm">
+            <span>PLAY</span>
+            <span class="text-[9px]">►</span>
+        </a>
+        <div class="text-[9px] text-white/50 font-mono tracking-widest uppercase">
+            RANDOM PLAY VCR
+        </div>
+    </div>
+
+</div>

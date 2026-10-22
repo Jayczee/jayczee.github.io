@@ -1,0 +1,132 @@
+---
+interface Props {
+	class?: string;
+}
+
+const { class: className = "" } = Astro.props;
+---
+
+<div class:list={["view-mode-bar flex items-center justify-between mb-4 px-1 select-none", className]}>
+    <div class="flex items-center gap-2 text-xs font-mono tracking-wider text-black/50 dark:text-white/45 uppercase">
+        <span class="inline-block w-2 h-2 rounded-full bg-[var(--primary)] animate-pulse"></span>
+        <span class="font-bold tracking-widest text-[0.7rem]">TERMINAL // VIEW ARCHIVE</span>
+    </div>
+
+    <!-- Toggle Pill -->
+    <div class="inline-flex items-center p-0.5 rounded-xl bg-black/5 dark:bg-white/[0.08] border border-black/10 dark:border-white/10 backdrop-blur-md shadow-sm">
+        <!-- Mode A: Tape Archive -->
+        <button
+            type="button"
+            id="view-btn-tape"
+            aria-label="录像档案视图"
+            class="view-mode-btn active-btn flex items-center gap-1.5 px-3.5 py-1.5 rounded-lg text-xs font-medium transition-all duration-300"
+            data-mode="tape"
+        >
+            <svg viewBox="0 0 24 24" class="w-3.5 h-3.5" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                <rect x="2" y="4" width="20" height="16" rx="2" />
+                <circle cx="8" cy="12" r="2.5" />
+                <circle cx="16" cy="12" r="2.5" />
+                <path d="M8 14.5h8" />
+            </svg>
+            <span>录像档案</span>
+        </button>
+
+        <!-- Mode B: Street Bento Zine -->
+        <button
+            type="button"
+            id="view-btn-bento"
+            aria-label="街头画报视图"
+            class="view-mode-btn inactive-btn flex items-center gap-1.5 px-3.5 py-1.5 rounded-lg text-xs font-medium transition-all duration-300"
+            data-mode="bento"
+        >
+            <svg viewBox="0 0 24 24" class="w-3.5 h-3.5" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                <rect x="3" y="3" width="18" height="7" rx="1.5" />
+                <rect x="3" y="14" width="8" height="7" rx="1.5" />
+                <rect x="13" y="14" width="8" height="7" rx="1.5" />
+            </svg>
+            <span>街头画报</span>
+        </button>
+    </div>
+</div>
+
+<style>
+    .active-btn {
+        background-color: var(--primary) !important;
+        color: white !important;
+        box-shadow: 0 2px 8px -1px color-mix(in srgb, var(--primary) 40%, transparent);
+        font-weight: 700;
+        transform: scale(1.02);
+    }
+    .inactive-btn {
+        color: rgba(120, 120, 120, 0.8) !important;
+        background-color: transparent !important;
+    }
+    :global(html.dark) .inactive-btn {
+        color: rgba(220, 220, 220, 0.65) !important;
+    }
+    .inactive-btn:hover {
+        color: var(--primary) !important;
+    }
+</style>
+
+<script is:inline>
+    function setupViewModeSwitcher() {
+        const btnTape = document.getElementById('view-btn-tape');
+        const btnBento = document.getElementById('view-btn-bento');
+
+        function applyMode(mode) {
+            try {
+                localStorage.setItem('blog-view-mode', mode);
+            } catch (e) {}
+
+            const container = document.getElementById('posts-container');
+            if (container) {
+                container.setAttribute('data-blog-view', mode);
+            }
+            document.documentElement.setAttribute('data-blog-view', mode);
+
+            if (btnTape && btnBento) {
+                if (mode === 'bento') {
+                    btnBento.classList.remove('inactive-btn');
+                    btnBento.classList.add('active-btn');
+                    btnTape.classList.remove('active-btn');
+                    btnTape.classList.add('inactive-btn');
+                } else {
+                    btnTape.classList.remove('inactive-btn');
+                    btnTape.classList.add('active-btn');
+                    btnBento.classList.remove('active-btn');
+                    btnBento.classList.add('inactive-btn');
+                }
+            }
+        }
+
+        let initial = 'tape';
+        try {
+            const stored = localStorage.getItem('blog-view-mode');
+            if (stored === 'bento' || stored === 'tape') {
+                initial = stored;
+            }
+        } catch (e) {}
+
+        applyMode(initial);
+
+        if (btnTape) {
+            btnTape.onclick = () => applyMode('tape');
+        }
+        if (btnBento) {
+            btnBento.onclick = () => applyMode('bento');
+        }
+    }
+
+    if (document.readyState === 'loading') {
+        document.addEventListener('DOMContentLoaded', setupViewModeSwitcher);
+    } else {
+        setupViewModeSwitcher();
+    }
+    document.addEventListener('astro:page-load', setupViewModeSwitcher);
+    document.addEventListener('swup:enable', () => {
+        if (window.swup?.hooks) {
+            window.swup.hooks.on('page:view', setupViewModeSwitcher);
+        }
+    });
+</script>

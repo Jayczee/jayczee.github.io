@@ -45,9 +45,12 @@ if (r < page.lastPage - 2) pages.push(HIDDEN);
 if (r === page.lastPage - 2) pages.push(page.lastPage - 1);
 if (r < page.lastPage) pages.push(page.lastPage);
 
+const currentUrl = page.url.current || "/blog/";
+const basePath = currentUrl.replace(new RegExp(`/${page.currentPage}/?$`), "").replace(/\/+$/, "");
+
 const getPageUrl = (p: number) => {
-	if (p === 1) return "/";
-	return `/${p}/`;
+	if (p === 1) return `${basePath || ""}/`;
+	return `${basePath || ""}/${p}/`;
 };
 ---
 

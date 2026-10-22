@@ -5,6 +5,7 @@ import { Icon } from "astro-icon/components";
 import I18nKey from "../i18n/i18nKey";
 import { i18n } from "../i18n/translation";
 import { getDir } from "../utils/url-utils";
+import TapeReels from "./decor/TapeReels.astro";
 import ImageWrapper from "./misc/ImageWrapper.astro";
 import PostMetadata from "./PostMeta.astro";
 
@@ -21,6 +22,7 @@ interface Props {
 	description: string;
 	draft: boolean;
 	style: string;
+	index?: number;
 }
 const {
 	entry,
@@ -33,40 +35,121 @@ const {
 	image,
 	description,
 	style,
+	index = 0,
 } = Astro.props;
 const className = Astro.props.class;
 
 const hasCover = image !== undefined && image !== null && image !== "";
 
-const coverWidth = "28%";
+const coverWidth = "36%";
+const issueNumber = String(index + 1).padStart(2, "0");
+const isFirst = index === 0;
 
 const { remarkPluginFrontmatter } = await entry.render();
 ---
-<div class:list={["card-base flex flex-col-reverse md:flex-col w-full rounded-[var(--radius-large)] overflow-hidden relative border border-black/[0.04] dark:border-white/[0.06] hover:border-[var(--primary)]/35 dark:hover:border-[var(--primary)]/40 hover:shadow-xl hover:shadow-[var(--primary)]/5 transition-all duration-300", className]} style={style}>
-    <div class:list={["pl-6 md:pl-9 pr-6 md:pr-2 pt-6 md:pt-7 pb-6 relative", {"w-full md:w-[calc(100%_-_52px_-_12px)]": !hasCover, "w-full md:w-[calc(100%_-_var(--coverWidth)_-_12px)]": hasCover}]}>
-        <a href={url}
-           class="transition group w-full block font-bold mb-3 text-3xl text-90
-        hover:text-[var(--primary)] dark:hover:text-[var(--primary)]
-        active:text-[var(--title-active)] dark:active:text-[var(--title-active)]
-        before:w-1.5 before:h-5 before:rounded-md before:bg-[var(--primary)]
-        before:absolute before:top-[35px] before:left-[18px] before:hidden md:before:block
-        before:transition-all before:duration-300 group-hover:before:scale-y-125 group-hover:before:shadow-[0_0_10px_var(--primary)]
-        ">
-            {title}
-            <Icon class="inline text-[2rem] text-[var(--primary)] md:hidden translate-y-0.5 absolute" name="material-symbols:chevron-right-rounded" ></Icon>
-            <Icon class="text-[var(--primary)] text-[2rem] transition hidden md:inline absolute translate-y-0.5 opacity-0 group-hover:opacity-100 -translate-x-1 group-hover:translate-x-0" name="material-symbols:chevron-right-rounded"></Icon>
-        </a>
+<div class:list={[
+    "card-base post-card-box flex flex-col md:flex-row w-full rounded-[var(--radius-large)] relative transition-all duration-300",
+    isFirst ? "bento-hero-card" : "",
+    className
+]} style={style}>
 
-        <!-- metadata -->
-        <PostMetadata published={published} updated={updated} tags={tags} category={category} hideTagsForMobile={true} hideUpdateDate={true} class="mb-4"></PostMetadata>
+    <!-- Tape Mode Physical Shell Elements: Corner Screws -->
+    <div class="tape-decor tape-screw top-2.5 left-2.5"></div>
+    <div class="tape-decor tape-screw top-2.5 right-2.5"></div>
+    <div class="tape-decor tape-screw bottom-2.5 left-2.5"></div>
+    <div class="tape-decor tape-screw bottom-2.5 right-2.5"></div>
 
-        <!-- description -->
-        <div class:list={["transition text-75 mb-3.5 pr-4", {"line-clamp-2 md:line-clamp-1": !description}]}>
-            { description || remarkPluginFrontmatter.excerpt }
+    <!-- Tape Mode Side Grip Grooves (Left & Right) -->
+    <div class="tape-decor hidden md:flex flex-col gap-1.5 absolute left-1 top-1/2 -translate-y-1/2 z-20 pointer-events-none">
+        <div class="tape-side-groove w-1 h-3 rounded-full"></div>
+        <div class="tape-side-groove w-1 h-3 rounded-full"></div>
+        <div class="tape-side-groove w-1 h-3 rounded-full"></div>
+        <div class="tape-side-groove w-1 h-3 rounded-full"></div>
+    </div>
+    <div class="tape-decor hidden md:flex flex-col gap-1.5 absolute right-1 top-1/2 -translate-y-1/2 z-20 pointer-events-none">
+        <div class="tape-side-groove w-1 h-3 rounded-full"></div>
+        <div class="tape-side-groove w-1 h-3 rounded-full"></div>
+        <div class="tape-side-groove w-1 h-3 rounded-full"></div>
+        <div class="tape-side-groove w-1 h-3 rounded-full"></div>
+    </div>
+
+    <!-- Bento Mode Physical Asset 1: Washi Tape Strip at Corner -->
+    <div class="bento-decor hidden absolute -top-3.5 left-6 w-24 h-7 z-30 pointer-events-none -rotate-3 select-none drop-shadow-sm">
+        <img src="/assets/decor/washi-tape.png" alt="Washi Tape" class="w-full h-full object-contain pointer-events-none" />
+    </div>
+
+    <!-- Bento Mode Physical Asset 2: Rubber Ink Stamp -->
+    <div class:list={[
+        "bento-decor hidden absolute z-30 pointer-events-none select-none",
+        isFirst ? "-top-4 right-6 w-24 h-24 rotate-12" : "-top-3 right-3 w-16 h-16 rotate-6"
+    ]}>
+        <img src="/assets/decor/zine-stamp.png" alt="Zine Stamp" class="w-full h-full object-contain pointer-events-none" />
+    </div>
+
+    <!-- Left Block: Sticker Label (Tape Mode) / Editorial Text (Bento Mode) -->
+    <div class="post-card-content p-5 md:p-6 relative flex flex-col justify-between z-10 flex-1 min-w-0">
+        <!-- Bento Mode Large Watermark Index -->
+        <div class="bento-decor hidden pointer-events-none absolute right-4 top-2 font-mono text-5xl font-black text-black/[0.04] dark:text-white/[0.05] select-none leading-none z-0">
+            {issueNumber}
         </div>
 
-        <!-- word count and read time  -->
-        <div class="text-sm text-black/30 dark:text-white/30 flex gap-4 transition">
+        <div>
+            <!-- Tape Mode Header: Authentic Cassette Top Strip & Barcode -->
+            <div class="tape-decor hidden items-center justify-between border-b border-black/10 dark:border-white/10 pb-2 mb-2.5 font-mono text-[10px]">
+                <div class="flex items-center gap-1.5">
+                    <span class="w-2 h-2 rounded-full bg-[var(--primary)] animate-pulse shadow-[0_0_6px_var(--primary)]"></span>
+                    <span class="font-bold text-[var(--primary)] tracking-wider">RANDOM PLAY // STEREO</span>
+                    <span class="text-black/40 dark:text-white/40 tracking-widest">[SIDE A]</span>
+                </div>
+                <div class="flex items-center gap-1 opacity-75">
+                    <svg class="h-3.5 w-14 text-current" viewBox="0 0 100 24" fill="currentColor">
+                        <rect x="0" y="0" width="3" height="24"/><rect x="5" y="0" width="2" height="24"/><rect x="9" y="0" width="4" height="24"/><rect x="15" y="0" width="2" height="24"/><rect x="19" y="0" width="5" height="24"/><rect x="26" y="0" width="2" height="24"/><rect x="30" y="0" width="3" height="24"/><rect x="35" y="0" width="6" height="24"/><rect x="43" y="0" width="2" height="24"/><rect x="47" y="0" width="4" height="24"/><rect x="53" y="0" width="2" height="24"/><rect x="57" y="0" width="5" height="24"/><rect x="64" y="0" width="3" height="24"/><rect x="69" y="0" width="2" height="24"/><rect x="73" y="0" width="4" height="24"/><rect x="79" y="0" width="2" height="24"/><rect x="83" y="0" width="6" height="24"/><rect x="91" y="0" width="2" height="24"/><rect x="95" y="0" width="4" height="24"/>
+                    </svg>
+                    <span class="font-mono text-[9px] tracking-tight">RP-{issueNumber}</span>
+                </div>
+            </div>
+
+            <!-- Bento Mode Header: Street Editorial Masthead -->
+            {isFirst ? (
+                <div class="bento-decor hidden flex-col w-full border-b border-black/15 dark:border-white/15 pb-2 mb-3">
+                    <div class="flex items-center justify-between text-[11px] font-mono tracking-widest uppercase text-black/50 dark:text-white/50">
+                        <span class="font-bold text-[var(--primary)]">★ STREET CHRONICLE // SPECIAL ISSUE</span>
+                        <span>VOL. 26 // ISSUE #01</span>
+                        <span class="hidden sm:inline">PUNK TABLOID</span>
+                    </div>
+                </div>
+            ) : (
+                <div class="bento-decor hidden items-center justify-between border-b border-dashed border-black/10 dark:border-white/10 pb-1.5 mb-2 font-mono text-[10px] text-black/50 dark:text-white/50">
+                    <span class="font-bold text-[var(--primary)] uppercase tracking-wider">// ISSUE #{issueNumber}</span>
+                    <span class="tracking-widest uppercase">ZINE FEED</span>
+                </div>
+            )}
+
+            <!-- Title -->
+            <a href={url}
+               class="post-card-title transition group w-full block font-bold mb-3 text-2xl md:text-3xl text-90
+            hover:text-[var(--primary)] dark:hover:text-[var(--primary)]
+            active:text-[var(--title-active)] dark:active:text-[var(--title-active)]
+            before:w-1.5 before:h-5 before:rounded-md before:bg-[var(--primary)]
+            before:absolute before:top-[38px] md:before:top-[42px] before:left-[14px] before:hidden md:before:block
+            before:transition-all before:duration-300 group-hover:before:scale-y-125 group-hover:before:shadow-[0_0_10px_var(--primary)]
+            ">
+                {title}
+                <Icon class="inline text-[2rem] text-[var(--primary)] md:hidden translate-y-0.5 absolute" name="material-symbols:chevron-right-rounded" ></Icon>
+                <Icon class="text-[var(--primary)] text-[2rem] transition hidden md:inline absolute translate-y-0.5 opacity-0 group-hover:opacity-100 -translate-x-1 group-hover:translate-x-0" name="material-symbols:chevron-right-rounded"></Icon>
+            </a>
+
+            <!-- Metadata -->
+            <PostMetadata published={published} updated={updated} tags={tags} category={category} hideTagsForMobile={true} hideUpdateDate={true} class="mb-3"></PostMetadata>
+
+            <!-- Description -->
+            <div class:list={["post-card-desc transition text-75 mb-3 pr-2", {"line-clamp-2": !description}]}>
+                { description || remarkPluginFrontmatter.excerpt }
+            </div>
+        </div>
+
+        <!-- Word count and read time -->
+        <div class="text-xs md:text-sm text-black/35 dark:text-white/35 flex gap-4 transition mt-auto pt-2 border-t border-black/5 dark:border-white/5">
             <div>
                 {remarkPluginFrontmatter.words} {" " + i18n(remarkPluginFrontmatter.words === 1 ? I18nKey.wordCount : I18nKey.wordsCount)}
             </div>
@@ -78,34 +161,31 @@ const { remarkPluginFrontmatter } = await entry.render();
 
     </div>
 
-    {hasCover && <a href={url} aria-label={title}
-                    class:list={["group",
-                        "max-h-[20vh] md:max-h-none mx-4 mt-4 -mb-2 md:mb-0 md:mx-0 md:mt-0",
-                        "md:w-[var(--coverWidth)] relative md:absolute md:top-3 md:bottom-3 md:right-3 rounded-xl overflow-hidden active:scale-95"
-                    ]} >
-        <div class="absolute pointer-events-none z-10 w-full h-full group-hover:bg-black/30 group-active:bg-black/50 transition"></div>
-        <div class="absolute pointer-events-none z-20 w-full h-full flex items-center justify-center ">
-            <Icon name="material-symbols:chevron-right-rounded"
-                  class="transition opacity-0 group-hover:opacity-100 scale-50 group-hover:scale-100 text-white text-5xl">
-            </Icon>
-        </div>
-        <ImageWrapper src={image} basePath={path.join("content/posts/", getDir(entry.id))} alt="Cover Image of the Post"
-                  class="w-full h-full">
-        </ImageWrapper>
-    </a>}
+    <!-- RIGHT BLOCK: TAPE MODE -> Dedicated VHS Tape Deck Window with Spools & CRT Screen -->
+    <div class="tape-decor hidden w-full md:w-[38%] md:min-w-[280px] p-2 md:p-2.5 flex flex-col justify-stretch">
+        <TapeReels
+            coverImage={image}
+            coverBasePath={hasCover ? path.join("content/posts/", getDir(entry.id)) : ""}
+            url={url}
+            title={title}
+            issueNumber={issueNumber}
+            class="w-full h-full min-h-[190px]"
+        />
+    </div>
 
-    {!hasCover &&
-        <a href={url} aria-label={title} class="!hidden md:!flex btn-regular w-[3.25rem]
-         absolute right-3 top-3 bottom-3 rounded-xl bg-[var(--enter-btn-bg)]
-         hover:bg-[var(--enter-btn-bg-hover)] active:bg-[var(--enter-btn-bg-active)] active:scale-95
-        ">
-            <Icon name="material-symbols:chevron-right-rounded"
-                  class="transition text-[var(--primary)] text-4xl mx-auto">
-            </Icon>
+    <!-- RIGHT/TOP BLOCK: BENTO MODE -> Magazine Polaroid Cover (when cover exists) -->
+    {hasCover && (
+        <a href={url} aria-label={title} class="bento-decor hidden group post-card-cover relative overflow-hidden active:scale-95">
+            <div class="absolute pointer-events-none z-10 w-full h-full group-hover:bg-black/30 group-active:bg-black/50 transition"></div>
+            <div class="absolute pointer-events-none z-20 w-full h-full flex items-center justify-center">
+                <Icon name="material-symbols:chevron-right-rounded" class="transition opacity-0 group-hover:opacity-100 scale-50 group-hover:scale-100 text-white text-5xl"></Icon>
+            </div>
+            <ImageWrapper src={image} basePath={path.join("content/posts/", getDir(entry.id))} alt={title} class="w-full h-full object-cover" />
         </a>
-    }
+    )}
+
 </div>
-<div class="transition border-t-[1px] border-dashed mx-6 border-black/10 dark:border-white/[0.15] last:border-t-0 md:hidden"></div>
+<div class="post-divider transition border-t-[1px] border-dashed mx-6 border-black/10 dark:border-white/[0.15] last:border-t-0 md:hidden"></div>
 
 <style define:vars={{coverWidth}}>
 </style>
