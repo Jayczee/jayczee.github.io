@@ -50,7 +50,7 @@ const jsonLd = {
 <MainGridLayout banner={entry.data.image} title={entry.data.title} description={entry.data.description} lang={entry.data.lang} setOGTypeArticle={true} headings={headings}>
     <script is:inline slot="head" type="application/ld+json" set:html={JSON.stringify(jsonLd)}></script>
     <div class="flex w-full rounded-[var(--radius-large)] overflow-hidden relative mb-4">
-        <div id="post-container" class:list={["card-base z-10 px-6 md:px-9 pt-6 pb-4 relative w-full min-w-0 max-w-full",
+        <div id="post-container" data-reading-minutes={remarkPluginFrontmatter.minutes || 1} class:list={["card-base z-10 px-6 md:px-9 pt-6 pb-4 relative w-full min-w-0 max-w-full",
             {}
         ]}>
             <!-- VCR Terminal Playback Monitor Header HUD -->
@@ -128,70 +128,6 @@ const jsonLd = {
 
         </div>
     </div>
-
-    <!-- VHS Timeline Scroll Script with Swup Support -->
-    <script is:inline define:vars={{ totalMinutes: remarkPluginFrontmatter.minutes || 1 }}>
-        function initVhsTimeline() {
-            const progressBar = document.getElementById('vhs-progress-bar');
-            const progressContainer = document.getElementById('vhs-reading-progress');
-            const hud = document.getElementById('vhs-reading-hud');
-            const hudTime = document.getElementById('vhs-hud-time');
-            const hudPct = document.getElementById('vhs-hud-pct');
-            const hudReel = document.getElementById('vhs-hud-reel');
-
-            if (!progressBar || !progressContainer) return;
-
-            function onScroll() {
-                const totalHeight = document.documentElement.scrollHeight - window.innerHeight;
-                if (totalHeight <= 0) return;
-
-                const scrollY = window.scrollY;
-                const progress = Math.min(Math.max(scrollY / totalHeight, 0), 1);
-                const pct = Math.round(progress * 100);
-
-                progressBar.style.width = pct + '%';
-
-                if (scrollY > 120) {
-                    progressContainer.classList.remove('opacity-0');
-                    if (hud) {
-                        hud.classList.remove('opacity-0', '-translate-y-3');
-                    }
-                } else {
-                    progressContainer.classList.add('opacity-0');
-                    if (hud) {
-                        hud.classList.add('opacity-0', '-translate-y-3');
-                    }
-                }
-
-                if (hudTime && hudPct) {
-                    const elapsedSec = Math.round(progress * (totalMinutes * 60));
-                    const m = Math.floor(elapsedSec / 60);
-                    const s = elapsedSec % 60;
-                    const elapsedStr = String(m).padStart(2, '0') + ':' + String(s).padStart(2, '0');
-                    const totalStr = String(totalMinutes).padStart(2, '0') + ':00';
-                    hudTime.textContent = elapsedStr + ' / ' + totalStr;
-                    hudPct.textContent = '[' + pct + '%]';
-                }
-
-                if (hudReel) {
-                    hudReel.style.transform = 'rotate(' + (progress * 720) + 'deg)';
-                }
-            }
-
-            window.addEventListener('scroll', onScroll, { passive: true });
-            onScroll();
-        }
-
-        if (document.readyState === 'loading') {
-            document.addEventListener('DOMContentLoaded', initVhsTimeline);
-        } else {
-            initVhsTimeline();
-        }
-
-        if (window.swup) {
-            window.swup.hooks.on('page:view', initVhsTimeline);
-        }
-    </script>
 
     {giscusConfig.enable && entry.data.comments && !entry.data.draft && (
         <Giscus slug={entry.slug} discussion={entry.data.discussion} commentTerm={entry.data.commentTerm} />

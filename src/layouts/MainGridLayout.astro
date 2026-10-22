@@ -127,28 +127,25 @@ const mainPanelTop = siteConfig.banner.enable
     </div>
 </div>
 
-<!-- Fixed Table of Contents (TOC) docked to page right margin (only shown when post has headings) -->
+<!-- Fixed Table of Contents (TOC) docked to page right margin -->
 <div class="absolute w-full z-0 hidden 2xl:block">
     <div class="relative max-w-[var(--page-width)] mx-auto">
-        {siteConfig.toc.enable && hasHeadings && <div id="toc-wrapper" class:list={["hidden lg:block transition absolute top-0 -right-[var(--toc-width)] w-[var(--toc-width)] items-center",
-            {"toc-hide": siteConfig.banner.enable}]}
-        >
-            <div id="toc-inner-wrapper" class="fixed top-20 w-[var(--toc-width)] max-w-[17.5rem] h-[calc(100vh_-_16rem)] overflow-y-auto overflow-x-hidden hide-scrollbar bg-black/5 dark:bg-[#0c1017]/90 backdrop-blur-md rounded-2xl p-3 border border-black/10 dark:border-white/10 shadow-xl">
-                <div class="flex items-center justify-between px-1.5 py-1 mb-2 font-mono text-[10px] text-black/45 dark:text-white/40 border-b border-black/10 dark:border-white/10 select-none tracking-wider">
-                    <div class="flex items-center gap-1.5 font-bold text-[var(--primary)]">
-                        <span class="w-1.5 h-1.5 rounded-full bg-[var(--primary)] animate-pulse"></span>
-                        <span>INDEX // TOC</span>
+        <div id="toc" class="w-full transition-swup-fade">
+            {siteConfig.toc.enable && hasHeadings ? (
+                <div id="toc-wrapper" class:list={["hidden lg:block transition-all absolute top-0 -right-[var(--toc-width)] w-[var(--toc-width)] items-center", {"toc-hide": siteConfig.banner.enable}]}>
+                    <div id="toc-inner-wrapper" class="fixed top-20 w-[var(--toc-width)] max-w-[17.5rem] h-[calc(100vh_-_16rem)] overflow-y-auto overflow-x-hidden hide-scrollbar bg-black/5 dark:bg-[#0c1017]/90 backdrop-blur-md rounded-2xl p-3 border border-black/10 dark:border-white/10 shadow-xl">
+                        <div class="flex items-center justify-between px-1.5 py-1 mb-2 font-mono text-[10px] text-black/45 dark:text-white/40 border-b border-black/10 dark:border-white/10 select-none tracking-wider">
+                            <div class="flex items-center gap-1.5 font-bold text-[var(--primary)]">
+                                <span class="w-1.5 h-1.5 rounded-full bg-[var(--primary)] animate-pulse"></span>
+                                <span>INDEX // TOC</span>
+                            </div>
+                            <span class="text-[9px] opacity-60">NAV</span>
+                        </div>
+                        <TOC headings={headings}></TOC>
                     </div>
-                    <span class="text-[9px] opacity-60">NAV</span>
                 </div>
-                <div id="toc" class="w-full transition-swup-fade">
-                    <TOC headings={headings}></TOC>
-                </div>
-            </div>
-        </div>}
-
-        <!-- #toc placeholder for Swup if no headings or TOC disabled -->
-        {(!siteConfig.toc.enable || !hasHeadings) && <div id="toc-wrapper" class="toc-disabled hidden"><div id="toc" class="hidden"></div></div>}
+            ) : null}
+        </div>
     </div>
 </div>
 </Layout>
