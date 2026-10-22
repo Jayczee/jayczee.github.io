@@ -1,23 +1,75 @@
 ---
-
 import { profileConfig } from "../config";
 import { url } from "../utils/url-utils";
 
 const currentYear = new Date().getFullYear();
+// Site established date (e.g. 2024-01-01)
+const launchDate = new Date("2024-01-01").getTime();
+const daysRunning = Math.floor((Date.now() - launchDate) / (1000 * 60 * 60 * 24));
 ---
 
-<!--<div class="border-t border-[var(&#45;&#45;primary)] mx-16 border-dashed py-8 max-w-[var(&#45;&#45;page-width)] flex flex-col items-center justify-center px-6">-->
-<div class="transition border-t border-black/10 dark:border-white/15 my-10 border-dashed mx-32"></div>
-<!--<div class="transition bg-[oklch(92%_0.01_var(&#45;&#45;hue))] dark:bg-black rounded-2xl py-8 mt-4 mb-8 flex flex-col items-center justify-center px-6">-->
-<div class="transition border-dashed border-[oklch(85%_0.01_var(--hue))] dark:border-white/15 rounded-2xl mb-12 flex flex-col items-center justify-center px-6">
-    <div class="transition text-50 text-sm text-center">
-        &copy; <span id="copyright-year">{currentYear}</span> {profileConfig.name}. All Rights Reserved. /
-        <a class="transition link text-[var(--primary)] font-medium" target="_blank" href={url('rss.xml')}>RSS</a> /
-        <a class="transition link text-[var(--primary)] font-medium" target="_blank" href={url('sitemap-index.xml')}>Sitemap</a><br>
-        Powered by
-        <a class="transition link text-[var(--primary)] font-medium" target="_blank" href="https://astro.build">Astro</a> &
-        <a class="transition link text-[var(--primary)] font-medium" target="_blank" href="https://github.com/saicaca/fuwari">Fuwari</a>
-        <br>
-        <a class="transition link" target="_blank" rel="noopener noreferrer" href="https://beian.miit.gov.cn/">浙ICP备2025150833</a>
+<footer class="mt-14 mb-8 font-mono select-none">
+    <!-- Tape Leader Caution Strip Divider -->
+    <div class="relative flex items-center justify-center my-8">
+        <div class="w-full h-2 rounded-full overflow-hidden opacity-30 dark:opacity-40 bg-black/10 dark:bg-white/10"
+             style="background: repeating-linear-gradient(45deg, var(--primary), var(--primary) 10px, transparent 10px, transparent 20px);">
+        </div>
+        <div class="absolute px-3 py-0.5 rounded-md bg-[var(--card-bg)] border border-black/10 dark:border-white/10 text-[10px] text-black/50 dark:text-white/50 tracking-widest flex items-center gap-1.5 shadow-sm">
+            <span class="w-1.5 h-1.5 rounded-full bg-[var(--primary)]"></span>
+            <span>END OF TAPE // 磁带收卷</span>
+        </div>
     </div>
-</div>
+
+    <!-- Machine Footer Chassis -->
+    <div class="card-base rounded-2xl p-6 border border-black/10 dark:border-white/10 text-xs text-black/60 dark:text-white/60 space-y-4">
+        <!-- Top Status Bar -->
+        <div class="flex flex-col sm:flex-row items-center justify-between gap-2 pb-3 border-b border-black/10 dark:border-white/10 text-[11px]">
+            <div class="flex items-center gap-2">
+                <span class="inline-block w-2 h-2 rounded-full bg-emerald-500 shadow-[0_0_8px_#10b981] animate-pulse"></span>
+                <span class="font-bold text-black/85 dark:text-white/85 tracking-wider">SYSTEM: ONLINE</span>
+                <span class="text-black/30 dark:text-white/30 hidden md:inline">// NODE: EAST-SHANGHAI</span>
+            </div>
+
+            <div class="flex items-center gap-3 text-black/50 dark:text-white/50">
+                <span>UPTIME: <strong class="text-[var(--primary)]">{daysRunning}</strong> DAYS</span>
+                <span class="opacity-30">|</span>
+                <span>VCR_SYS: v2.0</span>
+            </div>
+        </div>
+
+        <!-- Center Links & Copyright -->
+        <div class="flex flex-col md:flex-row items-center justify-between gap-3 text-center md:text-left">
+            <div>
+                &copy; <span id="copyright-year">{currentYear}</span>
+                <strong class="text-black/85 dark:text-white/85 ml-1">{profileConfig.name}</strong>.
+                All Rights Reserved.
+            </div>
+
+            <!-- Navigation Links -->
+            <div class="flex items-center gap-3 text-[11px]">
+                <a class="hover:text-[var(--primary)] transition-colors underline decoration-dotted underline-offset-4" target="_blank" href={url('rss.xml')}>
+                    RSS FEED
+                </a>
+                <span class="opacity-30">/</span>
+                <a class="hover:text-[var(--primary)] transition-colors underline decoration-dotted underline-offset-4" target="_blank" href={url('sitemap-index.xml')}>
+                    SITEMAP
+                </a>
+                <span class="opacity-30">/</span>
+                <a class="hover:text-[var(--primary)] transition-colors" target="_blank" rel="noopener noreferrer" href="https://beian.miit.gov.cn/">
+                    浙ICP备2025150833
+                </a>
+            </div>
+        </div>
+
+        <!-- Bottom Tech Stack Tag -->
+        <div class="pt-2 border-t border-black/5 dark:border-white/5 text-[10px] text-black/40 dark:text-white/40 flex flex-wrap items-center justify-between gap-2">
+            <div>
+                POWERED BY <a class="hover:text-[var(--primary)] underline transition-colors" target="_blank" href="https://astro.build">ASTRO</a>
+                &amp; <a class="hover:text-[var(--primary)] underline transition-colors" target="_blank" href="https://github.com/saicaca/fuwari">FUWARI</a>
+            </div>
+            <div class="tracking-widest opacity-60">
+                [ HI-FI STEREO 48kHz ]
+            </div>
+        </div>
+    </div>
+</footer>

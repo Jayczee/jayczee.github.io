@@ -1,0 +1,65 @@
+---
+import { Icon } from "astro-icon/components";
+import MainGridLayout from "../layouts/MainGridLayout.astro";
+import { url } from "../utils/url-utils";
+---
+
+<MainGridLayout title="404 // 磁带信标丢失" description="404 Not Found - Corrupted Tape">
+    <div class="flex w-full rounded-[var(--radius-large)] overflow-hidden relative mb-4">
+        <div class="card-base z-10 p-6 md:p-12 relative w-full flex flex-col items-center justify-center text-center font-mono overflow-hidden">
+            <!-- CRT TV Glitch & Scanline Overlay -->
+            <div class="absolute inset-0 pointer-events-none opacity-20 dark:opacity-30 bg-[linear-gradient(rgba(18,16,16,0)_50%,rgba(0,0,0,0.4)_50%),linear-gradient(90deg,rgba(255,0,0,0.06),rgba(0,255,0,0.02),rgba(0,0,255,0.06))] bg-[length:100%_4px,3px_100%]"></div>
+
+            <!-- Top Machine Warning Ribbon -->
+            <div class="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-red-500/10 border border-red-500/30 text-red-500 text-xs font-bold mb-6 select-none animate-pulse">
+                <span class="w-2 h-2 rounded-full bg-red-500 shadow-[0_0_8px_#ef4444]"></span>
+                <span>HOLLOW DISASTER // 空洞侵蚀警告</span>
+            </div>
+
+            <!-- Giant 404 & Status Text -->
+            <div class="mb-4 select-none">
+                <div class="text-7xl md:text-8xl font-black tracking-tight text-[var(--primary)] drop-shadow-[0_0_24px_rgba(var(--primary-rgb),0.35)] leading-none mb-3">
+                    404
+                </div>
+                <div class="text-xl md:text-2xl font-black tracking-widest text-black/85 dark:text-white/85 flex items-center justify-center gap-2">
+                    <span>NO SIGNAL</span>
+                    <span class="text-black/30 dark:text-white/30">//</span>
+                    <span class="text-sm md:text-base font-bold text-black/60 dark:text-white/60">磁道丢失</span>
+                </div>
+            </div>
+
+            <!-- Status Message Box -->
+            <div class="max-w-md w-full p-4 rounded-2xl bg-black/5 dark:bg-white/[0.03] border border-black/10 dark:border-white/10 mb-8 text-left text-xs leading-relaxed font-mono">
+                <div class="flex items-center justify-between pb-2 mb-2 border-b border-black/10 dark:border-white/10 text-[10px] text-black/40 dark:text-white/40">
+                    <span>SYS_DIAGNOSTIC</span>
+                    <span>ERR_CODE: 0x404_TAPE_LOST</span>
+                </div>
+                <p class="text-black/75 dark:text-white/75 mb-1 font-sans font-medium">
+                    你请求的录像带数据已遗失或被以太活性侵蚀，未能从档案库中检索到对应磁道。
+                </p>
+                <p class="text-[10px] text-black/40 dark:text-white/40">
+                    &gt; STATUS: CARRIER_LOST<br>
+                    &gt; SUGGESTION: EJECT TAPE AND RETURN TO BASE
+                </p>
+            </div>
+
+            <!-- Action Buttons -->
+            <div class="flex flex-wrap items-center justify-center gap-3 w-full max-w-md">
+                <a
+                    href={url("/blog/")}
+                    class="flex-1 min-w-[140px] px-5 py-3 rounded-xl bg-[var(--primary)] text-white dark:text-black font-bold text-xs tracking-wider shadow-lg hover:brightness-110 active:scale-95 transition flex items-center justify-center gap-2 cursor-pointer"
+                >
+                    <span>◄◄ 弹带返回博文</span>
+                </a>
+
+                <a
+                    href={url("/")}
+                    class="px-5 py-3 rounded-xl bg-black/5 dark:bg-white/10 hover:bg-black/10 dark:hover:bg-white/15 border border-black/10 dark:border-white/10 text-black/80 dark:text-white/80 font-bold text-xs tracking-wider active:scale-95 transition flex items-center justify-center gap-2 cursor-pointer"
+                >
+                    <Icon name="material-symbols:home-outline-rounded" class="text-base" />
+                    <span>主基地</span>
+                </a>
+            </div>
+        </div>
+    </div>
+</MainGridLayout>

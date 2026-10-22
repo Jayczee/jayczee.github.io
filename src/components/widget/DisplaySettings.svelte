@@ -3,15 +3,35 @@ import I18nKey from "@i18n/i18nKey";
 import { i18n } from "@i18n/translation";
 import Icon from "@iconify/svelte";
 import { getDefaultHue, getHue, setHue } from "@utils/setting-utils";
+import { isSfxEnabled, playSfx, setSfxEnabled } from "@utils/sfx";
 
 let { class: className = "" }: { class?: string } = $props();
 
 let hue = $state(getHue());
+let sfxOn = $state(false);
 const defaultHue = getDefaultHue();
 
 function resetHue() {
 	hue = getDefaultHue();
+	playSfx("switch");
 }
+
+function selectPreset(h: number) {
+	hue = h;
+	playSfx("click");
+}
+
+function toggleSfx() {
+	sfxOn = !sfxOn;
+	setSfxEnabled(sfxOn);
+	if (sfxOn) {
+		playSfx("switch");
+	}
+}
+
+$effect(() => {
+	sfxOn = isSfxEnabled();
+});
 
 $effect(() => {
 	if (hue || hue === 0) {
@@ -70,7 +90,7 @@ const presets: ColorPreset[] = [
             {#each presets as p}
                 <button
                     type="button"
-                    onclick={() => { hue = p.hue; }}
+                    onclick={() => selectPreset(p.hue)}
                     class={`flex flex-col items-center justify-center py-2 px-1 rounded-xl transition-all border group relative active:scale-95 cursor-pointer ${Math.abs(hue - p.hue) <= 4 ? 'border-[var(--primary)] bg-[var(--primary)]/15 shadow-[0_0_12px_rgba(var(--primary-rgb),0.2)]' : 'border-black/10 dark:border-white/10 bg-black/[0.02] dark:bg-white/[0.02] hover:border-black/30 dark:hover:border-white/30'}`}
                 >
                     <span
@@ -97,19 +117,36 @@ const presets: ColorPreset[] = [
                 min="0"
                 max="360"
                 bind:value={hue}
+                oninput={() => playSfx("fader")}
                 class="slider w-full cursor-pointer"
                 id="colorSlider"
                 step="1"
             />
         </div>
         <!-- Calibration Ticks -->
-        <div class="flex justify-between px-1 text-[8px] font-mono text-black/35 dark:text-white/30 select-none tracking-wider">
+        <div class="flex justify-between px-1 text-[8px] font-mono text-black/35 dark:text-white/30 select-none tracking-wider mb-3">
             <span>| 0°</span>
             <span>| 90°</span>
             <span>| 180°</span>
             <span>| 270°</span>
             <span>| 360°</span>
         </div>
+    </div>
+
+    <!-- Mechanical Audio FX Toggle -->
+    <div class="pt-2.5 border-t border-black/10 dark:border-white/10 flex items-center justify-between text-[10px] select-none">
+        <span class="text-black/60 dark:text-white/50 flex items-center gap-1.5 font-mono">
+            <span>AUDIO_FEEDBACK</span>
+            <span class="text-[9px] opacity-60">// 机械微音效</span>
+        </span>
+        <button
+            type="button"
+            onclick={toggleSfx}
+            class={`px-2.5 py-0.5 rounded-md font-mono font-bold transition-all flex items-center gap-1.5 cursor-pointer border ${sfxOn ? 'bg-[var(--primary)]/15 border-[var(--primary)]/40 text-[var(--primary)]' : 'bg-black/5 dark:bg-white/5 border-black/10 dark:border-white/10 text-black/40 dark:text-white/40'}`}
+        >
+            <span class={`w-1.5 h-1.5 rounded-full ${sfxOn ? 'bg-[var(--primary)] shadow-[0_0_6px_var(--primary)]' : 'bg-black/30 dark:bg-white/30'}`}></span>
+            <span>{sfxOn ? 'SFX: ON' : 'SFX: MUTE'}</span>
+        </button>
     </div>
 </div>
 

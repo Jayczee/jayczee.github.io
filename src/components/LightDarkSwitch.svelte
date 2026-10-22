@@ -8,6 +8,7 @@ import {
 	getStoredTheme,
 	setTheme,
 } from "@utils/setting-utils.ts";
+import { playSfx } from "@utils/sfx";
 import { onMount } from "svelte";
 import type { LIGHT_DARK_MODE } from "@/types/config.ts";
 
@@ -36,6 +37,7 @@ onMount(() => {
 function switchScheme(newMode: LIGHT_DARK_MODE) {
 	mode = newMode;
 	setTheme(newMode);
+	playSfx("switch");
 }
 
 function toggleScheme() {

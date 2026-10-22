@@ -8,7 +8,7 @@ import I18nKey from "@i18n/i18nKey";
 import { i18n } from "@i18n/translation";
 import MainGridLayout from "@layouts/MainGridLayout.astro";
 import { getSortedPosts } from "@utils/content-utils";
-import { getDir, getPostUrlBySlug } from "@utils/url-utils";
+import { getDir } from "@utils/url-utils";
 import { Icon } from "astro-icon/components";
 import { giscusConfig, licenseConfig } from "src/config";
 import ImageWrapper from "../../components/misc/ImageWrapper.astro";
@@ -129,27 +129,69 @@ const jsonLd = {
         </div>
     </div>
 
-    <div class="flex flex-col md:flex-row justify-between mb-4 gap-4 overflow-hidden w-full min-w-0">
-        <a href={entry.data.nextSlug ? getPostUrlBySlug(entry.data.nextSlug) : "#"}
-           class:list={["w-full md:w-1/2 min-w-0 font-bold overflow-hidden active:scale-95", {"pointer-events-none": !entry.data.nextSlug}]}>
-            {entry.data.nextSlug && <div class="btn-card rounded-2xl w-full min-w-0 h-[3.75rem] max-w-full px-4 flex items-center !justify-start gap-3 overflow-hidden" >
-                <Icon name="material-symbols:chevron-left-rounded" class="text-[2rem] flex-shrink-0 text-[var(--primary)]" />
-                <div class="overflow-hidden transition overflow-ellipsis whitespace-nowrap min-w-0 flex-1 text-black/75 dark:text-white/75 truncate">
-                    {entry.data.nextTitle}
-                </div>
-            </div>}
-        </a>
+    <!-- VHS Timeline Scroll Script with Swup Support -->
+    <script is:inline define:vars={{ totalMinutes: remarkPluginFrontmatter.minutes || 1 }}>
+        function initVhsTimeline() {
+            const progressBar = document.getElementById('vhs-progress-bar');
+            const progressContainer = document.getElementById('vhs-reading-progress');
+            const hud = document.getElementById('vhs-reading-hud');
+            const hudTime = document.getElementById('vhs-hud-time');
+            const hudPct = document.getElementById('vhs-hud-pct');
+            const hudReel = document.getElementById('vhs-hud-reel');
 
-        <a href={entry.data.prevSlug ? getPostUrlBySlug(entry.data.prevSlug) : "#"}
-           class:list={["w-full md:w-1/2 min-w-0 font-bold overflow-hidden active:scale-95", {"pointer-events-none": !entry.data.prevSlug}]}>
-            {entry.data.prevSlug && <div class="btn-card rounded-2xl w-full min-w-0 h-[3.75rem] max-w-full px-4 flex items-center !justify-end gap-3 overflow-hidden">
-                <div class="overflow-hidden transition overflow-ellipsis whitespace-nowrap min-w-0 flex-1 text-right text-black/75 dark:text-white/75 truncate">
-                    {entry.data.prevTitle}
-                </div>
-                <Icon name="material-symbols:chevron-right-rounded" class="text-[2rem] flex-shrink-0 text-[var(--primary)]" />
-            </div>}
-        </a>
-    </div>
+            if (!progressBar || !progressContainer) return;
+
+            function onScroll() {
+                const totalHeight = document.documentElement.scrollHeight - window.innerHeight;
+                if (totalHeight <= 0) return;
+
+                const scrollY = window.scrollY;
+                const progress = Math.min(Math.max(scrollY / totalHeight, 0), 1);
+                const pct = Math.round(progress * 100);
+
+                progressBar.style.width = pct + '%';
+
+                if (scrollY > 120) {
+                    progressContainer.classList.remove('opacity-0');
+                    if (hud) {
+                        hud.classList.remove('opacity-0', '-translate-y-3');
+                    }
+                } else {
+                    progressContainer.classList.add('opacity-0');
+                    if (hud) {
+                        hud.classList.add('opacity-0', '-translate-y-3');
+                    }
+                }
+
+                if (hudTime && hudPct) {
+                    const elapsedSec = Math.round(progress * (totalMinutes * 60));
+                    const m = Math.floor(elapsedSec / 60);
+                    const s = elapsedSec % 60;
+                    const elapsedStr = String(m).padStart(2, '0') + ':' + String(s).padStart(2, '0');
+                    const totalStr = String(totalMinutes).padStart(2, '0') + ':00';
+                    hudTime.textContent = elapsedStr + ' / ' + totalStr;
+                    hudPct.textContent = '[' + pct + '%]';
+                }
+
+                if (hudReel) {
+                    hudReel.style.transform = 'rotate(' + (progress * 720) + 'deg)';
+                }
+            }
+
+            window.addEventListener('scroll', onScroll, { passive: true });
+            onScroll();
+        }
+
+        if (document.readyState === 'loading') {
+            document.addEventListener('DOMContentLoaded', initVhsTimeline);
+        } else {
+            initVhsTimeline();
+        }
+
+        if (window.swup) {
+            window.swup.hooks.on('page:view', initVhsTimeline);
+        }
+    </script>
 
     {giscusConfig.enable && entry.data.comments && !entry.data.draft && (
         <Giscus slug={entry.slug} discussion={entry.data.discussion} commentTerm={entry.data.commentTerm} />

@@ -1,9 +1,15 @@
 .expressive-code {
     .frame {
-        @apply !shadow-none;
+        @apply !shadow-none rounded-xl overflow-hidden border border-black/10 dark:border-white/10;
+        transition: border-color 0.2s ease;
+
+        &:hover {
+            border-color: rgba(var(--primary-rgb, 240, 100, 30), 0.35);
+        }
     }
 
     .title {
         font-family: "JetBrains Mono Variable", ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace;
+        letter-spacing: 0.05em;
     }
 }
