@@ -1,0 +1,313 @@
+---
+/**
+ * Retro Cyberpunk CRT Boot Curtain (开机预加载屏)
+ * Only shown on the very first visit of a session (sessionStorage).
+ * Holds for ~0.8s - 1.2s while buffering video/assets, then reveals
+ * the page seamlessly with the video already playing!
+ */
+---
+
+<!-- Head script for zero-flicker avoidance on subsequent navigations -->
+<script is:inline>
+    try {
+        if (sessionStorage.getItem('vcr-booted') === 'true') {
+            document.documentElement.classList.add('vcr-booted');
+        }
+    } catch (e) {}
+</script>
+
+<style is:global>
+    html.vcr-booted #vcr-boot-curtain {
+        display: none !important;
+    }
+</style>
+
+<div id="vcr-boot-curtain" class="fixed inset-0 z-[99999] flex flex-col items-center justify-center bg-[#070b12] text-white select-none transition-all duration-500 overflow-hidden font-mono cursor-pointer" title="点击或按 ESC 快速跳过">
+    <!-- CRT Vignette & Scanlines -->
+    <div class="absolute inset-0 pointer-events-none bg-[radial-gradient(ellipse_at_center,transparent_20%,rgba(0,0,0,0.85)_100%)]"></div>
+    <div class="absolute inset-0 pointer-events-none opacity-25 bg-[repeating-linear-gradient(0deg,transparent,transparent_2px,rgba(0,0,0,0.8)_3px,rgba(0,0,0,0.8)_4px)]"></div>
+    <!-- CRT Screen phosphor flicker line -->
+    <div class="absolute inset-0 pointer-events-none opacity-10 bg-gradient-to-b from-transparent via-white/10 to-transparent animate-pulse"></div>
+
+    <!-- Center Monitor Frame -->
+    <div class="relative z-10 w-full max-w-lg mx-auto px-6 py-8 flex flex-col gap-4 bg-black/40 backdrop-blur-md rounded-2xl border border-[var(--primary)]/30 shadow-[0_0_30px_rgba(0,0,0,0.8)]">
+        <!-- Four corner screws -->
+        <span class="absolute top-2.5 left-2.5 text-[8px] text-white/20 select-none pointer-events-none">+</span>
+        <span class="absolute top-2.5 right-2.5 text-[8px] text-white/20 select-none pointer-events-none">+</span>
+        <span class="absolute bottom-2.5 left-2.5 text-[8px] text-white/20 select-none pointer-events-none">+</span>
+        <span class="absolute bottom-2.5 right-2.5 text-[8px] text-white/20 select-none pointer-events-none">+</span>
+
+        <!-- Header Ribbon -->
+        <div class="flex items-center justify-between border-b border-[var(--primary)]/20 pb-2.5 text-xs">
+            <div class="flex items-center gap-2 text-[var(--primary)] font-bold tracking-wider">
+                <span class="inline-block w-2 h-2 rounded-full bg-[var(--primary)] shadow-[0_0_8px_var(--primary)] animate-ping"></span>
+                <span>SYS-BOOT // VCR-DECK 2716</span>
+            </div>
+            <div class="flex items-center gap-2 text-[10px] text-white/40">
+                <span class="px-1.5 py-0.5 rounded bg-white/5 border border-white/10">CH-01</span>
+                <span>NTSC-COLOR</span>
+            </div>
+        </div>
+
+        <!-- Terminal Output Area -->
+        <div id="boot-log-box" class="space-y-1.5 text-xs text-white/70 min-h-[5.5rem] font-mono leading-relaxed select-none">
+            <div class="text-[var(--primary)] font-bold">> INITIALIZING JAYCZEE DIGITAL STATION...</div>
+            <div class="text-white/50">> SYSTEM RAM: 640K VCR-ROM OK</div>
+            <div id="boot-status-line" class="text-white/90 flex items-center gap-2">
+                <span>> BUFFERING OPTICAL FEED & ASSETS</span>
+                <span class="inline-block w-1.5 h-3 bg-[var(--primary)] animate-pulse"></span>
+            </div>
+        </div>
+
+        <!-- Progress Gauge -->
+        <div class="space-y-1.5 pt-1">
+            <div class="flex justify-between text-[10px] font-mono text-white/50">
+                <span class="flex items-center gap-1.5">
+                    <span id="boot-indicator-dot" class="inline-block w-1.5 h-1.5 rounded-full bg-amber-400 animate-pulse"></span>
+                    <span id="boot-gauge-label">BUFFER PROGRESS</span>
+                </span>
+                <span id="boot-pct" class="text-[var(--primary)] font-bold">15%</span>
+            </div>
+            <div class="h-2 w-full bg-white/10 rounded-full overflow-hidden p-0.5 border border-white/10">
+                <div id="boot-progress-bar" class="h-full bg-gradient-to-r from-[var(--primary)] via-amber-400 to-[var(--primary)] rounded-full w-[15%] transition-all duration-200 shadow-[0_0_10px_var(--primary)]"></div>
+            </div>
+        </div>
+
+        <!-- Initial Buffering Status & Skip Hint -->
+        <div id="boot-buffering-area" class="flex items-center justify-between text-[10px] text-white/40 pt-1 border-t border-white/5">
+            <div class="flex items-center gap-2">
+                <span>CODEC: H.264 // 24FPS</span>
+                <span>·</span>
+                <span id="boot-feed-tag" class="text-amber-400 font-bold">BUFFERING...</span>
+            </div>
+            <div class="text-[10px] text-white/30 hover:text-white/60 transition cursor-pointer">
+                [ESC 跳过]
+            </div>
+        </div>
+
+        <!-- Ready Action Area: Visible once loading reaches 100% -->
+        <div id="boot-ready-area" class="hidden flex-col gap-3 pt-2 border-t border-[var(--primary)]/30 animate-fade-in">
+            <button id="boot-enter-btn" type="button"
+                    class="w-full py-3.5 px-6 rounded-xl font-mono font-bold text-sm bg-[var(--primary)] text-black hover:brightness-110 active:scale-[0.98] transition-all shadow-[0_0_20px_var(--primary)] flex items-center justify-center gap-3 cursor-pointer select-none">
+                <span class="inline-block w-2.5 h-2.5 rounded-full bg-black animate-ping"></span>
+                <span class="tracking-wider">进入主页 // ENTER STATION</span>
+                <span id="boot-countdown-chip" class="text-xs px-2.5 py-0.5 rounded-full bg-black/25 text-black font-extrabold border border-black/10">3s</span>
+            </button>
+            <div class="text-[11px] text-white/60 text-center font-mono select-none flex items-center justify-center gap-2">
+                <span id="boot-countdown-text">3 秒后自动跳转至主页</span>
+                <span class="text-white/30">·</span>
+                <span class="text-white/40">随时点击按钮或按 Enter 进入</span>
+            </div>
+        </div>
+    </div>
+</div>
+
+<script>
+    import { playSfx } from "../../utils/sfx";
+
+    function runBootSequence() {
+        const curtain = document.getElementById('vcr-boot-curtain');
+        if (!curtain) return;
+
+        try {
+            if (sessionStorage.getItem('vcr-booted') === 'true') {
+                curtain.style.display = 'none';
+                return;
+            }
+        } catch (e) {}
+
+        const progressBar = document.getElementById('boot-progress-bar');
+        const pctLabel = document.getElementById('boot-pct');
+        const statusLine = document.getElementById('boot-status-line');
+        const feedTag = document.getElementById('boot-feed-tag');
+        const bufferingArea = document.getElementById('boot-buffering-area');
+        const readyArea = document.getElementById('boot-ready-area');
+        const enterBtn = document.getElementById('boot-enter-btn');
+        const countdownChip = document.getElementById('boot-countdown-chip');
+        const countdownText = document.getElementById('boot-countdown-text');
+        const indicatorDot = document.getElementById('boot-indicator-dot');
+        const gaugeLabel = document.getElementById('boot-gauge-label');
+
+        // Look for any video elements on the page (landing page or banner)
+        const video = (document.getElementById('landing-video') || document.getElementById('banner-video')) as HTMLVideoElement | null;
+
+        let progress = 15;
+        let isLoaded = false;
+        let isExited = false;
+        let countdownTimer: ReturnType<typeof setInterval> | null = null;
+        let remainingSeconds = 3;
+        const startTime = performance.now();
+
+        function setProgress(val: number) {
+            progress = Math.min(Math.max(val, progress), 100);
+            if (progressBar) progressBar.style.width = `${progress}%`;
+            if (pctLabel) pctLabel.textContent = `${Math.round(progress)}%`;
+        }
+
+        // Stepped progress animation (total ~1.1s - 1.3s)
+        const loadingTimer = setInterval(() => {
+            if (isLoaded) return;
+            const elapsed = performance.now() - startTime;
+            if (elapsed < 300) {
+                setProgress(35);
+            } else if (elapsed < 650) {
+                setProgress(65);
+            } else if (elapsed < 950) {
+                setProgress(85);
+            }
+        }, 100);
+
+        function onLoadingFinished() {
+            if (isLoaded) return;
+            isLoaded = true;
+            clearInterval(loadingTimer);
+            setProgress(100);
+
+            // Update UI to Ready state
+            if (statusLine) {
+                statusLine.innerHTML = `<span class="text-emerald-400 font-bold">> OPTICAL FEED LOCKED // ALL ASSETS READY</span>`;
+            }
+            if (feedTag) {
+                feedTag.textContent = 'FEED ONLINE';
+                feedTag.className = 'text-emerald-400 font-bold';
+            }
+            if (indicatorDot) {
+                indicatorDot.className = 'inline-block w-1.5 h-1.5 rounded-full bg-emerald-400 shadow-[0_0_8px_#34d399]';
+            }
+            if (gaugeLabel) {
+                gaugeLabel.textContent = 'FEED BUFFERED';
+                gaugeLabel.className = 'text-emerald-400 font-bold';
+            }
+
+            // Start playing the video in background
+            if (video) {
+                video.classList.remove('opacity-0');
+                video.classList.add('opacity-100');
+                if (video.paused) {
+                    video.play().catch(() => {});
+                }
+            }
+
+            // Hide buffering area, reveal button with 3s countdown
+            if (bufferingArea) bufferingArea.style.display = 'none';
+            if (readyArea) {
+                readyArea.classList.remove('hidden');
+                readyArea.classList.add('flex');
+            }
+
+            // 3-second countdown timer
+            countdownTimer = setInterval(() => {
+                remainingSeconds--;
+                if (countdownChip) countdownChip.textContent = `${remainingSeconds}s`;
+                if (countdownText) countdownText.textContent = `${remainingSeconds} 秒后自动跳转至主页`;
+                try {
+                    playSfx('click');
+                } catch (e) {}
+
+                if (remainingSeconds <= 0) {
+                    if (countdownTimer) clearInterval(countdownTimer);
+                    enterHome();
+                }
+            }, 1000);
+        }
+
+        function enterHome() {
+            if (isExited) return;
+            isExited = true;
+            if (countdownTimer) clearInterval(countdownTimer);
+
+            try {
+                sessionStorage.setItem('vcr-booted', 'true');
+            } catch (e) {}
+
+            try {
+                playSfx('switch');
+            } catch (e) {}
+
+            // Ensure video continues playing
+            if (video && video.paused) {
+                video.play().catch(() => {});
+            }
+
+            const currentPath = window.location.pathname;
+            const isHomePage = currentPath === '/' || currentPath === '';
+
+            // Graceful CRT collapse / curtain lift
+            curtain?.classList.add('opacity-0', 'scale-105', 'pointer-events-none');
+
+            setTimeout(() => {
+                if (curtain) {
+                    curtain.style.display = 'none';
+                    curtain.remove();
+                }
+                // If not already on home page, navigate to home
+                if (!isHomePage) {
+                    window.location.href = '/';
+                }
+            }, 400);
+        }
+
+        // Button click triggers immediate enter
+        if (enterBtn) {
+            enterBtn.addEventListener('click', (e) => {
+                e.stopPropagation();
+                enterHome();
+            });
+        }
+
+        // Global keydown triggers
+        window.addEventListener('keydown', (e) => {
+            if (isExited) return;
+            if (e.key === 'Enter' || e.key === ' ' || e.key === 'Escape') {
+                if (isLoaded) {
+                    enterHome();
+                } else {
+                    // Skip loading directly to finish
+                    onLoadingFinished();
+                }
+            }
+        });
+
+        // Click curtain when ready triggers enter
+        curtain.addEventListener('click', () => {
+            if (isLoaded) {
+                enterHome();
+            } else {
+                onLoadingFinished();
+            }
+        });
+
+        // Video readiness probe
+        if (video) {
+            if (video.readyState >= 2) {
+                const elapsed = performance.now() - startTime;
+                const remaining = Math.max(1000 - elapsed, 0);
+                setTimeout(onLoadingFinished, remaining);
+            } else {
+                const onReady = () => {
+                    video.removeEventListener('canplay', onReady);
+                    video.removeEventListener('playing', onReady);
+                    const elapsed = performance.now() - startTime;
+                    const remaining = Math.max(1100 - elapsed, 0);
+                    setTimeout(onLoadingFinished, remaining);
+                };
+                video.addEventListener('canplay', onReady, { once: true });
+                video.addEventListener('playing', onReady, { once: true });
+                try {
+                    video.load();
+                } catch (e) {}
+            }
+        } else {
+            setTimeout(onLoadingFinished, 1000);
+        }
+
+        // Max loading timeout: 1.5s
+        setTimeout(onLoadingFinished, 1500);
+    }
+
+    if (document.readyState === 'loading') {
+        document.addEventListener('DOMContentLoaded', runBootSequence);
+    } else {
+        runBootSequence();
+    }
+</script>
