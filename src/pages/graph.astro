@@ -1,0 +1,70 @@
+---
+import MainGridLayout from "@layouts/MainGridLayout.astro";
+import KnowledgeGraph from "@components/graph/KnowledgeGraph.svelte";
+import { getGraphData } from "@utils/graph-utils";
+
+const graphData = await getGraphData();
+---
+
+<MainGridLayout title="知识图谱 // GALAXY GRAPH" description="全站文章双向链接与拓扑星系图谱，探索知识交织的网络。">
+    <div class="flex flex-col gap-5 w-full">
+        <!-- Top Dossier Header HUD -->
+        <div class="card-base p-6 rounded-2xl border border-black/10 dark:border-white/10 font-mono">
+            <div class="flex flex-wrap items-center justify-between gap-4 border-b border-black/10 dark:border-white/10 pb-4">
+                <div class="space-y-1">
+                    <div class="flex items-center gap-2 text-xs text-[var(--primary)] font-bold tracking-wider">
+                        <span class="inline-block w-2 h-2 rounded-full bg-[var(--primary)] shadow-[0_0_8px_var(--primary)] animate-pulse"></span>
+                        <span>NEURAL TOPOLOGY // 知识星系图谱</span>
+                    </div>
+                    <h1 class="text-2xl md:text-3xl font-extrabold text-black/90 dark:text-white/90 tracking-tight">
+                        全站双向关联星网
+                    </h1>
+                </div>
+
+                <!-- Stats Badges -->
+                <div class="flex flex-wrap items-center gap-2 text-xs">
+                    <div class="px-3 py-1.5 rounded-xl bg-black/5 dark:bg-white/5 border border-black/10 dark:border-white/10 flex items-center gap-2">
+                        <span class="text-black/40 dark:text-white/40">博文</span>
+                        <span class="font-bold text-[var(--primary)]">{graphData.stats.postCount}</span>
+                    </div>
+                    <div class="px-3 py-1.5 rounded-xl bg-black/5 dark:bg-white/5 border border-black/10 dark:border-white/10 flex items-center gap-2">
+                        <span class="text-black/40 dark:text-white/40">分类</span>
+                        <span class="font-bold text-purple-400">{graphData.stats.catCount}</span>
+                    </div>
+                    <div class="px-3 py-1.5 rounded-xl bg-black/5 dark:bg-white/5 border border-black/10 dark:border-white/10 flex items-center gap-2">
+                        <span class="text-black/40 dark:text-white/40">标签</span>
+                        <span class="font-bold text-emerald-400">{graphData.stats.tagCount}</span>
+                    </div>
+                    <div class="px-3 py-1.5 rounded-xl bg-black/5 dark:bg-white/5 border border-black/10 dark:border-white/10 flex items-center gap-2">
+                        <span class="text-black/40 dark:text-white/40">拓扑互联</span>
+                        <span class="font-bold text-blue-400">{graphData.stats.linkCount}</span>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Legend & Instructions Ribbon -->
+            <div class="flex flex-wrap items-center justify-between gap-3 pt-3 text-xs text-black/60 dark:text-white/50">
+                <div class="flex items-center gap-4">
+                    <span class="flex items-center gap-1.5">
+                        <span class="w-2.5 h-2.5 rounded-full bg-[var(--primary)] shadow-[0_0_6px_var(--primary)]"></span>
+                        <span>博文节点</span>
+                    </span>
+                    <span class="flex items-center gap-1.5">
+                        <span class="w-2.5 h-2.5 rounded-full bg-purple-500 shadow-[0_0_6px_#a855f7]"></span>
+                        <span>核心分类</span>
+                    </span>
+                    <span class="flex items-center gap-1.5">
+                        <span class="w-2.5 h-2.5 rounded-full bg-emerald-500 shadow-[0_0_6px_#10b981]"></span>
+                        <span>标签维度</span>
+                    </span>
+                </div>
+                <div class="text-[11px] text-black/40 dark:text-white/40">
+                    💡 提示：滚轮缩放画布 · 拖动节点引力反馈 · 点击博文直达阅读
+                </div>
+            </div>
+        </div>
+
+        <!-- Interactive Galaxy Graph Canvas -->
+        <KnowledgeGraph graphData={graphData} client:only="svelte" />
+    </div>
+</MainGridLayout>

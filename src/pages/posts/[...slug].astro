@@ -12,9 +12,11 @@ import { getDir } from "@utils/url-utils";
 import { Icon } from "astro-icon/components";
 import { giscusConfig, licenseConfig } from "src/config";
 import ImageWrapper from "../../components/misc/ImageWrapper.astro";
+import KnowledgeGraph from "../../components/graph/KnowledgeGraph.svelte";
 import PostMetadata from "../../components/PostMeta.astro";
 import { profileConfig, siteConfig } from "../../config";
 import { formatDateToYYYYMMDD } from "../../utils/date-utils";
+import { getGraphData, getLocalGraphData } from "../../utils/graph-utils";
 
 export async function getStaticPaths() {
 	const blogEntries = await getSortedPosts();
@@ -28,6 +30,9 @@ const { entry } = Astro.props;
 const { Content, headings } = await entry.render();
 
 const { remarkPluginFrontmatter } = await entry.render();
+
+const fullGraph = await getGraphData();
+const localGraphData = getLocalGraphData(entry.slug, fullGraph);
 
 const jsonLd = {
 	"@context": "https://schema.org",
@@ -123,6 +128,23 @@ const jsonLd = {
             <Markdown class="mb-6 markdown-content onload-animation">
                 <Content />
             </Markdown>
+
+            {localGraphData.nodes.length > 1 && (
+                <div class="mb-6 rounded-2xl border border-black/10 dark:border-white/10 bg-black/[0.02] dark:bg-white/[0.02] p-4 onload-animation">
+                    <div class="flex items-center justify-between mb-3 px-1">
+                        <div class="flex items-center gap-2">
+                            <span class="inline-block w-2 h-2 rounded-full bg-[var(--primary)] shadow-[0_0_8px_var(--primary)] animate-pulse"></span>
+                            <span class="font-mono text-xs font-bold text-black/80 dark:text-white/80">
+                                本文关联知识星网 // LOCAL GRAPH ({localGraphData.nodes.length - 1} 个关联维度)
+                            </span>
+                        </div>
+                        <a href="/graph/" class="text-xs font-mono text-[var(--primary)] hover:underline flex items-center gap-1">
+                            <span>探索全域星系 ↗</span>
+                        </a>
+                    </div>
+                    <KnowledgeGraph graphData={localGraphData} isLocal={true} activeSlug={entry.slug} client:only="svelte" />
+                </div>
+            )}
 
             {licenseConfig.enable && <License title={entry.data.title} slug={entry.slug} pubDate={entry.data.published} class="mb-6 rounded-xl license-container onload-animation"></License>}
 
