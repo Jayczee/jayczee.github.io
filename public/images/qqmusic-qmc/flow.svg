@@ -1,0 +1,82 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="900" height="640" viewBox="0 0 900 640" role="img" aria-labelledby="title desc">
+  <title id="title">QQ 音乐 mflac 本地解密流程</title>
+  <desc id="desc">从本地下载的 mflac 文件读取 PcV2MusicEx 元数据，以本机登录态向 QQ 音乐服务换取该曲目的 EKey，经 TC-TEA 派生主密钥，再按 QMCv2 RC4 规则解密音频并校验 FLAC 文件头。</desc>
+  <defs>
+    <marker id="arrow" markerWidth="9" markerHeight="9" refX="8" refY="4.5" orient="auto">
+      <path d="M0 0 L9 4.5 L0 9 Z" fill="#52616b"/>
+    </marker>
+    <linearGradient id="enc" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0" stop-color="#e7edf3"/>
+      <stop offset="1" stop-color="#dbe6ef"/>
+    </linearGradient>
+    <linearGradient id="key" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0" stop-color="#edf1e7"/>
+      <stop offset="1" stop-color="#e1eadb"/>
+    </linearGradient>
+    <linearGradient id="audio" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0" stop-color="#f4ece8"/>
+      <stop offset="1" stop-color="#eddfd8"/>
+    </linearGradient>
+    <style>
+      .title { font: 700 28px -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif; fill: #24323a; }
+      .subtitle { font: 400 14px -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif; fill: #62727b; }
+      .box { stroke: #b7c5ce; stroke-width: 1.4; }
+      .boxTitle { font: 650 18px -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif; fill: #26343d; }
+      .detail { font: 400 13.5px -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif; fill: #53646e; }
+      .label { font: 550 13px -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif; fill: #52616b; }
+      .foot { font: 400 12.5px -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif; fill: #71818a; }
+      .arrow { fill: none; stroke: #52616b; stroke-width: 1.8; marker-end: url(#arrow); }
+      .line { fill: none; stroke: #9eb0bc; stroke-width: 1.5; stroke-dasharray: 5 4; }
+    </style>
+  </defs>
+  <rect width="900" height="640" rx="10" fill="#fafbf9"/>
+  <text x="56" y="53" class="title">mflac → FLAC：密钥与音频走两条路</text>
+  <text x="56" y="78" class="subtitle">本地离线解开封装结构；解锁与下载权限绑定，重启客户端也不会绕过授权</text>
+
+  <rect x="50" y="112" width="250" height="96" rx="7" fill="url(#enc)" class="box"/>
+  <text x="70" y="145" class="boxTitle">① .mflac 本地文件</text>
+  <text x="70" y="172" class="detail">音频密文 + 192 字节文件尾</text>
+  <text x="70" y="193" class="detail">尾部只有 mid 与媒体名，无密钥</text>
+
+  <rect x="340" y="112" width="225" height="96" rx="7" fill="#fff" class="box"/>
+  <text x="360" y="145" class="boxTitle">② 登录换 EKey</text>
+  <text x="360" y="172" class="detail">本机 uin、authst</text>
+  <text x="360" y="193" class="detail">HTTPS 请求 QQ 音乐服务</text>
+
+  <rect x="605" y="112" width="245" height="96" rx="7" fill="url(#key)" class="box"/>
+  <text x="625" y="145" class="boxTitle">③ EKey → 主密钥</text>
+  <text x="625" y="172" class="detail">Base64 + TC-TEA 两层解包</text>
+  <text x="625" y="193" class="detail">本次派生结果 512 字节</text>
+
+  <rect x="50" y="272" width="515" height="103" rx="7" fill="#fff" class="box"/>
+  <text x="70" y="305" class="boxTitle">④ QMCv2 RC4 分段字节变换</text>
+  <text x="70" y="333" class="detail">前 0x80 字节逐字节；之后每 0x1400 字节一段</text>
+  <text x="70" y="355" class="detail">密钥流跳过量与段号一起参与派生，密文偏移不能丢</text>
+
+  <rect x="605" y="272" width="245" height="103" rx="7" fill="#fff" class="box"/>
+  <text x="625" y="305" class="boxTitle">⑤ 结构指纹自检</text>
+  <text x="625" y="333" class="detail">fLaC / OggS / ID3 / RIFF</text>
+  <text x="625" y="355" class="detail">先验证，再落盘</text>
+
+  <rect x="335" y="450" width="515" height="103" rx="7" fill="url(#audio)" class="box"/>
+  <text x="355" y="483" class="boxTitle">⑥ FLAC 原生码流</text>
+  <text x="355" y="511" class="detail">不重新编码、不改原始位深与采样率</text>
+  <text x="355" y="533" class="detail">afinfo 可读格式与时长，逐帧解码另行验证</text>
+
+  <path d="M300 160 H328" class="arrow"/>
+  <path d="M565 160 H593" class="arrow"/>
+  <path d="M727 223 V255" class="arrow"/>
+  <path d="M727 375 V425 H862 V507 H862" class="arrow" visibility="hidden"/>
+  <path d="M727 375 V421 Q727 435 713 435 H619 Q605 435 605 449 V485 H592" class="arrow"/>
+  <path d="M565 323 H593" class="arrow"/>
+  <path d="M307 323 H478 Q492 323 492 337 V419 Q492 433 478 433 H322 Q308 433 308 447 V485" class="arrow"/>
+
+  <rect x="50" y="449" width="245" height="104" rx="7" fill="#f1f4f5" stroke="#c9d3d9" stroke-width="1.2"/>
+  <text x="70" y="481" class="boxTitle">权限闸门</text>
+  <text x="70" y="508" class="detail">有效登录态 + 曲目下载权限</text>
+  <text x="70" y="529" class="detail">EKey 只对对应曲目有效</text>
+  <path d="M565 160 Q584 160 584 179 V427 Q584 445 565 445" class="line" marker-end="url(#arrow)"/>
+  <text x="592" y="442" class="label">权限检查</text>
+  <text x="405" y="590" class="foot">密钥仅用于本次本地解密；文章不展示登录凭据与 EKey。</text>
+  <text x="405" y="610" class="foot" text-anchor="middle"> </text>
+</svg>
